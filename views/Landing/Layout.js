@@ -64,7 +64,7 @@ export default function Layout({
   const wrapperMarginTop = useBreakpointValue({ base: 8 });
 
   return (
-    <>
+    <Box bg="black">
       <NextSeo {...SEO} />
 
       {google.googleTagManagerId && (
@@ -124,8 +124,9 @@ export default function Layout({
               background: "black",
               color: "white",
               bgImage: "url(/bg.png)",
-              bgSize: "cover",
-              bgPosition: "center",
+              bgSize: "contain",
+              bgRepeat: "no-repeat",
+              bgPosition: "top",
               _after: {
                 content: `""`,
                 display: "block",
@@ -138,7 +139,7 @@ export default function Layout({
               },
             }}
           >
-            {/*             <Navbar
+            <Navbar
               {...{
                 id,
                 sharedProductName,
@@ -146,7 +147,7 @@ export default function Layout({
                 companyLink,
                 colorScheme,
               }}
-            /> */}
+            />
             <Box
               width="100%"
               display="flex"
@@ -158,10 +159,12 @@ export default function Layout({
             >
               {children}
             </Box>
-            <Footer {...{ companyName, companyLink, colorScheme }} />
+            <Footer
+              {...{ companyName, companyLink, colorScheme, isDesktop: true }}
+            />
           </Box>
         </Fade>
       )}
-    </>
+    </Box>
   );
 }

@@ -14,11 +14,17 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
+import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
 
 import Dialog from "./Dialog";
 import Footer from "./Footer";
 
-const AppHeader = ({ onClose, sharedProductName, sharedProductSlogan }) => {
+const AppHeader = ({
+  onClose,
+  sharedProductName,
+  sharedProductSlogan,
+  color = "white",
+}) => {
   return (
     <NextLink href="/" passHref>
       <Box
@@ -39,7 +45,7 @@ const AppHeader = ({ onClose, sharedProductName, sharedProductSlogan }) => {
           <Text
             fontSize={{ base: 20, md: 24 }}
             letterSpacing="tight"
-            color="white"
+            color={color}
             fontWeight={700}
           >
             {sharedProductName}
@@ -49,7 +55,7 @@ const AppHeader = ({ onClose, sharedProductName, sharedProductSlogan }) => {
             fontSize={{ base: 12, md: 14 }}
             fontWeight={300}
             letterSpacing="tight"
-            color="white"
+            color={color}
           >
             {sharedProductSlogan}
           </Text>
@@ -59,7 +65,16 @@ const AppHeader = ({ onClose, sharedProductName, sharedProductSlogan }) => {
   );
 };
 
-const NavButton = ({ id, onClose, name, href, label, icon, ...rest }) => (
+const NavButton = ({
+  id,
+  onClose,
+  name,
+  href,
+  label,
+  icon,
+  isDesktop,
+  ...rest
+}) => (
   <NextLink href={href} passHref>
     <Button
       {...{
@@ -67,7 +82,8 @@ const NavButton = ({ id, onClose, name, href, label, icon, ...rest }) => (
         leftIcon: <>{icon}</>,
         size: "sm",
         ...rest,
-        colorScheme: "whiteAlpha",
+        colorScheme: isDesktop ? "whiteAlpha" : "blackAlpha",
+        m: 2,
       }}
     >
       {label}
@@ -98,10 +114,27 @@ export default function Navbar({
   };
 
   const navLinks = () =>
-    []
+    [
+      {
+        id: "Facebook",
+        onClose,
+        name: "facebook",
+        href: "https://facebook.com/ubuntumedspa",
+        label: "Facebook",
+        icon: <AiFillFacebook />,
+      },
+      {
+        id: "Instagram",
+        onClose,
+        name: "instagram",
+        href: "https://instagram.com/ubuntumedspa",
+        label: "Instagram",
+        icon: <AiFillInstagram />,
+      },
+    ]
       .filter(Boolean)
       ?.map((props) => (
-        <NavButton key={props.href} {...{ ...props, onClose }} />
+        <NavButton {...{ ...props, onClose, isDesktop, key: props.href }} />
       ));
 
   return (
@@ -112,6 +145,7 @@ export default function Navbar({
       width="100%"
       px={padding}
       pt={padding}
+      zIndex={1}
     >
       <AppHeader {...appHeaderProps} />
       {isDesktop ? (
@@ -164,7 +198,7 @@ export default function Navbar({
       {!isDesktop && (
         <Dialog
           {...{
-            title: <AppHeader {...appHeaderProps} />,
+            title: <AppHeader {...{ ...appHeaderProps, color: "black" }} />,
             onClose,
             isOpen,
             onSave: false,
@@ -182,7 +216,13 @@ export default function Navbar({
                 </VStack>
                 <Divider my={2} />
                 <Footer
-                  {...{ companyName, socialLinks, companyLink, colorScheme }}
+                  {...{
+                    companyName,
+                    socialLinks,
+                    companyLink,
+                    colorScheme,
+                    isDesktop,
+                  }}
                 />
               </VStack>
             ),

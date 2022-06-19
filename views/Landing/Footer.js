@@ -2,7 +2,12 @@ import React from "react";
 import { Box, useBreakpointValue } from "@chakra-ui/react";
 import { Copyright } from "./Copyright";
 
-export default function Footer({ companyName, companyLink, colorScheme }) {
+export default function Footer({
+  companyName,
+  companyLink,
+  colorScheme,
+  isDesktop,
+}) {
   const footerMarginTop = useBreakpointValue({ base: 4, sm: 6, md: 8 });
   return (
     <Box
@@ -11,7 +16,7 @@ export default function Footer({ companyName, companyLink, colorScheme }) {
       role="contentinfo"
       mx="auto"
       mt={footerMarginTop}
-      color="black"
+      zIndex={1}
     >
       <Copyright
         colorScheme={colorScheme}
@@ -19,6 +24,7 @@ export default function Footer({ companyName, companyLink, colorScheme }) {
         companyLink={companyLink}
         textAlign="center"
         mb={2}
+        isDesktop
       />
     </Box>
   );

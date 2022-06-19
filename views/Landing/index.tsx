@@ -1,4 +1,3 @@
-import NextLink from "next/link";
 import {
   Box,
   Button,
@@ -8,10 +7,14 @@ import {
   Text,
   useBreakpointValue,
   useDisclosure,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import * as React from "react";
+import { Link } from "react-scroll";
 
 import Layout from "./Layout";
+import { ProductCard } from "./ProductCard";
+import { products } from "./_data";
 import Dialog from "./Dialog";
 
 export default function Landing() {
@@ -21,6 +24,8 @@ export default function Landing() {
 
   const headingSize = useBreakpointValue({ base: "xl", md: "2xl", lg: "3xl" });
   const subHeadingFontSize = useBreakpointValue({ base: "xl", lg: "3xl" });
+
+  const innerPaddingTop = useBreakpointValue({ base: 4, md: 16, lg: 24 });
 
   return (
     <Layout
@@ -62,11 +67,11 @@ export default function Landing() {
               px={{ base: "6", md: "8" }}
               zIndex={1}
             >
-              <Box textAlign="center">
+              <Box textAlign="center" pt={innerPaddingTop}>
                 <Heading
                   as="h1"
                   size={headingSize}
-                  fontWeight="extrabold"
+                  fontWeight="bold"
                   mx="auto"
                   lineHeight="1.2"
                   letterSpacing="tight"
@@ -100,27 +105,44 @@ export default function Landing() {
                   >
                     Schedule Consultation
                   </Button>
-                  <NextLink href="/articles" passHref>
-                    <Button
-                      as="a"
-                      href="#"
-                      size="lg"
-                      colorScheme="whiteAlpha"
-                      px="8"
-                      fontWeight="bold"
-                      fontSize="md"
-                    >
-                      Learn More
-                    </Button>
-                  </NextLink>
+                  <Button
+                    colorScheme="whiteAlpha"
+                    px="8"
+                    fontWeight="bold"
+                    fontSize="md"
+                    size="lg"
+                    as={Link}
+                    to="procedures"
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                  >
+                    Procedures
+                  </Button>
                 </LightMode>
               </Stack>
-              <Text maxW="xl" textAlign="center" margin="0 auto">
-                Offering <strong>International Services</strong> for{" "}
-                <strong>Vampire Parties*</strong> and offering in office or
-                local travel options based out of{" "}
-                <strong>Quinton, Virginia</strong>.
-              </Text>
+              <Box textAlign="center" pt={16} id="procedures">
+                <Heading
+                  as="h1"
+                  size={headingSize}
+                  fontWeight="bold"
+                  mx="auto"
+                  lineHeight="1.2"
+                  letterSpacing="tight"
+                  pb={16}
+                >
+                  Procedures
+                </Heading>
+              </Box>
+              <SimpleGrid
+                columns={{ base: 1, sm: 2, md: 3, lg: 4 }}
+                gap={{ base: "8", lg: "10" }}
+              >
+                {products.map((product, i) => (
+                  <ProductCard key={i} product={product} />
+                ))}
+              </SimpleGrid>
             </Box>
             <Dialog
               {...{

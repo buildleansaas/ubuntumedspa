@@ -20,7 +20,7 @@ const Dialog = ({
   saveButtonText = "Save",
   ...props
 }) => (
-  <Modal isOpen={isOpen} onClose={onClose} size="4xl" {...props}>
+  <Modal isOpen={isOpen} onClose={onClose} size="full" {...props}>
     <ModalOverlay />
     <ModalContent borderRadius={0}>
       <ModalHeader>{title}</ModalHeader>
