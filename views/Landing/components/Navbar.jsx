@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  Avatar,
   Box,
   Button,
   ButtonGroup,
@@ -11,12 +10,13 @@ import {
   useBreakpointValue,
   useDisclosure,
   VStack,
+  Image,
   Divider,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
+import { AiFillFacebook, AiFillInstagram, AiFillMessage } from "react-icons/ai";
 
-import Dialog from "./Dialog";
+import Dialog from "components/Dialog";
 import Footer from "./Footer";
 
 const AppHeader = ({
@@ -33,6 +33,7 @@ const AppHeader = ({
         justifyContent="flex-start"
         onClick={onClose}
       >
+        <Image width={50} height={50} src="/ubuntu.png" />
         <Box
           display={{ base: "flex" }}
           flexDir="column"
@@ -52,7 +53,7 @@ const AppHeader = ({
           </Text>
           <Text
             mt={{ base: 0, lg: -1.5 }}
-            fontSize={{ base: 12, md: 14 }}
+            fontSize={{ base: 14, md: 16 }}
             fontWeight={300}
             letterSpacing="tight"
             color={color}
@@ -96,7 +97,6 @@ export default function Navbar({
   colorScheme = "teal",
   companyName = "Build Lean SaaS",
   companyLink = "https://buildleansaas.com",
-  socialLinks = [],
   sharedProductName = "Ubuntu Med Spa",
   sharedProductSlogan = "Plasma Rich Platelet Health Therapy",
 }) {
@@ -130,6 +130,14 @@ export default function Navbar({
         href: "https://instagram.com/ubuntumedspa",
         label: "Instagram",
         icon: <AiFillInstagram />,
+      },
+      {
+        id: "Newsletter",
+        onClose,
+        name: "newsletter",
+        href: "https://instagram.com/ubuntumedspa",
+        label: "Newsletter",
+        icon: <AiFillMessage />,
       },
     ]
       .filter(Boolean)
@@ -218,7 +226,6 @@ export default function Navbar({
                 <Footer
                   {...{
                     companyName,
-                    socialLinks,
                     companyLink,
                     colorScheme,
                     isDesktop,

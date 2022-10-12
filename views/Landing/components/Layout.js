@@ -15,9 +15,7 @@ export default function Layout({
   // integrations
   tawkTo,
   google,
-  facebook,
   // social
-  socialLinks = [],
   companyName,
   companyLink,
   sharedProductName,
@@ -45,11 +43,6 @@ export default function Layout({
   const SEO = {
     title,
     description,
-    ...(facebook?.facebookAppId && {
-      facebook: {
-        appId: facebook?.facebookAppId,
-      },
-    }),
     openGraph: {
       title,
       description,
