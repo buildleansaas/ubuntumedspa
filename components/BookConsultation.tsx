@@ -30,6 +30,10 @@ export default function BookConsultation({ isOpen, onClose }) {
     target: { value, name },
   }: ChangeEvent<HTMLInputElement>) => setForm({ ...form, [name]: value });
 
+  const handleSubmit = () => {
+    console.log(email, name, phone, interests);
+  };
+
   const FORM_INPUTS = [
     { label: "Preferred Name", type: "string", value: name, id: "name" },
     {
@@ -57,7 +61,7 @@ export default function BookConsultation({ isOpen, onClose }) {
   ];
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="xl">
+    <Modal isOpen={isOpen} onClose={onClose} size="full">
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Book Your Med Spa Consultation</ModalHeader>
@@ -76,7 +80,7 @@ export default function BookConsultation({ isOpen, onClose }) {
                 {type === "textarea" && (
                   <Textarea
                     onChange={(e) => handleSetForm(e)}
-                    {...{ type, value, name: id }}
+                    {...{ type: "string", value, name: id }}
                   />
                 )}
                 {formHelperText && (
@@ -88,7 +92,9 @@ export default function BookConsultation({ isOpen, onClose }) {
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="blue">Schedule Consultation</Button>
+          <Button onClick={handleSubmit} colorScheme="blue">
+            Schedule Consultation
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

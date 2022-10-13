@@ -7,6 +7,8 @@ import {
   Stack,
   Text,
   Button,
+  useColorModeValue,
+  ButtonGroup,
 } from "@chakra-ui/react";
 import * as React from "react";
 import Block from "components/Block";
@@ -42,20 +44,6 @@ export const ProcedureCard = ({ product }: Props) => {
               fallback={<Skeleton />}
             />
           </AspectRatio>
-          {/* <Box
-        opacity="0"
-        transition="opacity 0.1s"
-        _groupHover={{ opacity: 1 }}
-        position="absolute"
-        bottom="3"
-        left="3"
-        right="3"
-        bg={useColorModeValue("white", "gray.800")}
-        borderRadius="md"
-        padding="1.5"
-      >
-        <ProductButtonGroup />
-      </Box> */}
         </Box>
         <Stack spacing="1">
           <Text fontSize="xl" fontWeight={700}>
@@ -63,6 +51,10 @@ export const ProcedureCard = ({ product }: Props) => {
           </Text>
           <Block value={product.description} />
         </Stack>
+        <ButtonGroup>
+          <Button colorScheme="blue">Schedule</Button>
+          <Button colorScheme="whiteAlpha">Learn</Button>
+        </ButtonGroup>
       </Stack>
     </NextLink>
   );
