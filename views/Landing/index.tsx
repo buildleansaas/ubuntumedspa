@@ -1,32 +1,41 @@
 import * as React from "react";
+import NextLink from "next/link";
 import {
   Box,
   Button,
-  ButtonGroup,
   Heading,
   Text,
   useBreakpointValue,
   useDisclosure,
   SimpleGrid,
+  HStack,
+  VStack,
 } from "@chakra-ui/react";
 
 import Layout from "./components/Layout";
 import { ProcedureCard } from "./components/ProcedureCard";
-import Dialog from "components/Dialog";
 import BookConsultation from "components/BookConsultation";
 
 export default function Landing({ procedures }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const headingSize = useBreakpointValue({ base: "xl", md: "2xl", lg: "3xl" });
-  const subHeadingFontSize = useBreakpointValue({ base: "xl", lg: "3xl" });
+  const header = useBreakpointValue({ base: "xl", md: "2xl", lg: "3xl" });
+  const subHeader = useBreakpointValue({ base: "xl", lg: "2xl" });
+
+  const sectionHeader = useBreakpointValue({
+    base: "xl",
+    md: "2xl",
+  });
+  const sectionSubHeader = useBreakpointValue({ base: "lg", lg: "xl" });
 
   const innerPaddingTop = useBreakpointValue({
     base: 16,
     sm: "160px",
     md: "260px",
-    lg: "360px",
+    lg: "320px",
   });
+
+  const isDesktop = useBreakpointValue({ base: false, lg: true });
 
   const layoutProps = {
     id: "",
@@ -42,7 +51,7 @@ export default function Landing({ procedures }) {
     companyName: "Build Lean SaaS",
     companyLink: "https://buildleansaas.com",
     sharedProductName: "Ubuntu Med Spa",
-    sharedProductSlogan: "Holistic Regenerative Health and Wellness",
+    sharedProductSlogan: "Regenerative Health and Wellness",
     seo: {
       title: "Ubuntu Med Spa | Regenerative Holistic Health Spa",
       description: "Experience Vampire Procedures using Your Own Blood",
@@ -52,6 +61,8 @@ export default function Landing({ procedures }) {
     loading: false,
     fullWidth: true,
   };
+
+  const ButtonContainer = isDesktop ? HStack : VStack;
 
   return (
     <Layout
@@ -67,8 +78,8 @@ export default function Landing({ procedures }) {
             >
               <Box textAlign="center" pt={innerPaddingTop} id="procedures">
                 <Heading
-                  as="h1"
-                  size={headingSize}
+                  as="h2"
+                  size={header}
                   fontWeight="bold"
                   mx="auto"
                   lineHeight="1.2"
@@ -77,12 +88,7 @@ export default function Landing({ procedures }) {
                 >
                   Rejuvinate Your Life
                 </Heading>
-                <Text
-                  fontSize={subHeadingFontSize}
-                  mb={16}
-                  maxW="2xl"
-                  mx="auto"
-                >
+                <Text fontSize={subHeader} mb={8} maxW="2xl" mx="auto">
                   Experience the amazing effects of{" "}
                   <strong>Vampire Procedures</strong> using{" "}
                   <strong>Your Own Blood</strong> to enjoy{" "}
@@ -90,14 +96,49 @@ export default function Landing({ procedures }) {
                   <strong>Aesthetics</strong>, <strong>Sexual Health</strong>{" "}
                   and overall <strong>Wellness</strong>.
                 </Text>
-                <Box mb={16}>
-                  <Button colorScheme="blue" onClick={onOpen}>
-                    Book a Consultation
-                  </Button>
+                <Box mb={32}>
+                  <ButtonContainer spacing={4} justify="center">
+                    <Button colorScheme="blue" onClick={onOpen}>
+                      Book a Consultation
+                    </Button>
+                    <a as={Button} href="#about" colorScheme="whiteAlpha">
+                      Learn More
+                    </a>
+                  </ButtonContainer>
                   <Text fontSize="14px" mt={2} color="gray.400">
                     or explore our procedures below!
                   </Text>
                 </Box>
+              </Box>
+
+              <Box
+                alignItems="center"
+                justifyContent="center"
+                mb={16}
+                textAlign="center"
+                id="about"
+              >
+                <Heading
+                  as="h1"
+                  size={sectionHeader}
+                  fontWeight="bold"
+                  mx="auto"
+                  lineHeight="1.2"
+                  letterSpacing="tight"
+                  pb={4}
+                >
+                  Certified Procedures and Services
+                </Heading>
+                <Text fontSize={sectionSubHeader} mb={8} maxW="5xl" mx="auto">
+                  Platelet Rich Plasma Injections, which are based on a
+                  synthesis of your own blood, provokes radical healing by the
+                  release of your own stem cells applicable to most of the human
+                  body. This medical technology has been available to
+                  professional athletes for years to treat sport injuries, and
+                  now is available for wellness, restoration and aesthetic
+                  procedures that you won't even realize are done with
+                  complimentary Lidocane pre treatment.
+                </Text>
               </Box>
 
               <SimpleGrid

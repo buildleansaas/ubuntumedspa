@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.9.3",
     "@portabletext/react": "^1.0.6",
     "@sanity/image-url": "^1.0.1",
+    "airtable": "^0.11.5",
     "framer-motion": "^6.3.11",
     "google-spreadsheet": "^3.3.0",
     "groq": "^2.29.3",
