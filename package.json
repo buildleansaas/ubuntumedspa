@@ -25,6 +25,7 @@
     "react-dom": "18.1.0",
     "react-icons": "^4.4.0",
     "react-responsive-embed": "^2.1.0",
+    "react-scroll": "^1.8.7",
     "tawkto-react": "^3.0.1"
   },
   "devDependencies": {

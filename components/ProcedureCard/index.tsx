@@ -24,17 +24,13 @@ interface Props {
       current: string;
     };
   };
+  onClick: () => void;
 }
 
-export const ProcedureCard = ({ product }: Props) => {
+export const ProcedureCard = ({ product, onClick }: Props) => {
   return (
-    <NextLink href={`/procedures/${product.slug.current}`} passHref>
-      <Stack
-        spacing="3"
-        _hover={{
-          cursor: "pointer",
-        }}
-      >
+    <Stack spacing="3">
+      <NextLink href={`/procedures/${product.slug.current}`} passHref>
         <Box position="relative" className="group">
           <AspectRatio ratio={1}>
             <Image
@@ -45,17 +41,21 @@ export const ProcedureCard = ({ product }: Props) => {
             />
           </AspectRatio>
         </Box>
-        <Stack spacing="1">
-          <Text fontSize="xl" fontWeight={700}>
-            {product.name}
-          </Text>
-          <Block value={product.description} />
-        </Stack>
-        <ButtonGroup>
-          <Button colorScheme="blue">Schedule</Button>
-          <Button colorScheme="whiteAlpha">Learn</Button>
-        </ButtonGroup>
+      </NextLink>
+      <Stack spacing="1">
+        <Text fontSize="xl" fontWeight={700}>
+          {product.name}
+        </Text>
+        <Block value={product.description} />
       </Stack>
-    </NextLink>
+      <ButtonGroup>
+        <Button colorScheme="blue" onClick={onClick}>
+          Schedule
+        </Button>
+        <NextLink href={`/procedures/${product.slug.current}`} passHref>
+          <Button colorScheme="whiteAlpha">Learn</Button>
+        </NextLink>
+      </ButtonGroup>
+    </Stack>
   );
 };

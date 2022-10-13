@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from "react";
 import {
+  Box,
   Button,
   Modal,
   ModalOverlay,
@@ -15,38 +16,61 @@ import {
   Textarea,
   Checkbox,
   Stack,
+  useToast,
 } from "@chakra-ui/react";
 import { LeadsTable } from "lib/airtable";
 
-const DEFAULT_FORM_SUBMISSION = {
-  email: "",
-  name: "",
-  phone: "",
-  comments: "",
-  interests: [],
-  referral: "",
-};
+const DEFAULT_FORM_SUBMISSION =
+  process.env.NODE_ENV === "production"
+    ? {
+        email: "",
+        name: "",
+        phone: "",
+        comments: "",
+        interests: [],
+        referral: "",
+      }
+    : {
+        email: "au.witherow@gmail.com",
+        name: "Austin Witherow",
+        phone: "8042442395",
+        comments: "I need help I have a tiny penis.",
+        interests: ["P Shot"],
+        referral: "Jenny Coleman",
+      };
 
 export default function BookConsultation({ isOpen, onClose }) {
   const [form, setForm] = useState(DEFAULT_FORM_SUBMISSION);
   const { email, name, phone, comments, interests, referral } = form;
+
+  const toast = useToast();
 
   const handleSetForm = ({
     target: { value, name },
   }: ChangeEvent<HTMLInputElement>) => setForm({ ...form, [name]: value });
 
   const handleSubmit = async () => {
-    console.log(email, name, phone, comments, interests, referral);
-    const res = await LeadsTable.create({
-      email,
-      name,
-      phone,
-      comments,
-      interests,
-      referral,
-    });
-
-    console.log(res);
+    try {
+      const res = await LeadsTable.create({
+        email,
+        name,
+        phone,
+        comments,
+        interests,
+        referral,
+      });
+      if (res.id) {
+        toast({
+          title: "We're Excited To Have You!",
+          description:
+            "Check your email to select a date, and we'll be in touch to schedule your consultation.",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      onClose();
+    }
   };
 
   const FORM_INPUTS = [
@@ -108,7 +132,7 @@ export default function BookConsultation({ isOpen, onClose }) {
         <ModalBody>
           {FORM_INPUTS.map(
             ({ label, type, value, id, formHelperText, options }) => (
-              <>
+              <Box key={id}>
                 <FormControl mb={4}>
                   <FormLabel fontSize="lg">{label}</FormLabel>
                   {type !== "textarea" && type !== "checkboxes" && (
@@ -135,6 +159,7 @@ export default function BookConsultation({ isOpen, onClose }) {
                         <Checkbox
                           p={2}
                           size="md"
+                          checked={interests.includes(option)}
                           onChange={({
                             target: { checked },
                           }: ChangeEvent<HTMLInputElement>) => {
@@ -159,7 +184,7 @@ export default function BookConsultation({ isOpen, onClose }) {
                     <FormHelperText>{formHelperText}</FormHelperText>
                   )}
                 </FormControl>
-              </>
+              </Box>
             )
           )}
         </ModalBody>
