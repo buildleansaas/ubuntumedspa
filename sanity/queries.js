@@ -7,5 +7,14 @@ const GET_PROCEDURES = `
   }
 `;
 
+const GET_PROCEDURE_BY_SLUG = `
+  *[_type == "procedure" && slug.current == $slug ][0]{
+    ...
+  }
+`;
+
 export const getProcedures = async () =>
   await client.fetch(groq`${GET_PROCEDURES}`);
+
+export const getProcedure = async (slug) =>
+  await client.fetch(groq`${GET_PROCEDURE_BY_SLUG}`, { slug });

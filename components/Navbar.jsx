@@ -33,7 +33,11 @@ const AppHeader = ({
         justifyContent="flex-start"
         onClick={onClose}
       >
-        <Image width={50} height={50} src="/ubuntu.png" />
+        <Image
+          width={50}
+          height={50}
+          src={color === "black" ? "/ubuntu-black.png" : "/ubuntu.png"}
+        />
         <Box
           display={{ base: "flex" }}
           flexDir="column"
@@ -77,18 +81,32 @@ const NavButton = ({
   ...rest
 }) => (
   <NextLink href={href} passHref>
-    <Button
-      {...{
-        onClick: onClose,
-        leftIcon: <>{icon}</>,
-        size: "sm",
-        ...rest,
-        colorScheme: isDesktop ? "whiteAlpha" : "blackAlpha",
-        m: 2,
-      }}
-    >
-      {label}
-    </Button>
+    {isDesktop ? (
+      <IconButton
+        {...{
+          onClick: onClose,
+          icon: <>{icon}</>,
+          size: "sm",
+          ...rest,
+          colorScheme: isDesktop ? "whiteAlpha" : "blackAlpha",
+          m: 2,
+          width: "100%",
+        }}
+      />
+    ) : (
+      <Button
+        {...{
+          onClick: onClose,
+          leftIcon: <>{icon}</>,
+          size: "sm",
+          ...rest,
+          colorScheme: isDesktop ? "whiteAlpha" : "blackAlpha",
+          m: 2,
+        }}
+      >
+        {label}
+      </Button>
+    )}
   </NextLink>
 );
 
@@ -115,30 +133,30 @@ export default function Navbar({
 
   const navLinks = () =>
     [
-      {
-        id: "Facebook",
-        onClose,
-        name: "facebook",
-        href: "https://facebook.com/ubuntumedspa",
-        label: "Facebook",
-        icon: <AiFillFacebook />,
-      },
-      {
-        id: "Instagram",
-        onClose,
-        name: "instagram",
-        href: "https://instagram.com/ubuntumedspa",
-        label: "Instagram",
-        icon: <AiFillInstagram />,
-      },
-      {
-        id: "Newsletter",
-        onClose,
-        name: "newsletter",
-        href: "https://instagram.com/ubuntumedspa",
-        label: "Newsletter",
-        icon: <AiFillMessage />,
-      },
+      // {
+      //   id: "Facebook",
+      //   onClose,
+      //   name: "facebook",
+      //   href: "https://facebook.com/ubuntumedspa",
+      //   label: "Facebook",
+      //   icon: <AiFillFacebook />,
+      // },
+      // {
+      //   id: "Instagram",
+      //   onClose,
+      //   name: "instagram",
+      //   href: "https://instagram.com/ubuntumedspa",
+      //   label: "Instagram",
+      //   icon: <AiFillInstagram />,
+      // },
+      // {
+      //   id: "Newsletter",
+      //   onClose,
+      //   name: "newsletter",
+      //   href: "https://instagram.com/ubuntumedspa",
+      //   label: "Newsletter",
+      //   icon: <AiFillMessage />,
+      // },
     ]
       .filter(Boolean)
       ?.map((props) => (
@@ -162,6 +180,7 @@ export default function Navbar({
             <ButtonGroup spacing="1" ml="auto" mr={2}>
               {navLinks()}
             </ButtonGroup>
+            <NextLink href="/#about">Procedures</NextLink>
             {/* {!isEmpty(user) ? (
               <IconButton
                 icon={
@@ -189,18 +208,20 @@ export default function Navbar({
           </HStack>
         </VStack>
       ) : (
-        <IconButton
-          variant="ghost"
-          icon={
-            <svg viewBox="0 0 64 48" width="20" height="20">
-              <rect fill="white" width="64" height="8"></rect>
-              <rect fill="white" y="20" width="64" height="8"></rect>
-              <rect fill="white" y="40" width="64" height="8"></rect>
-            </svg>
-          }
-          aria-label="Open Menu"
-          onClick={onOpen}
-        />
+        <>
+          {/* <IconButton
+            variant="ghost"
+            icon={
+              <svg viewBox="0 0 64 48" width="20" height="20">
+                <rect fill="white" width="64" height="8"></rect>
+                <rect fill="white" y="20" width="64" height="8"></rect>
+                <rect fill="white" y="40" width="64" height="8"></rect>
+              </svg>
+            }
+            aria-label="Open Menu"
+            onClick={onOpen}
+          /> */}
+        </>
       )}
 
       {!isDesktop && (
@@ -219,18 +240,9 @@ export default function Navbar({
                 align="center"
                 justify="center"
               >
-                <VStack spacing={3} width="100%">
+                <HStack spacing={3} width="100%">
                   {navLinks()}
-                </VStack>
-                <Divider my={2} />
-                <Footer
-                  {...{
-                    companyName,
-                    companyLink,
-                    colorScheme,
-                    isDesktop,
-                  }}
-                />
+                </HStack>
               </VStack>
             ),
           }}

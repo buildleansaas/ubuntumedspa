@@ -7,17 +7,6 @@ import {
 } from "@chakra-ui/react";
 import * as React from "react";
 
-interface PriceTagProps {
-  currency: string;
-  price: number;
-  salePrice?: number;
-  rootProps?: StackProps;
-  priceProps?: TextProps;
-  salePriceProps?: TextProps;
-}
-
-export type FormatPriceOptions = { locale?: string; currency?: string };
-
 export function formatPrice(
   value: number,
   opts: { locale?: string; currency?: string } = {}
@@ -31,9 +20,23 @@ export function formatPrice(
   return formatter.format(value);
 }
 
-export const PriceTag = (props: PriceTagProps) => {
-  const { price, currency, salePrice, rootProps, priceProps, salePriceProps } =
-    props;
+interface PriceTagProps {
+  currency: string;
+  price: number;
+  salePrice?: number;
+  rootProps?: StackProps;
+  priceProps?: TextProps;
+  salePriceProps?: TextProps;
+}
+
+export const PriceTag = ({
+  price,
+  currency,
+  salePrice,
+  rootProps,
+  priceProps,
+  salePriceProps,
+}: PriceTagProps) => {
   return (
     <HStack spacing="1" {...rootProps}>
       <Price isOnSale={!!salePrice} textProps={priceProps}>

@@ -46,14 +46,14 @@ export const ProcedureCard = ({ product, onClick }: Props) => {
         <Text fontSize="xl" fontWeight={700}>
           {product.name}
         </Text>
-        <Block value={product.description} />
+        <Block value={product.description} fontSize="lg" />
       </Stack>
       <ButtonGroup>
         <Button colorScheme="blue" onClick={onClick}>
           Schedule
         </Button>
         <NextLink href={`/procedures/${product.slug.current}`} passHref>
-          <Button colorScheme="whiteAlpha">Learn</Button>
+          <Button colorScheme="whiteAlpha">Information</Button>
         </NextLink>
       </ButtonGroup>
     </Stack>

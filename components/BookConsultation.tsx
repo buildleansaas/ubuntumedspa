@@ -51,6 +51,7 @@ export default function BookConsultation({ isOpen, onClose }) {
 
   const handleSubmit = async () => {
     try {
+      // https://github.com/Airtable/airtable.js/blob/master/test/create.test.js
       const res = await LeadsTable.create({
         email,
         name,
@@ -59,6 +60,7 @@ export default function BookConsultation({ isOpen, onClose }) {
         interests,
         referral,
       });
+
       if (res.id) {
         toast({
           title: "We're Excited To Have You!",
@@ -157,6 +159,7 @@ export default function BookConsultation({ isOpen, onClose }) {
                     >
                       {options.map((option) => (
                         <Checkbox
+                          key={option}
                           p={2}
                           size="md"
                           checked={interests.includes(option)}

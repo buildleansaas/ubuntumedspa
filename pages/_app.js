@@ -3,6 +3,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
 
 import { extendTheme } from "@chakra-ui/react";
+import { usePreserveScroll } from "hooks/usePreserveScroll";
 
 const theme = extendTheme({
   fonts: {
@@ -27,6 +28,7 @@ const Fonts = () => (
 );
 
 export default function MyApp({ Component, pageProps }) {
+  usePreserveScroll();
   return (
     <ChakraProvider theme={theme}>
       <Fonts />

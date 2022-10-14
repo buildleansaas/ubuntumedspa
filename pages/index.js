@@ -111,12 +111,9 @@ export default function Landing({ procedures }) {
                       offset={-50}
                       duration={500}
                     >
-                      <Button colorScheme="whiteAlpha">Learn More</Button>
+                      <Button colorScheme="whiteAlpha">Our Procedures</Button>
                     </Link>
                   </ButtonContainer>
-                  <Text fontSize="14px" mt={2} color="gray.400">
-                    or explore our procedures below!
-                  </Text>
                 </Box>
               </Box>
 
