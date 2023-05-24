@@ -1,6 +1,23 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+import addMDX from "@next/mdx";
+import rehypeSlug from "rehype-slug";
 
-module.exports = nextConfig
+/** @type {import("next").NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        port: "",
+        pathname: "/photo-*",
+      },
+    ],
+  },
+};
+
+export default addMDX({
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [rehypeSlug],
+  },
+})(nextConfig);

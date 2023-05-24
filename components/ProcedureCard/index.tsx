@@ -1,25 +1,13 @@
-import NextLink from "next/link";
-import {
-  AspectRatio,
-  Box,
-  Image,
-  Skeleton,
-  Stack,
-  Text,
-  Button,
-  useColorModeValue,
-  ButtonGroup,
-} from "@chakra-ui/react";
 import * as React from "react";
-import Block from "components/Block";
-
-import { imageBuilder } from "sanity";
+import NextLink from "next/link";
 
 interface Props {
   product: {
     name: string;
-    description: [];
-    image: object;
+    description: any[];
+    image: {
+      src: string;
+    };
     slug: {
       current: string;
     };
@@ -29,33 +17,28 @@ interface Props {
 
 export const ProcedureCard = ({ product, onClick }: Props) => {
   return (
-    <Stack spacing="3">
+    <div className="space-y-3">
       <NextLink href={`/procedures/${product.slug.current}`} passHref>
-        <Box position="relative" className="group">
-          <AspectRatio ratio={1}>
-            <Image
-              src={imageBuilder(product.image).width(500).height(500).url()}
-              alt={product.name}
-              draggable="false"
-              fallback={<Skeleton />}
-            />
-          </AspectRatio>
-        </Box>
+        <a className="relative group block">
+          <div className="aspect-w-1.2 aspect-h-1">
+            <img src={product.image.src} alt={product.name} className="object-cover w-full h-full" draggable="false" />
+          </div>
+        </a>
       </NextLink>
-      <Stack spacing="1">
-        <Text fontSize="xl" fontWeight={700}>
-          {product.name}
-        </Text>
-        <Block value={product.description} fontSize="lg" />
-      </Stack>
-      <ButtonGroup>
-        <Button colorScheme="blue" onClick={onClick}>
+      <div className="space-y-1">
+        <h2 className="text-xl font-semibold">{product.name}</h2>
+        <p className="text-lg">{product.description.join(" ")}</p>
+      </div>
+      <div className="flex justify-between">
+        <button className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600" onClick={onClick}>
           Schedule
-        </Button>
+        </button>
         <NextLink href={`/procedures/${product.slug.current}`} passHref>
-          <Button colorScheme="whiteAlpha">Information</Button>
+          <button className="px-4 py-2 text-gray-800 bg-white border border-gray-400 rounded-md hover:text-gray-700">
+            Information
+          </button>
         </NextLink>
-      </ButtonGroup>
-    </Stack>
+      </div>
+    </div>
   );
 };

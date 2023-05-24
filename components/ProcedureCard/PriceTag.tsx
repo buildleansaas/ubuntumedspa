@@ -1,16 +1,6 @@
-import {
-  HStack,
-  StackProps,
-  Text,
-  TextProps,
-  useColorModeValue as mode,
-} from "@chakra-ui/react";
 import * as React from "react";
 
-export function formatPrice(
-  value: number,
-  opts: { locale?: string; currency?: string } = {}
-) {
+export function formatPrice(value: number, opts: { locale?: string; currency?: string } = {}) {
   const { locale = "en-US", currency = "USD" } = opts;
   const formatter = new Intl.NumberFormat(locale, {
     currency,
@@ -24,63 +14,43 @@ interface PriceTagProps {
   currency: string;
   price: number;
   salePrice?: number;
-  rootProps?: StackProps;
-  priceProps?: TextProps;
-  salePriceProps?: TextProps;
+  rootProps?: React.HTMLAttributes<HTMLDivElement>;
+  priceProps?: React.HTMLAttributes<HTMLParagraphElement>;
+  salePriceProps?: React.HTMLAttributes<HTMLParagraphElement>;
 }
 
-export const PriceTag = ({
-  price,
-  currency,
-  salePrice,
-  rootProps,
-  priceProps,
-  salePriceProps,
-}: PriceTagProps) => {
+export const PriceTag = ({ price, currency, salePrice, rootProps, priceProps, salePriceProps }: PriceTagProps) => {
   return (
-    <HStack spacing="1" {...rootProps}>
-      <Price isOnSale={!!salePrice} textProps={priceProps}>
+    <div {...rootProps}>
+      <Price
+        textProps={priceProps}
+        color={salePrice ? "#6B7280" : "#4A5568"}
+        textDecoration={salePrice ? "line-through" : "none"}
+      >
         {formatPrice(price, { currency })}
       </Price>
       {salePrice && (
-        <SalePrice {...salePriceProps}>
+        <SalePrice {...salePriceProps} fontWeight="semibold" color="#1F2937">
           {formatPrice(salePrice, { currency })}
         </SalePrice>
       )}
-    </HStack>
+    </div>
   );
 };
 
 interface PriceProps {
   children?: React.ReactNode;
-  isOnSale?: boolean;
-  textProps?: TextProps;
+  textProps?: React.HTMLAttributes<HTMLParagraphElement>;
+  color?: string;
+  textDecoration?: string;
 }
 
-const Price = (props: PriceProps) => {
-  const { isOnSale, children, textProps } = props;
-  const defaultColor = mode("gray.700", "gray.400");
-  const onSaleColor = mode("gray.400", "gray.700");
-  const color = isOnSale ? onSaleColor : defaultColor;
-
+const Price = ({ children, textProps, color = "#4A5568", textDecoration = "none" }: PriceProps) => {
   return (
-    <Text
-      as="span"
-      fontWeight="medium"
-      color={color}
-      textDecoration={isOnSale ? "line-through" : "none"}
-      {...textProps}
-    >
+    <p style={{ fontWeight: "medium", color, textDecoration }} {...textProps}>
       {children}
-    </Text>
+    </p>
   );
 };
 
-const SalePrice = (props: TextProps) => (
-  <Text
-    as="span"
-    fontWeight="semibold"
-    color={mode("gray.800", "gray.100")}
-    {...props}
-  />
-);
+const SalePrice = (props: React.HTMLAttributes<HTMLParagraphElement>) => <p {...props} />;
