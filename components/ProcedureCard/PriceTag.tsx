@@ -21,16 +21,12 @@ interface PriceTagProps {
 
 export const PriceTag = ({ price, currency, salePrice, rootProps, priceProps, salePriceProps }: PriceTagProps) => {
   return (
-    <div {...rootProps}>
-      <Price
-        textProps={priceProps}
-        color={salePrice ? "#6B7280" : "#4A5568"}
-        textDecoration={salePrice ? "line-through" : "none"}
-      >
+    <div {...rootProps} className="flex items-center space-x-2">
+      <Price textProps={priceProps} className={`${salePrice ? "line-through" : ""} text-gray-500`}>
         {formatPrice(price, { currency })}
       </Price>
       {salePrice && (
-        <SalePrice {...salePriceProps} fontWeight="semibold" color="#1F2937">
+        <SalePrice {...salePriceProps} className="text-xl font-semibold text-gray-900">
           {formatPrice(salePrice, { currency })}
         </SalePrice>
       )}
@@ -41,13 +37,13 @@ export const PriceTag = ({ price, currency, salePrice, rootProps, priceProps, sa
 interface PriceProps {
   children?: React.ReactNode;
   textProps?: React.HTMLAttributes<HTMLParagraphElement>;
-  color?: string;
   textDecoration?: string;
+  className?: string;
 }
 
-const Price = ({ children, textProps, color = "#4A5568", textDecoration = "none" }: PriceProps) => {
+const Price = ({ children, textProps, textDecoration = "none", className }: PriceProps) => {
   return (
-    <p style={{ fontWeight: "medium", color, textDecoration }} {...textProps}>
+    <p className={`text-lg font-medium ${textDecoration} ${className}`} {...textProps}>
       {children}
     </p>
   );

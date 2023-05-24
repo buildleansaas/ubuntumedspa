@@ -4,7 +4,7 @@ import React, { useState, ChangeEvent } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { LeadsTable } from "lib/airtable";
+// import { LeadsTable } from "lib/airtable";
 
 interface FormState {
   email: string;
@@ -82,7 +82,7 @@ const FORM_INPUTS = [
   },
 ];
 
-export default function BookConsultation({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+export default async function BookConsultation() {
   const [form, setForm] = useState<FormState>(DEFAULT_FORM_SUBMISSION);
 
   const handleChange = ({ target: { name, value } }: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -102,30 +102,26 @@ export default function BookConsultation({ isOpen, onClose }: { isOpen: boolean;
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const res = await LeadsTable.create({
-        email: form.email,
-        name: form.name,
-        phone: form.phone,
-        comments: form.comments,
-        interests: form.interests,
-        referral: form.referral,
-      });
-
-      if (res.id) {
-        toast.success(
-          "We're Excited To Have You!\nCheck your email to select a date, and we'll be in touch to schedule your consultation."
-        );
-      }
+      // const res = await LeadsTable.create({
+      //   email: form.email,
+      //   name: form.name,
+      //   phone: form.phone,
+      //   comments: form.comments,
+      //   interests: form.interests,
+      //   referral: form.referral,
+      // });
+      // if (res.id) {
+      //   toast.success(
+      //     "We're Excited To Have You!\nCheck your email to select a date, and we'll be in touch to schedule your consultation."
+      //   );
+      // }
     } catch (error) {
       console.error(error);
-    } finally {
-      onClose();
     }
   };
 
-  return isOpen ? (
+  return (
     <div className="fixed w-full top-0 z-50 flex items-center justify-center">
-      <div onClick={onClose} className="absolute w-full h-full bg-gray-900 opacity-50" />
       <div className="w-full py-6 sm:max-w-md px-8 bg-white shadow-xl rounded-lg z-50 overflow-y-auto">
         <div className="mb-4">
           <h2 className="text-center text-2xl font-semibold text-gray-700 md:text-3xl">
@@ -185,5 +181,5 @@ export default function BookConsultation({ isOpen, onClose }: { isOpen: boolean;
       </div>
       <ToastContainer />
     </div>
-  ) : null;
+  );
 }
