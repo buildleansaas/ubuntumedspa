@@ -2,7 +2,6 @@
   "name": "ubuntumedspa",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,6 +11,7 @@
   "dependencies": {
     "@mdx-js/loader": "^2.3.0",
     "@next/mdx": "^13.4.3",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "airtable": "^0.12.1",
     "next": "13.4.3",
     "nprogress": "^0.2.0",

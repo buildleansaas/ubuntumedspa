@@ -21,12 +21,16 @@ interface PriceTagProps {
 
 export const PriceTag = ({ price, currency, salePrice, rootProps, priceProps, salePriceProps }: PriceTagProps) => {
   return (
-    <div {...rootProps} className="flex items-center space-x-2">
-      <Price textProps={priceProps} className={`${salePrice ? "line-through" : ""} text-gray-500`}>
+    <div {...rootProps} className="flex items-center space-x-1">
+      <Price
+        textProps={priceProps}
+        isOnSale={!!salePrice}
+        className={`font-medium ${salePrice ? "text-gray-400 line-through" : "text-gray-700"}`}
+      >
         {formatPrice(price, { currency })}
       </Price>
       {salePrice && (
-        <SalePrice {...salePriceProps} className="text-xl font-semibold text-gray-900">
+        <SalePrice {...salePriceProps} className="text-gray-800 font-semibold">
           {formatPrice(salePrice, { currency })}
         </SalePrice>
       )}
@@ -36,14 +40,14 @@ export const PriceTag = ({ price, currency, salePrice, rootProps, priceProps, sa
 
 interface PriceProps {
   children?: React.ReactNode;
+  isOnSale?: boolean;
   textProps?: React.HTMLAttributes<HTMLParagraphElement>;
-  textDecoration?: string;
   className?: string;
 }
 
-const Price = ({ children, textProps, textDecoration = "none", className }: PriceProps) => {
+const Price = ({ children, textProps, className }: PriceProps) => {
   return (
-    <p className={`text-lg font-medium ${textDecoration} ${className}`} {...textProps}>
+    <p className={`text-lg ${className}`} {...textProps}>
       {children}
     </p>
   );
