@@ -1,5 +1,4 @@
-import { FormState, FormInput } from "app/consultation/page";
-export const DEFAULT_FORM_SUBMISSION: FormState =
+export const DEFAULT_FORM_SUBMISSION =
   process.env.NODE_ENV === "production"
     ? {
         email: "",
@@ -18,7 +17,7 @@ export const DEFAULT_FORM_SUBMISSION: FormState =
         referral: "Jenny Coleman",
       };
 
-export const FORM_INPUTS: FormInput[] = [
+export const FORM_INPUTS = [
   {
     id: "name",
     label: "Preferred Name",

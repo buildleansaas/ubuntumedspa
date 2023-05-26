@@ -21,7 +21,7 @@ export default function Page() {
           <div className="flex flex-col lg:flex-row lg:justify-center xl:items-center">
             <NextLink
               className="bg-blue-500 text-white py-2 px-6 text-sm lg:text-base lg:mr-4 xl:mb-4 rounded-md "
-              href="/consultation"
+              href="/consult"
             >
               Book a Consultation
             </NextLink>
@@ -29,7 +29,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="text-center" id="about">
+      <div className="text-center" id="procedures">
         <h1 className="text-2xl md:text-3xl font-bold mx-auto leading-tight pb-4">Certified Procedures and Services</h1>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
           Platelet Rich Plasma Injections, which are based on a synthesis of your own blood, provokes radical healing by

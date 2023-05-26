@@ -33,7 +33,7 @@ export const ProcedureCard = ({ product }: Props) => (
       <p className="text-sm">{product.subline}</p>
     </div>
     <div className="flex space-x-2">
-      <Link href={`/consultation`} passHref className="px-4 py-2 bg-blue-500 hover:bg-opacity-90 text-white rounded-md">
+      <Link href={`/consult`} passHref className="px-4 py-2 bg-blue-500 hover:bg-opacity-90 text-white rounded-md">
         Schedule
       </Link>
       <Link

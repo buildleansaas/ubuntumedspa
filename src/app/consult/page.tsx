@@ -1,9 +1,11 @@
 "use client";
 
-import { useForm, Controller } from "react-hook-form";
-import { ToastContainer } from "react-toastify";
+import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import { DEFAULT_FORM_SUBMISSION, FORM_INPUTS } from "constants/consult";
+import * as yup from "yup";
+
 import "react-toastify/dist/ReactToastify.css";
-import { DEFAULT_FORM_SUBMISSION, FORM_INPUTS } from "constants/consultationForm";
 
 export interface FormState {
   email: string;
@@ -22,26 +24,67 @@ export interface FormInput {
   options?: string[];
 }
 
-export default function ConsultationPage() {
-  const { register, handleSubmit, control } = useForm<FormState>({
-    defaultValues: DEFAULT_FORM_SUBMISSION,
-  });
+const ConsultationPage: React.FC = () => {
+  const [formState, setFormState] = useState<FormState>(DEFAULT_FORM_SUBMISSION);
 
-  const onSubmit = (data: FormState) => console.log(data);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    if (e.target.checked) {
+      setFormState({
+        ...formState,
+        interests: [...formState.interests, value],
+      });
+    } else {
+      setFormState({
+        ...formState,
+        interests: formState.interests.filter((interest) => interest !== value),
+      });
+    }
+  };
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const schema = yup.object().shape({
+      name: yup.string().required(),
+      email: yup.string().email().required(),
+      phone: yup.string().required(),
+      interests: yup.array().of(yup.string()).required(),
+      referral: yup.string().required(),
+      comments: yup.string().required(),
+    });
+
+    try {
+      await schema.validate(formState);
+      const response = await fetch("/api/consult", { body: JSON.stringify(formState), method: "POST" });
+
+      if (response.status === 200) {
+        setFormState(DEFAULT_FORM_SUBMISSION);
+        toast.success("Form submission successful!");
+      } else {
+        toast.error("Something went wrong. Please try again later.");
+      }
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
 
   return (
     <>
       <h1 className="text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-white mb-4 sm:mb-8">
-        Consultation Intake Form
+        Consultation Intake Form{" "}
       </h1>
       <h2 className="text-center text-white text-lg md:text-xl lg:text-2xl mx-auto leading-tight pb-4 max-w-2xl mb-4">
         Please fill out the following information and we will get back to you as soon as possible to schedule your
         consultation!
       </h2>
-      <form
-        className="shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-white bg-opacity-20 text-white"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-white bg-opacity-20 text-white" onSubmit={onSubmit}>
         {FORM_INPUTS.map((input) => {
           switch (input.type) {
             case "text":
@@ -49,14 +92,15 @@ export default function ConsultationPage() {
             case "tel":
               return (
                 <div className="mb-4" key={input.id}>
-                  <label className="block text-sm font-bold mb-2" htmlFor={input.id}>
+                  <label className="block text-sm font-bold mb-2" htmlFor={String(input.id)}>
                     {input.label}
                   </label>
                   <input
-                    {...register(input.id)}
                     className="text-black shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                     id={String(input.id)}
                     type={input.type}
+                    value={formState[input.id]}
+                    onChange={handleChange}
                     placeholder={input.label}
                   />
                   <p className="text-gray-100 text-xs italic">{input.helperText}</p>
@@ -68,32 +112,18 @@ export default function ConsultationPage() {
                   <legend className="block text-sm font-bold mb-2">{input.label}</legend>
                   {input.options?.map((option) => (
                     <div key={option} className="mb-2">
-                      <Controller
-                        control={control}
-                        name={input.id as keyof FormState}
-                        render={({ field: { onChange, value } }) => (
-                          <label className="inline-flex items-center">
-                            <input
-                              type="checkbox"
-                              value={option}
-                              checked={value.includes(option)}
-                              onChange={(e) => {
-                                const selected = Array.isArray(value) ? value : [];
-                                if (e.target.checked && !selected.includes(option)) {
-                                  onChange([...selected, option]);
-                                } else if (!e.target.checked && selected.includes(option)) {
-                                  onChange(selected.filter((v: string) => v !== option));
-                                }
-                              }}
-                              className="form-checkbox text-indigo-600"
-                            />
-                            <span className="ml-2">{option}</span>
-                          </label>
-                        )}
-                      />
+                      <label className="inline-flex items-center">
+                        <input
+                          type="checkbox"
+                          value={option}
+                          checked={formState.interests.includes(option)}
+                          onChange={handleCheckboxChange}
+                          className="form-checkbox text-indigo-600"
+                        />
+                        <span className="ml-2">{option}</span>
+                      </label>
                     </div>
                   ))}
-
                   <p className="text-gray-100 text-xs italic">{input.helperText}</p>
                 </fieldset>
               );
@@ -104,9 +134,10 @@ export default function ConsultationPage() {
                     {input.label}
                   </label>
                   <textarea
-                    {...register(input.id)}
                     className="text-black shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                     id={String(input.id)}
+                    value={formState[input.id]}
+                    onChange={handleChange}
                     placeholder={input.label}
                   />
                   <p className="text-gray-100 text-xs italic">{input.helperText}</p>
@@ -128,4 +159,6 @@ export default function ConsultationPage() {
       </form>
     </>
   );
-}
+};
+
+export default ConsultationPage;
