@@ -78,6 +78,14 @@ export default function Layout({ children }: LayoutProps) {
           <div className="w-full flex items-center justify-center flex-col flex-grow mt-8 px-4 md:px-9 lg:px-18 xl:px-27">
             {children}
           </div>
+          <footer class="text-center text-white mt-16">
+            <div className="p-4 text-center">
+              © 2023 Copyright:
+              <NextLink className="text-white" href="/">
+                Ubuntu Med Spa
+              </NextLink>
+            </div>
+          </footer>
         </div>
       </body>
     </html>

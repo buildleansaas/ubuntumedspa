@@ -8,6 +8,8 @@ interface Props {
     description: string;
     image: string;
     slug: string;
+    headline: string;
+    subline: string;
   };
 }
 
@@ -27,22 +29,19 @@ export const ProcedureCard = ({ product }: Props) => (
     </Link>
     <div className="space-y-1">
       <h2 className="text-xl font-bold">{product.name}</h2>
-      <p className="text-lg">{product.description}</p>
+      <h3 className="text-lg">{product.headline}</h3>
+      <p className="text-sm">{product.subline}</p>
     </div>
     <div className="flex space-x-2">
-      <Link
-        href={`/consultation`}
-        passHref
-        className="px-4 py-2 bg-white bg-opacity-10 hover:bg-opacity-20 text-gray-700 rounded-md"
-      >
+      <Link href={`/consultation`} passHref className="px-4 py-2 bg-blue-500 hover:bg-opacity-90 text-white rounded-md">
         Schedule
       </Link>
       <Link
         href={`/procedures/${product.slug}`}
         passHref
-        className="px-4 py-2 bg-white bg-opacity-10 hover:bg-opacity-20 text-gray-700 rounded-md"
+        className="px-4 py-2 bg-gray-500 hover:bg-opacity-90 text-white rounded-md"
       >
-        Information
+        More Info
       </Link>
     </div>
   </div>
