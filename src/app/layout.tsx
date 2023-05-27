@@ -7,10 +7,7 @@ import { ToastContainer } from "react-toastify";
 
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-});
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -19,18 +16,15 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en" className={inter.className}>
-      <Script async id="gtag" src={`https://www.googletagmanager.com/gtag/js?id=G-FBEPLGSS9L`} />
-      <Script
-        id="init-gtag"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-FBEPLGSS9L');
-              `,
-        }}
-      />
+      <Script strategy="afterInteractive" id="gtag" src="https://www.googletagmanager.com/gtag/js?id=G-FBEPLGSS9L" />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-FBEPLGSS9L');
+        `}
+      </Script>
       <body className="bg-black">
         <ToastContainer />
         <div
