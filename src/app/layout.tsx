@@ -34,19 +34,22 @@ export default function Layout({ children }: LayoutProps) {
           <div className="flex items-start justify-between w-full px-6 py-6">
             <NextLink href="/" passHref>
               <div className="flex items-center justify-start">
-                <Image width={50} height={50} src="/ubuntu.png" alt="Ubuntu Med Spa logo" />
+                <Image className="hidden md:block" width={50} height={50} src="/ubuntu.png" alt="Ubuntu Med Spa logo" />
                 <div className="flex flex-col items-start justify-center ml-2">
-                  <h1 className="text-lg md:text-xl text-white font-bold">Ubuntu Med Spa</h1>
-                  <p className="mt-0 text-sm md:text-base text-white font-light">Plasma Rich Platelet Health Therapy</p>
+                  <h1 className="text-md sm:text-lg md:text-xl text-white font-bold">Ubuntu Med Spa</h1>
+                  <p className="hidden md:block mt-0 text-sm md:text-base text-white font-light">
+                    Plasma Rich Platelet Health Therapy
+                  </p>
                 </div>
               </div>
             </NextLink>
+
             <div className="flex items-center">
-              <NextLink href="/#procedures" passHref className="mx-2 text-white-600 hover:text-white">
-                Procedures
-              </NextLink>
+              <a href="#services" className="mx-2 text-white-600 hover:text-white">
+                Services
+              </a>
               <NextLink href="/blog" passHref className="mx-2 text-white-600 hover:text-white">
-                Beauty Blog
+                Blog
               </NextLink>
             </div>
           </div>

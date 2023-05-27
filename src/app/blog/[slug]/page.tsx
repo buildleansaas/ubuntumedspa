@@ -1,7 +1,7 @@
-import { Container } from "components/Container";
 import { ArticleHeader } from "components/ArticleHeader";
 import { notFound } from "next/navigation";
-import { HeroPattern } from "components/HeroPattern";
+import NextLink from "next/link";
+import CtaFooter from "components/CtaFooter";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   try {
@@ -35,12 +35,11 @@ export default async function ArticlePage({
     const { default: Content, metadata } = await import(`markdown/${params.slug}.mdx`);
 
     return (
-      <Container className="pt-16 pb-24">
-        <div className="mx-auto max-w-3xl text-base leading-7 text-white">
-          <ArticleHeader metadata={metadata} />
-          <Content />
-        </div>
-      </Container>
+      <div className="mx-auto max-w-3xl text-base leading-7 text-white">
+        <ArticleHeader metadata={metadata} />
+        <Content />
+        <CtaFooter />
+      </div>
     );
   } catch {
     notFound();

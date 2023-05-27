@@ -1,6 +1,8 @@
 import { articles as slugs } from "app/sitemap";
 import { Metadata } from "components/ArticleHeader";
+import NextLink from "next/link";
 import Image from "next/image";
+import CtaFooter from "components/CtaFooter";
 
 export default async function BlogPage() {
   const articles = (await Promise.all(slugs.map((slug) => import(`markdown/${slug}.mdx`))))
@@ -51,6 +53,7 @@ export default async function BlogPage() {
           </article>
         ))}
       </div>
+      <CtaFooter />
     </div>
   );
 }

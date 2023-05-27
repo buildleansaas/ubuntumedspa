@@ -7,13 +7,13 @@ import { ProcedureCard } from "components/ProcedureCard";
 
 export default function Page() {
   return (
-    <div className="max-w-xl md:max-w-7xl mx-auto px-6 md:px-8 z-10">
+    <div className="max-w-xl md:max-w-7xl mx-auto md:px-6 md:px-8 z-10">
       <div className="text-center pt-16 sm:pt-40 md:pt-64 lg:pt-80" id="procedures">
         <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mx-auto leading-tight pb-4">
           Rejuvinate Your Life
         </h2>
         <p className="text-white text-xl lg:text-2xl mb-8 max-w-2xl mx-auto">
-          Experience the amazing effects of <strong>Vampire Procedures</strong> using <strong>Your Own Blood</strong> to
+          Experience the amazing effects of <strong>Vampire Services</strong> using <strong>Your Own Blood</strong> to
           enjoy <strong>Natural Healing</strong>, for <strong>Joints</strong>, <strong>Aesthetics</strong>,{" "}
           <strong>Sexual Health</strong> and overall <strong>Wellness</strong>.
         </p>
@@ -29,7 +29,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="text-center" id="procedures">
+      <div className="text-center" id="services">
         <h1 className="text-2xl md:text-3xl font-bold mx-auto leading-tight pb-4">Certified Procedures and Services</h1>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
           Platelet Rich Plasma Injections, which are based on a synthesis of your own blood, provokes radical healing by
