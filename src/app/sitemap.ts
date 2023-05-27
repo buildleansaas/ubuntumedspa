@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-export const articles: string[] = []; // TODO: generate by reading files in /markdown
+export const articles: string[] = ["vampire-facelift-non-surgical-secret-youthful-skin"];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [

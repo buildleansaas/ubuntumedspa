@@ -12,25 +12,18 @@ export function Anchor(properties: JSX.IntrinsicElements["a"]) {
 export function Heading1(properties: JSX.IntrinsicElements["h1"]) {
   return (
     <h1
-      className="lg:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-gray-800 mb-8 sm:mb-16 lg:-mx-24"
+      className="lg:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-white mb-8 sm:mb-16 lg:-mx-24"
       {...properties}
     />
   );
 }
 
 export function Heading2(properties: JSX.IntrinsicElements["h2"]) {
-  return (
-    <h2
-      className="text-2xl font-bold tracking-tight text-gray-900 mt-12 mb-8"
-      {...properties}
-    />
-  );
+  return <h2 className="text-2xl font-bold tracking-tight text-white mt-12 mb-8" {...properties} />;
 }
 
 export function Heading3(properties: JSX.IntrinsicElements["h2"]) {
-  return (
-    <h3 className="text-lg font-bold text-gray-900 mt-8 mb-4" {...properties} />
-  );
+  return <h3 className="text-lg font-bold text-white mt-8 mb-4" {...properties} />;
 }
 
 export function Paragraph(properties: JSX.IntrinsicElements["p"]) {
@@ -38,21 +31,11 @@ export function Paragraph(properties: JSX.IntrinsicElements["p"]) {
 }
 
 export function OrderedList(properties: JSX.IntrinsicElements["ol"]) {
-  return (
-    <ol
-      className="leading-8 list-decimal marker:tracking-tighter"
-      {...properties}
-    />
-  );
+  return <ol className="leading-8 list-decimal marker:tracking-tighter" {...properties} />;
 }
 
 export function UnorderedList(properties: JSX.IntrinsicElements["ul"]) {
-  return (
-    <ul
-      className="leading-8 list-disc marker:tracking-tighter"
-      {...properties}
-    />
-  );
+  return <ul className="leading-8 list-disc marker:tracking-tighter" {...properties} />;
 }
 
 export function ListItem(properties: JSX.IntrinsicElements["li"]) {
@@ -60,11 +43,7 @@ export function ListItem(properties: JSX.IntrinsicElements["li"]) {
 }
 
 export function Pre(properties: JSX.IntrinsicElements["pre"]) {
-  return (
-    <div className="bg-gray-100 rounded-3xl p-6 whitespace-pre-line">
-      {properties.children}
-    </div>
-  );
+  return <div className="bg-gray-100 rounded-3xl p-6 whitespace-pre-line">{properties.children}</div>;
 }
 
 export function Div(properties: JSX.IntrinsicElements["code"]) {

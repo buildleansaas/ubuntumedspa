@@ -19,7 +19,7 @@ export function ArticleHeader({ metadata }: { metadata: Metadata }) {
       <div className="flex flex-wrap items-center mb-4">
         <time
           dateTime={new Date(metadata.date).toISOString()}
-          className="w-full sm:w-auto text-sm md:text-base text-gray-500 mr-6 mb-2"
+          className="w-full sm:w-auto text-sm md:text-base text-white mr-6 mb-2"
         >
           {new Date(metadata.date).toLocaleDateString("en-GB", {
             dateStyle: "long",

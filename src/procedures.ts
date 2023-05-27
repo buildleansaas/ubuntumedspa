@@ -56,7 +56,7 @@ export const procedures = [
     headline: "Redefine Your Beauty: Non-Invasive, Long-Lasting Rejuvenation!",
     subline:
       "The Vampire Facelift combines the use of Botox, Filler, and the Vampire Facial to rejuvenate and resculpt the face. This non-invasive procedure stimulates collagen production, fills in wrinkles, and provides a smoother, more youthful-looking skin with long-lasting results.",
-    image: "/facelift.jpg",
+    image: "/facelift.png",
     price: "$1,500",
   },
   {

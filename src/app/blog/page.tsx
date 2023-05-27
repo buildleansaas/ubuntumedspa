@@ -18,11 +18,11 @@ export default async function BlogPage() {
       <div className="mt-16 space-y-20 lg:mt-20 lg:space-y-20">
         {articles.map((article) => (
           <article key={article.slug} className="relative isolate flex flex-col gap-8 lg:flex-row">
-            <div className="relative rounded-3xl aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-gray-50">
-              <Image src={article.image} alt="" fill className="rounded-3xl object-cover" />
-              <div className="absolute inset-0 rounded-3xl shadow-inner bg-gradient-to-br from-white/20" />
+            <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-gray-50">
+              <Image src={article.image} alt="" fill className="object-cover" />
+              <div className="absolute inset-0 shadow-inner bg-gradient-to-br from-white/20" />
             </div>
-            <div>
+            <div className="py-4">
               <div className="flex flex-wrap items-center text-xs">
                 <time dateTime={new Date(article.date).toISOString()} className="w-full sm:w-auto text-white mr-6 mb-2">
                   {new Date(article.date).toLocaleDateString("en-GB", {
@@ -30,7 +30,7 @@ export default async function BlogPage() {
                   })}
                 </time>
                 {article.tags.map((tag) => (
-                  <div key={tag} className="rounded-lg px-2 py-1 bg-gray-50 text-white -ml-1 mr-3 mb-2">
+                  <div key={tag} className="rounded-lg px-2 py-1 bg-white text-black -ml-1 mr-3 mb-2">
                     {tag}
                   </div>
                 ))}
@@ -45,7 +45,7 @@ export default async function BlogPage() {
                     {article.title}
                   </a>
                 </h2>
-                <p className="mt-5 text-sm leading-6 text-gray-600">{article.description}</p>
+                <p className="mt-5 text-sm leading-6 text-white">{article.description}</p>
               </div>
             </div>
           </article>
