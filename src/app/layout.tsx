@@ -19,15 +19,15 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en" className={inter.className}>
-      <Script id="gtag" src={`https://www.googletagmanager.com/gtag/js?id=G-Q9LX7K1BRY`} />
+      <Script async id="gtag" src={`https://www.googletagmanager.com/gtag/js?id=G-FBEPLGSS9L`} />
       <Script
         id="init-gtag"
         dangerouslySetInnerHTML={{
           __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-Q9LX7K1BRY');
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-FBEPLGSS9L');
               `,
         }}
       />
