@@ -69,4 +69,34 @@ export const procedures = [
     image: "/wrist.jpg",
     price: "$800",
   },
+  {
+    name: "Xeomin",
+    description:
+      "Xeomin is a unique non-surgical procedure targeting a variety of facial areas, including bunny lines, forehead, 'lip flip', crow's feet, gummy smile, and also treating hyperhidrosis. By temporarily inhibiting muscle contractions, Xeomin can smooth out wrinkles, creating a more youthful and rejuvenated appearance. Its precision and effectiveness have made it a popular choice for those seeking to enhance their natural beauty without invasive surgery.",
+    headline: "Express Your Natural Beauty: Targeted, Non-Invasive, Refreshing!",
+    subline:
+      "Xeomin focuses on specific facial areas, smoothing out wrinkles and addressing hyperhidrosis. It's a non-surgical solution to enhance your beauty and rejuvenate your appearance.",
+    image: "/xeomin.png",
+    price: "$12 per unit",
+  },
+  {
+    name: "Filler",
+    description:
+      "Filler treatment is a non-invasive procedure designed to add volume and smoothness to specific areas of the face, including eyebrow lift, nasolabial folds, cheeks, and marionette lines. By using hyaluronic acid, a naturally occurring substance in the body, fillers plump up and hydrate the skin, effectively reducing wrinkles and adding definition to the face. It's an excellent option for those looking to achieve a more youthful look without undergoing surgical procedures.",
+    headline: "Accentuate Your Features: Smooth, Plump, Youthful!",
+    subline:
+      "Filler treatment adds volume to specific areas of the face, effectively reducing wrinkles and enhancing facial definition. It's a non-invasive way to achieve a smoother, plumper, and more youthful appearance.",
+    image: "/filler.png",
+    price: "$600 per syringe",
+  },
+  {
+    name: "Hyperhidrosis Treatment",
+    description:
+      "Our Hyperhidrosis treatment utilizes Xeomin injections to effectively address excessive sweating, a condition also known as Hyperhidrosis. By blocking the nerve signals to sweat glands, Xeomin can significantly reduce sweat production, providing relief for those affected by this condition. This non-invasive treatment is a practical alternative to surgery, offering a high success rate and minimal side effects.",
+    headline: "Experience Refreshing Relief: Non-Invasive, Effective, Liberating!",
+    subline:
+      "Our Hyperhidrosis treatment with Xeomin injections effectively reduces sweat production, offering a non-invasive solution to those affected by excessive sweating.",
+    image: "/armpit.jpg",
+    price: "$1,000+",
+  },
 ];

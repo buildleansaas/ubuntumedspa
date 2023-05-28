@@ -1,15 +1,12 @@
 import { articles as slugs } from "app/sitemap";
 import { Metadata } from "components/ArticleHeader";
-import NextLink from "next/link";
 import Image from "next/image";
+import NextLink from "next/link";
 import CtaFooter from "components/CtaFooter";
 
 export default async function BlogPage() {
   const articles = (await Promise.all(slugs.map((slug) => import(`markdown/${slug}.mdx`))))
-    .map<Metadata>(({ metadata }, index) => ({
-      ...metadata,
-      slug: slugs[index],
-    }))
+    .map<Metadata>(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
@@ -39,13 +36,13 @@ export default async function BlogPage() {
               </div>
               <div className="group relative max-w-xl">
                 <h2 className="mt-3 text-lg/snug sm:text-xl/snug md:text-2xl/snug font-semibold text-white-900 group-hover:text-gray-200">
-                  <a
+                  <NextLink
                     href={`/blog/${article.slug}`}
                     className="rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-200"
                   >
                     <span className="absolute inset-0" />
                     {article.title}
-                  </a>
+                  </NextLink>
                 </h2>
                 <p className="mt-5 text-sm leading-6 text-white">{article.description}</p>
               </div>
