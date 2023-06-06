@@ -36,13 +36,13 @@ export const ProcedureCard = ({ product }: Props) => (
       <Link href={`/consult`} passHref className="px-4 py-2 bg-blue-500 hover:bg-opacity-90 text-white rounded-md">
         Schedule
       </Link>
-      <Link
+      {/* <Link
         href={`/procedures/${product.slug}`}
         passHref
         className="px-4 py-2 bg-gray-500 hover:bg-opacity-90 text-white rounded-md"
       >
         More Info
-      </Link>
+      </Link> */}
     </div>
   </div>
 );
