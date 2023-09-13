@@ -1,16 +1,8 @@
-// pages/api/sendForm.ts
-
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "POST") {
-    res.setHeader("Allow", "POST");
-    res.status(405).end("Method Not Allowed");
-    return;
-  }
-
-  const { name, email, phone, interests, referral, comments } = JSON.parse(req.body);
+export async function POST(req: NextRequest) {
+  const { name, email, phone, interests, referral, comments } = await req.json();
 
   try {
     const transporter = nodemailer.createTransport({
@@ -25,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     await transporter.sendMail({
       from: "au.witherow@gmail.com",
-      to: "jennylingcoleman@icloud.com",
+      to: process.env.NODE_ENV === "development" ? "au.witherow@gmail.com" : "jennylingcoleman@icloud.com",
       subject: `[MED SPA LEAD] ${name}, ${interests.join(", ")}`,
       text: `
         Name: ${name}
@@ -37,8 +29,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       `,
     });
 
-    return res.status(200).send("ok");
+    return NextResponse.json({ success: true });
   } catch (error) {
-    return res.status(500).send(error.message);
+    return NextResponse.json({ success: false, error });
   }
 }

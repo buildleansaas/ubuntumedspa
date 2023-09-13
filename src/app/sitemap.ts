@@ -13,6 +13,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://www.ubuntumedspa.com",
       lastModified: new Date(),
     },
+    {
+      url: "https://www.ubuntumedspa.com/consult",
+      lastModified: new Date(),
+    },
     ...articles.map((slug) => ({
       url: `https://www.ubuntumedspa.com/blog/${slug}`,
       lastModified: new Date(),

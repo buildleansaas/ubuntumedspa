@@ -1,6 +1,5 @@
 import { ArticleHeader } from "components/ArticleHeader";
 import { notFound } from "next/navigation";
-import NextLink from "next/link";
 import CtaFooter from "components/CtaFooter";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {

@@ -1,6 +1,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   product: {
@@ -22,7 +23,7 @@ export const ProcedureCard = ({ product }: Props) => (
           width={500}
           src={product.image}
           alt={product.name}
-          className="object-cover w-full h-full"
+          className="object-cover w-full h-full rounded-md"
           draggable="false"
         />
       </div>
@@ -33,9 +34,9 @@ export const ProcedureCard = ({ product }: Props) => (
       <p className="text-sm">{product.subline}</p>
     </div>
     <div className="flex space-x-2">
-      <Link href={`/consult`} passHref className="px-4 py-2 bg-blue-500 hover:bg-opacity-90 text-white rounded-md">
-        Schedule
-      </Link>
+      <Button className="bg-blue-500 hover:bg-blue-600">
+        <Link href={`/consult`}>Schedule</Link>
+      </Button>
       {/* <Link
         href={`/procedures/${product.slug}`}
         passHref

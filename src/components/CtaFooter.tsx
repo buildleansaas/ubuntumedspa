@@ -1,4 +1,5 @@
-import NextLink from "next/link";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function CtaFooter() {
   return (
@@ -17,12 +18,9 @@ export default function CtaFooter() {
         </p>
         <div className="mb-32">
           <div className="flex flex-col lg:flex-row lg:justify-center xl:items-center">
-            <NextLink
-              href="/consult"
-              className="bg-blue-500 text-white py-2 px-6 text-sm lg:text-base lg:mr-4 xl:mb-4 rounded-md"
-            >
-              Book a Consultation
-            </NextLink>
+            <Button className="bg-blue-500 hover:bg-blue-600">
+              <Link href="/consult">Book a Consultation</Link>
+            </Button>
           </div>
         </div>
       </div>

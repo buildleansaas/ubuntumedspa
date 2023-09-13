@@ -6,7 +6,7 @@ export const procedures = [
     headline: "Revitalize Your Feminine Intimacy: Natural, Effective, Life-Changing!",
     subline:
       "The O Shot utilizes Platelet-Rich Plasma (PRP) therapy derived from your own blood, working naturally to enhance female sexual health. With this, you can expect improved sexual function, relief from urinary incontinence and menopause symptoms, and an overall more fulfilling sex life.",
-    image: "/grapefruit.jpg",
+    image: "/product/grapefruit.jpg",
     price: "$1,200.00",
   },
   {
@@ -16,7 +16,7 @@ export const procedures = [
     headline: "Rediscover Male Virility: Boost Your Performance and Confidence!",
     subline:
       "The P Shot is a natural and non-invasive treatment using PRP therapy to rejuvenate the penis and enhance sexual function. It aids in improving erection quality, boosting libido and reversing symptoms of Peyronie's disease, leading to enhanced overall sexual satisfaction.",
-    image: "/banana.jpg",
+    image: "/product/banana.jpg",
     price: "$1,900",
   },
   {
@@ -26,7 +26,7 @@ export const procedures = [
     headline: "Embrace Your Curves: Natural, Non-Invasive Enhancement!",
     subline:
       "The Vampire Breast Lift leverages the healing properties of PRP, stimulating the growth of new blood vessels and fatty tissue in the breast area. The result is fuller-looking breasts through a non-invasive process with minimal downtime and long-lasting results.",
-    image: "/breast.jpg",
+    image: "/product/breast.jpg",
     price: "$1,800",
   },
   {
@@ -36,7 +36,7 @@ export const procedures = [
     headline: "Regain Your Crowning Glory: Safe, Natural, Noticeable Results!",
     subline:
       "Vampire Hair Restoration employs PRP therapy to naturally stimulate hair follicles, offering a solution for thinning hair or hair loss. After a few sessions, you can expect to see new hair growth and improved scalp health leading to a more youthful and thick head of hair.",
-    image: "/hair.jpg",
+    image: "/product/hair.jpg",
     price: "$2,400",
   },
   {
@@ -46,7 +46,7 @@ export const procedures = [
     headline: "Radiate Youthful Confidence: Boost Your Skin's Natural Healing Power!",
     subline:
       "The Vampire Facial combines microdermabrasion with topical application of PRP, promoting collagen and elastin production to improve your skin. This treatment can leave your skin looking plumper, tighter, and with improved clarity that lasts up to 2 years.",
-    image: "/facial.jpg",
+    image: "/product/facial.jpg",
     price: "$600",
   },
   {
@@ -56,7 +56,7 @@ export const procedures = [
     headline: "Redefine Your Beauty: Non-Invasive, Long-Lasting Rejuvenation!",
     subline:
       "The Vampire Facelift combines the use of Botox, Filler, and the Vampire Facial to rejuvenate and resculpt the face. This non-invasive procedure stimulates collagen production, fills in wrinkles, and provides a smoother, more youthful-looking skin with long-lasting results.",
-    image: "/facelift.png",
+    image: "/product/facelift.png",
     price: "$1,500",
   },
   {
@@ -66,7 +66,7 @@ export const procedures = [
     headline: "Reclaim Your Mobility: Non-Surgical, Effective Relief!",
     subline:
       "Joint Restoration uses PRP therapy, which naturally stimulates tissue regeneration, offering a non-surgical solution for joint issues. The process rejuvenates your joints, leading to reduced discomfort and improved mobility.",
-    image: "/wrist.jpg",
+    image: "/product/wrist.jpg",
     price: "$800",
   },
   {
@@ -76,7 +76,7 @@ export const procedures = [
     headline: "Express Your Natural Beauty: Targeted, Non-Invasive, Refreshing!",
     subline:
       "Xeomin focuses on specific facial areas, smoothing out wrinkles and addressing hyperhidrosis. It's a non-surgical solution to enhance your beauty and rejuvenate your appearance.",
-    image: "/xeomin.png",
+    image: "/product/xeomin.png",
     price: "$12 per unit",
   },
   {
@@ -86,7 +86,7 @@ export const procedures = [
     headline: "Accentuate Your Features: Smooth, Plump, Youthful!",
     subline:
       "Filler treatment adds volume to specific areas of the face, effectively reducing wrinkles and enhancing facial definition. It's a non-invasive way to achieve a smoother, plumper, and more youthful appearance.",
-    image: "/filler.png",
+    image: "/product/filler.png",
     price: "$600 per syringe",
   },
   {
@@ -96,7 +96,7 @@ export const procedures = [
     headline: "Experience Refreshing Relief: Non-Invasive, Effective, Liberating!",
     subline:
       "Our Hyperhidrosis treatment with Xeomin injections effectively reduces sweat production, offering a non-invasive solution to those affected by excessive sweating.",
-    image: "/armpit.jpg",
+    image: "/product/armpit.jpg",
     price: "$1,000+",
   },
 ];

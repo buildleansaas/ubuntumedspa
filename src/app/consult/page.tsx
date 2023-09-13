@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
 import { DEFAULT_FORM_SUBMISSION, FORM_INPUTS } from "constants/consult";
 import * as yup from "yup";
 
-import "react-toastify/dist/ReactToastify.css";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+import { Loader } from "lucide-react";
 
 export interface FormState {
   email: string;
@@ -25,6 +26,8 @@ export interface FormInput {
 }
 
 const ConsultationPage: React.FC = () => {
+  const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState<FormState>(DEFAULT_FORM_SUBMISSION);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -50,6 +53,7 @@ const ConsultationPage: React.FC = () => {
   };
 
   const onSubmit = async (e: React.FormEvent) => {
+    setLoading(true);
     e.preventDefault();
     const schema = yup.object().shape({
       name: yup.string().required(),
@@ -66,12 +70,12 @@ const ConsultationPage: React.FC = () => {
 
       if (response.status === 200) {
         setFormState(DEFAULT_FORM_SUBMISSION);
-        toast.success("Form submission successful!");
-      } else {
-        toast.error("Something went wrong. Please try again later.");
-      }
+        toast({ title: "Form submission successful!" });
+      } else toast({ title: "Something went wrong. Please try again later.", variant: "destructive" });
     } catch (err) {
-      toast.error(err.message);
+      toast({ title: err.message, variant: "destructive" });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -84,7 +88,7 @@ const ConsultationPage: React.FC = () => {
         Please fill out the following information and we will get back to you as soon as possible to schedule your
         consultation!
       </h2>
-      <form className="shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-white bg-opacity-20 text-white" onSubmit={onSubmit}>
+      <form className="shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 bg-white bg-opacity-20 text-white" onSubmit={onSubmit}>
         {FORM_INPUTS.map((input) => {
           switch (input.type) {
             case "text":
@@ -92,7 +96,7 @@ const ConsultationPage: React.FC = () => {
             case "tel":
               return (
                 <div className="mb-4" key={input.id}>
-                  <label className="block text-sm font-bold mb-2" htmlFor={String(input.id)}>
+                  <label className="block text-sm font-semibold mb-1" htmlFor={String(input.id)}>
                     {input.label}
                   </label>
                   <input
@@ -148,14 +152,16 @@ const ConsultationPage: React.FC = () => {
           }
         })}
         <div className="flex items-center justify-between">
-          <button
-            className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit"
-          >
-            Submit
-          </button>
+          <Button className="bg-blue-500 hover:bg-blue-600" type="submit" disabled={loading}>
+            {loading ? (
+              <>
+                <Loader className="animate-spin" /> Sending...
+              </>
+            ) : (
+              "Submit"
+            )}
+          </Button>
         </div>
-        <ToastContainer />
       </form>
     </>
   );

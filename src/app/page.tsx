@@ -3,12 +3,14 @@ import React from "react";
 import { articles as slugs } from "app/sitemap";
 import { Metadata } from "components/ArticleHeader";
 
-import NextLink from "next/link";
-import { procedures } from "procedures";
+import Link from "next/link";
+import { procedures } from "constants/procedures";
 
 import { ProcedureCard } from "components/ProcedureCard";
 import Image from "next/image";
 import CtaFooter from "components/CtaFooter";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export default async function Page() {
   const articles = (await Promise.all(slugs.map((slug) => import(`markdown/${slug}.mdx`))))
@@ -29,12 +31,9 @@ export default async function Page() {
         </p>
         <div className="mb-32">
           <div className="flex flex-col lg:flex-row lg:justify-center xl:items-center">
-            <NextLink
-              className="bg-blue-500 text-white py-2 px-6 text-sm lg:text-base lg:mr-4 xl:mb-4 rounded-md "
-              href="/consult"
-            >
-              Book a Consultation
-            </NextLink>
+            <Button className="bg-blue-500 hover:bg-blue-600">
+              <Link href="/consult">Book a Consultation</Link>
+            </Button>
           </div>
         </div>
       </div>
@@ -59,7 +58,7 @@ export default async function Page() {
           <h1 className="sm:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-white">
             Ubuntu Med Spa Blog
           </h1>
-          <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
+          <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto text-center">
             Explore the Ubuntu Med Spa Blog to unravel the science behind Plasma Rich Platelet (PRP) therapy. Our
             insightful posts are here to help you understand PRP benefits and procedures, guiding you on your journey to
             improved health and wellness.
@@ -73,32 +72,23 @@ export default async function Page() {
                 <div className="absolute inset-0 shadow-inner bg-gradient-to-br from-white/20" />
               </div>
               <div className="py-4">
-                <div className="flex flex-wrap items-center text-xs">
-                  <time
-                    dateTime={new Date(article.date).toISOString()}
-                    className="w-full sm:w-auto text-white mr-6 mb-2"
-                  >
+                <div className="flex flex-wrap items-center text-xs gap-2">
+                  <Badge className="bg-purple-500 hover:bg-purple-600">
                     {new Date(article.date).toLocaleDateString("en-GB", {
                       dateStyle: "long",
                     })}
-                  </time>
+                  </Badge>
                   {article.tags.map((tag) => (
-                    <div key={tag} className="rounded-lg px-2 py-1 bg-white text-black -ml-1 mr-3 mb-2">
+                    <Badge key={tag} className="bg-blue-500 hover:bg-blue-600">
                       {tag}
-                    </div>
+                    </Badge>
                   ))}
                 </div>
                 <div className="group relative max-w-xl">
-                  <h2 className="mt-3 text-lg/snug sm:text-xl/snug md:text-2xl/snug font-semibold text-white-900 group-hover:text-gray-200">
-                    <NextLink
-                      href={`/blog/${article.slug}`}
-                      className="rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-200"
-                    >
-                      <span className="absolute inset-0" />
-                      {article.title}
-                    </NextLink>
+                  <h2 className="mt-3 text-lg/snug sm:text-xl/snug md:text-2xl/snug font-semibold text-white-900 hover:text-blue-200">
+                    <Link href={`/blog/${article.slug}`}>{article.title}</Link>
                   </h2>
-                  <p className="mt-5 text-sm leading-6 text-white">{article.description}</p>
+                  <p className="mt-2 text-sm leading-6 text-white">{article.description}</p>
                 </div>
               </div>
             </article>
