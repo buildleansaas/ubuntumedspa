@@ -1,6 +1,6 @@
-import { ArticleHeader } from "components/ArticleHeader";
+import { ArticleHeader } from "components/article-header";
 import { notFound } from "next/navigation";
-import CtaFooter from "components/CtaFooter";
+import CtaFooter from "components/cta-footer";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   try {

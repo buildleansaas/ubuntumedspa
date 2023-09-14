@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { DEFAULT_FORM_SUBMISSION, FORM_INPUTS } from "constants/consult";
+import { DEFAULT_FORM_SUBMISSION, FORM_INPUTS } from "data";
 import * as yup from "yup";
 
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
+import { Button } from "components/ui/button";
+import { useToast } from "components/ui/use-toast";
 import { Loader } from "lucide-react";
 
 export interface FormState {
@@ -81,9 +81,9 @@ const ConsultationPage: React.FC = () => {
 
   return (
     <>
-      <h1 className="text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-white mb-4 sm:mb-8">
+      <h2 className="text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-white mb-4 sm:mb-8">
         Consultation Intake Form{" "}
-      </h1>
+      </h2>
       <h2 className="text-center text-white text-lg md:text-xl lg:text-2xl mx-auto leading-tight pb-4 max-w-2xl mb-4">
         Please fill out the following information and we will get back to you as soon as possible to schedule your
         consultation!

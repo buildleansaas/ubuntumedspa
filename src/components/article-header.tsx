@@ -3,7 +3,7 @@
 import { Heading1, Paragraph } from "mdx-components";
 import Image from "next/image";
 
-export type Metadata = {
+export type MetadataType = {
   title: string;
   description: string;
   slug: string;
@@ -12,7 +12,7 @@ export type Metadata = {
   image: string;
 };
 
-export function ArticleHeader({ metadata }: { metadata: Metadata }) {
+export function ArticleHeader({ metadata }: { metadata: MetadataType }) {
   return (
     <>
       <Heading1>{metadata.title}</Heading1>

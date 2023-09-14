@@ -1,20 +1,20 @@
 import React from "react";
 
 import { articles as slugs } from "app/sitemap";
-import { Metadata } from "components/ArticleHeader";
+import { MetadataType } from "components/article-header";
 
 import Link from "next/link";
-import { procedures } from "constants/procedures";
+import { procedures } from "data";
 
-import { ProcedureCard } from "components/ProcedureCard";
+import { ProcedureCard } from "components/procedure-card";
 import Image from "next/image";
-import CtaFooter from "components/CtaFooter";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import CtaFooter from "components/cta-footer";
+import { Button } from "components/ui/button";
+import { Badge } from "components/ui/badge";
 
 export default async function Page() {
   const articles = (await Promise.all(slugs.map((slug) => import(`markdown/${slug}.mdx`))))
-    .map<Metadata>(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
+    .map<MetadataType>(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
 
@@ -39,7 +39,7 @@ export default async function Page() {
       </div>
 
       <div className="text-center" id="services">
-        <h1 className="text-2xl md:text-3xl font-bold mx-auto leading-tight pb-4">Certified Procedures and Services</h1>
+        <h2 className="text-2xl md:text-3xl font-bold mx-auto leading-tight pb-4">Certified Procedures and Services</h2>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
           Explore the Ubuntu Med Spa Blog to unravel the science behind Plasma Rich Platelet (PRP) therapy. Our
           insightful posts are here to help you understand PRP benefits and procedures, guiding you on your journey to
@@ -55,9 +55,9 @@ export default async function Page() {
 
       <div className="mx-auto max-w-2xl lg:max-w-4xl">
         <div className="my-16 sm:my-24 lg:my-32">
-          <h1 className="sm:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-white">
+          <h2 className="sm:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-white">
             Ubuntu Med Spa Blog
-          </h1>
+          </h2>
           <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto text-center">
             Explore the Ubuntu Med Spa Blog to unravel the science behind Plasma Rich Platelet (PRP) therapy. Our
             insightful posts are here to help you understand PRP benefits and procedures, guiding you on your journey to

@@ -1,7 +1,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "components/ui/button";
 
 interface Props {
   product: {
@@ -35,15 +35,13 @@ export const ProcedureCard = ({ product }: Props) => (
     </div>
     <div className="flex space-x-2">
       <Button className="bg-blue-500 hover:bg-blue-600">
-        <Link href={`/consult`}>Schedule</Link>
+        <Link href="/consult">Schedule</Link>
       </Button>
-      {/* <Link
-        href={`/procedures/${product.slug}`}
-        passHref
-        className="px-4 py-2 bg-gray-500 hover:bg-opacity-90 text-white rounded-md"
-      >
-        More Info
-      </Link> */}
+      <Button variant="secondary">
+        <Link href={`/procedures/${product.slug}`} passHref>
+          Learn More
+        </Link>
+      </Button>
     </div>
   </div>
 );

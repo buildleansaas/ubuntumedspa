@@ -1,19 +1,19 @@
 import { articles as slugs } from "app/sitemap";
-import { Metadata } from "components/ArticleHeader";
+import { MetadataType } from "components/article-header";
 import Image from "next/image";
 import Link from "next/link";
-import CtaFooter from "components/CtaFooter";
+import CtaFooter from "components/cta-footer";
 
 export default async function BlogPage() {
   const articles = (await Promise.all(slugs.map((slug) => import(`markdown/${slug}.mdx`))))
-    .map<Metadata>(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
+    .map<MetadataType>(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <div className="mx-auto max-w-2xl lg:max-w-4xl">
-      <h1 className="sm:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-white mb-16 sm:mb-24 lg:mb-32">
+      <h2 className="sm:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-white mb-16 sm:mb-24 lg:mb-32">
         Ubuntu Med Spa Blog
-      </h1>
+      </h2>
       <div className="mt-16 space-y-20 lg:mt-20 lg:space-y-20">
         {articles.map((article) => (
           <article key={article.slug} className="relative isolate flex flex-col gap-8 lg:flex-row">

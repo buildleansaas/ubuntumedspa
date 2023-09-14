@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "components/ui/button";
 import Link from "next/link";
 
 export default function CtaFooter() {
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-8 z-10">
-      <div className="text-center pt-16 sm:pt-20 md:pt-32 lg:pt-40" id="cta">
+      <div className="text-center pt-16 sm:pt-20" id="cta">
         <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mx-auto leading-tight pb-4">
           Achieve Natural Results that Last
         </h2>
