@@ -33,7 +33,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           </Button>
           {Boolean(articles.length) && (
             <Button variant="secondary">
-              <Link href="#posts">Explore Benefits</Link>
+              <Link href="#benefits">Explore Benefits</Link>
             </Button>
           )}
         </div>
