@@ -2,10 +2,13 @@ import { MetadataType } from "components/article-header";
 import { articles as slugs } from "app/sitemap";
 import { procedures } from "data";
 import Image from "next/image";
-import { Badge } from "components/ui/badge";
 import Link from "next/link";
+
+import { Badge } from "components/ui/badge";
 import { Button } from "components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "components/ui/accordion";
+
 import CtaFooter from "components/cta-footer";
 
 export default async function ProcedurePage({ params: { slug } }: { params: { slug: string } }) {
@@ -59,8 +62,36 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           </Button>
           {Boolean(articles.length) && (
             <Button variant="secondary">
-              <Link href="#posts">Learn More</Link>
+              <Link href="#faqs">Frequently Asked Questions</Link>
             </Button>
+          )}
+        </div>
+      </div>
+
+      <div className="my-32 text-center max-w-5xl mx-auto" id="faqs">
+        <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
+          Frequently Asked Questions about <span className="font-bold">{procedure?.name}</span>
+        </h2>
+        <h2 className="text-xl lg:text-2xl mb-8 font-light">{procedure?.faqHeadline}</h2>
+        <Accordion type="single" collapsible className="text-left">
+          {procedure?.faqs.map(({ question, answer }) => (
+            <AccordionItem key={question} value={question}>
+              <AccordionTrigger>{question}</AccordionTrigger>
+              <AccordionContent>{answer}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+        <div className="flex flex-col lg:flex-row lg:justify-center xl:items-center mt-12 space-x-4">
+          {Boolean(articles.length) && (
+            <>
+              <Button className="bg-blue-500 hover:bg-blue-600">
+                <Link href="/consult">Book a Consultation</Link>
+              </Button>
+
+              <Button variant="secondary">
+                <Link href="#posts">Learn More</Link>
+              </Button>
+            </>
           )}
         </div>
       </div>

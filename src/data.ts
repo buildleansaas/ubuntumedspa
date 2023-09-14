@@ -40,13 +40,16 @@ export const FORM_INPUTS = [
     label: "Interests",
     type: "checkbox",
     options: [
-      "Vampire Facial",
-      "Breast Lift",
-      "Joint Restoration",
-      "Hair Restoration",
-      "Vampire Face Lift",
-      "P Shot",
       "O Shot",
+      "P Shot",
+      "Breast Lift",
+      "Hair Restoration",
+      "Vampire Facial",
+      "Vampire Face Lift",
+      "Joint Restoration",
+      "Xeomin",
+      "Filler",
+      "Hyperhidrosis Treatment",
     ],
     helperText: "If you want specific consultation on certain procedures, please let us know which!",
   },
@@ -106,6 +109,35 @@ export const procedures = [
         description: "The O Shot brings about enhanced sensitivity, leading to a more fulfilling intimate life.",
       },
     ],
+    faqHeadline:
+      "Experience a breakthrough in female sexual health with the O Shot. Designed to invigorate your intimate experiences, it's natural and revolutionary.",
+    faqs: [
+      {
+        question: "What is the primary purpose of the O Shot?",
+        answer:
+          "The O Shot is designed to enhance female sexual health and wellness, improving aspects like libido, natural lubrication, and overall sexual function. It also helps in reversing urinary incontinence and symptoms of menopause.",
+      },
+      {
+        question: "Is the O Shot procedure painful?",
+        answer:
+          "While individual experiences may vary, most patients report minimal discomfort. A topical numbing cream is often applied before the procedure to minimize any potential pain.",
+      },
+      {
+        question: "How soon can I experience results?",
+        answer:
+          "Many women report feeling some effects immediately after the procedure, while for others, it may take a few weeks to notice significant changes.",
+      },
+      {
+        question: "Are there any side effects?",
+        answer:
+          "The O Shot is a natural procedure, using your own blood's platelet-rich plasma (PRP). Thus, the risk of allergic reactions or side effects is minimal. However, as with any injection, there may be temporary redness, swelling, or bruising.",
+      },
+      {
+        question: "How long does the effect of the O Shot last?",
+        answer:
+          "While individual experiences vary, many women enjoy the benefits of the O Shot for a year or longer. Periodic touch-up treatments can help maintain results.",
+      },
+    ],
   },
   {
     name: "P Shot",
@@ -145,6 +177,35 @@ export const procedures = [
         benefit: "Enhanced Sensitivity",
         description:
           "By increasing blood flow, the P-Shot revives and enhances penile sensitivity, enriching intimate experiences.",
+      },
+    ],
+    faqHeadline:
+      "Redefine male virility with the P-Shot. A natural and non-invasive way to boost your sexual performance and confidence.",
+    faqs: [
+      {
+        question: "What benefits can I expect from the P Shot?",
+        answer:
+          "The P-Shot aims to improve the quality and frequency of erections, enhance libido, sexual stamina, and address symptoms of Peyronie's disease.",
+      },
+      {
+        question: "Is the procedure painful?",
+        answer:
+          "A numbing cream or local anesthesia is applied to minimize discomfort. Most men report feeling only a slight pressure or tingling sensation during the procedure.",
+      },
+      {
+        question: "How long does it take to see results?",
+        answer:
+          "Some men report immediate improvements, while for others, it may take a few weeks to notice significant changes in sexual performance.",
+      },
+      {
+        question: "What is the recovery time?",
+        answer:
+          "The P-Shot is a non-invasive procedure with minimal downtime. Most men return to their regular activities, including sexual activity, within 24-48 hours.",
+      },
+      {
+        question: "Are there any potential side effects?",
+        answer:
+          "Since the P-Shot uses your own PRP, adverse reactions are rare. However, temporary redness, swelling, or bruising at the injection site is possible.",
       },
     ],
   },
@@ -187,6 +248,35 @@ export const procedures = [
           "The effects of the Vampire Breast Lift can last well over 18 months and, in some cases, even a lifetime.",
       },
     ],
+    faqHeadline:
+      "Discover a natural approach to enhancing your curves with the Vampire Breast Lift. Achieve fuller and revitalized breasts without surgery.",
+    faqs: [
+      {
+        question: "How does the Vampire Breast Lift differ from traditional breast augmentation?",
+        answer:
+          "Unlike surgical breast augmentation, the Vampire Breast Lift uses PRP therapy derived from the patient's blood to stimulate the growth of new blood vessels and fatty tissue, resulting in natural-looking fuller breasts.",
+      },
+      {
+        question: "Is there any downtime associated with the procedure?",
+        answer:
+          "The Vampire Breast Lift is minimally invasive with little to no downtime. Most patients can return to their regular activities shortly after the procedure.",
+      },
+      {
+        question: "How long do the results last?",
+        answer:
+          "The results from a Vampire Breast Lift can last for over 18 months, and in some cases, even longer. However, individual experiences may vary.",
+      },
+      {
+        question: "Are there any side effects?",
+        answer:
+          "Possible side effects include temporary redness, swelling, and bruising at the injection site. However, since PRP is derived from the patient's blood, the risk of allergic reactions or serious side effects is minimal.",
+      },
+      {
+        question: "Is the Vampire Breast Lift suitable for everyone?",
+        answer:
+          "While the procedure is safe for most individuals, a consultation with a qualified practitioner is essential to determine if you're a good candidate for the treatment.",
+      },
+    ],
   },
   {
     name: "Hair Restoration",
@@ -225,6 +315,35 @@ export const procedures = [
         benefit: "Boosted Confidence",
         description:
           "Achieving a fuller head of hair can lead to enhanced self-esteem and confidence in personal and professional arenas.",
+      },
+    ],
+    faqHeadline:
+      "Experience a renewed sense of confidence with advanced Hair Restoration techniques. Harnessing the power of PRP, it's a natural approach to combat thinning and balding.",
+    faqs: [
+      {
+        question: "How does PRP Hair Restoration work?",
+        answer:
+          "PRP Hair Restoration involves drawing a small amount of the patient's blood, processing it to concentrate the platelet-rich plasma, and then injecting it into the scalp. The growth factors in PRP stimulate hair follicles, promoting thicker and healthier hair growth.",
+      },
+      {
+        question: "How many sessions are needed?",
+        answer:
+          "The number of sessions varies based on individual needs. Typically, patients might require multiple sessions spaced a month apart, followed by maintenance treatments once or twice a year.",
+      },
+      {
+        question: "Is the procedure painful?",
+        answer:
+          "A local anesthetic is applied to numb the scalp, minimizing discomfort. Most patients feel a mild pressure or tingling sensation during the procedure.",
+      },
+      {
+        question: "When can I expect to see results?",
+        answer:
+          "Visible results, such as reduced hair shedding and thicker hair growth, typically become noticeable 3-6 months after starting treatments.",
+      },
+      {
+        question: "Is PRP Hair Restoration suitable for everyone?",
+        answer:
+          "While PRP is beneficial for many individuals with hair thinning, it's crucial to consult with a specialist to determine if the procedure is right for you.",
       },
     ],
   },
@@ -267,6 +386,35 @@ export const procedures = [
           "Utilizing PRP derived from your own blood, the Vampire Facial offers a holistic, natural approach to skin rejuvenation.",
       },
     ],
+    faqHeadline:
+      "Revitalize your skin with the Vampire Facial. Using your body's natural healing factors, this procedure offers rejuvenation like no other.",
+    faqs: [
+      {
+        question: "How does the Vampire Facial work?",
+        answer:
+          "The Vampire Facial involves micro-needling the skin followed by the application of PRP. The PRP enhances the healing process, leading to reduced fine lines, improved texture, and a youthful glow.",
+      },
+      {
+        question: "Is the procedure painful?",
+        answer:
+          "A numbing cream is applied before the procedure to ensure comfort. Patients might feel a tingling or slight pricking sensation from the micro-needling.",
+      },
+      {
+        question: "How long is the recovery time?",
+        answer:
+          "Most patients experience mild redness and swelling for 1-3 days post-procedure. It's essential to avoid direct sunlight and wear sunscreen during the healing process.",
+      },
+      {
+        question: "How often should I get a Vampire Facial?",
+        answer:
+          "For optimal results, it's recommended to undergo 2-3 treatments spaced about a month apart. After that, maintenance treatments can be done annually or as recommended by your practitioner.",
+      },
+      {
+        question: "What sets the Vampire Facial apart from other facials?",
+        answer:
+          "The Vampire Facial harnesses the natural healing factors in your PRP, making it a holistic approach to skin rejuvenation that provides longer-lasting results than traditional facials.",
+      },
+    ],
   },
   {
     name: "Vampire Face Lift",
@@ -307,6 +455,34 @@ export const procedures = [
           "The results can last for over a year, reducing the frequency of treatments compared to other cosmetic procedures.",
       },
     ],
+    faqHeadline:
+      "Redefine and rejuvenate with the Vampire Face Lift. This procedure offers natural-looking results without the need for surgery.",
+    faqs: [
+      {
+        question: "How is the Vampire Face Lift different from a traditional face lift?",
+        answer:
+          "Unlike surgical face lifts that remove excess skin, the Vampire Face Lift uses injections of PRP and hyaluronic acid fillers to restore volume, improve skin texture, and stimulate collagen production.",
+      },
+      {
+        question: "Is the procedure painful?",
+        answer:
+          "Local anesthesia or numbing cream is applied to ensure patient comfort. Most patients report only a mild sensation during the injections.",
+      },
+      {
+        question: "How long does the procedure take?",
+        answer: "The Vampire Face Lift usually takes about an hour, including preparation and the treatment itself.",
+      },
+      {
+        question: "How long do the results last?",
+        answer:
+          "Results can last for 12-18 months, varying from person to person. Touch-up treatments can help maintain the effects.",
+      },
+      {
+        question: "Are there any side effects?",
+        answer:
+          "Common side effects are mild and can include temporary redness, swelling, or bruising at the injection sites. Serious side effects are rare.",
+      },
+    ],
   },
   {
     name: "Joint Restoration",
@@ -345,6 +521,35 @@ export const procedures = [
         emoji: "🔄",
         benefit: "Joint Tissue Regeneration",
         description: "Promotes the regeneration of joint tissues, aiding in the long-term health of the joint.",
+      },
+    ],
+    faqHeadline:
+      "Empower your mobility with Joint Restoration. Utilizing PRP and other advanced techniques, this approach targets joint pain and degradation at its source.",
+    faqs: [
+      {
+        question: "How does PRP aid in Joint Restoration?",
+        answer:
+          "PRP contains growth factors that can reduce inflammation, promote healing, and possibly slow the degeneration of joint tissues. When injected into the affected joint, PRP can stimulate a healing response.",
+      },
+      {
+        question: "Is the procedure painful?",
+        answer:
+          "The injection site is numbed to minimize discomfort. Patients might feel a pressure or slight pinch during the injection, but the procedure is relatively quick.",
+      },
+      {
+        question: "How many treatments will I need?",
+        answer:
+          "The number of treatments varies based on individual needs and the severity of the joint issue. Some patients benefit from a single treatment, while others might require a series of injections over several months.",
+      },
+      {
+        question: "What is the recovery time?",
+        answer:
+          "Most patients can resume their regular activities within a day. It's advised to avoid strenuous activities for a few days post-procedure.",
+      },
+      {
+        question: "Are there any side effects?",
+        answer:
+          "Possible side effects include temporary pain, swelling, or stiffness at the injection site. These symptoms typically resolve within a few days.",
       },
     ],
   },
@@ -388,6 +593,34 @@ export const procedures = [
           "Post-treatment, patients can immediately return to their daily activities with no necessary recovery period.",
       },
     ],
+    faqHeadline:
+      "Experience a smoother, more youthful complexion with Xeomin. This innovative treatment targets the underlying causes of fine lines and wrinkles.",
+    faqs: [
+      {
+        question: "How does Xeomin differ from Botox?",
+        answer:
+          "Both Xeomin and Botox are types of botulinum toxin used to relax muscles and reduce wrinkles. The primary difference is that Xeomin is a 'naked' injectable, meaning it doesn't contain any additives, which might reduce the risk of developing resistance.",
+      },
+      {
+        question: "How long does the procedure take?",
+        answer: "The Xeomin injection procedure is quick, typically taking about 10-20 minutes.",
+      },
+      {
+        question: "When will I see results?",
+        answer:
+          "Most patients notice improvements within 3-7 days post-injection, with full results visible after two weeks.",
+      },
+      {
+        question: "How long do the effects of Xeomin last?",
+        answer:
+          "The results can last between 3 to 6 months, depending on individual factors. Periodic touch-up treatments are required to maintain results.",
+      },
+      {
+        question: "Are there any side effects?",
+        answer:
+          "Common side effects are mild and include temporary redness, swelling, or bruising at the injection site. It's essential to consult with your practitioner regarding any potential risks.",
+      },
+    ],
   },
   {
     name: "Filler",
@@ -425,6 +658,35 @@ export const procedures = [
         emoji: "🕐",
         benefit: "Long-lasting Outcome",
         description: "Depending on the type of filler used, results can last anywhere from 6 months to 2 years.",
+      },
+    ],
+    faqHeadline:
+      "Elevate your aesthetic with dermal fillers. Designed to restore volume and contour, these treatments offer immediate and stunning results.",
+    faqs: [
+      {
+        question: "What areas can be treated with dermal fillers?",
+        answer:
+          "Dermal fillers can be used to plump lips, enhance cheek contours, reduce the appearance of fine lines and wrinkles, improve the jawline, and correct under-eye hollows.",
+      },
+      {
+        question: "How long do the results last?",
+        answer:
+          "The longevity of filler results varies based on the type of filler used and individual factors. Generally, results can last from 6 months to over a year.",
+      },
+      {
+        question: "Are fillers safe?",
+        answer:
+          "When administered by a trained professional, dermal fillers are generally safe. However, as with any procedure, there are potential risks, so it's essential to discuss with your practitioner.",
+      },
+      {
+        question: "Is the procedure painful?",
+        answer:
+          "Most dermal fillers contain a numbing agent, and an external numbing cream can also be applied. Most patients report only a mild pinch or discomfort during the injection.",
+      },
+      {
+        question: "Can filler be reversed?",
+        answer:
+          "Yes, certain types of fillers, like those based on hyaluronic acid, can be dissolved with an enzyme called hyaluronidase if desired or necessary.",
       },
     ],
   },
@@ -465,6 +727,35 @@ export const procedures = [
         benefit: "Long-term Results",
         description:
           "Results from hyperhidrosis treatments can last up to 7-8 months, reducing the need for frequent sessions.",
+      },
+    ],
+    faqHeadline:
+      "Regain confidence and comfort with Hyperhidrosis Treatment. Tailored solutions target excessive sweating and provide lasting relief.",
+    faqs: [
+      {
+        question: "What causes hyperhidrosis?",
+        answer:
+          "Hyperhidrosis, or excessive sweating, can be caused by a variety of factors including genetics, hormonal changes, medications, or certain medical conditions.",
+      },
+      {
+        question: "How does the treatment work?",
+        answer:
+          "There are multiple treatments for hyperhidrosis, including topical solutions, oral medications, Botox injections, and more advanced procedures like miraDry or sympathectomy. The best treatment depends on the individual and the severity of their condition.",
+      },
+      {
+        question: "Is the treatment permanent?",
+        answer:
+          "The longevity of results depends on the treatment type. While methods like Botox offer temporary relief, procedures like miraDry can provide more lasting results.",
+      },
+      {
+        question: "Are there any side effects?",
+        answer:
+          "Side effects vary based on the chosen treatment. For instance, Botox might lead to temporary injection site reactions, while more invasive procedures carry their own set of risks.",
+      },
+      {
+        question: "How soon can I see results?",
+        answer:
+          "Results can be immediate or develop over a few days or weeks, depending on the chosen treatment method.",
       },
     ],
   },
