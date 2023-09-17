@@ -1,3 +1,4 @@
+import CtaFooter from "components/cta-footer";
 import { ProcedureCard } from "components/procedure-card";
 import { procedures } from "data";
 
@@ -18,6 +19,7 @@ export default function Procedures() {
           <ProcedureCard key={i} product={{ ...procedure, slug: procedure.name.replaceAll(" ", "-").toLowerCase() }} />
         ))}
       </div>
+      <CtaFooter />
     </div>
   );
 }
