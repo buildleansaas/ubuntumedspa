@@ -82,7 +82,6 @@ export const procedures = [
     // programmatic SEO copy
     blogHeadline:
       "Struggling with female sexual health issues? Dive into our O Shot articles and discover groundbreaking insights and solutions. From understanding the O Shot process to exploring real-life success stories, our blog offers answers and guidance you might be seeking.",
-
     benefitsHeadline:
       "Experience renewed confidence with enhanced female sexual health. From reversing urinary incontinence to boosting libido, the O Shot paves the way for a revitalized intimate connection. Rediscover pleasure and reclaim your body's vitality.",
     benefits: [
