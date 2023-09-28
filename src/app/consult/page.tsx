@@ -33,7 +33,7 @@ const ConsultationPage: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState({
       ...formState,
-      [e.target.name]: e.target.value,
+      [e.target.id]: e.target.value,
     });
   };
 
