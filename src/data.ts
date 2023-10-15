@@ -77,7 +77,7 @@ export const procedures = [
     headline: "Revitalize Your Feminine Intimacy: Natural, Effective, Life-Changing!",
     subline:
       "The O Shot utilizes Platelet-Rich Plasma (PRP) therapy derived from your own blood, working naturally to enhance female sexual health. With this, you can expect improved sexual function, relief from urinary incontinence and menopause symptoms, and an overall more fulfilling sex life.",
-    image: "/product/grapefruit.jpg",
+    image: "/procedure/grapefruit.jpg",
     price: "$1,200.00",
     // programmatic SEO copy
     blogHeadline:
@@ -146,7 +146,7 @@ export const procedures = [
     headline: "Rediscover Male Virility: Boost Your Performance and Confidence!",
     subline:
       "The P Shot is a natural and non-invasive treatment using PRP therapy to rejuvenate the penis and enhance sexual function. It aids in improving erection quality, boosting libido and reversing symptoms of Peyronie's disease, leading to enhanced overall sexual satisfaction.",
-    image: "/product/banana.jpg",
+    image: "/procedure/banana.jpg",
     price: "$1,900",
     // programmatic SEO copy
     blogHeadline:
@@ -216,7 +216,7 @@ export const procedures = [
     headline: "Embrace Your Curves: Natural, Non-Invasive Enhancement!",
     subline:
       "The Vampire Breast Lift leverages the healing properties of PRP, stimulating the growth of new blood vessels and fatty tissue in the breast area. The result is fuller-looking breasts through a non-invasive process with minimal downtime and long-lasting results.",
-    image: "/product/breast.jpg",
+    image: "/procedure/breast.jpg",
     price: "$1,800",
     // programmatic SEO copy
     blogHeadline:
@@ -285,7 +285,7 @@ export const procedures = [
     headline: "Regain Your Crowning Glory: Safe, Natural, Noticeable Results!",
     subline:
       "Vampire Hair Restoration employs PRP therapy to naturally stimulate hair follicles, offering a solution for thinning hair or hair loss. After a few sessions, you can expect to see new hair growth and improved scalp health leading to a more youthful and thick head of hair.",
-    image: "/product/hair.jpg",
+    image: "/procedure/hair.jpg",
     price: "$600/tx",
     // programmatic SEO copy
     blogHeadline:
@@ -354,7 +354,7 @@ export const procedures = [
     headline: "Radiate Youthful Confidence: Boost Your Skin's Natural Healing Power!",
     subline:
       "The Vampire Facial combines microdermabrasion with topical application of PRP, promoting collagen and elastin production to improve your skin. This treatment can leave your skin looking plumper, tighter, and with improved clarity that lasts up to 2 years.",
-    image: "/product/facial.jpg",
+    image: "/procedure/facial.jpg",
     price: "$600",
     // programmatic SEO copy
     blogHeadline:
@@ -423,7 +423,7 @@ export const procedures = [
     headline: "Redefine Your Beauty: Non-Invasive, Long-Lasting Rejuvenation!",
     subline:
       "The Vampire Facelift combines the use of Botox, Filler, and the Vampire Facial to rejuvenate and resculpt the face. This non-invasive procedure stimulates collagen production, fills in wrinkles, and provides a smoother, more youthful-looking skin with long-lasting results.",
-    image: "/product/facelift.png",
+    image: "/procedure/facelift.png",
     price: "$1,500",
     // programmatic SEO copy
     blogHeadline:
@@ -491,7 +491,7 @@ export const procedures = [
     headline: "Reclaim Your Mobility: Non-Surgical, Effective Relief!",
     subline:
       "Joint Restoration uses PRP therapy, which naturally stimulates tissue regeneration, offering a non-surgical solution for joint issues. The process rejuvenates your joints, leading to reduced discomfort and improved mobility.",
-    image: "/product/wrist.jpg",
+    image: "/procedure/wrist.jpg",
     price: "$800",
     // programmatic SEO copy
     blogHeadline:
@@ -560,7 +560,7 @@ export const procedures = [
     headline: "Express Your Natural Beauty: Targeted, Non-Invasive, Refreshing!",
     subline:
       "Xeomin focuses on specific facial areas, smoothing out wrinkles and addressing hyperhidrosis. It's a non-surgical solution to enhance your beauty and rejuvenate your appearance.",
-    image: "/product/xeomin.png",
+    image: "/procedure/xeomin.png",
     price: "$12 per unit",
     // programmatic SEO copy
     blogHeadline:
@@ -629,7 +629,7 @@ export const procedures = [
     headline: "Accentuate Your Features: Smooth, Plump, Youthful!",
     subline:
       "Filler treatment adds volume to specific areas of the face, effectively reducing wrinkles and enhancing facial definition. It's a non-invasive way to achieve a smoother, plumper, and more youthful appearance.",
-    image: "/product/filler.png",
+    image: "/procedure/filler.png",
     price: "$700 per syringe",
     // programmatic SEO copy
     blogHeadline:
@@ -697,7 +697,7 @@ export const procedures = [
     headline: "Experience Refreshing Relief: Non-Invasive, Effective, Liberating!",
     subline:
       "Our Hyperhidrosis treatment with Xeomin injections effectively reduces sweat production, offering a non-invasive solution to those affected by excessive sweating.",
-    image: "/product/armpit.jpg",
+    image: "/procedure/armpit.jpg",
     price: "$1,000+",
     // programmatic SEO copy
     blogHeadline:
@@ -761,9 +761,49 @@ export const procedures = [
   },
 ];
 
-const products = [
-  { title: "Co2 Lift", price: "$100" },
-  { title: "Co2 V Lift for Women", price: "$500" },
-  { title: "Bioserum Face Peel", price: "$60" },
-  { title: "Definage Face Care", price: "$357" },
+export const products = [
+  {
+    name: "Co2 Lift",
+    description: "Transform your skin with our Co2 Lift treatment. Ideal for improving skin elasticity and texture.",
+    image: "/product/c02-lift-pro.webp",
+    imageAlt: "Co2 Lift Treatment",
+    slug: "co2-lift",
+    headline: "Revitalize Your Skin in Minutes!",
+    subline: "Get noticed with glowing skin. Feel the immediate lift. Buy now!",
+    link: "https://fake-link.com/co2-lift",
+    price: "$100",
+  },
+  {
+    name: "Co2 V Lift for Women",
+    description: "Specialized Co2 V Lift designed for women. Rejuvenate and lift your skin for a youthful appearance.",
+    image: "/product/c02-v-lift.webp",
+    imageAlt: "Co2 V Lift for Women",
+    slug: "co2-v-lift-for-women",
+    headline: "Unlock Youthful Skin!",
+    subline: "Tailored for women. Experience deep rejuvenation. Get it today!",
+    link: "https://fake-link.com/co2-v-lift-women",
+    price: "$500",
+  },
+  {
+    name: "Bioserum Face Peel",
+    description: "Our Bioserum Face Peel removes dead skin cells, revealing fresh, radiant skin underneath.",
+    image: "/product/bioserum-face-peel.jpeg",
+    imageAlt: "Bioserum Face Peel",
+    slug: "bioserum-face-peel",
+    headline: "Uncover Radiant Skin!",
+    subline: "Peel away imperfections. Glow like never before. Order now!",
+    link: "https://fake-link.com/bioserum-face-peel",
+    price: "$60/treatment",
+  },
+  {
+    name: "Definage Pro Power Trio",
+    description: "Premium Definage Face Care treatment aims to defy aging and leave your skin looking timeless.",
+    image: "/product/defenage-power-pro.png",
+    imageAlt: "Definage Face Care",
+    slug: "definage-face-care",
+    headline: "Defy Aging, Effortlessly!",
+    subline: "Turn back time with Definage. Look and feel young. Grab yours!",
+    link: "https://fake-link.com/definage-face-care",
+    price: "$370",
+  },
 ];

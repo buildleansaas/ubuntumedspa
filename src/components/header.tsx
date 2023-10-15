@@ -17,9 +17,12 @@ export default function Header() {
       </Link>
 
       <div className="flex items-center">
-        <a href="/procedures" className="mx-2 text-white-600 hover:text-white">
+        <Link href="/products" className="mx-2 text-white-600 hover:text-white">
+          Products
+        </Link>
+        <Link href="/procedures" className="mx-2 text-white-600 hover:text-white">
           Procedures
-        </a>
+        </Link>
         <Link href="/blog" passHref className="mx-2 text-white-600 hover:text-white">
           Blog
         </Link>

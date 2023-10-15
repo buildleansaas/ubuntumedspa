@@ -1,10 +1,10 @@
 import CtaFooter from "components/cta-footer";
-import ProceduresView from "views/procedures";
+import ProductsView from "views/products";
 
-export default function Procedures() {
+export default function Products() {
   return (
     <div className="max-w-7xl mx-auto">
-      <ProceduresView />
+      <ProductsView />
       <CtaFooter />
     </div>
   );
