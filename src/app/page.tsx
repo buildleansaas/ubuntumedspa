@@ -9,8 +9,8 @@ import { procedures } from "data";
 import { ProcedureCard } from "components/procedure-card";
 import Image from "next/image";
 import CtaFooter from "components/cta-footer";
-import { Button } from "components/ui/button";
 import { Badge } from "components/ui/badge";
+import Jumbotron from "views/jumbotron";
 
 export default async function Page() {
   const articles = (await Promise.all(slugs.map((slug) => import(`markdown/${slug}.mdx`))))
@@ -20,23 +20,7 @@ export default async function Page() {
 
   return (
     <div className="max-w-xl md:max-w-7xl mx-auto md:px-8 z-10">
-      <div className="text-center pt-16 sm:pt-40 md:pt-64 lg:pt-80" id="procedures">
-        <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mx-auto leading-tight pb-4">
-          Rejuvinate Your Life
-        </h2>
-        <p className="text-white text-xl lg:text-2xl mb-8 max-w-2xl mx-auto">
-          Experience the amazing effects of <strong>Vampire Services</strong> using <strong>Your Own Blood</strong> to
-          enjoy <strong>Natural Healing</strong>, for <strong>Joints</strong>, <strong>Aesthetics</strong>,{" "}
-          <strong>Sexual Health</strong> and overall <strong>Wellness</strong>.
-        </p>
-        <div className="mb-32">
-          <div className="flex flex-col lg:flex-row lg:justify-center xl:items-center">
-            <Button className="bg-blue-500 hover:bg-blue-600">
-              <Link href="/consult">Book a Consultation</Link>
-            </Button>
-          </div>
-        </div>
-      </div>
+      <Jumbotron />
 
       <div className="text-center" id="services">
         <h2 className="text-2xl md:text-3xl font-bold mx-auto leading-tight pb-4">Certified Procedures and Services</h2>

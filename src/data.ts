@@ -286,7 +286,7 @@ export const procedures = [
     subline:
       "Vampire Hair Restoration employs PRP therapy to naturally stimulate hair follicles, offering a solution for thinning hair or hair loss. After a few sessions, you can expect to see new hair growth and improved scalp health leading to a more youthful and thick head of hair.",
     image: "/product/hair.jpg",
-    price: "$2,400",
+    price: "$600/tx",
     // programmatic SEO copy
     blogHeadline:
       "Hair thinning or loss affecting your confidence? Dive deep into our Hair Restoration articles to explore the wonders of PRP therapy in stimulating hair growth. Find testimonials, expert advice, and more.",
@@ -630,7 +630,7 @@ export const procedures = [
     subline:
       "Filler treatment adds volume to specific areas of the face, effectively reducing wrinkles and enhancing facial definition. It's a non-invasive way to achieve a smoother, plumper, and more youthful appearance.",
     image: "/product/filler.png",
-    price: "$600 per syringe",
+    price: "$700 per syringe",
     // programmatic SEO copy
     blogHeadline:
       "Aiming for a plumper face with smooth features? Our Filler blog section offers insights into the magic of hyaluronic acid. Read about its applications, outcomes, and why many choose it over surgery.",
@@ -759,4 +759,11 @@ export const procedures = [
       },
     ],
   },
+];
+
+const products = [
+  { title: "Co2 Lift", price: "$100" },
+  { title: "Co2 V Lift for Women", price: "$500" },
+  { title: "Bioserum Face Peel", price: "$60" },
+  { title: "Definage Face Care", price: "$357" },
 ];

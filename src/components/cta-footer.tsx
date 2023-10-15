@@ -1,7 +1,22 @@
+"use client";
+
 import { Button } from "components/ui/button";
+import useCopyToClipBoard from "hooks/use-copy-to-clipboard";
 import Link from "next/link";
 
+function isMobileUserAgent() {
+  if (typeof window === "undefined") return false;
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+}
+
 export default function CtaFooter() {
+  const { handleCopy } = useCopyToClipBoard();
+
+  const handleAction = () => {
+    if (isMobileUserAgent()) window.location.href = `tel:${8047389483}`;
+    else handleCopy("8047389483");
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-8 z-10">
       <div className="text-center pt-16 sm:pt-20" id="cta">
@@ -17,9 +32,12 @@ export default function CtaFooter() {
           the next 2 business days.
         </p>
         <div className="mb-32">
-          <div className="flex flex-col lg:flex-row lg:justify-center xl:items-center">
+          <div className="flex justify-center items-center gap-2">
             <Button className="bg-blue-500 hover:bg-blue-600">
               <Link href="/consult">Book a Consultation</Link>
+            </Button>{" "}
+            <Button variant="secondary" onClick={handleAction}>
+              +1 (804) 738-9483
             </Button>
           </div>
         </div>
