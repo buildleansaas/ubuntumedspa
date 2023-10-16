@@ -108,6 +108,188 @@ export const procedures = [
         description: "The O Shot brings about enhanced sensitivity, leading to a more fulfilling intimate life.",
       },
     ],
+    ailmentsHeadline:
+      "Searching for a solution to intimate health challenges? The O-Shot, using your own platelet-rich plasma (PRP), addresses a wide array of female sexual and urinary issues. From common ailments like post-menopausal symptoms to less common but impactful conditions like chronic pelvic pain, the O-Shot offers a range of applications. Whether you're after improved sexual sensation, better lubrication, or relief from pain, the O-Shot is versatile enough to offer a solution. Below is an exhaustive list detailing the various ailments it can potentially treat.",
+    ailments: [
+      {
+        title: "Vaginal Dryness",
+        description:
+          "Are you tired of uncomfortable, dry sensations ruining your intimate moments? Discover the rejuvenating power of the O-Shot to restore natural lubrication and improve your sexual experience.",
+        blog_post_title: "Revitalize Your Sexual Health with O-Shot: The Ultimate Cure for Vaginal Dryness",
+        blog_post_slug: "revitalize-sexual-health-o-shot-ultimate-cure-vaginal-dryness",
+        slug: "vaginal-dryness",
+        tag: "common",
+      },
+      {
+        title: "Sexual Dysfunction",
+        description:
+          "Struggling with sexual performance or satisfaction? Unlock your full sexual potential with the O-Shot. Experience increased arousal, sensitivity, and improved orgasms.",
+        blog_post_title: "Elevate Your Sex Life: How the O-Shot Tackles Sexual Dysfunction",
+        blog_post_slug: "elevate-sex-life-how-o-shot-tackles-sexual-dysfunction",
+        slug: "sexual-dysfunction",
+        tag: "common",
+      },
+      {
+        title: "Low Libido",
+        description:
+          "Is a low sex drive affecting your relationship and self-esteem? Bring back the spark with the O-Shot, a non-invasive treatment that amplifies sexual desire and enjoyment.",
+        blog_post_title: "Reignite Your Sexual Desire: The O-Shot Solution for Low Libido",
+        blog_post_slug: "reignite-your-sexual-desire-o-shot-solution-low-libido",
+        slug: "low-libido",
+        tag: "common",
+      },
+      {
+        title: "Dyspareunia",
+        description:
+          "End the cycle of painful intercourse with the O-Shot. Relieve discomfort, improve your relationship, and rediscover the joy of sexual intimacy.",
+        blog_post_title: "How the O-Shot is Changing the Game for Women with Dyspareunia",
+        blog_post_slug: "how-o-shot-changing-game-women-with-dyspareunia",
+        slug: "dyspareunia",
+        tag: "common",
+      },
+      {
+        title: "Urinary Incontinence",
+        description:
+          "Regain control over your life and bid goodbye to urinary incontinence. See how the O-Shot offers a non-surgical way to restore bladder function.",
+        blog_post_title: "Stop Letting Incontinence Control You: O-Shot to the Rescue",
+        blog_post_slug: "stop-letting-incontinence-control-you-o-shot-to-rescue",
+        slug: "urinary-incontinence",
+        tag: "common",
+      },
+      {
+        title: "Lichen Sclerosus",
+        description:
+          "Break free from the irritation and discomfort caused by lichen sclerosus. Discover how the O-Shot offers effective, natural relief.",
+        blog_post_title: "Tackle Lichen Sclerosus Head-On with the O-Shot",
+        blog_post_slug: "tackle-lichen-sclerosus-head-on-with-o-shot",
+        slug: "lichen-sclerosus",
+        tag: "uncommon",
+      },
+      {
+        title: "Anorgasmia",
+        description:
+          "Say goodbye to unsatisfying sexual experiences. The O-Shot enhances your sexual response to make orgasms easier to achieve.",
+        blog_post_title: "Unleash Your Orgasmic Potential with the O-Shot",
+        blog_post_slug: "unleash-your-orgasmic-potential-with-o-shot",
+        slug: "anorgasmia",
+        tag: "common",
+      },
+      {
+        title: "Genital Arousal Disorder",
+        description:
+          "Revitalize your sexual life by overcoming genital arousal disorder with the O-Shot. Enjoy increased sensitivity and a renewed sense of arousal.",
+        blog_post_title: "Reclaim Your Sexuality: Overcoming Genital Arousal Disorder with the O-Shot",
+        blog_post_slug: "reclaim-your-sexuality-overcoming-genital-arousal-disorder-with-o-shot",
+        slug: "genital-arousal-disorder",
+        tag: "experimental",
+      },
+      {
+        title: "Chronic Pelvic Pain",
+        description:
+          "Free yourself from the shackles of chronic pelvic pain. Explore how the O-Shot can help you regain comfort and improve your quality of life.",
+        blog_post_title: "End Chronic Pelvic Pain for Good: The O-Shot Solution",
+        blog_post_slug: "end-chronic-pelvic-pain-good-o-shot-solution",
+        slug: "chronic-pelvic-pain",
+        tag: "uncommon",
+      },
+      {
+        title: "Vaginismus",
+        description:
+          "Are involuntary muscle contractions causing you pain and affecting intimacy? Discover the potential of the O-Shot in relieving vaginismus.",
+        blog_post_title: "A New Horizon in Vaginismus Treatment: The Role of the O-Shot",
+        blog_post_slug: "new-horizon-in-vaginismus-treatment-role-of-o-shot",
+        slug: "vaginismus",
+        tag: "uncommon",
+      },
+      {
+        title: "Clitoral Atrophy",
+        description:
+          "Restore the youthfulness and sensitivity of your clitoris with the O-Shot. Regain your sexual responsiveness and spice up your intimate life.",
+        blog_post_title: "Turn Back Time: Combating Clitoral Atrophy with the O-Shot",
+        blog_post_slug: "turn-back-time-combating-clitoral-atrophy-with-o-shot",
+        slug: "clitoral-atrophy",
+        tag: "uncommon",
+      },
+      {
+        title: "Vulvar Atrophy",
+        description:
+          "Tired of dryness, itching, or burning? O-Shot revitalizes vulvar tissue for improved comfort and heightened sexual pleasure.",
+        blog_post_title: "Redefining Comfort: The O-Shot Solution for Vulvar Atrophy",
+        blog_post_slug: "redefining-comfort-o-shot-solution-for-vulvar-atrophy",
+        slug: "vulvar-atrophy",
+        tag: "uncommon",
+      },
+      {
+        title: "Interstitial Cystitis",
+        description:
+          "Say goodbye to bladder pain and discomfort. Discover how the O-Shot could be the solution you've been looking for.",
+        blog_post_title: "Breaking Free from Interstitial Cystitis: A New Path with the O-Shot",
+        blog_post_slug: "breaking-free-from-interstitial-cystitis-new-path-with-o-shot",
+        slug: "interstitial-cystitis",
+        tag: "experimental",
+      },
+      {
+        title: "Pelvic Floor Dysfunction",
+        description:
+          "Don't let pelvic floor issues hold you back. Learn how the O-Shot can strengthen your pelvic muscles and restore functionality.",
+        blog_post_title: "Revolutionizing Pelvic Floor Health with the O-Shot",
+        blog_post_slug: "revolutionizing-pelvic-floor-health-with-o-shot",
+        slug: "pelvic-floor-dysfunction",
+        tag: "uncommon",
+      },
+      {
+        title: "Vulvodynia",
+        description:
+          "End the relentless vulvar pain with the natural healing power of the O-Shot. Reclaim your comfort and your life.",
+        blog_post_title: "The O-Shot: A Breakthrough in Treating Vulvodynia",
+        blog_post_slug: "o-shot-breakthrough-in-treating-vulvodynia",
+        slug: "vulvodynia",
+        tag: "uncommon",
+      },
+      {
+        title: "Post-Menopausal Symptoms",
+        description: "Don't let post-menopausal changes steal your joy. Rejuvenate your sexual health with the O-Shot.",
+        blog_post_title: "Beyond Hormones: How the O-Shot Helps Post-Menopausal Women",
+        blog_post_slug: "beyond-hormones-how-o-shot-helps-post-menopausal-women",
+        slug: "post-menopausal-symptoms",
+        tag: "common",
+      },
+      {
+        title: "Scar Tissue",
+        description:
+          "Childbirth or surgery left you with scar tissue that's affecting your sexual health? Learn how the O-Shot can help.",
+        blog_post_title: "Eliminating Scar Tissue: Your New Ally in the O-Shot",
+        blog_post_slug: "eliminating-scar-tissue-your-new-ally-in-o-shot",
+        slug: "scar-tissue",
+        tag: "uncommon",
+      },
+      {
+        title: "Skin Texture & Tone",
+        description:
+          "Enhance the appearance and feel of your vulvar and vaginal areas with the O-Shot for a confidence boost.",
+        blog_post_title: "Upgrade Your Intimate Skin Texture and Tone with the O-Shot",
+        blog_post_slug: "upgrade-your-intimate-skin-texture-and-tone-with-o-shot",
+        slug: "skin-texture-tone",
+        tag: "experimental",
+      },
+      {
+        title: "Vaginal Lubrication",
+        description: "Improve natural lubrication and say goodbye to discomfort during intercourse with the O-Shot.",
+        blog_post_title: "Unlock Natural Lubrication: How the O-Shot Can Help",
+        blog_post_slug: "unlock-natural-lubrication-how-o-shot-can-help",
+        slug: "vaginal-lubrication",
+        tag: "common",
+      },
+      {
+        title: "Sexual Sensation",
+        description:
+          "Looking to amplify your sexual sensations? The O-Shot offers a path to increased sensitivity and pleasure.",
+        blog_post_title: "Awaken Your Senses: How the O-Shot Boosts Sexual Sensation",
+        blog_post_slug: "awaken-your-senses-how-o-shot-boosts-sexual-sensation",
+        slug: "sexual-sensation",
+        tag: "common",
+      },
+    ],
     faqHeadline:
       "Experience a breakthrough in female sexual health with the O Shot. Designed to invigorate your intimate experiences, it's natural and revolutionary.",
     faqs: [
@@ -178,6 +360,136 @@ export const procedures = [
           "By increasing blood flow, the P-Shot revives and enhances penile sensitivity, enriching intimate experiences.",
       },
     ],
+    ailmentsHeadline:
+      "Revitalize your sexual health and regain confidence with the P-Shot. This revolutionary treatment offers a range of solutions for common to uncommon male sexual health issues. From frustrating conditions like erectile dysfunction and premature ejaculation to enhancing your overall sexual capabilities and aesthetics, the P-Shot is a versatile remedy. It can even serve as an experimental treatment for more complicated issues like testosterone imbalances and vasculogenic sexual dysfunction. Experience a more satisfying and rewarding intimate life through this natural, minimally invasive procedure.",
+    ailments: [
+      {
+        title: "Erectile Dysfunction",
+        description:
+          "Are you tired of ED affecting your confidence and relationships? The P-Shot offers a natural solution that enhances blood flow and revitalizes penile tissue, giving you back control.",
+        blog_post_title: "Reclaim Your Confidence: How the P-Shot Cures ED",
+        blog_post_slug: "reclaim-your-confidence-how-the-p-shot-cures-ed",
+        slug: "erectile-dysfunction",
+        tag: "common",
+      },
+      {
+        title: "Peyronie's Disease",
+        description:
+          "Curvature impacting your sexual life? The P-Shot can help correct penile shape and reduce pain, offering you a path to more satisfying intimate experiences.",
+        blog_post_title: "Straighten Things Out: P-Shot for Peyronie's Disease",
+        blog_post_slug: "straighten-things-out-p-shot-for-peyronies-disease",
+        slug: "peyronies-disease",
+        tag: "uncommon",
+      },
+      {
+        title: "Reduced Sexual Performance",
+        description:
+          "Struggling to maintain your performance in bed? Elevate your game naturally with the P-Shot, designed to improve sensitivity and strength.",
+        blog_post_title: "Boost Your Bedroom Performance with the P-Shot",
+        blog_post_slug: "boost-your-bedroom-performance-with-the-p-shot",
+        slug: "reduced-sexual-performance",
+        tag: "common",
+      },
+      {
+        title: "Reduced Sensation",
+        description:
+          "Lost the spark in your sexual encounters? Rediscover intense pleasure with the P-Shot, aimed to amplify sensation and invigorate your intimate life.",
+        blog_post_title: "Ignite Lost Sensations: How the P-Shot Can Help",
+        blog_post_slug: "ignite-lost-sensations-how-the-p-shot-can-help",
+        slug: "reduced-sensation",
+        tag: "uncommon",
+      },
+      {
+        title: "Post-Prostatectomy Issues",
+        description:
+          "Struggling with sexual function post-prostatectomy? The P-Shot can help rejuvenate your sexual health, letting you enjoy intimacy once again.",
+        blog_post_title: "Revive Your Sex Life Post-Prostatectomy with the P-Shot",
+        blog_post_slug: "revive-your-sex-life-post-prostatectomy-with-the-p-shot",
+        slug: "post-prostatectomy-issues",
+        tag: "experimental",
+      },
+      {
+        title: "Premature Ejaculation",
+        description:
+          "End the frustration of premature ejaculation with the P-Shot, a natural approach that helps you last longer and heightens pleasure.",
+        blog_post_title: "Last Longer in Bed: How the P-Shot Can Help",
+        blog_post_slug: "last-longer-in-bed-how-the-p-shot-can-help",
+        slug: "premature-ejaculation",
+        tag: "common",
+      },
+      {
+        title: "Chronic Penile Pain",
+        description:
+          "Chronic penile pain interfering with your life? Discover relief through the P-Shot, designed to alleviate pain and enhance comfort.",
+        blog_post_title: "End Chronic Penile Pain with the P-Shot",
+        blog_post_slug: "end-chronic-penile-pain-with-the-p-shot",
+        slug: "chronic-penile-pain",
+        tag: "uncommon",
+      },
+      {
+        title: "Enhanced Sexual Capabilities",
+        description:
+          "Want to amplify your sexual prowess? The P-Shot enhances function and satisfaction, allowing you to fully embrace your sexual potential.",
+        blog_post_title: "Unlock Your Sexual Potential with the P-Shot",
+        blog_post_slug: "unlock-your-sexual-potential-with-the-p-shot",
+        slug: "enhanced-sexual-capabilities",
+        tag: "common",
+      },
+      {
+        title: "Improved Penile Aesthetics",
+        description:
+          "Self-conscious about how you look down there? The P-Shot not only improves function but can also enhance appearance.",
+        blog_post_title: "Achieve Aesthetic Perfection with the P-Shot",
+        blog_post_slug: "achieve-aesthetic-perfection-with-the-p-shot",
+        slug: "improved-penile-aesthetics",
+        tag: "uncommon",
+      },
+      {
+        title: "Penile Tissue Rejuvenation",
+        description:
+          "Aging or health issues affecting you? The P-Shot revitalizes penile tissue, making it feel more youthful and vigorous.",
+        blog_post_title: "Rejuvenate and Revitalize with the P-Shot",
+        blog_post_slug: "rejuvenate-and-revitalize-with-the-p-shot",
+        slug: "penile-tissue-rejuvenation",
+        tag: "uncommon",
+      },
+      {
+        title: "Improved Orgasmic Function",
+        description:
+          "Elevate your climax with the P-Shot, designed to intensify orgasms and improve your overall sexual experience.",
+        blog_post_title: "Experience Intense Orgasms with the P-Shot",
+        blog_post_slug: "experience-intense-orgasms-with-the-p-shot",
+        slug: "improved-orgasmic-function",
+        tag: "common",
+      },
+      {
+        title: "Testosterone Imbalances",
+        description:
+          "Struggling with hormonal imbalances? The P-Shot may aid in balancing testosterone levels, impacting your sexual health positively.",
+        blog_post_title: "Balance Your Testosterone Levels with the P-Shot",
+        blog_post_slug: "balance-your-testosterone-levels-with-the-p-shot",
+        slug: "testosterone-imbalances",
+        tag: "experimental",
+      },
+      {
+        title: "Vasculogenic Sexual Dysfunction",
+        description:
+          "Vascular issues affecting your sexual health? The P-Shot improves blood flow, offering a natural solution for vasculogenic sexual dysfunction.",
+        blog_post_title: "Improve Sexual Function through Enhanced Blood Flow with the P-Shot",
+        blog_post_slug: "improve-sexual-function-through-enhanced-blood-flow-with-the-p-shot",
+        slug: "vasculogenic-sexual-dysfunction",
+        tag: "experimental",
+      },
+      {
+        title: "Improved Blood Flow",
+        description:
+          "Enhance your sexual experiences with improved blood flow, courtesy of the P-Shot. Feel the difference in your intimate moments.",
+        blog_post_title: "Boost Your Blood Flow and Revive Your Sex Life with the P-Shot",
+        blog_post_slug: "boost-your-blood-flow-and-revive-your-sex-life-with-the-p-shot",
+        slug: "improved-blood-flow",
+        tag: "common",
+      },
+    ],
     faqHeadline:
       "Redefine male virility with the P-Shot. A natural and non-invasive way to boost your sexual performance and confidence.",
     faqs: [
@@ -209,8 +521,8 @@ export const procedures = [
     ],
   },
   {
-    name: "Breast Lift",
-    slug: "breast-lift",
+    name: "Vampire Breast Lift",
+    slug: "vampire-breast-lift",
     description:
       "The Vampire Breast Lift utilizes Platelet-Rich Plasma (PRP) therapy, derived from the patient's own blood, which is injected into the breast area. This stimulates the growth of new blood vessels and fatty tissue, leading to a fuller-looking breast. Unlike traditional breast augmentation procedures, the Vampire Breast Lift is non-invasive, has minimal downtime, and produces natural results that last for about well over 18 months, even a lifetime for some. The procedure is also less expensive than surgery, making it an affordable option. Overall, the Vampire Breast Lift is a safe and effective way to boost a woman's self-confidence by providing a natural way to enhance the appearance of their breasts.",
     headline: "Embrace Your Curves: Natural, Non-Invasive Enhancement!",
@@ -247,6 +559,73 @@ export const procedures = [
           "The effects of the Vampire Breast Lift can last well over 18 months and, in some cases, even a lifetime.",
       },
     ],
+    ailmentsHeadline:
+      "Unlock a new level of confidence and beauty with the Vampire Breast Lift. Whether you're dealing with common issues like sagging breasts and loss of volume, or looking for a more unconventional solution to scars and decreased sensitivity, this minimally invasive treatment offers a range of benefits. It's not just about aesthetics; many women experience functional improvements and a boost in self-esteem. Explore how the Vampire Breast Lift can tailor solutions for various aspects of breast health and appearance.",
+    ailments: [
+      {
+        title: "Sagging Breasts",
+        description:
+          "Turn back time on sagging breasts with the Vampire Breast Lift. Regain youthful perkiness without invasive surgery.",
+        blog_post_title: "Get Perky, Youthful Breasts Again with the Vampire Breast Lift",
+        blog_post_slug: "get-perky-youthful-breasts-again-with-the-vampire-breast-lift",
+        slug: "sagging-breasts",
+        tag: "common",
+      },
+      {
+        title: "Loss of Breast Volume",
+        description:
+          "Restore lost volume in your breasts naturally with the Vampire Breast Lift. Say goodbye to padding and fillers.",
+        blog_post_title: "Restore Natural Volume to Your Breasts with the Vampire Breast Lift",
+        blog_post_slug: "restore-natural-volume-to-your-breasts-with-the-vampire-breast-lift",
+        slug: "loss-of-breast-volume",
+        tag: "common",
+      },
+      {
+        title: "Decreased Sensitivity",
+        description:
+          "Reclaim sensitivity and pleasure in your breasts with the Vampire Breast Lift. Feel more in your intimate moments.",
+        blog_post_title: "Regain Breast Sensitivity and Enhance Intimacy with the Vampire Breast Lift",
+        blog_post_slug: "regain-breast-sensitivity-and-enhance-intimacy-with-the-vampire-breast-lift",
+        slug: "decreased-sensitivity",
+        tag: "uncommon",
+      },
+      {
+        title: "Wrinkled Cleavage Area",
+        description:
+          "Smooth out wrinkles in your cleavage area effortlessly with the Vampire Breast Lift. Flaunt your décolletage with pride.",
+        blog_post_title: "Erase Cleavage Wrinkles with the Vampire Breast Lift",
+        blog_post_slug: "erase-cleavage-wrinkles-with-the-vampire-breast-lift",
+        slug: "wrinkled-cleavage-area",
+        tag: "common",
+      },
+      {
+        title: "Asymmetrical Breasts",
+        description:
+          "Balance out asymmetrical breasts safely and naturally with the Vampire Breast Lift. Achieve a harmonious look without surgery.",
+        blog_post_title: "Balance Your Breasts Naturally with the Vampire Breast Lift",
+        blog_post_slug: "balance-your-breasts-naturally-with-the-vampire-breast-lift",
+        slug: "asymmetrical-breasts",
+        tag: "uncommon",
+      },
+      {
+        title: "Stretch Marks",
+        description:
+          "Diminish the appearance of stretch marks on your breasts with the Vampire Breast Lift. Reveal smoother, younger-looking skin.",
+        blog_post_title: "Fade Stretch Marks on Your Breasts with the Vampire Breast Lift",
+        blog_post_slug: "fade-stretch-marks-on-your-breasts-with-the-vampire-breast-lift",
+        slug: "stretch-marks",
+        tag: "common",
+      },
+      {
+        title: "Surgical Scars",
+        description:
+          "Reduce the visibility of surgical scars on your breasts with the Vampire Breast Lift. Enjoy cleaner, unblemished skin.",
+        blog_post_title: "Minimize Surgical Scars with the Vampire Breast Lift",
+        blog_post_slug: "minimize-surgical-scars-with-the-vampire-breast-lift",
+        slug: "surgical-scars",
+        tag: "uncommon",
+      },
+    ],
     faqHeadline:
       "Discover a natural approach to enhancing your curves with the Vampire Breast Lift. Achieve fuller and revitalized breasts without surgery.",
     faqs: [
@@ -278,8 +657,8 @@ export const procedures = [
     ],
   },
   {
-    name: "Hair Restoration",
-    slug: "hair-restoration",
+    name: "Vampire Hair Restoration",
+    slug: "vampire-hair-restoration",
     description:
       "Vampire Hair Restoration with PRP is a natural solution for thinning hair or hair loss, that can stimulate new hair growth and improve overall scalp health. A series of three sessions, spaced six weeks apart, each lasting about an hour, use Platelet-Rich Plasma (PRP) therapy to naturally stimulate hair follicles. Suitable for both men and women, this safe and effective treatment offers a quick recovery time with visible results in as little as a few months after the final session. Results include a more youthful and healthy-looking head of hair, which can boost self-esteem and confidence. Overall, the Vampire Hair Restoration is a non-invasive option that can help you regain your desired hair thickness and density.",
     headline: "Regain Your Crowning Glory: Safe, Natural, Noticeable Results!",
@@ -314,6 +693,152 @@ export const procedures = [
         benefit: "Boosted Confidence",
         description:
           "Achieving a fuller head of hair can lead to enhanced self-esteem and confidence in personal and professional arenas.",
+      },
+    ],
+    ailmentsHeadline:
+      "Revitalize your hair and restore your confidence with Vampire Hair Restoration. This groundbreaking treatment offers a solution to a multitude of hair concerns that both men and women face. Whether you're dealing with the frustrating onset of a receding hairline, patchy spots caused by alopecia, or even the dullness and lifelessness of aging hair, Vampire Hair Restoration promises targeted treatment that fosters natural hair regrowth. Uncover the secrets of this innovative procedure and learn how it can serve your unique needs.",
+    ailments: [
+      {
+        title: "Thinning Hair",
+        description:
+          "Revitalize your sparse locks with Vampire Hair Restoration. Experience thicker, fuller hair without chemicals.",
+        blog_post_title: "Combat Thinning Hair Effectively with Vampire Hair Restoration",
+        blog_post_slug: "combat-thinning-hair-effectively-with-vampire-hair-restoration",
+        slug: "thinning-hair",
+        tag: "common",
+      },
+      {
+        title: "Receding Hairline",
+        description:
+          "Halt a receding hairline in its tracks with Vampire Hair Restoration. Regrow natural hair at the front and sides.",
+        blog_post_title: "Reclaim Your Hairline with Vampire Hair Restoration",
+        blog_post_slug: "reclaim-your-hairline-with-vampire-hair-restoration",
+        slug: "receding-hairline",
+        tag: "common",
+      },
+      {
+        title: "Alopecia",
+        description:
+          "Target patches of alopecia with the regenerative power of Vampire Hair Restoration. Witness significant regrowth.",
+        blog_post_title: "Beat Alopecia with Natural Hair Regrowth from Vampire Hair Restoration",
+        blog_post_slug: "beat-alopecia-with-natural-hair-regrowth-from-vampire-hair-restoration",
+        slug: "alopecia",
+        tag: "uncommon",
+      },
+      {
+        title: "Scalp Scars",
+        description:
+          "Minimize visible scalp scars with Vampire Hair Restoration. Create a smoother, more even scalp surface.",
+        blog_post_title: "Fade Scalp Scars for a Smooth Surface with Vampire Hair Restoration",
+        blog_post_slug: "fade-scalp-scars-for-a-smooth-surface-with-vampire-hair-restoration",
+        slug: "scalp-scars",
+        tag: "uncommon",
+      },
+      {
+        title: "Hormonal Hair Loss",
+        description:
+          "Reverse hair loss due to hormonal imbalances with Vampire Hair Restoration. Reclaim your hair and your confidence.",
+        blog_post_title: "End Hormonal Hair Loss Once and for All with Vampire Hair Restoration",
+        blog_post_slug: "end-hormonal-hair-loss-once-and-for-all-with-vampire-hair-restoration",
+        slug: "hormonal-hair-loss",
+        tag: "uncommon",
+      },
+      {
+        title: "Poor Hair Texture",
+        description:
+          "Improve the texture of dull, lifeless hair with Vampire Hair Restoration. Enjoy more manageable, vibrant locks.",
+        blog_post_title: "Transform Dull Hair into Vibrant Locks with Vampire Hair Restoration",
+        blog_post_slug: "transform-dull-hair-into-vibrant-locks-with-vampire-hair-restoration",
+        slug: "poor-hair-texture",
+        tag: "common",
+      },
+      {
+        title: "Thinning Hair",
+        description: "Revitalize your crowning glory with enhanced hair density and volume.",
+        blog_post_title: "Reverse Thinning Hair with Vampire Hair Restoration",
+        blog_post_slug: "reverse-thinning-hair-with-vampire-hair-restoration",
+        slug: "thinning-hair",
+        tag: "common",
+      },
+      {
+        title: "Receding Hairline",
+        description: "Turn back the clock on your receding hairline and regain a youthful appearance.",
+        blog_post_title: "How Vampire Hair Restoration Can Help Your Receding Hairline",
+        blog_post_slug: "how-vampire-hair-restoration-can-help-your-receding-hairline",
+        slug: "receding-hairline",
+        tag: "common",
+      },
+      {
+        title: "Alopecia",
+        description: "Target the root cause of alopecia and encourage new hair growth.",
+        blog_post_title: "Combat Alopecia with Vampire Hair Restoration",
+        blog_post_slug: "combat-alopecia-with-vampire-hair-restoration",
+        slug: "alopecia",
+        tag: "common",
+      },
+      {
+        title: "Scalp Scars",
+        description: "Improve the appearance of unsightly scalp scars and enjoy wearing your hair any way you want.",
+        blog_post_title: "Eliminate Scalp Scars with Vampire Hair Restoration",
+        blog_post_slug: "eliminate-scalp-scars-with-vampire-hair-restoration",
+        slug: "scalp-scars",
+        tag: "uncommon",
+      },
+      {
+        title: "Hormonal Hair Loss",
+        description: "Balance hair loss triggered by hormonal changes and regain your self-confidence.",
+        blog_post_title: "Manage Hormonal Hair Loss with Vampire Hair Restoration",
+        blog_post_slug: "manage-hormonal-hair-loss-with-vampire-hair-restoration",
+        slug: "hormonal-hair-loss",
+        tag: "common",
+      },
+      {
+        title: "Poor Hair Texture",
+        description: "Bring new life to limp, dull hair with improved texture and shine.",
+        blog_post_title: "Revitalize Your Hair Texture with Vampire Hair Restoration",
+        blog_post_slug: "revitalize-your-hair-texture-with-vampire-hair-restoration",
+        slug: "poor-hair-texture",
+        tag: "uncommon",
+      },
+      {
+        title: "Patchy Beard Growth",
+        description: "Fill in the gaps in your beard for a fuller, more robust facial hair appearance.",
+        blog_post_title: "Correct Patchy Beard Growth with Vampire Hair Restoration",
+        blog_post_slug: "correct-patchy-beard-growth-with-vampire-hair-restoration",
+        slug: "patchy-beard-growth",
+        tag: "experimental",
+      },
+      {
+        title: "Eyebrow Thinning",
+        description: "Regain fuller, natural-looking eyebrows without the need for makeup.",
+        blog_post_title: "Tackle Eyebrow Thinning with Vampire Hair Restoration",
+        blog_post_slug: "tackle-eyebrow-thinning-with-vampire-hair-restoration",
+        slug: "eyebrow-thinning",
+        tag: "experimental",
+      },
+      {
+        title: "Post-Chemo Hair Regrowth",
+        description: "Accelerate the process of natural hair regrowth after chemotherapy treatment.",
+        blog_post_title: "Speed Up Post-Chemo Hair Regrowth with Vampire Hair Restoration",
+        blog_post_slug: "speed-up-post-chemo-hair-regrowth-with-vampire-hair-restoration",
+        slug: "post-chemo-hair-regrowth",
+        tag: "experimental",
+      },
+      {
+        title: "Dandruff",
+        description: "Improve scalp health to reduce dandruff and flaking.",
+        blog_post_title: "Combat Dandruff with Improved Scalp Health via Vampire Hair Restoration",
+        blog_post_slug: "combat-dandruff-with-improved-scalp-health-via-vampire-hair-restoration",
+        slug: "dandruff",
+        tag: "experimental",
+      },
+      {
+        title: "Seasonal Hair Loss",
+        description: "Manage seasonal shedding and keep your hair strong all year round.",
+        blog_post_title: "Prevent Seasonal Hair Loss with Vampire Hair Restoration",
+        blog_post_slug: "prevent-seasonal-hair-loss-with-vampire-hair-restoration",
+        slug: "seasonal-hair-loss",
+        tag: "experimental",
       },
     ],
     faqHeadline:
@@ -385,6 +910,126 @@ export const procedures = [
           "Utilizing PRP derived from your own blood, the Vampire Facial offers a holistic, natural approach to skin rejuvenation.",
       },
     ],
+    ailmentsHeadline:
+      "Rejuvenate your complexion and address multiple skin concerns with the Vampire Facial. This innovative treatment harnesses the natural healing power of your own blood to revitalize your skin. Whether you're battling fine lines, dealing with stubborn acne scars, or frustrated by uneven skin tone, a Vampire Facial could be your ticket to smoother, more radiant skin. Learn how this procedure targets a wide array of issues and discover which of these solutions could be the right fit for your skincare journey.",
+    ailments: [
+      {
+        title: "Fine Lines and Wrinkles",
+        description: "Smooth out fine lines and wrinkles with a Vampire Facial. Get youthful, radiant skin naturally.",
+        blog_post_title: "Erase Fine Lines and Wrinkles with a Vampire Facial",
+        blog_post_slug: "erase-fine-lines-and-wrinkles-with-a-vampire-facial",
+        slug: "fine-lines-and-wrinkles",
+        tag: "common",
+      },
+      {
+        title: "Acne Scars",
+        description:
+          "Say goodbye to acne scars with the healing properties of a Vampire Facial. Achieve an even skin tone effortlessly.",
+        blog_post_title: "Eliminate Acne Scars for Good with a Vampire Facial",
+        blog_post_slug: "eliminate-acne-scars-for-good-with-a-vampire-facial",
+        slug: "acne-scars",
+        tag: "common",
+      },
+      {
+        title: "Hyperpigmentation",
+        description:
+          "Balance skin color by treating hyperpigmentation with a Vampire Facial. Restore your skin's natural beauty.",
+        blog_post_title: "Tackle Hyperpigmentation Head-On with a Vampire Facial",
+        blog_post_slug: "tackle-hyperpigmentation-head-on-with-a-vampire-facial",
+        slug: "hyperpigmentation",
+        tag: "uncommon",
+      },
+      {
+        title: "Uneven Skin Texture",
+        description:
+          "Revamp rough, uneven skin into a smoother version with a Vampire Facial. Touch and see the difference.",
+        blog_post_title: "Transform Your Skin's Texture with a Vampire Facial",
+        blog_post_slug: "transform-your-skins-texture-with-a-vampire-facial",
+        slug: "uneven-skin-texture",
+        tag: "common",
+      },
+      {
+        title: "Dull Skin",
+        description: "Revitalize and illuminate dull skin with the nourishing benefits of a Vampire Facial.",
+        blog_post_title: "Wake Up Your Dull Skin with a Vampire Facial",
+        blog_post_slug: "wake-up-your-dull-skin-with-a-vampire-facial",
+        slug: "dull-skin",
+        tag: "common",
+      },
+      {
+        title: "Rosacea",
+        description: "Manage and reduce rosacea flare-ups with the calming effect of a Vampire Facial.",
+        blog_post_title: "Control Rosacea Effectively with a Vampire Facial",
+        blog_post_slug: "control-rosacea-effectively-with-a-vampire-facial",
+        slug: "rosacea",
+        tag: "uncommon",
+      },
+      {
+        title: "Enlarged Pores",
+        description:
+          "Shrink large pores and refine your skin with a Vampire Facial. Witness the minimization instantly.",
+        blog_post_title: "Minimize Large Pores Effortlessly with a Vampire Facial",
+        blog_post_slug: "minimize-large-pores-effortlessly-with-a-vampire-facial",
+        slug: "enlarged-pores",
+        tag: "common",
+      },
+      {
+        title: "Sun Damage",
+        description: "Reverse the harmful effects of sun exposure with the rejuvenating Vampire Facial.",
+        blog_post_title: "Repair Sun-Damaged Skin with a Vampire Facial",
+        blog_post_slug: "repair-sun-damaged-skin-with-a-vampire-facial",
+        slug: "sun-damage",
+        tag: "uncommon",
+      },
+      {
+        title: "Loss of Skin Elasticity",
+        description: "Tighten and firm your skin for a more youthful appearance.",
+        blog_post_title: "Restore Skin Elasticity with Vampire Facial",
+        blog_post_slug: "restore-skin-elasticity-with-vampire-facial",
+        slug: "loss-of-skin-elasticity",
+        tag: "uncommon",
+      },
+      {
+        title: "Dark Circles",
+        description: "Lighten under-eye dark circles for a fresher, more rested look.",
+        blog_post_title: "Lighten Dark Circles Under Eyes with Vampire Facial",
+        blog_post_slug: "lighten-dark-circles-under-eyes-with-vampire-facial",
+        slug: "dark-circles",
+        tag: "experimental",
+      },
+      {
+        title: "Stretch Marks",
+        description: "Reduce the appearance of stretch marks for smoother skin.",
+        blog_post_title: "Reduce Stretch Marks with Vampire Facial",
+        blog_post_slug: "reduce-stretch-marks-with-vampire-facial",
+        slug: "stretch-marks",
+        tag: "experimental",
+      },
+      {
+        title: "Minor Injury Scars",
+        description: "Improve the look of minor scars from injuries.",
+        blog_post_title: "Improve the Look of Injury Scars with Vampire Facial",
+        blog_post_slug: "improve-the-look-of-injury-scars-with-vampire-facial",
+        slug: "minor-injury-scars",
+        tag: "experimental",
+      },
+      {
+        title: "Age Spots",
+        description: "Fade age spots for a more uniform complexion.",
+        blog_post_title: "Fade Age Spots with Vampire Facial",
+        blog_post_slug: "fade-age-spots-with-vampire-facial",
+        slug: "age-spots",
+        tag: "experimental",
+      },
+      {
+        title: "Skin Hydration",
+        description: "Boost skin hydration for a plumper, more radiant look.",
+        blog_post_title: "Boost Skin Hydration with Vampire Facial",
+        blog_post_slug: "boost-skin-hydration-with-vampire-facial",
+        slug: "skin-hydration",
+        tag: "experimental",
+      },
+    ],
     faqHeadline:
       "Revitalize your skin with the Vampire Facial. Using your body's natural healing factors, this procedure offers rejuvenation like no other.",
     faqs: [
@@ -454,6 +1099,124 @@ export const procedures = [
           "The results can last for over a year, reducing the frequency of treatments compared to other cosmetic procedures.",
       },
     ],
+    ailmentsHeadline:
+      "Revitalize your facial features and turn back the clock on aging with the Vampire Face Lift. This unique treatment offers a non-surgical approach to enhancing your face's natural contours, smoothing wrinkles, and boosting volume. Whether you're struggling with sagging skin, fine lines, or simply want a more youthful appearance, the Vampire Face Lift can be customized to your needs. Discover how this procedure addresses a range of common and uncommon facial issues and learn which treatments might be most beneficial for you.",
+    ailments: [
+      {
+        title: "Sagging Skin",
+        description:
+          "Lift and firm sagging skin without surgery using the Vampire Face Lift. Get natural-looking results that last.",
+        blog_post_title: "Firm and Lift Sagging Skin with a Vampire Face Lift",
+        blog_post_slug: "firm-and-lift-sagging-skin-with-a-vampire-face-lift",
+        slug: "sagging-skin",
+        tag: "common",
+      },
+      {
+        title: "Fine Lines and Wrinkles",
+        description:
+          "Smooth out facial lines and wrinkles effectively with the Vampire Face Lift. Achieve a more youthful appearance.",
+        blog_post_title: "Turn Back the Clock on Aging with a Vampire Face Lift",
+        blog_post_slug: "turn-back-the-clock-on-aging-with-a-vampire-face-lift",
+        slug: "fine-lines-and-wrinkles",
+        tag: "common",
+      },
+      {
+        title: "Volume Loss",
+        description: "Restore facial volume naturally with the Vampire Face Lift. No synthetic fillers required.",
+        blog_post_title: "Reclaim Your Facial Volume with a Vampire Face Lift",
+        blog_post_slug: "reclaim-your-facial-volume-with-a-vampire-face-lift",
+        slug: "volume-loss",
+        tag: "common",
+      },
+      {
+        title: "Dull Skin",
+        description: "Revive dull, lifeless skin and get a radiant glow with the Vampire Face Lift.",
+        blog_post_title: "Revitalize Dull Skin with a Vampire Face Lift",
+        blog_post_slug: "revitalize-dull-skin-with-a-vampire-face-lift",
+        slug: "dull-skin",
+        tag: "common",
+      },
+      {
+        title: "Age-Related Facial Changes",
+        description: "Combat the signs of aging like skin laxity and wrinkles with a Vampire Face Lift.",
+        blog_post_title: "Combat Age-Related Changes with a Vampire Face Lift",
+        blog_post_slug: "combat-age-related-changes-with-a-vampire-face-lift",
+        slug: "age-related-facial-changes",
+        tag: "common",
+      },
+      {
+        title: "Sunken Cheeks",
+        description: "Add youthful plumpness to sunken cheeks with the Vampire Face Lift.",
+        blog_post_title: "Add Volume to Sunken Cheeks with a Vampire Face Lift",
+        blog_post_slug: "add-volume-to-sunken-cheeks-with-a-vampire-face-lift",
+        slug: "sunken-cheeks",
+        tag: "common",
+      },
+      {
+        title: "Uneven Facial Structure",
+        description: "Achieve balanced facial symmetry with the help of a Vampire Face Lift.",
+        blog_post_title: "Balance Your Facial Structure with a Vampire Face Lift",
+        blog_post_slug: "balance-your-facial-structure-with-a-vampire-face-lift",
+        slug: "uneven-facial-structure",
+        tag: "uncommon",
+      },
+      {
+        title: "Crow's Feet",
+        description: "Reduce the fine lines that appear around the eyes, often called crow's feet.",
+        blog_post_title: "Eliminate Crow's Feet with Vampire Face Lift",
+        blog_post_slug: "eliminate-crows-feet-with-vampire-face-lift",
+        slug: "crows-feet",
+        tag: "uncommon",
+      },
+      {
+        title: "Jowls",
+        description: "Lift and firm the lower part of your face to eliminate jowls.",
+        blog_post_title: "Lift and Tighten Jowls with Vampire Face Lift",
+        blog_post_slug: "lift-and-tighten-jowls-with-vampire-face-lift",
+        slug: "jowls",
+        tag: "uncommon",
+      },
+      {
+        title: "Smile Lines",
+        description: "Soften smile lines for a youthful and fresh appearance.",
+        blog_post_title: "Soften Smile Lines with Vampire Face Lift",
+        blog_post_slug: "soften-smile-lines-with-vampire-face-lift",
+        slug: "smile-lines",
+        tag: "uncommon",
+      },
+      {
+        title: "Chin Wrinkles",
+        description: "Smooth out wrinkles and lines on your chin area.",
+        blog_post_title: "Smooth Chin Wrinkles with Vampire Face Lift",
+        blog_post_slug: "smooth-chin-wrinkles-with-vampire-face-lift",
+        slug: "chin-wrinkles",
+        tag: "uncommon",
+      },
+      {
+        title: "Forehead Lines",
+        description: "Minimize the appearance of horizontal lines on your forehead.",
+        blog_post_title: "Minimize Forehead Lines with Vampire Face Lift",
+        blog_post_slug: "minimize-forehead-lines-with-vampire-face-lift",
+        slug: "forehead-lines",
+        tag: "uncommon",
+      },
+      {
+        title: "Marionette Lines",
+        description: "Eliminate the lines running from the corners of your mouth down to your chin.",
+        blog_post_title: "Eliminate Marionette Lines with Vampire Face Lift",
+        blog_post_slug: "eliminate-marionette-lines-with-vampire-face-lift",
+        slug: "marionette-lines",
+        tag: "experimental",
+      },
+      {
+        title: "Nasolabial Folds",
+        description: "Diminish the depth of the nasolabial folds for a fresher appearance.",
+        blog_post_title: "Diminish Nasolabial Folds with Vampire Face Lift",
+        blog_post_slug: "diminish-nasolabial-folds-with-vampire-face-lift",
+        slug: "nasolabial-folds",
+        tag: "experimental",
+      },
+    ],
     faqHeadline:
       "Redefine and rejuvenate with the Vampire Face Lift. This procedure offers natural-looking results without the need for surgery.",
     faqs: [
@@ -520,6 +1283,129 @@ export const procedures = [
         emoji: "🔄",
         benefit: "Joint Tissue Regeneration",
         description: "Promotes the regeneration of joint tissues, aiding in the long-term health of the joint.",
+      },
+    ],
+    ailmentsHeadline:
+      "Harness the natural healing power of your own body with Joint Restoration using Platelet-Rich Plasma (PRP). This cutting-edge treatment provides relief from a wide array of joint and musculoskeletal issues, from osteoarthritis and tendonitis to ACL injuries and meniscus tears. Offering a non-surgical solution to chronic pain and restricted mobility, PRP Joint Restoration is revolutionizing the way we approach joint health. Learn more about this versatile treatment and discover how it can help you regain freedom of movement and an active lifestyle.",
+    ailments: [
+      {
+        title: "Osteoarthritis",
+        description:
+          "Alleviate osteoarthritis pain and improve joint function with PRP Joint Restoration. Regain your mobility without surgery.",
+        blog_post_title: "Managing Osteoarthritis Pain with PRP Joint Restoration",
+        blog_post_slug: "managing-osteoarthritis-pain-with-prp-joint-restoration",
+        slug: "osteoarthritis",
+        tag: "common",
+      },
+      {
+        title: "Tendonitis",
+        description:
+          "Reduce inflammation and accelerate the healing of tendons with PRP Joint Restoration. Get back to your active lifestyle.",
+        blog_post_title: "Healing Tendonitis Effectively with PRP Joint Restoration",
+        blog_post_slug: "healing-tendonitis-effectively-with-prp-joint-restoration",
+        slug: "tendonitis",
+        tag: "common",
+      },
+      {
+        title: "Rotator Cuff Tears",
+        description:
+          "Repair damaged rotator cuffs and regain shoulder function with PRP Joint Restoration. Say goodbye to shoulder pain.",
+        blog_post_title: "Repairing Rotator Cuff Tears with PRP Joint Restoration",
+        blog_post_slug: "repairing-rotator-cuff-tears-with-prp-joint-restoration",
+        slug: "rotator-cuff-tears",
+        tag: "common",
+      },
+      {
+        title: "ACL Injuries",
+        description:
+          "Accelerate the healing process of ACL injuries using PRP Joint Restoration. Get back on your feet faster.",
+        blog_post_title: "Recovering from ACL Injuries with PRP Joint Restoration",
+        blog_post_slug: "recovering-from-acl-injuries-with-prp-joint-restoration",
+        slug: "acl-injuries",
+        tag: "common",
+      },
+      {
+        title: "Meniscus Tears",
+        description:
+          "Enhance meniscus repair and reduce knee pain with PRP Joint Restoration. No need for invasive procedures.",
+        blog_post_title: "Fixing Meniscus Tears with PRP Joint Restoration",
+        blog_post_slug: "fixing-meniscus-tears-with-prp-joint-restoration",
+        slug: "meniscus-tears",
+        tag: "common",
+      },
+      {
+        title: "Chronic Muscle Strains",
+        description:
+          "Treat chronic muscle strains effectively with PRP Joint Restoration. Relieve persistent pain and get back to your routine.",
+        blog_post_title: "Treating Chronic Muscle Strains with PRP Joint Restoration",
+        blog_post_slug: "treating-chronic-muscle-strains-with-prp-joint-restoration",
+        slug: "chronic-muscle-strains",
+        tag: "uncommon",
+      },
+      {
+        title: "Ligament Sprains",
+        description:
+          "Promote faster healing of ligament sprains using PRP Joint Restoration. Resume your activities without worry.",
+        blog_post_title: "Healing Ligament Sprains Faster with PRP Joint Restoration",
+        blog_post_slug: "healing-ligament-sprains-faster-with-prp-joint-restoration",
+        slug: "ligament-sprains",
+        tag: "common",
+      },
+      {
+        title: "Bursitis",
+        description: "Relieve the pain and inflammation of bursa sacs around your joints.",
+        blog_post_title: "Treating Bursitis with Joint Restoration",
+        blog_post_slug: "treating-bursitis-with-joint-restoration",
+        slug: "bursitis",
+        tag: "common",
+      },
+      {
+        title: "Plantar Fasciitis",
+        description: "Reduce heel pain caused by inflammation in the plantar fascia ligament.",
+        blog_post_title: "Heel the Pain: Plantar Fasciitis and Joint Restoration",
+        blog_post_slug: "heel-the-pain-plantar-fasciitis-and-joint-restoration",
+        slug: "plantar-fasciitis",
+        tag: "common",
+      },
+      {
+        title: "Tennis Elbow",
+        description: "Improve the condition of lateral epicondylitis commonly known as Tennis Elbow.",
+        blog_post_title: "Treating Tennis Elbow with Joint Restoration",
+        blog_post_slug: "treating-tennis-elbow-with-joint-restoration",
+        slug: "tennis-elbow",
+        tag: "common",
+      },
+      {
+        title: "Ankle Sprains",
+        description: "Speed up the healing of sprained ankles.",
+        blog_post_title: "Accelerate Ankle Sprain Recovery with Joint Restoration",
+        blog_post_slug: "accelerate-ankle-sprain-recovery-with-joint-restoration",
+        slug: "ankle-sprains",
+        tag: "uncommon",
+      },
+      {
+        title: "Golfer's Elbow",
+        description: "Treat medial epicondylitis, often called Golfer's Elbow, to improve your game.",
+        blog_post_title: "Improving Golfer's Elbow with Joint Restoration",
+        blog_post_slug: "improving-golfers-elbow-with-joint-restoration",
+        slug: "golfers-elbow",
+        tag: "uncommon",
+      },
+      {
+        title: "Frozen Shoulder",
+        description: "Increase the range of motion in a shoulder affected by adhesive capsulitis.",
+        blog_post_title: "Thawing Frozen Shoulder with Joint Restoration",
+        blog_post_slug: "thawing-frozen-shoulder-with-joint-restoration",
+        slug: "frozen-shoulder",
+        tag: "uncommon",
+      },
+      {
+        title: "Carpal Tunnel Syndrome",
+        description: "Reduce symptoms of carpal tunnel syndrome and improve wrist function.",
+        blog_post_title: "Treating Carpal Tunnel Syndrome with Joint Restoration",
+        blog_post_slug: "treating-carpal-tunnel-syndrome-with-joint-restoration",
+        slug: "carpal-tunnel-syndrome",
+        tag: "experimental",
       },
     ],
     faqHeadline:
@@ -592,6 +1478,138 @@ export const procedures = [
           "Post-treatment, patients can immediately return to their daily activities with no necessary recovery period.",
       },
     ],
+    ailmentsHeadline:
+      "Revitalize your appearance and improve your well-being with Xeomin, a versatile treatment that addresses a multitude of issues. From common concerns like forehead wrinkles and crow's feet to more specialized treatments for conditions like hyperhidrosis and migraines, Xeomin offers an array of solutions for both aesthetic and medical needs. Discover how this innovative treatment can provide you with the results you've been seeking.",
+    ailments: [
+      {
+        title: "Forehead Wrinkles",
+        description: "Smooth out forehead wrinkles with Xeomin for a youthful and fresh look.",
+        blog_post_title: "Eliminating Forehead Wrinkles with Xeomin",
+        blog_post_slug: "eliminating-forehead-wrinkles-with-xeomin",
+        slug: "forehead-wrinkles",
+        tag: "common",
+      },
+      {
+        title: "Crow's Feet",
+        description: "Say goodbye to crow's feet with Xeomin injections and rejuvenate the area around your eyes.",
+        blog_post_title: "Erase Crow's Feet with Xeomin",
+        blog_post_slug: "erase-crows-feet-with-xeomin",
+        slug: "crows-feet",
+        tag: "common",
+      },
+      {
+        title: "Glabellar Lines",
+        description: "Reduce the appearance of frown lines between your eyebrows with Xeomin.",
+        blog_post_title: "Smoothing Out Frown Lines with Xeomin",
+        blog_post_slug: "smoothing-out-frown-lines-with-xeomin",
+        slug: "glabellar-lines",
+        tag: "common",
+      },
+      {
+        title: "Chin Dimpling",
+        description: "Smooth out chin dimpling and get a more refined look with Xeomin.",
+        blog_post_title: "Solve Chin Dimpling Issues with Xeomin",
+        blog_post_slug: "solve-chin-dimpling-issues-with-xeomin",
+        slug: "chin-dimpling",
+        tag: "uncommon",
+      },
+      {
+        title: "Gummy Smile",
+        description: "Improve your smile by reducing excessive gum display with Xeomin.",
+        blog_post_title: "Fix Your Gummy Smile with Xeomin",
+        blog_post_slug: "fix-your-gummy-smile-with-xeomin",
+        slug: "gummy-smile",
+        tag: "uncommon",
+      },
+      {
+        title: "Brow Lift",
+        description: "Get a non-surgical brow lift and achieve a more alert appearance with Xeomin.",
+        blog_post_title: "Achieve a Natural Brow Lift with Xeomin",
+        blog_post_slug: "achieve-a-natural-brow-lift-with-xeomin",
+        slug: "brow-lift",
+        tag: "uncommon",
+      },
+      {
+        title: "Neck Bands",
+        description: "Improve the look of your neck by treating vertical bands with Xeomin.",
+        blog_post_title: "Smooth Neck Bands Effectively with Xeomin",
+        blog_post_slug: "smooth-neck-bands-effectively-with-xeomin",
+        slug: "neck-bands",
+        tag: "uncommon",
+      },
+      {
+        title: "Hyperhidrosis",
+        description: "Combat excessive sweating effectively with Xeomin treatment.",
+        blog_post_title: "Say Goodbye to Excessive Sweating with Xeomin",
+        blog_post_slug: "say-goodbye-to-excessive-sweating-with-xeomin",
+        slug: "hyperhidrosis",
+        tag: "uncommon",
+      },
+      {
+        title: "Migraines",
+        description: "Reduce the frequency and severity of migraines through targeted Xeomin injections.",
+        blog_post_title: "Managing Migraines Effectively with Xeomin",
+        blog_post_slug: "managing-migraines-effectively-with-xeomin",
+        slug: "migraines",
+        tag: "experimental",
+      },
+      {
+        title: "Smoker's Lines",
+        description: "Smooth out the vertical lines above the upper lip commonly referred to as Smoker's Lines.",
+        blog_post_title: "Erase Smoker's Lines with Xeomin and Botox",
+        blog_post_slug: "erase-smokers-lines-with-xeomin-and-botox",
+        slug: "smokers-lines",
+        tag: "common",
+      },
+      {
+        title: "Marionette Lines",
+        description: "Eliminate the lines that run from the corners of the mouth down to the chin.",
+        blog_post_title: "Say Goodbye to Marionette Lines with Xeomin and Botox",
+        blog_post_slug: "say-goodbye-to-marionette-lines-with-xeomin-and-botox",
+        slug: "marionette-lines",
+        tag: "common",
+      },
+      {
+        title: "Nasolabial Folds",
+        description: "Reduce the appearance of deep lines running from the nose to the corners of the mouth.",
+        blog_post_title: "Softening Nasolabial Folds with Xeomin and Botox",
+        blog_post_slug: "softening-nasolabial-folds-with-xeomin-and-botox",
+        slug: "nasolabial-folds",
+        tag: "uncommon",
+      },
+      {
+        title: "Bunny Lines",
+        description: "Target the horizontal wrinkles that appear when scrunching your nose.",
+        blog_post_title: "Smoothing Bunny Lines with Xeomin and Botox",
+        blog_post_slug: "smoothing-bunny-lines-with-xeomin-and-botox",
+        slug: "bunny-lines",
+        tag: "uncommon",
+      },
+      {
+        title: "Drooping Nose Tip",
+        description: "Lift a drooping nose tip for a more youthful appearance.",
+        blog_post_title: "Lifting a Drooping Nose Tip with Xeomin and Botox",
+        blog_post_slug: "lifting-a-drooping-nose-tip-with-xeomin-and-botox",
+        slug: "drooping-nose-tip",
+        tag: "experimental",
+      },
+      {
+        title: "Jawline Slimming",
+        description: "Achieve a slimmer jawline by targeting the masseter muscles.",
+        blog_post_title: "Jawline Slimming with Xeomin and Botox",
+        blog_post_slug: "jawline-slimming-with-xeomin-and-botox",
+        slug: "jawline-slimming",
+        tag: "experimental",
+      },
+      {
+        title: "Teeth Grinding",
+        description: "Relieve symptoms of bruxism or teeth grinding.",
+        blog_post_title: "Treating Teeth Grinding with Xeomin and Botox",
+        blog_post_slug: "treating-teeth-grinding-with-xeomin-and-botox",
+        slug: "teeth-grinding",
+        tag: "experimental",
+      },
+    ],
     faqHeadline:
       "Experience a smoother, more youthful complexion with Xeomin. This innovative treatment targets the underlying causes of fine lines and wrinkles.",
     faqs: [
@@ -657,6 +1675,139 @@ export const procedures = [
         emoji: "🕐",
         benefit: "Long-lasting Outcome",
         description: "Depending on the type of filler used, results can last anywhere from 6 months to 2 years.",
+      },
+    ],
+    ailmentsHeadline:
+      "Dermal fillers are your go-to solution for a range of cosmetic concerns that can arise as we age or simply seek enhancement. From softening nasolabial folds and marionette lines to achieving fuller lips and sculpted cheeks, fillers offer a non-invasive method to transform your look. They're even versatile enough for less common treatments like jawline contouring, tear trough filling, and hand rejuvenation. Whether you're addressing common signs of aging or seeking specialized treatments, dermal fillers provide an effective and instant solution. Explore the range of issues that can be addressed with this innovative treatment.",
+    ailments: [
+      {
+        title: "Nasolabial Folds",
+        description:
+          "Diminish the look of nasolabial folds, commonly known as laugh lines, for a refreshed facial appearance.",
+        blog_post_title: "Erase Laugh Lines with Dermal Fillers",
+        blog_post_slug: "erase-laugh-lines-with-dermal-fillers",
+        slug: "nasolabial-folds",
+        tag: "common",
+      },
+      {
+        title: "Marionette Lines",
+        description: "Lift and smooth marionette lines to restore a youthful curve to your smile.",
+        blog_post_title: "Smooth Marionette Lines with Dermal Fillers",
+        blog_post_slug: "smooth-marionette-lines-with-dermal-fillers",
+        slug: "marionette-lines",
+        tag: "common",
+      },
+      {
+        title: "Lip Augmentation",
+        description: "Achieve fuller, plumper lips that complement your natural features.",
+        blog_post_title: "Get Your Dream Lips with Dermal Fillers",
+        blog_post_slug: "get-your-dream-lips-with-dermal-fillers",
+        slug: "lip-augmentation",
+        tag: "common",
+      },
+      {
+        title: "Cheek Enhancement",
+        description: "Add volume and lift to your cheeks for a youthful and rejuvenated look.",
+        blog_post_title: "Achieve Sculpted Cheeks with Dermal Fillers",
+        blog_post_slug: "achieve-sculpted-cheeks-with-dermal-fillers",
+        slug: "cheek-enhancement",
+        tag: "common",
+      },
+      {
+        title: "Jawline Contouring",
+        description: "Define and sharpen your jawline to enhance your facial profile.",
+        blog_post_title: "Get a Chiseled Jawline with Dermal Fillers",
+        blog_post_slug: "get-a-chiseled-jawline-with-dermal-fillers",
+        slug: "jawline-contouring",
+        tag: "uncommon",
+      },
+      {
+        title: "Tear Troughs",
+        description: "Eliminate under-eye hollows and dark circles for a more rested look.",
+        blog_post_title: "Say Goodbye to Dark Circles with Dermal Fillers",
+        blog_post_slug: "say-goodbye-to-dark-circles-with-dermal-fillers",
+        slug: "tear-troughs",
+        tag: "uncommon",
+      },
+      {
+        title: "Hand Rejuvenation",
+        description: "Restore a youthful appearance to your hands by addressing volume loss.",
+        blog_post_title: "Rejuvenate Your Hands with Dermal Fillers",
+        blog_post_slug: "rejuvenate-your-hands-with-dermal-fillers",
+        slug: "hand-rejuvenation",
+        tag: "uncommon",
+      },
+      {
+        title: "Nose Reshaping",
+        description: "Modify the shape of your nose without surgery for a balanced facial appearance.",
+        blog_post_title: "Reshape Your Nose with Dermal Fillers",
+        blog_post_slug: "reshape-your-nose-with-dermal-fillers",
+        slug: "nose-reshaping",
+        tag: "uncommon",
+      },
+      {
+        title: "Chin Augmentation",
+        description: "Achieve a well-defined chin that enhances your overall facial harmony.",
+        blog_post_title: "Get a Balanced Profile with Chin Augmentation",
+        blog_post_slug: "get-a-balanced-profile-with-chin-augmentation",
+        slug: "chin-augmentation",
+        tag: "uncommon",
+      },
+      {
+        title: "Temples",
+        description: "Fill in hollow temples for a more youthful and complete facial rejuvenation.",
+        blog_post_title: "Revive Your Look by Filling Hollow Temples",
+        blog_post_slug: "revive-your-look-by-filling-hollow-temples",
+        slug: "temples",
+        tag: "uncommon",
+      },
+      {
+        title: "Forehead Contouring",
+        description: "Smooth out irregularities and achieve a more balanced forehead.",
+        blog_post_title: "Achieving a Balanced Forehead with Filler",
+        blog_post_slug: "achieving-a-balanced-forehead-with-filler",
+        slug: "forehead-contouring",
+        tag: "uncommon",
+      },
+      {
+        title: "Earlobe Repair",
+        description: "Revitalize sagging or stretched earlobes for a younger look.",
+        blog_post_title: "Turn Back Time on Your Earlobes with Filler",
+        blog_post_slug: "turn-back-time-on-your-earlobes-with-filler",
+        slug: "earlobe-repair",
+        tag: "uncommon",
+      },
+      {
+        title: "Smoker's Lines",
+        description: "Smooth out fine lines around the mouth for a youthful appearance.",
+        blog_post_title: "Eliminate Smoker's Lines with Filler",
+        blog_post_slug: "eliminate-smokers-lines-with-filler",
+        slug: "smokers-lines",
+        tag: "common",
+      },
+      {
+        title: "Acne Scars",
+        description: "Fill in depressed acne scars for smoother skin.",
+        blog_post_title: "Fill in Acne Scars for a Flawless Complexion",
+        blog_post_slug: "fill-in-acne-scars-for-a-flawless-complexion",
+        slug: "acne-scars",
+        tag: "common",
+      },
+      {
+        title: "Crow's Feet",
+        description: "Diminish the appearance of crow's feet around the eyes.",
+        blog_post_title: "Say Goodbye to Crow's Feet with Filler",
+        blog_post_slug: "say-goodbye-to-crows-feet-with-filler",
+        slug: "crows-feet",
+        tag: "common",
+      },
+      {
+        title: "Collarbone Contouring",
+        description: "Enhance the appearance of your collarbone for a more defined look.",
+        blog_post_title: "Collarbone Contouring with Filler",
+        blog_post_slug: "collarbone-contouring-with-filler",
+        slug: "collarbone-contouring",
+        tag: "experimental",
       },
     ],
     faqHeadline:
@@ -730,6 +1881,67 @@ export const procedures = [
           "Xeomin injection results for hyperhidrosis can last up to 7-8 months, giving you prolonged relief.",
       },
     ],
+    ailmentsHeadline:
+      "Excessive sweating, also known as hyperhidrosis, can be a significant source of discomfort and embarrassment, affecting various areas of the body. Thankfully, Xeomin offers an innovative and effective treatment to manage this condition. Whether you're dealing with persistent underarm sweat, clammy palms, or even moisture-prone feet, Xeomin can help regulate sweat production and improve your quality of life. Explore how Xeomin can help you with hyperhidrosis in these common and uncommon application areas.",
+    ailments: [
+      {
+        title: "Underarm Sweating",
+        description: "Say goodbye to underarm sweat stains and regain confidence in social and professional settings.",
+        blog_post_title: "How Xeomin Can Put an End to Underarm Sweating",
+        blog_post_slug: "how-xeomin-can-put-an-end-to-underarm-sweating",
+        slug: "underarm-sweating",
+        tag: "common",
+      },
+      {
+        title: "Sweaty Palms",
+        description: "No more awkward, sweaty handshakes. Achieve drier palms and a firmer grip on life.",
+        blog_post_title: "Eliminate Sweaty Palms with Xeomin",
+        blog_post_slug: "eliminate-sweaty-palms-with-xeomin",
+        slug: "sweaty-palms",
+        tag: "common",
+      },
+      {
+        title: "Sweaty Feet",
+        description:
+          "Take confident steps without worrying about foot odor or moisture. Enjoy comfortable, drier feet.",
+        blog_post_title: "How to Get Rid of Sweaty Feet with Xeomin",
+        blog_post_slug: "how-to-get-rid-of-sweaty-feet-with-xeomin",
+        slug: "sweaty-feet",
+        tag: "common",
+      },
+      {
+        title: "Facial Sweating",
+        description: "Put an end to the discomfort and embarrassment of excessive facial sweating. Feel fresh all day.",
+        blog_post_title: "Manage Excessive Facial Sweating with Xeomin",
+        blog_post_slug: "manage-excessive-facial-sweating-with-xeomin",
+        slug: "facial-sweating",
+        tag: "uncommon",
+      },
+      {
+        title: "Scalp (Scalp Hyperhidrosis)",
+        description: "Control excessive sweating in the scalp area for a more comfortable experience.",
+        blog_post_title: "Tackle Scalp Sweating with Xeomin",
+        blog_post_slug: "tackle-scalp-sweating-with-xeomin",
+        slug: "scalp-hyperhidrosis",
+        tag: "uncommon",
+      },
+      {
+        title: "Groin (Inguinal Hyperhidrosis)",
+        description: "Reduce unwanted moisture and discomfort in the groin area.",
+        blog_post_title: "Say Goodbye to Groin Sweat with Xeomin",
+        blog_post_slug: "say-goodbye-to-groin-sweat-with-xeomin",
+        slug: "groin-hyperhidrosis",
+        tag: "uncommon",
+      },
+      {
+        title: "Back (Dorsal Hyperhidrosis)",
+        description: "Alleviate excessive sweating on your back for enhanced comfort.",
+        blog_post_title: "Eliminate Back Sweating with Xeomin",
+        blog_post_slug: "eliminate-back-sweating-with-xeomin",
+        slug: "back-hyperhidrosis",
+        tag: "uncommon",
+      },
+    ],
     faqHeadline:
       "Experience a drier, more confident you with Hyperhidrosis Treatment using Xeomin injections. Get answers to commonly asked questions.",
     faqs: [
@@ -764,46 +1976,264 @@ export const procedures = [
 export const products = [
   {
     name: "Co2 Lift",
-    description: "Transform your skin with our Co2 Lift treatment. Ideal for improving skin elasticity and texture.",
-    image: "/product/c02-lift-pro.webp",
-    imageAlt: "Co2 Lift Treatment",
     slug: "co2-lift",
-    headline: "Revitalize Your Skin in Minutes!",
-    subline: "Get noticed with glowing skin. Feel the immediate lift. Buy now!",
-    link: "https://fake-link.com/co2-lift",
+    description:
+      "Co2 Lift isn't just another skincare product; it's a scientifically proven carboxytherapy gel designed to elevate your skin's health right from the cellular level. By infusing your skin with carbon dioxide, it stimulates a rush of oxygen and nutrients, effectively combating signs of aging and environmental damage.",
+    headline: "Supercharge Cellular Renewal and Combat Aging with Co2 Lift!",
+    subline:
+      "Make Co2 Lift your go-to solution for achieving youthful, resilient, and hydrated skin. With its unique carboxytherapy formula, it’s not just skincare; it’s skin transformation.",
+    image: "/product/c02-lift-pro.webp",
+    imageAlt: "Co2 Lift Carboxytherapy Gel",
     price: "$100",
+    link: "https://fake-link.com/co2-lift",
+    // programmatic SEO copy
+    blogHeadline:
+      "Unlock the Secret to Ageless, Flawless Skin with Co2 Lift: Articles, How-tos, and Scientific Insights Await.",
+    benefitsHeadline: "Why Choose Co2 Lift? Immediate and Long-Term Benefits Unveiled",
+    benefits: [
+      {
+        emoji: "🌟",
+        benefit: "Boosted Oxygenation",
+        description:
+          "Co2 Lift’s carboxytherapy mechanism boosts the oxygenation of your skin cells, delivering an instant natural glow.",
+      },
+      {
+        emoji: "💪",
+        benefit: "Enhanced Collagen Production",
+        description:
+          "Experience a noticeable improvement in skin firmness as Co2 Lift stimulates your body’s natural collagen production.",
+      },
+      {
+        emoji: "🌊",
+        benefit: "Deep Hydration",
+        description: "Infused with humectants, Co2 Lift locks in moisture, giving you deeply hydrated, plump skin.",
+      },
+      {
+        emoji: "🌱",
+        benefit: "Natural, Non-Invasive",
+        description:
+          "Say goodbye to invasive treatments. Co2 Lift offers a natural way to uplift your skin’s health without needles or downtime.",
+      },
+    ],
+    faqHeadline: "Got Questions? Get All the Facts About Co2 Lift",
+    faqs: [
+      {
+        question: "How does Co2 Lift’s carboxytherapy work?",
+        answer:
+          "Co2 Lift utilizes a scientific approach known as carboxytherapy. It infuses the skin with CO2, which dilates the blood vessels and enhances the delivery of oxygen and nutrients to the skin cells.",
+      },
+      {
+        question: "Is it compatible with my existing skincare routine?",
+        answer:
+          "Absolutely. Co2 Lift can be seamlessly integrated into any skincare regimen. It's particularly effective when used alongside moisturizers and anti-aging serums to lock in benefits.",
+      },
+      {
+        question: "Do I need professional assistance to apply Co2 Lift?",
+        answer:
+          "No, Co2 Lift is designed for hassle-free at-home application, giving you professional skincare results in the comfort of your own home.",
+      },
+      {
+        question: "How often should I use Co2 Lift?",
+        answer:
+          "For optimal results, it's recommended to use Co2 Lift once a week. Consistent use enhances its benefits, including improved skin tone, texture, and elasticity.",
+      },
+    ],
   },
   {
     name: "Co2 V Lift for Women",
-    description: "Specialized Co2 V Lift designed for women. Rejuvenate and lift your skin for a youthful appearance.",
-    image: "/product/c02-v-lift.webp",
-    imageAlt: "Co2 V Lift for Women",
     slug: "co2-v-lift-for-women",
-    headline: "Unlock Youthful Skin!",
-    subline: "Tailored for women. Experience deep rejuvenation. Get it today!",
-    link: "https://fake-link.com/co2-v-lift-women",
+    description:
+      "Introducing Co2 V Lift for Women, a groundbreaking carboxytherapy gel that targets intimate areas to restore youthfulness, firmness, and hydration. Specially formulated for women’s delicate skin, this product offers non-invasive revitalization where you need it most.",
+    headline: "Achieve Intimate Rejuvenation with the Science of Carboxytherapy!",
+    subline:
+      "Experience Co2 V Lift for Women—a unique, science-backed treatment focused on feminine care for intimate skin rejuvenation. Elevate your self-care routine to the next level.",
+    image: "/product/c02-v-lift.webp",
+    imageAlt: "Co2 V Lift for Women Intimate Skin Care",
     price: "$500",
+    link: "https://fake-link.com/co2-v-lift-women",
+    // programmatic SEO copy
+    blogHeadline:
+      "Elevate Intimate Self-Care with Co2 V Lift for Women: Learn the Science, Read Testimonials, and Explore Expert Insights.",
+    benefitsHeadline: "Why Women Everywhere Are Choosing Co2 V Lift",
+    benefits: [
+      {
+        emoji: "🌹",
+        benefit: "Intimate Focus",
+        description:
+          "Designed for women’s intimate areas, Co2 V Lift targets the unique needs of delicate skin, offering enhanced firmness and hydration.",
+      },
+      {
+        emoji: "👸",
+        benefit: "Restore Feminine Vitality",
+        description:
+          "Revitalize and renew intimate skin areas, diminishing the signs of aging and restoring youthful plumpness.",
+      },
+      {
+        emoji: "🛡",
+        benefit: "Gentle Yet Effective",
+        description:
+          "Crafted with hypoallergenic ingredients, Co2 V Lift is both effective and gentle, making it ideal for sensitive intimate areas.",
+      },
+      {
+        emoji: "⌛",
+        benefit: "Quick and Discreet",
+        description:
+          "Each application takes just minutes, allowing for discreet use and fitting effortlessly into your self-care regimen.",
+      },
+    ],
+    faqHeadline: "Your Questions Answered: Get to Know Co2 V Lift for Women",
+    faqs: [
+      {
+        question: "How is Co2 V Lift for Women specialized for intimate areas?",
+        answer:
+          "Co2 V Lift for Women is specially formulated with a gentler carboxytherapy mechanism and hypoallergenic ingredients to safely target intimate areas, restoring firmness, moisture, and youthful vitality.",
+      },
+      {
+        question: "Can I use it alongside other feminine care products?",
+        answer:
+          "Yes, Co2 V Lift for Women is compatible with other feminine care products and can be integrated into your existing intimate care routine for enhanced results.",
+      },
+      {
+        question: "Is it clinically tested?",
+        answer:
+          "Yes, Co2 V Lift for Women is clinically tested to ensure its safety and efficacy in intimate skincare.",
+      },
+      {
+        question: "How often should I use it?",
+        answer:
+          "For best results, it is recommended to use Co2 V Lift for Women once a week. Regular use maximizes the benefits, leading to sustained firmness, hydration, and youthfulness.",
+      },
+    ],
   },
   {
     name: "Bioserum Face Peel",
-    description: "Our Bioserum Face Peel removes dead skin cells, revealing fresh, radiant skin underneath.",
-    image: "/product/bioserum-face-peel.jpeg",
-    imageAlt: "Bioserum Face Peel",
     slug: "bioserum-face-peel",
-    headline: "Uncover Radiant Skin!",
-    subline: "Peel away imperfections. Glow like never before. Order now!",
-    link: "https://fake-link.com/bioserum-face-peel",
+    description:
+      "Unveil a renewed complexion with Bioserum Face Peel, a dermatologist-developed enzymatic exfoliation treatment. This non-abrasive peel is powered by a synergistic blend of natural enzymes and bioactives to gently dissolve dead skin cells, revealing a visibly brighter, smoother, and more even-toned skin.",
+    headline: "Transform Dull Skin into a Radiant Complexion with Enzymatic Exfoliation",
+    subline:
+      "Step up your skincare with Bioserum Face Peel. Eliminate dullness, dry patches, and minor blemishes to unveil a luminous, youthful skin.",
+    image: "/product/bioserum-face-peel.jpeg",
+    imageAlt: "Bioserum Face Peel Enzymatic Treatment",
     price: "$60/treatment",
+    link: "https://fake-link.com/bioserum-face-peel",
+    // programmatic SEO copy
+    blogHeadline:
+      "Unlock Radiant Skin with Bioserum Face Peel: Understand Enzymatic Exfoliation, Read Authentic User Testimonials, and Master the Art of Advanced Skincare.",
+    benefitsHeadline: "Discover the Multi-Faceted Benefits of Bioserum Face Peel",
+    benefits: [
+      {
+        emoji: "✨",
+        benefit: "Illuminate Your Complexion",
+        description:
+          "Packed with natural enzymes, Bioserum Face Peel works at a cellular level to remove dead skin cells and surface impurities, instantly brightening your complexion.",
+      },
+      {
+        emoji: "🛡",
+        benefit: "Barrier Repair",
+        description:
+          "Rich in bioactives, our peel supports skin’s natural barrier function, offering long-lasting hydration and protection against environmental damage.",
+      },
+      {
+        emoji: "🎯",
+        benefit: "Precision Exfoliation",
+        description:
+          "The enzymatic action is calibrated to target only dead skin cells, leaving healthy cells untouched. This results in effective yet gentle exfoliation.",
+      },
+      {
+        emoji: "🌿",
+        benefit: "Natural and Clean",
+        description:
+          "Formulated with ethically sourced, organic ingredients. Free from parabens, sulfates, and artificial fragrances, making it suitable even for sensitive skin.",
+      },
+    ],
+    faqHeadline: "Your Complete Guide to Bioserum Face Peel: FAQs Answered",
+    faqs: [
+      {
+        question: "Is a patch test necessary?",
+        answer:
+          "Although Bioserum Face Peel is formulated to be gentle, a patch test is advisable, particularly if you have sensitive or reactive skin.",
+      },
+      {
+        question: "How long should I leave the peel on?",
+        answer:
+          "Apply the peel and leave it on for 5-10 minutes for optimal results. Extended application may increase sensitivity.",
+      },
+      {
+        question: "Are there any immediate aftercare steps?",
+        answer:
+          "Post-application, avoid direct sunlight and use a broad-spectrum SPF to protect the newly exposed skin layers.",
+      },
+      {
+        question: "How does it compare to chemical peels?",
+        answer:
+          "Unlike traditional chemical peels, Bioserum Face Peel employs enzymatic action for a more controlled and less abrasive exfoliation, reducing the risk of irritation and downtime.",
+      },
+    ],
   },
   {
-    name: "Definage Pro Power Trio",
-    description: "Premium Definage Face Care treatment aims to defy aging and leave your skin looking timeless.",
+    name: "Definage Clinical Power Trio Pro",
+    slug: "definage-clinical-power-trio-pro",
+    description:
+      "Discover the epitome of skincare innovation with Definage Clinical Power Trio Pro. Developed by leading dermatologists, this groundbreaking treatment harnesses the power of bioactive peptides and natural botanicals to reverse aging at a cellular level. Erase fine lines, restore elasticity, and reveal a youthful radiance like never before.",
+    headline: "Unlock the Secret to Everlasting Youth with Clinical-Grade Anti-Aging",
+    subline:
+      "Integrate cutting-edge science into your skincare. Defy aging, rejuvenate your visage, and reclaim a youthful glow with Definage Clinical Power Trio Pro.",
     image: "/product/defenage-power-pro.png",
-    imageAlt: "Definage Face Care",
-    slug: "definage-face-care",
-    headline: "Defy Aging, Effortlessly!",
-    subline: "Turn back time with Definage. Look and feel young. Grab yours!",
-    link: "https://fake-link.com/definage-face-care",
+    imageAlt: "Definage Clinical Power Trio Pro Kit",
     price: "$370",
+    link: "https://fake-link.com/definage-clinical-power-trio-pro",
+    // programmatic SEO copy
+    blogHeadline:
+      "Decipher the Science of Age Reversal with Definage Clinical Power Trio Pro: Expert Articles, In-Depth Analysis, and User Reviews.",
+    benefitsHeadline: "Experience Holistic Anti-Aging: Key Benefits of Definage Clinical Power Trio Pro",
+    benefits: [
+      {
+        emoji: "⏳",
+        benefit: "Cellular Age Reversal",
+        description:
+          "Formulated with bioactive peptides that stimulate collagen production, reversing the aging process at a cellular level.",
+      },
+      {
+        emoji: "💧",
+        benefit: "24/7 Hydration",
+        description:
+          "Enriched with hyaluronic acid, the treatment offers round-the-clock hydration, leaving your skin plump and dewy.",
+      },
+      {
+        emoji: "🛡",
+        benefit: "Environmental Defense",
+        description:
+          "A potent blend of antioxidants neutralizes free radicals, offering robust protection against environmental aggressors.",
+      },
+      {
+        emoji: "🌱",
+        benefit: "Botanical Goodness",
+        description:
+          "Powered by a medley of organic botanical extracts, the treatment is as gentle as it is effective.",
+      },
+    ],
+    faqHeadline: "Navigate Your Path to Youthful Skin: Comprehensive FAQs on Definage Clinical Power Trio Pro",
+    faqs: [
+      {
+        question: "Is a patch test mandatory?",
+        answer:
+          "While our formula is hypoallergenic, a patch test is advised for individuals with sensitive skin or allergies.",
+      },
+      {
+        question: "What's the recommended usage?",
+        answer:
+          "For optimal results, use Definage Clinical Power Trio Pro as part of your nightly skincare routine. Follow the usage instructions included in the package.",
+      },
+      {
+        question: "Compatibility with other treatments?",
+        answer:
+          "The trio is compatible with most skincare products, but for a personalized regimen, consult with a certified dermatologist.",
+      },
+      {
+        question: "Ethical Standards?",
+        answer: "Our product is cruelty-free, vegan, and made with sustainably sourced ingredients.",
+      },
+    ],
   },
 ];

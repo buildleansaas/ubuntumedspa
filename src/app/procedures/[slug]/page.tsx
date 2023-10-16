@@ -6,11 +6,15 @@ import Link from "next/link";
 
 import { Badge } from "components/ui/badge";
 import { Button } from "components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "components/ui/accordion";
 
 import CtaFooter from "components/cta-footer";
 import StructuredData from "components/structured-data";
+import { twMerge } from "tailwind-merge";
+import CtaButtons from "components/cta-buttons";
+
+const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
 
 export default async function ProcedurePage({ params: { slug } }: { params: { slug: string } }) {
   const procedure = procedures.find((procedure) => procedure.slug === slug);
@@ -47,7 +51,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             <span className="font-bold">{procedure?.name}</span> Benefits
           </h2>
           <h2 className="text-xl lg:text-2xl mb-8 font-light">{procedure?.benefitsHeadline}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {procedure?.benefits.map(({ emoji, benefit, description }) => (
               <Card key={benefit} className="text-left bg-blue-500 text-white border-4 border-blue-400">
                 <CardHeader>
@@ -59,16 +63,51 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               </Card>
             ))}
           </div>
-          <div className="flex flex-col lg:flex-row lg:justify-center xl:items-center mt-12 space-x-4">
-            <Button className="bg-blue-500 hover:bg-blue-600">
-              <Link href="/consult">Book a Consultation</Link>
-            </Button>
-            {Boolean(articles.length) && (
-              <Button variant="secondary">
-                <Link href="#faqs">Frequently Asked Questions</Link>
-              </Button>
-            )}
+          <CtaButtons />
+        </div>
+
+        <div className="my-32 text-center max-w-7xl mx-auto" id="benefits">
+          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
+            How can{" "}
+            {["O Shot", "P Shot", "Vampire Face Lift", "Vampire Facial", "Vampire Breast Lift"].includes(
+              procedure?.name ?? ""
+            ) && "the "}
+            <span className="font-bold">{procedure?.name}</span> help me?
+          </h2>
+          <h2 className="text-xl lg:text-2xl mb-8 font-light text-justify">{procedure?.ailmentsHeadline}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {procedure?.ailments
+              ?.sort((a, b) => ailmentsSortOrder[a.tag] - ailmentsSortOrder[b.tag])
+              .map(({ title, tag, description, slug }) => (
+                <Card
+                  key={title}
+                  className={twMerge(
+                    "text-left border-4",
+                    tag === "common" && "bg-blue-500 border-blue-400 text-white",
+                    tag === "uncommon" && "bg-purple-500 border-purple-400 text-white",
+                    tag === "experimental" && "bg-rose-500 border-rose-400 text-white"
+                  )}
+                >
+                  <CardHeader>
+                    <CardTitle className="flex items-center justify-between">
+                      {title}{" "}
+                      <Badge>
+                        {tag === "common" && "Commonly Treated with PRP"}
+                        {tag === "uncommon" && "Uncommonly Treated with PRP"}
+                        {tag === "experimental" && "Ask About our Clinical Trials"}
+                      </Badge>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>{description}</CardContent>
+                  <CardFooter>
+                    <Button>
+                      <Link href={`${procedure?.name}/${slug}`}>Learn More</Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              ))}
           </div>
+          <CtaButtons />
         </div>
 
         <div className="my-32 text-center max-w-5xl mx-auto" id="faqs">
@@ -76,7 +115,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             Frequently Asked Questions about <span className="font-bold">{procedure?.name}</span>
           </h2>
           <h2 className="text-xl lg:text-2xl mb-8 font-light">{procedure?.faqHeadline}</h2>
-          <Accordion type="single" collapsible className="text-left">
+          <Accordion type="single" collapsible className="text-left mb-12">
             {procedure?.faqs.map(({ question, answer }) => (
               <AccordionItem key={question} value={question}>
                 <AccordionTrigger>{question}</AccordionTrigger>
@@ -84,19 +123,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               </AccordionItem>
             ))}
           </Accordion>
-          <div className="flex flex-col lg:flex-row lg:justify-center xl:items-center mt-12 space-x-4">
-            {Boolean(articles.length) && (
-              <>
-                <Button className="bg-blue-500 hover:bg-blue-600">
-                  <Link href="/consult">Book a Consultation</Link>
-                </Button>
-
-                <Button variant="secondary">
-                  <Link href="#posts">Learn More</Link>
-                </Button>
-              </>
-            )}
-          </div>
+          <CtaButtons />
         </div>
 
         {Boolean(articles.length) && (
