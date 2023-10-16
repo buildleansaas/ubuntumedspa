@@ -1,10 +1,16 @@
-import { ArticleHeader } from "components/article-header";
+import ArticleHeader from "components/article-header";
 import { notFound } from "next/navigation";
-import CtaFooter from "components/cta-footer";
+import StructuredData from "components/structured-data";
+import BlogCTA from "components/cta-footer";
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+const getPostData = async ({ slug }: { slug: string }) => {
+  const { default: Content, metadata } = await import(`markdown/${slug}.mdx`);
+  return { Content, metadata };
+};
+
+export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
   try {
-    const { metadata } = await import(`markdown/${params.slug}.mdx`);
+    const { metadata } = await getPostData(params);
 
     return {
       title: metadata.title,
@@ -21,7 +27,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   } catch {
     return {};
   }
-}
+};
 
 export default async function ArticlePage({
   params,
@@ -31,16 +37,19 @@ export default async function ArticlePage({
   };
 }) {
   try {
-    const { default: Content, metadata } = await import(`markdown/${params.slug}.mdx`);
+    const { Content, metadata } = await getPostData(params);
 
     return (
-      <div className="mx-auto max-w-3xl text-base leading-7 text-white">
+      <div className="mx-auto max-w-5xl text-base leading-7 text-white text-left">
+        <StructuredData type="Article" {...{ ...metadata, headline: metadata.title }} />
+        {metadata?.faqs && <StructuredData type="FAQ" {...{ ...metadata, headline: metadata.title }} />}
         <ArticleHeader metadata={metadata} />
+        <BlogCTA />
         <Content />
-        <CtaFooter />
+        <BlogCTA />
       </div>
     );
-  } catch {
+  } catch (error: any) {
     notFound();
   }
 }

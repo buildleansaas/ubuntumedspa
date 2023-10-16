@@ -1,44 +1,39 @@
-"use client";
+import BlogImage from "./blog-image";
+import CategoryTag from "./category-tag";
+import DateTag from "./date-tag";
 
-import { Heading1, Paragraph } from "mdx-components";
-import Image from "next/image";
-
-export type MetadataType = {
+export type Metadata = {
   title: string;
   description: string;
   slug: string;
-  date: string;
+  datePublished: string;
+  dateModified: string;
   tags: string[];
   image: string;
+  imageAlt: string;
+  faqs: { question: string; answer: string }[];
 };
 
-export function ArticleHeader({ metadata }: { metadata: MetadataType }) {
+function ArticleHeader({ metadata }: { metadata: Metadata }) {
   return (
-    <>
-      <Heading1>{metadata.title}</Heading1>
+    <div className="mx-auto max-w-5xl">
+      <div className="max-w-5xl mx-auto">
+        <h1 className="lg:text-center text-white text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight my-8 sm:my-16 lg:-mx-24">
+          {metadata.title}
+        </h1>
+      </div>
       <div className="flex flex-wrap items-center mb-4">
-        <time
-          dateTime={new Date(metadata.date).toISOString()}
-          className="w-full sm:w-auto text-sm md:text-base text-white mr-6 mb-2"
-        >
-          {new Date(metadata.date).toLocaleDateString("en-GB", {
-            dateStyle: "long",
-          })}
-        </time>
+        <DateTag date={metadata.datePublished} />
         {metadata.tags.map((tag) => (
-          <div
-            key={tag}
-            className="rounded-lg px-2 py-1 bg-gray-100 text-gray-700 text-sm md:text-base -ml-1 mr-3 mb-2"
-          >
-            {tag}
-          </div>
+          <CategoryTag tag={tag} key={tag} />
         ))}
       </div>
-      <div className="relative w-full rounded-3xl aspect-[16/9] sm:aspect-[2/1] mb-8 sm:mb-16 bg-gray-50">
-        <Image src={metadata.image} alt="" fill className="object-cover rounded-3xl" />
-        <div className="absolute inset-0 rounded-3xl shadow-inner bg-gradient-to-br from-white/20" />
-      </div>
-      <Paragraph>{metadata.description}</Paragraph>
-    </>
+      <BlogImage src={metadata.image} alt={metadata.imageAlt ?? ""} />
+      <h2 className="text-white text-4xl font-bold tracking-tight my-12 leading-10 text-center">
+        {metadata.description}
+      </h2>
+    </div>
   );
 }
+
+export default ArticleHeader;

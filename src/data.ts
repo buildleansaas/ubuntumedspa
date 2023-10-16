@@ -1985,7 +1985,7 @@ export const products = [
     image: "/product/c02-lift-pro.webp",
     imageAlt: "Co2 Lift Carboxytherapy Gel",
     price: "$100",
-    link: "https://fake-link.com/co2-lift",
+    link: "https://buy.stripe.com/00g6s0dZ48HGdQQ9AC",
     // programmatic SEO copy
     blogHeadline:
       "Unlock the Secret to Ageless, Flawless Skin with Co2 Lift: Articles, How-tos, and Scientific Insights Await.",
@@ -2050,7 +2050,7 @@ export const products = [
     image: "/product/c02-v-lift.webp",
     imageAlt: "Co2 V Lift for Women Intimate Skin Care",
     price: "$500",
-    link: "https://fake-link.com/co2-v-lift-women",
+    link: "https://buy.stripe.com/3cs8A87AG8HG6oo4gk",
     // programmatic SEO copy
     blogHeadline:
       "Elevate Intimate Self-Care with Co2 V Lift for Women: Learn the Science, Read Testimonials, and Explore Expert Insights.",
@@ -2105,72 +2105,72 @@ export const products = [
       },
     ],
   },
-  {
-    name: "Bioserum Face Peel",
-    slug: "bioserum-face-peel",
-    description:
-      "Unveil a renewed complexion with Bioserum Face Peel, a dermatologist-developed enzymatic exfoliation treatment. This non-abrasive peel is powered by a synergistic blend of natural enzymes and bioactives to gently dissolve dead skin cells, revealing a visibly brighter, smoother, and more even-toned skin.",
-    headline: "Transform Dull Skin into a Radiant Complexion with Enzymatic Exfoliation",
-    subline:
-      "Step up your skincare with Bioserum Face Peel. Eliminate dullness, dry patches, and minor blemishes to unveil a luminous, youthful skin.",
-    image: "/product/bioserum-face-peel.jpeg",
-    imageAlt: "Bioserum Face Peel Enzymatic Treatment",
-    price: "$60/treatment",
-    link: "https://fake-link.com/bioserum-face-peel",
-    // programmatic SEO copy
-    blogHeadline:
-      "Unlock Radiant Skin with Bioserum Face Peel: Understand Enzymatic Exfoliation, Read Authentic User Testimonials, and Master the Art of Advanced Skincare.",
-    benefitsHeadline: "Discover the Multi-Faceted Benefits of Bioserum Face Peel",
-    benefits: [
-      {
-        emoji: "✨",
-        benefit: "Illuminate Your Complexion",
-        description:
-          "Packed with natural enzymes, Bioserum Face Peel works at a cellular level to remove dead skin cells and surface impurities, instantly brightening your complexion.",
-      },
-      {
-        emoji: "🛡",
-        benefit: "Barrier Repair",
-        description:
-          "Rich in bioactives, our peel supports skin’s natural barrier function, offering long-lasting hydration and protection against environmental damage.",
-      },
-      {
-        emoji: "🎯",
-        benefit: "Precision Exfoliation",
-        description:
-          "The enzymatic action is calibrated to target only dead skin cells, leaving healthy cells untouched. This results in effective yet gentle exfoliation.",
-      },
-      {
-        emoji: "🌿",
-        benefit: "Natural and Clean",
-        description:
-          "Formulated with ethically sourced, organic ingredients. Free from parabens, sulfates, and artificial fragrances, making it suitable even for sensitive skin.",
-      },
-    ],
-    faqHeadline: "Your Complete Guide to Bioserum Face Peel: FAQs Answered",
-    faqs: [
-      {
-        question: "Is a patch test necessary?",
-        answer:
-          "Although Bioserum Face Peel is formulated to be gentle, a patch test is advisable, particularly if you have sensitive or reactive skin.",
-      },
-      {
-        question: "How long should I leave the peel on?",
-        answer:
-          "Apply the peel and leave it on for 5-10 minutes for optimal results. Extended application may increase sensitivity.",
-      },
-      {
-        question: "Are there any immediate aftercare steps?",
-        answer:
-          "Post-application, avoid direct sunlight and use a broad-spectrum SPF to protect the newly exposed skin layers.",
-      },
-      {
-        question: "How does it compare to chemical peels?",
-        answer:
-          "Unlike traditional chemical peels, Bioserum Face Peel employs enzymatic action for a more controlled and less abrasive exfoliation, reducing the risk of irritation and downtime.",
-      },
-    ],
-  },
+  // {
+  //   name: "Bioserum Face Peel",
+  //   slug: "bioserum-face-peel",
+  //   description:
+  //     "Unveil a renewed complexion with Bioserum Face Peel, a dermatologist-developed enzymatic exfoliation treatment. This non-abrasive peel is powered by a synergistic blend of natural enzymes and bioactives to gently dissolve dead skin cells, revealing a visibly brighter, smoother, and more even-toned skin.",
+  //   headline: "Transform Dull Skin into a Radiant Complexion with Enzymatic Exfoliation",
+  //   subline:
+  //     "Step up your skincare with Bioserum Face Peel. Eliminate dullness, dry patches, and minor blemishes to unveil a luminous, youthful skin.",
+  //   image: "/product/bioserum-face-peel.jpeg",
+  //   imageAlt: "Bioserum Face Peel Enzymatic Treatment",
+  //   price: "$60/treatment",
+  //   link: "https://fake-link.com/bioserum-face-peel",
+  //   // programmatic SEO copy
+  //   blogHeadline:
+  //     "Unlock Radiant Skin with Bioserum Face Peel: Understand Enzymatic Exfoliation, Read Authentic User Testimonials, and Master the Art of Advanced Skincare.",
+  //   benefitsHeadline: "Discover the Multi-Faceted Benefits of Bioserum Face Peel",
+  //   benefits: [
+  //     {
+  //       emoji: "✨",
+  //       benefit: "Illuminate Your Complexion",
+  //       description:
+  //         "Packed with natural enzymes, Bioserum Face Peel works at a cellular level to remove dead skin cells and surface impurities, instantly brightening your complexion.",
+  //     },
+  //     {
+  //       emoji: "🛡",
+  //       benefit: "Barrier Repair",
+  //       description:
+  //         "Rich in bioactives, our peel supports skin’s natural barrier function, offering long-lasting hydration and protection against environmental damage.",
+  //     },
+  //     {
+  //       emoji: "🎯",
+  //       benefit: "Precision Exfoliation",
+  //       description:
+  //         "The enzymatic action is calibrated to target only dead skin cells, leaving healthy cells untouched. This results in effective yet gentle exfoliation.",
+  //     },
+  //     {
+  //       emoji: "🌿",
+  //       benefit: "Natural and Clean",
+  //       description:
+  //         "Formulated with ethically sourced, organic ingredients. Free from parabens, sulfates, and artificial fragrances, making it suitable even for sensitive skin.",
+  //     },
+  //   ],
+  //   faqHeadline: "Your Complete Guide to Bioserum Face Peel: FAQs Answered",
+  //   faqs: [
+  //     {
+  //       question: "Is a patch test necessary?",
+  //       answer:
+  //         "Although Bioserum Face Peel is formulated to be gentle, a patch test is advisable, particularly if you have sensitive or reactive skin.",
+  //     },
+  //     {
+  //       question: "How long should I leave the peel on?",
+  //       answer:
+  //         "Apply the peel and leave it on for 5-10 minutes for optimal results. Extended application may increase sensitivity.",
+  //     },
+  //     {
+  //       question: "Are there any immediate aftercare steps?",
+  //       answer:
+  //         "Post-application, avoid direct sunlight and use a broad-spectrum SPF to protect the newly exposed skin layers.",
+  //     },
+  //     {
+  //       question: "How does it compare to chemical peels?",
+  //       answer:
+  //         "Unlike traditional chemical peels, Bioserum Face Peel employs enzymatic action for a more controlled and less abrasive exfoliation, reducing the risk of irritation and downtime.",
+  //     },
+  //   ],
+  // },
   {
     name: "Definage Clinical Power Trio Pro",
     slug: "definage-clinical-power-trio-pro",
@@ -2179,10 +2179,10 @@ export const products = [
     headline: "Unlock the Secret to Everlasting Youth with Clinical-Grade Anti-Aging",
     subline:
       "Integrate cutting-edge science into your skincare. Defy aging, rejuvenate your visage, and reclaim a youthful glow with Definage Clinical Power Trio Pro.",
-    image: "/product/defenage-power-pro.png",
+    image: "/product/defenage-power-pro.jpg",
     imageAlt: "Definage Clinical Power Trio Pro Kit",
     price: "$370",
-    link: "https://fake-link.com/definage-clinical-power-trio-pro",
+    link: "https://buy.stripe.com/aEU4jSf388HG000fZ1",
     // programmatic SEO copy
     blogHeadline:
       "Decipher the Science of Age Reversal with Definage Clinical Power Trio Pro: Expert Articles, In-Depth Analysis, and User Reviews.",
