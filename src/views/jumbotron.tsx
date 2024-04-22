@@ -23,8 +23,8 @@ export default function Jumbotron() {
         Rejuvinate Your Life
       </h2>
       <p className="text-white text-xl lg:text-2xl mb-8 max-w-2xl mx-auto">
-        Experience the amazing effects of <strong>Vampire Services</strong> using <strong>Your Own Blood</strong> to
-        enjoy <strong>Natural Healing</strong>, for <strong>Joints</strong>, <strong>Aesthetics</strong>,{" "}
+        Experience the amazing effects of <strong>PRP Services</strong> using <strong>Your Own Blood</strong> to enjoy{" "}
+        <strong>Natural Healing</strong>, for <strong>Joints</strong>, <strong>Aesthetics</strong>,{" "}
         <strong>Sexual Health</strong> and overall <strong>Wellness</strong>.
       </p>
       <div className="mb-32">

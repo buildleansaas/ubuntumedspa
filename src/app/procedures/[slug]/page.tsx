@@ -1,4 +1,3 @@
-import { MetadataType } from "components/article-header";
 import { articles as slugs } from "app/sitemap";
 import { procedures } from "data";
 import Image from "next/image";
@@ -20,7 +19,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
   const procedure = procedures.find((procedure) => procedure.slug === slug);
 
   const articles = (await Promise.all(slugs?.map((slug) => import(`markdown/${slug}.mdx`))))
-    .map<MetadataType>(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
+    .map(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
     .filter(({ tags }) => tags?.includes(procedure?.name ?? ""))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
@@ -69,9 +68,13 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
         <div className="my-32 text-center max-w-7xl mx-auto" id="benefits">
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
             How can{" "}
-            {["O Shot", "P Shot", "Vampire Face Lift", "Vampire Facial", "Vampire Breast Lift"].includes(
-              procedure?.name ?? ""
-            ) && "the "}
+            {[
+              "Feminine Intimacy PRP Protocols",
+              "Male Intimacy PRP Protocols",
+              "PRP Face Lift",
+              "PRP Facial",
+              "PRP Breast Lift",
+            ].includes(procedure?.name ?? "") && "the "}
             <span className="font-bold">{procedure?.name}</span> help me?
           </h2>
           <h2 className="text-xl lg:text-2xl mb-8 font-light text-justify">{procedure?.ailmentsHeadline}</h2>

@@ -13,7 +13,7 @@ export const DEFAULT_FORM_SUBMISSION =
         name: "Austin Witherow",
         phone: "8042442395",
         comments: "I need help I have a tiny penis.",
-        interests: ["P Shot"],
+        interests: ["Male Intimacy PRP Protocols"],
         referral: "Jenny Coleman",
       };
 
@@ -40,12 +40,12 @@ export const FORM_INPUTS = [
     label: "Interests",
     type: "checkbox",
     options: [
-      "O Shot",
-      "P Shot",
+      "Feminine Intimacy PRP Protocols",
+      "Male Intimacy PRP Protocols",
       "Breast Lift",
       "Hair Restoration",
-      "Vampire Facial",
-      "Vampire Face Lift",
+      "PRP Facial",
+      "PRP Face Lift",
       "Joint Restoration",
       "Xeomin",
       "Filler",
@@ -70,42 +70,44 @@ export const FORM_INPUTS = [
 
 export const procedures = [
   {
-    name: "O Shot",
-    slug: "o-shot",
+    name: "Feminine Intimacy PRP Protocols",
+    slug: "female-intimacy-prp-protocols",
     description:
-      "The O Shot is a groundbreaking natural treatment designed to enhance female sexual health and wellness. It boasts a range of benefits that can help women of all ages and backgrounds improve their sexual function and enjoy their bodies to the fullest. The O-Shot can help to reverse urinary incontinence, boost libido, improve natural lubrication, and enhance overall sexual function. It can also reverse the symptoms of menopause and relieve symptoms associated with sexual dysfunction. Ultimately, the O Shot has helped many women achieve a better quality of life and experience a more fulfilling sex life.",
+      "The Feminine Intimacy PRP Protocols is a groundbreaking natural treatment designed to enhance female sexual health and wellness. It boasts a range of benefits that can help women of all ages and backgrounds improve their sexual function and enjoy their bodies to the fullest. The O-Shot can help to reverse urinary incontinence, boost libido, improve natural lubrication, and enhance overall sexual function. It can also reverse the symptoms of menopause and relieve symptoms associated with sexual dysfunction. Ultimately, the Feminine Intimacy PRP Protocols has helped many women achieve a better quality of life and experience a more fulfilling sex life.",
     headline: "Revitalize Your Feminine Intimacy: Natural, Effective, Life-Changing!",
     subline:
-      "The O Shot utilizes Platelet-Rich Plasma (PRP) therapy derived from your own blood, working naturally to enhance female sexual health. With this, you can expect improved sexual function, relief from urinary incontinence and menopause symptoms, and an overall more fulfilling sex life.",
+      "The Feminine Intimacy PRP Protocols utilizes Platelet-Rich Plasma (PRP) therapy derived from your own blood, working naturally to enhance female sexual health. With this, you can expect improved sexual function, relief from urinary incontinence and menopause symptoms, and an overall more fulfilling sex life.",
     image: "/procedure/grapefruit.jpg",
     price: "$1,200.00",
     // programmatic SEO copy
     blogHeadline:
-      "Struggling with female sexual health issues? Dive into our O Shot articles and discover groundbreaking insights and solutions. From understanding the O Shot process to exploring real-life success stories, our blog offers answers and guidance you might be seeking.",
+      "Struggling with female sexual health issues? Dive into our Feminine Intimacy PRP Protocols articles and discover groundbreaking insights and solutions. From understanding the Feminine Intimacy PRP Protocols process to exploring real-life success stories, our blog offers answers and guidance you might be seeking.",
     benefitsHeadline:
-      "Experience renewed confidence with enhanced female sexual health. From reversing urinary incontinence to boosting libido, the O Shot paves the way for a revitalized intimate connection. Rediscover pleasure and reclaim your body's vitality.",
+      "Experience renewed confidence with enhanced female sexual health. From reversing urinary incontinence to boosting libido, the Feminine Intimacy PRP Protocols paves the way for a revitalized intimate connection. Rediscover pleasure and reclaim your body's vitality.",
     benefits: [
       {
         emoji: "💪",
         benefit: "Enhanced Sexual Health",
         description:
-          "The O Shot improves overall female sexual health by enhancing libido, lubrication, and sexual function.",
+          "The Feminine Intimacy PRP Protocols improves overall female sexual health by enhancing libido, lubrication, and sexual function.",
       },
       {
         emoji: "🌊",
         benefit: "Relief from Urinary Incontinence",
-        description: "Many women have found relief from the distressing issue of urinary incontinence with the O Shot.",
+        description:
+          "Many women have found relief from the distressing issue of urinary incontinence with the Feminine Intimacy PRP Protocols.",
       },
       {
         emoji: "🌡",
         benefit: "Alleviation of Menopause Symptoms",
         description:
-          "The O Shot helps to reverse some symptoms of menopause, providing women with a more comfortable and balanced life.",
+          "The Feminine Intimacy PRP Protocols helps to reverse some symptoms of menopause, providing women with a more comfortable and balanced life.",
       },
       {
         emoji: "❤️",
         benefit: "Boosted Intimacy",
-        description: "The O Shot brings about enhanced sensitivity, leading to a more fulfilling intimate life.",
+        description:
+          "The Feminine Intimacy PRP Protocols brings about enhanced sensitivity, leading to a more fulfilling intimate life.",
       },
     ],
     ailmentsHeadline:
@@ -116,7 +118,7 @@ export const procedures = [
         description:
           "Are you tired of uncomfortable, dry sensations ruining your intimate moments? Discover the rejuvenating power of the O-Shot to restore natural lubrication and improve your sexual experience.",
         blog_post_title: "Revitalize Your Sexual Health with O-Shot: The Ultimate Cure for Vaginal Dryness",
-        blog_post_slug: "revitalize-sexual-health-o-shot-ultimate-cure-vaginal-dryness",
+        blog_post_slug: "revitalize-sexual-health-female-intimacy-prp-protocols-ultimate-cure-vaginal-dryness",
         slug: "vaginal-dryness",
         tag: "common",
       },
@@ -125,7 +127,7 @@ export const procedures = [
         description:
           "Struggling with sexual performance or satisfaction? Unlock your full sexual potential with the O-Shot. Experience increased arousal, sensitivity, and improved orgasms.",
         blog_post_title: "Elevate Your Sex Life: How the O-Shot Tackles Sexual Dysfunction",
-        blog_post_slug: "elevate-sex-life-how-o-shot-tackles-sexual-dysfunction",
+        blog_post_slug: "elevate-sex-life-how-female-intimacy-prp-protocols-tackles-sexual-dysfunction",
         slug: "sexual-dysfunction",
         tag: "common",
       },
@@ -134,7 +136,7 @@ export const procedures = [
         description:
           "Is a low sex drive affecting your relationship and self-esteem? Bring back the spark with the O-Shot, a non-invasive treatment that amplifies sexual desire and enjoyment.",
         blog_post_title: "Reignite Your Sexual Desire: The O-Shot Solution for Low Libido",
-        blog_post_slug: "reignite-your-sexual-desire-o-shot-solution-low-libido",
+        blog_post_slug: "reignite-your-sexual-desire-female-intimacy-prp-protocols-solution-low-libido",
         slug: "low-libido",
         tag: "common",
       },
@@ -143,7 +145,7 @@ export const procedures = [
         description:
           "End the cycle of painful intercourse with the O-Shot. Relieve discomfort, improve your relationship, and rediscover the joy of sexual intimacy.",
         blog_post_title: "How the O-Shot is Changing the Game for Women with Dyspareunia",
-        blog_post_slug: "how-o-shot-changing-game-women-with-dyspareunia",
+        blog_post_slug: "how-female-intimacy-prp-protocols-changing-game-women-with-dyspareunia",
         slug: "dyspareunia",
         tag: "common",
       },
@@ -152,7 +154,7 @@ export const procedures = [
         description:
           "Regain control over your life and bid goodbye to urinary incontinence. See how the O-Shot offers a non-surgical way to restore bladder function.",
         blog_post_title: "Stop Letting Incontinence Control You: O-Shot to the Rescue",
-        blog_post_slug: "stop-letting-incontinence-control-you-o-shot-to-rescue",
+        blog_post_slug: "stop-letting-incontinence-control-you-female-intimacy-prp-protocols-to-rescue",
         slug: "urinary-incontinence",
         tag: "common",
       },
@@ -161,7 +163,7 @@ export const procedures = [
         description:
           "Break free from the irritation and discomfort caused by lichen sclerosus. Discover how the O-Shot offers effective, natural relief.",
         blog_post_title: "Tackle Lichen Sclerosus Head-On with the O-Shot",
-        blog_post_slug: "tackle-lichen-sclerosus-head-on-with-o-shot",
+        blog_post_slug: "tackle-lichen-sclerosus-head-on-with-female-intimacy-prp-protocols",
         slug: "lichen-sclerosus",
         tag: "uncommon",
       },
@@ -170,7 +172,7 @@ export const procedures = [
         description:
           "Say goodbye to unsatisfying sexual experiences. The O-Shot enhances your sexual response to make orgasms easier to achieve.",
         blog_post_title: "Unleash Your Orgasmic Potential with the O-Shot",
-        blog_post_slug: "unleash-your-orgasmic-potential-with-o-shot",
+        blog_post_slug: "unleash-your-orgasmic-potential-with-female-intimacy-prp-protocols",
         slug: "anorgasmia",
         tag: "common",
       },
@@ -179,7 +181,7 @@ export const procedures = [
         description:
           "Revitalize your sexual life by overcoming genital arousal disorder with the O-Shot. Enjoy increased sensitivity and a renewed sense of arousal.",
         blog_post_title: "Reclaim Your Sexuality: Overcoming Genital Arousal Disorder with the O-Shot",
-        blog_post_slug: "reclaim-your-sexuality-overcoming-genital-arousal-disorder-with-o-shot",
+        blog_post_slug: "reclaim-your-sexuality-overcoming-genital-arousal-disorder-with-female-intimacy-prp-protocols",
         slug: "genital-arousal-disorder",
         tag: "experimental",
       },
@@ -188,7 +190,7 @@ export const procedures = [
         description:
           "Free yourself from the shackles of chronic pelvic pain. Explore how the O-Shot can help you regain comfort and improve your quality of life.",
         blog_post_title: "End Chronic Pelvic Pain for Good: The O-Shot Solution",
-        blog_post_slug: "end-chronic-pelvic-pain-good-o-shot-solution",
+        blog_post_slug: "end-chronic-pelvic-pain-good-female-intimacy-prp-protocols-solution",
         slug: "chronic-pelvic-pain",
         tag: "uncommon",
       },
@@ -197,7 +199,7 @@ export const procedures = [
         description:
           "Are involuntary muscle contractions causing you pain and affecting intimacy? Discover the potential of the O-Shot in relieving vaginismus.",
         blog_post_title: "A New Horizon in Vaginismus Treatment: The Role of the O-Shot",
-        blog_post_slug: "new-horizon-in-vaginismus-treatment-role-of-o-shot",
+        blog_post_slug: "new-horizon-in-vaginismus-treatment-role-of-female-intimacy-prp-protocols",
         slug: "vaginismus",
         tag: "uncommon",
       },
@@ -206,7 +208,7 @@ export const procedures = [
         description:
           "Restore the youthfulness and sensitivity of your clitoris with the O-Shot. Regain your sexual responsiveness and spice up your intimate life.",
         blog_post_title: "Turn Back Time: Combating Clitoral Atrophy with the O-Shot",
-        blog_post_slug: "turn-back-time-combating-clitoral-atrophy-with-o-shot",
+        blog_post_slug: "turn-back-time-combating-clitoral-atrophy-with-female-intimacy-prp-protocols",
         slug: "clitoral-atrophy",
         tag: "uncommon",
       },
@@ -215,7 +217,7 @@ export const procedures = [
         description:
           "Tired of dryness, itching, or burning? O-Shot revitalizes vulvar tissue for improved comfort and heightened sexual pleasure.",
         blog_post_title: "Redefining Comfort: The O-Shot Solution for Vulvar Atrophy",
-        blog_post_slug: "redefining-comfort-o-shot-solution-for-vulvar-atrophy",
+        blog_post_slug: "redefining-comfort-female-intimacy-prp-protocols-solution-for-vulvar-atrophy",
         slug: "vulvar-atrophy",
         tag: "uncommon",
       },
@@ -224,7 +226,7 @@ export const procedures = [
         description:
           "Say goodbye to bladder pain and discomfort. Discover how the O-Shot could be the solution you've been looking for.",
         blog_post_title: "Breaking Free from Interstitial Cystitis: A New Path with the O-Shot",
-        blog_post_slug: "breaking-free-from-interstitial-cystitis-new-path-with-o-shot",
+        blog_post_slug: "breaking-free-from-interstitial-cystitis-new-path-with-female-intimacy-prp-protocols",
         slug: "interstitial-cystitis",
         tag: "experimental",
       },
@@ -233,7 +235,7 @@ export const procedures = [
         description:
           "Don't let pelvic floor issues hold you back. Learn how the O-Shot can strengthen your pelvic muscles and restore functionality.",
         blog_post_title: "Revolutionizing Pelvic Floor Health with the O-Shot",
-        blog_post_slug: "revolutionizing-pelvic-floor-health-with-o-shot",
+        blog_post_slug: "revolutionizing-pelvic-floor-health-with-female-intimacy-prp-protocols",
         slug: "pelvic-floor-dysfunction",
         tag: "uncommon",
       },
@@ -242,7 +244,7 @@ export const procedures = [
         description:
           "End the relentless vulvar pain with the natural healing power of the O-Shot. Reclaim your comfort and your life.",
         blog_post_title: "The O-Shot: A Breakthrough in Treating Vulvodynia",
-        blog_post_slug: "o-shot-breakthrough-in-treating-vulvodynia",
+        blog_post_slug: "female-intimacy-prp-protocols-breakthrough-in-treating-vulvodynia",
         slug: "vulvodynia",
         tag: "uncommon",
       },
@@ -250,7 +252,7 @@ export const procedures = [
         title: "Post-Menopausal Symptoms",
         description: "Don't let post-menopausal changes steal your joy. Rejuvenate your sexual health with the O-Shot.",
         blog_post_title: "Beyond Hormones: How the O-Shot Helps Post-Menopausal Women",
-        blog_post_slug: "beyond-hormones-how-o-shot-helps-post-menopausal-women",
+        blog_post_slug: "beyond-hormones-how-female-intimacy-prp-protocols-helps-post-menopausal-women",
         slug: "post-menopausal-symptoms",
         tag: "common",
       },
@@ -259,7 +261,7 @@ export const procedures = [
         description:
           "Childbirth or surgery left you with scar tissue that's affecting your sexual health? Learn how the O-Shot can help.",
         blog_post_title: "Eliminating Scar Tissue: Your New Ally in the O-Shot",
-        blog_post_slug: "eliminating-scar-tissue-your-new-ally-in-o-shot",
+        blog_post_slug: "eliminating-scar-tissue-your-new-ally-in-female-intimacy-prp-protocols",
         slug: "scar-tissue",
         tag: "uncommon",
       },
@@ -268,7 +270,7 @@ export const procedures = [
         description:
           "Enhance the appearance and feel of your vulvar and vaginal areas with the O-Shot for a confidence boost.",
         blog_post_title: "Upgrade Your Intimate Skin Texture and Tone with the O-Shot",
-        blog_post_slug: "upgrade-your-intimate-skin-texture-and-tone-with-o-shot",
+        blog_post_slug: "upgrade-your-intimate-skin-texture-and-tone-with-female-intimacy-prp-protocols",
         slug: "skin-texture-tone",
         tag: "experimental",
       },
@@ -276,7 +278,7 @@ export const procedures = [
         title: "Vaginal Lubrication",
         description: "Improve natural lubrication and say goodbye to discomfort during intercourse with the O-Shot.",
         blog_post_title: "Unlock Natural Lubrication: How the O-Shot Can Help",
-        blog_post_slug: "unlock-natural-lubrication-how-o-shot-can-help",
+        blog_post_slug: "unlock-natural-lubrication-how-female-intimacy-prp-protocols-can-help",
         slug: "vaginal-lubrication",
         tag: "common",
       },
@@ -285,21 +287,21 @@ export const procedures = [
         description:
           "Looking to amplify your sexual sensations? The O-Shot offers a path to increased sensitivity and pleasure.",
         blog_post_title: "Awaken Your Senses: How the O-Shot Boosts Sexual Sensation",
-        blog_post_slug: "awaken-your-senses-how-o-shot-boosts-sexual-sensation",
+        blog_post_slug: "awaken-your-senses-how-female-intimacy-prp-protocols-boosts-sexual-sensation",
         slug: "sexual-sensation",
         tag: "common",
       },
     ],
     faqHeadline:
-      "Experience a breakthrough in female sexual health with the O Shot. Designed to invigorate your intimate experiences, it's natural and revolutionary.",
+      "Experience a breakthrough in female sexual health with the Feminine Intimacy PRP Protocols. Designed to invigorate your intimate experiences, it's natural and revolutionary.",
     faqs: [
       {
-        question: "What is the primary purpose of the O Shot?",
+        question: "What is the primary purpose of the Feminine Intimacy PRP Protocols?",
         answer:
-          "The O Shot is designed to enhance female sexual health and wellness, improving aspects like libido, natural lubrication, and overall sexual function. It also helps in reversing urinary incontinence and symptoms of menopause.",
+          "The Feminine Intimacy PRP Protocols is designed to enhance female sexual health and wellness, improving aspects like libido, natural lubrication, and overall sexual function. It also helps in reversing urinary incontinence and symptoms of menopause.",
       },
       {
-        question: "Is the O Shot procedure painful?",
+        question: "Is the Feminine Intimacy PRP Protocols procedure painful?",
         answer:
           "While individual experiences may vary, most patients report minimal discomfort. A topical numbing cream is often applied before the procedure to minimize any potential pain.",
       },
@@ -311,28 +313,28 @@ export const procedures = [
       {
         question: "Are there any side effects?",
         answer:
-          "The O Shot is a natural procedure, using your own blood's platelet-rich plasma (PRP). Thus, the risk of allergic reactions or side effects is minimal. However, as with any injection, there may be temporary redness, swelling, or bruising.",
+          "The Feminine Intimacy PRP Protocols is a natural procedure, using your own blood's platelet-rich plasma (PRP). Thus, the risk of allergic reactions or side effects is minimal. However, as with any injection, there may be temporary redness, swelling, or bruising.",
       },
       {
-        question: "How long does the effect of the O Shot last?",
+        question: "How long does the effect of the Feminine Intimacy PRP Protocols last?",
         answer:
-          "While individual experiences vary, many women enjoy the benefits of the O Shot for a year or longer. Periodic touch-up treatments can help maintain results.",
+          "While individual experiences vary, many women enjoy the benefits of the Feminine Intimacy PRP Protocols for a year or longer. Periodic touch-up treatments can help maintain results.",
       },
     ],
   },
   {
-    name: "P Shot",
-    slug: "p-shot",
+    name: "Male Intimacy PRP Protocols",
+    slug: "male-intimacy-prp-protocols",
     description:
       "The P-Shot is the latest innovation in male sexual health and wellness. This natural and non-invasive treatment is designed to rejuvenate the penis and enhance overall sexual function. The P-Shot can help to improve the frequency and quality of erections, as well as boost libido and sexual stamina. It is also an effective treatment for reversing the symptoms of Peyronie's disease. By utilizing the healing properties of Platelet-Rich Plasma (PRP) therapy, the P-Shot can help to increase blood flow, revive and enhance sensitivity, as well as improve male sexual function and overall satisfaction. If you're looking for a natural and effective way to enhance your sexual health and function, the P-Shot may be the solution you've been waiting for.",
     headline: "Rediscover Male Virility: Boost Your Performance and Confidence!",
     subline:
-      "The P Shot is a natural and non-invasive treatment using PRP therapy to rejuvenate the penis and enhance sexual function. It aids in improving erection quality, boosting libido and reversing symptoms of Peyronie's disease, leading to enhanced overall sexual satisfaction.",
+      "The Male Intimacy PRP Protocols is a natural and non-invasive treatment using PRP therapy to rejuvenate the penis and enhance sexual function. It aids in improving erection quality, boosting libido and reversing symptoms of Peyronie's disease, leading to enhanced overall sexual satisfaction.",
     image: "/procedure/banana.jpg",
     price: "$1,900",
     // programmatic SEO copy
     blogHeadline:
-      "Enhance your male virility and confidence with insights from our P Shot blog. Uncover the science behind its effectiveness, success stories, and how it's transforming male sexual health.",
+      "Enhance your male virility and confidence with insights from our Male Intimacy PRP Protocols blog. Uncover the science behind its effectiveness, success stories, and how it's transforming male sexual health.",
     benefitsHeadline:
       "Unlock the next level of male sexual prowess. With the P-Shot, not only can you witness improved erection quality, but also a rejuvenated libido. Dive into a world where confidence, stamina, and satisfaction intertwine.",
     benefits: [
@@ -368,7 +370,7 @@ export const procedures = [
         description:
           "Are you tired of ED affecting your confidence and relationships? The P-Shot offers a natural solution that enhances blood flow and revitalizes penile tissue, giving you back control.",
         blog_post_title: "Reclaim Your Confidence: How the P-Shot Cures ED",
-        blog_post_slug: "reclaim-your-confidence-how-the-p-shot-cures-ed",
+        blog_post_slug: "reclaim-your-confidence-how-the-male-intimacy-prp-protocols-cures-ed",
         slug: "erectile-dysfunction",
         tag: "common",
       },
@@ -377,7 +379,7 @@ export const procedures = [
         description:
           "Curvature impacting your sexual life? The P-Shot can help correct penile shape and reduce pain, offering you a path to more satisfying intimate experiences.",
         blog_post_title: "Straighten Things Out: P-Shot for Peyronie's Disease",
-        blog_post_slug: "straighten-things-out-p-shot-for-peyronies-disease",
+        blog_post_slug: "straighten-things-out-male-intimacy-prp-protocols-for-peyronies-disease",
         slug: "peyronies-disease",
         tag: "uncommon",
       },
@@ -386,7 +388,7 @@ export const procedures = [
         description:
           "Struggling to maintain your performance in bed? Elevate your game naturally with the P-Shot, designed to improve sensitivity and strength.",
         blog_post_title: "Boost Your Bedroom Performance with the P-Shot",
-        blog_post_slug: "boost-your-bedroom-performance-with-the-p-shot",
+        blog_post_slug: "boost-your-bedroom-performance-with-the-male-intimacy-prp-protocols",
         slug: "reduced-sexual-performance",
         tag: "common",
       },
@@ -395,7 +397,7 @@ export const procedures = [
         description:
           "Lost the spark in your sexual encounters? Rediscover intense pleasure with the P-Shot, aimed to amplify sensation and invigorate your intimate life.",
         blog_post_title: "Ignite Lost Sensations: How the P-Shot Can Help",
-        blog_post_slug: "ignite-lost-sensations-how-the-p-shot-can-help",
+        blog_post_slug: "ignite-lost-sensations-how-the-male-intimacy-prp-protocols-can-help",
         slug: "reduced-sensation",
         tag: "uncommon",
       },
@@ -404,7 +406,7 @@ export const procedures = [
         description:
           "Struggling with sexual function post-prostatectomy? The P-Shot can help rejuvenate your sexual health, letting you enjoy intimacy once again.",
         blog_post_title: "Revive Your Sex Life Post-Prostatectomy with the P-Shot",
-        blog_post_slug: "revive-your-sex-life-post-prostatectomy-with-the-p-shot",
+        blog_post_slug: "revive-your-sex-life-post-prostatectomy-with-the-male-intimacy-prp-protocols",
         slug: "post-prostatectomy-issues",
         tag: "experimental",
       },
@@ -413,7 +415,7 @@ export const procedures = [
         description:
           "End the frustration of premature ejaculation with the P-Shot, a natural approach that helps you last longer and heightens pleasure.",
         blog_post_title: "Last Longer in Bed: How the P-Shot Can Help",
-        blog_post_slug: "last-longer-in-bed-how-the-p-shot-can-help",
+        blog_post_slug: "last-longer-in-bed-how-the-male-intimacy-prp-protocols-can-help",
         slug: "premature-ejaculation",
         tag: "common",
       },
@@ -422,7 +424,7 @@ export const procedures = [
         description:
           "Chronic penile pain interfering with your life? Discover relief through the P-Shot, designed to alleviate pain and enhance comfort.",
         blog_post_title: "End Chronic Penile Pain with the P-Shot",
-        blog_post_slug: "end-chronic-penile-pain-with-the-p-shot",
+        blog_post_slug: "end-chronic-penile-pain-with-the-male-intimacy-prp-protocols",
         slug: "chronic-penile-pain",
         tag: "uncommon",
       },
@@ -431,7 +433,7 @@ export const procedures = [
         description:
           "Want to amplify your sexual prowess? The P-Shot enhances function and satisfaction, allowing you to fully embrace your sexual potential.",
         blog_post_title: "Unlock Your Sexual Potential with the P-Shot",
-        blog_post_slug: "unlock-your-sexual-potential-with-the-p-shot",
+        blog_post_slug: "unlock-your-sexual-potential-with-the-male-intimacy-prp-protocols",
         slug: "enhanced-sexual-capabilities",
         tag: "common",
       },
@@ -440,7 +442,7 @@ export const procedures = [
         description:
           "Self-conscious about how you look down there? The P-Shot not only improves function but can also enhance appearance.",
         blog_post_title: "Achieve Aesthetic Perfection with the P-Shot",
-        blog_post_slug: "achieve-aesthetic-perfection-with-the-p-shot",
+        blog_post_slug: "achieve-aesthetic-perfection-with-the-male-intimacy-prp-protocols",
         slug: "improved-penile-aesthetics",
         tag: "uncommon",
       },
@@ -449,7 +451,7 @@ export const procedures = [
         description:
           "Aging or health issues affecting you? The P-Shot revitalizes penile tissue, making it feel more youthful and vigorous.",
         blog_post_title: "Rejuvenate and Revitalize with the P-Shot",
-        blog_post_slug: "rejuvenate-and-revitalize-with-the-p-shot",
+        blog_post_slug: "rejuvenate-and-revitalize-with-the-male-intimacy-prp-protocols",
         slug: "penile-tissue-rejuvenation",
         tag: "uncommon",
       },
@@ -458,7 +460,7 @@ export const procedures = [
         description:
           "Elevate your climax with the P-Shot, designed to intensify orgasms and improve your overall sexual experience.",
         blog_post_title: "Experience Intense Orgasms with the P-Shot",
-        blog_post_slug: "experience-intense-orgasms-with-the-p-shot",
+        blog_post_slug: "experience-intense-orgasms-with-the-male-intimacy-prp-protocols",
         slug: "improved-orgasmic-function",
         tag: "common",
       },
@@ -467,7 +469,7 @@ export const procedures = [
         description:
           "Struggling with hormonal imbalances? The P-Shot may aid in balancing testosterone levels, impacting your sexual health positively.",
         blog_post_title: "Balance Your Testosterone Levels with the P-Shot",
-        blog_post_slug: "balance-your-testosterone-levels-with-the-p-shot",
+        blog_post_slug: "balance-your-testosterone-levels-with-the-male-intimacy-prp-protocols",
         slug: "testosterone-imbalances",
         tag: "experimental",
       },
@@ -476,7 +478,7 @@ export const procedures = [
         description:
           "Vascular issues affecting your sexual health? The P-Shot improves blood flow, offering a natural solution for vasculogenic sexual dysfunction.",
         blog_post_title: "Improve Sexual Function through Enhanced Blood Flow with the P-Shot",
-        blog_post_slug: "improve-sexual-function-through-enhanced-blood-flow-with-the-p-shot",
+        blog_post_slug: "improve-sexual-function-through-enhanced-blood-flow-with-the-male-intimacy-prp-protocols",
         slug: "vasculogenic-sexual-dysfunction",
         tag: "experimental",
       },
@@ -485,7 +487,7 @@ export const procedures = [
         description:
           "Enhance your sexual experiences with improved blood flow, courtesy of the P-Shot. Feel the difference in your intimate moments.",
         blog_post_title: "Boost Your Blood Flow and Revive Your Sex Life with the P-Shot",
-        blog_post_slug: "boost-your-blood-flow-and-revive-your-sex-life-with-the-p-shot",
+        blog_post_slug: "boost-your-blood-flow-and-revive-your-sex-life-with-the-male-intimacy-prp-protocols",
         slug: "improved-blood-flow",
         tag: "common",
       },
@@ -494,7 +496,7 @@ export const procedures = [
       "Redefine male virility with the P-Shot. A natural and non-invasive way to boost your sexual performance and confidence.",
     faqs: [
       {
-        question: "What benefits can I expect from the P Shot?",
+        question: "What benefits can I expect from the Male Intimacy PRP Protocols?",
         answer:
           "The P-Shot aims to improve the quality and frequency of erections, enhance libido, sexual stamina, and address symptoms of Peyronie's disease.",
       },
@@ -521,25 +523,25 @@ export const procedures = [
     ],
   },
   {
-    name: "Vampire Breast Lift",
-    slug: "vampire-breast-lift",
+    name: "PRP Breast Lift",
+    slug: "prp-breast-lift",
     description:
-      "The Vampire Breast Lift utilizes Platelet-Rich Plasma (PRP) therapy, derived from the patient's own blood, which is injected into the breast area. This stimulates the growth of new blood vessels and fatty tissue, leading to a fuller-looking breast. Unlike traditional breast augmentation procedures, the Vampire Breast Lift is non-invasive, has minimal downtime, and produces natural results that last for about well over 18 months, even a lifetime for some. The procedure is also less expensive than surgery, making it an affordable option. Overall, the Vampire Breast Lift is a safe and effective way to boost a woman's self-confidence by providing a natural way to enhance the appearance of their breasts.",
+      "The PRP Breast Lift utilizes Platelet-Rich Plasma (PRP) therapy, derived from the patient's own blood, which is injected into the breast area. This stimulates the growth of new blood vessels and fatty tissue, leading to a fuller-looking breast. Unlike traditional breast augmentation procedures, the PRP Breast Lift is non-invasive, has minimal downtime, and produces natural results that last for about well over 18 months, even a lifetime for some. The procedure is also less expensive than surgery, making it an affordable option. Overall, the PRP Breast Lift is a safe and effective way to boost a woman's self-confidence by providing a natural way to enhance the appearance of their breasts.",
     headline: "Embrace Your Curves: Natural, Non-Invasive Enhancement!",
     subline:
-      "The Vampire Breast Lift leverages the healing properties of PRP, stimulating the growth of new blood vessels and fatty tissue in the breast area. The result is fuller-looking breasts through a non-invasive process with minimal downtime and long-lasting results.",
+      "The PRP Breast Lift leverages the healing properties of PRP, stimulating the growth of new blood vessels and fatty tissue in the breast area. The result is fuller-looking breasts through a non-invasive process with minimal downtime and long-lasting results.",
     image: "/procedure/breast.jpg",
     price: "$1,800",
     // programmatic SEO copy
     blogHeadline:
-      "Dreaming of fuller, natural-looking breasts without invasive surgeries? Our Vampire Breast Lift blog section unveils the power of PRP therapy in breast enhancement. Join us in exploring its benefits and real-world outcomes.",
+      "Dreaming of fuller, natural-looking breasts without invasive surgeries? Our PRP Breast Lift blog section unveils the power of PRP therapy in breast enhancement. Join us in exploring its benefits and real-world outcomes.",
     benefitsHeadline:
-      "Celebrate your body with naturally fuller and radiant breasts. The Vampire Breast Lift offers a non-surgical path to accentuate your curves, boosting self-confidence. Relish in the allure of lasting results and minimal downtime.",
+      "Celebrate your body with naturally fuller and radiant breasts. The PRP Breast Lift offers a non-surgical path to accentuate your curves, boosting self-confidence. Relish in the allure of lasting results and minimal downtime.",
     benefits: [
       {
         emoji: "🌸",
         benefit: "Natural Enhancement",
-        description: "The Vampire Breast Lift offers a natural and non-invasive way to achieve fuller-looking breasts.",
+        description: "The PRP Breast Lift offers a natural and non-invasive way to achieve fuller-looking breasts.",
       },
       {
         emoji: "⏳",
@@ -550,99 +552,99 @@ export const procedures = [
       {
         emoji: "💰",
         benefit: "Cost-effective",
-        description: "Compared to surgical alternatives, the Vampire Breast Lift is a more affordable option for many.",
+        description: "Compared to surgical alternatives, the PRP Breast Lift is a more affordable option for many.",
       },
       {
         emoji: "⏲️",
         benefit: "Long-lasting Results",
         description:
-          "The effects of the Vampire Breast Lift can last well over 18 months and, in some cases, even a lifetime.",
+          "The effects of the PRP Breast Lift can last well over 18 months and, in some cases, even a lifetime.",
       },
     ],
     ailmentsHeadline:
-      "Unlock a new level of confidence and beauty with the Vampire Breast Lift. Whether you're dealing with common issues like sagging breasts and loss of volume, or looking for a more unconventional solution to scars and decreased sensitivity, this minimally invasive treatment offers a range of benefits. It's not just about aesthetics; many women experience functional improvements and a boost in self-esteem. Explore how the Vampire Breast Lift can tailor solutions for various aspects of breast health and appearance.",
+      "Unlock a new level of confidence and beauty with the PRP Breast Lift. Whether you're dealing with common issues like sagging breasts and loss of volume, or looking for a more unconventional solution to scars and decreased sensitivity, this minimally invasive treatment offers a range of benefits. It's not just about aesthetics; many women experience functional improvements and a boost in self-esteem. Explore how the PRP Breast Lift can tailor solutions for various aspects of breast health and appearance.",
     ailments: [
       {
         title: "Sagging Breasts",
         description:
-          "Turn back time on sagging breasts with the Vampire Breast Lift. Regain youthful perkiness without invasive surgery.",
-        blog_post_title: "Get Perky, Youthful Breasts Again with the Vampire Breast Lift",
-        blog_post_slug: "get-perky-youthful-breasts-again-with-the-vampire-breast-lift",
+          "Turn back time on sagging breasts with the PRP Breast Lift. Regain youthful perkiness without invasive surgery.",
+        blog_post_title: "Get Perky, Youthful Breasts Again with the PRP Breast Lift",
+        blog_post_slug: "get-perky-youthful-breasts-again-with-the-prp-breast-lift",
         slug: "sagging-breasts",
         tag: "common",
       },
       {
         title: "Loss of Breast Volume",
         description:
-          "Restore lost volume in your breasts naturally with the Vampire Breast Lift. Say goodbye to padding and fillers.",
-        blog_post_title: "Restore Natural Volume to Your Breasts with the Vampire Breast Lift",
-        blog_post_slug: "restore-natural-volume-to-your-breasts-with-the-vampire-breast-lift",
+          "Restore lost volume in your breasts naturally with the PRP Breast Lift. Say goodbye to padding and fillers.",
+        blog_post_title: "Restore Natural Volume to Your Breasts with the PRP Breast Lift",
+        blog_post_slug: "restore-natural-volume-to-your-breasts-with-the-prp-breast-lift",
         slug: "loss-of-breast-volume",
         tag: "common",
       },
       {
         title: "Decreased Sensitivity",
         description:
-          "Reclaim sensitivity and pleasure in your breasts with the Vampire Breast Lift. Feel more in your intimate moments.",
-        blog_post_title: "Regain Breast Sensitivity and Enhance Intimacy with the Vampire Breast Lift",
-        blog_post_slug: "regain-breast-sensitivity-and-enhance-intimacy-with-the-vampire-breast-lift",
+          "Reclaim sensitivity and pleasure in your breasts with the PRP Breast Lift. Feel more in your intimate moments.",
+        blog_post_title: "Regain Breast Sensitivity and Enhance Intimacy with the PRP Breast Lift",
+        blog_post_slug: "regain-breast-sensitivity-and-enhance-intimacy-with-the-prp-breast-lift",
         slug: "decreased-sensitivity",
         tag: "uncommon",
       },
       {
         title: "Wrinkled Cleavage Area",
         description:
-          "Smooth out wrinkles in your cleavage area effortlessly with the Vampire Breast Lift. Flaunt your décolletage with pride.",
-        blog_post_title: "Erase Cleavage Wrinkles with the Vampire Breast Lift",
-        blog_post_slug: "erase-cleavage-wrinkles-with-the-vampire-breast-lift",
+          "Smooth out wrinkles in your cleavage area effortlessly with the PRP Breast Lift. Flaunt your décolletage with pride.",
+        blog_post_title: "Erase Cleavage Wrinkles with the PRP Breast Lift",
+        blog_post_slug: "erase-cleavage-wrinkles-with-the-prp-breast-lift",
         slug: "wrinkled-cleavage-area",
         tag: "common",
       },
       {
         title: "Asymmetrical Breasts",
         description:
-          "Balance out asymmetrical breasts safely and naturally with the Vampire Breast Lift. Achieve a harmonious look without surgery.",
-        blog_post_title: "Balance Your Breasts Naturally with the Vampire Breast Lift",
-        blog_post_slug: "balance-your-breasts-naturally-with-the-vampire-breast-lift",
+          "Balance out asymmetrical breasts safely and naturally with the PRP Breast Lift. Achieve a harmonious look without surgery.",
+        blog_post_title: "Balance Your Breasts Naturally with the PRP Breast Lift",
+        blog_post_slug: "balance-your-breasts-naturally-with-the-prp-breast-lift",
         slug: "asymmetrical-breasts",
         tag: "uncommon",
       },
       {
         title: "Stretch Marks",
         description:
-          "Diminish the appearance of stretch marks on your breasts with the Vampire Breast Lift. Reveal smoother, younger-looking skin.",
-        blog_post_title: "Fade Stretch Marks on Your Breasts with the Vampire Breast Lift",
-        blog_post_slug: "fade-stretch-marks-on-your-breasts-with-the-vampire-breast-lift",
+          "Diminish the appearance of stretch marks on your breasts with the PRP Breast Lift. Reveal smoother, younger-looking skin.",
+        blog_post_title: "Fade Stretch Marks on Your Breasts with the PRP Breast Lift",
+        blog_post_slug: "fade-stretch-marks-on-your-breasts-with-the-prp-breast-lift",
         slug: "stretch-marks",
         tag: "common",
       },
       {
         title: "Surgical Scars",
         description:
-          "Reduce the visibility of surgical scars on your breasts with the Vampire Breast Lift. Enjoy cleaner, unblemished skin.",
-        blog_post_title: "Minimize Surgical Scars with the Vampire Breast Lift",
-        blog_post_slug: "minimize-surgical-scars-with-the-vampire-breast-lift",
+          "Reduce the visibility of surgical scars on your breasts with the PRP Breast Lift. Enjoy cleaner, unblemished skin.",
+        blog_post_title: "Minimize Surgical Scars with the PRP Breast Lift",
+        blog_post_slug: "minimize-surgical-scars-with-the-prp-breast-lift",
         slug: "surgical-scars",
         tag: "uncommon",
       },
     ],
     faqHeadline:
-      "Discover a natural approach to enhancing your curves with the Vampire Breast Lift. Achieve fuller and revitalized breasts without surgery.",
+      "Discover a natural approach to enhancing your curves with the PRP Breast Lift. Achieve fuller and revitalized breasts without surgery.",
     faqs: [
       {
-        question: "How does the Vampire Breast Lift differ from traditional breast augmentation?",
+        question: "How does the PRP Breast Lift differ from traditional breast augmentation?",
         answer:
-          "Unlike surgical breast augmentation, the Vampire Breast Lift uses PRP therapy derived from the patient's blood to stimulate the growth of new blood vessels and fatty tissue, resulting in natural-looking fuller breasts.",
+          "Unlike surgical breast augmentation, the PRP Breast Lift uses PRP therapy derived from the patient's blood to stimulate the growth of new blood vessels and fatty tissue, resulting in natural-looking fuller breasts.",
       },
       {
         question: "Is there any downtime associated with the procedure?",
         answer:
-          "The Vampire Breast Lift is minimally invasive with little to no downtime. Most patients can return to their regular activities shortly after the procedure.",
+          "The PRP Breast Lift is minimally invasive with little to no downtime. Most patients can return to their regular activities shortly after the procedure.",
       },
       {
         question: "How long do the results last?",
         answer:
-          "The results from a Vampire Breast Lift can last for over 18 months, and in some cases, even longer. However, individual experiences may vary.",
+          "The results from a PRP Breast Lift can last for over 18 months, and in some cases, even longer. However, individual experiences may vary.",
       },
       {
         question: "Are there any side effects?",
@@ -650,32 +652,32 @@ export const procedures = [
           "Possible side effects include temporary redness, swelling, and bruising at the injection site. However, since PRP is derived from the patient's blood, the risk of allergic reactions or serious side effects is minimal.",
       },
       {
-        question: "Is the Vampire Breast Lift suitable for everyone?",
+        question: "Is the PRP Breast Lift suitable for everyone?",
         answer:
           "While the procedure is safe for most individuals, a consultation with a qualified practitioner is essential to determine if you're a good candidate for the treatment.",
       },
     ],
   },
   {
-    name: "Vampire Hair Restoration",
-    slug: "vampire-hair-restoration",
+    name: "PRP Hair Restoration",
+    slug: "prp-hair-restoration",
     description:
-      "Vampire Hair Restoration with PRP is a natural solution for thinning hair or hair loss, that can stimulate new hair growth and improve overall scalp health. A series of three sessions, spaced six weeks apart, each lasting about an hour, use Platelet-Rich Plasma (PRP) therapy to naturally stimulate hair follicles. Suitable for both men and women, this safe and effective treatment offers a quick recovery time with visible results in as little as a few months after the final session. Results include a more youthful and healthy-looking head of hair, which can boost self-esteem and confidence. Overall, the Vampire Hair Restoration is a non-invasive option that can help you regain your desired hair thickness and density.",
+      "PRP Hair Restoration with PRP is a natural solution for thinning hair or hair loss, that can stimulate new hair growth and improve overall scalp health. A series of three sessions, spaced six weeks apart, each lasting about an hour, use Platelet-Rich Plasma (PRP) therapy to naturally stimulate hair follicles. Suitable for both men and women, this safe and effective treatment offers a quick recovery time with visible results in as little as a few months after the final session. Results include a more youthful and healthy-looking head of hair, which can boost self-esteem and confidence. Overall, the PRP Hair Restoration is a non-invasive option that can help you regain your desired hair thickness and density.",
     headline: "Regain Your Crowning Glory: Safe, Natural, Noticeable Results!",
     subline:
-      "Vampire Hair Restoration employs PRP therapy to naturally stimulate hair follicles, offering a solution for thinning hair or hair loss. After a few sessions, you can expect to see new hair growth and improved scalp health leading to a more youthful and thick head of hair.",
+      "PRP Hair Restoration employs PRP therapy to naturally stimulate hair follicles, offering a solution for thinning hair or hair loss. After a few sessions, you can expect to see new hair growth and improved scalp health leading to a more youthful and thick head of hair.",
     image: "/procedure/hair.jpg",
     price: "$600/tx",
     // programmatic SEO copy
     blogHeadline:
       "Hair thinning or loss affecting your confidence? Dive deep into our Hair Restoration articles to explore the wonders of PRP therapy in stimulating hair growth. Find testimonials, expert advice, and more.",
     benefitsHeadline:
-      "Turn back the clock and let your hair be the statement of youth. Vampire Hair Restoration, with its power of PRP, can transform thinning strands into a lush mane. Feel confident, look vibrant, and let every strand speak volumes.",
+      "Turn back the clock and let your hair be the statement of youth. PRP Hair Restoration, with its power of PRP, can transform thinning strands into a lush mane. Feel confident, look vibrant, and let every strand speak volumes.",
     benefits: [
       {
         emoji: "💇‍♂️",
         benefit: "Promotes Hair Growth",
-        description: "Vampire Hair Restoration naturally stimulates hair follicles, promoting the growth of new hair.",
+        description: "PRP Hair Restoration naturally stimulates hair follicles, promoting the growth of new hair.",
       },
       {
         emoji: "🌿",
@@ -696,147 +698,147 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "Revitalize your hair and restore your confidence with Vampire Hair Restoration. This groundbreaking treatment offers a solution to a multitude of hair concerns that both men and women face. Whether you're dealing with the frustrating onset of a receding hairline, patchy spots caused by alopecia, or even the dullness and lifelessness of aging hair, Vampire Hair Restoration promises targeted treatment that fosters natural hair regrowth. Uncover the secrets of this innovative procedure and learn how it can serve your unique needs.",
+      "Revitalize your hair and restore your confidence with PRP Hair Restoration. This groundbreaking treatment offers a solution to a multitude of hair concerns that both men and women face. Whether you're dealing with the frustrating onset of a receding hairline, patchy spots caused by alopecia, or even the dullness and lifelessness of aging hair, PRP Hair Restoration promises targeted treatment that fosters natural hair regrowth. Uncover the secrets of this innovative procedure and learn how it can serve your unique needs.",
     ailments: [
       {
         title: "Thinning Hair",
         description:
-          "Revitalize your sparse locks with Vampire Hair Restoration. Experience thicker, fuller hair without chemicals.",
-        blog_post_title: "Combat Thinning Hair Effectively with Vampire Hair Restoration",
-        blog_post_slug: "combat-thinning-hair-effectively-with-vampire-hair-restoration",
+          "Revitalize your sparse locks with PRP Hair Restoration. Experience thicker, fuller hair without chemicals.",
+        blog_post_title: "Combat Thinning Hair Effectively with PRP Hair Restoration",
+        blog_post_slug: "combat-thinning-hair-effectively-with-prp-hair-restoration",
         slug: "thinning-hair",
         tag: "common",
       },
       {
         title: "Receding Hairline",
         description:
-          "Halt a receding hairline in its tracks with Vampire Hair Restoration. Regrow natural hair at the front and sides.",
-        blog_post_title: "Reclaim Your Hairline with Vampire Hair Restoration",
-        blog_post_slug: "reclaim-your-hairline-with-vampire-hair-restoration",
+          "Halt a receding hairline in its tracks with PRP Hair Restoration. Regrow natural hair at the front and sides.",
+        blog_post_title: "Reclaim Your Hairline with PRP Hair Restoration",
+        blog_post_slug: "reclaim-your-hairline-with-prp-hair-restoration",
         slug: "receding-hairline",
         tag: "common",
       },
       {
         title: "Alopecia",
         description:
-          "Target patches of alopecia with the regenerative power of Vampire Hair Restoration. Witness significant regrowth.",
-        blog_post_title: "Beat Alopecia with Natural Hair Regrowth from Vampire Hair Restoration",
-        blog_post_slug: "beat-alopecia-with-natural-hair-regrowth-from-vampire-hair-restoration",
+          "Target patches of alopecia with the regenerative power of PRP Hair Restoration. Witness significant regrowth.",
+        blog_post_title: "Beat Alopecia with Natural Hair Regrowth from PRP Hair Restoration",
+        blog_post_slug: "beat-alopecia-with-natural-hair-regrowth-from-prp-hair-restoration",
         slug: "alopecia",
         tag: "uncommon",
       },
       {
         title: "Scalp Scars",
         description:
-          "Minimize visible scalp scars with Vampire Hair Restoration. Create a smoother, more even scalp surface.",
-        blog_post_title: "Fade Scalp Scars for a Smooth Surface with Vampire Hair Restoration",
-        blog_post_slug: "fade-scalp-scars-for-a-smooth-surface-with-vampire-hair-restoration",
+          "Minimize visible scalp scars with PRP Hair Restoration. Create a smoother, more even scalp surface.",
+        blog_post_title: "Fade Scalp Scars for a Smooth Surface with PRP Hair Restoration",
+        blog_post_slug: "fade-scalp-scars-for-a-smooth-surface-with-prp-hair-restoration",
         slug: "scalp-scars",
         tag: "uncommon",
       },
       {
         title: "Hormonal Hair Loss",
         description:
-          "Reverse hair loss due to hormonal imbalances with Vampire Hair Restoration. Reclaim your hair and your confidence.",
-        blog_post_title: "End Hormonal Hair Loss Once and for All with Vampire Hair Restoration",
-        blog_post_slug: "end-hormonal-hair-loss-once-and-for-all-with-vampire-hair-restoration",
+          "Reverse hair loss due to hormonal imbalances with PRP Hair Restoration. Reclaim your hair and your confidence.",
+        blog_post_title: "End Hormonal Hair Loss Once and for All with PRP Hair Restoration",
+        blog_post_slug: "end-hormonal-hair-loss-once-and-for-all-with-prp-hair-restoration",
         slug: "hormonal-hair-loss",
         tag: "uncommon",
       },
       {
         title: "Poor Hair Texture",
         description:
-          "Improve the texture of dull, lifeless hair with Vampire Hair Restoration. Enjoy more manageable, vibrant locks.",
-        blog_post_title: "Transform Dull Hair into Vibrant Locks with Vampire Hair Restoration",
-        blog_post_slug: "transform-dull-hair-into-vibrant-locks-with-vampire-hair-restoration",
+          "Improve the texture of dull, lifeless hair with PRP Hair Restoration. Enjoy more manageable, vibrant locks.",
+        blog_post_title: "Transform Dull Hair into Vibrant Locks with PRP Hair Restoration",
+        blog_post_slug: "transform-dull-hair-into-vibrant-locks-with-prp-hair-restoration",
         slug: "poor-hair-texture",
         tag: "common",
       },
       {
         title: "Thinning Hair",
         description: "Revitalize your crowning glory with enhanced hair density and volume.",
-        blog_post_title: "Reverse Thinning Hair with Vampire Hair Restoration",
-        blog_post_slug: "reverse-thinning-hair-with-vampire-hair-restoration",
+        blog_post_title: "Reverse Thinning Hair with PRP Hair Restoration",
+        blog_post_slug: "reverse-thinning-hair-with-prp-hair-restoration",
         slug: "thinning-hair",
         tag: "common",
       },
       {
         title: "Receding Hairline",
         description: "Turn back the clock on your receding hairline and regain a youthful appearance.",
-        blog_post_title: "How Vampire Hair Restoration Can Help Your Receding Hairline",
-        blog_post_slug: "how-vampire-hair-restoration-can-help-your-receding-hairline",
+        blog_post_title: "How PRP Hair Restoration Can Help Your Receding Hairline",
+        blog_post_slug: "how-prp-hair-restoration-can-help-your-receding-hairline",
         slug: "receding-hairline",
         tag: "common",
       },
       {
         title: "Alopecia",
         description: "Target the root cause of alopecia and encourage new hair growth.",
-        blog_post_title: "Combat Alopecia with Vampire Hair Restoration",
-        blog_post_slug: "combat-alopecia-with-vampire-hair-restoration",
+        blog_post_title: "Combat Alopecia with PRP Hair Restoration",
+        blog_post_slug: "combat-alopecia-with-prp-hair-restoration",
         slug: "alopecia",
         tag: "common",
       },
       {
         title: "Scalp Scars",
         description: "Improve the appearance of unsightly scalp scars and enjoy wearing your hair any way you want.",
-        blog_post_title: "Eliminate Scalp Scars with Vampire Hair Restoration",
-        blog_post_slug: "eliminate-scalp-scars-with-vampire-hair-restoration",
+        blog_post_title: "Eliminate Scalp Scars with PRP Hair Restoration",
+        blog_post_slug: "eliminate-scalp-scars-with-prp-hair-restoration",
         slug: "scalp-scars",
         tag: "uncommon",
       },
       {
         title: "Hormonal Hair Loss",
         description: "Balance hair loss triggered by hormonal changes and regain your self-confidence.",
-        blog_post_title: "Manage Hormonal Hair Loss with Vampire Hair Restoration",
-        blog_post_slug: "manage-hormonal-hair-loss-with-vampire-hair-restoration",
+        blog_post_title: "Manage Hormonal Hair Loss with PRP Hair Restoration",
+        blog_post_slug: "manage-hormonal-hair-loss-with-prp-hair-restoration",
         slug: "hormonal-hair-loss",
         tag: "common",
       },
       {
         title: "Poor Hair Texture",
         description: "Bring new life to limp, dull hair with improved texture and shine.",
-        blog_post_title: "Revitalize Your Hair Texture with Vampire Hair Restoration",
-        blog_post_slug: "revitalize-your-hair-texture-with-vampire-hair-restoration",
+        blog_post_title: "Revitalize Your Hair Texture with PRP Hair Restoration",
+        blog_post_slug: "revitalize-your-hair-texture-with-prp-hair-restoration",
         slug: "poor-hair-texture",
         tag: "uncommon",
       },
       {
         title: "Patchy Beard Growth",
         description: "Fill in the gaps in your beard for a fuller, more robust facial hair appearance.",
-        blog_post_title: "Correct Patchy Beard Growth with Vampire Hair Restoration",
-        blog_post_slug: "correct-patchy-beard-growth-with-vampire-hair-restoration",
+        blog_post_title: "Correct Patchy Beard Growth with PRP Hair Restoration",
+        blog_post_slug: "correct-patchy-beard-growth-with-prp-hair-restoration",
         slug: "patchy-beard-growth",
         tag: "experimental",
       },
       {
         title: "Eyebrow Thinning",
         description: "Regain fuller, natural-looking eyebrows without the need for makeup.",
-        blog_post_title: "Tackle Eyebrow Thinning with Vampire Hair Restoration",
-        blog_post_slug: "tackle-eyebrow-thinning-with-vampire-hair-restoration",
+        blog_post_title: "Tackle Eyebrow Thinning with PRP Hair Restoration",
+        blog_post_slug: "tackle-eyebrow-thinning-with-prp-hair-restoration",
         slug: "eyebrow-thinning",
         tag: "experimental",
       },
       {
         title: "Post-Chemo Hair Regrowth",
         description: "Accelerate the process of natural hair regrowth after chemotherapy treatment.",
-        blog_post_title: "Speed Up Post-Chemo Hair Regrowth with Vampire Hair Restoration",
-        blog_post_slug: "speed-up-post-chemo-hair-regrowth-with-vampire-hair-restoration",
+        blog_post_title: "Speed Up Post-Chemo Hair Regrowth with PRP Hair Restoration",
+        blog_post_slug: "speed-up-post-chemo-hair-regrowth-with-prp-hair-restoration",
         slug: "post-chemo-hair-regrowth",
         tag: "experimental",
       },
       {
         title: "Dandruff",
         description: "Improve scalp health to reduce dandruff and flaking.",
-        blog_post_title: "Combat Dandruff with Improved Scalp Health via Vampire Hair Restoration",
-        blog_post_slug: "combat-dandruff-with-improved-scalp-health-via-vampire-hair-restoration",
+        blog_post_title: "Combat Dandruff with Improved Scalp Health via PRP Hair Restoration",
+        blog_post_slug: "combat-dandruff-with-improved-scalp-health-via-prp-hair-restoration",
         slug: "dandruff",
         tag: "experimental",
       },
       {
         title: "Seasonal Hair Loss",
         description: "Manage seasonal shedding and keep your hair strong all year round.",
-        blog_post_title: "Prevent Seasonal Hair Loss with Vampire Hair Restoration",
-        blog_post_slug: "prevent-seasonal-hair-loss-with-vampire-hair-restoration",
+        blog_post_title: "Prevent Seasonal Hair Loss with PRP Hair Restoration",
+        blog_post_slug: "prevent-seasonal-hair-loss-with-prp-hair-restoration",
         slug: "seasonal-hair-loss",
         tag: "experimental",
       },
@@ -872,26 +874,26 @@ export const procedures = [
     ],
   },
   {
-    name: "Vampire Facial",
-    slug: "vampire-facial",
+    name: "PRP Facial",
+    slug: "prp-facial",
     description:
-      "The Vampire Facial treatment is an innovative and non-invasive procedure that uses Platelet-Rich Plasma (PRP) therapy to improve overall skin texture, enhance elasticity, and promote a youthful-looking complexion. During the treatment, a small sample of the patient's blood is taken and spun in a centrifuge to separate the PRP from the red blood cells. This PRP is topically applied after a microdermabrasion procedure which has been enhanced with PRP to stimulate collagen and elastin production. The combination of microdermabrasion and PRP helps to resurface the skin and remove dead skin cells while promoting rejuvenation and repair, leaving the skin plumper and tighter looking with improved clarity. The results of the Vampire Facial can be seen as a gradual improvement to skin texture and brightness that can last from any where from 6 months up to 2 years. Overall, the Vampire Facial is a safe and effective way to naturally revitalize the skin by tapping into the power of the patient's own blood platelets, and it's suitable for people with different skin types or conditions.",
+      "The PRP Facial treatment is an innovative and non-invasive procedure that uses Platelet-Rich Plasma (PRP) therapy to improve overall skin texture, enhance elasticity, and promote a youthful-looking complexion. During the treatment, a small sample of the patient's blood is taken and spun in a centrifuge to separate the PRP from the red blood cells. This PRP is topically applied after a microdermabrasion procedure which has been enhanced with PRP to stimulate collagen and elastin production. The combination of microdermabrasion and PRP helps to resurface the skin and remove dead skin cells while promoting rejuvenation and repair, leaving the skin plumper and tighter looking with improved clarity. The results of the PRP Facial can be seen as a gradual improvement to skin texture and brightness that can last from any where from 6 months up to 2 years. Overall, the PRP Facial is a safe and effective way to naturally revitalize the skin by tapping into the power of the patient's own blood platelets, and it's suitable for people with different skin types or conditions.",
     headline: "Radiate Youthful Confidence: Boost Your Skin's Natural Healing Power!",
     subline:
-      "The Vampire Facial combines microdermabrasion with topical application of PRP, promoting collagen and elastin production to improve your skin. This treatment can leave your skin looking plumper, tighter, and with improved clarity that lasts up to 2 years.",
+      "The PRP Facial combines microdermabrasion with topical application of PRP, promoting collagen and elastin production to improve your skin. This treatment can leave your skin looking plumper, tighter, and with improved clarity that lasts up to 2 years.",
     image: "/procedure/facial.jpg",
     price: "$600",
     // programmatic SEO copy
     blogHeadline:
-      "Yearn for a youthful skin glow without harsh treatments? Explore our Vampire Facial articles and get acquainted with this innovative skin revitalizing method. Learn from expert insights and successful transformations.",
+      "Yearn for a youthful skin glow without harsh treatments? Explore our PRP Facial articles and get acquainted with this innovative skin revitalizing method. Learn from expert insights and successful transformations.",
     benefitsHeadline:
-      "Gift your skin a touch of nature's best rejuvenation technique. The Vampire Facial infuses life back into your complexion, reducing signs of aging and revitalizing skin texture. Glow with health, and let your skin showcase its renewed vibrancy.",
+      "Gift your skin a touch of nature's best rejuvenation technique. The PRP Facial infuses life back into your complexion, reducing signs of aging and revitalizing skin texture. Glow with health, and let your skin showcase its renewed vibrancy.",
     benefits: [
       {
         emoji: "🌟",
         benefit: "Revitalized Skin Tone",
         description:
-          "The Vampire Facial significantly improves the skin's texture and tone, leading to a more youthful and vibrant appearance.",
+          "The PRP Facial significantly improves the skin's texture and tone, leading to a more youthful and vibrant appearance.",
       },
       {
         emoji: "🔍",
@@ -907,136 +909,135 @@ export const procedures = [
         emoji: "🌿",
         benefit: "Natural Ingredients",
         description:
-          "Utilizing PRP derived from your own blood, the Vampire Facial offers a holistic, natural approach to skin rejuvenation.",
+          "Utilizing PRP derived from your own blood, the PRP Facial offers a holistic, natural approach to skin rejuvenation.",
       },
     ],
     ailmentsHeadline:
-      "Rejuvenate your complexion and address multiple skin concerns with the Vampire Facial. This innovative treatment harnesses the natural healing power of your own blood to revitalize your skin. Whether you're battling fine lines, dealing with stubborn acne scars, or frustrated by uneven skin tone, a Vampire Facial could be your ticket to smoother, more radiant skin. Learn how this procedure targets a wide array of issues and discover which of these solutions could be the right fit for your skincare journey.",
+      "Rejuvenate your complexion and address multiple skin concerns with the PRP Facial. This innovative treatment harnesses the natural healing power of your own blood to revitalize your skin. Whether you're battling fine lines, dealing with stubborn acne scars, or frustrated by uneven skin tone, a PRP Facial could be your ticket to smoother, more radiant skin. Learn how this procedure targets a wide array of issues and discover which of these solutions could be the right fit for your skincare journey.",
     ailments: [
       {
         title: "Fine Lines and Wrinkles",
-        description: "Smooth out fine lines and wrinkles with a Vampire Facial. Get youthful, radiant skin naturally.",
-        blog_post_title: "Erase Fine Lines and Wrinkles with a Vampire Facial",
-        blog_post_slug: "erase-fine-lines-and-wrinkles-with-a-vampire-facial",
+        description: "Smooth out fine lines and wrinkles with a PRP Facial. Get youthful, radiant skin naturally.",
+        blog_post_title: "Erase Fine Lines and Wrinkles with a PRP Facial",
+        blog_post_slug: "erase-fine-lines-and-wrinkles-with-a-prp-facial",
         slug: "fine-lines-and-wrinkles",
         tag: "common",
       },
       {
         title: "Acne Scars",
         description:
-          "Say goodbye to acne scars with the healing properties of a Vampire Facial. Achieve an even skin tone effortlessly.",
-        blog_post_title: "Eliminate Acne Scars for Good with a Vampire Facial",
-        blog_post_slug: "eliminate-acne-scars-for-good-with-a-vampire-facial",
+          "Say goodbye to acne scars with the healing properties of a PRP Facial. Achieve an even skin tone effortlessly.",
+        blog_post_title: "Eliminate Acne Scars for Good with a PRP Facial",
+        blog_post_slug: "eliminate-acne-scars-for-good-with-a-prp-facial",
         slug: "acne-scars",
         tag: "common",
       },
       {
         title: "Hyperpigmentation",
         description:
-          "Balance skin color by treating hyperpigmentation with a Vampire Facial. Restore your skin's natural beauty.",
-        blog_post_title: "Tackle Hyperpigmentation Head-On with a Vampire Facial",
-        blog_post_slug: "tackle-hyperpigmentation-head-on-with-a-vampire-facial",
+          "Balance skin color by treating hyperpigmentation with a PRP Facial. Restore your skin's natural beauty.",
+        blog_post_title: "Tackle Hyperpigmentation Head-On with a PRP Facial",
+        blog_post_slug: "tackle-hyperpigmentation-head-on-with-a-prp-facial",
         slug: "hyperpigmentation",
         tag: "uncommon",
       },
       {
         title: "Uneven Skin Texture",
         description:
-          "Revamp rough, uneven skin into a smoother version with a Vampire Facial. Touch and see the difference.",
-        blog_post_title: "Transform Your Skin's Texture with a Vampire Facial",
-        blog_post_slug: "transform-your-skins-texture-with-a-vampire-facial",
+          "Revamp rough, uneven skin into a smoother version with a PRP Facial. Touch and see the difference.",
+        blog_post_title: "Transform Your Skin's Texture with a PRP Facial",
+        blog_post_slug: "transform-your-skins-texture-with-a-prp-facial",
         slug: "uneven-skin-texture",
         tag: "common",
       },
       {
         title: "Dull Skin",
-        description: "Revitalize and illuminate dull skin with the nourishing benefits of a Vampire Facial.",
-        blog_post_title: "Wake Up Your Dull Skin with a Vampire Facial",
-        blog_post_slug: "wake-up-your-dull-skin-with-a-vampire-facial",
+        description: "Revitalize and illuminate dull skin with the nourishing benefits of a PRP Facial.",
+        blog_post_title: "Wake Up Your Dull Skin with a PRP Facial",
+        blog_post_slug: "wake-up-your-dull-skin-with-a-prp-facial",
         slug: "dull-skin",
         tag: "common",
       },
       {
         title: "Rosacea",
-        description: "Manage and reduce rosacea flare-ups with the calming effect of a Vampire Facial.",
-        blog_post_title: "Control Rosacea Effectively with a Vampire Facial",
-        blog_post_slug: "control-rosacea-effectively-with-a-vampire-facial",
+        description: "Manage and reduce rosacea flare-ups with the calming effect of a PRP Facial.",
+        blog_post_title: "Control Rosacea Effectively with a PRP Facial",
+        blog_post_slug: "control-rosacea-effectively-with-a-prp-facial",
         slug: "rosacea",
         tag: "uncommon",
       },
       {
         title: "Enlarged Pores",
-        description:
-          "Shrink large pores and refine your skin with a Vampire Facial. Witness the minimization instantly.",
-        blog_post_title: "Minimize Large Pores Effortlessly with a Vampire Facial",
-        blog_post_slug: "minimize-large-pores-effortlessly-with-a-vampire-facial",
+        description: "Shrink large pores and refine your skin with a PRP Facial. Witness the minimization instantly.",
+        blog_post_title: "Minimize Large Pores Effortlessly with a PRP Facial",
+        blog_post_slug: "minimize-large-pores-effortlessly-with-a-prp-facial",
         slug: "enlarged-pores",
         tag: "common",
       },
       {
         title: "Sun Damage",
-        description: "Reverse the harmful effects of sun exposure with the rejuvenating Vampire Facial.",
-        blog_post_title: "Repair Sun-Damaged Skin with a Vampire Facial",
-        blog_post_slug: "repair-sun-damaged-skin-with-a-vampire-facial",
+        description: "Reverse the harmful effects of sun exposure with the rejuvenating PRP Facial.",
+        blog_post_title: "Repair Sun-Damaged Skin with a PRP Facial",
+        blog_post_slug: "repair-sun-damaged-skin-with-a-prp-facial",
         slug: "sun-damage",
         tag: "uncommon",
       },
       {
         title: "Loss of Skin Elasticity",
         description: "Tighten and firm your skin for a more youthful appearance.",
-        blog_post_title: "Restore Skin Elasticity with Vampire Facial",
-        blog_post_slug: "restore-skin-elasticity-with-vampire-facial",
+        blog_post_title: "Restore Skin Elasticity with PRP Facial",
+        blog_post_slug: "restore-skin-elasticity-with-prp-facial",
         slug: "loss-of-skin-elasticity",
         tag: "uncommon",
       },
       {
         title: "Dark Circles",
         description: "Lighten under-eye dark circles for a fresher, more rested look.",
-        blog_post_title: "Lighten Dark Circles Under Eyes with Vampire Facial",
-        blog_post_slug: "lighten-dark-circles-under-eyes-with-vampire-facial",
+        blog_post_title: "Lighten Dark Circles Under Eyes with PRP Facial",
+        blog_post_slug: "lighten-dark-circles-under-eyes-with-prp-facial",
         slug: "dark-circles",
         tag: "experimental",
       },
       {
         title: "Stretch Marks",
         description: "Reduce the appearance of stretch marks for smoother skin.",
-        blog_post_title: "Reduce Stretch Marks with Vampire Facial",
-        blog_post_slug: "reduce-stretch-marks-with-vampire-facial",
+        blog_post_title: "Reduce Stretch Marks with PRP Facial",
+        blog_post_slug: "reduce-stretch-marks-with-prp-facial",
         slug: "stretch-marks",
         tag: "experimental",
       },
       {
         title: "Minor Injury Scars",
         description: "Improve the look of minor scars from injuries.",
-        blog_post_title: "Improve the Look of Injury Scars with Vampire Facial",
-        blog_post_slug: "improve-the-look-of-injury-scars-with-vampire-facial",
+        blog_post_title: "Improve the Look of Injury Scars with PRP Facial",
+        blog_post_slug: "improve-the-look-of-injury-scars-with-prp-facial",
         slug: "minor-injury-scars",
         tag: "experimental",
       },
       {
         title: "Age Spots",
         description: "Fade age spots for a more uniform complexion.",
-        blog_post_title: "Fade Age Spots with Vampire Facial",
-        blog_post_slug: "fade-age-spots-with-vampire-facial",
+        blog_post_title: "Fade Age Spots with PRP Facial",
+        blog_post_slug: "fade-age-spots-with-prp-facial",
         slug: "age-spots",
         tag: "experimental",
       },
       {
         title: "Skin Hydration",
         description: "Boost skin hydration for a plumper, more radiant look.",
-        blog_post_title: "Boost Skin Hydration with Vampire Facial",
-        blog_post_slug: "boost-skin-hydration-with-vampire-facial",
+        blog_post_title: "Boost Skin Hydration with PRP Facial",
+        blog_post_slug: "boost-skin-hydration-with-prp-facial",
         slug: "skin-hydration",
         tag: "experimental",
       },
     ],
     faqHeadline:
-      "Revitalize your skin with the Vampire Facial. Using your body's natural healing factors, this procedure offers rejuvenation like no other.",
+      "Revitalize your skin with the PRP Facial. Using your body's natural healing factors, this procedure offers rejuvenation like no other.",
     faqs: [
       {
-        question: "How does the Vampire Facial work?",
+        question: "How does the PRP Facial work?",
         answer:
-          "The Vampire Facial involves micro-needling the skin followed by the application of PRP. The PRP enhances the healing process, leading to reduced fine lines, improved texture, and a youthful glow.",
+          "The PRP Facial involves micro-needling the skin followed by the application of PRP. The PRP enhances the healing process, leading to reduced fine lines, improved texture, and a youthful glow.",
       },
       {
         question: "Is the procedure painful?",
@@ -1049,38 +1050,37 @@ export const procedures = [
           "Most patients experience mild redness and swelling for 1-3 days post-procedure. It's essential to avoid direct sunlight and wear sunscreen during the healing process.",
       },
       {
-        question: "How often should I get a Vampire Facial?",
+        question: "How often should I get a PRP Facial?",
         answer:
           "For optimal results, it's recommended to undergo 2-3 treatments spaced about a month apart. After that, maintenance treatments can be done annually or as recommended by your practitioner.",
       },
       {
-        question: "What sets the Vampire Facial apart from other facials?",
+        question: "What sets the PRP Facial apart from other facials?",
         answer:
-          "The Vampire Facial harnesses the natural healing factors in your PRP, making it a holistic approach to skin rejuvenation that provides longer-lasting results than traditional facials.",
+          "The PRP Facial harnesses the natural healing factors in your PRP, making it a holistic approach to skin rejuvenation that provides longer-lasting results than traditional facials.",
       },
     ],
   },
   {
-    name: "Vampire Face Lift",
-    slug: "vampire-face-lift",
+    name: "PRP Face Lift",
+    slug: "prp-face-lift",
     description:
-      "The Vampire Facelift is a non-invasive cosmetic procedure that involves the use of Botox, Filler, and the Vampire Facial to resculpt the face. Botox temporarily paralyzes the muscles that cause wrinkles, reducing the appearance of fine lines and wrinkles. Filler uses hyaluronic acid to add volume and achieve a fuller, more youthful-looking appearance. The Vampire Facial stimulates collagen production and tightens the skin, which helps to fill in wrinkles and achieve smoother-looking skin. Together, these three treatments work synergistically to produce natural-looking and long-lasting results. The Vampire Facelift is an ideal solution for those who want to enhance their natural beauty and rejuvenate their skin without the pain or downtime of surgical procedures.",
+      "The PRP Facelift is a non-invasive cosmetic procedure that involves the use of Botox, Filler, and the PRP Facial to resculpt the face. Botox temporarily paralyzes the muscles that cause wrinkles, reducing the appearance of fine lines and wrinkles. Filler uses hyaluronic acid to add volume and achieve a fuller, more youthful-looking appearance. The PRP Facial stimulates collagen production and tightens the skin, which helps to fill in wrinkles and achieve smoother-looking skin. Together, these three treatments work synergistically to produce natural-looking and long-lasting results. The PRP Facelift is an ideal solution for those who want to enhance their natural beauty and rejuvenate their skin without the pain or downtime of surgical procedures.",
     headline: "Redefine Your Beauty: Non-Invasive, Long-Lasting Rejuvenation!",
     subline:
-      "The Vampire Facelift combines the use of Botox, Filler, and the Vampire Facial to rejuvenate and resculpt the face. This non-invasive procedure stimulates collagen production, fills in wrinkles, and provides a smoother, more youthful-looking skin with long-lasting results.",
+      "The PRP Facelift combines the use of Botox, Filler, and the PRP Facial to rejuvenate and resculpt the face. This non-invasive procedure stimulates collagen production, fills in wrinkles, and provides a smoother, more youthful-looking skin with long-lasting results.",
     image: "/procedure/facelift.png",
     price: "$1,500",
     // programmatic SEO copy
     blogHeadline:
-      "Seeking a holistic approach to facial rejuvenation? Our Vampire Facelift blog offers a treasure trove of information on how Botox, Filler, and the Vampire Facial work synergistically. Discover expert opinions and success tales.",
+      "Seeking a holistic approach to facial rejuvenation? Our PRP Facelift blog offers a treasure trove of information on how Botox, Filler, and the PRP Facial work synergistically. Discover expert opinions and success tales.",
     benefitsHeadline:
-      "Redefine age on your own terms with the synergy of Botox, Filler, and the Vampire Facial. Witness a transformation that smoothens, tightens, and revitalizes, revealing a face that's as youthful in appearance as it is in spirit.",
+      "Redefine age on your own terms with the synergy of Botox, Filler, and the PRP Facial. Witness a transformation that smoothens, tightens, and revitalizes, revealing a face that's as youthful in appearance as it is in spirit.",
     benefits: [
       {
         emoji: "🏆",
         benefit: "Youthful Contouring",
-        description:
-          "The Vampire Face Lift redefines facial contours, providing a more youthful profile and appearance.",
+        description: "The PRP Face Lift redefines facial contours, providing a more youthful profile and appearance.",
       },
       {
         emoji: "🌟",
@@ -1090,7 +1090,7 @@ export const procedures = [
       {
         emoji: "💉",
         benefit: "Minimally Invasive",
-        description: "Unlike surgical facelifts, the Vampire Face Lift is less invasive with quicker recovery time.",
+        description: "Unlike surgical facelifts, the PRP Face Lift is less invasive with quicker recovery time.",
       },
       {
         emoji: "⌛",
@@ -1100,130 +1100,130 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "Revitalize your facial features and turn back the clock on aging with the Vampire Face Lift. This unique treatment offers a non-surgical approach to enhancing your face's natural contours, smoothing wrinkles, and boosting volume. Whether you're struggling with sagging skin, fine lines, or simply want a more youthful appearance, the Vampire Face Lift can be customized to your needs. Discover how this procedure addresses a range of common and uncommon facial issues and learn which treatments might be most beneficial for you.",
+      "Revitalize your facial features and turn back the clock on aging with the PRP Face Lift. This unique treatment offers a non-surgical approach to enhancing your face's natural contours, smoothing wrinkles, and boosting volume. Whether you're struggling with sagging skin, fine lines, or simply want a more youthful appearance, the PRP Face Lift can be customized to your needs. Discover how this procedure addresses a range of common and uncommon facial issues and learn which treatments might be most beneficial for you.",
     ailments: [
       {
         title: "Sagging Skin",
         description:
-          "Lift and firm sagging skin without surgery using the Vampire Face Lift. Get natural-looking results that last.",
-        blog_post_title: "Firm and Lift Sagging Skin with a Vampire Face Lift",
-        blog_post_slug: "firm-and-lift-sagging-skin-with-a-vampire-face-lift",
+          "Lift and firm sagging skin without surgery using the PRP Face Lift. Get natural-looking results that last.",
+        blog_post_title: "Firm and Lift Sagging Skin with a PRP Face Lift",
+        blog_post_slug: "firm-and-lift-sagging-skin-with-a-prp-face-lift",
         slug: "sagging-skin",
         tag: "common",
       },
       {
         title: "Fine Lines and Wrinkles",
         description:
-          "Smooth out facial lines and wrinkles effectively with the Vampire Face Lift. Achieve a more youthful appearance.",
-        blog_post_title: "Turn Back the Clock on Aging with a Vampire Face Lift",
-        blog_post_slug: "turn-back-the-clock-on-aging-with-a-vampire-face-lift",
+          "Smooth out facial lines and wrinkles effectively with the PRP Face Lift. Achieve a more youthful appearance.",
+        blog_post_title: "Turn Back the Clock on Aging with a PRP Face Lift",
+        blog_post_slug: "turn-back-the-clock-on-aging-with-a-prp-face-lift",
         slug: "fine-lines-and-wrinkles",
         tag: "common",
       },
       {
         title: "Volume Loss",
-        description: "Restore facial volume naturally with the Vampire Face Lift. No synthetic fillers required.",
-        blog_post_title: "Reclaim Your Facial Volume with a Vampire Face Lift",
-        blog_post_slug: "reclaim-your-facial-volume-with-a-vampire-face-lift",
+        description: "Restore facial volume naturally with the PRP Face Lift. No synthetic fillers required.",
+        blog_post_title: "Reclaim Your Facial Volume with a PRP Face Lift",
+        blog_post_slug: "reclaim-your-facial-volume-with-a-prp-face-lift",
         slug: "volume-loss",
         tag: "common",
       },
       {
         title: "Dull Skin",
-        description: "Revive dull, lifeless skin and get a radiant glow with the Vampire Face Lift.",
-        blog_post_title: "Revitalize Dull Skin with a Vampire Face Lift",
-        blog_post_slug: "revitalize-dull-skin-with-a-vampire-face-lift",
+        description: "Revive dull, lifeless skin and get a radiant glow with the PRP Face Lift.",
+        blog_post_title: "Revitalize Dull Skin with a PRP Face Lift",
+        blog_post_slug: "revitalize-dull-skin-with-a-prp-face-lift",
         slug: "dull-skin",
         tag: "common",
       },
       {
         title: "Age-Related Facial Changes",
-        description: "Combat the signs of aging like skin laxity and wrinkles with a Vampire Face Lift.",
-        blog_post_title: "Combat Age-Related Changes with a Vampire Face Lift",
-        blog_post_slug: "combat-age-related-changes-with-a-vampire-face-lift",
+        description: "Combat the signs of aging like skin laxity and wrinkles with a PRP Face Lift.",
+        blog_post_title: "Combat Age-Related Changes with a PRP Face Lift",
+        blog_post_slug: "combat-age-related-changes-with-a-prp-face-lift",
         slug: "age-related-facial-changes",
         tag: "common",
       },
       {
         title: "Sunken Cheeks",
-        description: "Add youthful plumpness to sunken cheeks with the Vampire Face Lift.",
-        blog_post_title: "Add Volume to Sunken Cheeks with a Vampire Face Lift",
-        blog_post_slug: "add-volume-to-sunken-cheeks-with-a-vampire-face-lift",
+        description: "Add youthful plumpness to sunken cheeks with the PRP Face Lift.",
+        blog_post_title: "Add Volume to Sunken Cheeks with a PRP Face Lift",
+        blog_post_slug: "add-volume-to-sunken-cheeks-with-a-prp-face-lift",
         slug: "sunken-cheeks",
         tag: "common",
       },
       {
         title: "Uneven Facial Structure",
-        description: "Achieve balanced facial symmetry with the help of a Vampire Face Lift.",
-        blog_post_title: "Balance Your Facial Structure with a Vampire Face Lift",
-        blog_post_slug: "balance-your-facial-structure-with-a-vampire-face-lift",
+        description: "Achieve balanced facial symmetry with the help of a PRP Face Lift.",
+        blog_post_title: "Balance Your Facial Structure with a PRP Face Lift",
+        blog_post_slug: "balance-your-facial-structure-with-a-prp-face-lift",
         slug: "uneven-facial-structure",
         tag: "uncommon",
       },
       {
         title: "Crow's Feet",
         description: "Reduce the fine lines that appear around the eyes, often called crow's feet.",
-        blog_post_title: "Eliminate Crow's Feet with Vampire Face Lift",
-        blog_post_slug: "eliminate-crows-feet-with-vampire-face-lift",
+        blog_post_title: "Eliminate Crow's Feet with PRP Face Lift",
+        blog_post_slug: "eliminate-crows-feet-with-prp-face-lift",
         slug: "crows-feet",
         tag: "uncommon",
       },
       {
         title: "Jowls",
         description: "Lift and firm the lower part of your face to eliminate jowls.",
-        blog_post_title: "Lift and Tighten Jowls with Vampire Face Lift",
-        blog_post_slug: "lift-and-tighten-jowls-with-vampire-face-lift",
+        blog_post_title: "Lift and Tighten Jowls with PRP Face Lift",
+        blog_post_slug: "lift-and-tighten-jowls-with-prp-face-lift",
         slug: "jowls",
         tag: "uncommon",
       },
       {
         title: "Smile Lines",
         description: "Soften smile lines for a youthful and fresh appearance.",
-        blog_post_title: "Soften Smile Lines with Vampire Face Lift",
-        blog_post_slug: "soften-smile-lines-with-vampire-face-lift",
+        blog_post_title: "Soften Smile Lines with PRP Face Lift",
+        blog_post_slug: "soften-smile-lines-with-prp-face-lift",
         slug: "smile-lines",
         tag: "uncommon",
       },
       {
         title: "Chin Wrinkles",
         description: "Smooth out wrinkles and lines on your chin area.",
-        blog_post_title: "Smooth Chin Wrinkles with Vampire Face Lift",
-        blog_post_slug: "smooth-chin-wrinkles-with-vampire-face-lift",
+        blog_post_title: "Smooth Chin Wrinkles with PRP Face Lift",
+        blog_post_slug: "smooth-chin-wrinkles-with-prp-face-lift",
         slug: "chin-wrinkles",
         tag: "uncommon",
       },
       {
         title: "Forehead Lines",
         description: "Minimize the appearance of horizontal lines on your forehead.",
-        blog_post_title: "Minimize Forehead Lines with Vampire Face Lift",
-        blog_post_slug: "minimize-forehead-lines-with-vampire-face-lift",
+        blog_post_title: "Minimize Forehead Lines with PRP Face Lift",
+        blog_post_slug: "minimize-forehead-lines-with-prp-face-lift",
         slug: "forehead-lines",
         tag: "uncommon",
       },
       {
         title: "Marionette Lines",
         description: "Eliminate the lines running from the corners of your mouth down to your chin.",
-        blog_post_title: "Eliminate Marionette Lines with Vampire Face Lift",
-        blog_post_slug: "eliminate-marionette-lines-with-vampire-face-lift",
+        blog_post_title: "Eliminate Marionette Lines with PRP Face Lift",
+        blog_post_slug: "eliminate-marionette-lines-with-prp-face-lift",
         slug: "marionette-lines",
         tag: "experimental",
       },
       {
         title: "Nasolabial Folds",
         description: "Diminish the depth of the nasolabial folds for a fresher appearance.",
-        blog_post_title: "Diminish Nasolabial Folds with Vampire Face Lift",
-        blog_post_slug: "diminish-nasolabial-folds-with-vampire-face-lift",
+        blog_post_title: "Diminish Nasolabial Folds with PRP Face Lift",
+        blog_post_slug: "diminish-nasolabial-folds-with-prp-face-lift",
         slug: "nasolabial-folds",
         tag: "experimental",
       },
     ],
     faqHeadline:
-      "Redefine and rejuvenate with the Vampire Face Lift. This procedure offers natural-looking results without the need for surgery.",
+      "Redefine and rejuvenate with the PRP Face Lift. This procedure offers natural-looking results without the need for surgery.",
     faqs: [
       {
-        question: "How is the Vampire Face Lift different from a traditional face lift?",
+        question: "How is the PRP Face Lift different from a traditional face lift?",
         answer:
-          "Unlike surgical face lifts that remove excess skin, the Vampire Face Lift uses injections of PRP and hyaluronic acid fillers to restore volume, improve skin texture, and stimulate collagen production.",
+          "Unlike surgical face lifts that remove excess skin, the PRP Face Lift uses injections of PRP and hyaluronic acid fillers to restore volume, improve skin texture, and stimulate collagen production.",
       },
       {
         question: "Is the procedure painful?",
@@ -1232,7 +1232,7 @@ export const procedures = [
       },
       {
         question: "How long does the procedure take?",
-        answer: "The Vampire Face Lift usually takes about an hour, including preparation and the treatment itself.",
+        answer: "The PRP Face Lift usually takes about an hour, including preparation and the treatment itself.",
       },
       {
         question: "How long do the results last?",

@@ -1,5 +1,4 @@
 import { articles as slugs } from "app/sitemap";
-import { MetadataType } from "components/article-header";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -7,7 +6,7 @@ import { Badge } from "components/ui/badge";
 
 export default async function LatestPosts() {
   const articles = (await Promise.all(slugs.map((slug) => import(`markdown/${slug}.mdx`))))
-    .map<MetadataType>(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
+    .map(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
 

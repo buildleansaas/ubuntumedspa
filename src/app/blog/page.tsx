@@ -1,12 +1,11 @@
 import { articles as slugs } from "app/sitemap";
-import { MetadataType } from "components/article-header";
 import Image from "next/image";
 import Link from "next/link";
 import CtaFooter from "components/cta-footer";
 
 export default async function BlogPage() {
   const articles = (await Promise.all(slugs.map((slug) => import(`markdown/${slug}.mdx`))))
-    .map<MetadataType>(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
+    .map(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (

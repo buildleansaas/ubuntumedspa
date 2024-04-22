@@ -1,4 +1,3 @@
-import { MetadataType } from "components/article-header";
 import { articles as slugs } from "app/sitemap";
 import { products } from "data";
 import Image from "next/image";
@@ -17,7 +16,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
   const product = products.find((product) => product.slug === slug);
 
   const articles = (await Promise.all(slugs?.map((slug) => import(`markdown/${slug}.mdx`))))
-    .map<MetadataType>(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
+    .map(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
     .filter(({ tags }) => tags?.includes(product?.name ?? ""))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
