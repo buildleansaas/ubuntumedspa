@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-import { procedures } from "data";
+import { procedures, products } from "data";
 
 export const articles: string[] = [
   "revitalize-sexual-health-female-intimacy-prp-protocols-vaginal-dryness",
@@ -26,6 +26,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...procedures.map((procedure) => ({
       url: `https://www.ubuntumedspa.com/procedures/${procedure.slug}`,
+      lastModified: new Date(),
+    })),
+    ...products.map((product) => ({
+      url: `https://www.ubuntumedspa.com/products/${product.slug}`,
       lastModified: new Date(),
     })),
   ];
