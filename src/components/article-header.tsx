@@ -6,7 +6,7 @@ export type Metadata = {
   title: string;
   description: string;
   slug: string;
-  datePublished: string;
+  date: string;
   dateModified: string;
   tags: string[];
   image: string;
@@ -15,6 +15,7 @@ export type Metadata = {
 };
 
 function ArticleHeader({ metadata }: { metadata: Metadata }) {
+  console.log(metadata);
   return (
     <div className="mx-auto max-w-5xl">
       <div className="max-w-5xl mx-auto">
@@ -23,7 +24,7 @@ function ArticleHeader({ metadata }: { metadata: Metadata }) {
         </h1>
       </div>
       <div className="flex flex-wrap items-center mb-4">
-        <DateTag date={metadata.datePublished} />
+        <DateTag date={metadata.date} />
         {metadata.tags.map((tag) => (
           <CategoryTag tag={tag} key={tag} />
         ))}

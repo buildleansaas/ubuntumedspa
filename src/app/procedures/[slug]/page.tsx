@@ -15,6 +15,20 @@ import CtaButtons from "components/cta-buttons";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
 
+type Params = { params: { medication: string } };
+
+export async function generateMetadata({ params }: Params) {
+  const { title, description } = procedures.find((med) => med.slug === params.medication)?.seo ?? {
+    title: "Procedure",
+    description: "",
+  };
+
+  return {
+    title,
+    description,
+  };
+}
+
 export default async function ProcedurePage({ params: { slug } }: { params: { slug: string } }) {
   const procedure = procedures.find((procedure) => procedure.slug === slug);
 

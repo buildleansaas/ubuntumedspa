@@ -31,11 +31,11 @@ export function Paragraph(properties: JSX.IntrinsicElements["p"]) {
 }
 
 export function OrderedList(properties: JSX.IntrinsicElements["ol"]) {
-  return <ol className="leading-8 list-decimal marker:tracking-tighter" {...properties} />;
+  return <ol className="leading-8 list-decimal marker:tracking-tighter pl-8" {...properties} />;
 }
 
 export function UnorderedList(properties: JSX.IntrinsicElements["ul"]) {
-  return <ul className="leading-8 list-disc marker:tracking-tighter" {...properties} />;
+  return <ul className="leading-8 list-disc marker:tracking-tighter pl-8" {...properties} />;
 }
 
 export function ListItem(properties: JSX.IntrinsicElements["li"]) {

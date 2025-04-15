@@ -10,7 +10,7 @@ interface StructuredDataProps {
   headline?: string;
   imageUrls?: string[];
   dateModified?: string;
-  datePublished?: string;
+  date?: string;
   breadCrumbs?: string[];
   faqs?: { question: string; answer: string | JSX.Element }[];
 }
@@ -29,7 +29,7 @@ const getMarkup = ({
   type = "WebPage",
   headline = "Title of a News Article",
   imageUrls = [],
-  datePublished = new Date().toISOString(),
+  date = new Date().toISOString(),
   dateModified = new Date().toISOString(),
   faqs = [],
 }: StructuredDataProps) => {
@@ -57,7 +57,7 @@ const getMarkup = ({
         "@type": "NewsArticle",
         headline,
         image: imageUrls.map(getImageUrl),
-        datePublished,
+        datePublished: date,
         dateModified,
         author,
       };

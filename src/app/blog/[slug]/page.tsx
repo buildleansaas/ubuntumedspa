@@ -2,11 +2,7 @@ import ArticleHeader from "components/article-header";
 import { notFound } from "next/navigation";
 import StructuredData from "components/structured-data";
 import BlogCTA from "components/cta-footer";
-
-const getPostData = async ({ slug }: { slug: string }) => {
-  const { default: Content, metadata } = await import(`markdown/${slug}.mdx`);
-  return { Content, metadata };
-};
+import { getPostData } from "./getPostData";
 
 export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
   try {

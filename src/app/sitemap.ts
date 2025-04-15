@@ -11,7 +11,7 @@ export const articles: string[] = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  return [
+  const urls = [
     {
       url: "https://www.ubuntumedspa.com",
       lastModified: new Date(),
@@ -33,4 +33,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     })),
   ];
+
+  console.log(urls.map((url) => url.url));
+
+  return urls;
 }

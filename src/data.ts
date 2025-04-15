@@ -72,6 +72,11 @@ export const procedures = [
   {
     name: "Feminine Intimacy PRP Protocols",
     slug: "female-intimacy-prp-protocols",
+    seo: {
+      title: "Feminine Intimacy PRP: Revitalize Your Sexual Wellness",
+      description:
+        "Enhance feminine wellness with natural PRP protocols. Boost libido, improve lubrication, and relieve incontinence & menopause symptoms.",
+    },
     description:
       "The Feminine Intimacy PRP Protocols is a groundbreaking natural treatment designed to enhance female sexual health and wellness. It boasts a range of benefits that can help women of all ages and backgrounds improve their sexual function and enjoy their bodies to the fullest. The O-Shot can help to reverse urinary incontinence, boost libido, improve natural lubrication, and enhance overall sexual function. It can also reverse the symptoms of menopause and relieve symptoms associated with sexual dysfunction. Ultimately, the Feminine Intimacy PRP Protocols has helped many women achieve a better quality of life and experience a more fulfilling sex life.",
     headline: "Revitalize Your Feminine Intimacy: Natural, Effective, Life-Changing!",
@@ -325,6 +330,10 @@ export const procedures = [
   {
     name: "Male Intimacy PRP Protocols",
     slug: "male-intimacy-prp-protocols",
+    seo: {
+      title: "",
+      description: "",
+    },
     description:
       "The P-Shot is the latest innovation in male sexual health and wellness. This natural and non-invasive treatment is designed to rejuvenate the penis and enhance overall sexual function. The P-Shot can help to improve the frequency and quality of erections, as well as boost libido and sexual stamina. It is also an effective treatment for reversing the symptoms of Peyronie's disease. By utilizing the healing properties of Platelet-Rich Plasma (PRP) therapy, the P-Shot can help to increase blood flow, revive and enhance sensitivity, as well as improve male sexual function and overall satisfaction. If you're looking for a natural and effective way to enhance your sexual health and function, the P-Shot may be the solution you've been waiting for.",
     headline: "Rediscover Male Virility: Boost Your Performance and Confidence!",
@@ -525,6 +534,10 @@ export const procedures = [
   {
     name: "PRP Breast Lift",
     slug: "prp-breast-lift",
+    seo: {
+      title: "",
+      description: "",
+    },
     description:
       "The PRP Breast Lift utilizes Platelet-Rich Plasma (PRP) therapy, derived from the patient's own blood, which is injected into the breast area. This stimulates the growth of new blood vessels and fatty tissue, leading to a fuller-looking breast. Unlike traditional breast augmentation procedures, the PRP Breast Lift is non-invasive, has minimal downtime, and produces natural results that last for about well over 18 months, even a lifetime for some. The procedure is also less expensive than surgery, making it an affordable option. Overall, the PRP Breast Lift is a safe and effective way to boost a woman's self-confidence by providing a natural way to enhance the appearance of their breasts.",
     headline: "Embrace Your Curves: Natural, Non-Invasive Enhancement!",
@@ -661,6 +674,10 @@ export const procedures = [
   {
     name: "PRP Hair Restoration",
     slug: "prp-hair-restoration",
+    seo: {
+      title: "",
+      description: "",
+    },
     description:
       "PRP Hair Restoration with PRP is a natural solution for thinning hair or hair loss, that can stimulate new hair growth and improve overall scalp health. A series of three sessions, spaced six weeks apart, each lasting about an hour, use Platelet-Rich Plasma (PRP) therapy to naturally stimulate hair follicles. Suitable for both men and women, this safe and effective treatment offers a quick recovery time with visible results in as little as a few months after the final session. Results include a more youthful and healthy-looking head of hair, which can boost self-esteem and confidence. Overall, the PRP Hair Restoration is a non-invasive option that can help you regain your desired hair thickness and density.",
     headline: "Regain Your Crowning Glory: Safe, Natural, Noticeable Results!",
@@ -876,6 +893,10 @@ export const procedures = [
   {
     name: "PRP Facial",
     slug: "prp-facial",
+    seo: {
+      title: "",
+      description: "",
+    },
     description:
       "The PRP Facial treatment is an innovative and non-invasive procedure that uses Platelet-Rich Plasma (PRP) therapy to improve overall skin texture, enhance elasticity, and promote a youthful-looking complexion. During the treatment, a small sample of the patient's blood is taken and spun in a centrifuge to separate the PRP from the red blood cells. This PRP is topically applied after a microdermabrasion procedure which has been enhanced with PRP to stimulate collagen and elastin production. The combination of microdermabrasion and PRP helps to resurface the skin and remove dead skin cells while promoting rejuvenation and repair, leaving the skin plumper and tighter looking with improved clarity. The results of the PRP Facial can be seen as a gradual improvement to skin texture and brightness that can last from any where from 6 months up to 2 years. Overall, the PRP Facial is a safe and effective way to naturally revitalize the skin by tapping into the power of the patient's own blood platelets, and it's suitable for people with different skin types or conditions.",
     headline: "Radiate Youthful Confidence: Boost Your Skin's Natural Healing Power!",
@@ -1064,6 +1085,10 @@ export const procedures = [
   {
     name: "PRP Face Lift",
     slug: "prp-face-lift",
+    seo: {
+      title: "",
+      description: "",
+    },
     description:
       "The PRP Facelift is a non-invasive cosmetic procedure that involves the use of Botox, Filler, and the PRP Facial to resculpt the face. Botox temporarily paralyzes the muscles that cause wrinkles, reducing the appearance of fine lines and wrinkles. Filler uses hyaluronic acid to add volume and achieve a fuller, more youthful-looking appearance. The PRP Facial stimulates collagen production and tightens the skin, which helps to fill in wrinkles and achieve smoother-looking skin. Together, these three treatments work synergistically to produce natural-looking and long-lasting results. The PRP Facelift is an ideal solution for those who want to enhance their natural beauty and rejuvenate their skin without the pain or downtime of surgical procedures.",
     headline: "Redefine Your Beauty: Non-Invasive, Long-Lasting Rejuvenation!",
@@ -1249,6 +1274,10 @@ export const procedures = [
   {
     name: "Joint Restoration",
     slug: "joint-restoration",
+    seo: {
+      title: "",
+      description: "",
+    },
     description:
       "Joint Restoration using PRP therapy is a non-surgical solution for various joint issues, providing a potential alternative to joint replacement surgery. PRP's healing properties naturally stimulate tissue regeneration and reduce inflammation, rejuvenating your joints and leading to reduced discomfort and improved mobility. This innovative treatment can help to alleviate the symptoms of conditions such as osteoarthritis, rotator cuff tears, ACL injuries, and tennis elbow, among others. With a series of treatments, you may experience less pain, increased functionality, and possibly avoid the need for surgical intervention.",
     headline: "Reclaim Your Mobility: Non-Surgical, Effective Relief!",
@@ -1441,6 +1470,10 @@ export const procedures = [
   {
     name: "Xeomin",
     slug: "xeomin",
+    seo: {
+      title: "",
+      description: "",
+    },
     description:
       "Xeomin is a unique non-surgical procedure targeting a variety of facial areas, including bunny lines, forehead, 'lip flip', crow's feet, gummy smile, and also treating hyperhidrosis. By temporarily inhibiting muscle contractions, Xeomin can smooth out wrinkles, creating a more youthful and rejuvenated appearance. Its precision and effectiveness have made it a popular choice for those seeking to enhance their natural beauty without invasive surgery.",
     headline: "Express Your Natural Beauty: Targeted, Non-Invasive, Refreshing!",
@@ -1642,6 +1675,10 @@ export const procedures = [
   {
     name: "Filler",
     slug: "filler",
+    seo: {
+      title: "",
+      description: "",
+    },
     description:
       "Filler treatment is a non-invasive procedure designed to add volume and smoothness to specific areas of the face, including eyebrow lift, nasolabial folds, cheeks, and marionette lines. By using hyaluronic acid, a naturally occurring substance in the body, fillers plump up and hydrate the skin, effectively reducing wrinkles and adding definition to the face. It's an excellent option for those looking to achieve a more youthful look without undergoing surgical procedures.",
     headline: "Accentuate Your Features: Smooth, Plump, Youthful!",
@@ -1843,6 +1880,10 @@ export const procedures = [
   {
     name: "Hyperhidrosis Treatment",
     slug: "hyperhidrosis-treatment",
+    seo: {
+      title: "",
+      description: "",
+    },
     description:
       "Our Hyperhidrosis treatment utilizes Xeomin injections to effectively address excessive sweating, a condition also known as Hyperhidrosis. By blocking the nerve signals to sweat glands, Xeomin can significantly reduce sweat production, providing relief for those affected by this condition. This non-invasive treatment is a practical alternative to surgery, offering a high success rate and minimal side effects.",
     headline: "Experience Refreshing Relief: Non-Invasive, Effective, Liberating!",
