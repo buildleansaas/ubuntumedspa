@@ -6,15 +6,15 @@ import { Toaster } from "components/ui/toaster";
 import Header from "components/header";
 import Footer from "components/footer";
 import { Metadata } from "next";
+import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "lib/seo";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 export const metadata: Metadata = {
-  title: "Ubuntu Med Spa | Unlock the Power of PRP and Experience Natural Healing and Wellness",
-  description:
-    "Experience natural healing and wellness with Ubuntu Med Spa's Plasma Rich Platelet (PRP) therapy. Discover the benefits and procedures for improved health.",
+  title: DEFAULT_TITLE,
+  description: DEFAULT_DESCRIPTION,
 };
 
 export default function Layout({ children }: LayoutProps) {
