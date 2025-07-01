@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import type { JSX } from "react";
 
 export function Anchor(properties: JSX.IntrinsicElements["a"]) {
   return (

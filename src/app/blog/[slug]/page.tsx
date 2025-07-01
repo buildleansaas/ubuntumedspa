@@ -4,7 +4,8 @@ import StructuredData from "components/structured-data";
 import BlogCTA from "components/cta-footer";
 import { getPostData } from "./getPostData";
 
-export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
+export const generateMetadata = async (props: { params: Promise<{ slug: string }> }) => {
+  const params = await props.params;
   try {
     const { metadata } = await getPostData(params);
 
@@ -25,13 +26,14 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
   }
 };
 
-export default async function ArticlePage({
-  params,
-}: {
-  params: {
-    slug: string;
-  };
-}) {
+export default async function ArticlePage(
+  props: {
+    params: Promise<{
+      slug: string;
+    }>;
+  }
+) {
+  const params = await props.params;
   try {
     const { Content, metadata } = await getPostData(params);
 

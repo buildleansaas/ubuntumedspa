@@ -15,9 +15,10 @@ import CtaButtons from "components/cta-buttons";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
 
-type Params = { params: { medication: string } };
+type Params = { params: Promise<{ medication: string }> };
 
-export async function generateMetadata({ params }: Params) {
+export async function generateMetadata(props: Params) {
+  const params = await props.params;
   const { title, description } = procedures.find((med) => med.slug === params.medication)?.seo ?? {
     title: "Procedure",
     description: "",
@@ -29,7 +30,13 @@ export async function generateMetadata({ params }: Params) {
   };
 }
 
-export default async function ProcedurePage({ params: { slug } }: { params: { slug: string } }) {
+export default async function ProcedurePage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const procedure = procedures.find((procedure) => procedure.slug === slug);
 
   const articles = (await Promise.all(slugs?.map((slug) => import(`markdown/${slug}.mdx`))))

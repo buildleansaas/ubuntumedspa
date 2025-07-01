@@ -1,4 +1,5 @@
 import Script from "next/script";
+import type { JSX } from "react";
 
 const SITE_NAME = "Ubuntu Med Spa";
 const DEFAULT_DESCRIPTION = "";
