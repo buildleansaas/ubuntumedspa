@@ -12,7 +12,13 @@ import CtaFooter from "components/cta-footer";
 import StructuredData from "components/structured-data";
 import CtaButtons from "components/cta-buttons";
 
-export default async function ProcedurePage({ params: { slug } }: { params: { slug: string } }) {
+export default async function ProcedurePage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const product = products.find((product) => product.slug === slug);
 
   const articles = (await Promise.all(slugs?.map((slug) => import(`markdown/${slug}.mdx`))))
