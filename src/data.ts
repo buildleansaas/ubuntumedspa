@@ -2012,6 +2012,122 @@ export const procedures = [
       },
     ],
   },
+  {
+    name: "Blohmdahl Ear Piercing",
+    slug: "blohmdahl-ear-piercing",
+    seo: {
+      title: "Blohmdahl Ear Piercing: Safe, Medical-Grade Piercing in Williamsburg",
+      description:
+        "Experience the safest ear piercing method with Blohmdahl medical-grade system. Sterile, gentle, and perfect for all ages at Williamsburg Med Spa.",
+    },
+    description:
+      "Blohmdahl Ear Piercing represents the gold standard in safe, medical-grade ear piercing. This Swedish-developed system uses pre-sterilized, hypoallergenic medical plastic and titanium materials, making it ideal for sensitive skin and first-time piercings. Our trained professionals ensure a gentle, virtually painless experience that's perfect for children and adults alike. The sterile, single-use cassettes eliminate cross-contamination risks, while the precise technique minimizes tissue trauma and promotes faster healing.",
+    headline: "Safe, Gentle, Medical-Grade Ear Piercing for the Whole Family",
+    subline:
+      "Experience peace of mind with Blohmdahl's medical-grade ear piercing system. Using sterile, hypoallergenic materials and gentle techniques, we provide the safest piercing experience in Historic Williamsburg, perfect for children's first piercings or anyone seeking a professional, healing-focused approach.",
+    image: "/procedure/ear-piercing.jpg",
+    price: "$45.00 per ear",
+    // programmatic SEO copy
+    blogHeadline:
+      "Considering ear piercing for yourself or your child? Explore our comprehensive guides on Blohmdahl medical ear piercing. Learn about safety protocols, aftercare, and why medical-grade piercing makes all the difference for healing and long-term ear health.",
+    benefitsHeadline:
+      "Choose Blohmdahl for the safest ear piercing experience. From sterile, single-use equipment to hypoallergenic jewelry options, every aspect is designed for optimal healing and comfort. Perfect for sensitive skin, children's first piercings, and anyone who values a medical-grade approach to body modification.",
+    benefits: [
+      {
+        title: "Medical-Grade Safety",
+        description:
+          "Pre-sterilized, single-use cassettes ensure the highest hygiene standards, eliminating cross-contamination risks.",
+      },
+      {
+        title: "Hypoallergenic Materials",
+        description:
+          "Medical plastic and titanium options perfect for sensitive skin and nickel allergies.",
+      },
+      {
+        title: "Gentle & Precise",
+        description:
+          "Specialized technique minimizes tissue trauma, reducing pain and promoting faster healing.",
+      },
+      {
+        title: "All Ages Welcome",
+        description:
+          "Safe for infants, children, and adults with age-appropriate jewelry and gentle approach.",
+      },
+    ],
+    ailmentsHeadline:
+      "Blohmdahl Ear Piercing addresses common concerns and provides solutions for various ear piercing needs. Whether you're getting your child's first piercing, have sensitive skin, or need to re-pierce closed holes, our medical-grade approach ensures the best outcome for every situation.",
+    ailments: [
+      {
+        title: "First-Time Piercings",
+        description: "Perfect for children and adults getting their ears pierced for the first time.",
+        blog_post_title: "Your Child's First Ear Piercing: Why Choose Blohmdahl",
+        blog_post_slug: "childs-first-ear-piercing-blohmdahl-method",
+        slug: "first-time-piercing",
+        tag: "common",
+      },
+      {
+        title: "Sensitive Skin",
+        description: "Hypoallergenic materials ideal for those with metal allergies or sensitive skin.",
+        blog_post_title: "Ear Piercing for Sensitive Skin: The Blohmdahl Advantage",
+        blog_post_slug: "ear-piercing-sensitive-skin-blohmdahl",
+        slug: "sensitive-skin-piercing",
+        tag: "common",
+      },
+      {
+        title: "Re-Piercing",
+        description: "Safe re-piercing of closed or partially closed ear holes.",
+        blog_post_title: "Re-Piercing Your Ears Safely with Blohmdahl",
+        blog_post_slug: "re-piercing-ears-safely-blohmdahl",
+        slug: "ear-re-piercing",
+        tag: "common",
+      },
+      {
+        title: "Multiple Piercings",
+        description: "Precise placement for second, third, or cartilage piercings.",
+        blog_post_title: "Creating Your Perfect Ear Stack with Blohmdahl",
+        blog_post_slug: "multiple-ear-piercings-blohmdahl",
+        slug: "multiple-piercings",
+        tag: "uncommon",
+      },
+      {
+        title: "Keloid Prevention",
+        description: "Gentle technique and proper aftercare to minimize keloid formation risk.",
+        blog_post_title: "Preventing Keloids with Blohmdahl Ear Piercing",
+        blog_post_slug: "preventing-keloids-blohmdahl-piercing",
+        slug: "keloid-prevention",
+        tag: "uncommon",
+      },
+    ],
+    faqHeadline:
+      "Everything you need to know about Blohmdahl medical ear piercing at Williamsburg Med Spa.",
+    faqs: [
+      {
+        question: "What age can children get their ears pierced?",
+        answer:
+          "We safely pierce ears for children as young as 3 months old. Our gentle Blohmdahl system and experienced staff ensure a positive experience for children of all ages.",
+      },
+      {
+        question: "How is Blohmdahl different from mall piercing?",
+        answer:
+          "Blohmdahl uses medical-grade, pre-sterilized equipment and hypoallergenic materials. Unlike piercing guns, our system is gentler, more precise, and significantly reduces the risk of infection and complications.",
+      },
+      {
+        question: "What jewelry materials are available?",
+        answer:
+          "We offer medical plastic and pure titanium options. Both are hypoallergenic and perfect for sensitive skin or those with nickel allergies.",
+      },
+      {
+        question: "How long does healing take?",
+        answer:
+          "Earlobes typically heal in 6-8 weeks, while cartilage can take 3-6 months. Our gentle technique and quality materials often result in faster healing than traditional methods.",
+      },
+      {
+        question: "Can I bring my own jewelry?",
+        answer:
+          "For initial piercings, we use only Blohmdahl jewelry to ensure safety and proper healing. After healing is complete, you can switch to your own jewelry.",
+      },
+    ],
+  },
 ];
 
 export const products = [

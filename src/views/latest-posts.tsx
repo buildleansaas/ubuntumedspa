@@ -14,12 +14,12 @@ export default async function LatestPosts() {
     <div className="mx-auto max-w-2xl lg:max-w-4xl">
       <div className="my-16 sm:my-24 lg:my-32">
         <h2 className="sm:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light tracking-tight text-white">
-          Ubuntu Med Spa Blog
+          Williamsburg Med Spa Blog
         </h2>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto text-center">
-          Explore the Ubuntu Med Spa Blog to unravel the science behind Plasma Rich Platelet (PRP) therapy. Our
-          insightful posts are here to help you understand PRP benefits and procedures, guiding you on your journey to
-          improved health and wellness.
+          Explore the Williamsburg Med Spa Blog for insights into restorative wellness and natural healing. Our
+          educational articles cover everything from PRP therapy benefits to the art of Blohmdahl ear piercing,
+          supporting your path to holistic health and rejuvenation.
         </p>
       </div>
       <div className="mt-16 space-y-20 lg:mt-20 lg:space-y-20">

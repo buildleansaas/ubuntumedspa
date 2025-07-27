@@ -11,7 +11,7 @@ export default async function BlogPage() {
   return (
     <div className="mx-auto max-w-2xl lg:max-w-4xl">
       <h2 className="sm:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-white mb-16 sm:mb-24 lg:mb-32">
-        Ubuntu Med Spa Blog
+        Williamsburg Med Spa Blog
       </h2>
       <div className="mt-16 space-y-20 lg:mt-20 lg:space-y-20">
         {articles.map((article) => (

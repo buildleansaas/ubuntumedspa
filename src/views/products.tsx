@@ -9,9 +9,9 @@ export default function Products() {
           Medical Grade Beauty Products
         </h2>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
-          At Ubuntu Med Spa, we offer a wide range of medical grade beauty products to help you look and feel your best.
-          Our products are only available through a licensed medical professional, so you can rest assured that you are
-          getting the best quality.
+          At Williamsburg Med Spa, we offer carefully curated medical-grade wellness products to support your restorative journey.
+          Our professional-grade products are selected for their healing properties and effectiveness, available exclusively
+          through our licensed medical professionals.
         </p>
       </div>
 

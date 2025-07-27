@@ -9,9 +9,9 @@ export default function Procedures() {
           Certified Procedures and Services
         </h2>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
-          Explore the Ubuntu Med Spa Blog to unravel the science behind Plasma Rich Platelet (PRP) therapy. Our
-          insightful posts are here to help you understand PRP benefits and procedures, guiding you on your journey to
-          improved health and wellness.
+          Explore Williamsburg Med Spa's restorative treatments designed to enhance your natural healing and wellness.
+          From innovative PRP therapies to precision Blohmdahl ear piercing, our certified procedures support your
+          journey to holistic health and rejuvenation.
         </p>
       </div>
 

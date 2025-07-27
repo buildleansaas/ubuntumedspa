@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="p-4 text-center">
         © 2023 Copyright
         <Link className="text-white" href="/">
-          Ubuntu Med Spa
+          Williamsburg Med Spa
         </Link>
       </div>
     </footer>

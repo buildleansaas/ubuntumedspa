@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://www.ubuntumedspa.com/sitemap.xml",
+    sitemap: "https://www.williamsburgmedspa.com/sitemap.xml",
   };
 }

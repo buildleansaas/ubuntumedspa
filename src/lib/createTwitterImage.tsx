@@ -67,7 +67,7 @@ export async function createTwitterImage({
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={`${ORIGIN}/logo.png`} width={48} height={48} alt="zen circle drawing" />
-          ubuntumedspa.com
+          williamsburgmedspa.com
         </div>
         <h1
           style={{
