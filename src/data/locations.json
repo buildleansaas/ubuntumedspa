@@ -1,0 +1,860 @@
+{
+  "center": {
+    "name": "Williamsburg, VA",
+    "lat": 37.2707,
+    "lng": -76.7075
+  },
+  "radius_miles": 25.0,
+  "method": "as-the-crow-flies using ZIP centroids (seed set)",
+  "updated_at": "2025-08-31T16:55:43.287743+00:00",
+  "zipcodes": [
+    {
+      "zip": "23185",
+      "city": "Williamsburg",
+      "state": "VA",
+      "county": "James City County",
+      "lat": 37.27,
+      "lng": -76.7,
+      "distance_miles": 0.42,
+      "est_drive_minutes_45mph": 0.6,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23188",
+      "city": "Williamsburg",
+      "state": "VA",
+      "county": "James City County",
+      "lat": 37.35,
+      "lng": -76.77,
+      "distance_miles": 6.47,
+      "est_drive_minutes_45mph": 8.6,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23168",
+      "city": "Toano",
+      "state": "VA",
+      "county": "James City County",
+      "lat": 37.37,
+      "lng": -76.8,
+      "distance_miles": 8.54,
+      "est_drive_minutes_45mph": 11.4,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23691",
+      "city": "Yorktown",
+      "state": "VA",
+      "county": "York County",
+      "lat": 37.26,
+      "lng": -76.55,
+      "distance_miles": 8.69,
+      "est_drive_minutes_45mph": 11.6,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23603",
+      "city": "Newport News",
+      "state": "VA",
+      "county": "Newport News city",
+      "lat": 37.19,
+      "lng": -76.56,
+      "distance_miles": 9.85,
+      "est_drive_minutes_45mph": 13.1,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23690",
+      "city": "Yorktown",
+      "state": "VA",
+      "county": "York County",
+      "lat": 37.23,
+      "lng": -76.5,
+      "distance_miles": 11.75,
+      "est_drive_minutes_45mph": 15.7,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23883",
+      "city": "Surry",
+      "state": "VA",
+      "county": "Surry County",
+      "lat": 37.13,
+      "lng": -76.83,
+      "distance_miles": 11.83,
+      "est_drive_minutes_45mph": 15.8,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23062",
+      "city": "Gloucester Point",
+      "state": "VA",
+      "county": "Gloucester County",
+      "lat": 37.26,
+      "lng": -76.49,
+      "distance_miles": 11.98,
+      "est_drive_minutes_45mph": 16.0,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23604",
+      "city": "Fort Eustis",
+      "state": "VA",
+      "county": "Newport News city",
+      "lat": 37.12,
+      "lng": -76.59,
+      "distance_miles": 12.26,
+      "est_drive_minutes_45mph": 16.3,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23608",
+      "city": "Newport News",
+      "state": "VA",
+      "county": "Newport News city",
+      "lat": 37.15,
+      "lng": -76.54,
+      "distance_miles": 12.43,
+      "est_drive_minutes_45mph": 16.6,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23072",
+      "city": "Hayes",
+      "state": "VA",
+      "county": "Gloucester County",
+      "lat": 37.29,
+      "lng": -76.45,
+      "distance_miles": 14.22,
+      "est_drive_minutes_45mph": 19.0,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23061",
+      "city": "Gloucester",
+      "state": "VA",
+      "county": "Gloucester County",
+      "lat": 37.43,
+      "lng": -76.54,
+      "distance_miles": 14.35,
+      "est_drive_minutes_45mph": 19.1,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23011",
+      "city": "Barhamsville",
+      "state": "VA",
+      "county": "New Kent County",
+      "lat": 37.45,
+      "lng": -76.84,
+      "distance_miles": 14.37,
+      "est_drive_minutes_45mph": 19.2,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23692",
+      "city": "Yorktown",
+      "state": "VA",
+      "county": "York County",
+      "lat": 37.19,
+      "lng": -76.46,
+      "distance_miles": 14.71,
+      "est_drive_minutes_45mph": 19.6,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23089",
+      "city": "Lanexa",
+      "state": "VA",
+      "county": "New Kent County",
+      "lat": 37.42,
+      "lng": -76.9,
+      "distance_miles": 14.77,
+      "est_drive_minutes_45mph": 19.7,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23602",
+      "city": "Newport News",
+      "state": "VA",
+      "county": "Newport News city",
+      "lat": 37.11,
+      "lng": -76.52,
+      "distance_miles": 15.16,
+      "est_drive_minutes_45mph": 20.2,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23696",
+      "city": "Seaford",
+      "state": "VA",
+      "county": "York County",
+      "lat": 37.19,
+      "lng": -76.43,
+      "distance_miles": 16.25,
+      "est_drive_minutes_45mph": 21.7,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23881",
+      "city": "Spring Grove",
+      "state": "VA",
+      "county": "Surry County",
+      "lat": 37.16,
+      "lng": -76.97,
+      "distance_miles": 16.34,
+      "est_drive_minutes_45mph": 21.8,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23846",
+      "city": "Elberon",
+      "state": "VA",
+      "county": "Surry County",
+      "lat": 37.07,
+      "lng": -76.88,
+      "distance_miles": 16.81,
+      "est_drive_minutes_45mph": 22.4,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23693",
+      "city": "Yorktown",
+      "state": "VA",
+      "county": "York County",
+      "lat": 37.12,
+      "lng": -76.45,
+      "distance_miles": 17.59,
+      "est_drive_minutes_45mph": 23.4,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23606",
+      "city": "Newport News",
+      "state": "VA",
+      "county": "Newport News city",
+      "lat": 37.07,
+      "lng": -76.51,
+      "distance_miles": 17.62,
+      "est_drive_minutes_45mph": 23.5,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23839",
+      "city": "Dendron",
+      "state": "VA",
+      "county": "Surry County",
+      "lat": 37.08,
+      "lng": -76.92,
+      "distance_miles": 17.62,
+      "est_drive_minutes_45mph": 23.5,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23110",
+      "city": "Mattaponi",
+      "state": "VA",
+      "county": "King and Queen County",
+      "lat": 37.53,
+      "lng": -76.77,
+      "distance_miles": 18.24,
+      "est_drive_minutes_45mph": 24.3,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23156",
+      "city": "Shacklefords",
+      "state": "VA",
+      "county": "King and Queen County",
+      "lat": 37.54,
+      "lng": -76.73,
+      "distance_miles": 18.65,
+      "est_drive_minutes_45mph": 24.9,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23128",
+      "city": "North",
+      "state": "VA",
+      "county": "Mathews County",
+      "lat": 37.44,
+      "lng": -76.43,
+      "distance_miles": 19.21,
+      "est_drive_minutes_45mph": 25.6,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23181",
+      "city": "West Point",
+      "state": "VA",
+      "county": "King William County",
+      "lat": 37.55,
+      "lng": -76.8,
+      "distance_miles": 19.95,
+      "est_drive_minutes_45mph": 26.6,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23601",
+      "city": "Newport News",
+      "state": "VA",
+      "county": "Newport News city",
+      "lat": 37.04,
+      "lng": -76.48,
+      "distance_miles": 20.27,
+      "est_drive_minutes_45mph": 27.0,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23030",
+      "city": "Charles City",
+      "state": "VA",
+      "county": "Charles City County",
+      "lat": 37.34,
+      "lng": -77.07,
+      "distance_miles": 20.49,
+      "est_drive_minutes_45mph": 27.3,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23430",
+      "city": "Smithfield",
+      "state": "VA",
+      "county": "Isle of Wight County",
+      "lat": 36.98,
+      "lng": -76.61,
+      "distance_miles": 20.79,
+      "est_drive_minutes_45mph": 27.7,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23025",
+      "city": "Cardinal",
+      "state": "VA",
+      "county": "Mathews County",
+      "lat": 37.42,
+      "lng": -76.37,
+      "distance_miles": 21.22,
+      "est_drive_minutes_45mph": 28.3,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23021",
+      "city": "Bohannon",
+      "state": "VA",
+      "county": "Mathews County",
+      "lat": 37.39,
+      "lng": -76.35,
+      "distance_miles": 21.3,
+      "est_drive_minutes_45mph": 28.4,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23050",
+      "city": "Dutton",
+      "state": "VA",
+      "county": "Mathews County",
+      "lat": 37.5,
+      "lng": -76.44,
+      "distance_miles": 21.6,
+      "est_drive_minutes_45mph": 28.8,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23140",
+      "city": "Providence Forge",
+      "state": "VA",
+      "county": "New Kent County",
+      "lat": 37.44,
+      "lng": -77.04,
+      "distance_miles": 21.69,
+      "est_drive_minutes_45mph": 28.9,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23056",
+      "city": "Foster",
+      "state": "VA",
+      "county": "Mathews County",
+      "lat": 37.45,
+      "lng": -76.38,
+      "distance_miles": 21.84,
+      "est_drive_minutes_45mph": 29.1,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23666",
+      "city": "Hampton",
+      "state": "VA",
+      "county": "Hampton city",
+      "lat": 37.06,
+      "lng": -76.41,
+      "distance_miles": 21.91,
+      "est_drive_minutes_45mph": 29.2,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23124",
+      "city": "New Kent",
+      "state": "VA",
+      "county": "New Kent County",
+      "lat": 37.51,
+      "lng": -76.97,
+      "distance_miles": 21.93,
+      "est_drive_minutes_45mph": 29.2,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23163",
+      "city": "Susan",
+      "state": "VA",
+      "county": "Mathews County",
+      "lat": 37.36,
+      "lng": -76.31,
+      "distance_miles": 22.7,
+      "est_drive_minutes_45mph": 30.3,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23605",
+      "city": "Newport News",
+      "state": "VA",
+      "county": "Newport News city",
+      "lat": 37.02,
+      "lng": -76.44,
+      "distance_miles": 22.74,
+      "est_drive_minutes_45mph": 30.3,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23662",
+      "city": "Poquoson",
+      "state": "VA",
+      "county": "Poquoson city",
+      "lat": 37.12,
+      "lng": -76.34,
+      "distance_miles": 22.75,
+      "est_drive_minutes_45mph": 30.3,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23665",
+      "city": "Hampton",
+      "state": "VA",
+      "county": "York County",
+      "lat": 37.08,
+      "lng": -76.37,
+      "distance_miles": 22.78,
+      "est_drive_minutes_45mph": 30.4,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23138",
+      "city": "Port Haywood",
+      "state": "VA",
+      "county": "Mathews County",
+      "lat": 37.38,
+      "lng": -76.31,
+      "distance_miles": 23.11,
+      "est_drive_minutes_45mph": 30.8,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23035",
+      "city": "Cobbs Creek",
+      "state": "VA",
+      "county": "Mathews County",
+      "lat": 37.5,
+      "lng": -76.39,
+      "distance_miles": 23.56,
+      "est_drive_minutes_45mph": 31.4,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23149",
+      "city": "Saluda",
+      "state": "VA",
+      "county": "Middlesex County",
+      "lat": 37.6,
+      "lng": -76.59,
+      "distance_miles": 23.65,
+      "est_drive_minutes_45mph": 31.5,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23109",
+      "city": "Mathews",
+      "state": "VA",
+      "county": "Mathews County",
+      "lat": 37.43,
+      "lng": -76.32,
+      "distance_miles": 23.96,
+      "est_drive_minutes_45mph": 31.9,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23108",
+      "city": "Mascot",
+      "state": "VA",
+      "county": "King and Queen County",
+      "lat": 37.62,
+      "lng": -76.7,
+      "distance_miles": 24.14,
+      "est_drive_minutes_45mph": 32.2,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23071",
+      "city": "Hartfield",
+      "state": "VA",
+      "county": "Middlesex County",
+      "lat": 37.55,
+      "lng": -76.44,
+      "distance_miles": 24.25,
+      "est_drive_minutes_45mph": 32.3,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23314",
+      "city": "Carrollton",
+      "state": "VA",
+      "county": "Isle of Wight County",
+      "lat": 36.94,
+      "lng": -76.56,
+      "distance_miles": 24.25,
+      "est_drive_minutes_45mph": 32.3,
+      "within_60min_45mph": true
+    },
+    {
+      "zip": "23092",
+      "city": "Locust Hill",
+      "state": "VA",
+      "county": "Middlesex County",
+      "lat": 37.59,
+      "lng": -76.5,
+      "distance_miles": 24.83,
+      "est_drive_minutes_45mph": 33.1,
+      "within_60min_45mph": true
+    }
+  ],
+  "cities": [
+    {
+      "city": "Barhamsville",
+      "state": "VA",
+      "zips": [
+        "23011"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Bohannon",
+      "state": "VA",
+      "zips": [
+        "23021"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Cardinal",
+      "state": "VA",
+      "zips": [
+        "23025"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Carrollton",
+      "state": "VA",
+      "zips": [
+        "23314"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Charles City",
+      "state": "VA",
+      "zips": [
+        "23030"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Cobbs Creek",
+      "state": "VA",
+      "zips": [
+        "23035"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Dendron",
+      "state": "VA",
+      "zips": [
+        "23839"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Dutton",
+      "state": "VA",
+      "zips": [
+        "23050"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Elberon",
+      "state": "VA",
+      "zips": [
+        "23846"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Fort Eustis",
+      "state": "VA",
+      "zips": [
+        "23604"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Foster",
+      "state": "VA",
+      "zips": [
+        "23056"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Gloucester",
+      "state": "VA",
+      "zips": [
+        "23061"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Gloucester Point",
+      "state": "VA",
+      "zips": [
+        "23062"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Hampton",
+      "state": "VA",
+      "zips": [
+        "23666",
+        "23665"
+      ],
+      "count": 2
+    },
+    {
+      "city": "Hartfield",
+      "state": "VA",
+      "zips": [
+        "23071"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Hayes",
+      "state": "VA",
+      "zips": [
+        "23072"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Lanexa",
+      "state": "VA",
+      "zips": [
+        "23089"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Locust Hill",
+      "state": "VA",
+      "zips": [
+        "23092"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Mascot",
+      "state": "VA",
+      "zips": [
+        "23108"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Mathews",
+      "state": "VA",
+      "zips": [
+        "23109"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Mattaponi",
+      "state": "VA",
+      "zips": [
+        "23110"
+      ],
+      "count": 1
+    },
+    {
+      "city": "New Kent",
+      "state": "VA",
+      "zips": [
+        "23124"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Newport News",
+      "state": "VA",
+      "zips": [
+        "23603",
+        "23608",
+        "23602",
+        "23606",
+        "23601",
+        "23605"
+      ],
+      "count": 6
+    },
+    {
+      "city": "North",
+      "state": "VA",
+      "zips": [
+        "23128"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Poquoson",
+      "state": "VA",
+      "zips": [
+        "23662"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Port Haywood",
+      "state": "VA",
+      "zips": [
+        "23138"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Providence Forge",
+      "state": "VA",
+      "zips": [
+        "23140"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Saluda",
+      "state": "VA",
+      "zips": [
+        "23149"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Seaford",
+      "state": "VA",
+      "zips": [
+        "23696"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Shacklefords",
+      "state": "VA",
+      "zips": [
+        "23156"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Smithfield",
+      "state": "VA",
+      "zips": [
+        "23430"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Spring Grove",
+      "state": "VA",
+      "zips": [
+        "23881"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Surry",
+      "state": "VA",
+      "zips": [
+        "23883"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Susan",
+      "state": "VA",
+      "zips": [
+        "23163"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Toano",
+      "state": "VA",
+      "zips": [
+        "23168"
+      ],
+      "count": 1
+    },
+    {
+      "city": "West Point",
+      "state": "VA",
+      "zips": [
+        "23181"
+      ],
+      "count": 1
+    },
+    {
+      "city": "Williamsburg",
+      "state": "VA",
+      "zips": [
+        "23185",
+        "23188"
+      ],
+      "count": 2
+    },
+    {
+      "city": "Yorktown",
+      "state": "VA",
+      "zips": [
+        "23691",
+        "23690",
+        "23692",
+        "23693"
+      ],
+      "count": 4
+    }
+  ],
+  "summary": {
+    "total_zipcodes": 48,
+    "within_60min_45mph_count": 48
+  }
+}
