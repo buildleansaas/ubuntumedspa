@@ -9,7 +9,7 @@ export default function Procedures() {
           Certified Procedures and Services
         </h2>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
-          Explore Williamsburg Med Spa's restorative treatments designed to enhance your natural healing and wellness.
+          Explore Williamsburg Med Spa&apos;s restorative treatments designed to enhance your natural healing and wellness.
           From innovative PRP therapies to precision Blohmdahl ear piercing, our certified procedures support your
           journey to holistic health and rejuvenation.
         </p>
@@ -17,7 +17,7 @@ export default function Procedures() {
 
       <div className="grid gap-8 lg:gap-10 mt-8 lg:my-12 xl:my-16 grid-cols-1 sm:grid-cols-2  lg:grid-cols-4">
         {procedures.map((procedure, i) => (
-          <ProcedureCard key={i} product={{ ...procedure, slug: procedure.name.replaceAll(" ", "-").toLowerCase() }} />
+          <ProcedureCard key={i} product={{ ...procedure, slug: procedure.slug }} />
         ))}
       </div>
     </>

@@ -71,7 +71,7 @@ export const FORM_INPUTS = [
 export const procedures = [
   {
     name: "Feminine Intimacy PRP Protocols",
-    slug: "female-intimacy-prp-protocols",
+    slug: "feminine-intimacy-prp-protocols",
     seo: {
       title: "Feminine Intimacy PRP: Revitalize Your Sexual Wellness",
       description:
@@ -2034,22 +2034,26 @@ export const procedures = [
       "Choose Blohmdahl for the safest ear piercing experience. From sterile, single-use equipment to hypoallergenic jewelry options, every aspect is designed for optimal healing and comfort. Perfect for sensitive skin, children's first piercings, and anyone who values a medical-grade approach to body modification.",
     benefits: [
       {
-        title: "Medical-Grade Safety",
+        emoji: "🏥",
+        benefit: "Medical-Grade Safety",
         description:
           "Pre-sterilized, single-use cassettes ensure the highest hygiene standards, eliminating cross-contamination risks.",
       },
       {
-        title: "Hypoallergenic Materials",
+        emoji: "🌿",
+        benefit: "Hypoallergenic Materials",
         description:
           "Medical plastic and titanium options perfect for sensitive skin and nickel allergies.",
       },
       {
-        title: "Gentle & Precise",
+        emoji: "✨",
+        benefit: "Gentle & Precise",
         description:
           "Specialized technique minimizes tissue trauma, reducing pain and promoting faster healing.",
       },
       {
-        title: "All Ages Welcome",
+        emoji: "👶",
+        benefit: "All Ages Welcome",
         description:
           "Safe for infants, children, and adults with age-appropriate jewelry and gentle approach.",
       },

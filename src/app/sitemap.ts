@@ -13,23 +13,23 @@ export const articles: string[] = [
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const urls = [
     {
-      url: "https://www.ubuntumedspa.com",
+      url: "https://www.williamsburgmedspa.com",
       lastModified: new Date(),
     },
     {
-      url: "https://www.ubuntumedspa.com/consult",
+      url: "https://www.williamsburgmedspa.com/consult",
       lastModified: new Date(),
     },
     ...articles.map((slug) => ({
-      url: `https://www.ubuntumedspa.com/blog/${slug}`,
+      url: `https://www.williamsburgmedspa.com/blog/${slug}`,
       lastModified: new Date(),
     })),
     ...procedures.map((procedure) => ({
-      url: `https://www.ubuntumedspa.com/procedures/${procedure.slug}`,
+      url: `https://www.williamsburgmedspa.com/procedures/${procedure.slug}`,
       lastModified: new Date(),
     })),
     ...products.map((product) => ({
-      url: `https://www.ubuntumedspa.com/products/${product.slug}`,
+      url: `https://www.williamsburgmedspa.com/products/${product.slug}`,
       lastModified: new Date(),
     })),
   ];

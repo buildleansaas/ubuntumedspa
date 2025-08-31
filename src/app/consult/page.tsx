@@ -81,14 +81,17 @@ const ConsultationPage: React.FC = () => {
 
   return (
     <>
-      <h2 className="text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-white mb-4 sm:mb-8">
+      <h2 className="text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-primary-content mb-4 sm:mb-8">
         Consultation Intake Form{" "}
       </h2>
-      <h2 className="text-center text-white text-lg md:text-xl lg:text-2xl mx-auto leading-tight pb-4 max-w-2xl mb-4">
+      <h2 className="text-center text-primary-content text-lg md:text-xl lg:text-2xl mx-auto leading-tight pb-4 max-w-2xl mb-4">
         Please fill out the following information and we will get back to you as soon as possible to schedule your
         consultation!
       </h2>
-      <form className="shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 bg-white bg-opacity-20 text-white" onSubmit={onSubmit}>
+      <form
+        className="shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 bg-white bg-opacity-20 text-primary-content"
+        onSubmit={onSubmit}
+      >
         {FORM_INPUTS.map((input) => {
           switch (input.type) {
             case "text":
@@ -107,7 +110,7 @@ const ConsultationPage: React.FC = () => {
                     onChange={handleChange}
                     placeholder={input.label}
                   />
-                  <p className="text-gray-100 text-xs italic">{input.helperText}</p>
+                  <p className="text-base-content/70 text-xs italic">{input.helperText}</p>
                 </div>
               );
             case "checkbox":
@@ -128,7 +131,7 @@ const ConsultationPage: React.FC = () => {
                       </label>
                     </div>
                   ))}
-                  <p className="text-gray-100 text-xs italic">{input.helperText}</p>
+                  <p className="text-base-content/70 text-xs italic">{input.helperText}</p>
                 </fieldset>
               );
             case "textarea":
@@ -144,7 +147,7 @@ const ConsultationPage: React.FC = () => {
                     onChange={handleChange}
                     placeholder={input.label}
                   />
-                  <p className="text-gray-100 text-xs italic">{input.helperText}</p>
+                  <p className="text-base-content/70 text-xs italic">{input.helperText}</p>
                 </div>
               );
             default:
@@ -152,7 +155,7 @@ const ConsultationPage: React.FC = () => {
           }
         })}
         <div className="flex items-center justify-between">
-          <Button className="bg-blue-500 hover:bg-blue-600" type="submit" disabled={loading}>
+          <Button className="bg-primary hover:bg-primary-focus" type="submit" disabled={loading}>
             {loading ? (
               <>
                 <Loader className="animate-spin" /> Sending...

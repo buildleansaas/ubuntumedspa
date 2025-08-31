@@ -18,7 +18,7 @@ export default function CtaButtons() {
   };
   return (
     <div className="flex flex-wrap justify-center items-center gap-2">
-      <Button className="bg-blue-500 hover:bg-blue-600">
+      <Button className="bg-primary hover:bg-primary">
         <Link href="/consult">Book a Consultation</Link>
       </Button>{" "}
       <Button variant="secondary" onClick={handleAction}>

@@ -36,7 +36,7 @@ export default function WhatIsPRP() {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         {steps.map(({ title, description }) => (
-          <Card key={title} className="text-left bg-blue-500 text-white border-4 border-blue-400">
+          <Card key={title} className="text-left bg-primary text-primary-content border-4 border-primary">
             <CardHeader>
               <CardTitle>{title}</CardTitle>
             </CardHeader>

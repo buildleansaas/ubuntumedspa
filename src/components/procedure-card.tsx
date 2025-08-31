@@ -34,7 +34,7 @@ export const ProcedureCard = ({ product }: Props) => (
       <p className="text-sm">{product.subline}</p>
     </div>
     <div className="flex space-x-2">
-      <Button className="bg-blue-500 hover:bg-blue-600">
+      <Button className="bg-primary hover:bg-primary">
         <Link href="/consult">Schedule</Link>
       </Button>
       <Button variant="secondary">

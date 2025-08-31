@@ -18,18 +18,18 @@ export default function Jumbotron() {
   };
 
   return (
-    <div className="text-center pt-16 sm:pt-40 md:pt-64 lg:pt-80" id="procedures">
-      <h2 className="text-white text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4">
-        Rejuvinate Your Life
+    <div className="text-center py-16 md:py-32 lg:py-48" id="procedures">
+      <h2 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4">
+        Rejuvenate Your Life
       </h2>
-      <p className="text-white text-xl lg:text-2xl mb-8 max-w-2xl mx-auto">
+      <p className="text-base-content text-xl lg:text-2xl mb-8 max-w-2xl mx-auto">
         Experience the amazing effects of <strong>PRP Services</strong> using <strong>Your Own Blood</strong> to enjoy{" "}
         <strong>Natural Healing</strong>, for <strong>Joints</strong>, <strong>Aesthetics</strong>,{" "}
         <strong>Sexual Health</strong> and overall <strong>Wellness</strong>.
       </p>
       <div className="mb-32">
         <div className="flex flex-wrap justify-center items-center gap-2">
-          <Button className="bg-blue-500 hover:bg-blue-600">
+          <Button className="bg-primary hover:bg-primary-focus">
             <Link href="/consult">Book a Consultation</Link>
           </Button>
           <Button variant="secondary" onClick={handleAction}>

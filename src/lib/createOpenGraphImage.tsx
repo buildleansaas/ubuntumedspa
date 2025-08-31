@@ -65,8 +65,8 @@ export async function createOpenGraphImage({
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`${ORIGIN}/logo.png`} width={100} height={100} alt="zen circle drawing" />
-          pedscalc.com
+          <img src={`${ORIGIN}/logo.png`} width={100} height={100} alt="Williamsburg Med Spa logo" />
+          williamsburgmedspa.com
         </div>
         <h1
           style={{

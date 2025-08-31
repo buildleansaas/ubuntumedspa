@@ -12,13 +12,14 @@ import CtaFooter from "components/cta-footer";
 import StructuredData from "components/structured-data";
 import { twMerge } from "tailwind-merge";
 import CtaButtons from "components/cta-buttons";
+import { notFound } from "next/navigation";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
 
-type Params = { params: { medication: string } };
+type Params = { params: { slug: string } };
 
 export async function generateMetadata({ params }: Params) {
-  const { title, description } = procedures.find((med) => med.slug === params.medication)?.seo ?? {
+  const { title, description } = procedures.find((med) => med.slug === params.slug)?.seo ?? {
     title: "Procedure",
     description: "",
   };
@@ -31,24 +32,25 @@ export async function generateMetadata({ params }: Params) {
 
 export default async function ProcedurePage({ params: { slug } }: { params: { slug: string } }) {
   const procedure = procedures.find((procedure) => procedure.slug === slug);
+  if (!procedure) return notFound();
 
   const articles = (await Promise.all(slugs?.map((slug) => import(`markdown/${slug}.mdx`))))
     .map(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
-    .filter(({ tags }) => tags?.includes(procedure?.name ?? ""))
+    .filter(({ tags }) => tags?.includes(procedure.name))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <>
-      <StructuredData type="FAQ" faqs={procedure?.faqs} />
+      <StructuredData type="FAQ" faqs={procedure.faqs} />
       <div className="max-w-7xl mx-auto py-16">
         <div className="text-center">
           <h2 className="text-3xl md:text-5xl mx-auto leading-tight pb-4">
-            <span className="font-bold">{procedure?.name}</span> by Ubuntu Med Spa
+            <span className="font-bold">{procedure.name}</span> by Williamsburg Med Spa
           </h2>
-          <h2 className="text-xl lg:text-2xl mb-8 max-w-5xl mx-auto font-light">{procedure?.headline}</h2>
-          <p className="text-lg max-w-4xl mx-auto">{procedure?.description}</p>
+          <h2 className="text-xl lg:text-2xl mb-8 max-w-5xl mx-auto font-light">{procedure.headline}</h2>
+          <p className="text-lg max-w-4xl mx-auto">{procedure.description}</p>
           <div className="flex space-x-4 mx-auto my-8 justify-center">
-            <Button className="bg-blue-500 hover:bg-blue-600">
+            <Button className="bg-primary hover:bg-primary-focus">
               <Link href="/consult">Book a Consultation</Link>
             </Button>
             {Boolean(articles.length) && (
@@ -61,12 +63,12 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         <div className="my-32 text-center max-w-5xl mx-auto" id="benefits">
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
-            <span className="font-bold">{procedure?.name}</span> Benefits
+            <span className="font-bold">{procedure.name}</span> Benefits
           </h2>
-          <h2 className="text-xl lg:text-2xl mb-8 font-light">{procedure?.benefitsHeadline}</h2>
+          <h2 className="text-xl lg:text-2xl mb-8 font-light">{procedure.benefitsHeadline}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {procedure?.benefits.map(({ emoji, benefit, description }) => (
-              <Card key={benefit} className="text-left bg-blue-500 text-white border-4 border-blue-400">
+            {procedure.benefits.map(({ emoji, benefit, description }) => (
+              <Card key={benefit} className="text-left bg-primary text-primary-content border-4 border-primary">
                 <CardHeader>
                   <CardTitle>
                     {emoji} {benefit}
@@ -88,19 +90,19 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               "PRP Face Lift",
               "PRP Facial",
               "PRP Breast Lift",
-            ].includes(procedure?.name ?? "") && "the "}
-            <span className="font-bold">{procedure?.name}</span> help me?
+            ].includes(procedure.name) && "the "}
+            <span className="font-bold">{procedure.name}</span> help me?
           </h2>
-          <h2 className="text-xl lg:text-2xl mb-8 font-light text-justify">{procedure?.ailmentsHeadline}</h2>
+          <h2 className="text-xl lg:text-2xl mb-8 font-light text-justify">{procedure.ailmentsHeadline}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {procedure?.ailments
+            {procedure.ailments
               ?.sort((a, b) => ailmentsSortOrder[a.tag] - ailmentsSortOrder[b.tag])
               .map(({ title, tag, description, slug }) => (
                 <Card
                   key={title}
                   className={twMerge(
                     "text-left border-4",
-                    tag === "common" && "bg-blue-500 border-blue-400 text-white",
+                    tag === "common" && "bg-primary border-primary text-primary-content",
                     tag === "uncommon" && "bg-purple-500 border-purple-400 text-white",
                     tag === "experimental" && "bg-rose-500 border-rose-400 text-white"
                   )}
@@ -118,7 +120,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   <CardContent>{description}</CardContent>
                   <CardFooter>
                     <Button>
-                      <Link href={`${procedure?.name}/${slug}`}>Learn More</Link>
+                      <Link href={`${procedure.name}/${slug}`}>Learn More</Link>
                     </Button>
                   </CardFooter>
                 </Card>
@@ -129,11 +131,11 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         <div className="my-32 text-center max-w-5xl mx-auto" id="faqs">
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
-            Frequently Asked Questions about <span className="font-bold">{procedure?.name}</span>
+            Frequently Asked Questions about <span className="font-bold">{procedure.name}</span>
           </h2>
-          <h2 className="text-xl lg:text-2xl mb-8 font-light">{procedure?.faqHeadline}</h2>
+          <h2 className="text-xl lg:text-2xl mb-8 font-light">{procedure.faqHeadline}</h2>
           <Accordion type="single" collapsible className="text-left mb-12">
-            {procedure?.faqs.map(({ question, answer }) => (
+            {procedure.faqs.map(({ question, answer }) => (
               <AccordionItem key={question} value={question}>
                 <AccordionTrigger>{question}</AccordionTrigger>
                 <AccordionContent>{answer}</AccordionContent>
@@ -147,14 +149,14 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           <div className="my-32" id="posts">
             <div className="mb-16">
               <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
-                More About <span className="font-semibold">{procedure?.name}</span>
+                More About <span className="font-semibold">{procedure.name}</span>
               </h2>
-              <p className="text-lg lg:text-xl max-w-5xl mx-auto text-center">{procedure?.blogHeadline}</p>
+              <p className="text-lg lg:text-xl max-w-5xl mx-auto text-center">{procedure.blogHeadline}</p>
             </div>
             <div className="max-w-3xl mx-auto">
               {articles.map((article) => (
                 <article key={article.slug} className="relative isolate flex flex-col gap-8 lg:flex-row">
-                  <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-gray-50">
+                  <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-base-200">
                     <Image src={article.image} alt="" fill className="object-cover" />
                     <div className="absolute inset-0 shadow-inner bg-gradient-to-br from-white/20" />
                   </div>
@@ -166,16 +168,16 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                         })}
                       </Badge>
                       {article.tags.map((tag) => (
-                        <Badge key={tag} className="bg-blue-500 hover:bg-blue-600">
+                        <Badge key={tag} className="bg-primary hover:bg-primary-focus">
                           {tag}
                         </Badge>
                       ))}
                     </div>
                     <div className="group relative max-w-xl">
-                      <h2 className="mt-3 text-lg/snug sm:text-xl/snug md:text-2xl/snug font-semibold text-white-900 hover:text-blue-200">
+                      <h2 className="mt-3 text-lg/snug sm:text-xl/snug md:text-2xl/snug font-semibold text-base-content hover:text-base-content/80">
                         <Link href={`/blog/${article.slug}`}>{article.title}</Link>
                       </h2>
-                      <p className="mt-2 text-sm leading-6 text-white">{article.description}</p>
+                      <p className="mt-2 text-sm leading-6 text-primary-content">{article.description}</p>
                     </div>
                   </div>
                 </article>

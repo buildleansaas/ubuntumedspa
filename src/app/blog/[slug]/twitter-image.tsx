@@ -1,4 +1,3 @@
-import { procedures } from "data";
 import { createTwitterImage } from "lib/createTwitterImage";
 import { getPostData } from "./getPostData";
 

@@ -19,7 +19,7 @@ function ArticleHeader({ metadata }: { metadata: Metadata }) {
   return (
     <div className="mx-auto max-w-5xl">
       <div className="max-w-5xl mx-auto">
-        <h1 className="lg:text-center text-white text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight my-8 sm:my-16 lg:-mx-24">
+        <h1 className="lg:text-center text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight my-8 sm:my-16 lg:-mx-24">
           {metadata.title}
         </h1>
       </div>
@@ -30,7 +30,7 @@ function ArticleHeader({ metadata }: { metadata: Metadata }) {
         ))}
       </div>
       <BlogImage src={metadata.image} alt={metadata.imageAlt ?? ""} />
-      <h2 className="text-white text-4xl font-bold tracking-tight my-12 leading-10 text-center">
+      <h2 className="text-base-content text-4xl font-bold tracking-tight my-12 leading-10 text-center">
         {metadata.description}
       </h2>
     </div>

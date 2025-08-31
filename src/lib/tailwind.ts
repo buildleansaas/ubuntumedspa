@@ -1,4 +1,23 @@
-import colors from "tailwindcss/colors";
+// Hardcoded color values since tailwindcss/colors is not available in v4
+const colors = {
+  red: { 50: "#fef2f2", 100: "#fee2e2", 800: "#991b1b" },
+  orange: { 50: "#fff7ed", 100: "#ffedd5", 800: "#9a3412" },
+  amber: { 50: "#fffbeb", 100: "#fef3c7", 800: "#92400e" },
+  yellow: { 50: "#fefce8", 100: "#fef9c3", 800: "#854d0e" },
+  lime: { 50: "#f7fee7", 100: "#ecfccb", 800: "#3f6212" },
+  green: { 50: "#f0fdf4", 100: "#dcfce7", 800: "#166534" },
+  emerald: { 50: "#ecfdf5", 100: "#d1fae5", 800: "#065f46" },
+  teal: { 50: "#f0fdfa", 100: "#ccfbf1", 800: "#115e59" },
+  cyan: { 50: "#ecfeff", 100: "#cffafe", 800: "#155e75" },
+  sky: { 50: "#f0f9ff", 100: "#e0f2fe", 800: "#075985" },
+  blue: { 50: "#eff6ff", 100: "#dbeafe", 800: "#1e40af" },
+  indigo: { 50: "#eef2ff", 100: "#e0e7ff", 800: "#3730a3" },
+  violet: { 50: "#f5f3ff", 100: "#ede9fe", 800: "#5b21b6" },
+  purple: { 50: "#faf5ff", 100: "#f3e8ff", 800: "#6b21a8" },
+  fuchsia: { 50: "#fdf4ff", 100: "#fae8ff", 800: "#86198f" },
+  pink: { 50: "#fdf2f8", 100: "#fce7f3", 800: "#9d174d" },
+  rose: { 50: "#fff1f2", 100: "#ffe4e6", 800: "#9f1239" },
+};
 
 export const classNames = [
   {

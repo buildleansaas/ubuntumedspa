@@ -33,7 +33,7 @@ export const ProductCard = ({ name, image, headline, subline, link, slug }: Prop
       <p className="text-sm">{subline}</p>
     </div>
     <div className="flex space-x-2">
-      <Button className="bg-blue-500 hover:bg-blue-600">
+      <Button className="bg-primary hover:bg-primary">
         <Link href={link}>Buy Now</Link>
       </Button>
       <Button variant="secondary">

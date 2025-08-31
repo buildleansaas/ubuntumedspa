@@ -22,7 +22,7 @@ const CategoryTag = ({ tag, className, size = "sm", href }: TagProps) => {
     case "lg": {
       return (
         <a href={href ?? `#${toKebabCase(tag)}`} key={tag}>
-          <div className="rounded-lg py-2 px-4 md:py-4 md:px-8 bg-slate-600 text-white m-1 md:m-2 text-md">{tag}</div>
+          <div className="rounded-lg py-2 px-4 md:py-4 md:px-8 bg-primary text-base-content m-1 md:m-2 text-md">{tag}</div>
         </a>
       );
     }
@@ -31,7 +31,7 @@ const CategoryTag = ({ tag, className, size = "sm", href }: TagProps) => {
       return (
         <NextLink
           href={href ?? `/categories/${toKebabCase(tag)}`}
-          className={twMerge("rounded-lg px-2 py-1 m-1 bg-slate-600 text-white", className)}
+          className={twMerge("rounded-lg px-2 py-1 m-1 bg-primary text-base-content", className)}
         >
           {tag}
         </NextLink>

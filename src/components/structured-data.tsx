@@ -1,8 +1,8 @@
 import Script from "next/script";
 
-const SITE_NAME = "Ubuntu Med Spa";
+const SITE_NAME = "Williamsburg Med Spa";
 const DEFAULT_DESCRIPTION = "";
-const ORIGIN = "https://ubuntumedspa.com";
+const ORIGIN = "https://www.williamsburgmedspa.com";
 
 interface StructuredDataProps {
   type: "WebPage" | "Article" | "Breadcrumb" | "Organization" | "FAQ";
@@ -39,7 +39,7 @@ const getMarkup = ({
         "@context": "https://schema.org",
         "@type": "Organization",
         url: ORIGIN,
-        logo: `${ORIGIN}/logo.webp`,
+        logo: `${ORIGIN}/logo.png`,
       };
     }
     case "WebPage": {
