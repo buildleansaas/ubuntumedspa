@@ -24,8 +24,10 @@ export async function generateMetadata({ params }: Params) {
     description: "",
   };
 
+  const withLocation = /williamsburg/i.test(title) ? title : `${title} in Williamsburg, VA`;
+
   return {
-    title,
+    title: withLocation,
     description,
   };
 }
@@ -41,6 +43,11 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
   return (
     <>
+      <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Procedures", procedure.name]} />
+      <StructuredData
+        type="Service"
+        service={{ name: procedure.name, description: procedure.description, areaServed: "Williamsburg, VA" }}
+      />
       <StructuredData type="FAQ" faqs={procedure.faqs} />
       <div className="max-w-7xl mx-auto py-16">
         <div className="text-center">
@@ -59,6 +66,14 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               </Button>
             )}
           </div>
+          <p className="text-sm md:text-base text-base-content/70 max-w-3xl mx-auto">
+            Serving patients from Williamsburg, James City County, Yorktown, Newport News, and nearby communities.
+            {" "}
+            <Link href="/locations/williamsburg-va" className="link link-primary">
+              View our Williamsburg location
+            </Link>
+            .
+          </p>
         </div>
 
         <div className="my-32 text-center max-w-5xl mx-auto" id="benefits">

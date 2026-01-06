@@ -13,6 +13,10 @@ export default function Jumbotron() {
   const { handleCopy } = useCopyToClipBoard();
 
   const handleAction = () => {
+    try {
+      // @ts-ignore
+      window.gtag && window.gtag('event', 'phone_click', { label: 'jumbotron', value: '8047389483' });
+    } catch {}
     if (isMobileUserAgent()) window.location.href = `tel:${8047389483}`;
     else handleCopy("8047389483");
   };

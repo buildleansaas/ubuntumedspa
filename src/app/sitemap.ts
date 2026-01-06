@@ -20,6 +20,50 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://www.williamsburgmedspa.com/consult",
       lastModified: new Date(),
     },
+    {
+      url: "https://www.williamsburgmedspa.com/locations",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/locations/williamsburg-va",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/locations/james-city-county-va",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/locations/yorktown-va",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/locations/newport-news-va",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/locations/toano-va",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/locations/norge-va",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/locations/lightfoot-va",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/locations/new-town-va",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/locations/kingsmill-va",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/locations/fords-colony-va",
+      lastModified: new Date(),
+    },
     ...articles.map((slug) => ({
       url: `https://www.williamsburgmedspa.com/blog/${slug}`,
       lastModified: new Date(),

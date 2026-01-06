@@ -17,6 +17,9 @@ export default function Header() {
       </Link>
 
       <div className="flex items-center">
+        <Link href="/locations" className="mx-2 text-base-content hover:text-base-content">
+          Locations
+        </Link>
         <Link href="/products" className="mx-2 text-base-content hover:text-base-content">
           Products
         </Link>

@@ -3,6 +3,7 @@ import Script from "next/script";
 
 import "./globals.css";
 import { Toaster } from "components/ui/toaster";
+import StructuredData from "components/structured-data";
 import Header from "components/header";
 import Footer from "components/footer";
 import { Metadata } from "next";
@@ -53,6 +54,8 @@ export default function Layout({ children }: LayoutProps) {
       </Script>
       <body className="m-0 p-0">
         <Toaster />
+        <StructuredData type="Organization" />
+        <StructuredData type="LocalBusiness" />
         <div className="min-h-screen max-w-8xl mx-auto w-full relative mt-[-2rem]">
           {/* <div
             className="absolute inset-0 bg-base-100 bg-contain bg-no-repeat bg-top"

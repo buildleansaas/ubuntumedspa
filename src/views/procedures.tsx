@@ -16,7 +16,22 @@ export default function Procedures() {
       </div>
 
       <div className="grid gap-8 lg:gap-10 mt-8 lg:my-12 xl:my-16 grid-cols-1 sm:grid-cols-2  lg:grid-cols-4">
-        {procedures.map((procedure, i) => (
+        {procedures
+          .slice()
+          .sort((a, b) => {
+            const priority = [
+              "filler",
+              "joint-restoration",
+              "feminine-intimacy-prp-protocols",
+              "male-intimacy-prp-protocols",
+              "prp-facial",
+              "blohmdahl-ear-piercing",
+            ];
+            const ai = priority.indexOf(a.slug);
+            const bi = priority.indexOf(b.slug);
+            return (ai === -1 ? Number.MAX_SAFE_INTEGER : ai) - (bi === -1 ? Number.MAX_SAFE_INTEGER : bi);
+          })
+          .map((procedure, i) => (
           <ProcedureCard key={i} product={{ ...procedure, slug: procedure.slug }} />
         ))}
       </div>

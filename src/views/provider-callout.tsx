@@ -1,8 +1,11 @@
 import Image from "next/image";
+import StructuredData from "components/structured-data";
 
 export default function ProviderCallout() {
   return (
-    <section className="mb-14 md:mb-20" aria-labelledby="provider-callout-heading">
+    <>
+      <StructuredData type="Person" />
+      <section className="mb-14 md:mb-20" aria-labelledby="provider-callout-heading">
       <div className="mx-auto max-w-3xl md:max-w-4xl rounded-2xl border border-base-300 p-6 md:p-8 lg:p-10">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-5 md:gap-7">
           <div className="relative w-24 h-24 md:w-36 md:h-36 shrink-0">
@@ -28,6 +31,7 @@ export default function ProviderCallout() {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+    </>
   );
 }
