@@ -68,6 +68,13 @@ export const FORM_INPUTS = [
   },
 ];
 
+export type ProcedureTestimonial = {
+  id: string;
+  quote: string;
+  attribution?: string;
+  imageSrc: string;
+};
+
 export const procedures = [
   {
     name: "Feminine Intimacy PRP Protocols",
@@ -1929,6 +1936,14 @@ export const procedures = [
         benefit: "Long-lasting Results",
         description:
           "Xeomin injection results for hyperhidrosis can last up to 7-8 months, giving you prolonged relief.",
+      },
+    ],
+    testimonials: [
+      {
+        id: "sms-01",
+        quote: "Omg this is amazing and like took effect immediately! Thanks again!!",
+        attribution: "Hyperhidrosis Treatment patient",
+        imageSrc: "/testimonials/hyperhidrosis-treatment/hyperhidrosis-01.png",
       },
     ],
     ailmentsHeadline:

@@ -64,18 +64,18 @@ export default function WilliamsburgLocationPage() {
       </section>
 
       <section className="mb-10 md:mb-14">
-        <h2 className="text-2xl md:text-3xl font-light mb-2">Reviews</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <blockquote className="rounded-xl border border-base-300 p-4 text-base-content/90">
-            "+ I felt heard and cared for. The PRP treatment was explained clearly and my results have been fantastic."
-            <div className="mt-2 text-sm text-base-content/60">— Patient in Williamsburg</div>
-          </blockquote>
-          <blockquote className="rounded-xl border border-base-300 p-4 text-base-content/90">
-            "+ Gentle and professional. My consultation was thorough and I love my natural‑looking outcome."
-            <div className="mt-2 text-sm text-base-content/60">— PRP Facial Patient</div>
-          </blockquote>
-        </div>
-      </section>
+          <h2 className="text-2xl md:text-3xl font-light mb-2">Reviews</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <blockquote className="rounded-xl border border-base-300 p-4 text-base-content/90">
+              + I felt heard and cared for. The PRP treatment was explained clearly and my results have been fantastic.
+              <div className="mt-2 text-sm text-base-content/60">— Patient in Williamsburg</div>
+            </blockquote>
+            <blockquote className="rounded-xl border border-base-300 p-4 text-base-content/90">
+              + Gentle and professional. My consultation was thorough and I love my natural‑looking outcome.
+              <div className="mt-2 text-sm text-base-content/60">— PRP Facial Patient</div>
+            </blockquote>
+          </div>
+        </section>
 
       <section className="mb-10 md:mb-14">
         <h2 className="text-2xl md:text-3xl font-light mb-2">Neighborhoods We Serve</h2>

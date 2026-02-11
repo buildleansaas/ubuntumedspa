@@ -13,6 +13,7 @@ import StructuredData from "components/structured-data";
 import { twMerge } from "tailwind-merge";
 import CtaButtons from "components/cta-buttons";
 import { notFound } from "next/navigation";
+import ProcedureTestimonials from "components/procedure-testimonials";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
 
@@ -25,10 +26,32 @@ export async function generateMetadata({ params }: Params) {
   };
 
   const withLocation = /williamsburg/i.test(title) ? title : `${title} in Williamsburg, VA`;
+  const canonical = `/procedures/${params.slug}`;
 
   return {
     title: withLocation,
     description,
+    alternates: { canonical },
+    openGraph: {
+      title: withLocation,
+      description,
+      url: canonical,
+      siteName: "Williamsburg Med Spa",
+      images: [
+        {
+          url: `${canonical}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: withLocation,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: withLocation,
+      description,
+      images: [`${canonical}/twitter-image`],
+    },
   };
 }
 
@@ -51,17 +74,17 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
       <StructuredData type="FAQ" faqs={procedure.faqs} />
       <div className="max-w-7xl mx-auto py-16">
         <div className="text-center">
-          <h2 className="text-3xl md:text-5xl mx-auto leading-tight pb-4">
+          <h1 className="text-3xl md:text-5xl mx-auto leading-tight pb-4">
             <span className="font-bold">{procedure.name}</span> by Williamsburg Med Spa
-          </h2>
-          <h2 className="text-xl lg:text-2xl mb-8 max-w-5xl mx-auto font-light">{procedure.headline}</h2>
+          </h1>
+          <p className="text-xl lg:text-2xl mb-8 max-w-5xl mx-auto font-light">{procedure.headline}</p>
           <p className="text-lg max-w-4xl mx-auto">{procedure.description}</p>
           <div className="flex space-x-4 mx-auto my-8 justify-center">
-            <Button className="bg-primary hover:bg-primary-focus">
+            <Button asChild className="bg-primary hover:bg-primary-focus">
               <Link href="/consult">Book a Consultation</Link>
             </Button>
             {Boolean(articles.length) && (
-              <Button variant="secondary">
+              <Button asChild variant="secondary">
                 <Link href="#benefits">Explore Benefits</Link>
               </Button>
             )}
@@ -80,7 +103,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
             <span className="font-bold">{procedure.name}</span> Benefits
           </h2>
-          <h2 className="text-xl lg:text-2xl mb-8 font-light">{procedure.benefitsHeadline}</h2>
+          <p className="text-xl lg:text-2xl mb-8 font-light">{procedure.benefitsHeadline}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {procedure.benefits.map(({ emoji, benefit, description }) => (
               <Card key={benefit} className="text-left bg-primary text-primary-content border-4 border-primary">
@@ -93,10 +116,13 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               </Card>
             ))}
           </div>
+          {Boolean(procedure.testimonials?.length) && (
+            <ProcedureTestimonials procedureName={procedure.name} items={procedure.testimonials} />
+          )}
           <CtaButtons />
         </div>
 
-        <div className="my-32 text-center max-w-7xl mx-auto" id="benefits">
+        <div className="my-32 text-center max-w-7xl mx-auto" id="applications">
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
             How can{" "}
             {[
@@ -108,7 +134,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             ].includes(procedure.name) && "the "}
             <span className="font-bold">{procedure.name}</span> help me?
           </h2>
-          <h2 className="text-xl lg:text-2xl mb-8 font-light text-justify">{procedure.ailmentsHeadline}</h2>
+          <p className="text-xl lg:text-2xl mb-8 font-light text-justify">{procedure.ailmentsHeadline}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {procedure.ailments
               ?.sort((a, b) => ailmentsSortOrder[a.tag] - ailmentsSortOrder[b.tag])
@@ -134,7 +160,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   </CardHeader>
                   <CardContent>{description}</CardContent>
                   <CardFooter>
-                    <Button>
+                    <Button asChild>
                       <Link href={`${procedure.name}/${slug}`}>Learn More</Link>
                     </Button>
                   </CardFooter>

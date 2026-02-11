@@ -34,13 +34,11 @@ export const ProcedureCard = ({ product }: Props) => (
       <p className="text-sm">{product.subline}</p>
     </div>
     <div className="flex space-x-2">
-      <Button className="bg-primary hover:bg-primary">
+      <Button asChild className="bg-primary hover:bg-primary">
         <Link href="/consult">Schedule</Link>
       </Button>
-      <Button variant="secondary">
-        <Link href={`/procedures/${product.slug}`} passHref>
-          Learn More
-        </Link>
+      <Button asChild variant="secondary">
+        <Link href={`/procedures/${product.slug}`}>Learn More</Link>
       </Button>
     </div>
   </div>

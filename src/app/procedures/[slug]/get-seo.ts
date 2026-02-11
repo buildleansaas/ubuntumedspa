@@ -1,2 +1,4 @@
-export const generateParagraph = (title: string) =>
-  `Calculate pediatric dosages for ${title} in seconds with our ${title} pediatric dosing calculator. Input the details, press Calculate Dosage, and get precise ${title} prescriptions for every child!`.trim();
+export const generateParagraph = (title: string) => {
+  const shortTitle = title.replace(/\s+in\s+williamsburg,\s*va\s*$/i, "").trim();
+  return `Explore ${shortTitle} at Williamsburg Med Spa in Williamsburg, VA. Learn benefits, what to expect, and FAQs.`.trim();
+};

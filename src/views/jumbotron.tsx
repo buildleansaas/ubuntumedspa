@@ -33,7 +33,7 @@ export default function Jumbotron() {
       </p>
       <div className="mb-32">
         <div className="flex flex-wrap justify-center items-center gap-2">
-          <Button>
+          <Button asChild>
             <Link href="/consult">Book a Consultation</Link>
           </Button>
           <Button variant="secondary" onClick={handleAction}>

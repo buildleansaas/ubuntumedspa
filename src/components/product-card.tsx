@@ -33,13 +33,11 @@ export const ProductCard = ({ name, image, headline, subline, link, slug }: Prop
       <p className="text-sm">{subline}</p>
     </div>
     <div className="flex space-x-2">
-      <Button className="bg-primary hover:bg-primary">
+      <Button asChild className="bg-primary hover:bg-primary">
         <Link href={link}>Buy Now</Link>
       </Button>
-      <Button variant="secondary">
-        <Link href={`/products/${slug}`} passHref>
-          Learn More
-        </Link>
+      <Button asChild variant="secondary">
+        <Link href={`/products/${slug}`}>Learn More</Link>
       </Button>
     </div>
   </div>
