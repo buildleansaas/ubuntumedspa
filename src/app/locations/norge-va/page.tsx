@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import StructuredData from "components/structured-data";
 import Link from "next/link";
 import DirectionsButton from "components/directions-button";
+import { Button } from "components/ui/button";
+import { buildPageMetadata } from "lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near Norge | Williamsburg Med Spa",
-  description:
-    "Norge residents can reach Williamsburg Med Spa in minutes for PRP therapies, fillers, and personalized aesthetic care.",
-  alternates: { canonical: "/locations/norge-va" },
-};
+  description: "Norge residents can reach Williamsburg Med Spa in minutes for PRP therapies, fillers, and personalized aesthetic care.",
+  canonical: "/locations/norge-va",
+});
 
 export default function NorgePage() {
   return (
@@ -35,10 +36,14 @@ export default function NorgePage() {
       </section>
 
       <div className="mt-8 flex flex-wrap gap-3">
-        <Link className="btn btn-sm btn-primary" href="/consult">Book a Consultation</Link>
-        <Link className="btn btn-sm" href="/locations/williamsburg-va">Williamsburg Location Details</Link>
+        <Button asChild size="sm">
+          <Link href="/consult">Book a Consultation</Link>
+        </Button>
+        <Button asChild size="sm" variant="secondary">
+          <Link href="/locations/williamsburg-va">Williamsburg Location Details</Link>
+        </Button>
         <DirectionsButton
-          className="btn btn-sm btn-secondary"
+          size="sm"
           address="3900 Powhatan Parkway, Williamsburg, VA 23188"
           latitude={37.2707}
           longitude={-76.7075}
@@ -47,4 +52,3 @@ export default function NorgePage() {
     </div>
   );
 }
-

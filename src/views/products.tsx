@@ -1,17 +1,20 @@
 import { ProductCard } from "components/product-card";
 import { products } from "data";
 
-export default function Products() {
+type HeadingTag = "h1" | "h2";
+
+export default function Products({ headingTag = "h2" }: { headingTag?: HeadingTag }) {
+  const Heading = headingTag;
+
   return (
     <>
       <div className="text-center" id="services">
-        <h2 className="text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4">
+        <Heading className="text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4">
           Medical Grade Beauty Products
-        </h2>
+        </Heading>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
-          At Williamsburg Med Spa, we offer carefully curated medical-grade wellness products to support your restorative journey.
-          Our professional-grade products are selected for their healing properties and effectiveness, available exclusively
-          through our licensed medical professionals.
+          Williamsburg Med Spa offers curated medical-grade products selected for ingredient quality, tolerability, and
+          practical at-home support between visits.
         </p>
       </div>
 

@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Button } from "components/ui/button";
+import type { ButtonProps } from "components/ui/button";
 
 type DirectionsButtonProps = {
   address: string;
@@ -8,9 +10,19 @@ type DirectionsButtonProps = {
   longitude?: number;
   className?: string;
   children?: React.ReactNode;
+  variant?: ButtonProps["variant"];
+  size?: ButtonProps["size"];
 };
 
-export default function DirectionsButton({ address, latitude, longitude, className = "btn btn-secondary", children = "Get Directions" }: DirectionsButtonProps) {
+export default function DirectionsButton({
+  address,
+  latitude,
+  longitude,
+  className,
+  children = "Get Directions",
+  variant = "default",
+  size = "default",
+}: DirectionsButtonProps) {
   const [href, setHref] = useState<string>("");
 
   useEffect(() => {
@@ -34,9 +46,10 @@ export default function DirectionsButton({ address, latitude, longitude, classNa
   }, [address, latitude, longitude]);
 
   return (
-    <a className={className} href={href || "#"} target={href ? "_blank" : undefined} rel={href ? "noopener noreferrer" : undefined}>
-      {children}
-    </a>
+    <Button asChild className={className} variant={variant} size={size}>
+      <a href={href || "#"} target={href ? "_blank" : undefined} rel={href ? "noopener noreferrer" : undefined}>
+        {children}
+      </a>
+    </Button>
   );
 }
-

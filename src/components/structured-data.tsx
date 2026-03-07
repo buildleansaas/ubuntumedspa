@@ -34,6 +34,17 @@ interface ServiceProps {
   priceCurrency?: string;
 }
 
+interface ProductProps {
+  name?: string;
+  description?: string;
+  imageUrls?: string[];
+  brandName?: string;
+  price?: string;
+  priceCurrency?: string;
+  url?: string;
+  availability?: string;
+}
+
 interface StructuredDataProps {
   type:
     | "WebPage"
@@ -43,7 +54,8 @@ interface StructuredDataProps {
     | "FAQ"
     | "LocalBusiness"
     | "Service"
-    | "Person";
+    | "Person"
+    | "Product";
   url?: string;
   headline?: string;
   description?: string;
@@ -51,9 +63,11 @@ interface StructuredDataProps {
   dateModified?: string;
   date?: string;
   breadCrumbs?: string[];
+  breadcrumbItems?: { name: string; item: string }[];
   faqs?: FAQ;
   business?: LocalBusinessProps;
   service?: ServiceProps;
+  product?: ProductProps;
 }
 
 const author = [
@@ -85,10 +99,11 @@ const DEFAULT_BUSINESS: Required<LocalBusinessProps> = {
   founderUrl: `${ORIGIN}/staff/jenny-brady`,
 };
 
-const getImageUrl = (url: string) => `${ORIGIN}/${url}`;
+const getImageUrl = (url: string) => (url.startsWith("http://") || url.startsWith("https://") ? url : `${ORIGIN}${url}`);
 
 const getMarkup = ({
   type = "WebPage",
+  url = ORIGIN,
   headline = "Title of a News Article",
   description = DEFAULT_DESCRIPTION,
   imageUrls = [],
@@ -96,8 +111,10 @@ const getMarkup = ({
   dateModified = new Date().toISOString(),
   faqs = [],
   breadCrumbs = [],
+  breadcrumbItems = [],
   business,
   service,
+  product,
 }: StructuredDataProps) => {
   switch (type) {
     case "Organization": {
@@ -121,12 +138,25 @@ const getMarkup = ({
     case "Article": {
       return {
         "@context": "https://schema.org",
-        "@type": "NewsArticle",
+        "@type": "BlogPosting",
         headline,
         image: imageUrls.map(getImageUrl),
         datePublished: date,
         dateModified,
         author,
+        publisher: {
+          "@type": "Organization",
+          name: SITE_NAME,
+          logo: {
+            "@type": "ImageObject",
+            url: `${ORIGIN}/logo.png`,
+          },
+        },
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": url.startsWith("http://") || url.startsWith("https://") ? url : `${ORIGIN}${url}`,
+        },
+        description,
       };
     }
     case "FAQ": {
@@ -144,23 +174,29 @@ const getMarkup = ({
       };
     }
     case "Breadcrumb": {
-      // Treat as BreadcrumbList; build incremental URLs if possible
-      let path = "";
-      const itemListElement = breadCrumbs.map((name, index) => {
-        if (index > 0) {
-          const slug = name
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/(^-|-$)/g, "");
-          path += `/${slug}`;
-        }
-        return {
-          "@type": "ListItem",
-          position: index + 1,
-          name,
-          item: `${ORIGIN}${index === 0 ? "" : path}`,
-        };
-      });
+      const itemListElement = breadcrumbItems.length
+        ? breadcrumbItems.map(({ name, item }, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name,
+            item,
+          }))
+        : breadCrumbs.map((name, index) => {
+            let path = "";
+            for (let i = 1; i <= index; i += 1) {
+              const slug = breadCrumbs[i]
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/(^-|-$)/g, "");
+              path += `/${slug}`;
+            }
+            return {
+              "@type": "ListItem",
+              position: index + 1,
+              name,
+              item: `${ORIGIN}${index === 0 ? "" : path}`,
+            };
+          });
       return {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -217,6 +253,32 @@ const getMarkup = ({
                 "@type": "Offer",
                 price: s.price,
                 priceCurrency: s.priceCurrency,
+              }
+            : undefined,
+      };
+    }
+    case "Product": {
+      const p = product || {};
+      const productImages = (p.imageUrls || imageUrls).map(getImageUrl);
+
+      return {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: p.name || headline,
+        description: p.description || description,
+        image: productImages,
+        brand: {
+          "@type": "Brand",
+          name: p.brandName || SITE_NAME,
+        },
+        offers:
+          p.price && p.priceCurrency
+            ? {
+                "@type": "Offer",
+                price: p.price,
+                priceCurrency: p.priceCurrency,
+                url: p.url ? getImageUrl(p.url) : undefined,
+                availability: p.availability || "https://schema.org/InStock",
               }
             : undefined,
       };

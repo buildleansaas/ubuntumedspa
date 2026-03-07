@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "components/structured-data";
+import { buildPageMetadata } from "lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Locations Near Williamsburg, VA | Williamsburg Med Spa",
-  description:
-    "Explore Williamsburg Med Spa's primary Williamsburg location and nearby areas served, including James City County, Yorktown, Newport News, Toano, Norge, Lightfoot, New Town, Kingsmill, and Ford's Colony.",
-  alternates: { canonical: "/locations" },
-};
+  description: "Explore Williamsburg Med Spa's primary Williamsburg location and nearby areas served, including James City County, Yorktown, Newport News, Toano, Norge, Lightfoot, New Town, Kingsmill, and Ford's Colony.",
+  canonical: "/locations",
+});
 
 const locations = [
   {

@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import DirectionsButton from "components/directions-button";
 
 type NAPProps = {
   name: string;
@@ -20,32 +20,8 @@ function toTel(phone: string) {
 
 export default function NAP({ name, addressLines, phone, hours = [], showMap = false, mapsQuery, latitude, longitude }: NAPProps) {
   const address = addressLines.join(", ");
-  const query = encodeURIComponent(mapsQuery || address);
+  const directionsAddress = mapsQuery || address;
   const hasCoords = typeof latitude === "number" && typeof longitude === "number";
-
-  const [directionsHref, setDirectionsHref] = useState<string>("");
-
-  useEffect(() => {
-    try {
-      const ua = navigator.userAgent || "";
-      const isIOS = /iP(hone|ad|od)/i.test(ua);
-      const isSafari = /Safari\//.test(ua) && !/(Chrome|Chromium|CriOS|Edg|OPR)\//.test(ua);
-
-      const useApple = isIOS || isSafari;
-
-      if (useApple) {
-        const dest = hasCoords ? `${latitude},${longitude}` : address;
-        setDirectionsHref(`https://maps.apple.com/?daddr=${encodeURIComponent(dest)}`);
-      } else {
-        const dest = hasCoords ? `${latitude},${longitude}` : query;
-        setDirectionsHref(`https://www.google.com/maps/dir/?api=1&destination=${dest}`);
-      }
-    } catch {
-      // Fallback to Google with address
-      setDirectionsHref(`https://www.google.com/maps/dir/?api=1&destination=${query}`);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [address, query, hasCoords, latitude, longitude]);
 
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
@@ -62,9 +38,9 @@ export default function NAP({ name, addressLines, phone, hours = [], showMap = f
           </Link>
         </div>
         <div className="mt-3">
-          <a className="btn btn-sm btn-primary" href={directionsHref} target="_blank" rel="noopener noreferrer">
+          <DirectionsButton address={directionsAddress} latitude={latitude} longitude={longitude} size="sm">
             Get Directions
-          </a>
+          </DirectionsButton>
         </div>
       </div>
       <div>

@@ -1,7 +1,18 @@
 import { articles as slugs } from "app/sitemap";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import CtaFooter from "components/cta-footer";
+import StructuredData from "components/structured-data";
+import { buildPageMetadata } from "lib/metadata";
+import { humanizeMedicalCopy } from "lib/humanize";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Williamsburg Med Spa Blog | PRP, Injectables, and Treatment Education",
+  description:
+    "Read treatment education from Williamsburg Med Spa, including PRP guidance, injectables, and planning resources for informed consultation decisions.",
+  canonical: "/blog",
+});
 
 export default async function BlogPage() {
   const articles = (await Promise.all(slugs.map((slug) => import(`markdown/${slug}.mdx`))))
@@ -10,14 +21,15 @@ export default async function BlogPage() {
 
   return (
     <div className="mx-auto max-w-2xl lg:max-w-4xl">
-      <h2 className="sm:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-primary-content mb-16 sm:mb-24 lg:mb-32">
+      <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Blog"]} />
+      <h1 className="sm:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-primary-content mb-16 sm:mb-24 lg:mb-32">
         Williamsburg Med Spa Blog
-      </h2>
+      </h1>
       <div className="mt-16 space-y-20 lg:mt-20 lg:space-y-20">
         {articles.map((article) => (
           <article key={article.slug} className="relative isolate flex flex-col gap-8 lg:flex-row">
             <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-base-200">
-              <Image src={article.image} alt="" fill className="object-cover" />
+              <Image src={article.image} alt={article.imageAlt ?? article.title} fill className="object-cover" />
               <div className="absolute inset-0 shadow-inner bg-gradient-to-br from-white/20" />
             </div>
             <div className="py-4">
@@ -43,7 +55,7 @@ export default async function BlogPage() {
                     {article.title}
                   </Link>
                 </h2>
-                <p className="mt-5 text-sm leading-6 text-primary-content">{article.description}</p>
+                <p className="mt-5 text-sm leading-6 text-primary-content">{humanizeMedicalCopy(article.description)}</p>
               </div>
             </div>
           </article>

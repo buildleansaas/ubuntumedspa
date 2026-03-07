@@ -2,6 +2,7 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "components/ui/button";
+import { humanizeMedicalCopy } from "lib/humanize";
 
 interface Props {
   product: {
@@ -30,11 +31,11 @@ export const ProcedureCard = ({ product }: Props) => (
     </Link>
     <div className="space-y-1">
       <h2 className="text-xl font-bold">{product.name}</h2>
-      <h3 className="text-lg">{product.headline}</h3>
-      <p className="text-sm">{product.subline}</p>
+      <h3 className="text-lg">{humanizeMedicalCopy(product.headline)}</h3>
+      <p className="text-sm">{humanizeMedicalCopy(product.subline)}</p>
     </div>
     <div className="flex space-x-2">
-      <Button asChild className="bg-primary hover:bg-primary">
+      <Button asChild>
         <Link href="/consult">Schedule</Link>
       </Button>
       <Button asChild variant="secondary">
