@@ -3,6 +3,7 @@ import NAP from "components/nap";
 import StructuredData from "components/structured-data";
 import Link from "next/link";
 import DirectionsButton from "components/directions-button";
+import { Button } from "components/ui/button";
 
 export const metadata: Metadata = {
   title: "Med Spa in Williamsburg, VA | Williamsburg Med Spa",
@@ -54,12 +55,24 @@ export default function WilliamsburgLocationPage() {
           Explore our core procedures and book a consultation.
         </p>
         <div className="flex flex-wrap gap-3">
-          <Link className="btn btn-sm btn-primary" href="/procedures/filler">Fillers</Link>
-          <Link className="btn btn-sm btn-primary" href="/procedures/joint-restoration">PRP for Joints</Link>
-          <Link className="btn btn-sm btn-primary" href="/procedures/feminine-intimacy-prp-protocols">Feminine PRP</Link>
-          <Link className="btn btn-sm btn-primary" href="/procedures/male-intimacy-prp-protocols">Male PRP</Link>
-          <Link className="btn btn-sm btn-primary" href="/procedures/prp-facial">PRP Facial</Link>
-          <Link className="btn btn-sm btn-primary" href="/procedures/blohmdahl-ear-piercing">Blohmdahl Ear Piercing</Link>
+          <Button asChild size="sm">
+            <Link href="/procedures/filler">Fillers</Link>
+          </Button>
+          <Button asChild size="sm">
+            <Link href="/procedures/joint-restoration">PRP for Joints</Link>
+          </Button>
+          <Button asChild size="sm">
+            <Link href="/procedures/feminine-intimacy-prp-protocols">Feminine PRP</Link>
+          </Button>
+          <Button asChild size="sm">
+            <Link href="/procedures/male-intimacy-prp-protocols">Male PRP</Link>
+          </Button>
+          <Button asChild size="sm">
+            <Link href="/procedures/prp-facial">PRP Facial</Link>
+          </Button>
+          <Button asChild size="sm">
+            <Link href="/procedures/blohmdahl-ear-piercing">Blohmdahl Ear Piercing</Link>
+          </Button>
         </div>
       </section>
 
@@ -93,7 +106,9 @@ export default function WilliamsburgLocationPage() {
           Ready to get started? Book a consultation and we’ll help you choose the right treatment.
         </p>
         <div className="flex gap-3">
-          <Link className="btn btn-primary" href="/consult">Book a Consultation</Link>
+          <Button asChild>
+            <Link href="/consult">Book a Consultation</Link>
+          </Button>
           <DirectionsButton address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2707} longitude={-76.7075} />
         </div>
       </section>

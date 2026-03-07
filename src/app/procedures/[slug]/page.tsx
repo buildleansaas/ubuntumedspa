@@ -80,7 +80,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           <p className="text-xl lg:text-2xl mb-8 max-w-5xl mx-auto font-light">{procedure.headline}</p>
           <p className="text-lg max-w-4xl mx-auto">{procedure.description}</p>
           <div className="flex space-x-4 mx-auto my-8 justify-center">
-            <Button asChild className="bg-primary hover:bg-primary-focus">
+            <Button asChild>
               <Link href="/consult">Book a Consultation</Link>
             </Button>
             {Boolean(articles.length) && (
@@ -138,7 +138,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {procedure.ailments
               ?.sort((a, b) => ailmentsSortOrder[a.tag] - ailmentsSortOrder[b.tag])
-              .map(({ title, tag, description, slug }) => (
+              .map(({ title, tag, description, slug: ailmentSlug }) => (
                 <Card
                   key={title}
                   className={twMerge(
@@ -161,7 +161,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   <CardContent>{description}</CardContent>
                   <CardFooter>
                     <Button asChild>
-                      <Link href={`${procedure.name}/${slug}`}>Learn More</Link>
+                      <Link href={`/procedures/${procedure.slug}/for/${ailmentSlug}`}>Learn More</Link>
                     </Button>
                   </CardFooter>
                 </Card>

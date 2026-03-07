@@ -69,7 +69,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           <div className="flex flex-col lg:flex-row lg:justify-center xl:items-center mt-12 space-x-4">
             {Boolean(articles.length) && (
               <>
-                <Button asChild className="bg-blue-500 hover:bg-blue-600">
+                <Button asChild>
                   <Link href="/consult">Book a Consultation</Link>
                 </Button>
 

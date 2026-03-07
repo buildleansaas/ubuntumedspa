@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 
 import { procedures, products } from "data";
+import { getPublishedAilmentEntries } from "lib/ailments/get-ailment-page-data";
 
 export const articles: string[] = [
   "revitalize-sexual-health-female-intimacy-prp-protocols-vaginal-dryness",
@@ -11,6 +12,8 @@ export const articles: string[] = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const ailmentPages = await getPublishedAilmentEntries();
+
   const urls = [
     {
       url: "https://www.williamsburgmedspa.com",
@@ -72,13 +75,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `https://www.williamsburgmedspa.com/procedures/${procedure.slug}`,
       lastModified: new Date(),
     })),
+    ...ailmentPages.map(({ procedureSlug, ailmentSlug }) => ({
+      url: `https://www.williamsburgmedspa.com/procedures/${procedureSlug}/for/${ailmentSlug}`,
+      lastModified: new Date(),
+    })),
     ...products.map((product) => ({
       url: `https://www.williamsburgmedspa.com/products/${product.slug}`,
       lastModified: new Date(),
     })),
   ];
-
-  console.log(urls.map((url) => url.url));
 
   return urls;
 }

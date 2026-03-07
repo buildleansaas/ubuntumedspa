@@ -155,7 +155,7 @@ const ConsultationPage: React.FC = () => {
           }
         })}
         <div className="flex items-center justify-between">
-          <Button className="bg-primary hover:bg-primary-focus" type="submit" disabled={loading}>
+          <Button type="submit" disabled={loading}>
             {loading ? (
               <>
                 <Loader className="animate-spin" /> Sending...

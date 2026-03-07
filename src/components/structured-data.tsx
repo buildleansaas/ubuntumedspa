@@ -51,6 +51,7 @@ interface StructuredDataProps {
   dateModified?: string;
   date?: string;
   breadCrumbs?: string[];
+  breadcrumbItems?: { name: string; item: string }[];
   faqs?: FAQ;
   business?: LocalBusinessProps;
   service?: ServiceProps;
@@ -96,6 +97,7 @@ const getMarkup = ({
   dateModified = new Date().toISOString(),
   faqs = [],
   breadCrumbs = [],
+  breadcrumbItems = [],
   business,
   service,
 }: StructuredDataProps) => {
@@ -144,23 +146,29 @@ const getMarkup = ({
       };
     }
     case "Breadcrumb": {
-      // Treat as BreadcrumbList; build incremental URLs if possible
-      let path = "";
-      const itemListElement = breadCrumbs.map((name, index) => {
-        if (index > 0) {
-          const slug = name
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/(^-|-$)/g, "");
-          path += `/${slug}`;
-        }
-        return {
-          "@type": "ListItem",
-          position: index + 1,
-          name,
-          item: `${ORIGIN}${index === 0 ? "" : path}`,
-        };
-      });
+      const itemListElement = breadcrumbItems.length
+        ? breadcrumbItems.map(({ name, item }, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name,
+            item,
+          }))
+        : breadCrumbs.map((name, index) => {
+            let path = "";
+            for (let i = 1; i <= index; i += 1) {
+              const slug = breadCrumbs[i]
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/(^-|-$)/g, "");
+              path += `/${slug}`;
+            }
+            return {
+              "@type": "ListItem",
+              position: index + 1,
+              name,
+              item: `${ORIGIN}${index === 0 ? "" : path}`,
+            };
+          });
       return {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
