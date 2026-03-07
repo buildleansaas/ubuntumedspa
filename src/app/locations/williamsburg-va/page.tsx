@@ -4,13 +4,13 @@ import StructuredData from "components/structured-data";
 import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
+import { buildPageMetadata } from "lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa in Williamsburg, VA | Williamsburg Med Spa",
-  description:
-    "Williamsburg Med Spa — PRP therapies, fillers, and regenerative treatments in Williamsburg, VA. Full address, hours, directions, and services.",
-  alternates: { canonical: "/locations/williamsburg-va" },
-};
+  description: "Williamsburg Med Spa — PRP therapies, fillers, and regenerative treatments in Williamsburg, VA. Full address, hours, directions, and services.",
+  canonical: "/locations/williamsburg-va",
+});
 
 export default function WilliamsburgLocationPage() {
   return (
@@ -77,26 +77,31 @@ export default function WilliamsburgLocationPage() {
       </section>
 
       <section className="mb-10 md:mb-14">
-          <h2 className="text-2xl md:text-3xl font-light mb-2">Reviews</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <blockquote className="rounded-xl border border-base-300 p-4 text-base-content/90">
-              + I felt heard and cared for. The PRP treatment was explained clearly and my results have been fantastic.
-              <div className="mt-2 text-sm text-base-content/60">— Patient in Williamsburg</div>
-            </blockquote>
-            <blockquote className="rounded-xl border border-base-300 p-4 text-base-content/90">
-              + Gentle and professional. My consultation was thorough and I love my natural‑looking outcome.
-              <div className="mt-2 text-sm text-base-content/60">— PRP Facial Patient</div>
-            </blockquote>
-          </div>
-        </section>
+        <h2 className="text-2xl md:text-3xl font-light mb-2">Reviews</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <blockquote className="rounded-xl border border-base-300 p-4 text-base-content/90">
+            “I felt heard and cared for. The PRP treatment was explained clearly and my results have been fantastic.”
+            <div className="mt-2 text-sm text-base-content/60">— Patient in Williamsburg</div>
+          </blockquote>
+          <blockquote className="rounded-xl border border-base-300 p-4 text-base-content/90">
+            “Gentle and professional. My consultation was thorough and I love my natural-looking outcome.”
+            <div className="mt-2 text-sm text-base-content/60">— PRP Facial Patient</div>
+          </blockquote>
+        </div>
+      </section>
 
       <section className="mb-10 md:mb-14">
         <h2 className="text-2xl md:text-3xl font-light mb-2">Neighborhoods We Serve</h2>
         <p className="text-base md:text-lg text-base-content/80 mb-2">
-          Williamsburg, James City County, Yorktown, Newport News, Toano, Norge, Lightfoot, New Town, Kingsmill, Ford’s Colony
+          Williamsburg, James City County, Yorktown, Newport News, Toano, Norge, Lightfoot, New Town, Kingsmill,
+          Ford&apos;s Colony
         </p>
         <p className="text-sm md:text-base text-base-content/70">
-          View all service areas on our <Link href="/locations" className="link link-primary">locations page</Link>.
+          View all service areas on our{" "}
+          <Link href="/locations" className="link link-primary">
+            locations page
+          </Link>
+          .
         </p>
       </section>
 

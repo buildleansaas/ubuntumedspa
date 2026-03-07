@@ -47,6 +47,7 @@ export const FORM_INPUTS = [
       "PRP Facial",
       "PRP Face Lift",
       "Joint Restoration",
+      "Botox",
       "Xeomin",
       "Filler",
       "Hyperhidrosis Treatment",
@@ -85,15 +86,15 @@ export const procedures = [
         "Natural Feminine Intimacy PRP protocols in Williamsburg, VA to support sexual wellness, lubrication, libido, and urinary incontinence at Williamsburg Med Spa.",
     },
     description:
-      "The Feminine Intimacy PRP Protocols is a groundbreaking natural treatment designed to enhance female sexual health and wellness. It boasts a range of benefits that can help women of all ages and backgrounds improve their sexual function and enjoy their bodies to the fullest. The Feminine Intimacy PRP Protocols can help to reverse urinary incontinence, boost libido, improve natural lubrication, and enhance overall sexual function. It can also reverse the symptoms of menopause and relieve symptoms associated with sexual dysfunction. Ultimately, the Feminine Intimacy PRP Protocols has helped many women achieve a better quality of life and experience a more fulfilling sex life.",
-    headline: "Revitalize Your Feminine Intimacy: Natural, Effective, Life-Changing!",
+      "The Feminine Intimacy PRP Protocols is a advanced natural treatment designed to enhance female sexual health and wellness. It offers a range of benefits that can help women of all ages and backgrounds improve their sexual function and enjoy their bodies to the fullest. The Feminine Intimacy PRP Protocols can help to reverse urinary incontinence, boost libido, improve natural lubrication, and enhance overall sexual function. It can also reverse the symptoms of menopause and relieve symptoms associated with sexual dysfunction. Ultimately, the Feminine Intimacy PRP Protocols has helped many women achieve a better quality of life and experience a more fulfilling sex life.",
+    headline: "Revitalize Your Feminine Intimacy: Natural, Effective, meaningful!",
     subline:
       "The Feminine Intimacy PRP Protocols utilizes Platelet-Rich Plasma (PRP) therapy derived from your own blood, working naturally to enhance female sexual health. With this, you can expect improved sexual function, relief from urinary incontinence and menopause symptoms, and an overall more fulfilling sex life.",
     image: "/procedure/grapefruit.jpg",
     price: "$1,200.00",
     // programmatic SEO copy
     blogHeadline:
-      "Struggling with female sexual health issues? Dive into our Feminine Intimacy PRP Protocols articles and discover groundbreaking insights and solutions. From understanding the Feminine Intimacy PRP Protocols process to exploring real-life success stories, our blog offers answers and guidance you might be seeking.",
+      "Struggling with female sexual health issues? Dive into our Feminine Intimacy PRP Protocols articles and discover advanced insights and solutions. From understanding the Feminine Intimacy PRP Protocols process to exploring real-life success stories, our blog offers answers and guidance you might be seeking.",
     benefitsHeadline:
       "Experience renewed confidence with enhanced female sexual health. From reversing urinary incontinence to boosting libido, the Feminine Intimacy PRP Protocols paves the way for a revitalized intimate connection. Rediscover pleasure and reclaim your body's vitality.",
     benefits: [
@@ -129,8 +130,9 @@ export const procedures = [
         title: "Vaginal Dryness",
         description:
           "Are you tired of uncomfortable, dry sensations ruining your intimate moments? Discover the rejuvenating power of Feminine Intimacy PRP Protocols to restore natural lubrication and improve your sexual experience.",
-        blog_post_title: "Revitalize Your Sexual Health with Feminine Intimacy PRP Protocols: The Ultimate Cure for Vaginal Dryness",
-        blog_post_slug: "revitalize-sexual-health-female-intimacy-prp-protocols-ultimate-cure-vaginal-dryness",
+        blog_post_title:
+          "Feminine Intimacy PRP Protocols for Vaginal Dryness: What to Know",
+        blog_post_slug: "revitalize-sexual-health-female-intimacy-prp-protocols-vaginal-dryness",
         slug: "vaginal-dryness",
         tag: "common",
       },
@@ -192,7 +194,8 @@ export const procedures = [
         title: "Genital Arousal Disorder",
         description:
           "Revitalize your sexual life by overcoming genital arousal disorder with Feminine Intimacy PRP Protocols. Enjoy increased sensitivity and a renewed sense of arousal.",
-        blog_post_title: "Reclaim Your Sexuality: Overcoming Genital Arousal Disorder with Feminine Intimacy PRP Protocols",
+        blog_post_title:
+          "Reclaim Your Sexuality: Overcoming Genital Arousal Disorder with Feminine Intimacy PRP Protocols",
         blog_post_slug: "reclaim-your-sexuality-overcoming-genital-arousal-disorder-with-female-intimacy-prp-protocols",
         slug: "genital-arousal-disorder",
         tag: "experimental",
@@ -262,7 +265,8 @@ export const procedures = [
       },
       {
         title: "Post-Menopausal Symptoms",
-        description: "Don't let post-menopausal changes steal your joy. Rejuvenate your sexual health with Feminine Intimacy PRP Protocols.",
+        description:
+          "Don't let post-menopausal changes steal your joy. Rejuvenate your sexual health with Feminine Intimacy PRP Protocols.",
         blog_post_title: "Beyond Hormones: How Feminine Intimacy PRP Protocols Help Post-Menopausal Women",
         blog_post_slug: "beyond-hormones-how-female-intimacy-prp-protocols-helps-post-menopausal-women",
         slug: "post-menopausal-symptoms",
@@ -288,7 +292,8 @@ export const procedures = [
       },
       {
         title: "Vaginal Lubrication",
-        description: "Improve natural lubrication and say goodbye to discomfort during intercourse with Feminine Intimacy PRP Protocols.",
+        description:
+          "Improve natural lubrication and say goodbye to discomfort during intercourse with Feminine Intimacy PRP Protocols.",
         blog_post_title: "Unlock Natural Lubrication: How Feminine Intimacy PRP Protocols Can Help",
         blog_post_slug: "unlock-natural-lubrication-how-female-intimacy-prp-protocols-can-help",
         slug: "vaginal-lubrication",
@@ -305,7 +310,7 @@ export const procedures = [
       },
     ],
     faqHeadline:
-      "Experience a breakthrough in female sexual health with the Feminine Intimacy PRP Protocols. Designed to invigorate your intimate experiences, it's natural and revolutionary.",
+      "Experience a breakthrough in female sexual health with the Feminine Intimacy PRP Protocols. Designed to invigorate your intimate experiences, it's natural and modern.",
     faqs: [
       {
         question: "What is the primary purpose of the Feminine Intimacy PRP Protocols?",
@@ -364,7 +369,8 @@ export const procedures = [
       {
         emoji: "💖",
         benefit: "Boosted Libido",
-        description: "Male Intimacy PRP Protocols can reignite sexual drive, enhancing overall stamina and intimate experiences.",
+        description:
+          "Male Intimacy PRP Protocols can reignite sexual drive, enhancing overall stamina and intimate experiences.",
       },
       {
         emoji: "🔄",
@@ -380,7 +386,7 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "Revitalize your sexual health and regain confidence with Male Intimacy PRP Protocols. This revolutionary treatment offers a range of solutions for common to uncommon male sexual health issues. From frustrating conditions like erectile dysfunction and premature ejaculation to enhancing your overall sexual capabilities and aesthetics, these protocols are a versatile remedy. They can even serve as an experimental option for more complicated issues like testosterone imbalances and vasculogenic sexual dysfunction. Experience a more satisfying and rewarding intimate life through this natural, minimally invasive procedure.",
+      "Revitalize your sexual health and regain confidence with Male Intimacy PRP Protocols. This modern treatment offers a range of solutions for common to uncommon male sexual health issues. From frustrating conditions like erectile dysfunction and premature ejaculation to enhancing your overall sexual capabilities and aesthetics, these protocols are a versatile remedy. They can even serve as an experimental option for more complicated issues like testosterone imbalances and vasculogenic sexual dysfunction. Experience a more satisfying and rewarding intimate life through this natural, minimally invasive procedure.",
     ailments: [
       {
         title: "Erectile Dysfunction",
@@ -725,7 +731,7 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "Revitalize your hair and restore your confidence with PRP Hair Restoration. This groundbreaking treatment offers a solution to a multitude of hair concerns that both men and women face. Whether you're dealing with the frustrating onset of a receding hairline, patchy spots caused by alopecia, or even the dullness and lifelessness of aging hair, PRP Hair Restoration promises targeted treatment that fosters natural hair regrowth. Uncover the secrets of this innovative procedure and learn how it can serve your unique needs.",
+      "Revitalize your hair and restore your confidence with PRP Hair Restoration. This advanced treatment offers a solution to a multitude of hair concerns that both men and women face. Whether you're dealing with the frustrating onset of a receding hairline, patchy spots caused by alopecia, or even the dullness and lifelessness of aging hair, PRP Hair Restoration promises targeted treatment that fosters natural hair regrowth. Uncover the secrets of this innovative procedure and learn how it can serve your unique needs.",
     ailments: [
       {
         title: "Thinning Hair",
@@ -1481,6 +1487,146 @@ export const procedures = [
     ],
   },
   {
+    name: "Botox",
+    slug: "botox",
+    seo: {
+      title: "Botox Injections in Williamsburg, VA",
+      description:
+        "Botox injections in Williamsburg, VA to soften forehead lines, frown lines, and crow's feet while preserving natural expression.",
+    },
+    description:
+      "Botox Cosmetic is a botulinum toxin type A injectable used to temporarily improve the appearance of moderate to severe forehead lines, frown lines, and crow's feet in appropriate adult candidates. At Williamsburg Med Spa, treatment is planned around your facial movement pattern so results look smooth, balanced, and natural.",
+    headline: "Soften Expression Lines Without Looking Frozen",
+    subline:
+      "Personalized Botox injections can reduce dynamic wrinkles in areas like forehead lines, frown lines, and crow's feet with quick in-office visits.",
+    image: "/procedure/botox.png",
+    price: "$12 per unit",
+    // programmatic SEO copy
+    blogHeadline:
+      "Considering Botox in Williamsburg? Explore practical guidance on treatment planning, expected timing, and how Botox compares with Xeomin before you book.",
+    benefitsHeadline:
+      "Botox can offer subtle, high-precision wrinkle softening with minimal downtime when your treatment plan is mapped carefully to your goals.",
+    benefits: [
+      {
+        emoji: "🌟",
+        benefit: "Targeted Wrinkle Softening",
+        description:
+          "Botox is commonly used to reduce the look of expression lines in high-movement areas such as the forehead, glabella, and crow's feet.",
+      },
+      {
+        emoji: "⏱",
+        benefit: "Quick Appointments",
+        description: "Most Botox appointments are short and fit easily into a workday schedule.",
+      },
+      {
+        emoji: "💉",
+        benefit: "No Surgical Downtime",
+        description:
+          "Patients typically return to normal routines the same day, with aftercare guidance from their provider.",
+      },
+      {
+        emoji: "🎯",
+        benefit: "Personalized Dosing",
+        description:
+          "Dosing is adjusted by treatment area, muscle activity, and your desired outcome to keep results natural-looking.",
+      },
+    ],
+    ailmentsHeadline:
+      "Botox treatment can be mapped to multiple facial movement zones depending on your goals. We focus on preserving natural expression while softening high-motion areas that create etched lines over time.",
+    ailments: [
+      {
+        title: "Forehead Lines",
+        description:
+          "Horizontal forehead movement can create visible lines over time. Botox can soften these lines while preserving a natural, expressive look.",
+        slug: "forehead-lines",
+        tag: "common",
+      },
+      {
+        title: "Frown Lines (11s)",
+        description:
+          "Glabellar lines between the brows are one of the most requested Botox areas and are commonly treated with precise dosing patterns.",
+        slug: "frown-lines",
+        tag: "common",
+      },
+      {
+        title: "Crow's Feet",
+        description:
+          "Lateral eye lines from smiling or squinting can be softened with targeted treatment that keeps your smile looking natural.",
+        slug: "crows-feet",
+        tag: "common",
+      },
+      {
+        title: "Bunny Lines",
+        description:
+          "Nasal scrunch lines can be addressed with conservative placement for patients who want refinement in this smaller treatment zone.",
+        slug: "bunny-lines",
+        tag: "uncommon",
+      },
+      {
+        title: "Subtle Brow Lift Support",
+        description:
+          "In selected candidates, Botox can support a cleaner brow shape and brighter eye appearance as part of a full-face plan.",
+        slug: "subtle-brow-lift-support",
+        tag: "uncommon",
+      },
+      {
+        title: "Lip Flip",
+        description:
+          "A conservative lip-flip approach can improve upper-lip show and smile balance when anatomy and movement patterns are appropriate.",
+        slug: "lip-flip",
+        tag: "uncommon",
+      },
+      {
+        title: "Masseter Slimming / Bruxism Support",
+        description:
+          "Masseter treatment may support jaw clenching concerns and lower-face contour goals in carefully selected patients.",
+        slug: "masseter-slimming-bruxism-support",
+        tag: "experimental",
+      },
+      {
+        title: "Neck Band Softening",
+        description:
+          "Vertical platysmal neck bands can sometimes be softened with Botox as part of a broader neck and jawline strategy.",
+        slug: "neck-band-softening",
+        tag: "experimental",
+      },
+    ],
+    faqHeadline:
+      "Get practical answers about Botox, expected treatment timelines, and how Botox compares with Xeomin.",
+    faqs: [
+      {
+        question: "What is Botox commonly used for?",
+        answer:
+          "Botox Cosmetic is commonly used to temporarily improve the look of forehead lines, glabellar lines, and crow's feet in appropriate adult candidates.",
+      },
+      {
+        question: "How soon will I notice Botox results?",
+        answer:
+          "Many patients begin noticing improvement in several days, with fuller visible effect commonly developing around two weeks.",
+      },
+      {
+        question: "How long can Botox results last?",
+        answer:
+          "Results vary, but many patients see benefits for about 3 to 4 months before planning maintenance treatment.",
+      },
+      {
+        question: "How is Botox different from Xeomin?",
+        answer:
+          "Both are botulinum toxin type A products, but they have different formulations and their dose units are not interchangeable. Your provider can help decide which option fits your goals.",
+      },
+      {
+        question: "Is there downtime after Botox?",
+        answer:
+          "Most patients return to normal daily activities the same day. Your provider will review simple aftercare instructions based on treatment areas.",
+      },
+      {
+        question: "What side effects are possible?",
+        answer:
+          "Common side effects can include temporary injection-site redness, swelling, bruising, or tenderness. Your consultation should include a review of risks, contraindications, and warning signs.",
+      },
+    ],
+  },
+  {
     name: "Xeomin",
     slug: "xeomin",
     seo: {
@@ -1497,7 +1643,7 @@ export const procedures = [
     price: "$12 per unit",
     // programmatic SEO copy
     blogHeadline:
-      "Want a refreshed, wrinkle-free face without invasive treatments? Dive into our Xeomin blog posts. Learn about its precision, benefits, and how it's the secret to many's youthful appearance.",
+      "Want a refreshed, wrinkle-free face without invasive treatments? Explore our Xeomin guides for treatment planning, expected timing, and Botox-vs-Xeomin decision support.",
     benefitsHeadline:
       "Enhance your beauty by targeting the details. With Xeomin, witness a smoother, wrinkle-free face that's radiant and youthful. Embrace a transformation that's both subtle and impactful, amplifying your natural beauty.",
     benefits: [
@@ -1663,7 +1809,7 @@ export const procedures = [
       {
         question: "How does Xeomin differ from Botox?",
         answer:
-          "Both Xeomin and Botox are types of botulinum toxin used to relax muscles and reduce wrinkles. The primary difference is that Xeomin is a 'naked' injectable, meaning it doesn't contain any additives, which might reduce the risk of developing resistance.",
+          "Both Xeomin and Botox are botulinum toxin type A products with different formulations, and their dose units are not interchangeable. Your provider can recommend the best fit based on treatment goals, anatomy, and prior response.",
       },
       {
         question: "How long does the procedure take?",
@@ -2066,20 +2212,17 @@ export const procedures = [
       {
         emoji: "🌿",
         benefit: "Hypoallergenic Materials",
-        description:
-          "Medical plastic and titanium options perfect for sensitive skin and nickel allergies.",
+        description: "Medical plastic and titanium options perfect for sensitive skin and nickel allergies.",
       },
       {
         emoji: "✨",
         benefit: "Gentle & Precise",
-        description:
-          "Specialized technique minimizes tissue trauma, reducing pain and promoting faster healing.",
+        description: "Specialized technique minimizes tissue trauma, reducing pain and promoting faster healing.",
       },
       {
         emoji: "👶",
         benefit: "All Ages Welcome",
-        description:
-          "Safe for infants, children, and adults with age-appropriate jewelry and gentle approach.",
+        description: "Safe for infants, children, and adults with age-appropriate jewelry and gentle approach.",
       },
     ],
     ailmentsHeadline:
@@ -2126,8 +2269,7 @@ export const procedures = [
         tag: "uncommon",
       },
     ],
-    faqHeadline:
-      "Everything you need to know about Blohmdahl medical ear piercing at Williamsburg Med Spa.",
+    faqHeadline: "Everything you need to know about Blohmdahl medical ear piercing at Williamsburg Med Spa.",
     faqs: [
       {
         question: "What age can children get their ears pierced?",
@@ -2228,7 +2370,7 @@ export const products = [
     name: "Co2 V Lift for Women",
     slug: "co2-v-lift-for-women",
     description:
-      "Introducing Co2 V Lift for Women, a groundbreaking carboxytherapy gel that targets intimate areas to restore youthfulness, firmness, and hydration. Specially formulated for women’s delicate skin, this product offers non-invasive revitalization where you need it most.",
+      "Introducing Co2 V Lift for Women, a advanced carboxytherapy gel that targets intimate areas to restore youthfulness, firmness, and hydration. Specially formulated for women’s delicate skin, this product offers non-invasive revitalization where you need it most.",
     headline: "Achieve Intimate Rejuvenation with the Science of Carboxytherapy!",
     subline:
       "Experience Co2 V Lift for Women—a unique, science-backed treatment focused on feminine care for intimate skin rejuvenation. Elevate your self-care routine to the next level.",
@@ -2360,7 +2502,7 @@ export const products = [
     name: "Definage Clinical Power Trio Pro",
     slug: "definage-clinical-power-trio-pro",
     description:
-      "Discover the epitome of skincare innovation with Definage Clinical Power Trio Pro. Developed by leading dermatologists, this groundbreaking treatment harnesses the power of bioactive peptides and natural botanicals to reverse aging at a cellular level. Erase fine lines, restore elasticity, and reveal a youthful radiance like never before.",
+      "Discover the epitome of skincare innovation with Definage Clinical Power Trio Pro. Developed by leading dermatologists, this advanced treatment harnesses the power of bioactive peptides and natural botanicals to reverse aging at a cellular level. Erase fine lines, restore elasticity, and reveal a youthful radiance like never before.",
     headline: "Unlock the Secret to Everlasting Youth with Clinical-Grade Anti-Aging",
     subline:
       "Integrate cutting-edge science into your skincare. Defy aging, rejuvenate your visage, and reclaim a youthful glow with Definage Clinical Power Trio Pro.",

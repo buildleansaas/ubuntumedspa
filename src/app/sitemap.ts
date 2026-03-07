@@ -4,6 +4,7 @@ import { procedures, products } from "data";
 import { getPublishedAilmentEntries } from "lib/ailments/get-ailment-page-data";
 
 export const articles: string[] = [
+  "botox-vs-xeomin-williamsburg-va",
   "revitalize-sexual-health-female-intimacy-prp-protocols-vaginal-dryness",
   "unleashing-the-power-of-the-prp-facelift-your-non-surgical-key-to-youthful-skin",
   "hair-loss-got-you-down-discover-prp-your-new-ally-in-hair-restoration",
@@ -21,6 +22,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: "https://www.williamsburgmedspa.com/consult",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/blog",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/procedures",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/products",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/staff/jenny-brady",
       lastModified: new Date(),
     },
     {

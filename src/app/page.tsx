@@ -1,4 +1,5 @@
 import React from "react";
+import type { Metadata } from "next";
 
 import CtaFooter from "components/cta-footer";
 import Jumbotron from "views/jumbotron";
@@ -6,6 +7,14 @@ import ProviderCallout from "views/provider-callout";
 import Procedures from "views/procedures";
 import LatestPosts from "views/latest-posts";
 import Products from "views/products";
+import { buildPageMetadata } from "lib/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Williamsburg Med Spa | PRP, Botox, Xeomin & Aesthetic Care in Williamsburg, VA",
+  description:
+    "Williamsburg Med Spa provides PRP therapies, Botox, Xeomin, fillers, and medical-grade aesthetic care in Williamsburg, Virginia.",
+  canonical: "/",
+});
 
 export default async function Page() {
   return (

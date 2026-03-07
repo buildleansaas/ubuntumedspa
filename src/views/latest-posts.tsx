@@ -3,6 +3,7 @@ import { articles as slugs } from "app/sitemap";
 import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "components/ui/badge";
+import { humanizeMedicalCopy } from "lib/humanize";
 
 export default async function LatestPosts() {
   const articles = (await Promise.all(slugs.map((slug) => import(`markdown/${slug}.mdx`))))
@@ -26,7 +27,7 @@ export default async function LatestPosts() {
         {articles.map((article) => (
           <article key={article.slug} className="relative isolate flex flex-col gap-8 lg:flex-row">
             <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-base-200">
-              <Image src={article.image} alt="" fill className="object-cover" />
+              <Image src={article.image} alt={article.imageAlt ?? article.title} fill className="object-cover" />
               <div className="absolute inset-0 shadow-inner bg-gradient-to-br from-white/20" />
             </div>
             <div className="py-4">
@@ -46,7 +47,7 @@ export default async function LatestPosts() {
                 <h2 className="mt-3 text-lg/snug sm:text-xl/snug md:text-2xl/snug font-semibold text-base-content hover:text-primary-content">
                   <Link href={`/blog/${article.slug}`}>{article.title}</Link>
                 </h2>
-                <p className="mt-2 text-sm leading-6 text-base-content">{article.description}</p>
+                <p className="mt-2 text-sm leading-6 text-base-content">{humanizeMedicalCopy(article.description)}</p>
               </div>
             </div>
           </article>

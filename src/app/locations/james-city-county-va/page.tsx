@@ -3,13 +3,13 @@ import StructuredData from "components/structured-data";
 import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
+import { buildPageMetadata } from "lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Serving James City County | Williamsburg Med Spa",
-  description:
-    "A short drive from James City County: PRP therapies, fillers, and regenerative aesthetics with compassionate care at Williamsburg Med Spa.",
-  alternates: { canonical: "/locations/james-city-county-va" },
-};
+  description: "A short drive from James City County: PRP therapies, fillers, and regenerative aesthetics with compassionate care at Williamsburg Med Spa.",
+  canonical: "/locations/james-city-county-va",
+});
 
 export default function JamesCityCountyPage() {
   return (

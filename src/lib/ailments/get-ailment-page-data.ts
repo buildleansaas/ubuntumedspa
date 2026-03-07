@@ -14,6 +14,20 @@ export type AilmentPageFAQ = {
   answer: string;
 };
 
+export type AilmentProcessVisualizationStep = {
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+};
+
+export type AilmentProcessVisualization = {
+  heading: string;
+  subheading?: string;
+  cycleLabel?: string;
+  steps: AilmentProcessVisualizationStep[];
+};
+
 export type AilmentPageMetadata = {
   title: string;
   description: string;
@@ -27,6 +41,7 @@ export type AilmentPageMetadata = {
   mechanismParagraphs: string[];
   mechanismImage: string;
   mechanismImageAlt: string;
+  processVisualization?: AilmentProcessVisualization;
   expectationsHeading: string;
   expectationsSteps: AilmentPageStep[];
   faqHeading: string;

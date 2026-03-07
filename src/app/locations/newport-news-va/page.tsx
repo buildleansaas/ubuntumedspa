@@ -3,13 +3,13 @@ import StructuredData from "components/structured-data";
 import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
+import { buildPageMetadata } from "lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near Newport News | Williamsburg Med Spa",
-  description:
-    "Visit Williamsburg Med Spa from Newport News for PRP therapies, fillers, and supportive aesthetic care focused on comfort and clarity.",
-  alternates: { canonical: "/locations/newport-news-va" },
-};
+  description: "Visit Williamsburg Med Spa from Newport News for PRP therapies, fillers, and supportive aesthetic care focused on comfort and clarity.",
+  canonical: "/locations/newport-news-va",
+});
 
 export default function NewportNewsPage() {
   return (

@@ -3,13 +3,13 @@ import StructuredData from "components/structured-data";
 import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
+import { buildPageMetadata } from "lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near Lightfoot | Williamsburg Med Spa",
-  description:
-    "Lightfoot and upper Williamsburg residents can visit Williamsburg Med Spa for PRP therapies, fillers, and aesthetic care.",
-  alternates: { canonical: "/locations/lightfoot-va" },
-};
+  description: "Lightfoot and upper Williamsburg residents can visit Williamsburg Med Spa for PRP therapies, fillers, and aesthetic care.",
+  canonical: "/locations/lightfoot-va",
+});
 
 export default function LightfootPage() {
   return (

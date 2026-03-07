@@ -3,13 +3,13 @@ import StructuredData from "components/structured-data";
 import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
+import { buildPageMetadata } from "lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near Yorktown | Williamsburg Med Spa",
-  description:
-    "Minutes from Yorktown: PRP therapies, fillers, and aesthetic care with an emphasis on comfort and natural results.",
-  alternates: { canonical: "/locations/yorktown-va" },
-};
+  description: "Minutes from Yorktown: PRP therapies, fillers, and aesthetic care with an emphasis on comfort and natural results.",
+  canonical: "/locations/yorktown-va",
+});
 
 export default function YorktownPage() {
   return (

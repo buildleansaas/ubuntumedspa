@@ -9,12 +9,12 @@ export default function CtaFooter() {
           Begin Your Journey to Restorative Wellness
         </h2>
         <h3 className="text-base-content text-xl lg:text-2xl max-w-2xl mb-8 mx-auto">
-          Experience the healing power of our restorative treatments at Williamsburg Med Spa,
-          where natural wellness meets professional care.
+          Review treatment options with Williamsburg Med Spa and build a plan centered on safety, comfort, and
+          realistic goals.
         </h3>
         <p className="mb-8 max-w-xl mx-auto">
-          Book a consultation below and share your wellness goals. Our caring team will respond within
-          2 business days to begin your healing journey.
+          Book a consultation below and share your goals. Our team typically responds within 2 business days to help
+          you plan next steps.
         </p>
         <div className="mb-32">
           <CtaButtons />

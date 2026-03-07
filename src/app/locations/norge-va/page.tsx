@@ -3,13 +3,13 @@ import StructuredData from "components/structured-data";
 import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
+import { buildPageMetadata } from "lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near Norge | Williamsburg Med Spa",
-  description:
-    "Norge residents can reach Williamsburg Med Spa in minutes for PRP therapies, fillers, and personalized aesthetic care.",
-  alternates: { canonical: "/locations/norge-va" },
-};
+  description: "Norge residents can reach Williamsburg Med Spa in minutes for PRP therapies, fillers, and personalized aesthetic care.",
+  canonical: "/locations/norge-va",
+});
 
 export default function NorgePage() {
   return (

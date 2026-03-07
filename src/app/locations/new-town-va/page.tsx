@@ -3,13 +3,13 @@ import StructuredData from "components/structured-data";
 import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
+import { buildPageMetadata } from "lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near New Town | Williamsburg Med Spa",
-  description:
-    "Walk or drive from New Town to Williamsburg Med Spa for PRP therapies, fillers, and aesthetic treatments.",
-  alternates: { canonical: "/locations/new-town-va" },
-};
+  description: "Walk or drive from New Town to Williamsburg Med Spa for PRP therapies, fillers, and aesthetic treatments.",
+  canonical: "/locations/new-town-va",
+});
 
 export default function NewTownPage() {
   return (

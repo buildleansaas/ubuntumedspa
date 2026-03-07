@@ -3,13 +3,13 @@ import StructuredData from "components/structured-data";
 import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
+import { buildPageMetadata } from "lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near Kingsmill | Williamsburg Med Spa",
-  description:
-    "Kingsmill residents can visit Williamsburg Med Spa for PRP therapies, fillers, and supportive aesthetic care.",
-  alternates: { canonical: "/locations/kingsmill-va" },
-};
+  description: "Kingsmill residents can visit Williamsburg Med Spa for PRP therapies, fillers, and supportive aesthetic care.",
+  canonical: "/locations/kingsmill-va",
+});
 
 export default function KingsmillPage() {
   return (

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import StructuredData from "components/structured-data";
+import { buildPageMetadata } from "lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Jenny Brady — Aesthetic Nurse Practitioner | Williamsburg Med Spa",
-  description:
-    "Learn about Jenny Brady, MSN, RN, CPNP, PMHS — blending regenerative PRP therapies and evidence-based aesthetic care in Williamsburg, VA.",
-  alternates: { canonical: "/staff/jenny-brady" },
-};
+  description: "Learn about Jenny Brady, MSN, RN, CPNP, PMHS — blending regenerative PRP therapies and evidence-based aesthetic care in Williamsburg, VA.",
+  canonical: "/staff/jenny-brady",
+});
 
 export default function JennyBradyPage() {
   return (

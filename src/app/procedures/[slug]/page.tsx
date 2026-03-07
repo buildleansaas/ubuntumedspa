@@ -14,8 +14,14 @@ import { twMerge } from "tailwind-merge";
 import CtaButtons from "components/cta-buttons";
 import { notFound } from "next/navigation";
 import ProcedureTestimonials from "components/procedure-testimonials";
+import { humanizeMedicalCopy } from "lib/humanize";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
+const ailmentsTagLabels = {
+  common: "Common Treatment Area",
+  uncommon: "Less Common Area",
+  experimental: "Clinical Evaluation Needed",
+};
 
 type Params = { params: { slug: string } };
 
@@ -58,6 +64,9 @@ export async function generateMetadata({ params }: Params) {
 export default async function ProcedurePage({ params: { slug } }: { params: { slug: string } }) {
   const procedure = procedures.find((procedure) => procedure.slug === slug);
   if (!procedure) return notFound();
+  const comparisonSlug = "botox-vs-xeomin-williamsburg-va";
+  const showNeuromodulatorComparison = procedure.slug === "botox" || procedure.slug === "xeomin";
+  const hasAilments = Boolean(procedure.ailments?.length);
 
   const articles = (await Promise.all(slugs?.map((slug) => import(`markdown/${slug}.mdx`))))
     .map(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
@@ -77,8 +86,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           <h1 className="text-3xl md:text-5xl mx-auto leading-tight pb-4">
             <span className="font-bold">{procedure.name}</span> by Williamsburg Med Spa
           </h1>
-          <p className="text-xl lg:text-2xl mb-8 max-w-5xl mx-auto font-light">{procedure.headline}</p>
-          <p className="text-lg max-w-4xl mx-auto">{procedure.description}</p>
+          <p className="text-xl lg:text-2xl mb-8 max-w-5xl mx-auto font-light">{humanizeMedicalCopy(procedure.headline)}</p>
+          <p className="text-lg max-w-4xl mx-auto">{humanizeMedicalCopy(procedure.description)}</p>
           <div className="flex space-x-4 mx-auto my-8 justify-center">
             <Button asChild>
               <Link href="/consult">Book a Consultation</Link>
@@ -86,6 +95,11 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             {Boolean(articles.length) && (
               <Button asChild variant="secondary">
                 <Link href="#benefits">Explore Benefits</Link>
+              </Button>
+            )}
+            {showNeuromodulatorComparison && (
+              <Button asChild variant="outline">
+                <Link href={`/blog/${comparisonSlug}`}>Botox vs Xeomin Guide</Link>
               </Button>
             )}
           </div>
@@ -97,13 +111,17 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </Link>
             .
           </p>
+          <p className="text-xs md:text-sm text-base-content/60 max-w-3xl mx-auto mt-3">
+            Educational content only. Treatment suitability, risk profile, and expected response are confirmed during
+            consultation.
+          </p>
         </div>
 
         <div className="my-32 text-center max-w-5xl mx-auto" id="benefits">
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
             <span className="font-bold">{procedure.name}</span> Benefits
           </h2>
-          <p className="text-xl lg:text-2xl mb-8 font-light">{procedure.benefitsHeadline}</p>
+          <p className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.benefitsHeadline)}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {procedure.benefits.map(({ emoji, benefit, description }) => (
               <Card key={benefit} className="text-left bg-primary text-primary-content border-4 border-primary">
@@ -112,7 +130,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                     {emoji} {benefit}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>{description}</CardContent>
+                <CardContent>{humanizeMedicalCopy(description)}</CardContent>
               </Card>
             ))}
           </div>
@@ -122,59 +140,62 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           <CtaButtons />
         </div>
 
-        <div className="my-32 text-center max-w-7xl mx-auto" id="applications">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
-            How can{" "}
-            {[
-              "Feminine Intimacy PRP Protocols",
-              "Male Intimacy PRP Protocols",
-              "PRP Face Lift",
-              "PRP Facial",
-              "PRP Breast Lift",
-            ].includes(procedure.name) && "the "}
-            <span className="font-bold">{procedure.name}</span> help me?
-          </h2>
-          <p className="text-xl lg:text-2xl mb-8 font-light text-justify">{procedure.ailmentsHeadline}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {procedure.ailments
-              ?.sort((a, b) => ailmentsSortOrder[a.tag] - ailmentsSortOrder[b.tag])
-              .map(({ title, tag, description, slug: ailmentSlug }) => (
-                <Card
-                  key={title}
-                  className={twMerge(
-                    "text-left border-4",
-                    tag === "common" && "bg-primary border-primary text-primary-content",
-                    tag === "uncommon" && "bg-purple-500 border-purple-400 text-white",
-                    tag === "experimental" && "bg-rose-500 border-rose-400 text-white"
-                  )}
-                >
-                  <CardHeader>
-                    <CardTitle className="flex items-center justify-between">
-                      {title}{" "}
-                      <Badge>
-                        {tag === "common" && "Commonly Treated with PRP"}
-                        {tag === "uncommon" && "Uncommonly Treated with PRP"}
-                        {tag === "experimental" && "Ask About our Clinical Trials"}
-                      </Badge>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>{description}</CardContent>
-                  <CardFooter>
-                    <Button asChild>
-                      <Link href={`/procedures/${procedure.slug}/for/${ailmentSlug}`}>Learn More</Link>
-                    </Button>
-                  </CardFooter>
-                </Card>
-              ))}
+        {hasAilments && (
+          <div className="my-32 text-center max-w-7xl mx-auto" id="applications">
+            <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
+              How can{" "}
+              {[
+                "Feminine Intimacy PRP Protocols",
+                "Male Intimacy PRP Protocols",
+                "PRP Face Lift",
+                "PRP Facial",
+                "PRP Breast Lift",
+              ].includes(procedure.name) && "the "}
+              <span className="font-bold">{procedure.name}</span> help me?
+            </h2>
+            <p className="text-xl lg:text-2xl mb-8 font-light text-justify">{humanizeMedicalCopy(procedure.ailmentsHeadline)}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              {procedure.ailments
+                ?.sort((a, b) => ailmentsSortOrder[a.tag] - ailmentsSortOrder[b.tag])
+                .map(({ title, tag, description, slug: ailmentSlug }) => {
+                  const isBotox = procedure.slug === "botox";
+                  const ctaHref = isBotox ? "/consult" : `/procedures/${procedure.slug}/for/${ailmentSlug}`;
+                  const ctaLabel = isBotox ? "Discuss This Area" : "Learn More";
+
+                  return (
+                    <Card
+                      key={title}
+                      className={twMerge(
+                        "text-left border-4",
+                        tag === "common" && "bg-primary border-primary text-primary-content",
+                        tag === "uncommon" && "bg-purple-500 border-purple-400 text-white",
+                        tag === "experimental" && "bg-rose-500 border-rose-400 text-white"
+                      )}
+                    >
+                      <CardHeader>
+                        <CardTitle className="flex items-center justify-between">
+                          {title} <Badge>{ailmentsTagLabels[tag] ?? "Treatment Area"}</Badge>
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>{humanizeMedicalCopy(description)}</CardContent>
+                      <CardFooter>
+                        <Button asChild>
+                          <Link href={ctaHref}>{ctaLabel}</Link>
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  );
+                })}
+            </div>
+            <CtaButtons />
           </div>
-          <CtaButtons />
-        </div>
+        )}
 
         <div className="my-32 text-center max-w-5xl mx-auto" id="faqs">
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
             Frequently Asked Questions about <span className="font-bold">{procedure.name}</span>
           </h2>
-          <h2 className="text-xl lg:text-2xl mb-8 font-light">{procedure.faqHeadline}</h2>
+          <h2 className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.faqHeadline)}</h2>
           <Accordion type="single" collapsible className="text-left mb-12">
             {procedure.faqs.map(({ question, answer }) => (
               <AccordionItem key={question} value={question}>
@@ -192,13 +213,13 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
                 More About <span className="font-semibold">{procedure.name}</span>
               </h2>
-              <p className="text-lg lg:text-xl max-w-5xl mx-auto text-center">{procedure.blogHeadline}</p>
+              <p className="text-lg lg:text-xl max-w-5xl mx-auto text-center">{humanizeMedicalCopy(procedure.blogHeadline)}</p>
             </div>
             <div className="max-w-3xl mx-auto">
               {articles.map((article) => (
                 <article key={article.slug} className="relative isolate flex flex-col gap-8 lg:flex-row">
                   <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-base-200">
-                    <Image src={article.image} alt="" fill className="object-cover" />
+                    <Image src={article.image} alt={article.imageAlt ?? article.title} fill className="object-cover" />
                     <div className="absolute inset-0 shadow-inner bg-gradient-to-br from-white/20" />
                   </div>
                   <div className="py-4">
@@ -218,12 +239,23 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                       <h2 className="mt-3 text-lg/snug sm:text-xl/snug md:text-2xl/snug font-semibold text-base-content hover:text-base-content/80">
                         <Link href={`/blog/${article.slug}`}>{article.title}</Link>
                       </h2>
-                      <p className="mt-2 text-sm leading-6 text-primary-content">{article.description}</p>
+                      <p className="mt-2 text-sm leading-6 text-primary-content">{humanizeMedicalCopy(article.description)}</p>
                     </div>
                   </div>
                 </article>
               ))}
             </div>
+          </div>
+        )}
+        {showNeuromodulatorComparison && (
+          <div className="my-24 max-w-3xl mx-auto rounded-2xl border border-base-300 bg-base-200 p-8 text-center">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-3">Still deciding between Botox and Xeomin?</h2>
+            <p className="text-base md:text-lg text-base-content/80 mb-6">
+              Review differences in timing, treatment planning, and candidacy before your appointment.
+            </p>
+            <Button asChild variant="secondary">
+              <Link href={`/blog/${comparisonSlug}`}>Read the Botox vs Xeomin article</Link>
+            </Button>
           </div>
         )}
         <CtaFooter />

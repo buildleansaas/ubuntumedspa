@@ -3,13 +3,13 @@ import StructuredData from "components/structured-data";
 import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
+import { buildPageMetadata } from "lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near Ford's Colony | Williamsburg Med Spa",
-  description:
-    "Ford's Colony residents can access PRP therapies, fillers, and aesthetic treatments at nearby Williamsburg Med Spa.",
-  alternates: { canonical: "/locations/fords-colony-va" },
-};
+  description: "Ford's Colony residents can access PRP therapies, fillers, and aesthetic treatments at nearby Williamsburg Med Spa.",
+  canonical: "/locations/fords-colony-va",
+});
 
 export default function FordsColonyPage() {
   return (
