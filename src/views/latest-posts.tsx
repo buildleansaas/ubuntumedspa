@@ -1,15 +1,11 @@
-import { articles as slugs } from "app/sitemap";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "components/ui/badge";
+import { getPublishedBlogPosts } from "lib/blog";
 import { humanizeMedicalCopy } from "lib/humanize";
 
 export default async function LatestPosts() {
-  const articles = (await Promise.all(slugs.map((slug) => import(`markdown/${slug}.mdx`))))
-    .map(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 3);
+  const articles = (await getPublishedBlogPosts()).slice(0, 3);
 
   return (
     <div className="mx-auto max-w-2xl lg:max-w-4xl">

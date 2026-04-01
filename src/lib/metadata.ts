@@ -9,17 +9,20 @@ export const buildPageMetadata = ({
   description,
   canonical,
   image = "/opengraph-image",
+  robots,
 }: {
   title: string;
   description: string;
   canonical: string;
   image?: string;
+  robots?: Metadata["robots"];
 }): Metadata => {
   const canonicalPath = toPath(canonical);
 
   return {
     title,
     description,
+    robots,
     alternates: { canonical: canonicalPath },
     openGraph: {
       title,

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { articles as slugs } from "app/sitemap";
 import { products } from "data";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +12,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "co
 import CtaFooter from "components/cta-footer";
 import StructuredData from "components/structured-data";
 import CtaButtons from "components/cta-buttons";
+import { getPublishedBlogPosts } from "lib/blog";
 import { buildPageMetadata } from "lib/metadata";
 import { humanizeMedicalCopy } from "lib/humanize";
 
@@ -38,6 +38,7 @@ export async function generateMetadata({ params: { slug } }: Params): Promise<Me
     description: humanizeMedicalCopy(product.description),
     canonical: `/products/${product.slug}`,
     image: product.image,
+    robots: "published" in product && product.published === false ? { index: false, follow: false } : undefined,
   });
 }
 
@@ -47,8 +48,7 @@ export default async function ProductPage({ params: { slug } }: Params) {
 
   const productPrice = parsePrice(product.price);
 
-  const articles = (await Promise.all(slugs?.map((articleSlug) => import(`markdown/${articleSlug}.mdx`))))
-    .map(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
+  const articles = (await getPublishedBlogPosts())
     .filter(({ tags }) => tags?.includes(product.name))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 

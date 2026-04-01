@@ -2,18 +2,13 @@ import { MetadataRoute } from "next";
 
 import { procedures, products } from "data";
 import { getPublishedAilmentEntries } from "lib/ailments/get-ailment-page-data";
-
-export const articles: string[] = [
-  "botox-vs-xeomin-williamsburg-va",
-  "revitalize-sexual-health-female-intimacy-prp-protocols-vaginal-dryness",
-  "unleashing-the-power-of-the-prp-facelift-your-non-surgical-key-to-youthful-skin",
-  "hair-loss-got-you-down-discover-prp-your-new-ally-in-hair-restoration",
-  "beginners-guide-to-platelet-rich-plasma-therapy",
-  "naturally-heal-joint-pain-prp-therapy",
-];
+import { getPublishedBlogPosts } from "lib/blog";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const articles = await getPublishedBlogPosts();
   const ailmentPages = await getPublishedAilmentEntries();
+  const publishedProcedures = procedures.filter((procedure) => !("published" in procedure) || procedure.published !== false);
+  const publishedProducts = products.filter((product) => !("published" in product) || product.published !== false);
 
   const urls = [
     {
@@ -84,11 +79,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://www.williamsburgmedspa.com/locations/fords-colony-va",
       lastModified: new Date(),
     },
-    ...articles.map((slug) => ({
-      url: `https://www.williamsburgmedspa.com/blog/${slug}`,
-      lastModified: new Date(),
+    ...articles.map((article) => ({
+      url: `https://www.williamsburgmedspa.com/blog/${article.slug}`,
+      lastModified: new Date(article.dateModified ?? article.date),
     })),
-    ...procedures.map((procedure) => ({
+    ...publishedProcedures.map((procedure) => ({
       url: `https://www.williamsburgmedspa.com/procedures/${procedure.slug}`,
       lastModified: new Date(),
     })),
@@ -96,7 +91,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `https://www.williamsburgmedspa.com/procedures/${procedureSlug}/for/${ailmentSlug}`,
       lastModified: new Date(),
     })),
-    ...products.map((product) => ({
+    ...publishedProducts.map((product) => ({
       url: `https://www.williamsburgmedspa.com/products/${product.slug}`,
       lastModified: new Date(),
     })),

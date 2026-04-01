@@ -5,6 +5,7 @@ type HeadingTag = "h1" | "h2";
 
 export default function Procedures({ headingTag = "h2" }: { headingTag?: HeadingTag }) {
   const Heading = headingTag;
+  const visibleProcedures = procedures.filter((procedure) => !("published" in procedure) || procedure.published !== false);
 
   return (
     <>
@@ -20,7 +21,7 @@ export default function Procedures({ headingTag = "h2" }: { headingTag?: Heading
       </div>
 
       <div className="grid gap-8 lg:gap-10 mt-8 lg:my-12 xl:my-16 grid-cols-1 sm:grid-cols-2  lg:grid-cols-4">
-        {procedures
+        {visibleProcedures
           .slice()
           .sort((a, b) => {
             const priority = [
@@ -36,8 +37,8 @@ export default function Procedures({ headingTag = "h2" }: { headingTag?: Heading
             return (ai === -1 ? Number.MAX_SAFE_INTEGER : ai) - (bi === -1 ? Number.MAX_SAFE_INTEGER : bi);
           })
           .map((procedure, i) => (
-          <ProcedureCard key={i} product={{ ...procedure, slug: procedure.slug }} />
-        ))}
+            <ProcedureCard key={i} product={{ ...procedure, slug: procedure.slug }} />
+          ))}
       </div>
     </>
   );

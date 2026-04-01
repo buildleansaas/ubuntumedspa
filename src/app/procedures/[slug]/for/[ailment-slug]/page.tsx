@@ -11,7 +11,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "co
 import { Badge } from "components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "components/ui/card";
 import { Button } from "components/ui/button";
-import { getAilmentPageData } from "lib/ailments/get-ailment-page-data";
+import { getAilmentPageData, isAilmentPagePublished } from "lib/ailments/get-ailment-page-data";
 import ProviderCallout from "views/provider-callout";
 
 const ORIGIN = "https://www.williamsburgmedspa.com";
@@ -48,6 +48,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: metadata.seoTitle,
     description: metadata.seoDescription,
     alternates: { canonical },
+    robots: isAilmentPagePublished(metadata) ? undefined : { index: false, follow: false },
     openGraph: {
       title: metadata.seoTitle,
       description: metadata.seoDescription,

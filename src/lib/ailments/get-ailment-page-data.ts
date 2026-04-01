@@ -33,6 +33,7 @@ export type AilmentPageMetadata = {
   description: string;
   procedureSlug: string;
   ailmentSlug: string;
+  published?: boolean;
   heroHeadline: string;
   heroSubheadline: string;
   painHeading: string;
@@ -59,6 +60,8 @@ export type PublishedAilmentEntry = {
   ailmentSlug: string;
 };
 
+export const isAilmentPagePublished = (metadata?: Pick<AilmentPageMetadata, "published"> | null) => metadata?.published === true;
+
 const getAilmentModule = cache(async (procedureSlug: string, ailmentSlug: string): Promise<AilmentPageModule | null> => {
   try {
     return (await import(`markdown/ailments/${procedureSlug}/${ailmentSlug}.mdx`)) as AilmentPageModule;
@@ -74,20 +77,40 @@ export const hasAilmentPageContent = async (procedureSlug: string, ailmentSlug: 
 
 export const getPublishedAilmentEntries = cache(async (): Promise<PublishedAilmentEntry[]> => {
   const entries = await Promise.all(
-    procedures.flatMap((procedure) =>
-      (procedure.ailments || []).map(async (ailment) => {
-        const hasContent = await hasAilmentPageContent(procedure.slug, ailment.slug);
-        if (!hasContent) return null;
+    procedures.map(async (procedure) => {
+      const ailments = await getPublishedAilmentsForProcedure(procedure.slug);
 
-        return {
-          procedureSlug: procedure.slug,
-          ailmentSlug: ailment.slug,
-        } satisfies PublishedAilmentEntry;
-      })
-    )
+      return ailments.map(
+        (ailment) =>
+          ({
+            procedureSlug: procedure.slug,
+            ailmentSlug: ailment.slug,
+          }) satisfies PublishedAilmentEntry
+      );
+    })
   );
 
-  return entries.filter((entry): entry is PublishedAilmentEntry => Boolean(entry));
+  return entries.flat();
+});
+
+export const getPublishedAilmentsForProcedure = cache(async (procedureSlug: string): Promise<Ailment[]> => {
+  const procedure = procedures.find((item) => item.slug === procedureSlug);
+  if (!procedure) return [];
+
+  const ailments = await Promise.all(
+    (procedure.ailments || []).map(async (ailment) => {
+      const ailmentModule = await getAilmentModule(procedureSlug, ailment.slug);
+      const metadata = ailmentModule?.metadata;
+
+      if (!metadata) return null;
+      if (!isAilmentPagePublished(metadata)) return null;
+      if (metadata.procedureSlug !== procedureSlug || metadata.ailmentSlug !== ailment.slug) return null;
+
+      return ailment as Ailment;
+    })
+  );
+
+  return ailments.filter((ailment): ailment is Ailment => Boolean(ailment));
 });
 
 export const getAilmentPageData = cache(async (procedureSlug: string, ailmentSlug: string) => {
@@ -105,7 +128,8 @@ export const getAilmentPageData = cache(async (procedureSlug: string, ailmentSlu
     return null;
   }
 
-  const relatedAilments = (procedure.ailments || []).filter((item) => item.slug !== ailment.slug).slice(0, 3);
+  const publishedAilments = await getPublishedAilmentsForProcedure(procedureSlug);
+  const relatedAilments = publishedAilments.filter((item) => item.slug !== ailment.slug).slice(0, 3);
 
   return {
     procedure,

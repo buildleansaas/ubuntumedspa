@@ -1,9 +1,9 @@
-import { articles as slugs } from "app/sitemap";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import CtaFooter from "components/cta-footer";
 import StructuredData from "components/structured-data";
+import { getPublishedBlogPosts } from "lib/blog";
 import { buildPageMetadata } from "lib/metadata";
 import { humanizeMedicalCopy } from "lib/humanize";
 
@@ -15,9 +15,7 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default async function BlogPage() {
-  const articles = (await Promise.all(slugs.map((slug) => import(`markdown/${slug}.mdx`))))
-    .map(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const articles = await getPublishedBlogPosts();
 
   return (
     <div className="mx-auto max-w-2xl lg:max-w-4xl">

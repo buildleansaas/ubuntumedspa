@@ -1,4 +1,3 @@
-import { articles as slugs } from "app/sitemap";
 import { procedures } from "data";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,6 +13,8 @@ import { twMerge } from "tailwind-merge";
 import CtaButtons from "components/cta-buttons";
 import { notFound } from "next/navigation";
 import ProcedureTestimonials from "components/procedure-testimonials";
+import { getPublishedAilmentsForProcedure } from "lib/ailments/get-ailment-page-data";
+import { getPublishedBlogPosts } from "lib/blog";
 import { humanizeMedicalCopy } from "lib/humanize";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
@@ -26,7 +27,8 @@ const ailmentsTagLabels = {
 type Params = { params: { slug: string } };
 
 export async function generateMetadata({ params }: Params) {
-  const { title, description } = procedures.find((med) => med.slug === params.slug)?.seo ?? {
+  const procedure = procedures.find((med) => med.slug === params.slug);
+  const { title, description } = procedure?.seo ?? {
     title: "Procedure",
     description: "",
   };
@@ -58,6 +60,7 @@ export async function generateMetadata({ params }: Params) {
       description,
       images: [`${canonical}/twitter-image`],
     },
+    robots: "published" in (procedure || {}) && procedure?.published === false ? { index: false, follow: false } : undefined,
   };
 }
 
@@ -65,13 +68,13 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
   const procedure = procedures.find((procedure) => procedure.slug === slug);
   if (!procedure) return notFound();
   const comparisonSlug = "botox-vs-xeomin-williamsburg-va";
-  const showNeuromodulatorComparison = procedure.slug === "botox" || procedure.slug === "xeomin";
-  const hasAilments = Boolean(procedure.ailments?.length);
-
-  const articles = (await Promise.all(slugs?.map((slug) => import(`markdown/${slug}.mdx`))))
-    .map(({ metadata }, index) => ({ ...metadata, slug: slugs[index] }))
+  const publishedAilments = await getPublishedAilmentsForProcedure(procedure.slug);
+  const articles = (await getPublishedBlogPosts())
     .filter(({ tags }) => tags?.includes(procedure.name))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const hasAilments = Boolean(publishedAilments.length);
+  const showComparisonGuide =
+    (procedure.slug === "botox" || procedure.slug === "xeomin") && articles.some((article) => article.slug === comparisonSlug);
 
   return (
     <>
@@ -97,7 +100,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                 <Link href="#benefits">Explore Benefits</Link>
               </Button>
             )}
-            {showNeuromodulatorComparison && (
+            {showComparisonGuide && (
               <Button asChild variant="outline">
                 <Link href={`/blog/${comparisonSlug}`}>Botox vs Xeomin Guide</Link>
               </Button>
@@ -155,7 +158,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </h2>
             <p className="text-xl lg:text-2xl mb-8 font-light text-justify">{humanizeMedicalCopy(procedure.ailmentsHeadline)}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              {procedure.ailments
+              {publishedAilments
                 ?.sort((a, b) => ailmentsSortOrder[a.tag] - ailmentsSortOrder[b.tag])
                 .map(({ title, tag, description, slug: ailmentSlug }) => {
                   const isBotox = procedure.slug === "botox";
@@ -247,7 +250,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </div>
           </div>
         )}
-        {showNeuromodulatorComparison && (
+        {showComparisonGuide && (
           <div className="my-24 max-w-3xl mx-auto rounded-2xl border border-base-300 bg-base-200 p-8 text-center">
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">Still deciding between Botox and Xeomin?</h2>
             <p className="text-base md:text-lg text-base-content/80 mb-6">

@@ -1489,6 +1489,7 @@ export const procedures = [
   {
     name: "Botox",
     slug: "botox",
+    published: true,
     seo: {
       title: "Botox Injections in Williamsburg, VA",
       description:

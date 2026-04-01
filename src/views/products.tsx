@@ -5,6 +5,7 @@ type HeadingTag = "h1" | "h2";
 
 export default function Products({ headingTag = "h2" }: { headingTag?: HeadingTag }) {
   const Heading = headingTag;
+  const visibleProducts = products.filter((product) => !("published" in product) || product.published !== false);
 
   return (
     <>
@@ -19,8 +20,8 @@ export default function Products({ headingTag = "h2" }: { headingTag?: HeadingTa
       </div>
 
       <div className="grid gap-8 lg:gap-10 mt-8 lg:my-12 xl:my-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        {products.map((product, i) => (
-          <ProductCard key={i} {...product} slug={product.name.replaceAll(" ", "-").toLowerCase()} />
+        {visibleProducts.map((product, i) => (
+          <ProductCard key={i} {...product} slug={product.slug} />
         ))}
       </div>
     </>

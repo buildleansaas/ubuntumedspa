@@ -7,7 +7,7 @@ import { ORIGIN } from "lib/seo";
 
 export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
   try {
-    const { metadata } = await getPostData(params);
+    const { metadata } = await getPostData(params.slug);
     const canonical = `/blog/${params.slug}`;
     const image = metadata?.image ?? "/opengraph-image";
     const imageUrl = image.startsWith("http://") || image.startsWith("https://") ? image : `${ORIGIN}${image}`;
@@ -35,6 +35,7 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
         description: metadata.description,
         images: [imageUrl],
       },
+      robots: metadata.published ? undefined : { index: false, follow: false },
     };
   } catch {
     return {};
@@ -49,7 +50,7 @@ export default async function ArticlePage({
   };
 }) {
   try {
-    const { Content, metadata } = await getPostData(params);
+    const { Content, metadata } = await getPostData(params.slug);
 
     return (
       <div className="mx-auto max-w-5xl text-base leading-7 text-white text-left">
