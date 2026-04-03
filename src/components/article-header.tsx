@@ -18,8 +18,8 @@ export type Metadata = {
 };
 
 function ArticleHeader({ metadata }: { metadata: Metadata }) {
-  const authorName = metadata.authorName ?? "Jenny Brady";
-  const reviewedBy = metadata.reviewedBy ?? "Jenny Brady";
+  const authorName = metadata.authorName ?? "Jenny Coleman";
+  const reviewedBy = metadata.reviewedBy ?? "Jenny Coleman";
   const reviewedDate = metadata.dateModified ?? metadata.date;
   const reviewedDateObject = new Date(reviewedDate);
   const reviewedLabel = Number.isNaN(reviewedDateObject.getTime())
@@ -29,24 +29,24 @@ function ArticleHeader({ metadata }: { metadata: Metadata }) {
   return (
     <div className="mx-auto max-w-5xl">
       <div className="max-w-5xl mx-auto">
-        <h1 className="lg:text-center text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight my-8 sm:my-16 lg:-mx-24">
+        <h1 className="lg:text-center text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light tracking-tight text-balance my-8 sm:my-16 lg:-mx-24">
           {metadata.title}
         </h1>
       </div>
-      <div className="flex flex-wrap items-center mb-4">
+      <div className="mb-6 flex flex-wrap items-center gap-2">
         <DateTag date={metadata.date} />
         {metadata.tags.map((tag) => (
           <CategoryTag tag={tag} key={tag} />
         ))}
       </div>
       <BlogImage src={metadata.image} alt={metadata.imageAlt ?? ""} />
-      <h2 className="text-base-content text-4xl font-bold tracking-tight my-12 leading-10 text-center">
+      <p className="mx-auto my-10 max-w-3xl text-center text-xl leading-8 text-base-content/75 text-balance md:text-2xl md:leading-9">
         {metadata.description}
-      </h2>
-      <div className="rounded-xl border border-base-300 bg-base-200 p-5 text-sm md:text-base text-base-content/80">
+      </p>
+      <div className="rounded-2xl border border-base-300 bg-base-100 p-5 text-sm md:text-base text-base-content/80 shadow-sm">
         <p>
           Written by{" "}
-          <Link href="/staff/jenny-brady" className="link link-primary">
+          <Link href="/staff/jenny-coleman" className="link link-primary">
             {authorName}
           </Link>
           {" · "}Medically reviewed by {reviewedBy}

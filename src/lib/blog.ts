@@ -79,8 +79,8 @@ export const getPostData = cache(async (slug: string) => {
     slug: typedMetadata.slug || slug,
     date: normalizedDate,
     dateModified: normalizedDateModified || modifiedAt || normalizedDate,
-    authorName: typedMetadata.authorName || "Jenny Brady",
-    reviewedBy: typedMetadata.reviewedBy || "Jenny Brady",
+    authorName: typedMetadata.authorName || "Jenny Coleman",
+    reviewedBy: typedMetadata.reviewedBy || "Jenny Coleman",
     published: typedMetadata.published !== false,
   };
 

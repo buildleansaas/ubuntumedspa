@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Script from "next/script";
 
 import "./globals.css";
@@ -6,6 +6,9 @@ import { Toaster } from "components/ui/toaster";
 import StructuredData from "components/structured-data";
 import Header from "components/header";
 import Footer from "components/footer";
+import CartDrawer from "components/cart-drawer";
+import { CartProvider } from "components/cart-provider";
+import RouteProgressBar from "components/route-progress-bar";
 import { Metadata } from "next";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, ORIGIN } from "lib/seo";
 
@@ -17,6 +20,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(ORIGIN),
   title: DEFAULT_TITLE,
   description: DEFAULT_DESCRIPTION,
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#1d2333" },
+  ],
   alternates: { canonical: "/" },
   openGraph: {
     title: DEFAULT_TITLE,
@@ -42,7 +50,7 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-base-100">
       <Script strategy="afterInteractive" id="gtag" src="https://www.googletagmanager.com/gtag/js?id=G-FBEPLGSS9L" />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
@@ -52,26 +60,29 @@ export default function Layout({ children }: LayoutProps) {
           gtag('config', 'G-FBEPLGSS9L');
         `}
       </Script>
-      <body className="m-0 p-0">
-        <Toaster />
-        <StructuredData type="Organization" />
-        <StructuredData type="LocalBusiness" />
-        <div className="min-h-screen max-w-8xl mx-auto w-full relative mt-[-2rem]">
-          {/* <div
-            className="absolute inset-0 bg-base-100 bg-contain bg-no-repeat bg-top"
-            style={{ zIndex: -1, backgroundImage: "url(/bg.png)" }}
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-b from-base-100/70 to-transparent" style={{ zIndex: 0 }} /> */}
-          <div
-            className="w-full text-base-content flex items-center justify-center flex-col flex-grow mt-8 px-4 md:px-9 lg:px-18 xl:px-27 relative"
-            style={{ zIndex: 1 }}
-          >
-            <Header />
-            {children}
-            <Footer />
+      <body className="m-0 bg-base-100 p-0 text-base-content antialiased">
+        <CartProvider>
+          <Suspense fallback={null}>
+            <RouteProgressBar />
+          </Suspense>
+          <CartDrawer />
+          <Toaster />
+          <StructuredData type="Organization" />
+          <StructuredData type="LocalBusiness" />
+          <div className="min-h-screen w-full">
+            <div className="sticky top-0 z-40 w-full border-b border-base-300 bg-base-100 shadow-sm">
+              <div className="mx-auto w-full max-w-xl px-4 md:max-w-7xl md:px-8">
+                <Header />
+              </div>
+            </div>
+            <main className="mx-auto w-full max-w-8xl px-4 pt-6 md:px-9 md:pt-8 lg:px-18 xl:px-27">
+              <div className="relative flex w-full flex-col items-center justify-center text-base-content">
+                {children}
+                <Footer />
+              </div>
+            </main>
           </div>
-        </div>
+        </CartProvider>
       </body>
     </html>
   );

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import BlogPostCard from "components/blog-post-card";
 import CtaFooter from "components/cta-footer";
 import StructuredData from "components/structured-data";
 import { getPublishedBlogPosts } from "lib/blog";
 import { buildPageMetadata } from "lib/metadata";
-import { humanizeMedicalCopy } from "lib/humanize";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Williamsburg Med Spa Blog | PRP, Injectables, and Treatment Education",
@@ -20,44 +18,11 @@ export default async function BlogPage() {
   return (
     <div className="mx-auto max-w-2xl lg:max-w-4xl">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Blog"]} />
-      <h1 className="sm:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-primary-content mb-16 sm:mb-24 lg:mb-32">
+      <h1 className="sm:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light tracking-tight text-base-content mb-16 sm:mb-24 lg:mb-32 text-balance">
         Williamsburg Med Spa Blog
       </h1>
       <div className="mt-16 space-y-20 lg:mt-20 lg:space-y-20">
-        {articles.map((article) => (
-          <article key={article.slug} className="relative isolate flex flex-col gap-8 lg:flex-row">
-            <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-base-200">
-              <Image src={article.image} alt={article.imageAlt ?? article.title} fill className="object-cover" />
-              <div className="absolute inset-0 shadow-inner bg-gradient-to-br from-white/20" />
-            </div>
-            <div className="py-4">
-              <div className="flex flex-wrap items-center text-xs">
-                <time dateTime={new Date(article.date).toISOString()} className="w-full sm:w-auto text-primary-content mr-6 mb-2">
-                  {new Date(article.date).toLocaleDateString("en-GB", {
-                    dateStyle: "long",
-                  })}
-                </time>
-                {article.tags.map((tag) => (
-                  <div key={tag} className="rounded-lg px-2 py-1 bg-white text-black -ml-1 mr-3 mb-2">
-                    {tag}
-                  </div>
-                ))}
-              </div>
-              <div className="group relative max-w-xl">
-                <h2 className="mt-3 text-lg/snug sm:text-xl/snug md:text-2xl/snug font-semibold text-base-content group-hover:text-base-content/80">
-                  <Link
-                    href={`/blog/${article.slug}`}
-                    className="rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-200"
-                  >
-                    <span className="absolute inset-0" />
-                    {article.title}
-                  </Link>
-                </h2>
-                <p className="mt-5 text-sm leading-6 text-primary-content">{humanizeMedicalCopy(article.description)}</p>
-              </div>
-            </div>
-          </article>
-        ))}
+        {articles.map((article) => <BlogPostCard key={article.slug} article={article} />)}
       </div>
       <CtaFooter />
     </div>

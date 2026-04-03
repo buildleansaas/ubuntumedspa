@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 
 import CtaFooter from "components/cta-footer";
 import Jumbotron from "views/jumbotron";
+import OShotCallout from "views/o-shot-callout";
 import ProviderCallout from "views/provider-callout";
 import Procedures from "views/procedures";
 import LatestPosts from "views/latest-posts";
@@ -21,6 +22,7 @@ export default async function Page() {
     <div className="max-w-xl md:max-w-7xl mx-auto md:px-8 z-10">
       <Jumbotron />
       <ProviderCallout />
+      <OShotCallout />
       <Procedures />
       <Products />
       <LatestPosts />

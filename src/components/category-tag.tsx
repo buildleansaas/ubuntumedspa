@@ -17,25 +17,30 @@ interface TagProps {
   href?: string;
 }
 
+const tagBaseClassName =
+  "inline-flex items-center rounded-full border border-base-300 bg-base-100 px-3 py-1 text-xs font-medium tracking-[0.02em] text-base-content/75 transition-colors";
+
 const CategoryTag = ({ tag, className, size = "sm", href }: TagProps) => {
+  const sizeClassName = size === "lg" ? "px-4 py-2 text-sm" : "";
+  const resolvedClassName = twMerge(
+    tagBaseClassName,
+    sizeClassName,
+    href &&
+      "hover:border-primary/30 hover:bg-base-200 hover:text-base-content focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-base-100",
+    className
+  );
+
   switch (size) {
     case "lg": {
-      return (
-        <a href={href ?? `#${toKebabCase(tag)}`} key={tag}>
-          <div className="rounded-lg py-2 px-4 md:py-4 md:px-8 bg-primary text-base-content m-1 md:m-2 text-md">{tag}</div>
-        </a>
-      );
+      if (!href) return <span className={resolvedClassName}>{tag}</span>;
+
+      return <a href={href} className={resolvedClassName}>{tag}</a>;
     }
 
     default: {
-      return (
-        <NextLink
-          href={href ?? `/categories/${toKebabCase(tag)}`}
-          className={twMerge("rounded-lg px-2 py-1 m-1 bg-primary text-base-content", className)}
-        >
-          {tag}
-        </NextLink>
-      );
+      if (!href) return <span className={resolvedClassName}>{tag}</span>;
+
+      return <NextLink href={href} className={resolvedClassName}>{tag}</NextLink>;
     }
   }
 };

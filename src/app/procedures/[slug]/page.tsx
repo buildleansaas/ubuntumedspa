@@ -8,6 +8,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "components
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "components/ui/accordion";
 
 import CtaFooter from "components/cta-footer";
+import CatalogPurchasePanel from "components/catalog-purchase-panel";
 import StructuredData from "components/structured-data";
 import { twMerge } from "tailwind-merge";
 import CtaButtons from "components/cta-buttons";
@@ -15,6 +16,7 @@ import { notFound } from "next/navigation";
 import ProcedureTestimonials from "components/procedure-testimonials";
 import { getPublishedAilmentsForProcedure } from "lib/ailments/get-ailment-page-data";
 import { getPublishedBlogPosts } from "lib/blog";
+import { getCatalogConfigBySlug } from "config/commerce-catalog";
 import { humanizeMedicalCopy } from "lib/humanize";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
@@ -67,6 +69,7 @@ export async function generateMetadata({ params }: Params) {
 export default async function ProcedurePage({ params: { slug } }: { params: { slug: string } }) {
   const procedure = procedures.find((procedure) => procedure.slug === slug);
   if (!procedure) return notFound();
+  const catalogItem = getCatalogConfigBySlug(slug);
   const comparisonSlug = "botox-vs-xeomin-williamsburg-va";
   const publishedAilments = await getPublishedAilmentsForProcedure(procedure.slug);
   const articles = (await getPublishedBlogPosts())
@@ -118,6 +121,21 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             Educational content only. Treatment suitability, risk profile, and expected response are confirmed during
             consultation.
           </p>
+          {catalogItem && (
+            <CatalogPurchasePanel
+              slug={catalogItem.slug}
+              kind={catalogItem.kind}
+              name={catalogItem.name}
+              displayPrice={catalogItem.displayPrice}
+              pricingMode={catalogItem.pricingMode}
+              unitAmountCents={catalogItem.unitAmountCents}
+              quantityLabel={catalogItem.quantityLabel}
+              minQuantity={catalogItem.minQuantity}
+              maxQuantity={catalogItem.maxQuantity}
+              fulfillment={catalogItem.fulfillment}
+              customerNote={catalogItem.customerNote}
+            />
+          )}
         </div>
 
         <div className="my-32 text-center max-w-5xl mx-auto" id="benefits">
@@ -148,12 +166,12 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
               How can{" "}
               {[
-                "Feminine Intimacy PRP Protocols",
-                "Male Intimacy PRP Protocols",
-                "PRP Face Lift",
-                "PRP Facial",
-                "PRP Breast Lift",
-              ].includes(procedure.name) && "the "}
+                "o-shot",
+                "p-shot",
+                "prp-face-lift",
+                "prp-facial",
+                "prp-breast-lift",
+              ].includes(procedure.slug) && "the "}
               <span className="font-bold">{procedure.name}</span> help me?
             </h2>
             <p className="text-xl lg:text-2xl mb-8 font-light text-justify">{humanizeMedicalCopy(procedure.ailmentsHeadline)}</p>
@@ -222,7 +240,13 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               {articles.map((article) => (
                 <article key={article.slug} className="relative isolate flex flex-col gap-8 lg:flex-row">
                   <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-base-200">
-                    <Image src={article.image} alt={article.imageAlt ?? article.title} fill className="object-cover" />
+                    <Image
+                      src={article.image}
+                      alt={article.imageAlt ?? article.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 256px"
+                      className="object-cover"
+                    />
                     <div className="absolute inset-0 shadow-inner bg-gradient-to-br from-white/20" />
                   </div>
                   <div className="py-4">

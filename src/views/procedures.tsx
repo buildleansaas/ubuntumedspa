@@ -27,8 +27,8 @@ export default function Procedures({ headingTag = "h2" }: { headingTag?: Heading
             const priority = [
               "filler",
               "joint-restoration",
-              "feminine-intimacy-prp-protocols",
-              "male-intimacy-prp-protocols",
+              "o-shot",
+              "p-shot",
               "prp-facial",
               "blohmdahl-ear-piercing",
             ];

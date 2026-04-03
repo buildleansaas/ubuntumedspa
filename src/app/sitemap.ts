@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     {
-      url: "https://www.williamsburgmedspa.com/staff/jenny-brady",
+      url: "https://www.williamsburgmedspa.com/staff/jenny-coleman",
       lastModified: new Date(),
     },
     {

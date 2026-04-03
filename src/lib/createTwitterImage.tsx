@@ -1,16 +1,7 @@
 import { ImageResponse } from "next/server";
 import { classNames } from "lib/tailwind";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, ORIGIN } from "lib/seo";
-import Image from "next/image";
-
-// Download fonts from CDN on the Edge
-const InterRegular = fetch("https://fonts.cdnfonts.com/s/19795/Inter-Regular.woff").then((response) =>
-  response.arrayBuffer()
-);
-
-const InterBold = fetch("https://fonts.cdnfonts.com/s/19795/Inter-Bold.woff").then((response) =>
-  response.arrayBuffer()
-);
+import { SOURCE_SERIF_4_FAMILY, sourceSerifBold, sourceSerifRegular } from "lib/socialImageFonts";
 
 type OpenGraphImageProperties = {
   title?: string;
@@ -34,7 +25,7 @@ export async function createTwitterImage({
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: "Inter",
+          fontFamily: SOURCE_SERIF_4_FAMILY,
           textAlign: "center",
         }}
       >
@@ -97,14 +88,14 @@ export async function createTwitterImage({
       height: 900,
       fonts: [
         {
-          name: "Inter",
-          data: await InterRegular,
+          name: SOURCE_SERIF_4_FAMILY,
+          data: await sourceSerifRegular,
           style: "normal",
           weight: 400,
         },
         {
-          name: "Inter",
-          data: await InterBold,
+          name: SOURCE_SERIF_4_FAMILY,
+          data: await sourceSerifBold,
           style: "normal",
           weight: 700,
         },

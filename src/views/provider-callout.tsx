@@ -21,7 +21,7 @@ export default function ProviderCallout() {
             <h2 id="provider-callout-heading" className="text-2xl md:text-3xl font-light text-base-content mb-1">
               Meet Our Aesthetic Nurse Practitioner
             </h2>
-            <p className="text-base md:text-lg text-base-content/70 mb-2">Jenny Brady — MSN, RN, CPNP, PMHS</p>
+            <p className="text-base md:text-lg text-base-content/70 mb-2">Jenny Coleman — MSN, RN, CPNP, PMHS</p>
             <p className="text-sm md:text-base text-base-content/80 leading-relaxed">
               With 26 years in medicine and six years dedicated to aesthetics, Jenny blends primary care and mental
               health expertise with a holistic, patient‑first approach. She combines regenerative PRP therapies,

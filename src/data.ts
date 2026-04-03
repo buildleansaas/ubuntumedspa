@@ -9,12 +9,12 @@ export const DEFAULT_FORM_SUBMISSION =
         referral: "",
       }
     : {
-        email: "au.witherow@gmail.com",
-        name: "Austin Witherow",
-        phone: "8042442395",
-        comments: "I need help I have a tiny penis.",
-        interests: ["Male Intimacy PRP Protocols"],
-        referral: "Jenny Brady",
+        email: "alex@example.com",
+        name: "Alex Taylor",
+        phone: "8045550102",
+        comments: "I would like to talk through treatment options and what recovery might look like.",
+        interests: ["PRP Facial"],
+        referral: "Google search",
       };
 
 export const FORM_INPUTS = [
@@ -27,21 +27,21 @@ export const FORM_INPUTS = [
     id: "email",
     label: "Email",
     type: "email",
-    helperText: "We'll never share your email.",
+    helperText: "We only use this to follow up about your consultation.",
   },
   {
     id: "phone",
     label: "Phone",
     type: "tel",
-    helperText: "We'll also never share your phone.",
+    helperText: "We only use this to reach you about scheduling or questions.",
   },
   {
     id: "interests",
     label: "Interests",
     type: "checkbox",
     options: [
-      "Feminine Intimacy PRP Protocols",
-      "Male Intimacy PRP Protocols",
+      "O-Shot",
+      "P-Shot",
       "Breast Lift",
       "Hair Restoration",
       "PRP Facial",
@@ -52,20 +52,20 @@ export const FORM_INPUTS = [
       "Filler",
       "Hyperhidrosis Treatment",
     ],
-    helperText: "If you want specific consultation on certain procedures, please let us know which!",
+    helperText: "Select any treatments you would like to discuss so we can prepare.",
   },
   {
     id: "comments",
-    label: "How May I Help You?",
+    label: "What would you like to discuss?",
     type: "textarea",
     helperText:
-      "This is a confidential intake form, please take your time to describe what you are seeking help with to prepare for our consultation.",
+      "This intake form is private. Share the goals, concerns, or questions you would like us to be ready for.",
   },
   {
     id: "referral",
-    label: "Who Referred You?",
+    label: "How did you hear about us?",
     type: "text",
-    helperText: "Send your friends and get free med spa services!",
+    helperText: "If someone referred you, include their name here.",
   },
 ];
 
@@ -78,470 +78,468 @@ export type ProcedureTestimonial = {
 
 export const procedures = [
   {
-    name: "Feminine Intimacy PRP Protocols",
-    slug: "feminine-intimacy-prp-protocols",
+    name: "O-Shot",
+    slug: "o-shot",
     seo: {
-      title: "Feminine Intimacy PRP in Williamsburg, VA",
+      title: "O-Shot in Williamsburg, VA",
       description:
-        "Natural Feminine Intimacy PRP protocols in Williamsburg, VA to support sexual wellness, lubrication, libido, and urinary incontinence at Williamsburg Med Spa.",
+        "O-Shot treatment in Williamsburg, VA using platelet-rich plasma (PRP) to support tissue health, comfort, lubrication, and sexual wellness at Williamsburg Med Spa.",
     },
     description:
-      "The Feminine Intimacy PRP Protocols is a advanced natural treatment designed to enhance female sexual health and wellness. It offers a range of benefits that can help women of all ages and backgrounds improve their sexual function and enjoy their bodies to the fullest. The Feminine Intimacy PRP Protocols can help to reverse urinary incontinence, boost libido, improve natural lubrication, and enhance overall sexual function. It can also reverse the symptoms of menopause and relieve symptoms associated with sexual dysfunction. Ultimately, the Feminine Intimacy PRP Protocols has helped many women achieve a better quality of life and experience a more fulfilling sex life.",
-    headline: "Revitalize Your Feminine Intimacy: Natural, Effective, meaningful!",
+      "The O-Shot is a platelet-rich plasma (PRP) treatment that uses your own processed blood components to support tissue quality in the vulvovaginal area. Patients usually ask about it for concerns such as dryness, decreased sensitivity, discomfort with intimacy, or mild stress urinary leakage. It should be evaluated as part of a broader care plan, not as a universal first-line treatment or a guaranteed solution.",
+    headline: "Regenerative support for comfort, tissue health, and intimate wellness.",
     subline:
-      "The Feminine Intimacy PRP Protocols utilizes Platelet-Rich Plasma (PRP) therapy derived from your own blood, working naturally to enhance female sexual health. With this, you can expect improved sexual function, relief from urinary incontinence and menopause symptoms, and an overall more fulfilling sex life.",
+      "The O-Shot uses platelet-rich plasma prepared from your own blood and is considered for select patients who want a non-hormonal procedure as part of a personalized sexual wellness or pelvic health plan.",
     image: "/procedure/grapefruit.jpg",
-    price: "$1,200.00",
+    price: "$1,200",
     // programmatic SEO copy
     blogHeadline:
-      "Struggling with female sexual health issues? Dive into our Feminine Intimacy PRP Protocols articles and discover advanced insights and solutions. From understanding the Feminine Intimacy PRP Protocols process to exploring real-life success stories, our blog offers answers and guidance you might be seeking.",
+      "Review our O-Shot articles to understand candidacy, expected recovery, and how PRP-based care may fit alongside pelvic floor therapy, moisturizers, and other evidence-based treatment options.",
     benefitsHeadline:
-      "Experience renewed confidence with enhanced female sexual health. From reversing urinary incontinence to boosting libido, the Feminine Intimacy PRP Protocols paves the way for a revitalized intimate connection. Rediscover pleasure and reclaim your body's vitality.",
+      "The O-Shot is usually discussed as an adjunct treatment for patients looking for non-surgical support with tissue health, comfort, lubrication, and sexual response.",
     benefits: [
       {
         emoji: "💪",
-        benefit: "Enhanced Sexual Health",
+        benefit: "Tissue Quality Support",
         description:
-          "The Feminine Intimacy PRP Protocols improves overall female sexual health by enhancing libido, lubrication, and sexual function.",
+          "PRP is used with the goal of supporting tissue healing, collagen activity, and local blood flow in targeted treatment areas.",
       },
       {
         emoji: "🌊",
-        benefit: "Relief from Urinary Incontinence",
+        benefit: "Comfort and Lubrication Support",
         description:
-          "Many women have found relief from the distressing issue of urinary incontinence with the Feminine Intimacy PRP Protocols.",
+          "Some patients pursue the O-Shot when dryness, irritation, or reduced tissue resilience are part of the clinical picture.",
       },
       {
         emoji: "🌡",
-        benefit: "Alleviation of Menopause Symptoms",
+        benefit: "Non-Hormonal Option",
         description:
-          "The Feminine Intimacy PRP Protocols helps to reverse some symptoms of menopause, providing women with a more comfortable and balanced life.",
+          "Because the treatment uses your own platelet-rich plasma, it is often considered by patients who want to discuss regenerative care without hormones.",
       },
       {
         emoji: "❤️",
-        benefit: "Boosted Intimacy",
+        benefit: "In-Office Treatment",
         description:
-          "The Feminine Intimacy PRP Protocols brings about enhanced sensitivity, leading to a more fulfilling intimate life.",
+          "Treatment is typically performed in the office with topical numbing and a short recovery period, depending on the plan and areas treated.",
       },
     ],
     ailmentsHeadline:
-      "Searching for a solution to intimate health challenges? Feminine Intimacy PRP Protocols, using your own platelet-rich plasma (PRP), address a wide array of female sexual and urinary issues. From common ailments like post-menopausal symptoms to less common but impactful conditions like chronic pelvic pain, these protocols offer a range of applications. Whether you're after improved sexual sensation, better lubrication, or relief from pain, Feminine Intimacy PRP Protocols are versatile enough to offer a solution. Below is an exhaustive list detailing the various ailments they can potentially treat.",
+      "The O-Shot may be considered for select vulvovaginal and urinary concerns when tissue quality, dryness, sensitivity, or recovery goals are part of the conversation. Whether it is appropriate depends on diagnosis, prior treatment response, and whether more established therapies should come first.",
     ailments: [
       {
         title: "Vaginal Dryness",
         description:
-          "Are you tired of uncomfortable, dry sensations ruining your intimate moments? Discover the rejuvenating power of Feminine Intimacy PRP Protocols to restore natural lubrication and improve your sexual experience.",
-        blog_post_title:
-          "Feminine Intimacy PRP Protocols for Vaginal Dryness: What to Know",
-        blog_post_slug: "revitalize-sexual-health-female-intimacy-prp-protocols-vaginal-dryness",
+          "For patients whose dryness persists despite first-line care, the O-Shot may be discussed as one part of a broader treatment strategy focused on tissue comfort and hydration.",
+        blog_post_title: "O-Shot for Vaginal Dryness: What to Know",
+        blog_post_slug: "o-shot-for-vaginal-dryness-what-to-know",
         slug: "vaginal-dryness",
         tag: "common",
       },
       {
         title: "Sexual Dysfunction",
         description:
-          "Struggling with sexual performance or satisfaction? Unlock your full sexual potential with Feminine Intimacy PRP Protocols. Experience increased arousal, sensitivity, and improved orgasms.",
-        blog_post_title: "Elevate Your Sex Life: How Feminine Intimacy PRP Protocols Tackle Sexual Dysfunction",
-        blog_post_slug: "elevate-sex-life-how-female-intimacy-prp-protocols-tackles-sexual-dysfunction",
+          "The O-Shot may be considered when reduced arousal, decreased sensation, or intimacy-related discomfort appear related to tissue health rather than a single reversible cause.",
+        blog_post_title: "Understanding the O-Shot for Sexual Dysfunction",
+        blog_post_slug: "understanding-o-shot-for-sexual-dysfunction",
         slug: "sexual-dysfunction",
         tag: "common",
       },
       {
         title: "Low Libido",
         description:
-          "Is a low sex drive affecting your relationship and self-esteem? Bring back the spark with Feminine Intimacy PRP Protocols, a non-invasive treatment that amplifies sexual desire and enjoyment.",
-        blog_post_title: "Reignite Your Sexual Desire: Feminine Intimacy PRP Protocols for Low Libido",
-        blog_post_slug: "reignite-your-sexual-desire-female-intimacy-prp-protocols-solution-low-libido",
+          "Low libido often has hormonal, relational, and medical drivers, but the O-Shot may be discussed for select patients when comfort, sensitivity, or arousal concerns overlap.",
+        blog_post_title: "O-Shot and Low Libido: Treatment Overview",
+        blog_post_slug: "o-shot-and-low-libido-treatment-overview",
         slug: "low-libido",
         tag: "common",
       },
       {
         title: "Dyspareunia",
         description:
-          "End the cycle of painful intercourse with Feminine Intimacy PRP Protocols. Relieve discomfort, improve your relationship, and rediscover the joy of sexual intimacy.",
-        blog_post_title: "How Feminine Intimacy PRP Protocols are Changing the Game for Women with Dyspareunia",
-        blog_post_slug: "how-female-intimacy-prp-protocols-changing-game-women-with-dyspareunia",
+          "When painful intercourse is linked to dryness, tissue fragility, or sensitivity, the O-Shot may be reviewed as an adjunct option after evaluation.",
+        blog_post_title: "O-Shot for Dyspareunia: What to Discuss",
+        blog_post_slug: "o-shot-for-dyspareunia-what-to-discuss",
         slug: "dyspareunia",
         tag: "common",
       },
       {
         title: "Urinary Incontinence",
         description:
-          "Regain control over your life and bid goodbye to urinary incontinence. See how Feminine Intimacy PRP Protocols offer a non-surgical way to restore bladder function.",
-        blog_post_title: "Stop Letting Incontinence Control You: Feminine Intimacy PRP Protocols to the Rescue",
-        blog_post_slug: "stop-letting-incontinence-control-you-female-intimacy-prp-protocols-to-rescue",
+          "Some patients ask about the O-Shot when mild stress leakage overlaps with tissue thinning or menopausal changes, although standard pelvic floor care remains foundational.",
+        blog_post_title: "O-Shot for Urinary Incontinence: Treatment Overview",
+        blog_post_slug: "o-shot-for-urinary-incontinence-treatment-overview",
         slug: "urinary-incontinence",
         tag: "common",
       },
       {
         title: "Lichen Sclerosus",
         description:
-          "Break free from the irritation and discomfort caused by lichen sclerosus. Discover how Feminine Intimacy PRP Protocols offer effective, natural relief.",
-        blog_post_title: "Tackle Lichen Sclerosus Head-On with Feminine Intimacy PRP Protocols",
-        blog_post_slug: "tackle-lichen-sclerosus-head-on-with-female-intimacy-prp-protocols",
+          "For confirmed lichen sclerosus under medical management, the O-Shot may be discussed as supportive care for tissue quality, not a replacement for standard treatment.",
+        blog_post_title: "O-Shot and Lichen Sclerosus: Adjunct Care Overview",
+        blog_post_slug: "o-shot-and-lichen-sclerosus-adjunct-care-overview",
         slug: "lichen-sclerosus",
         tag: "uncommon",
       },
       {
         title: "Anorgasmia",
         description:
-          "Say goodbye to unsatisfying sexual experiences. Feminine Intimacy PRP Protocols enhance your sexual response to make orgasms easier to achieve.",
-        blog_post_title: "Unleash Your Orgasmic Potential with Feminine Intimacy PRP Protocols",
-        blog_post_slug: "unleash-your-orgasmic-potential-with-female-intimacy-prp-protocols",
+          "The O-Shot may be reviewed for patients reporting reduced sensation or difficulty reaching orgasm when tissue response is part of the concern.",
+        blog_post_title: "O-Shot for Anorgasmia: Treatment Overview",
+        blog_post_slug: "o-shot-for-anorgasmia-treatment-overview",
         slug: "anorgasmia",
         tag: "common",
       },
       {
         title: "Genital Arousal Disorder",
         description:
-          "Revitalize your sexual life by overcoming genital arousal disorder with Feminine Intimacy PRP Protocols. Enjoy increased sensitivity and a renewed sense of arousal.",
-        blog_post_title:
-          "Reclaim Your Sexuality: Overcoming Genital Arousal Disorder with Feminine Intimacy PRP Protocols",
-        blog_post_slug: "reclaim-your-sexuality-overcoming-genital-arousal-disorder-with-female-intimacy-prp-protocols",
+          "Complex arousal concerns often require multidisciplinary care, but the O-Shot may be one topic in a broader discussion of sensation and tissue health.",
+        blog_post_title: "O-Shot for Genital Arousal Disorder: What to Discuss",
+        blog_post_slug: "o-shot-for-genital-arousal-disorder-what-to-discuss",
         slug: "genital-arousal-disorder",
         tag: "experimental",
       },
       {
         title: "Chronic Pelvic Pain",
         description:
-          "Free yourself from the shackles of chronic pelvic pain. Explore how Feminine Intimacy PRP Protocols can help you regain comfort and improve your quality of life.",
-        blog_post_title: "End Chronic Pelvic Pain for Good: Feminine Intimacy PRP Protocols",
-        blog_post_slug: "end-chronic-pelvic-pain-good-female-intimacy-prp-protocols-solution",
+          "Chronic pelvic pain has many causes, but the O-Shot may be part of a conversation when tissue irritation, dryness, or localized tenderness are contributing factors.",
+        blog_post_title: "O-Shot and Chronic Pelvic Pain: Care Overview",
+        blog_post_slug: "o-shot-and-chronic-pelvic-pain-care-overview",
         slug: "chronic-pelvic-pain",
         tag: "uncommon",
       },
       {
         title: "Vaginismus",
         description:
-          "Are involuntary muscle contractions causing you pain and affecting intimacy? Discover the potential of Feminine Intimacy PRP Protocols in relieving vaginismus.",
-        blog_post_title: "A New Horizon in Vaginismus Treatment: The Role of Feminine Intimacy PRP Protocols",
-        blog_post_slug: "new-horizon-in-vaginismus-treatment-role-of-female-intimacy-prp-protocols",
+          "Vaginismus usually involves pelvic floor dysfunction and nervous-system guarding, but the O-Shot may occasionally be discussed alongside therapy for tissue-related discomfort.",
+        blog_post_title: "O-Shot and Vaginismus: Treatment Discussion",
+        blog_post_slug: "o-shot-and-vaginismus-treatment-discussion",
         slug: "vaginismus",
         tag: "uncommon",
       },
       {
         title: "Clitoral Atrophy",
         description:
-          "Restore the youthfulness and sensitivity of your clitoris with Feminine Intimacy PRP Protocols. Regain your sexual responsiveness and spice up your intimate life.",
-        blog_post_title: "Turn Back Time: Combating Clitoral Atrophy with Feminine Intimacy PRP Protocols",
-        blog_post_slug: "turn-back-time-combating-clitoral-atrophy-with-female-intimacy-prp-protocols",
+          "The O-Shot may be reviewed when decreased sensitivity appears connected to tissue atrophy or reduced blood flow in the treatment area.",
+        blog_post_title: "O-Shot for Clitoral Atrophy: What to Know",
+        blog_post_slug: "o-shot-for-clitoral-atrophy-what-to-know",
         slug: "clitoral-atrophy",
         tag: "uncommon",
       },
       {
         title: "Vulvar Atrophy",
         description:
-          "Tired of dryness, itching, or burning? Feminine Intimacy PRP Protocols revitalize vulvar tissue for improved comfort and heightened sexual pleasure.",
-        blog_post_title: "Redefining Comfort: Feminine Intimacy PRP Protocols for Vulvar Atrophy",
-        blog_post_slug: "redefining-comfort-female-intimacy-prp-protocols-solution-for-vulvar-atrophy",
+          "For vulvar tissue thinning or irritation, the O-Shot may be discussed as a regenerative adjunct after standard therapies have been reviewed.",
+        blog_post_title: "O-Shot for Vulvar Atrophy: Treatment Overview",
+        blog_post_slug: "o-shot-for-vulvar-atrophy-treatment-overview",
         slug: "vulvar-atrophy",
         tag: "uncommon",
       },
       {
         title: "Interstitial Cystitis",
         description:
-          "Say goodbye to bladder pain and discomfort. Discover how Feminine Intimacy PRP Protocols could be the solution you've been looking for.",
-        blog_post_title: "Breaking Free from Interstitial Cystitis: A New Path with Feminine Intimacy PRP Protocols",
-        blog_post_slug: "breaking-free-from-interstitial-cystitis-new-path-with-female-intimacy-prp-protocols",
+          "Interstitial cystitis often needs multidisciplinary bladder care, but the O-Shot may be considered in select cases when vulvovaginal tissue symptoms overlap.",
+        blog_post_title: "O-Shot and Interstitial Cystitis: Treatment Overview",
+        blog_post_slug: "o-shot-and-interstitial-cystitis-treatment-overview",
         slug: "interstitial-cystitis",
         tag: "experimental",
       },
       {
         title: "Pelvic Floor Dysfunction",
         description:
-          "Don't let pelvic floor issues hold you back. Learn how Feminine Intimacy PRP Protocols can strengthen your pelvic muscles and restore functionality.",
-        blog_post_title: "Revolutionizing Pelvic Floor Health with Feminine Intimacy PRP Protocols",
-        blog_post_slug: "revolutionizing-pelvic-floor-health-with-female-intimacy-prp-protocols",
+          "Pelvic floor dysfunction usually requires targeted therapy, but the O-Shot may be considered when tissue discomfort or dryness complicate the picture.",
+        blog_post_title: "O-Shot and Pelvic Floor Dysfunction: Care Overview",
+        blog_post_slug: "o-shot-and-pelvic-floor-dysfunction-care-overview",
         slug: "pelvic-floor-dysfunction",
         tag: "uncommon",
       },
       {
         title: "Vulvodynia",
         description:
-          "End the relentless vulvar pain with the natural healing power of PRP protocols. Reclaim your comfort and your life.",
-        blog_post_title: "Feminine Intimacy PRP Protocols: A Breakthrough in Treating Vulvodynia",
-        blog_post_slug: "female-intimacy-prp-protocols-breakthrough-in-treating-vulvodynia",
+          "For persistent vulvar pain, the O-Shot may be explored as supportive care for select patients after a thorough diagnosis and first-line treatment review.",
+        blog_post_title: "O-Shot for Vulvodynia: Adjunct Care Overview",
+        blog_post_slug: "o-shot-for-vulvodynia-adjunct-care-overview",
         slug: "vulvodynia",
         tag: "uncommon",
       },
       {
         title: "Post-Menopausal Symptoms",
         description:
-          "Don't let post-menopausal changes steal your joy. Rejuvenate your sexual health with Feminine Intimacy PRP Protocols.",
-        blog_post_title: "Beyond Hormones: How Feminine Intimacy PRP Protocols Help Post-Menopausal Women",
-        blog_post_slug: "beyond-hormones-how-female-intimacy-prp-protocols-helps-post-menopausal-women",
+          "Patients navigating menopause sometimes ask whether the O-Shot can support tissue comfort, lubrication, and sexual response alongside standard menopause care.",
+        blog_post_title: "O-Shot for Post-Menopausal Symptoms: What to Know",
+        blog_post_slug: "o-shot-for-post-menopausal-symptoms-what-to-know",
         slug: "post-menopausal-symptoms",
         tag: "common",
       },
       {
         title: "Scar Tissue",
         description:
-          "Childbirth or surgery left you with scar tissue that's affecting your sexual health? Learn how Feminine Intimacy PRP Protocols can help.",
-        blog_post_title: "Eliminating Scar Tissue: Your New Ally in Feminine Intimacy PRP Protocols",
-        blog_post_slug: "eliminating-scar-tissue-your-new-ally-in-female-intimacy-prp-protocols",
+          "For scarring related to childbirth or procedures, the O-Shot may be reviewed when tissue flexibility, comfort, or sensitivity are the primary concerns.",
+        blog_post_title: "O-Shot for Scar Tissue: Treatment Overview",
+        blog_post_slug: "o-shot-for-scar-tissue-treatment-overview",
         slug: "scar-tissue",
         tag: "uncommon",
       },
       {
         title: "Skin Texture & Tone",
         description:
-          "Enhance the appearance and feel of your vulvar and vaginal areas with PRP protocols for a confidence boost.",
-        blog_post_title: "Upgrade Your Intimate Skin Texture and Tone with Feminine Intimacy PRP Protocols",
-        blog_post_slug: "upgrade-your-intimate-skin-texture-and-tone-with-female-intimacy-prp-protocols",
+          "Some patients ask whether the O-Shot can support localized tissue texture and tone, although outcomes vary and expectations should stay conservative.",
+        blog_post_title: "O-Shot for Skin Texture and Tone: What to Know",
+        blog_post_slug: "o-shot-for-skin-texture-and-tone-what-to-know",
         slug: "skin-texture-tone",
         tag: "experimental",
       },
       {
         title: "Vaginal Lubrication",
         description:
-          "Improve natural lubrication and say goodbye to discomfort during intercourse with Feminine Intimacy PRP Protocols.",
-        blog_post_title: "Unlock Natural Lubrication: How Feminine Intimacy PRP Protocols Can Help",
-        blog_post_slug: "unlock-natural-lubrication-how-female-intimacy-prp-protocols-can-help",
+          "When decreased lubrication persists despite moisturizers, hormonal review, or lifestyle adjustments, the O-Shot may be part of the procedural discussion.",
+        blog_post_title: "O-Shot for Vaginal Lubrication Support",
+        blog_post_slug: "o-shot-for-vaginal-lubrication-support",
         slug: "vaginal-lubrication",
         tag: "common",
       },
       {
         title: "Sexual Sensation",
         description:
-          "Looking to amplify your sexual sensations? Feminine Intimacy PRP Protocols offer a path to increased sensitivity and pleasure.",
-        blog_post_title: "Awaken Your Senses: How Feminine Intimacy PRP Protocols Boost Sexual Sensation",
-        blog_post_slug: "awaken-your-senses-how-female-intimacy-prp-protocols-boosts-sexual-sensation",
+          "The O-Shot is sometimes discussed for reduced sensation when blood flow, tissue health, or local sensitivity are part of the concern.",
+        blog_post_title: "O-Shot for Sexual Sensation: Treatment Overview",
+        blog_post_slug: "o-shot-for-sexual-sensation-treatment-overview",
         slug: "sexual-sensation",
         tag: "common",
       },
     ],
     faqHeadline:
-      "Experience a breakthrough in female sexual health with the Feminine Intimacy PRP Protocols. Designed to invigorate your intimate experiences, it's natural and modern.",
+      "Most O-Shot questions focus on candidacy, comfort, expected timing, and how PRP fits with more established therapies.",
     faqs: [
       {
-        question: "What is the primary purpose of the Feminine Intimacy PRP Protocols?",
+        question: "What is the O-Shot?",
         answer:
-          "The Feminine Intimacy PRP Protocols is designed to enhance female sexual health and wellness, improving aspects like libido, natural lubrication, and overall sexual function. It also helps in reversing urinary incontinence and symptoms of menopause.",
+          "The O-Shot is a platelet-rich plasma (PRP) procedure that uses components from your own blood in a treatment plan focused on vulvovaginal tissue health, comfort, and sexual wellness.",
       },
       {
-        question: "Is the Feminine Intimacy PRP Protocols procedure painful?",
+        question: "Who may be a candidate for the O-Shot?",
         answer:
-          "While individual experiences may vary, most patients report minimal discomfort. A topical numbing cream is often applied before the procedure to minimize any potential pain.",
+          "Candidates are usually patients who have already reviewed standard treatment options and want to discuss whether a regenerative, non-hormonal procedure fits their symptoms, goals, and medical history.",
       },
       {
-        question: "How soon can I experience results?",
+        question: "Is the O-Shot painful?",
         answer:
-          "Many women report feeling some effects immediately after the procedure, while for others, it may take a few weeks to notice significant changes.",
+          "Most visits include topical numbing, and patients often describe treatment as manageable. Comfort varies by person and by the areas treated.",
       },
       {
-        question: "Are there any side effects?",
+        question: "How soon might I notice changes?",
         answer:
-          "The Feminine Intimacy PRP Protocols is a natural procedure, using your own blood's platelet-rich plasma (PRP). Thus, the risk of allergic reactions or side effects is minimal. However, as with any injection, there may be temporary redness, swelling, or bruising.",
+          "Some patients report early changes within weeks, while tissue remodeling can take a few months. Results vary, and no procedure guarantees a specific outcome.",
       },
       {
-        question: "How long does the effect of the Feminine Intimacy PRP Protocols last?",
+        question: "Are there risks or side effects?",
         answer:
-          "While individual experiences vary, many women enjoy the benefits of the Feminine Intimacy PRP Protocols for a year or longer. Periodic touch-up treatments can help maintain results.",
+          "Yes. Even though PRP is prepared from your own blood, treatment can still involve soreness, swelling, spotting, bruising, irritation, and other procedural risks that should be reviewed during consultation.",
       },
     ],
   },
   {
-    name: "Male Intimacy PRP Protocols",
-    slug: "male-intimacy-prp-protocols",
+    name: "P-Shot",
+    slug: "p-shot",
     seo: {
-      title: "Male Intimacy PRP in Williamsburg, VA",
+      title: "P-Shot in Williamsburg, VA",
       description:
-        "Regenerative Male Intimacy PRP protocols in Williamsburg, VA to support erections, sensitivity, stamina, and overall sexual wellness at Williamsburg Med Spa.",
+        "P-Shot treatment in Williamsburg, VA using platelet-rich plasma (PRP) to support erections, sensitivity, blood flow, and penile tissue health at Williamsburg Med Spa.",
     },
     description:
-      "Male Intimacy PRP Protocols are the latest innovation in male sexual health and wellness. This natural and non-invasive treatment is designed to rejuvenate the penis and enhance overall sexual function. Male Intimacy PRP Protocols can help to improve the frequency and quality of erections, as well as boost libido and sexual stamina. They are also an effective option for reversing the symptoms of Peyronie's disease. By utilizing the healing properties of Platelet-Rich Plasma (PRP) therapy, Male Intimacy PRP Protocols can help to increase blood flow, revive and enhance sensitivity, as well as improve male sexual function and overall satisfaction. If you're looking for a natural and effective way to enhance your sexual health and function, Male Intimacy PRP Protocols may be the solution you've been waiting for.",
-    headline: "Rediscover Male Virility: Boost Your Performance and Confidence!",
+      "The P-Shot (Priapus Shot) is a platelet-rich plasma (PRP) procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness. Patients usually ask about it for erection quality, sensitivity, blood flow concerns, or post-procedure recovery goals. It should be evaluated as an adjunct option after a medical review, not as a guaranteed fix for every cause of erectile or sexual dysfunction.",
+    headline: "Regenerative support for erections, sensitivity, and penile tissue health.",
     subline:
-      "The Male Intimacy PRP Protocols is a natural and non-invasive treatment using PRP therapy to rejuvenate the penis and enhance sexual function. It aids in improving erection quality, boosting libido and reversing symptoms of Peyronie's disease, leading to enhanced overall sexual satisfaction.",
+      "The P-Shot uses platelet-rich plasma prepared from your own blood and is considered for select patients who want a non-surgical option as part of a broader sexual health plan.",
     image: "/procedure/banana.jpg",
     price: "$1,900",
     // programmatic SEO copy
     blogHeadline:
-      "Enhance your male virility and confidence with insights from our Male Intimacy PRP Protocols blog. Uncover the science behind its effectiveness, success stories, and how it's transforming male sexual health.",
+      "Review our P-Shot articles to learn how PRP-based care fits into conversations about erection quality, penile tissue health, recovery expectations, and treatment planning.",
     benefitsHeadline:
-      "Unlock the next level of male sexual prowess. With Male Intimacy PRP Protocols, not only can you witness improved erection quality, but also a rejuvenated libido. Dive into a world where confidence, stamina, and satisfaction intertwine.",
+      "The P-Shot is typically discussed as a regenerative adjunct for patients seeking support with blood flow, sensation, erection quality, and penile tissue recovery.",
     benefits: [
       {
         emoji: "⚡",
-        benefit: "Improved Erection Quality",
+        benefit: "Blood Flow Support",
         description:
-          "Men experience enhanced frequency and quality of erections after undergoing Male Intimacy PRP Protocols.",
+          "PRP is used with the goal of supporting localized circulation and tissue response in treatment areas tied to erection quality.",
       },
       {
         emoji: "💖",
-        benefit: "Boosted Libido",
+        benefit: "Sensitivity Support",
         description:
-          "Male Intimacy PRP Protocols can reignite sexual drive, enhancing overall stamina and intimate experiences.",
+          "Some patients discuss the P-Shot when reduced sensation or tissue responsiveness is part of the overall clinical picture.",
       },
       {
         emoji: "🔄",
-        benefit: "Reversal of Peyronie's Symptoms",
+        benefit: "Non-Surgical Option",
         description:
-          "Male Intimacy PRP Protocols are effective in alleviating symptoms of Peyronie's disease, leading to more satisfactory intimate encounters.",
+          "Because it uses your own platelet-rich plasma, the P-Shot is often reviewed by patients who want to discuss a procedural option before surgery.",
       },
       {
         emoji: "🔥",
-        benefit: "Enhanced Sensitivity",
+        benefit: "Minimal Downtime",
         description:
-          "By increasing blood flow, Male Intimacy PRP Protocols revive and enhance penile sensitivity, enriching intimate experiences.",
+          "Treatment is typically performed in the office, with short-term aftercare instructions and limited downtime for most patients.",
       },
     ],
     ailmentsHeadline:
-      "Revitalize your sexual health and regain confidence with Male Intimacy PRP Protocols. This modern treatment offers a range of solutions for common to uncommon male sexual health issues. From frustrating conditions like erectile dysfunction and premature ejaculation to enhancing your overall sexual capabilities and aesthetics, these protocols are a versatile remedy. They can even serve as an experimental option for more complicated issues like testosterone imbalances and vasculogenic sexual dysfunction. Experience a more satisfying and rewarding intimate life through this natural, minimally invasive procedure.",
+      "The P-Shot may be considered for select male sexual health concerns when blood flow, tissue quality, sensitivity, or recovery goals are part of the evaluation. Whether it makes sense depends on diagnosis, prior treatment response, and whether better-established options should come first.",
     ailments: [
       {
         title: "Erectile Dysfunction",
         description:
-          "Are you tired of ED affecting your confidence and relationships? Male Intimacy PRP Protocols offer a natural solution that enhances blood flow and revitalizes penile tissue, giving you back control.",
-        blog_post_title: "Reclaim Your Confidence: How Male Intimacy PRP Protocols Help with ED",
-        blog_post_slug: "reclaim-your-confidence-how-the-male-intimacy-prp-protocols-cures-ed",
+          "When erection quality is affected by blood flow or tissue response concerns, the P-Shot may be discussed as an adjunct treatment after medical evaluation.",
+        blog_post_title: "P-Shot for Erectile Dysfunction: What to Know",
+        blog_post_slug: "p-shot-for-erectile-dysfunction-what-to-know",
         slug: "erectile-dysfunction",
         tag: "common",
       },
       {
         title: "Peyronie's Disease",
         description:
-          "Curvature impacting your sexual life? Male Intimacy PRP Protocols can help correct penile shape and reduce pain, offering you a path to more satisfying intimate experiences.",
-        blog_post_title: "Straighten Things Out: Male Intimacy PRP Protocols for Peyronie's Disease",
-        blog_post_slug: "straighten-things-out-male-intimacy-prp-protocols-for-peyronies-disease",
+          "For patients with Peyronie's disease, the P-Shot may come up as a supportive therapy discussion, but deformity and pain often require broader medical management.",
+        blog_post_title: "P-Shot and Peyronie's Disease: Treatment Overview",
+        blog_post_slug: "p-shot-and-peyronies-disease-treatment-overview",
         slug: "peyronies-disease",
         tag: "uncommon",
       },
       {
         title: "Reduced Sexual Performance",
         description:
-          "Struggling to maintain your performance in bed? Elevate your game naturally with Male Intimacy PRP Protocols, designed to improve sensitivity and strength.",
-        blog_post_title: "Boost Your Bedroom Performance with Male Intimacy PRP Protocols",
-        blog_post_slug: "boost-your-bedroom-performance-with-the-male-intimacy-prp-protocols",
+          "Patients sometimes ask about the P-Shot when reduced performance appears tied to erection quality, sensitivity, or confidence after other causes are reviewed.",
+        blog_post_title: "P-Shot for Reduced Sexual Performance",
+        blog_post_slug: "p-shot-for-reduced-sexual-performance",
         slug: "reduced-sexual-performance",
         tag: "common",
       },
       {
         title: "Reduced Sensation",
         description:
-          "Lost the spark in your sexual encounters? Rediscover intense pleasure with Male Intimacy PRP Protocols, aimed to amplify sensation and invigorate your intimate life.",
-        blog_post_title: "Ignite Lost Sensations: How Male Intimacy PRP Protocols Can Help",
-        blog_post_slug: "ignite-lost-sensations-how-the-male-intimacy-prp-protocols-can-help",
+          "The P-Shot may be reviewed when decreased sensation or localized tissue response is part of the patient’s complaint.",
+        blog_post_title: "P-Shot for Reduced Sensation: What to Discuss",
+        blog_post_slug: "p-shot-for-reduced-sensation-what-to-discuss",
         slug: "reduced-sensation",
         tag: "uncommon",
       },
       {
         title: "Post-Prostatectomy Issues",
         description:
-          "Struggling with sexual function post-prostatectomy? Male Intimacy PRP Protocols can help rejuvenate your sexual health, letting you enjoy intimacy once again.",
-        blog_post_title: "Revive Your Sex Life Post-Prostatectomy with Male Intimacy PRP Protocols",
-        blog_post_slug: "revive-your-sex-life-post-prostatectomy-with-the-male-intimacy-prp-protocols",
+          "After prostate treatment, the P-Shot may be one topic in a larger recovery discussion that can also include medication, devices, and rehabilitation strategies.",
+        blog_post_title: "P-Shot for Post-Prostatectomy Recovery Questions",
+        blog_post_slug: "p-shot-for-post-prostatectomy-recovery-questions",
         slug: "post-prostatectomy-issues",
         tag: "experimental",
       },
       {
         title: "Premature Ejaculation",
         description:
-          "End the frustration of premature ejaculation with Male Intimacy PRP Protocols, a natural approach that helps you last longer and heightens pleasure.",
-        blog_post_title: "Last Longer in Bed: How Male Intimacy PRP Protocols Can Help",
-        blog_post_slug: "last-longer-in-bed-how-the-male-intimacy-prp-protocols-can-help",
+          "Premature ejaculation often has neurologic and behavioral drivers, but the P-Shot may still be discussed in complex sexual health treatment planning.",
+        blog_post_title: "P-Shot and Premature Ejaculation: Treatment Overview",
+        blog_post_slug: "p-shot-and-premature-ejaculation-treatment-overview",
         slug: "premature-ejaculation",
         tag: "common",
       },
       {
         title: "Chronic Penile Pain",
         description:
-          "Chronic penile pain interfering with your life? Discover relief through Male Intimacy PRP Protocols, designed to alleviate pain and enhance comfort.",
-        blog_post_title: "End Chronic Penile Pain with Male Intimacy PRP Protocols",
-        blog_post_slug: "end-chronic-penile-pain-with-the-male-intimacy-prp-protocols",
+          "Persistent penile pain needs a careful diagnosis, but the P-Shot may be reviewed when tissue healing support is relevant to the broader plan.",
+        blog_post_title: "P-Shot for Chronic Penile Pain: What to Discuss",
+        blog_post_slug: "p-shot-for-chronic-penile-pain-what-to-discuss",
         slug: "chronic-penile-pain",
         tag: "uncommon",
       },
       {
         title: "Enhanced Sexual Capabilities",
         description:
-          "Want to amplify your sexual prowess? Male Intimacy PRP Protocols enhance function and satisfaction, allowing you to fully embrace your sexual potential.",
-        blog_post_title: "Unlock Your Sexual Potential with Male Intimacy PRP Protocols",
-        blog_post_slug: "unlock-your-sexual-potential-with-the-male-intimacy-prp-protocols",
+          "Some patients pursue the P-Shot to discuss sensitivity, stamina, or erectile response even when the goal is optimization rather than diagnosis-driven treatment.",
+        blog_post_title: "P-Shot for Sexual Performance Optimization",
+        blog_post_slug: "p-shot-for-sexual-performance-optimization",
         slug: "enhanced-sexual-capabilities",
         tag: "common",
       },
       {
         title: "Improved Penile Aesthetics",
         description:
-          "Self-conscious about how you look down there? Male Intimacy PRP Protocols not only improve function but can also enhance appearance.",
-        blog_post_title: "Achieve Aesthetic Perfection with Male Intimacy PRP Protocols",
-        blog_post_slug: "achieve-aesthetic-perfection-with-the-male-intimacy-prp-protocols",
+          "Aesthetic goals should be discussed carefully, and the P-Shot may be one procedural option reviewed for patients with realistic expectations.",
+        blog_post_title: "P-Shot and Penile Aesthetic Goals",
+        blog_post_slug: "p-shot-and-penile-aesthetic-goals",
         slug: "improved-penile-aesthetics",
         tag: "uncommon",
       },
       {
         title: "Penile Tissue Rejuvenation",
         description:
-          "Aging or health issues affecting you? Male Intimacy PRP Protocols revitalize penile tissue, making it feel more youthful and vigorous.",
-        blog_post_title: "Rejuvenate and Revitalize with Male Intimacy PRP Protocols",
-        blog_post_slug: "rejuvenate-and-revitalize-with-the-male-intimacy-prp-protocols",
+          "The P-Shot is often framed as a regenerative option for patients concerned about tissue quality, recovery, or age-related changes.",
+        blog_post_title: "P-Shot for Penile Tissue Rejuvenation",
+        blog_post_slug: "p-shot-for-penile-tissue-rejuvenation",
         slug: "penile-tissue-rejuvenation",
         tag: "uncommon",
       },
       {
         title: "Improved Orgasmic Function",
         description:
-          "Elevate your climax with Male Intimacy PRP Protocols, designed to intensify orgasms and improve your overall sexual experience.",
-        blog_post_title: "Experience Intense Orgasms with Male Intimacy PRP Protocols",
-        blog_post_slug: "experience-intense-orgasms-with-the-male-intimacy-prp-protocols",
+          "When reduced sensation or climax quality is part of the complaint, the P-Shot may be discussed as one possible adjunct treatment.",
+        blog_post_title: "P-Shot for Orgasmic Function Support",
+        blog_post_slug: "p-shot-for-orgasmic-function-support",
         slug: "improved-orgasmic-function",
         tag: "common",
       },
       {
         title: "Testosterone Imbalances",
         description:
-          "Struggling with hormonal imbalances? Male Intimacy PRP Protocols may aid in balancing testosterone levels, impacting your sexual health positively.",
-        blog_post_title: "Balance Your Testosterone Levels with Male Intimacy PRP Protocols",
-        blog_post_slug: "balance-your-testosterone-levels-with-the-male-intimacy-prp-protocols",
+          "The P-Shot does not replace endocrine evaluation, but some patients with hormonal symptoms ask how it might fit into a broader sexual health workup.",
+        blog_post_title: "P-Shot and Testosterone Imbalance Questions",
+        blog_post_slug: "p-shot-and-testosterone-imbalance-questions",
         slug: "testosterone-imbalances",
         tag: "experimental",
       },
       {
         title: "Vasculogenic Sexual Dysfunction",
         description:
-          "Vascular issues affecting your sexual health? Male Intimacy PRP Protocols improve blood flow, offering a natural solution for vasculogenic sexual dysfunction.",
-        blog_post_title: "Improve Sexual Function through Enhanced Blood Flow with Male Intimacy PRP Protocols",
-        blog_post_slug: "improve-sexual-function-through-enhanced-blood-flow-with-the-male-intimacy-prp-protocols",
+          "The P-Shot is commonly discussed when vascular factors may contribute to erectile difficulty, though diagnosis and cardiovascular risk review remain important.",
+        blog_post_title: "P-Shot for Vasculogenic Sexual Dysfunction",
+        blog_post_slug: "p-shot-for-vasculogenic-sexual-dysfunction",
         slug: "vasculogenic-sexual-dysfunction",
         tag: "experimental",
       },
       {
         title: "Improved Blood Flow",
         description:
-          "Enhance your sexual experiences with improved blood flow, courtesy of Male Intimacy PRP Protocols. Feel the difference in your intimate moments.",
-        blog_post_title: "Boost Your Blood Flow and Revive Your Sex Life with Male Intimacy PRP Protocols",
-        blog_post_slug: "boost-your-blood-flow-and-revive-your-sex-life-with-the-male-intimacy-prp-protocols",
+          "Patients sometimes pursue the P-Shot to discuss whether PRP-based care can support localized circulation and erectile response.",
+        blog_post_title: "P-Shot for Blood Flow Support",
+        blog_post_slug: "p-shot-for-blood-flow-support",
         slug: "improved-blood-flow",
         tag: "common",
       },
     ],
     faqHeadline:
-      "Redefine male virility with Male Intimacy PRP Protocols. A natural and non-invasive way to boost your sexual performance and confidence.",
+      "Most P-Shot questions focus on candidacy, comfort, expected timing, and how the procedure fits with medication, devices, or other medical therapies.",
     faqs: [
       {
-        question: "What benefits can I expect from the Male Intimacy PRP Protocols?",
+        question: "What is the P-Shot?",
         answer:
-          "Male Intimacy PRP Protocols aim to improve the quality and frequency of erections, enhance libido, sexual stamina, and address symptoms of Peyronie's disease.",
+          "The P-Shot (Priapus Shot) is a platelet-rich plasma procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness.",
       },
       {
-        question: "Is the procedure painful?",
+        question: "Who may be a candidate for the P-Shot?",
         answer:
-          "A numbing cream or local anesthesia is applied to minimize discomfort. Most men report feeling only a slight pressure or tingling sensation during the procedure.",
+          "Candidates are usually patients who have already reviewed standard treatment options and want to discuss whether a regenerative, non-surgical procedure fits their diagnosis, symptoms, and goals.",
       },
       {
-        question: "How long does it take to see results?",
+        question: "Is the P-Shot painful?",
         answer:
-          "Some men report immediate improvements, while for others, it may take a few weeks to notice significant changes in sexual performance.",
+          "Most visits use topical numbing or local anesthesia. Patients often describe treatment as manageable, but comfort varies by person and by treatment plan.",
       },
       {
-        question: "What is the recovery time?",
+        question: "How soon might I notice changes?",
         answer:
-          "Male Intimacy PRP Protocols are a non-invasive procedure with minimal downtime. Most men return to their regular activities, including sexual activity, within 24-48 hours.",
+          "Some patients notice changes within weeks, while tissue remodeling can take longer. Response is individualized, and no procedure guarantees a specific result.",
       },
       {
-        question: "Are there any potential side effects?",
+        question: "Are there risks or side effects?",
         answer:
-          "Since these protocols use your own PRP, adverse reactions are rare. However, temporary redness, swelling, or bruising at the injection site is possible.",
+          "Yes. Even when PRP is prepared from your own blood, injections can still involve soreness, swelling, bruising, irritation, and other procedural risks that should be reviewed during consultation.",
       },
     ],
   },
@@ -558,7 +556,7 @@ export const procedures = [
     headline: "Embrace Your Curves: Natural, Non-Invasive Enhancement!",
     subline:
       "The PRP Breast Lift leverages the healing properties of PRP, stimulating the growth of new blood vessels and fatty tissue in the breast area. The result is fuller-looking breasts through a non-invasive process with minimal downtime and long-lasting results.",
-    image: "/procedure/breast.jpg",
+    image: "/procedure/breast.png",
     price: "$1,800",
     // programmatic SEO copy
     blogHeadline:
@@ -919,7 +917,7 @@ export const procedures = [
     headline: "Radiate Youthful Confidence: Boost Your Skin's Natural Healing Power!",
     subline:
       "The PRP Facial combines microdermabrasion with topical application of PRP, promoting collagen and elastin production to improve your skin. This treatment can leave your skin looking plumper, tighter, and with improved clarity that lasts up to 2 years.",
-    image: "/procedure/facial.jpg",
+    image: "/procedure/facial.png",
     price: "$600",
     // programmatic SEO copy
     blogHeadline:
@@ -1501,7 +1499,7 @@ export const procedures = [
     subline:
       "Personalized Botox injections can reduce dynamic wrinkles in areas like forehead lines, frown lines, and crow's feet with quick in-office visits.",
     image: "/procedure/botox.png",
-    price: "$12 per unit",
+    price: "$250 increments",
     // programmatic SEO copy
     blogHeadline:
       "Considering Botox in Williamsburg? Explore practical guidance on treatment planning, expected timing, and how Botox compares with Xeomin before you book.",
@@ -1592,8 +1590,7 @@ export const procedures = [
         tag: "experimental",
       },
     ],
-    faqHeadline:
-      "Get practical answers about Botox, expected treatment timelines, and how Botox compares with Xeomin.",
+    faqHeadline: "Get practical answers about Botox, expected treatment timelines, and how Botox compares with Xeomin.",
     faqs: [
       {
         question: "What is Botox commonly used for?",
@@ -1641,7 +1638,7 @@ export const procedures = [
     subline:
       "Xeomin focuses on specific facial areas, smoothing out wrinkles and addressing hyperhidrosis. It's a non-surgical solution to enhance your beauty and rejuvenate your appearance.",
     image: "/procedure/xeomin.png",
-    price: "$12 per unit",
+    price: "$250 increments",
     // programmatic SEO copy
     blogHeadline:
       "Want a refreshed, wrinkle-free face without invasive treatments? Explore our Xeomin guides for treatment planning, expected timing, and Botox-vs-Xeomin decision support.",
@@ -2052,7 +2049,7 @@ export const procedures = [
     headline: "Experience Refreshing Relief: Non-Invasive, Effective, Liberating!",
     subline:
       "Our Hyperhidrosis treatment with Xeomin injections effectively reduces sweat production, offering a non-invasive solution to those affected by excessive sweating.",
-    image: "/procedure/armpit.jpg",
+    image: "/procedure/armpit.png",
     price: "$1,000+",
     // programmatic SEO copy
     blogHeadline:
@@ -2196,7 +2193,7 @@ export const procedures = [
     headline: "Safe, Gentle, Medical-Grade Ear Piercing for the Whole Family",
     subline:
       "Experience peace of mind with Blohmdahl's medical-grade ear piercing system. Using sterile, hypoallergenic materials and gentle techniques, we provide the safest piercing experience in Historic Williamsburg, perfect for children's first piercings or anyone seeking a professional, healing-focused approach.",
-    image: "/procedure/ear-piercing.jpg",
+    image: "/procedure/ear-piercing.png",
     price: "$45.00 per ear",
     // programmatic SEO copy
     blogHeadline:

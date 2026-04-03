@@ -53,7 +53,7 @@ export default async function ArticlePage({
     const { Content, metadata } = await getPostData(params.slug);
 
     return (
-      <div className="mx-auto max-w-5xl text-base leading-7 text-white text-left">
+      <div className="mx-auto max-w-5xl text-left text-base text-base-content">
         <StructuredData
           type="Breadcrumb"
           breadcrumbItems={[
@@ -74,7 +74,9 @@ export default async function ArticlePage({
         {metadata?.faqs && <StructuredData type="FAQ" faqs={metadata.faqs} />}
         <ArticleHeader metadata={metadata} />
         <BlogCTA />
-        <Content />
+        <article className="mx-auto mt-12 w-full max-w-3xl">
+          <Content />
+        </article>
         <BlogCTA />
       </div>
     );

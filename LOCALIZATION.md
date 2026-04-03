@@ -21,7 +21,7 @@ Contents
 
 Business
 - Name: Williamsburg Med Spa
-- Practitioner: Jenny Brady
+- Practitioner: Jenny Coleman
 - Phone: +1 (804) 738-9483
 - Address: 3900 Powhatan Parkway, Williamsburg, VA 23188
 - Hours: Mon–Fri 6:00pm–8:00pm; Sat–Sun 10:00am–6:00pm
@@ -29,8 +29,8 @@ Business
 Priority services (homepage emphasis and internal link focus)
 - Fillers
 - PRP for Joints
-- Feminine Intimacy PRP Protocols
-- Male Intimacy PRP Protocols
+- O-Shot
+- P-Shot
 - PRP Facial
 - Blohmdahl Ear Piercing
 
@@ -133,7 +133,7 @@ Actions
 
 Data inputs (confirmed)
 - name: “Williamsburg Med Spa”
-- practitioner: “Jenny Brady” (use as `founder` or `employee` in LocalBusiness if desired)
+- practitioner: “Jenny Coleman” (use as `founder` or `employee` in LocalBusiness if desired)
 - telephone: “+1-804-738-9483”
 - address: “3900 Powhatan Parkway, Williamsburg, VA 23188, US”
 - geo: latitude 37.2707, longitude -76.7075 (replace with precise coordinates for the address when available)
@@ -143,10 +143,10 @@ Data inputs (confirmed)
 Usage
 - In `src/app/layout.tsx`, render `<StructuredData type="Organization" />` (already) and add `<StructuredData type="LocalBusiness" .../>` with props.
 - In `src/app/procedures/[slug]/page.tsx`, render `<StructuredData type="Service" .../>` using procedure name, areaServed, price range if available.
-- Update author/person schema in `src/components/structured-data.tsx` to reference “Jenny Brady” (currently hard-coded as “Jenny Coleman”). Optionally include `founder` or `employee` on LocalBusiness to reflect practitioner credentials and bio page URL.
+- Update author/person schema in `src/components/structured-data.tsx` to reference “Jenny Coleman”. Optionally include `founder` or `employee` on LocalBusiness to reflect practitioner credentials and bio page URL.
 
 Staff bio page
-- Add `src/app/staff/jenny-brady/page.tsx` and link from the provider callout and LocalBusiness `founder.url`.
+- Add `src/app/staff/jenny-coleman/page.tsx` and link from the provider callout and LocalBusiness `founder.url`.
 
 ### 3) Add a Reusable NAP Component
 
@@ -189,7 +189,7 @@ Design
 Copy (approved baseline; may tweak for tone/brand)
 - Heading: Meet Our Aesthetic Nurse Practitioner
 - Subheading: Compassionate, evidence‑based care in Williamsburg, VA
-- Name/credentials: Jenny Brady — MSN, RN, CPNP, PMHS
+- Name/credentials: Jenny Coleman — MSN, RN, CPNP, PMHS
 - Body:
   “With 26 years in medicine and six years focused on aesthetics, Jenny blends primary care and mental health expertise with a holistic, patient‑first approach. She combines regenerative PRP therapies, advanced injection techniques, and practical wellness counseling to help patients look and feel their best—naturally.”
 - Focus Areas (inline or bullets): Fillers, PRP for Joints, Feminine & Male PRP Protocols, PRP Facial, Medical Ear Piercing (Blohmdahl)
@@ -197,8 +197,8 @@ Copy (approved baseline; may tweak for tone/brand)
 
 Schema (JSON-LD)
 - Add optional `Person` schema when implementing the callout:
-  - `@type: Person`, `name: "Jenny Brady"`, `jobTitle: "Aesthetic Nurse Practitioner"`, `image: https://www.williamsburgmedspa.com/jenny.jpg`, `affiliation` → `MedicalBusiness` (Williamsburg Med Spa)
-- Also update existing author reference in `src/components/structured-data.tsx` from “Jenny Coleman” to “Jenny Brady” (see Step 2 notes) when we move to implementation.
+  - `@type: Person`, `name: "Jenny Coleman"`, `jobTitle: "Aesthetic Nurse Practitioner"`, `image: https://www.williamsburgmedspa.com/jenny.jpg`, `affiliation` → `MedicalBusiness` (Williamsburg Med Spa)
+- Ensure the existing author reference in `src/components/structured-data.tsx` uses “Jenny Coleman” when implementing the bio page and schema updates.
 
 Content Ops
 - Optimize `/public/jenny.jpg` to ~1200px max width (quality 70–80), keep original as source if needed.
@@ -303,7 +303,7 @@ Profile setup checklist (Edit profile → Business information)
   - Avoid promos, links, or phone numbers; no excessive claims or guarantees.
   - Write in natural language and reflect priority services.
 - Example copy (you can paste this as-is and refine later):
-  “Williamsburg Med Spa provides compassionate, evidence‑based aesthetics and regenerative care in Williamsburg, VA. Led by nurse practitioner Jenny Brady, MSN, RN, CPNP, PMHS, we focus on natural results with fillers, PRP joint injections, feminine and male PRP protocols, PRP facials, and medical ear piercing (Blohmdahl). With more than 26 years in medicine and six years in aesthetics, our patient‑first approach blends safety, comfort, and education to help you look and feel your best.”
+  “Williamsburg Med Spa provides compassionate, evidence‑based aesthetics and regenerative care in Williamsburg, VA. Led by nurse practitioner Jenny Coleman, MSN, RN, CPNP, PMHS, we focus on natural results with fillers, PRP joint injections, feminine and male PRP protocols, PRP facials, and medical ear piercing (Blohmdahl). With more than 26 years in medicine and six years in aesthetics, our patient‑first approach blends safety, comfort, and education to help you look and feel your best.”
 
 Services module (GBP → Services)
 - Create entries that match on‑site naming. Keep 1–2 sentence descriptions, add price range if allowed.
@@ -455,7 +455,7 @@ Replace placeholders and render globally (e.g., in `src/app/layout.tsx`). Values
     "Williamsburg VA", "James City County", "Yorktown", "Newport News",
     "Toano", "Norge", "Lightfoot", "New Town", "Kingsmill", "Ford's Colony"
   ],
-  "founder": { "@type": "Person", "name": "Jenny Brady" },
+  "founder": { "@type": "Person", "name": "Jenny Coleman" },
   "sameAs": [
     "https://www.instagram.com/<handle>",
     "https://www.facebook.com/<page>",
@@ -500,8 +500,8 @@ Render on each procedure page with real values.
 Priority anchor ideas (homepage and hub)
 - “Fillers in Williamsburg” → `/procedures/filler`
 - “PRP joint injections in Williamsburg” → `/procedures/joint-restoration`
-- “Feminine PRP protocols in Williamsburg” → `/procedures/feminine-intimacy-prp-protocols`
-- “Male PRP protocols in Williamsburg” → `/procedures/male-intimacy-prp-protocols`
+- “O-Shot in Williamsburg” → `/procedures/o-shot`
+- “P-Shot in Williamsburg” → `/procedures/p-shot`
 - “PRP facial in Williamsburg” → `/procedures/prp-facial`
 - “Blohmdahl ear piercing in Williamsburg” → `/procedures/blohmdahl-ear-piercing`
 

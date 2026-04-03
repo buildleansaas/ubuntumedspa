@@ -1,6 +1,79 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-   /* Light mode only: default corporate theme; no prefers-dark theme */
-   themes: corporate --default;
- }
+  themes: corporate --default;
+}
+
+@plugin "daisyui/theme" {
+  name: "wms-dark";
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: oklch(22% 0.018 262);
+  --color-base-200: oklch(25% 0.02 262);
+  --color-base-300: oklch(29% 0.022 262);
+  --color-base-content: oklch(92% 0.01 262);
+
+  --color-primary: oklch(68% 0.158 241.966);
+  --color-primary-content: oklch(15% 0.03 241.966);
+  --color-secondary: oklch(62% 0.046 257.417);
+  --color-secondary-content: oklch(96% 0.005 257.417);
+  --color-accent: oklch(66% 0.118 184.704);
+  --color-accent-content: oklch(15% 0.02 184.704);
+  --color-neutral: oklch(33% 0.022 262);
+  --color-neutral-content: oklch(90% 0.008 262);
+
+  --color-info: oklch(70% 0.126 221.723);
+  --color-info-content: oklch(15% 0.025 221.723);
+  --color-success: oklch(72% 0.194 149.214);
+  --color-success-content: oklch(15% 0.03 149.214);
+  --color-warning: oklch(85% 0.199 91.936);
+  --color-warning-content: oklch(18% 0.04 91.936);
+  --color-error: oklch(74% 0.191 22.216);
+  --color-error-content: oklch(16% 0.03 22.216);
+
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+html {
+  background-color: var(--color-base-100);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-base-100);
+  color: var(--color-base-content);
+}
+
+@keyframes cart-item-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.cart-item-reveal {
+  opacity: 0;
+  animation: cart-item-reveal 220ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cart-item-reveal {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}

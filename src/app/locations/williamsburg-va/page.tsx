@@ -62,10 +62,10 @@ export default function WilliamsburgLocationPage() {
             <Link href="/procedures/joint-restoration">PRP for Joints</Link>
           </Button>
           <Button asChild size="sm">
-            <Link href="/procedures/feminine-intimacy-prp-protocols">Feminine PRP</Link>
+            <Link href="/procedures/o-shot">O-Shot</Link>
           </Button>
           <Button asChild size="sm">
-            <Link href="/procedures/male-intimacy-prp-protocols">Male PRP</Link>
+            <Link href="/procedures/p-shot">P-Shot</Link>
           </Button>
           <Button asChild size="sm">
             <Link href="/procedures/prp-facial">PRP Facial</Link>
