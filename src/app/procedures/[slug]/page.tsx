@@ -6,6 +6,7 @@ import { Badge } from "components/ui/badge";
 import { Button } from "components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "components/ui/accordion";
+import CmaCredentialStrip from "components/cma-credential-strip";
 
 import CtaFooter from "components/cta-footer";
 import CatalogPurchasePanel from "components/catalog-purchase-panel";
@@ -76,6 +77,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
     .filter(({ tags }) => tags?.includes(procedure.name))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   const hasAilments = Boolean(publishedAilments.length);
+  const showOShotCredential = procedure.slug === "o-shot";
   const showComparisonGuide =
     (procedure.slug === "botox" || procedure.slug === "xeomin") && articles.some((article) => article.slug === comparisonSlug);
 
@@ -94,6 +96,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           </h1>
           <p className="text-xl lg:text-2xl mb-8 max-w-5xl mx-auto font-light">{humanizeMedicalCopy(procedure.headline)}</p>
           <p className="text-lg max-w-4xl mx-auto">{humanizeMedicalCopy(procedure.description)}</p>
+          {showOShotCredential && <CmaCredentialStrip centered className="mt-6 mx-auto max-w-3xl" />}
           <div className="flex space-x-4 mx-auto my-8 justify-center">
             <Button asChild>
               <Link href="/consult">Book a Consultation</Link>

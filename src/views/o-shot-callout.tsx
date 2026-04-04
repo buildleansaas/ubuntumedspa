@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import CmaCredentialStrip from "components/cma-credential-strip";
 import InstantCheckoutButton from "components/instant-checkout-button";
 import { Button } from "components/ui/button";
 import { getCatalogConfigBySlug } from "config/commerce-catalog";
@@ -26,18 +27,18 @@ export default function OShotCallout() {
               id="o-shot-callout-heading"
               className="mt-3 max-w-2xl text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content text-balance"
             >
-              <span className="font-semibold">O-Shot</span>: our signature PRP treatment for women&apos;s sexual
-              wellness.
+              <span className="font-semibold">O-Shot®</span> for comfort, sensation, and intimate confidence.
             </h2>
 
             <p className="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-base-content/80">
-              Designed for women who want greater comfort, sensation, and intimate confidence, the O-Shot uses
-              platelet-rich plasma from your own blood in a discreet in-office treatment. It is one of our most
-              sought-after options when dryness, reduced sensitivity, or intimacy-related discomfort are part of the
-              conversation.
+              A discreet in-office PRP treatment for women who want greater comfort, improved sensitivity, and more
+              confidence with intimacy. Patients often ask about the O-Shot® when dryness, reduced sensation, mild
+              stress urinary leakage, or intimacy-related discomfort are part of the conversation.
             </p>
 
-            <p className="mt-4 text-sm md:text-base leading-relaxed text-base-content/70">
+            <CmaCredentialStrip className="mt-5 max-w-xl" />
+
+            <p className="mt-5 text-sm md:text-base leading-relaxed text-base-content/70">
               {oShot.displayPrice} treatment. Pay online now, then choose your appointment time after checkout.
             </p>
 

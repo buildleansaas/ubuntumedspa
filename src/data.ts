@@ -86,10 +86,10 @@ export const procedures = [
         "O-Shot treatment in Williamsburg, VA using platelet-rich plasma (PRP) to support tissue health, comfort, lubrication, and sexual wellness at Williamsburg Med Spa.",
     },
     description:
-      "The O-Shot is a platelet-rich plasma (PRP) treatment that uses your own processed blood components to support tissue quality in the vulvovaginal area. Patients usually ask about it for concerns such as dryness, decreased sensitivity, discomfort with intimacy, or mild stress urinary leakage. It should be evaluated as part of a broader care plan, not as a universal first-line treatment or a guaranteed solution.",
-    headline: "Regenerative support for comfort, tissue health, and intimate wellness.",
+      "The O-Shot® uses platelet-rich plasma (PRP) from your own blood to support tissue health in the vulvovaginal area. Patients usually ask about it for concerns such as dryness, decreased sensitivity, discomfort with intimacy, or mild stress urinary leakage. It should be considered as part of a broader personalized care plan, not as a universal first-line treatment or a guaranteed solution.",
+    headline: "A non-hormonal option for comfort, sensitivity, and intimate wellness.",
     subline:
-      "The O-Shot uses platelet-rich plasma prepared from your own blood and is considered for select patients who want a non-hormonal procedure as part of a personalized sexual wellness or pelvic health plan.",
+      "The O-Shot® uses platelet-rich plasma prepared from your own blood and is considered for select patients who want a non-hormonal procedure as part of a personalized sexual wellness or pelvic health plan.",
     image: "/procedure/grapefruit.jpg",
     price: "$1,200",
     // programmatic SEO copy
