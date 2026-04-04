@@ -33,11 +33,17 @@ const buildStripeLineItem = (item: ResolvedCartItem): Stripe.Checkout.SessionCre
 export const createCheckoutSession = async ({
   items,
   origin,
+  affiliate,
 }: {
   items: CartItemInput[];
   origin: string;
+  affiliate?: {
+    affiliateId?: string;
+    affiliateCode?: string;
+    affiliateName?: string;
+  };
 }) => {
-  const order = await createPendingOrder(items);
+  const order = await createPendingOrder(items, affiliate);
   const stripe = getStripe();
 
   const session = await stripe.checkout.sessions.create({
@@ -52,11 +58,17 @@ export const createCheckoutSession = async ({
       publicToken: order.publicToken,
       requiresScheduling: order.requiresScheduling ? "true" : "false",
       itemSlugs: order.items.map((item) => item.slug).join(","),
+      ...(order.affiliateId ? { affiliateId: order.affiliateId } : {}),
+      ...(order.affiliateCode ? { affiliateCode: order.affiliateCode } : {}),
+      ...(order.affiliateName ? { affiliateName: order.affiliateName } : {}),
     },
     payment_intent_data: {
       metadata: {
         orderId: order.orderId,
         publicToken: order.publicToken,
+        ...(order.affiliateId ? { affiliateId: order.affiliateId } : {}),
+        ...(order.affiliateCode ? { affiliateCode: order.affiliateCode } : {}),
+        ...(order.affiliateName ? { affiliateName: order.affiliateName } : {}),
       },
     },
   });

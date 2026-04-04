@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import * as yup from "yup";
 
+import { AFFILIATE_REFERRAL_COOKIE, parseAffiliateCodeCookie } from "lib/affiliates";
+import { getAffiliateByCode } from "lib/affiliates.server";
 import { normalizeIntimacyProcedureNames } from "lib/intimacy-aliases";
 import { createConsultRequest, updateConsultNotificationStatus } from "lib/consults";
 
@@ -12,16 +14,35 @@ const schema = yup.object({
   interests: yup.array().of(yup.string().required()).min(1).required(),
   referral: yup.string().required(),
   comments: yup.string().required(),
+  affiliateId: yup.string().optional(),
+  affiliateCode: yup.string().optional(),
+  affiliateName: yup.string().optional(),
 });
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, phone, interests, referral, comments } = await schema.validate(body, {
+    const {
+      name,
+      email,
+      phone,
+      interests,
+      referral,
+      comments,
+      affiliateId,
+      affiliateCode,
+      affiliateName,
+    } = await schema.validate(body, {
       abortEarly: false,
       stripUnknown: true,
     });
     const normalizedInterests = normalizeIntimacyProcedureNames(interests);
+    const affiliateCodeFromCookie = parseAffiliateCodeCookie(req.cookies.get(AFFILIATE_REFERRAL_COOKIE)?.value);
+    const resolvedAffiliate =
+      affiliateCode || affiliateCodeFromCookie ? await getAffiliateByCode(affiliateCode || affiliateCodeFromCookie || "") : null;
+    const finalAffiliateId = resolvedAffiliate?.affiliateId || affiliateId;
+    const finalAffiliateCode = resolvedAffiliate?.affiliateCode || affiliateCode;
+    const finalAffiliateName = resolvedAffiliate?.name || affiliateName;
 
     const consultRequest = await createConsultRequest({
       name,
@@ -30,6 +51,9 @@ export async function POST(req: NextRequest) {
       interests: normalizedInterests,
       referral,
       comments,
+      affiliateId: finalAffiliateId,
+      affiliateCode: finalAffiliateCode,
+      affiliateName: finalAffiliateName,
     });
 
     const host = process.env.SMTP_HOST || "smtp.gmail.com";
@@ -59,6 +83,9 @@ export async function POST(req: NextRequest) {
           interests: ${normalizedInterests.join(", ")}
           comments: ${comments}
           referral: ${referral}
+          affiliateId: ${finalAffiliateId || "None"}
+          affiliateCode: ${finalAffiliateCode || "None"}
+          affiliateName: ${finalAffiliateName || "None"}
         `,
       });
 

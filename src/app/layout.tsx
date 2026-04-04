@@ -7,6 +7,7 @@ import StructuredData from "components/structured-data";
 import Header from "components/header";
 import Footer from "components/footer";
 import CartDrawer from "components/cart-drawer";
+import AffiliateReferralListener from "components/affiliate-referral-listener";
 import { CartProvider } from "components/cart-provider";
 import RouteProgressBar from "components/route-progress-bar";
 import { Metadata } from "next";
@@ -20,6 +21,14 @@ export const metadata: Metadata = {
   metadataBase: new URL(ORIGIN),
   title: DEFAULT_TITLE,
   description: DEFAULT_DESCRIPTION,
+  icons: {
+    icon: [
+      { url: "/favicon.png?v=2", type: "image/png", sizes: "256x256" },
+      { url: "/favicon.ico?v=2", sizes: "any" },
+    ],
+    shortcut: ["/favicon.ico?v=2"],
+    apple: [{ url: "/apple-touch-icon.png?v=2", sizes: "180x180", type: "image/png" }],
+  },
   colorScheme: "light dark",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
@@ -62,6 +71,9 @@ export default function Layout({ children }: LayoutProps) {
       </Script>
       <body className="m-0 bg-base-100 p-0 text-base-content antialiased">
         <CartProvider>
+          <Suspense fallback={null}>
+            <AffiliateReferralListener />
+          </Suspense>
           <Suspense fallback={null}>
             <RouteProgressBar />
           </Suspense>

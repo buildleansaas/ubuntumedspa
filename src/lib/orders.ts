@@ -9,6 +9,9 @@ export type OrderRecord = {
   orderId: string;
   publicToken: string;
   accountId?: string;
+  affiliateId?: string;
+  affiliateCode?: string;
+  affiliateName?: string;
   items: ResolvedCart["items"];
   subtotalCents: number;
   requiresScheduling: boolean;
@@ -35,7 +38,14 @@ export type CreditLedgerEntry = {
   createdAt: Date;
 };
 
-export const createPendingOrder = async (cartItems: { slug: string; kind: "product" | "procedure"; quantity: number }[]) => {
+export const createPendingOrder = async (
+  cartItems: { slug: string; kind: "product" | "procedure"; quantity: number }[],
+  affiliate?: {
+    affiliateId?: string;
+    affiliateCode?: string;
+    affiliateName?: string;
+  }
+) => {
   const resolvedCart = await resolveCart(cartItems);
 
   if (!resolvedCart.items.length) {
@@ -48,6 +58,9 @@ export const createPendingOrder = async (cartItems: { slug: string; kind: "produ
   const order: OrderRecord = {
     orderId: randomUUID(),
     publicToken: randomUUID(),
+    affiliateId: affiliate?.affiliateId,
+    affiliateCode: affiliate?.affiliateCode,
+    affiliateName: affiliate?.affiliateName,
     items: resolvedCart.items,
     subtotalCents: resolvedCart.subtotalCents,
     requiresScheduling: resolvedCart.requiresScheduling,

@@ -1,13 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DEFAULT_FORM_SUBMISSION, FORM_INPUTS } from "data";
 import * as yup from "yup";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { Button } from "components/ui/button";
 import { useToast } from "components/ui/use-toast";
 import { Loader } from "lucide-react";
+import {
+  AFFILIATE_REFERRAL_COOKIE,
+  AFFILIATE_REF_PARAM,
+  parseAffiliateCodeCookie,
+  type AffiliateSnapshot,
+} from "lib/affiliates";
 import { cn } from "lib/utils";
 
 export interface FormState {
@@ -28,10 +34,13 @@ export interface FormInput {
 }
 
 const ConsultationForm: React.FC = () => {
+  const searchParams = useSearchParams();
+  const referralCodeFromSearch = searchParams.get(AFFILIATE_REF_PARAM);
   const router = useRouter();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState<FormState>(DEFAULT_FORM_SUBMISSION);
+  const [affiliateReferral, setAffiliateReferral] = useState<AffiliateSnapshot | null>(null);
   const wideFieldIds = ["name", "interests", "comments", "referral"] as const;
 
   const inputClassName =
@@ -59,6 +68,50 @@ const ConsultationForm: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    let cancelled = false;
+
+    const resolveAffiliateReferral = async () => {
+      const referralCodeFromCookie =
+        typeof document !== "undefined"
+          ? parseAffiliateCodeCookie(
+              document.cookie
+                .split("; ")
+                .find((entry) => entry.startsWith(`${AFFILIATE_REFERRAL_COOKIE}=`))
+                ?.split("=")[1]
+            )
+          : null;
+
+      const referralCode = referralCodeFromSearch || referralCodeFromCookie;
+      if (!referralCode) {
+        if (!cancelled) setAffiliateReferral(null);
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/affiliates/resolve?code=${encodeURIComponent(referralCode)}`);
+        const body = await response.json();
+        if (!response.ok) throw new Error(body.error || "Unable to resolve affiliate referral.");
+
+        if (!cancelled) {
+          setAffiliateReferral(body.affiliate);
+          setFormState((current) => ({
+            ...current,
+            referral: body.affiliate.affiliateName,
+          }));
+        }
+      } catch {
+        if (!cancelled) setAffiliateReferral(null);
+      }
+    };
+
+    resolveAffiliateReferral();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [referralCodeFromSearch]);
+
   const onSubmit = async (e: React.FormEvent) => {
     setLoading(true);
     e.preventDefault();
@@ -74,14 +127,22 @@ const ConsultationForm: React.FC = () => {
     try {
       await schema.validate(formState);
       const response = await fetch("/api/consult", {
-        body: JSON.stringify(formState),
+        body: JSON.stringify({
+          ...formState,
+          affiliateId: affiliateReferral?.affiliateId,
+          affiliateCode: affiliateReferral?.affiliateCode,
+          affiliateName: affiliateReferral?.affiliateName,
+        }),
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
       const body = await response.json();
 
       if (response.status === 200) {
-        setFormState(DEFAULT_FORM_SUBMISSION);
+        setFormState({
+          ...DEFAULT_FORM_SUBMISSION,
+          referral: affiliateReferral?.affiliateName || DEFAULT_FORM_SUBMISSION.referral,
+        });
         toast({ title: "Consult request received. Redirecting to scheduling..." });
         router.push(body.scheduleUrl);
       } else {
@@ -115,6 +176,28 @@ const ConsultationForm: React.FC = () => {
             case "text":
             case "email":
             case "tel":
+              if (input.id === "referral" && affiliateReferral) {
+                return (
+                  <div className={cn("space-y-2", isWideField && "md:col-span-2")} key={input.id}>
+                    <label className="block text-sm font-semibold text-base-content" htmlFor={String(input.id)}>
+                      Referred by
+                    </label>
+                    <input
+                      aria-describedby={input.helperText ? helperId : undefined}
+                      className={cn(inputClassName, "bg-base-200 text-base-content/80")}
+                      id={String(input.id)}
+                      name={String(input.id)}
+                      type="text"
+                      value={affiliateReferral.affiliateName}
+                      readOnly
+                    />
+                    <p className="text-xs text-base-content/60" id={helperId}>
+                      This consultation was opened from {affiliateReferral.affiliateName}&apos;s referral link.
+                    </p>
+                  </div>
+                );
+              }
+
               return (
                 <div className={cn("space-y-2", isWideField && "md:col-span-2")} key={input.id}>
                   <label className="block text-sm font-semibold text-base-content" htmlFor={String(input.id)}>

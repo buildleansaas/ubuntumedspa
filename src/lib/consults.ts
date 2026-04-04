@@ -10,6 +10,9 @@ export type ConsultSubmissionInput = {
   comments: string;
   interests: string[];
   referral: string;
+  affiliateId?: string;
+  affiliateCode?: string;
+  affiliateName?: string;
 };
 
 export type ConsultRequestRecord = ConsultSubmissionInput & {

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import CtaFooter from "components/cta-footer";
 import Jumbotron from "views/jumbotron";
 import OShotCallout from "views/o-shot-callout";
+import AffiliateProgramCallout from "views/affiliate-program-callout";
 import ProviderCallout from "views/provider-callout";
 import Procedures from "views/procedures";
 import LatestPosts from "views/latest-posts";
@@ -24,6 +25,7 @@ export default async function Page() {
       <ProviderCallout />
       <OShotCallout />
       <Procedures />
+      <AffiliateProgramCallout />
       <Products />
       <LatestPosts />
       <CtaFooter />
