@@ -2,22 +2,22 @@ import { NextRequest, NextResponse } from "next/server";
 import * as yup from "yup";
 
 import { buildAffiliateLink, buildAffiliateShareMessage } from "lib/affiliates";
-import { registerAffiliate, toAffiliateSnapshot } from "lib/affiliates.server";
+import { toAffiliateSnapshot, updateAffiliateCodeByEmail } from "lib/affiliates.server";
 
 const schema = yup.object({
-  name: yup.string().required(),
   email: yup.string().email().required(),
+  affiliateCode: yup.string().required(),
 });
 
-export async function POST(req: NextRequest) {
+export async function PATCH(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email } = await schema.validate(body, {
+    const { email, affiliateCode } = await schema.validate(body, {
       abortEarly: false,
       stripUnknown: true,
     });
 
-    const { affiliate, created, recovered } = await registerAffiliate({ name, email });
+    const { affiliate, updated } = await updateAffiliateCodeByEmail({ email, affiliateCode });
     const snapshot = {
       ...toAffiliateSnapshot(affiliate),
       email: affiliate.email,
@@ -26,17 +26,22 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      created,
-      recovered,
+      updated,
       affiliate: snapshot,
       referralUrl,
       shareMessage: buildAffiliateShareMessage(referralUrl),
     });
   } catch (error) {
     if (error instanceof yup.ValidationError) {
-      return NextResponse.json({ success: false, error: error.errors[0] || "Invalid affiliate registration." }, { status: 400 });
+      return NextResponse.json(
+        { success: false, error: error.errors[0] || "Invalid referral code update." },
+        { status: 400 }
+      );
     }
 
-    return NextResponse.json({ success: false, error: error instanceof Error ? error.message : "Unable to create affiliate link." }, { status: 400 });
+    return NextResponse.json(
+      { success: false, error: error instanceof Error ? error.message : "Unable to update referral code." },
+      { status: 400 }
+    );
   }
 }

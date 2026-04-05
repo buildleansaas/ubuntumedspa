@@ -1,18 +1,14 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Copy, Link2, MessageSquare, Share2 } from "lucide-react";
 
 import { Button } from "components/ui/button";
 import { useToast } from "components/ui/use-toast";
-import {
-  AFFILIATE_PROFILE_STORAGE_KEY,
-  buildAffiliateLink,
-  buildAffiliateShareMessage,
-  type AffiliateLocalProfile,
-} from "lib/affiliates";
+import useAffiliateLocalProfile from "hooks/use-affiliate-local-profile";
+import { buildAffiliateLink, buildAffiliateShareMessage } from "lib/affiliates";
 
 function getSmsHref(message: string) {
   return `sms:?&body=${encodeURIComponent(message)}`;
@@ -23,22 +19,7 @@ export default function FooterAffiliateCta() {
   const searchParams = useSearchParams();
   const searchString = searchParams.toString();
   const { toast } = useToast();
-  const [affiliateProfile, setAffiliateProfile] = useState<AffiliateLocalProfile | null>(null);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const raw = window.localStorage.getItem(AFFILIATE_PROFILE_STORAGE_KEY);
-    if (!raw) return;
-
-    try {
-      const parsed = JSON.parse(raw) as AffiliateLocalProfile;
-      if (!parsed?.affiliateCode || !parsed?.affiliateId || !parsed?.affiliateName) return;
-      setAffiliateProfile(parsed);
-    } catch {
-      window.localStorage.removeItem(AFFILIATE_PROFILE_STORAGE_KEY);
-    }
-  }, []);
+  const affiliateProfile = useAffiliateLocalProfile();
 
   const currentShareUrl = useMemo(() => {
     if (!affiliateProfile || typeof window === "undefined") return "";

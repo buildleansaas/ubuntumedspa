@@ -8,6 +8,7 @@ import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 
 import AffiliateRegistrationForm from "./affiliate-registration-form";
+import AffiliateShareScripts from "./affiliate-share-scripts";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Affiliate Program | Williamsburg Med Spa",
@@ -16,11 +17,34 @@ export const metadata: Metadata = buildPageMetadata({
   canonical: "/affiliates",
 });
 
+const sectionEyebrowClass = "text-[11px] uppercase tracking-[0.24em] text-base-content/60";
+const sectionHeadingClass = "mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content";
+const sectionBodyClass = "mt-4 text-base md:text-lg leading-relaxed text-base-content/80";
+const surfaceCardClass = "rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm";
+
 const programHighlights = [
   "20% on qualifying referrals",
   "Instant referral link",
   "Share any page on the site",
   "Copy-ready text and scripts",
+];
+
+const applyHighlights = [
+  {
+    title: "Earn on qualified referrals",
+    description:
+      "A few thoughtful introductions each month can add up quickly, especially when someone is already looking for a provider they can trust.",
+  },
+  {
+    title: "Use the whole site as your toolkit",
+    description:
+      "Start with the homepage, then share procedure and product pages when someone asks about something specific.",
+  },
+  {
+    title: "Attribution carries through the funnel",
+    description:
+      "Referral codes now flow into consult submissions and paid checkout so qualifying activity stays tied to your link.",
+  },
 ];
 
 const whyJenny = [
@@ -43,17 +67,17 @@ const whyJenny = [
 
 const promotionIdeas = [
   {
-    title: "Injectables that feel approachable",
+    title: "Injectables people already ask about",
     description:
-      "Botox, Xeomin, filler, and hyperhidrosis treatment are strong referral categories because people already ask their friends who they trust for injectables.",
-    bestFor: "Friends asking about wrinkles, sweat control, lip filler, or natural-looking refreshes.",
+      "Botox, Xeomin, filler, and hyperhidrosis treatment are easy referral categories because people naturally ask their friends who they trust for injectables.",
+    bestFor: "Wrinkles, sweat control, lip filler, and natural-looking refreshes.",
     href: "/procedures",
     cta: "View procedures",
   },
   {
-    title: "Intimate wellness and PRP care",
+    title: "PRP and intimate wellness care",
     description:
-      "O-Shot, P-Shot, PRP Facial, PRP Face Lift, Hair Restoration, and Joint Restoration work well when your audience wants a discreet, regenerative option from someone gentle.",
+      "O-Shot, P-Shot, PRP Facial, PRP Face Lift, Hair Restoration, and Joint Restoration work well when someone wants a discreet regenerative option from someone gentle.",
     bestFor: "Private conversations, DMs, and one-to-one referrals where trust matters most.",
     href: "/procedures",
     cta: "Browse PRP treatments",
@@ -61,36 +85,28 @@ const promotionIdeas = [
   {
     title: "Products people can buy now",
     description:
-      "The skincare and wellness shelf gives affiliates an easier entry point for people who want to start with a product before committing to an appointment.",
-    bestFor: "Followers who want recommendations they can act on quickly from home.",
+      "The skincare and wellness shelf gives affiliates an easier entry point for people who want to start with a product before they commit to an appointment.",
+    bestFor: "Followers who want a recommendation they can act on quickly from home.",
     href: "/products",
     cta: "See products",
   },
-  {
-    title: "Gentle specialty care",
-    description:
-      "Blohmdahl ear piercing and other comfort-first services give you a family-friendly, low-pressure way to introduce people to the practice.",
-    bestFor: "Parents, local families, and people who value safety and a calm experience.",
-    href: "/procedures/blohmdahl-ear-piercing",
-    cta: "See ear piercing",
-  },
 ];
 
-const messagingPillars = [
+const sharePrinciples = [
   {
     title: "Lead with trust",
     description:
-      "Talk about Jenny as someone who is calm, medically grounded, and easy to recommend to people who want to feel taken care of.",
+      "Position Jenny as calm, medically grounded, and easy to recommend to someone who wants to feel taken care of.",
   },
   {
-    title: "Lead with the patient’s actual problem",
+    title: "Lead with the real problem",
     description:
-      "Dryness, reduced sensitivity, wrinkle prevention, excessive sweating, skincare frustration, or wanting a softer approach all convert better than generic beauty language.",
+      "Dryness, reduced sensitivity, wrinkles, sweating, or skincare frustration convert better than generic beauty language.",
   },
   {
     title: "Lead with realistic outcomes",
     description:
-      "Williamsburg Med Spa is a strong fit for people who want honest guidance, not hype, and a plan that feels personal instead of salesy.",
+      "Williamsburg Med Spa is a fit for people who want honest guidance, not hype, and a plan that feels personal.",
   },
 ];
 
@@ -108,66 +124,6 @@ const guardrails = {
     "Don’t make claims you can’t personally stand behind or Jenny hasn’t confirmed.",
   ],
 };
-
-const shareScripts = [
-  {
-    title: "Text message to a friend",
-    note: "Best for warm, personal referrals.",
-    body:
-      "If you’ve been thinking about Botox, filler, PRP, or even just getting a real opinion about what would help, I’d look at Williamsburg Med Spa. Jenny is incredibly gentle and really easy to trust. If you want, I can send you the link I use when I refer people there.",
-  },
-  {
-    title: "Instagram story or short caption",
-    note: "Best for casual social promotion.",
-    body:
-      "If you’re local and want aesthetic care that feels calm, honest, and not overdone, Williamsburg Med Spa is worth a look. Jenny is one of those providers people feel comfortable recommending to friends. PRP, injectables, products, and more.",
-  },
-  {
-    title: "DM reply when someone asks who you trust",
-    note: "Best for one-to-one conversations.",
-    body:
-      "I usually send people to Jenny at Williamsburg Med Spa. She has a very gentle approach, explains things clearly, and doesn’t make the whole experience feel intimidating. It’s a good option if you want someone thoughtful, especially for injectables or PRP.",
-  },
-  {
-    title: "Neighborhood Facebook post",
-    note: "Best for local community groups.",
-    body:
-      "For anyone in the Williamsburg area looking for a gentle med spa provider, Williamsburg Med Spa is a great local option. Jenny is known for calm, patient-focused care and natural-looking plans instead of a hard sell. They offer injectables, PRP treatments, and curated products.",
-  },
-  {
-    title: "Email intro",
-    note: "Best for private, higher-intent referrals.",
-    body:
-      "Wanted to share a local recommendation in case this is useful. Williamsburg Med Spa has become an easy place for me to send people because Jenny is experienced, gentle, and thoughtful about treatment planning. If you’ve been wanting a consult for injectables, PRP, or products, their site is a good place to start.",
-  },
-];
-
-const howItWorks = [
-  {
-    step: "1",
-    title: "Enter your name and email",
-    description:
-      "We generate your personal affiliate code instantly so you can start sharing without any extra setup.",
-  },
-  {
-    step: "2",
-    title: "Copy your link",
-    description:
-      "Start with your homepage link, then use the Share With Your Friends utility in the footer to turn any page into a referral link.",
-  },
-  {
-    step: "3",
-    title: "Share with confidence",
-    description:
-      "Use the scripts, talking points, and copy-ready text on this page to introduce Williamsburg Med Spa without overthinking it.",
-  },
-  {
-    step: "4",
-    title: "Earn on qualifying referrals",
-    description:
-      "When people book through your referral links, we can tie that activity back to your code across consults and paid orders.",
-  },
-];
 
 const affiliateFaqs = [
   {
@@ -209,121 +165,142 @@ export default function AffiliatesPage() {
       <StructuredData type="FAQ" faqs={affiliateFaqs} />
 
       <div className="max-w-xl md:max-w-7xl mx-auto md:px-8 z-10">
-        <section className="px-6 py-12 md:px-0 md:py-16 lg:py-20" aria-labelledby="affiliate-hero-heading">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
-            <div className="max-w-4xl">
-              <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">
-                Williamsburg Med Spa Affiliate Program
-              </p>
-              <h1
-                id="affiliate-hero-heading"
-                className="mt-4 text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light tracking-tight text-base-content"
-              >
-                Refer the right people to <span className="font-semibold">Jenny</span> and earn 20%.
-              </h1>
-              <p className="mt-6 max-w-4xl text-lg md:text-xl leading-relaxed text-base-content/80">
-                Enter your full name and email to get your referral link instantly. Then use the guide, scripts, and
-                copy-ready text on this page to share Williamsburg Med Spa across the whole site.
-              </p>
+        <section className="px-6 py-16 md:px-0 md:py-24 lg:py-28" aria-labelledby="affiliate-hero-heading">
+          <div className="text-center">
+            <p className={sectionEyebrowClass}>Williamsburg Med Spa Affiliate Program</p>
+            <h1
+              id="affiliate-hero-heading"
+              className="text-base-content mt-4 text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto max-w-5xl leading-tight"
+            >
+              Refer the right people to <span className="font-semibold">Jenny</span> and earn 20%.
+            </h1>
+            <p className="text-base-content text-xl lg:text-2xl mb-8 mt-6 max-w-3xl mx-auto">
+              Get your referral link instantly, use the strongest scripts on the page, and share Williamsburg Med Spa
+              in a way that feels personal, local, and high trust.
+            </p>
 
-              <div className="mt-6 flex flex-wrap gap-2.5">
-                {programHighlights.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-base-300 bg-base-100 px-3.5 py-1.5 text-sm text-base-content/70"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild>
-                  <a href="#apply">Get My Referral Link</a>
-                </Button>
-                <Button asChild variant="secondary">
-                  <a href="#scripts">See Sample Scripts</a>
-                </Button>
-              </div>
+            <div className="mx-auto flex max-w-3xl flex-wrap justify-center gap-2.5">
+              {programHighlights.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-base-300 bg-base-100 px-3.5 py-1.5 text-sm text-base-content/70"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
 
-            <div className="rounded-[1.75rem] border border-base-300 bg-base-100 p-6 shadow-sm">
-              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">How this can add up</p>
-              <div className="mt-4 space-y-4 text-base leading-relaxed text-base-content/75">
-                <p>
-                  If you refer 2 or 3 friends in a month, it&apos;s easy to imagine an extra $500 or more. On stronger
-                  months, a few high-ticket bookings can make the upside feel much bigger.
-                </p>
-                <p>
-                  The simplest part: you don&apos;t have to invent the marketing yourself. We give you the guide, the
-                  link, and a quick copy message. You just send people to the site.
-                </p>
-              </div>
+            <div className="mb-6 mt-8 flex flex-wrap justify-center gap-3 md:mb-0">
+              <Button asChild>
+                <a href="#apply">Get My Referral Link</a>
+              </Button>
+              <Button asChild variant="secondary">
+                <a href="#share-guide">See Sample Scripts</a>
+              </Button>
             </div>
           </div>
         </section>
 
-        <section className="px-6 py-6 md:px-0 md:py-8 lg:py-10" id="why-jenny">
-          <div className="grid gap-10 lg:grid-cols-[19rem_minmax(0,1fr)] lg:items-center">
-            <div className="relative aspect-square overflow-hidden rounded-[1.75rem] bg-base-200">
-              <Image
-                src="/jenny.jpg"
-                alt="Jenny Coleman at Williamsburg Med Spa"
-                fill
-                sizes="(max-width: 1024px) 70vw, 304px"
-                className="object-cover"
-              />
-            </div>
-
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Why Jenny is easy to recommend</p>
-              <h2 className="mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content">
-                People market providers they feel good sending friends to.
-              </h2>
-              <p className="mt-4 max-w-3xl text-base md:text-lg leading-relaxed text-base-content/80">
-                Jenny stands out because the experience feels calm, respectful, and human. Her pediatric nursing
-                background shaped a gentle bedside manner, and her long clinical career gives patients the sense that
-                they&apos;re being guided instead of sold to.
-              </p>
-              <p className="mt-4 max-w-3xl text-base md:text-lg leading-relaxed text-base-content/80">
-                That combination matters. It makes Williamsburg Med Spa easier to recommend for first-time injectable
-                patients, people exploring intimate wellness topics privately, and anyone who wants a thoughtful provider
-                for PRP, products, or a quieter kind of aesthetic care.
-              </p>
-
-              <div className="mt-8 grid gap-4 md:grid-cols-3">
-                {whyJenny.map((item) => (
-                  <div key={item.title} className="rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm">
-                    <h3 className="text-lg font-medium text-base-content">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-base-content/70">{item.description}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6">
-                <Button asChild variant="ghost" className="px-0 text-sm">
-                  <Link href="/staff/jenny-coleman">Read Jenny&apos;s staff profile</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="px-6 py-14 md:px-0 md:py-16" id="what-to-promote">
-          <div className="max-w-4xl">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">What to promote</p>
-            <h2 className="mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content">
-              Start with offers people already ask their friends about.
+        <section
+          id="apply"
+          className="mb-14 scroll-mt-24 px-6 py-6 md:mb-20 md:px-0 md:py-8 lg:py-10"
+          aria-labelledby="affiliate-apply-heading"
+        >
+          <div className="mx-auto max-w-4xl text-center">
+            <p className={sectionEyebrowClass}>Get your link</p>
+            <h2 id="affiliate-apply-heading" className={sectionHeadingClass}>
+              Start with one clean referral link and a simple sharing workflow.
             </h2>
-            <p className="mt-4 text-base md:text-lg leading-relaxed text-base-content/80">
-              The easiest affiliate referrals usually happen when someone already has the problem and just needs a name
-              they can trust. These are the categories most likely to spark that kind of conversation.
+            <p className={sectionBodyClass}>
+              Create your code once, keep it tied to your name, and use the site as your referral toolkit whenever
+              someone asks who you trust for injectables, PRP, or products.
+            </p>
+            <p className="mt-4 text-sm md:text-base leading-relaxed text-base-content/70">
+              Your homepage link works immediately, and qualifying activity can stay attributed through consults and
+              checkout once someone clicks through.
             </p>
           </div>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          <div className="mt-10 md:mt-12">
+            <div className="mx-auto max-w-3xl">
+              <AffiliateRegistrationForm variant="embedded" />
+            </div>
+          </div>
+
+          <div className="mx-auto mt-10 max-w-5xl grid gap-4 md:grid-cols-3">
+            {applyHighlights.map((item) => (
+              <div key={item.title} className={surfaceCardClass}>
+                <h3 className="text-lg font-medium text-base-content">{item.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-base-content/70">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-14 px-6 py-6 md:mb-20 md:px-0 md:py-8 lg:py-10" aria-labelledby="why-jenny-heading">
+          <div className="mx-auto max-w-5xl">
+            <article className="group relative isolate flex flex-col gap-8 md:flex-row-reverse md:items-center md:justify-between lg:gap-12">
+              <div className="max-w-2xl flex-1">
+                <p className={sectionEyebrowClass}>Why Jenny is easy to recommend</p>
+                <h2 id="why-jenny-heading" className="mt-3 max-w-2xl text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content text-balance">
+                  People share providers they feel good sending friends to.
+                </h2>
+                <p className={sectionBodyClass}>
+                  Jenny stands out because the experience feels calm, respectful, and human. Her pediatric nursing
+                  background shaped a gentle bedside manner, and her long clinical career gives patients the sense that
+                  they&apos;re being guided instead of sold to.
+                </p>
+                <p className="mt-4 text-sm md:text-base leading-relaxed text-base-content/70">
+                  That combination matters. It makes Williamsburg Med Spa easier to recommend for first-time injectable
+                  patients, people exploring intimate wellness topics privately, and anyone who wants a thoughtful
+                  provider for PRP, products, or a quieter kind of aesthetic care.
+                </p>
+
+                <div className="mt-6">
+                  <Button asChild variant="secondary">
+                    <Link href="/staff/jenny-coleman">Read Jenny&apos;s staff profile</Link>
+                  </Button>
+                </div>
+              </div>
+
+              <div className="relative aspect-square w-full max-w-[18rem] overflow-hidden rounded-2xl bg-base-200 sm:max-w-[20rem] md:w-[17rem] lg:w-[19rem] md:shrink-0">
+                <Image
+                  src="/jenny.jpg"
+                  alt="Jenny Coleman at Williamsburg Med Spa"
+                  fill
+                  sizes="(max-width: 640px) 70vw, (max-width: 1024px) 272px, 304px"
+                  className="object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
+              </div>
+            </article>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
+              {whyJenny.map((item) => (
+                <div key={item.title} className={surfaceCardClass}>
+                  <h3 className="text-lg font-medium text-base-content">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-base-content/70">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-14 px-6 py-6 md:mb-20 md:px-0 md:py-8 lg:py-10" id="what-to-promote">
+          <div className="text-center">
+            <p className={sectionEyebrowClass}>What to promote</p>
+            <h2 className="text-base-content mt-4 text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4">
+              Start with the offers people already ask their friends about.
+            </h2>
+            <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
+              The easiest affiliate referrals usually happen when someone already has the problem and just needs a name
+              they can trust. These are the three categories most likely to spark that kind of conversation.
+            </p>
+          </div>
+
+          <div className="grid gap-8 lg:gap-10 mt-8 lg:my-12 xl:my-16 grid-cols-1 md:grid-cols-3">
             {promotionIdeas.map((item) => (
-              <article key={item.title} className="rounded-[1.5rem] border border-base-300 bg-base-100 p-6 shadow-sm">
+              <article key={item.title} className={surfaceCardClass}>
                 <h3 className="text-2xl font-light text-base-content">{item.title}</h3>
                 <p className="mt-3 text-base leading-relaxed text-base-content/75">{item.description}</p>
                 <p className="mt-4 text-sm leading-6 text-base-content/60">
@@ -339,21 +316,28 @@ export default function AffiliatesPage() {
           </div>
         </section>
 
-        <section className="px-6 py-14 md:px-0 md:py-16" id="messaging">
-          <div className="max-w-4xl">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Messaging playbook</p>
-            <h2 className="mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content">
-              Market the trust, not just the treatment menu.
+        <section
+          id="share-guide"
+          className="mb-14 scroll-mt-24 px-6 py-6 md:mb-20 md:px-0 md:py-8 lg:py-10"
+          aria-labelledby="share-guide-heading"
+        >
+          <div className="text-center">
+            <p className={sectionEyebrowClass}>Share guide</p>
+            <h2
+              id="share-guide-heading"
+              className="text-base-content mt-4 text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4"
+            >
+              Keep the message personal, calm, and high trust.
             </h2>
-            <p className="mt-4 text-base md:text-lg leading-relaxed text-base-content/80">
-              The strongest referrals make Williamsburg Med Spa feel like a safe recommendation. People respond better
-              to “Jenny is thoughtful and gentle” than to generic med spa hype.
+            <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
+              The strongest referrals make Williamsburg Med Spa feel like a safe recommendation. Lead with trust, keep
+              the problem specific, and let the page do the heavy lifting once someone clicks through.
             </p>
           </div>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {messagingPillars.map((item) => (
-              <div key={item.title} className="rounded-2xl border border-base-300 bg-base-100 p-6 shadow-sm">
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {sharePrinciples.map((item) => (
+              <div key={item.title} className={surfaceCardClass}>
                 <h3 className="text-xl font-light text-base-content">{item.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-base-content/70">{item.description}</p>
               </div>
@@ -361,7 +345,7 @@ export default function AffiliatesPage() {
           </div>
 
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
-            <div className="rounded-[1.5rem] border border-base-300 bg-base-100 p-6 shadow-sm">
+            <div className={`${surfaceCardClass} p-6`}>
               <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Do say</p>
               <ul className="mt-4 space-y-3 text-base leading-relaxed text-base-content/75">
                 {guardrails.do.map((item) => (
@@ -370,7 +354,7 @@ export default function AffiliatesPage() {
               </ul>
             </div>
 
-            <div className="rounded-[1.5rem] border border-base-300 bg-base-100 p-6 shadow-sm">
+            <div className={`${surfaceCardClass} p-6`}>
               <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Avoid saying</p>
               <ul className="mt-4 space-y-3 text-base leading-relaxed text-base-content/75">
                 {guardrails.avoid.map((item) => (
@@ -379,83 +363,50 @@ export default function AffiliatesPage() {
               </ul>
             </div>
           </div>
+
+          <AffiliateShareScripts />
         </section>
 
-        <section className="px-6 py-14 md:px-0 md:py-16" id="scripts">
-          <div className="max-w-4xl">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Copy-and-paste scripts</p>
-            <h2 className="mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content">
-              Use these as starting points, then make them sound like you.
+        <section className="px-6 py-14 md:px-0 md:py-16" id="faq">
+          <div className="mx-auto max-w-5xl">
+            <p className={`${sectionEyebrowClass} text-center`}>FAQ</p>
+            <h2 className="mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content text-center">
+              Questions affiliates usually ask first
             </h2>
-            <p className="mt-4 text-base md:text-lg leading-relaxed text-base-content/80">
-              The best-performing referrals usually sound natural, local, and personal. Keep the tone helpful. Don’t
-              oversell. Just point the right people toward the provider you trust.
+
+            <Accordion type="single" collapsible className="mt-10 text-left">
+              {affiliateFaqs.map((faq) => (
+                <AccordionItem key={faq.question} value={faq.question}>
+                  <AccordionTrigger>{faq.question}</AccordionTrigger>
+                  <AccordionContent>{faq.answer}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
+
+        <section className="px-6 pb-16 pt-4 md:px-0 md:pb-20 md:pt-8">
+          <div className="text-center">
+            <h2 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto max-w-5xl leading-tight pb-4">
+              Start sharing Williamsburg Med Spa with confidence.
+            </h2>
+            <h3 className="text-base-content text-xl lg:text-2xl max-w-2xl mb-8 mx-auto">
+              Create your referral link in under a minute, then send people to the page that matches what they&apos;re
+              actually asking about.
+            </h3>
+            <p className="mb-8 max-w-xl mx-auto">
+              The affiliate page gives you the script. The site gives you the landing page. You just make the
+              introduction.
             </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Button asChild>
+                <a href="#apply">Get My Referral Link</a>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link href="/procedures">Browse Procedures</Link>
+              </Button>
+            </div>
           </div>
-
-          <div className="mt-10 grid gap-5 lg:grid-cols-2">
-            {shareScripts.map((item) => (
-              <article key={item.title} className="rounded-[1.5rem] border border-base-300 bg-base-100 p-6 shadow-sm">
-                <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">{item.title}</p>
-                <p className="mt-2 text-sm leading-6 text-base-content/60">{item.note}</p>
-                <div className="mt-5 rounded-2xl bg-base-200/70 px-5 py-5 text-base leading-relaxed text-base-content/80 whitespace-pre-wrap">
-                  {item.body}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="px-6 py-14 md:px-0 md:py-16" id="how-it-works">
-          <div className="max-w-4xl">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">How it works</p>
-            <h2 className="mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content">
-              Start simple. Keep it high trust.
-            </h2>
-          </div>
-
-          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {howItWorks.map((item) => (
-              <div key={item.step} className="rounded-[1.5rem] border border-base-300 bg-base-100 p-6 shadow-sm">
-                <p className="text-sm uppercase tracking-[0.18em] text-base-content/50">Step {item.step}</p>
-                <h3 className="mt-3 text-2xl font-light text-base-content">{item.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-base-content/70">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="px-6 py-14 md:px-0 md:py-16 scroll-mt-24" id="apply">
-          <div className="max-w-4xl">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Get your link</p>
-            <h2 className="mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content">
-              Get your referral code in under a minute.
-            </h2>
-            <p className="mt-4 text-base md:text-lg leading-relaxed text-base-content/80">
-              Start with a homepage link, then use the footer share utility to create page-specific links anywhere on
-              the site.
-            </p>
-          </div>
-
-          <div className="mt-10">
-            <AffiliateRegistrationForm />
-          </div>
-        </section>
-
-        <section className="px-6 py-14 md:px-0 md:py-16 max-w-5xl mx-auto" id="faq">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60 text-center">FAQ</p>
-          <h2 className="mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content text-center">
-            Questions affiliates usually ask first
-          </h2>
-
-          <Accordion type="single" collapsible className="mt-10 text-left">
-            {affiliateFaqs.map((faq) => (
-              <AccordionItem key={faq.question} value={faq.question}>
-                <AccordionTrigger>{faq.question}</AccordionTrigger>
-                <AccordionContent>{faq.answer}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
         </section>
       </div>
     </>

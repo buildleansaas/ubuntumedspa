@@ -12,7 +12,9 @@ const NAV_ITEMS = [
   { href: "/locations", label: "Locations" },
   { href: "/products", label: "Products" },
   { href: "/procedures", label: "Procedures" },
+  { href: "/events", label: "Events" },
   { href: "/blog", label: "Blog" },
+  { href: "/affiliates", label: "Affiliates" },
 ] as const;
 
 export default function Header() {

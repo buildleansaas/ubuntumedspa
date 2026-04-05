@@ -9,6 +9,7 @@ import ProviderCallout from "views/provider-callout";
 import Procedures from "views/procedures";
 import LatestPosts from "views/latest-posts";
 import Products from "views/products";
+import BotoxPartyCallout from "views/botox-party-callout";
 import { buildPageMetadata } from "lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -27,6 +28,7 @@ export default async function Page() {
       <Procedures />
       <AffiliateProgramCallout />
       <Products />
+      <BotoxPartyCallout />
       <LatestPosts />
       <CtaFooter />
     </div>
