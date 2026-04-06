@@ -19,15 +19,15 @@ export default function AffiliateProgramCallout() {
             </h2>
 
             <p className="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-base-content/80">
-              For people who already know the right friends, followers, or local contacts to send Jenny&apos;s way.
-              Learn what to say, which procedures and products are easiest to recommend, and how to introduce
+              For people who already know the right friends, followers, or local contacts looking for a calm,
+              trustworthy med spa. Learn what to say, which pages are easiest to share, and how to recommend
               Williamsburg Med Spa with confidence.
             </p>
 
             <p className="mt-5 max-w-2xl text-sm md:text-base leading-relaxed text-base-content/70">
-              Imagine referring just 2 or 3 friends a month and turning a few trusted introductions into an extra
-              $500 or more. On stronger months, a handful of higher-ticket referrals can climb toward $2,500+. We
-              provide the guide, the copy-ready text, and the link. You just send people to the site.
+              A few trusted introductions can add up quickly, especially when someone already wants honest guidance,
+              gentle treatment, and natural-looking care. We provide the guide, the copy-ready text, and the link. You
+              just send people to the site.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -40,7 +40,7 @@ export default function AffiliateProgramCallout() {
           <div className="relative aspect-square w-full max-w-[18rem] overflow-hidden rounded-2xl bg-base-200 sm:max-w-[20rem] md:w-[17rem] lg:w-[19rem] md:shrink-0">
             <Image
               src="/jenny.jpg"
-              alt="Jenny Coleman for the Williamsburg Med Spa affiliate program"
+              alt="Jenny Coleman at Williamsburg Med Spa"
               fill
               sizes="(max-width: 640px) 70vw, (max-width: 1024px) 272px, 304px"
               className="object-cover transition-transform duration-200 group-hover:scale-[1.02]"

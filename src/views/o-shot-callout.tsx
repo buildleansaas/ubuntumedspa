@@ -32,8 +32,9 @@ export default function OShotCallout() {
 
             <p className="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-base-content/80">
               A discreet in-office PRP treatment for women who want greater comfort, improved sensitivity, and more
-              confidence with intimacy. Patients often ask about the O-Shot® when dryness, reduced sensation, mild
-              stress urinary leakage, or intimacy-related discomfort are part of the conversation.
+              confidence with intimacy. If dryness, reduced sensation, mild stress urinary leakage, or
+              intimacy-related discomfort have become part of the conversation, the O-Shot® may be a supportive option
+              to discuss.
             </p>
 
             <CmaCredentialStrip className="mt-5 max-w-xl" />

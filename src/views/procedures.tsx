@@ -11,12 +11,12 @@ export default function Procedures({ headingTag = "h2" }: { headingTag?: Heading
     <>
       <div className="text-center" id="services">
         <Heading className="text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4">
-          Certified Procedures and Services
+          Medical Spa Treatments in Williamsburg, VA
         </Heading>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
-          Explore Williamsburg Med Spa&apos;s restorative treatments designed to support healing and aesthetic goals. From
-          PRP therapies to precision Blohmdahl ear piercing, our procedures are planned around safety, comfort, and
-          realistic outcomes.
+          Compare Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, and Blohmdahl medical ear piercing.
+          Each service page explains who the treatment may fit, which goals it is commonly used for, and what to review
+          during consultation.
         </p>
       </div>
 
@@ -25,12 +25,16 @@ export default function Procedures({ headingTag = "h2" }: { headingTag?: Heading
           .slice()
           .sort((a, b) => {
             const priority = [
+              "botox",
               "filler",
-              "joint-restoration",
+              "xeomin",
+              "blohmdahl-ear-piercing",
+              "prp-hair-restoration",
+              "prp-facial",
               "o-shot",
               "p-shot",
-              "prp-facial",
-              "blohmdahl-ear-piercing",
+              "joint-restoration",
+              "hyperhidrosis-treatment",
             ];
             const ai = priority.indexOf(a.slug);
             const bi = priority.indexOf(b.slug);

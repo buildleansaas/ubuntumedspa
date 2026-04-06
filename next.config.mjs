@@ -6,6 +6,12 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/:path*",
+        has: [{ type: "host", value: "williamsburgmedspa.com" }],
+        destination: "https://www.williamsburgmedspa.com/:path*",
+        permanent: true,
+      },
+      {
         source: "/procedures/feminine-intimacy-prp-protocols",
         destination: "/procedures/o-shot",
         permanent: true,

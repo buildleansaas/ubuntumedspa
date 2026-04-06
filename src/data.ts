@@ -1489,22 +1489,22 @@ export const procedures = [
     slug: "botox",
     published: true,
     seo: {
-      title: "Botox Injections in Williamsburg, VA",
+      title: "Botox in Williamsburg, VA | Natural-Looking Botox Injections",
       description:
-        "Botox injections in Williamsburg, VA to soften forehead lines, frown lines, and crow's feet while preserving natural expression.",
+        "Botox injections in Williamsburg, VA for forehead lines, frown lines, crow's feet, and other targeted wrinkle-softening treatments planned around natural expression.",
     },
     description:
-      "Botox Cosmetic is a botulinum toxin type A injectable used to temporarily improve the appearance of moderate to severe forehead lines, frown lines, and crow's feet in appropriate adult candidates. At Williamsburg Med Spa, treatment is planned around your facial movement pattern so results look smooth, balanced, and natural.",
-    headline: "Soften Expression Lines Without Looking Frozen",
+      "Botox Cosmetic is a botulinum toxin type A injectable used to temporarily soften dynamic expression lines in appropriate adult candidates. At Williamsburg Med Spa, Botox planning focuses on forehead lines, frown lines, crow's feet, and selected lower-face areas with dosing shaped around your facial movement pattern so results look smooth, balanced, and natural.",
+    headline: "Botox injections planned around your natural expression.",
     subline:
-      "Personalized Botox injections can reduce dynamic wrinkles in areas like forehead lines, frown lines, and crow's feet with quick in-office visits.",
+      "We treat common Botox areas such as forehead lines, frown lines, crow's feet, and select lower-face zones with a conservative, movement-aware approach.",
     image: "/procedure/botox.png",
     price: "$250 increments",
     // programmatic SEO copy
     blogHeadline:
-      "Considering Botox in Williamsburg? Explore practical guidance on treatment planning, expected timing, and how Botox compares with Xeomin before you book.",
+      "Researching Botox in Williamsburg? Review timing, common treatment areas, aftercare, and our Botox-vs-Xeomin guide before you book.",
     benefitsHeadline:
-      "Botox can offer subtle, high-precision wrinkle softening with minimal downtime when your treatment plan is mapped carefully to your goals.",
+      "Botox is often used to soften dynamic lines while keeping facial movement balanced and results appropriate to your goals.",
     benefits: [
       {
         emoji: "🌟",
@@ -1531,7 +1531,7 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "Botox treatment can be mapped to multiple facial movement zones depending on your goals. We focus on preserving natural expression while softening high-motion areas that create etched lines over time.",
+      "Botox can be used across several high-motion facial areas depending on anatomy and goals. We focus on preserving expression while softening the movement patterns that make lines look more pronounced over time.",
     ailments: [
       {
         title: "Forehead Lines",
@@ -1590,7 +1590,8 @@ export const procedures = [
         tag: "experimental",
       },
     ],
-    faqHeadline: "Get practical answers about Botox, expected treatment timelines, and how Botox compares with Xeomin.",
+    faqHeadline:
+      "Get practical answers about Botox timing, common treatment areas, longevity, and how Botox compares with Xeomin.",
     faqs: [
       {
         question: "What is Botox commonly used for?",
@@ -1839,17 +1840,17 @@ export const procedures = [
         "Dermal filler treatments in Williamsburg, VA for natural facial contouring, lip enhancement, and volume restoration.",
     },
     description:
-      "Filler treatment is a non-invasive procedure designed to add volume and smoothness to specific areas of the face, including eyebrow lift, nasolabial folds, cheeks, and marionette lines. By using hyaluronic acid, a naturally occurring substance in the body, fillers plump up and hydrate the skin, effectively reducing wrinkles and adding definition to the face. It's an excellent option for those looking to achieve a more youthful look without undergoing surgical procedures.",
-    headline: "Accentuate Your Features: Smooth, Plump, Youthful!",
+      "Dermal fillers are injectable gels commonly used to restore facial volume, soften folds, enhance lips, and refine contour in areas such as cheeks, jawline, and under-eyes. At Williamsburg Med Spa, filler planning focuses on conservative placement, clear discussion of longevity and reversibility, and results that stay proportional to your features.",
+    headline: "Dermal fillers for lips, cheeks, under-eyes, and facial contour.",
     subline:
-      "Filler treatment adds volume to specific areas of the face, effectively reducing wrinkles and enhancing facial definition. It's a non-invasive way to achieve a smoother, plumper, and more youthful appearance.",
+      "Hyaluronic acid filler can restore volume, refine contour, soften folds, and support lip enhancement with a treatment plan built around proportion and longevity.",
     image: "/procedure/filler.png",
     price: "$700 per syringe",
     // programmatic SEO copy
     blogHeadline:
-      "Aiming for a plumper face with smooth features? Our Filler blog section offers insights into the magic of hyaluronic acid. Read about its applications, outcomes, and why many choose it over surgery.",
+      "Researching dermal fillers in Williamsburg? Explore guidance on lips, cheeks, under-eyes, jawline contouring, longevity, and how consultation shapes the treatment plan.",
     benefitsHeadline:
-      "Discover a face that's radiant, youthful, and defined. Filler treatments offer a journey towards smoother skin and emphasized features, all while staying true to your authentic self. Let your face tell a story of grace and ageless charm.",
+      "Dermal fillers can restore support and definition in specific facial zones while keeping outcomes balanced, flexible, and natural-looking.",
     benefits: [
       {
         emoji: "🌟",
@@ -1874,7 +1875,7 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "Dermal fillers are your go-to solution for a range of cosmetic concerns that can arise as we age or simply seek enhancement. From softening nasolabial folds and marionette lines to achieving fuller lips and sculpted cheeks, fillers offer a non-invasive method to transform your look. They're even versatile enough for less common treatments like jawline contouring, tear trough filling, and hand rejuvenation. Whether you're addressing common signs of aging or seeking specialized treatments, dermal fillers provide an effective and instant solution. Explore the range of issues that can be addressed with this innovative treatment.",
+      "Dermal fillers are used for both volume restoration and contour refinement. Treatment planning may focus on lips, cheeks, under-eyes, smile lines, jawline definition, and other targeted areas depending on anatomy and goals.",
     ailments: [
       {
         title: "Nasolabial Folds",
@@ -2007,7 +2008,7 @@ export const procedures = [
       },
     ],
     faqHeadline:
-      "Elevate your aesthetic with dermal fillers. Designed to restore volume and contour, these treatments offer immediate and stunning results.",
+      "Get practical answers about dermal filler treatment areas, longevity, comfort, safety, and reversibility.",
     faqs: [
       {
         question: "What areas can be treated with dermal fillers?",
@@ -2184,22 +2185,22 @@ export const procedures = [
     name: "Blohmdahl Ear Piercing",
     slug: "blohmdahl-ear-piercing",
     seo: {
-      title: "Blohmdahl Ear Piercing in Williamsburg, VA",
+      title: "Medical Ear Piercing in Williamsburg, VA | Blohmdahl",
       description:
-        "Medical-grade Blohmdahl ear piercing in Williamsburg, VA using sterile, hypoallergenic jewelry for children and adults at Williamsburg Med Spa.",
+        "Medical ear piercing in Williamsburg, VA using the Blohmdahl system with sterile single-use cassettes and hypoallergenic jewelry for children, teens, and adults.",
     },
     description:
-      "Blohmdahl Ear Piercing represents the gold standard in safe, medical-grade ear piercing. This Swedish-developed system uses pre-sterilized, hypoallergenic medical plastic and titanium materials, making it ideal for sensitive skin and first-time piercings. Our trained professionals ensure a gentle, virtually painless experience that's perfect for children and adults alike. The sterile, single-use cassettes eliminate cross-contamination risks, while the precise technique minimizes tissue trauma and promotes faster healing.",
-    headline: "Safe, Gentle, Medical-Grade Ear Piercing for the Whole Family",
+      "Our Blohmdahl medical ear piercing service uses sterile single-use cassettes and hypoallergenic medical plastic or titanium jewelry to reduce unnecessary tissue trauma and support cleaner healing. It is a strong fit for first piercings, sensitive skin, re-piercing, and families who want a clinical setting instead of mall-style piercing.",
+    headline: "Medical ear piercing in Williamsburg for children, teens, and adults.",
     subline:
-      "Experience peace of mind with Blohmdahl's medical-grade ear piercing system. Using sterile, hypoallergenic materials and gentle techniques, we provide the safest piercing experience in Historic Williamsburg, perfect for children's first piercings or anyone seeking a professional, healing-focused approach.",
+      "Blohmdahl combines sterile technique, hypoallergenic jewelry, and gentle placement for first earrings, re-piercing, and sensitive ears.",
     image: "/procedure/ear-piercing.png",
     price: "$45.00 per ear",
     // programmatic SEO copy
     blogHeadline:
-      "Considering ear piercing for yourself or your child? Explore our comprehensive guides on Blohmdahl medical ear piercing. Learn about safety protocols, aftercare, and why medical-grade piercing makes all the difference for healing and long-term ear health.",
+      "Planning ear piercing in Williamsburg? Review our guides on first earrings, sensitive skin, aftercare, and why Blohmdahl differs from mall piercing.",
     benefitsHeadline:
-      "Choose Blohmdahl for the safest ear piercing experience. From sterile, single-use equipment to hypoallergenic jewelry options, every aspect is designed for optimal healing and comfort. Perfect for sensitive skin, children's first piercings, and anyone who values a medical-grade approach to body modification.",
+      "Blohmdahl ear piercing is designed for cleaner healing and calmer tissue response, especially for kids, sensitive skin, and first-time piercings.",
     benefits: [
       {
         emoji: "🏥",
@@ -2224,7 +2225,7 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "Blohmdahl Ear Piercing addresses common concerns and provides solutions for various ear piercing needs. Whether you're getting your child's first piercing, have sensitive skin, or need to re-pierce closed holes, our medical-grade approach ensures the best outcome for every situation.",
+      "Blohmdahl medical ear piercing supports several common ear-piercing situations, from a child's first earrings to re-piercing and sensitive-skin concerns. The focus is sterile technique, thoughtful placement, and healing-friendly materials.",
     ailments: [
       {
         title: "First-Time Piercings",
@@ -2267,7 +2268,7 @@ export const procedures = [
         tag: "uncommon",
       },
     ],
-    faqHeadline: "Everything you need to know about Blohmdahl medical ear piercing at Williamsburg Med Spa.",
+    faqHeadline: "Everything you need to know about medical ear piercing with Blohmdahl at Williamsburg Med Spa.",
     faqs: [
       {
         question: "What age can children get their ears pierced?",

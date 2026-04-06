@@ -26,10 +26,14 @@ export default function Jumbotron() {
       <h1 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4">
         Rejuvenate Your Life
       </h1>
-      <p className="text-base-content text-xl lg:text-2xl mb-8 max-w-2xl mx-auto">
+      <p className="text-base-content text-xl lg:text-2xl mb-3 max-w-2xl mx-auto">
         Explore <strong>PRP services</strong> using <strong>your own blood components</strong> to support{" "}
         <strong>joint care</strong>, <strong>aesthetic goals</strong>, <strong>sexual wellness</strong>, and overall{" "}
         <strong>well-being</strong>.
+      </p>
+      <p className="text-base-content/70 text-base md:text-lg mb-8 max-w-3xl mx-auto">
+        From intimate wellness and facial rejuvenation to hair restoration and joint-focused care, our PRP treatments
+        are personalized, natural-looking, and grounded in clear guidance.
       </p>
       <div className="mb-32">
         <div className="flex flex-wrap justify-center items-center gap-2">
