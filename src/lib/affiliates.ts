@@ -102,4 +102,4 @@ export const clearAffiliateLocalProfile = () => {
 };
 
 export const buildAffiliateShareMessage = (absoluteUrl: string) =>
-  `If you’ve been curious about Williamsburg Med Spa, here’s the site I send people to. Jenny is gentle, thoughtful, and easy to trust for injectables, PRP, and products: ${absoluteUrl}`;
+  `Here's the Med Spa in Williamsburg I was telling you about! ${absoluteUrl}`;

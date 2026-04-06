@@ -1,7 +1,7 @@
 "use client";
 
-import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { subscribeToLocationChange } from "lib/client-location";
 
 const INITIAL_PROGRESS = 0.08;
 const MAX_PROGRESS = 0.9;
@@ -54,18 +54,14 @@ function getNavigationTarget(event: MouseEvent) {
 }
 
 export default function RouteProgressBar() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
   const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const intervalRef = useRef<number | null>(null);
   const completeTimeoutRef = useRef<number | null>(null);
   const resetTimeoutRef = useRef<number | null>(null);
-  const isInitialRenderRef = useRef(true);
   const isNavigatingRef = useRef(false);
   const startNavigationRef = useRef<() => void>(() => undefined);
   const completeNavigationRef = useRef<() => void>(() => undefined);
-  const routeKey = `${pathname}?${searchParams.toString()}`;
 
   startNavigationRef.current = () => {
     isNavigatingRef.current = true;
@@ -141,14 +137,27 @@ export default function RouteProgressBar() {
 
     const handlePopState = () => {
       startNavigationRef.current();
+      window.requestAnimationFrame(() => {
+        completeNavigationRef.current();
+      });
+    };
+
+    const handleLocationChange = () => {
+      if (!isNavigatingRef.current) {
+        return;
+      }
+
+      completeNavigationRef.current();
     };
 
     document.addEventListener("click", handleDocumentClick);
     window.addEventListener("popstate", handlePopState);
+    const unsubscribe = subscribeToLocationChange(handleLocationChange);
 
     return () => {
       document.removeEventListener("click", handleDocumentClick);
       window.removeEventListener("popstate", handlePopState);
+      unsubscribe();
 
       if (intervalRef.current) {
         window.clearInterval(intervalRef.current);
@@ -163,19 +172,6 @@ export default function RouteProgressBar() {
       }
     };
   }, []);
-
-  useEffect(() => {
-    if (isInitialRenderRef.current) {
-      isInitialRenderRef.current = false;
-      return;
-    }
-
-    if (!isNavigatingRef.current) {
-      return;
-    }
-
-    completeNavigationRef.current();
-  }, [routeKey]);
 
   return (
     <div

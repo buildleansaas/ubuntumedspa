@@ -74,10 +74,17 @@ export default function AffiliateRegistrationForm({
   );
 
   const affiliateCodeInputClassName =
-    "mt-3 w-full rounded-[1.35rem] border border-base-300 bg-base-100 px-5 py-4 text-xl tracking-tight text-base-content shadow-sm transition-colors placeholder:text-base-content/30 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 sm:text-2xl";
+    "mt-3 w-full rounded-xl border border-base-300 bg-base-100 px-4 py-3 text-lg tracking-tight text-base-content transition-colors placeholder:text-base-content/30 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 sm:text-xl";
 
-  const shellClassName =
-    "rounded-[1.75rem] border border-base-300 bg-base-100 px-6 py-6 shadow-sm sm:px-8 sm:py-8 md:px-10 md:py-10";
+  const shellClassName = cn(
+    "w-full",
+    isEmbedded ? "" : "rounded-2xl border border-base-300 bg-base-100 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10"
+  );
+
+  const embeddedAffiliateToolsShellClassName = cn(
+    "w-full",
+    isEmbedded && "rounded-2xl border border-base-300 bg-base-100 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10"
+  );
 
   const handleCopy = async (value: string, label: string) => {
     if (!value || typeof window === "undefined") return;
@@ -190,7 +197,7 @@ export default function AffiliateRegistrationForm({
 
   if (affiliateProfile) {
     return (
-      <div className={cn(shellClassName, "w-full")}>
+      <div className={isEmbedded ? embeddedAffiliateToolsShellClassName : shellClassName}>
         <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Your referral tools</p>
         <h3 className="mt-3 text-2xl font-light text-base-content">Your link is live.</h3>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-base-content/75">
@@ -198,7 +205,7 @@ export default function AffiliateRegistrationForm({
           Update your code below any time, and old links you&apos;ve already shared will keep working.
         </p>
 
-        <div className="mt-6 rounded-[1.5rem] border border-base-300 bg-base-200/55 p-5 sm:p-6">
+        <div className={cn("mt-6", isEmbedded ? "border-t border-base-300 pt-6" : "rounded-2xl border border-base-300 bg-base-100 p-5 sm:p-6")}>
           <div className="max-w-2xl">
             <p className="text-xs uppercase tracking-[0.18em] text-base-content/55">Edit referral code</p>
             <h4 className="mt-2 text-xl font-light tracking-tight text-base-content sm:text-2xl">
@@ -252,7 +259,7 @@ export default function AffiliateRegistrationForm({
           </div>
         </div>
 
-        <div className="mt-6 rounded-2xl border border-base-300 bg-base-200/60 p-5">
+        <div className={cn("mt-6", isEmbedded ? "border-t border-base-300 pt-6" : "rounded-2xl border border-base-300 bg-base-100 p-5")}>
           <p className="text-xs uppercase tracking-[0.16em] text-base-content/55">Default referral link</p>
           <p className="mt-2 break-all text-sm leading-6 text-base-content/80">{referralUrl}</p>
         </div>
@@ -283,16 +290,18 @@ export default function AffiliateRegistrationForm({
   }
 
   return (
-    <form className={cn(shellClassName, "w-full")} onSubmit={handleSubmit}>
-      <div className="border-b border-base-300 pb-6">
-        <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Get your referral link</p>
-        <p className="mt-3 max-w-2xl text-base text-base-content/70">
-          Enter your full name and email once. We&apos;ll generate your affiliate code instantly so you can start
-          sharing right away.
-        </p>
-      </div>
+    <form className={shellClassName} onSubmit={handleSubmit}>
+      {!isEmbedded ? (
+        <div className="border-b border-base-300 pb-6">
+          <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Get your referral link</p>
+          <p className="mt-3 max-w-2xl text-base text-base-content/70">
+            Enter your full name and email once. We&apos;ll generate your affiliate code instantly so you can start
+            sharing right away.
+          </p>
+        </div>
+      ) : null}
 
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
+      <div className={cn("grid gap-6 md:grid-cols-2", !isEmbedded && "mt-6")}>
         <div className="space-y-2">
           <label className="block text-sm font-semibold text-base-content" htmlFor="name">
             Full name

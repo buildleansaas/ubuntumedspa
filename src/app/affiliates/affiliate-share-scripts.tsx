@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { Copy } from "lucide-react";
 
+import { Button } from "components/ui/button";
 import { useToast } from "components/ui/use-toast";
 import useAffiliateLocalProfile from "hooks/use-affiliate-local-profile";
 import { buildAffiliateLink } from "lib/affiliates";
@@ -51,31 +52,29 @@ export default function AffiliateShareScripts() {
   };
 
   return (
-    <div className="mt-10 grid gap-5 lg:grid-cols-3">
+    <div className="grid gap-8 lg:grid-cols-3 lg:gap-10">
       {shareScripts.map((item) => {
         const message = item.message(shareUrl);
 
         return (
-          <article key={item.title} className="rounded-2xl border border-base-300 bg-base-100 p-6 shadow-sm">
+          <article key={item.title} className="border-t border-base-300 pt-6">
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0">
                 <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">{item.title}</p>
                 <p className="mt-2 text-sm leading-6 text-base-content/60">{item.note}</p>
               </div>
 
-              <button
-                type="button"
-                aria-label={`Copy ${item.title}`}
+              <Button
+                variant="secondary"
+                size="sm"
                 onClick={() => handleCopy(message, item.title)}
-                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-base-300 bg-base-100 text-base-content/65 transition-colors hover:bg-base-200 hover:text-base-content focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2"
               >
-                <Copy className="h-4 w-4" />
-              </button>
+                <Copy className="mr-2 h-4 w-4" />
+                Copy
+              </Button>
             </div>
 
-            <div className="mt-5 rounded-2xl bg-base-200/70 px-5 py-4 text-lg leading-relaxed text-base-content/85">
-              {message}
-            </div>
+            <p className="mt-5 text-base leading-relaxed text-base-content/80">{message}</p>
           </article>
         );
       })}

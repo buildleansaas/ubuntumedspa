@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { DEFAULT_FORM_SUBMISSION, FORM_INPUTS } from "data";
 import * as yup from "yup";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { Button } from "components/ui/button";
 import { useToast } from "components/ui/use-toast";
@@ -14,6 +14,7 @@ import {
   parseAffiliateCodeCookie,
   type AffiliateSnapshot,
 } from "lib/affiliates";
+import { getCurrentBrowserUrl, subscribeToLocationChange } from "lib/client-location";
 import { cn } from "lib/utils";
 
 export interface FormState {
@@ -34,8 +35,6 @@ export interface FormInput {
 }
 
 const ConsultationForm: React.FC = () => {
-  const searchParams = useSearchParams();
-  const referralCodeFromSearch = searchParams.get(AFFILIATE_REF_PARAM);
   const router = useRouter();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
@@ -72,6 +71,7 @@ const ConsultationForm: React.FC = () => {
     let cancelled = false;
 
     const resolveAffiliateReferral = async () => {
+      const referralCodeFromSearch = getCurrentBrowserUrl()?.searchParams.get(AFFILIATE_REF_PARAM);
       const referralCodeFromCookie =
         typeof document !== "undefined"
           ? parseAffiliateCodeCookie(
@@ -105,12 +105,21 @@ const ConsultationForm: React.FC = () => {
       }
     };
 
-    resolveAffiliateReferral();
+    void resolveAffiliateReferral();
+
+    const handleLocationChange = () => {
+      void resolveAffiliateReferral();
+    };
+
+    const unsubscribe = subscribeToLocationChange(handleLocationChange);
+    window.addEventListener("popstate", handleLocationChange);
 
     return () => {
       cancelled = true;
+      unsubscribe();
+      window.removeEventListener("popstate", handleLocationChange);
     };
-  }, [referralCodeFromSearch]);
+  }, []);
 
   const onSubmit = async (e: React.FormEvent) => {
     setLoading(true);

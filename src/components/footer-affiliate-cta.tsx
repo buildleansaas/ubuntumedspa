@@ -1,8 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
 import { Copy, Link2, MessageSquare, Share2 } from "lucide-react";
 
 import { Button } from "components/ui/button";
@@ -15,24 +13,8 @@ function getSmsHref(message: string) {
 }
 
 export default function FooterAffiliateCta() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const searchString = searchParams.toString();
   const { toast } = useToast();
   const affiliateProfile = useAffiliateLocalProfile();
-
-  const currentShareUrl = useMemo(() => {
-    if (!affiliateProfile || typeof window === "undefined") return "";
-
-    const relative = `${pathname}${searchString ? `?${searchString}` : ""}`;
-    const absolute = new URL(relative, window.location.origin).toString();
-    return buildAffiliateLink(absolute, affiliateProfile.affiliateCode);
-  }, [affiliateProfile, pathname, searchString]);
-
-  const currentShareText = useMemo(
-    () => (currentShareUrl ? buildAffiliateShareMessage(currentShareUrl) : ""),
-    [currentShareUrl]
-  );
 
   const handleCopy = async (value: string, label: string) => {
     if (!value || typeof window === "undefined") return;
@@ -45,56 +27,90 @@ export default function FooterAffiliateCta() {
     }
   };
 
+  const getCurrentShareDetails = () => {
+    if (!affiliateProfile || typeof window === "undefined") return null;
+
+    const shareUrl = buildAffiliateLink(window.location.href, affiliateProfile.affiliateCode);
+    return {
+      shareUrl,
+      shareText: buildAffiliateShareMessage(shareUrl),
+    };
+  };
+
   if (!affiliateProfile) {
     return (
-      <div className="mx-auto max-w-4xl rounded-xl border border-base-300 bg-base-100 px-4 py-4 md:px-6 md:py-5">
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div className="text-left">
-            <p className="text-[11px] uppercase tracking-[0.2em] text-base-content/55">Share With Your Friends</p>
-            <p className="mt-2 max-w-2xl text-sm leading-6 text-base-content/75">
-              Want your own referral link? Enter your name and email once, then use the whole site as shareable
-              marketing material.
-            </p>
-          </div>
-          <Button asChild variant="secondary" className="w-full md:w-auto">
+      <section className="w-full text-left">
+        <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Affiliate Program</p>
+        <h3 className="mt-3 text-2xl/snug md:text-3xl/snug font-light tracking-tight text-base-content">
+          Get your referral link and start sharing.
+        </h3>
+        <p className="mt-4 max-w-xl text-base md:text-lg leading-relaxed text-base-content/80">
+          Enter your name and email once, then use the whole site as shareable marketing material with your code
+          attached.
+        </p>
+
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Button asChild>
             <Link href="/affiliates">Get Your Referral Link</Link>
           </Button>
         </div>
-      </div>
+      </section>
     );
   }
 
   return (
-    <div className="mx-auto max-w-4xl rounded-xl border border-base-300 bg-base-100 px-4 py-4 md:px-6 md:py-5">
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div className="text-left">
-          <p className="text-[11px] uppercase tracking-[0.2em] text-base-content/55">Share With Your Friends</p>
-          <p className="mt-2 text-sm leading-6 text-base-content/75">
-            Your code is <span className="font-medium text-base-content">{affiliateProfile.affiliateCode}</span>. Use
-            this page or any page on the site as your referral link.
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <Button variant="secondary" size="sm" onClick={() => handleCopy(currentShareUrl, "Referral link")}>
-            <Link2 className="mr-2 h-4 w-4" />
-            Copy Link
-          </Button>
-          <Button variant="secondary" size="sm" onClick={() => handleCopy(currentShareText, "Text message")}>
-            <Copy className="mr-2 h-4 w-4" />
-            Copy Text
-          </Button>
-          <Button size="sm" asChild>
-            <a href={getSmsHref(currentShareText)}>
-              <MessageSquare className="mr-2 h-4 w-4" />
-              Text This Page
-            </a>
-          </Button>
-        </div>
+    <section className="w-full text-left">
+      <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Share With Your Friends</p>
+      <h3 className="mt-3 text-2xl/snug md:text-3xl/snug font-light tracking-tight text-base-content">
+        Your referral tools are ready.
+      </h3>
+      <p className="mt-4 max-w-xl text-base md:text-lg leading-relaxed text-base-content/80">
+        Your code is <span className="font-mono text-base-content">{affiliateProfile.affiliateCode}</span>. Use this
+        page or any page on the site as your referral link.
+      </p>
+
+      <div className="mt-6 flex flex-wrap gap-3">
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => {
+            const details = getCurrentShareDetails();
+            if (!details) return;
+            void handleCopy(details.shareUrl, "Referral link");
+          }}
+        >
+          <Link2 className="mr-2 h-4 w-4" />
+          Copy Link
+        </Button>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => {
+            const details = getCurrentShareDetails();
+            if (!details) return;
+            void handleCopy(details.shareText, "Text message");
+          }}
+        >
+          <Copy className="mr-2 h-4 w-4" />
+          Copy Text
+        </Button>
+        <Button
+          size="sm"
+          onClick={() => {
+            const details = getCurrentShareDetails();
+            if (!details || typeof window === "undefined") return;
+            window.location.href = getSmsHref(details.shareText);
+          }}
+        >
+          <MessageSquare className="mr-2 h-4 w-4" />
+          Text This Page
+        </Button>
       </div>
-      <div className="mt-3 flex items-start gap-2 text-xs leading-5 text-base-content/55">
-        <Share2 className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+
+      <div className="mt-4 flex items-start gap-2 text-sm leading-6 text-base-content/60">
+        <Share2 className="mt-1 h-4 w-4 shrink-0" />
         The link above automatically points to this page with your referral code attached.
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Check, X } from "lucide-react";
 
 import StructuredData from "components/structured-data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "components/ui/accordion";
@@ -13,14 +14,14 @@ import AffiliateShareScripts from "./affiliate-share-scripts";
 export const metadata: Metadata = buildPageMetadata({
   title: "Affiliate Program | Williamsburg Med Spa",
   description:
-    "Get your Williamsburg Med Spa referral link, learn what to say, and share Jenny Coleman’s services across the site.",
+    "Get your Williamsburg Med Spa referral link, learn how to recommend the clinic with confidence, and share the pages that match what someone is looking for.",
   canonical: "/affiliates",
 });
 
 const sectionEyebrowClass = "text-[11px] uppercase tracking-[0.24em] text-base-content/60";
 const sectionHeadingClass = "mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content";
 const sectionBodyClass = "mt-4 text-base md:text-lg leading-relaxed text-base-content/80";
-const surfaceCardClass = "rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm";
+const surfaceCardClass = "border-t border-base-300 pt-5";
 
 const programHighlights = [
   "20% on qualifying referrals",
@@ -47,21 +48,21 @@ const applyHighlights = [
   },
 ];
 
-const whyJenny = [
+const trustReasons = [
   {
-    title: "Gentle with nervous patients",
+    title: "Gentle with first-time patients",
     description:
-      "Jenny’s pediatric nursing background shows up in how she explains, reassures, and helps first-time patients feel safe without rushing them.",
+      "The clinic is especially strong with nervous or first-time patients because Jenny's pediatric nursing background shows up in how she explains, reassures, and helps people feel safe without rushing them.",
   },
   {
-    title: "Trusted clinical judgment",
+    title: "Experienced clinical judgment",
     description:
-      "With more than 26 years in medicine, she brings a calm, medically grounded perspective to treatments that can feel intimidating to new patients.",
+      "With more than 26 years in medicine behind the care, treatments are approached with a calm, medically grounded perspective instead of pressure or over-selling.",
   },
   {
-    title: "Natural, not overdone",
+    title: "Honest about fit and expectations",
     description:
-      "People who want realistic guidance, subtle injectables, or thoughtful PRP care are often looking for exactly the kind of provider Jenny is.",
+      "People who want realistic guidance, subtle injectables, or thoughtful PRP care often care as much about honesty as the treatment itself.",
   },
 ];
 
@@ -69,7 +70,7 @@ const promotionIdeas = [
   {
     title: "Injectables people already ask about",
     description:
-      "Botox, Xeomin, filler, and hyperhidrosis treatment are easy referral categories because people naturally ask their friends who they trust for injectables.",
+      "Botox, Xeomin, filler, and hyperhidrosis treatment are strong referral categories because people naturally ask who feels experienced, gentle, and trustworthy with injectables.",
     bestFor: "Wrinkles, sweat control, lip filler, and natural-looking refreshes.",
     href: "/procedures",
     cta: "View procedures",
@@ -77,7 +78,7 @@ const promotionIdeas = [
   {
     title: "PRP and intimate wellness care",
     description:
-      "O-Shot, P-Shot, PRP Facial, PRP Face Lift, Hair Restoration, and Joint Restoration work well when someone wants a discreet regenerative option from someone gentle.",
+      "O-Shot, P-Shot, PRP Facial, PRP Face Lift, Hair Restoration, and Joint Restoration work well when someone wants a discreet regenerative option from a clinic that feels calm, respectful, and thoughtful.",
     bestFor: "Private conversations, DMs, and one-to-one referrals where trust matters most.",
     href: "/procedures",
     cta: "Browse PRP treatments",
@@ -94,9 +95,9 @@ const promotionIdeas = [
 
 const sharePrinciples = [
   {
-    title: "Lead with trust",
+    title: "Lead with the clinic experience",
     description:
-      "Position Jenny as calm, medically grounded, and easy to recommend to someone who wants to feel taken care of.",
+      "Talk about calm care, honest recommendations, and the kind of treatment planning people feel good recommending.",
   },
   {
     title: "Lead with the real problem",
@@ -104,16 +105,16 @@ const sharePrinciples = [
       "Dryness, reduced sensitivity, wrinkles, sweating, or skincare frustration convert better than generic beauty language.",
   },
   {
-    title: "Lead with realistic outcomes",
+    title: "Lead with fit, not hype",
     description:
-      "Williamsburg Med Spa is a fit for people who want honest guidance, not hype, and a plan that feels personal.",
+      "Williamsburg Med Spa is strongest for people who want thoughtful guidance, gentle treatment, and realistic outcomes.",
   },
 ];
 
 const guardrails = {
   do: [
-    "Say Jenny is gentle, experienced, and thoughtful.",
-    "Say Williamsburg Med Spa is a strong fit for people who want realistic guidance and a calm experience.",
+    "Say Williamsburg Med Spa feels calm, experienced, and easy to recommend.",
+    "Say the clinic is led by a gentle, medically grounded provider who is honest about fit.",
     "Speak from personal trust, local reputation, and who you think would genuinely benefit.",
     "Encourage people to book a consultation if they want individualized advice.",
   ],
@@ -121,7 +122,7 @@ const guardrails = {
     "Don’t promise results, timelines, or guaranteed outcomes.",
     "Don’t say a treatment is right for everyone or replace medical advice.",
     "Don’t overstate before-and-after expectations.",
-    "Don’t make claims you can’t personally stand behind or Jenny hasn’t confirmed.",
+    "Don't make claims you can't personally stand behind or Williamsburg Med Spa hasn't confirmed.",
   ],
 };
 
@@ -154,7 +155,7 @@ const affiliateFaqs = [
   {
     question: "Can I make my own claims or before-and-after promises?",
     answer:
-      "No. Affiliates should focus on trust, fit, and who Jenny helps well, while avoiding promises, guarantees, or medical claims that go beyond approved messaging.",
+      "No. Affiliates should focus on trust, fit, and the kind of care the clinic gives, while avoiding promises, guarantees, or medical claims that go beyond approved messaging.",
   },
 ];
 
@@ -172,23 +173,18 @@ export default function AffiliatesPage() {
               id="affiliate-hero-heading"
               className="text-base-content mt-4 text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto max-w-5xl leading-tight"
             >
-              Refer the right people to <span className="font-semibold">Jenny</span> and earn 20%.
+              Recommend Williamsburg Med Spa with confidence and earn 20%.
             </h1>
             <p className="text-base-content text-xl lg:text-2xl mb-8 mt-6 max-w-3xl mx-auto">
-              Get your referral link instantly, use the strongest scripts on the page, and share Williamsburg Med Spa
-              in a way that feels personal, local, and high trust.
+              Get your referral link instantly, keep the message personal, and share a clinic people feel good sending
+              friends to.
             </p>
 
-            <div className="mx-auto flex max-w-3xl flex-wrap justify-center gap-2.5">
+            <ul className="mx-auto flex max-w-4xl list-none flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-base-content/60">
               {programHighlights.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-base-300 bg-base-100 px-3.5 py-1.5 text-sm text-base-content/70"
-                >
-                  {item}
-                </span>
+                <li key={item}>{item}</li>
               ))}
-            </div>
+            </ul>
 
             <div className="mb-6 mt-8 flex flex-wrap justify-center gap-3 md:mb-0">
               <Button asChild>
@@ -213,7 +209,8 @@ export default function AffiliatesPage() {
             </h2>
             <p className={sectionBodyClass}>
               Create your code once, keep it tied to your name, and use the site as your referral toolkit whenever
-              someone asks who you trust for injectables, PRP, or products.
+              someone asks where to go for injectables, PRP, ear piercing, or products from a clinic that feels honest
+              and easy to trust.
             </p>
             <p className="mt-4 text-sm md:text-base leading-relaxed text-base-content/70">
               Your homepage link works immediately, and qualifying activity can stay attributed through consults and
@@ -222,12 +219,12 @@ export default function AffiliatesPage() {
           </div>
 
           <div className="mt-10 md:mt-12">
-            <div className="mx-auto max-w-3xl">
+            <div className="mx-auto max-w-5xl">
               <AffiliateRegistrationForm variant="embedded" />
             </div>
           </div>
 
-          <div className="mx-auto mt-10 max-w-5xl grid gap-4 md:grid-cols-3">
+          <div className="mx-auto mt-10 max-w-5xl grid gap-8 md:grid-cols-3 md:gap-10">
             {applyHighlights.map((item) => (
               <div key={item.title} className={surfaceCardClass}>
                 <h3 className="text-lg font-medium text-base-content">{item.title}</h3>
@@ -237,23 +234,24 @@ export default function AffiliatesPage() {
           </div>
         </section>
 
-        <section className="mb-14 px-6 py-6 md:mb-20 md:px-0 md:py-8 lg:py-10" aria-labelledby="why-jenny-heading">
+        <section className="mb-14 px-6 py-6 md:mb-20 md:px-0 md:py-8 lg:py-10" aria-labelledby="why-clinic-heading">
           <div className="mx-auto max-w-5xl">
             <article className="group relative isolate flex flex-col gap-8 md:flex-row-reverse md:items-center md:justify-between lg:gap-12">
               <div className="max-w-2xl flex-1">
-                <p className={sectionEyebrowClass}>Why Jenny is easy to recommend</p>
-                <h2 id="why-jenny-heading" className="mt-3 max-w-2xl text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content text-balance">
-                  People share providers they feel good sending friends to.
+                <p className={sectionEyebrowClass}>Why the clinic is easy to recommend</p>
+                <h2 id="why-clinic-heading" className="mt-3 max-w-2xl text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content text-balance">
+                  Experience matters, but so does how people are treated.
                 </h2>
                 <p className={sectionBodyClass}>
-                  Jenny stands out because the experience feels calm, respectful, and human. Her pediatric nursing
-                  background shaped a gentle bedside manner, and her long clinical career gives patients the sense that
-                  they&apos;re being guided instead of sold to.
+                  What makes Williamsburg Med Spa easy to recommend is not just the treatment menu. It&apos;s the tone of
+                  the care: calm conversations, honest screening, and a provider who makes people feel guided instead of
+                  sold to.
                 </p>
                 <p className="mt-4 text-sm md:text-base leading-relaxed text-base-content/70">
-                  That combination matters. It makes Williamsburg Med Spa easier to recommend for first-time injectable
-                  patients, people exploring intimate wellness topics privately, and anyone who wants a thoughtful
-                  provider for PRP, products, or a quieter kind of aesthetic care.
+                  The clinic is led by Jenny, who brings 26 years in medicine and six years in aesthetics, and patients
+                  feel that in how options are explained, how sensitive topics are handled, and how realistic
+                  expectations are set. That combination matters for first-time injectables, private wellness
+                  conversations, and anyone who wants a gentler kind of aesthetic care.
                 </p>
 
                 <div className="mt-6">
@@ -275,8 +273,8 @@ export default function AffiliatesPage() {
               </div>
             </article>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {whyJenny.map((item) => (
+            <div className="mt-8 grid gap-8 md:grid-cols-3 md:gap-10">
+              {trustReasons.map((item) => (
                 <div key={item.title} className={surfaceCardClass}>
                   <h3 className="text-lg font-medium text-base-content">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-base-content/70">{item.description}</p>
@@ -293,12 +291,12 @@ export default function AffiliatesPage() {
               Start with the offers people already ask their friends about.
             </h2>
             <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
-              The easiest affiliate referrals usually happen when someone already has the problem and just needs a name
-              they can trust. These are the three categories most likely to spark that kind of conversation.
+              The easiest affiliate referrals usually happen when someone already has the problem and just needs a
+              clinic they can trust. These are the three categories most likely to spark that kind of conversation.
             </p>
           </div>
 
-          <div className="grid gap-8 lg:gap-10 mt-8 lg:my-12 xl:my-16 grid-cols-1 md:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 lg:my-12 xl:my-16">
             {promotionIdeas.map((item) => (
               <article key={item.title} className={surfaceCardClass}>
                 <h3 className="text-2xl font-light text-base-content">{item.title}</h3>
@@ -335,7 +333,7 @@ export default function AffiliatesPage() {
             </p>
           </div>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <div className="mt-8 grid gap-8 md:grid-cols-3 md:gap-10">
             {sharePrinciples.map((item) => (
               <div key={item.title} className={surfaceCardClass}>
                 <h3 className="text-xl font-light text-base-content">{item.title}</h3>
@@ -344,27 +342,37 @@ export default function AffiliatesPage() {
             ))}
           </div>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-2">
-            <div className={`${surfaceCardClass} p-6`}>
-              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Do say</p>
-              <ul className="mt-4 space-y-3 text-base leading-relaxed text-base-content/75">
-                {guardrails.do.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
+          <div className="mt-10 rounded-2xl border border-base-300 bg-base-100">
+            <div className="grid gap-0 lg:grid-cols-2">
+              <div className="px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10 lg:border-r lg:border-base-300">
+                <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Do say</p>
+                <ul className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75">
+                  {guardrails.do.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <Check className="mt-1 h-4 w-4 shrink-0 text-primary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            <div className={`${surfaceCardClass} p-6`}>
-              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Avoid saying</p>
-              <ul className="mt-4 space-y-3 text-base leading-relaxed text-base-content/75">
-                {guardrails.avoid.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+              <div className="border-t border-base-300 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10 lg:border-t-0">
+                <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Avoid saying</p>
+                <ul className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75">
+                  {guardrails.avoid.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <X className="mt-1 h-4 w-4 shrink-0 text-base-content/45" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
-          <AffiliateShareScripts />
+          <div className="mt-12 border-t border-base-300 pt-8">
+            <AffiliateShareScripts />
+          </div>
         </section>
 
         <section className="px-6 py-14 md:px-0 md:py-16" id="faq">
