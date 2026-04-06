@@ -10,16 +10,20 @@ import {
   buildEventDefaultFormState,
   buildEventSubmissionSchema,
   coerceEventSubmission,
-  type EventDefinition,
-  type EventFieldDefinition,
-  type EventFormState,
-} from "lib/events";
+} from "lib/event-form";
+import type { EventDefinition, EventFieldDefinition, EventFormState, EventOptionGroup } from "lib/events";
 import { cn } from "lib/utils";
 
 const WIDE_FIELD_TYPES = new Set(["textarea", "checkbox"]);
 
 const inputClassName =
-  "mt-2 w-full rounded-xl border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content shadow-sm transition-colors placeholder:text-base-content/35 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10";
+  "mt-2 w-full rounded-xl border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/35 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10";
+
+const getOptionGroups = (field: EventFieldDefinition): EventOptionGroup[] => {
+  if (field.optionGroups?.length) return field.optionGroups;
+  if (field.options?.length) return [{ label: "Options", options: field.options }];
+  return [];
+};
 
 const getFieldValue = (state: EventFormState, field: EventFieldDefinition) => {
   const value = state[field.id];
@@ -91,18 +95,8 @@ export default function EventForm({ event }: { event: EventDefinition }) {
   };
 
   return (
-    <form
-      className="mx-auto max-w-3xl rounded-[1.75rem] border border-base-300 bg-base-100 px-6 py-6 shadow-sm sm:px-8 sm:py-8 md:px-10 md:py-10"
-      onSubmit={handleSubmit}
-    >
-      <div className="border-b border-base-300 pb-6">
-        <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">{event.title} planning form</p>
-        <p className="mt-3 max-w-2xl text-base text-base-content/70">
-          Share the details below so we can prepare for the planning call.
-        </p>
-      </div>
-
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
+    <form className="mx-auto max-w-4xl" onSubmit={handleSubmit}>
+      <div className="grid gap-x-6 gap-y-8 md:grid-cols-2">
         {event.form.fields.map((field) => {
           const helperId = `${field.id}-help`;
           const isWideField = field.layout === "full" || WIDE_FIELD_TYPES.has(field.type);
@@ -110,49 +104,85 @@ export default function EventForm({ event }: { event: EventDefinition }) {
           if (field.type === "checkbox") {
             const selectedValues = getFieldValue(formState, field);
             const checkedValues = Array.isArray(selectedValues) ? selectedValues : [];
+            const lockedOptions = field.lockedOptions || [];
+            const optionGroups = getOptionGroups(field);
 
             return (
-              <fieldset key={field.id} className="space-y-3 md:col-span-2" aria-describedby={field.helperText ? helperId : undefined}>
+              <fieldset
+                key={field.id}
+                className="space-y-6 border-t border-base-300/80 pt-8 md:col-span-2"
+                aria-describedby={field.helperText ? helperId : undefined}
+              >
                 <legend className="block text-sm font-semibold text-base-content">{field.label}</legend>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {field.options?.map((option) => {
-                    const checked = checkedValues.includes(option);
-
-                    return (
-                      <label
-                        key={option}
-                        className={cn(
-                          "flex items-start gap-3 rounded-xl border px-4 py-3 text-sm leading-5 transition-colors",
-                          checked
-                            ? "border-primary bg-primary/5 text-base-content"
-                            : "border-base-300 bg-base-100 text-base-content/80 hover:bg-base-200/70"
-                        )}
-                      >
-                        <input
-                          type="checkbox"
-                          name={field.id}
-                          value={option}
-                          checked={checked}
-                          onChange={handleCheckboxChange}
-                          className="mt-1 h-4 w-4 shrink-0 accent-primary"
-                        />
-                        <span>{option}</span>
-                      </label>
-                    );
-                  })}
+                <div className="space-y-2">
+                  {field.helperText ? (
+                    <p className="max-w-3xl text-sm leading-6 text-base-content/65" id={helperId}>
+                      {field.helperText}
+                    </p>
+                  ) : null}
                 </div>
-                {field.helperText ? (
-                  <p className="text-xs text-base-content/60" id={helperId}>
-                    {field.helperText}
-                  </p>
+
+                {lockedOptions.length ? (
+                  <div className="rounded-[1.6rem] border border-primary/15 bg-primary/5 p-5 sm:p-6">
+                    <p className="text-[11px] uppercase tracking-[0.24em] text-primary/80">Core offer</p>
+                    <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                      <div>
+                        <p className="text-lg font-medium text-base-content">{lockedOptions.join(", ")}</p>
+                        <p className="mt-2 max-w-2xl text-sm leading-6 text-base-content/70">
+                          The host reward is tied to paid Botox guests, so Botox stays built into the event.
+                        </p>
+                      </div>
+                      <span className="inline-flex w-fit rounded-full border border-primary/20 bg-base-100 px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] text-primary">
+                        Included
+                      </span>
+                    </div>
+                  </div>
                 ) : null}
+
+                <div className="grid gap-4 lg:grid-cols-2">
+                  {optionGroups.map((group) => (
+                    <div
+                      key={group.label}
+                      className="rounded-[1.5rem] border border-base-300/70 bg-base-200/35 p-4 sm:p-5"
+                    >
+                      <p className="text-[11px] uppercase tracking-[0.22em] text-base-content/55">{group.label}</p>
+                      <div className="mt-4 grid gap-3">
+                        {group.options.map((option) => {
+                          const checked = checkedValues.includes(option);
+
+                          return (
+                            <label
+                              key={option}
+                              className={cn(
+                                "flex items-start gap-3 rounded-xl border px-4 py-3 text-sm leading-5 transition-colors",
+                                checked
+                                  ? "border-primary bg-base-100 text-base-content"
+                                  : "border-base-300 bg-base-100/90 text-base-content/80 hover:border-base-content/15 hover:bg-base-100"
+                              )}
+                            >
+                              <input
+                                type="checkbox"
+                                name={field.id}
+                                value={option}
+                                checked={checked}
+                                onChange={handleCheckboxChange}
+                                className="mt-1 h-4 w-4 shrink-0 accent-primary"
+                              />
+                              <span>{option}</span>
+                            </label>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </fieldset>
             );
           }
 
           if (field.type === "textarea") {
             return (
-              <div className="space-y-2 md:col-span-2" key={field.id}>
+              <div className="space-y-2 border-t border-base-300/80 pt-8 md:col-span-2" key={field.id}>
                 <label className="block text-sm font-semibold text-base-content" htmlFor={field.id}>
                   {field.label}
                 </label>
@@ -201,7 +231,7 @@ export default function EventForm({ event }: { event: EventDefinition }) {
         })}
       </div>
 
-      <div className="mt-8 flex flex-col gap-4 border-t border-base-300 pt-6 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-8 flex flex-col gap-4 border-t border-base-300/80 pt-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-base-content/60">
           After you submit, we&apos;ll send you straight into scheduling for a quick planning call.
         </p>

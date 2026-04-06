@@ -1,10 +1,14 @@
-import * as yup from "yup";
+import { procedures, products } from "data";
 
 export type EventFieldType = "text" | "email" | "tel" | "number" | "textarea" | "checkbox";
 export type EventFieldLayout = "half" | "full";
 export type EventFieldValue = string | number | string[];
 export type EventFormStateValue = string | string[];
 export type EventFormState = Record<string, EventFormStateValue>;
+export type EventOptionGroup = {
+  label: string;
+  options: string[];
+};
 
 export type EventFieldDefinition = {
   id: string;
@@ -15,6 +19,8 @@ export type EventFieldDefinition = {
   helperText?: string;
   placeholder?: string;
   options?: string[];
+  optionGroups?: EventOptionGroup[];
+  lockedOptions?: string[];
   min?: number;
   defaultValue?: string | string[];
 };
@@ -116,6 +122,56 @@ const CORE_EVENT_FIELD_IDS = ["name", "email", "phone"] as const;
 
 export const isCoreEventFieldId = (id: string) => CORE_EVENT_FIELD_IDS.includes(id as (typeof CORE_EVENT_FIELD_IDS)[number]);
 
+const isPublishedEntry = (entry: Record<string, unknown>) => !("published" in entry) || entry.published !== false;
+
+const getProcedureNamesBySlug = (slugs: string[]) => {
+  const publishedProcedureMap = new Map(
+    procedures.filter(isPublishedEntry).map((procedure) => [procedure.slug, procedure.name] as const)
+  );
+
+  return slugs.flatMap((slug) => {
+    const name = publishedProcedureMap.get(slug);
+    return name ? [name] : [];
+  });
+};
+
+const buildBotoxPartyAddOnOptionGroups = (): EventOptionGroup[] => {
+  const injectableSlugs = ["xeomin", "filler", "hyperhidrosis-treatment"];
+  const regenerativeSlugs = [
+    "o-shot",
+    "p-shot",
+    "prp-breast-lift",
+    "prp-hair-restoration",
+    "prp-facial",
+    "prp-face-lift",
+    "joint-restoration",
+  ];
+
+  const categorizedProcedureSlugs = new Set(["botox", ...injectableSlugs, ...regenerativeSlugs]);
+  const otherServiceOptions = procedures
+    .filter((procedure) => isPublishedEntry(procedure) && !categorizedProcedureSlugs.has(procedure.slug))
+    .map((procedure) => procedure.name);
+
+  return [
+    {
+      label: "Other injectables",
+      options: getProcedureNamesBySlug(injectableSlugs),
+    },
+    {
+      label: "PRP and regenerative care",
+      options: getProcedureNamesBySlug(regenerativeSlugs),
+    },
+    {
+      label: "Other services",
+      options: otherServiceOptions,
+    },
+    {
+      label: "Products",
+      options: products.filter(isPublishedEntry).map((product) => product.name),
+    },
+  ].filter((group) => group.options.length > 0);
+};
+
 const BOTOX_PARTY_EVENT: EventDefinition = {
   slug: "botox-party",
   title: "Botox Party",
@@ -148,9 +204,9 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
   },
   rewards: {
     eyebrow: "Host rewards",
-    heading: "The party grows, and the host rewards grow with it.",
+    heading: "More guests, more host rewards.",
     body:
-      "Keep the headline simple: five paid Botox guests gets the host free Botox, and every five after that adds more free products and procedure credits.",
+      "Five paid Botox guests gets the host Botox free. Every additional five adds free products and procedure credits.",
     cards: [
       {
         eyebrow: "5 paid Botox guests",
@@ -205,7 +261,7 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
     body:
       "This page is built for hosts who already have interest from friends, neighbors, or contacts and want to turn that interest into a cleanly organized Botox event.",
     supportingBody:
-      "If your group is also curious about Xeomin, filler, or products, include that in the form so the planning call can be specific instead of generic.",
+      "If your group is also curious about other injectables, regenerative care, products, or another service on the site, include that in the form so the planning call can be specific instead of generic.",
     notes: [
       {
         title: "Built for real friend groups",
@@ -215,7 +271,7 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
       {
         title: "Add-ons are welcome",
         description:
-          "Botox is the core offer, but we can also discuss Xeomin, filler, and medical-grade products if that better fits the group.",
+          "Botox is the core offer, but we can also plan around other injectables, regenerative care, ear piercing, and medical-grade products if that better fits the group.",
       },
       {
         title: "Medical screening still matters",
@@ -228,7 +284,7 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
     eyebrow: "Plan your party",
     heading: "Start with one intake form, then choose your planning call.",
     body:
-      "Share the group size, the date range, the location idea, and any add-on interests. Once the form is in, you'll be redirected to schedule a quick planning conversation.",
+      "Share the group size, the date range, the location idea, and anything else the group may want to ask about. Once the form is in, you'll be redirected to schedule a quick planning conversation.",
     disclaimer:
       "Botox is a prescription treatment. Final treatment plans, dosing, candidacy, and timing are confirmed individually after review.",
     submitButtonLabel: "Plan My Botox Party",
@@ -284,13 +340,15 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
       },
       {
         id: "desiredTreatments",
-        label: "What should we plan around?",
+        label: "Anything else your group may want to discuss?",
         type: "checkbox",
         layout: "full",
         required: true,
+        lockedOptions: ["Botox"],
         defaultValue: ["Botox"],
-        options: ["Botox", "Xeomin", "Filler", "Medical-Grade Products"],
-        helperText: "Botox drives the host offer, but we can also plan add-ons your group wants to discuss.",
+        optionGroups: buildBotoxPartyAddOnOptionGroups(),
+        helperText:
+          "Botox stays included because the host offer is based on paid Botox guests. Use the add-ons below to flag anything else your group wants to ask about.",
       },
       {
         id: "comments",
@@ -310,9 +368,9 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
           "Paid Botox guests count toward the host reward. We confirm the qualifying guest count through the actual party bookings and treatments completed.",
       },
       {
-        question: "Can guests ask about Xeomin, filler, or products too?",
+        question: "Can guests ask about other treatments or products too?",
         answer:
-          "Yes. The host promotion is Botox-led, but the planning form lets you tell us if the group also wants to discuss Xeomin, filler, or medical-grade products.",
+          "Yes. The host promotion is Botox-led, but the planning form lets you flag other injectables, regenerative procedures, products, and other services your group wants to discuss.",
       },
       {
         question: "Where can a Botox party happen?",
@@ -357,87 +415,6 @@ export const EVENTS: EventDefinition[] = [BOTOX_PARTY_EVENT];
 export const getPublishedEvents = () => EVENTS.filter((event) => event.published);
 
 export const getEventBySlug = (slug: string) => EVENTS.find((event) => event.slug === slug);
-
-export const buildEventDefaultFormState = (event: EventDefinition): EventFormState =>
-  Object.fromEntries(
-    event.form.fields.map((field) => {
-      if (field.type === "checkbox") {
-        return [field.id, Array.isArray(field.defaultValue) ? [...field.defaultValue] : []];
-      }
-
-      return [field.id, typeof field.defaultValue === "string" ? field.defaultValue : ""];
-    })
-  );
-
-export const coerceEventSubmission = (
-  event: EventDefinition,
-  raw: Record<string, unknown>
-): Record<string, EventFieldValue> =>
-  Object.fromEntries(
-    event.form.fields.map((field) => {
-      const rawValue = raw[field.id];
-
-      if (field.type === "checkbox") {
-        return [
-          field.id,
-          Array.isArray(rawValue)
-            ? rawValue.map((value) => String(value).trim()).filter(Boolean)
-            : [],
-        ];
-      }
-
-      if (field.type === "number") {
-        if (typeof rawValue === "number") return [field.id, rawValue];
-        if (typeof rawValue === "string" && rawValue.trim()) return [field.id, Number(rawValue)];
-        return [field.id, Number.NaN];
-      }
-
-      return [field.id, typeof rawValue === "string" ? rawValue.trim() : ""];
-    })
-  );
-
-export const buildEventSubmissionSchema = (event: EventDefinition) =>
-  yup.object(
-    Object.fromEntries(
-      event.form.fields.map((field) => {
-        if (field.type === "checkbox") {
-          let schema = yup.array().of(yup.string().required());
-
-          if (field.required) {
-            schema = schema.min(1, `${field.label} is required.`).required(`${field.label} is required.`);
-          }
-
-          return [field.id, schema];
-        }
-
-        if (field.type === "number") {
-          let schema = yup.number().typeError(`${field.label} is required.`).integer();
-
-          if (typeof field.min === "number") {
-            schema = schema.min(field.min, `${field.label} must be at least ${field.min}.`);
-          }
-
-          if (field.required) {
-            schema = schema.required(`${field.label} is required.`);
-          }
-
-          return [field.id, schema];
-        }
-
-        let schema = yup.string();
-
-        if (field.type === "email") {
-          schema = schema.email("Please enter a valid email.");
-        }
-
-        if (field.required) {
-          schema = schema.required(`${field.label} is required.`);
-        }
-
-        return [field.id, schema];
-      })
-    )
-  );
 
 export const serializeEventFieldValue = (value: EventFieldValue) =>
   Array.isArray(value) ? value.join(", ") : String(value);

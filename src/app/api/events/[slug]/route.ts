@@ -3,10 +3,9 @@ import nodemailer from "nodemailer";
 import * as yup from "yup";
 
 import { createEventRequest, updateEventRequestNotificationStatus } from "lib/event-requests";
+import { buildEventSubmissionSchema, coerceEventSubmission } from "lib/event-form";
 import {
   buildEventNotificationLines,
-  buildEventSubmissionSchema,
-  coerceEventSubmission,
   getEventBySlug,
   isCoreEventFieldId,
   type EventFieldValue,

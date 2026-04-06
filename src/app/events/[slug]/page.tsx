@@ -39,7 +39,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
 }
 
 const sectionEyebrowClass = "text-[11px] uppercase tracking-[0.24em] text-base-content/60";
-const sectionHeadingClass = "mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content";
+const sectionHeadingClass = "mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content text-balance";
 const sectionBodyClass = "mt-4 text-base md:text-lg leading-relaxed text-base-content/80";
 const surfaceCardClass = "rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm";
 
@@ -65,8 +65,8 @@ export default function EventDetailPage({ params }: PageProps) {
       <div className="max-w-xl md:max-w-7xl mx-auto md:px-8 z-10">
         <section className="px-6 py-16 md:px-0 md:py-24 lg:py-28" aria-labelledby={`${event.slug}-hero-heading`}>
           <div className="mx-auto max-w-6xl">
-            <div className="relative overflow-hidden rounded-[2rem] border border-base-300 bg-base-200 shadow-sm">
-              <div className="relative aspect-[11/6] w-full">
+            <div className="relative overflow-hidden rounded-[2.4rem] bg-base-200/60 shadow-[0_28px_90px_-56px_rgba(0,0,0,0.45)]">
+              <div className="relative aspect-[6/5] w-full sm:aspect-[8/5] lg:aspect-[16/7]">
                 <Image
                   src={event.heroImageSrc}
                   alt={event.heroImageAlt}
@@ -75,42 +75,40 @@ export default function EventDetailPage({ params }: PageProps) {
                   sizes="(max-width: 768px) 100vw, 1200px"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-white/10" />
+              </div>
+            </div>
+
+            <div className="mx-auto mt-10 max-w-5xl text-center md:mt-12">
+              <p className={sectionEyebrowClass}>{event.hero.eyebrow}</p>
+              <h1
+                id={`${event.slug}-hero-heading`}
+                className="mt-4 text-4xl/snug font-light leading-tight text-base-content text-balance sm:text-5xl/snug md:text-6xl/snug"
+              >
+                {event.hero.heading}
+              </h1>
+              <p className="mx-auto mb-8 mt-6 max-w-4xl text-xl text-base-content lg:text-2xl">{event.hero.body}</p>
+
+              <div className="mx-auto flex max-w-3xl flex-wrap justify-center gap-2.5">
+                {event.hero.highlights.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-base-300 bg-base-100 px-3.5 py-1.5 text-sm text-base-content/70"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
 
-              <div className="p-6 md:p-8 lg:p-10">
-                <div className="mx-auto max-w-4xl text-center">
-                  <p className={sectionEyebrowClass}>{event.hero.eyebrow}</p>
-                  <h1
-                    id={`${event.slug}-hero-heading`}
-                    className="text-base-content mt-4 text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light leading-tight"
-                  >
-                    {event.hero.heading}
-                  </h1>
-                  <p className="text-base-content text-xl lg:text-2xl mb-8 mt-6 max-w-3xl mx-auto">{event.hero.body}</p>
-
-                  <div className="mx-auto flex max-w-3xl flex-wrap justify-center gap-2.5">
-                    {event.hero.highlights.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full border border-base-300 bg-base-100 px-3.5 py-1.5 text-sm text-base-content/70"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="mt-8 flex flex-wrap justify-center gap-3">
-                    <Button asChild>
-                      <a href="#event-form">{event.hero.primaryCtaLabel}</a>
-                    </Button>
-                    {event.hero.secondaryCtaLabel && event.hero.secondaryCtaHref ? (
-                      <Button asChild variant="secondary">
-                        <Link href={event.hero.secondaryCtaHref}>{event.hero.secondaryCtaLabel}</Link>
-                      </Button>
-                    ) : null}
-                  </div>
-                </div>
+              <div className="mt-8 flex flex-wrap justify-center gap-3">
+                <Button asChild>
+                  <a href="#event-form">{event.hero.primaryCtaLabel}</a>
+                </Button>
+                {event.hero.secondaryCtaLabel && event.hero.secondaryCtaHref ? (
+                  <Button asChild variant="secondary">
+                    <Link href={event.hero.secondaryCtaHref}>{event.hero.secondaryCtaLabel}</Link>
+                  </Button>
+                ) : null}
               </div>
             </div>
           </div>
@@ -119,10 +117,10 @@ export default function EventDetailPage({ params }: PageProps) {
         <section className="mb-14 px-6 py-6 md:mb-20 md:px-0 md:py-8 lg:py-10">
           <div className="text-center">
             <p className={sectionEyebrowClass}>{event.rewards.eyebrow}</p>
-            <h2 className="text-base-content mt-4 text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4">
+            <h2 className="mx-auto mt-4 max-w-4xl pb-4 text-4xl/snug font-light leading-tight text-base-content text-balance sm:text-5xl/snug md:text-[3.75rem]/[1.06]">
               {event.rewards.heading}
             </h2>
-            <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">{event.rewards.body}</p>
+            <p className="mx-auto mb-8 max-w-4xl text-lg text-base-content/80 lg:text-xl">{event.rewards.body}</p>
           </div>
 
           <div className="grid gap-8 lg:gap-10 mt-8 lg:my-12 xl:my-16 grid-cols-1 md:grid-cols-3">
