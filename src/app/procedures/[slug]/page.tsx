@@ -26,6 +26,32 @@ const ailmentsTagLabels = {
   uncommon: "Less Common Area",
   experimental: "Clinical Evaluation Needed",
 };
+const featuredGuideSlugs: Record<string, string> = {
+  botox: "botox-vs-xeomin-williamsburg-va",
+  xeomin: "botox-vs-xeomin-williamsburg-va",
+  filler: "how-long-do-dermal-fillers-last-in-williamsburg-va",
+};
+const featuredGuideCopy: Record<string, { button: string; heading: string; description: string; linkLabel: string }> = {
+  botox: {
+    button: "Botox vs Xeomin Guide",
+    heading: "Still deciding between Botox and Xeomin?",
+    description: "Review differences in timing, treatment planning, and candidacy before your appointment.",
+    linkLabel: "Read the Botox vs Xeomin article",
+  },
+  xeomin: {
+    button: "Botox vs Xeomin Guide",
+    heading: "Still deciding between Xeomin and Botox?",
+    description: "Review differences in timing, treatment planning, and candidacy before your appointment.",
+    linkLabel: "Read the Botox vs Xeomin article",
+  },
+  filler: {
+    button: "Filler Longevity Guide",
+    heading: "Wondering how long dermal fillers last?",
+    description:
+      "Review how longevity can vary across lips, cheeks, under-eyes, and other treatment areas before you book.",
+    linkLabel: "Read the dermal filler longevity guide",
+  },
+};
 
 type Params = { params: { slug: string } };
 
@@ -71,15 +97,25 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
   const procedure = procedures.find((procedure) => procedure.slug === slug);
   if (!procedure) return notFound();
   const catalogItem = getCatalogConfigBySlug(slug);
-  const comparisonSlug = "botox-vs-xeomin-williamsburg-va";
   const publishedAilments = await getPublishedAilmentsForProcedure(procedure.slug);
   const articles = (await getPublishedBlogPosts())
     .filter(({ tags }) => tags?.includes(procedure.name))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   const hasAilments = Boolean(publishedAilments.length);
   const showOShotCredential = procedure.slug === "o-shot";
-  const showComparisonGuide =
-    (procedure.slug === "botox" || procedure.slug === "xeomin") && articles.some((article) => article.slug === comparisonSlug);
+  const pageHeading = procedure.seo?.title?.split("|")[0].trim() || `${procedure.name} in Williamsburg, VA`;
+  const featuredGuide = articles.find((article) => article.slug === featuredGuideSlugs[procedure.slug]);
+  const featuredGuideCta = featuredGuide ? featuredGuideCopy[procedure.slug] : undefined;
+  const consultationSupportCopy =
+    procedure.slug === "hyperhidrosis-treatment"
+      ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
+      : `Consultation covers candidacy, treatment areas, expected timing, and whether ${procedure.name} fits your goals with a conservative, natural-looking plan.`;
+  const hyperhidrosisFeaturedAilments =
+    procedure.slug === "hyperhidrosis-treatment"
+      ? ["underarm-sweating", "sweaty-palms", "sweaty-feet"]
+          .map((featuredSlug) => publishedAilments.find((ailment) => ailment.slug === featuredSlug))
+          .filter((ailment): ailment is NonNullable<typeof ailment> => Boolean(ailment))
+      : [];
 
   return (
     <>
@@ -91,11 +127,15 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
       <StructuredData type="FAQ" faqs={procedure.faqs} />
       <div className="max-w-7xl mx-auto py-16">
         <div className="text-center">
-          <h1 className="text-3xl md:text-5xl mx-auto leading-tight pb-4">
-            <span className="font-bold">{procedure.name}</span> by Williamsburg Med Spa
-          </h1>
+          <h1 className="text-3xl md:text-5xl mx-auto leading-tight pb-4">{pageHeading}</h1>
           <p className="text-xl lg:text-2xl mb-8 max-w-5xl mx-auto font-light">{humanizeMedicalCopy(procedure.headline)}</p>
-          <p className="text-lg max-w-4xl mx-auto">{humanizeMedicalCopy(procedure.description)}</p>
+          <p className="text-base md:text-lg max-w-4xl mx-auto text-base-content/75">
+            {humanizeMedicalCopy(procedure.subline)}
+          </p>
+          <p className="text-lg max-w-4xl mx-auto mt-4">{humanizeMedicalCopy(procedure.description)}</p>
+          <p className="text-sm md:text-base text-base-content/70 max-w-3xl mx-auto mt-4">
+            {consultationSupportCopy}
+          </p>
           {showOShotCredential && <CmaCredentialStrip centered className="mt-6 mx-auto max-w-3xl" />}
           <div className="flex space-x-4 mx-auto my-8 justify-center">
             <Button asChild>
@@ -106,9 +146,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                 <Link href="#benefits">Explore Benefits</Link>
               </Button>
             )}
-            {showComparisonGuide && (
+            {featuredGuide && featuredGuideCta && (
               <Button asChild variant="outline">
-                <Link href={`/blog/${comparisonSlug}`}>Botox vs Xeomin Guide</Link>
+                <Link href={`/blog/${featuredGuide.slug}`}>{featuredGuideCta.button}</Link>
               </Button>
             )}
           </div>
@@ -138,6 +178,22 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               fulfillment={catalogItem.fulfillment}
               customerNote={catalogItem.customerNote}
             />
+          )}
+
+          {Boolean(hyperhidrosisFeaturedAilments.length) && (
+            <div className="mt-10 max-w-4xl mx-auto">
+              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Popular symptom pages</p>
+              <p className="mt-3 text-base md:text-lg leading-relaxed text-base-content/75">
+                Start with the symptom page that best matches what is disrupting daily life most.
+              </p>
+              <div className="mt-5 flex flex-wrap justify-center gap-3">
+                {hyperhidrosisFeaturedAilments.map((ailment) => (
+                  <Button key={ailment.slug} asChild variant="secondary" size="sm">
+                    <Link href={`/procedures/${procedure.slug}/for/${ailment.slug}`}>{ailment.title}</Link>
+                  </Button>
+                ))}
+              </div>
+            </div>
           )}
         </div>
 
@@ -277,14 +333,12 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </div>
           </div>
         )}
-        {showComparisonGuide && (
-          <div className="my-24 max-w-3xl mx-auto rounded-2xl border border-base-300 bg-base-200 p-8 text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-3">Still deciding between Botox and Xeomin?</h2>
-            <p className="text-base md:text-lg text-base-content/80 mb-6">
-              Review differences in timing, treatment planning, and candidacy before your appointment.
-            </p>
+        {featuredGuide && featuredGuideCta && (
+          <div className="my-24 max-w-3xl mx-auto border-t border-base-300 pt-10 text-center">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-3">{featuredGuideCta.heading}</h2>
+            <p className="text-base md:text-lg text-base-content/80 mb-6">{featuredGuideCta.description}</p>
             <Button asChild variant="secondary">
-              <Link href={`/blog/${comparisonSlug}`}>Read the Botox vs Xeomin article</Link>
+              <Link href={`/blog/${featuredGuide.slug}`}>{featuredGuideCta.linkLabel}</Link>
             </Button>
           </div>
         )}

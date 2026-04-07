@@ -1629,22 +1629,22 @@ export const procedures = [
     name: "Xeomin",
     slug: "xeomin",
     seo: {
-      title: "Xeomin Injections in Williamsburg, VA",
+      title: "Xeomin in Williamsburg, VA | Natural-Looking Xeomin Injections",
       description:
-        "Targeted Xeomin injections in Williamsburg, VA to soften lines and wrinkles while maintaining natural facial expression.",
+        "Xeomin injections in Williamsburg, VA for forehead lines, frown lines, crow's feet, lip flip planning, and selected facial movement areas with natural-looking treatment goals.",
     },
     description:
-      "Xeomin is a unique non-surgical procedure targeting a variety of facial areas, including bunny lines, forehead, 'lip flip', crow's feet, gummy smile, and also treating hyperhidrosis. By temporarily inhibiting muscle contractions, Xeomin can smooth out wrinkles, creating a more youthful and rejuvenated appearance. Its precision and effectiveness have made it a popular choice for those seeking to enhance their natural beauty without invasive surgery.",
-    headline: "Express Your Natural Beauty: Targeted, Non-Invasive, Refreshing!",
+      "Xeomin is a botulinum toxin type A injectable used to soften dynamic expression lines in areas such as forehead lines, frown lines, crow's feet, lip flip zones, bunny lines, and selected lower-face movement patterns. At Williamsburg Med Spa, Xeomin treatment is planned around muscle movement, facial balance, and realistic follow-up timing so results look refreshed rather than frozen.",
+    headline: "Xeomin injections planned for subtle, natural-looking movement.",
     subline:
-      "Xeomin focuses on specific facial areas, smoothing out wrinkles and addressing hyperhidrosis. It's a non-surgical solution to enhance your beauty and rejuvenate your appearance.",
+      "Xeomin can treat forehead lines, frown lines, crow's feet, lip flip concerns, bunny lines, and select lower-face areas with a conservative dosing approach.",
     image: "/procedure/xeomin.png",
     price: "$250 increments",
     // programmatic SEO copy
     blogHeadline:
-      "Want a refreshed, wrinkle-free face without invasive treatments? Explore our Xeomin guides for treatment planning, expected timing, and Botox-vs-Xeomin decision support.",
+      "Researching Xeomin in Williamsburg? Review treatment areas, expected timing, hyperhidrosis use, and our Botox-vs-Xeomin comparison before you book.",
     benefitsHeadline:
-      "Enhance your beauty by targeting the details. With Xeomin, witness a smoother, wrinkle-free face that's radiant and youthful. Embrace a transformation that's both subtle and impactful, amplifying your natural beauty.",
+      "Xeomin is often used to soften expression lines while keeping facial movement balanced and results appropriate to your goals.",
     benefits: [
       {
         emoji: "🌟",
@@ -1671,7 +1671,7 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "Revitalize your appearance and improve your well-being with Xeomin, a versatile treatment that addresses a multitude of issues. From common concerns like forehead wrinkles and crow's feet to more specialized treatments for conditions like hyperhidrosis and migraines, Xeomin offers an array of solutions for both aesthetic and medical needs. Discover how this innovative treatment can provide you with the results you've been seeking.",
+      "Xeomin can be used across several facial movement patterns and selected non-cosmetic concerns such as hyperhidrosis. Treatment planning focuses on anatomy, dosing, comfort, and whether the specific area is a good fit for neuromodulator treatment.",
     ailments: [
       {
         title: "Forehead Wrinkles",
@@ -1803,7 +1803,7 @@ export const procedures = [
       },
     ],
     faqHeadline:
-      "Experience a smoother, more youthful complexion with Xeomin. This innovative treatment targets the underlying causes of fine lines and wrinkles.",
+      "Get practical answers about Xeomin treatment areas, onset, longevity, and how Xeomin compares with Botox.",
     faqs: [
       {
         question: "How does Xeomin differ from Botox?",
@@ -1837,7 +1837,7 @@ export const procedures = [
     seo: {
       title: "Dermal Fillers in Williamsburg, VA",
       description:
-        "Dermal filler treatments in Williamsburg, VA for natural facial contouring, lip enhancement, and volume restoration.",
+        "Dermal fillers in Williamsburg, VA for lips, cheeks, under-eyes, jawline contour, and natural-looking facial volume restoration with conservative treatment planning.",
     },
     description:
       "Dermal fillers are injectable gels commonly used to restore facial volume, soften folds, enhance lips, and refine contour in areas such as cheeks, jawline, and under-eyes. At Williamsburg Med Spa, filler planning focuses on conservative placement, clear discussion of longevity and reversibility, and results that stay proportional to your features.",
@@ -1848,7 +1848,7 @@ export const procedures = [
     price: "$700 per syringe",
     // programmatic SEO copy
     blogHeadline:
-      "Researching dermal fillers in Williamsburg? Explore guidance on lips, cheeks, under-eyes, jawline contouring, longevity, and how consultation shapes the treatment plan.",
+      "Researching dermal fillers in Williamsburg? Explore lips, cheeks, under-eyes, how long filler can last, and what consultation should cover before you book.",
     benefitsHeadline:
       "Dermal fillers can restore support and definition in specific facial zones while keeping outcomes balanced, flexible, and natural-looking.",
     benefits: [
@@ -2008,7 +2008,7 @@ export const procedures = [
       },
     ],
     faqHeadline:
-      "Get practical answers about dermal filler treatment areas, longevity, comfort, safety, and reversibility.",
+      "Get practical answers about lip filler, cheek filler, under-eye filler, longevity, comfort, safety, and reversibility.",
     faqs: [
       {
         question: "What areas can be treated with dermal fillers?",
@@ -2019,6 +2019,11 @@ export const procedures = [
         question: "How long do the results last?",
         answer:
           "The longevity of filler results varies based on the type of filler used and individual factors. Generally, results can last from 6 months to over a year.",
+      },
+      {
+        question: "What should a filler consultation cover?",
+        answer:
+          "A good filler consultation should cover the area being treated, the amount of change you want, likely swelling and bruising, expected longevity, reversibility, and whether a different area should be prioritized first.",
       },
       {
         question: "Are fillers safe?",
@@ -2041,22 +2046,22 @@ export const procedures = [
     name: "Hyperhidrosis Treatment",
     slug: "hyperhidrosis-treatment",
     seo: {
-      title: "Hyperhidrosis Treatment in Williamsburg, VA",
+      title: "Hyperhidrosis Treatment in Williamsburg, VA | Underarms, Palms & Feet",
       description:
-        "Xeomin-based hyperhidrosis treatment in Williamsburg, VA to help reduce excessive sweating in underarms, hands, feet, and other areas.",
+        "Hyperhidrosis treatment in Williamsburg, VA using Xeomin to help reduce excessive sweating in underarms, sweaty palms, sweaty feet, and other localized areas.",
     },
     description:
-      "Our Hyperhidrosis treatment utilizes Xeomin injections to effectively address excessive sweating, a condition also known as Hyperhidrosis. By blocking the nerve signals to sweat glands, Xeomin can significantly reduce sweat production, providing relief for those affected by this condition. This non-invasive treatment is a practical alternative to surgery, offering a high success rate and minimal side effects.",
-    headline: "Experience Refreshing Relief: Non-Invasive, Effective, Liberating!",
+      "Hyperhidrosis treatment uses Xeomin injections to reduce excessive sweating in targeted areas such as underarms, palms, and feet. At Williamsburg Med Spa, treatment planning starts with the area disrupting daily life most, whether that means visible sweat stains, clammy hands, damp shoes, or a localized sweating pattern that has not responded well to topical options.",
+    headline: "Hyperhidrosis treatment for underarms, palms, feet, and other sweat-prone areas.",
     subline:
-      "Our Hyperhidrosis treatment with Xeomin injections effectively reduces sweat production, offering a non-invasive solution to those affected by excessive sweating.",
+      "Xeomin can help reduce excessive sweating in targeted areas with a localized, non-surgical treatment plan built around comfort and day-to-day function.",
     image: "/procedure/armpit.png",
     price: "$1,000+",
     // programmatic SEO copy
     blogHeadline:
-      "Bothered by excessive sweating? Explore our Hyperhidrosis Treatment articles. Understand how Xeomin injections provide relief, offering testimonials and expert solutions for this condition.",
+      "Looking for hyperhidrosis treatment in Williamsburg? Start with underarm sweating, sweaty palms, and sweaty feet, then review how Xeomin is used and what maintenance may look like.",
     benefitsHeadline:
-      "Experience the freedom from excessive sweating. With our Hyperhidrosis treatment using Xeomin injections, enjoy a life where dryness meets confidence.",
+      "Hyperhidrosis treatment can reduce day-to-day disruption from visible sweat, damp hands, and moisture-prone feet while keeping treatment localized to the area that bothers you most.",
     benefits: [
       {
         emoji: "🌬",
@@ -2092,7 +2097,7 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "Excessive sweating, also known as hyperhidrosis, can be a significant source of discomfort and embarrassment, affecting various areas of the body. Thankfully, Xeomin offers an innovative and effective treatment to manage this condition. Whether you're dealing with persistent underarm sweat, clammy palms, or even moisture-prone feet, Xeomin can help regulate sweat production and improve your quality of life. Explore how Xeomin can help you with hyperhidrosis in these common and uncommon application areas.",
+      "Hyperhidrosis can show up as underarm sweat stains, clammy palms, damp feet, facial sweating, or other localized moisture issues. Treatment usually starts with the area causing the most embarrassment, friction, or day-to-day limitation, with underarms, palms, and feet among the most common places patients ask about.",
     ailments: [
       {
         title: "Underarm Sweating",
@@ -2153,12 +2158,12 @@ export const procedures = [
       },
     ],
     faqHeadline:
-      "Experience a drier, more confident you with Hyperhidrosis Treatment using Xeomin injections. Get answers to commonly asked questions.",
+      "Get practical answers about hyperhidrosis treatment, how Xeomin works, which areas can be treated, and how long relief may last.",
     faqs: [
       {
-        question: "What causes hyperhidrosis?",
+        question: "What areas can be treated for hyperhidrosis?",
         answer:
-          "Hyperhidrosis, or excessive sweating, can arise from genetics, hormonal shifts, certain medications, or specific medical conditions.",
+          "Common treatment areas include underarms, palms, feet, and some other localized zones where excessive sweating is consistently disruptive.",
       },
       {
         question: "How does the treatment work?",
@@ -2166,18 +2171,24 @@ export const procedures = [
           "Our Hyperhidrosis treatment uses Xeomin injections to block nerve signals to sweat glands, significantly decreasing sweat production.",
       },
       {
-        question: "Is the treatment permanent?",
+        question: "How long can relief last?",
         answer:
           "While the treatment provides relief, it is not permanent. Results from Xeomin injections can last up to 7-8 months.",
+      },
+      {
+        question: "How soon can I see results?",
+        answer:
+          "Results can be observed shortly after the treatment and typically improve over a few days.",
+      },
+      {
+        question: "What causes hyperhidrosis?",
+        answer:
+          "Hyperhidrosis, or excessive sweating, can arise from genetics, hormonal shifts, certain medications, or specific medical conditions.",
       },
       {
         question: "Are there any side effects?",
         answer:
           "Side effects are generally minimal with Xeomin injections. Some might experience temporary injection site reactions, but serious side effects are rare.",
-      },
-      {
-        question: "How soon can I see results?",
-        answer: "Results can be observed shortly after the treatment and typically improve over a few days.",
       },
     ],
   },
