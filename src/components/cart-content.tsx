@@ -6,8 +6,10 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { AlertCircle, ArrowRight, Loader, Minus, Plus, ShoppingBag, Sparkles, X } from "lucide-react";
 
+import AddToCartButton from "components/add-to-cart-button";
 import { useCart } from "components/cart-provider";
 import { Button } from "components/ui/button";
+import { getCartRecommendations, type CartRecommendation } from "config/cart-recommendations";
 import { formatUsd } from "lib/price";
 import { cn } from "lib/utils";
 
@@ -38,7 +40,7 @@ type Props = {
   onNavigate?: () => void;
 };
 
-const surfaceCardClass = "relative overflow-hidden rounded-2xl border border-base-300 bg-base-100 shadow-sm";
+const surfaceCardClass = "relative overflow-hidden rounded-2xl border border-base-300 bg-base-100";
 const surfaceAccentClass = "hidden";
 const eyebrowClass = "text-[11px] uppercase tracking-[0.24em] text-base-content/60";
 const softButtonClass = "rounded-md";
@@ -73,7 +75,7 @@ function QuantityControl({
 
   return (
     <div>
-      <div className="inline-flex items-center overflow-hidden rounded-md border border-base-300 bg-base-100 shadow-sm">
+      <div className="inline-flex items-center overflow-hidden rounded-md border border-base-300 bg-base-100">
         <button
           type="button"
           aria-label={`Decrease ${item.name} quantity`}
@@ -213,6 +215,83 @@ function CartSummaryCard({
   );
 }
 
+function CartRecommendationsSection({ recommendations }: { recommendations: CartRecommendation[] }) {
+  if (!recommendations.length) return null;
+
+  return (
+    <section className="order-1 xl:order-2 xl:pl-4" aria-labelledby="cart-recommendations-heading">
+      <p className={eyebrowClass}>Related products and procedures</p>
+      <h2
+        id="cart-recommendations-heading"
+        className="mt-3 text-3xl/snug sm:text-4xl/snug xl:text-[2.5rem]/snug font-light tracking-tight text-base-content"
+      >
+        A few thoughtful add-ons.
+      </h2>
+      <p className="mt-3 max-w-xl text-base leading-relaxed text-base-content/70">
+        Based on what&apos;s in your cart and what patients often explore next.
+      </p>
+
+      <div className="mt-6 grid grid-flow-col auto-cols-[17.5rem] gap-5 overflow-x-auto pb-2 pr-4 xl:grid-flow-row xl:auto-cols-auto xl:grid-cols-1 xl:gap-8 xl:overflow-visible xl:pr-0">
+        {recommendations.map((recommendation) => {
+          const fulfillmentCopy =
+            recommendation.fulfillment === "appointment"
+              ? "Appointment after checkout"
+              : "Pickup at the Williamsburg clinic";
+
+          return (
+            <article
+              key={recommendation.slug}
+              className="space-y-3 xl:border-t xl:border-base-300 xl:pt-8 first:xl:border-t-0 first:xl:pt-0"
+            >
+              <div className="relative aspect-square overflow-hidden rounded-md bg-base-200">
+                {recommendation.imagePath ? (
+                  <Image
+                    src={recommendation.imagePath}
+                    alt={recommendation.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1279px) 17.5rem, 24rem"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-primary">
+                    {recommendation.kind === "procedure" ? (
+                      <Sparkles className="h-8 w-8" />
+                    ) : (
+                      <ShoppingBag className="h-8 w-8" />
+                    )}
+                  </div>
+                )}
+              </div>
+
+              <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-base-content/60">
+                <span>{recommendation.kind === "procedure" ? "Procedure" : "Product"}</span>
+                <span className="text-base-content/35">•</span>
+                <span>{recommendation.displayPrice}</span>
+              </div>
+
+              <h3 className="text-2xl font-light tracking-tight text-base-content">{recommendation.name}</h3>
+              <p className="text-sm leading-6 text-base-content/70">{recommendation.reason}</p>
+              <p className="text-xs text-base-content/60">{fulfillmentCopy}</p>
+
+              <div className="flex flex-wrap gap-2 pt-1">
+                <AddToCartButton
+                  slug={recommendation.slug}
+                  kind={recommendation.kind}
+                  quantity={recommendation.minQuantity}
+                  size="sm"
+                />
+                <Button asChild size="sm" variant="secondary">
+                  <Link href={recommendation.learnMoreHref}>Learn More</Link>
+                </Button>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 export default function CartContent({ mode = "page", onNavigate }: Props) {
   const router = useRouter();
   const { items, setQuantity, removeItem, closeCart } = useCart();
@@ -266,6 +345,10 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
     () => loading || checkingOut || isEmpty || !resolved || Boolean(resolveError),
     [checkingOut, isEmpty, loading, resolveError, resolved]
   );
+  const recommendations = useMemo(
+    () => (isDrawer || isEmpty ? [] : getCartRecommendations(items.map((item) => item.slug))),
+    [isDrawer, isEmpty, items]
+  );
   const showDrawerFooter = isDrawer && !isEmpty && (loading || Boolean(resolved) || Boolean(resolveError));
   const handleKeepShopping = () => {
     closeCart();
@@ -308,6 +391,29 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
   };
 
   if (isEmpty) {
+    if (!isDrawer) {
+      return (
+        <div className="mx-auto max-w-7xl px-6 py-16 text-center sm:py-20 md:px-8">
+          <p className={eyebrowClass}>Cart</p>
+          <h1 className="mt-4 text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light tracking-tight text-base-content">
+            Your cart is ready when you are.
+          </h1>
+          <p className="mt-4 max-w-3xl mx-auto text-lg lg:text-xl leading-relaxed text-base-content/75">
+            Add products or procedures from the site and they&apos;ll appear here as a simple review list before
+            checkout.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Button asChild onClick={onNavigate} className={softButtonClass}>
+              <Link href="/products">Browse Products</Link>
+            </Button>
+            <Button asChild variant="secondary" onClick={onNavigate} className={softButtonClass}>
+              <Link href="/procedures">Browse Procedures</Link>
+            </Button>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div
         className={cn(
@@ -349,171 +455,190 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
   }
 
   const resolvedItems = resolved?.items || [];
+  const cartBody = (
+    <>
+      {loading && !resolved && <CartSkeleton />}
 
-  return (
-    <div className={cn(isDrawer ? "flex h-full min-h-0 flex-col" : "mx-auto flex max-w-3xl flex-col py-10 sm:py-12")}>
-      {!isDrawer && (
-        <div className="mb-6 px-1 sm:mb-8">
-          <h1 className="text-3xl font-semibold tracking-tight text-base-content sm:text-4xl">Cart</h1>
-        </div>
-      )}
-
-      <div className={cn(isDrawer && "min-h-0 flex-1 overflow-y-auto sm:pr-1")}>
-        {loading && !resolved && <CartSkeleton />}
-
-        {resolveError && !resolved && !loading && (
-          <div className="flex flex-1 flex-col justify-center">
-            <div className="rounded-2xl border border-error/20 bg-error/10 p-6 shadow-sm">
-              <div className="relative flex items-start gap-3 sm:gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-error/15 text-error sm:h-12 sm:w-12">
-                  <AlertCircle className="h-5 w-5" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-[11px] uppercase tracking-[0.22em] text-error/80">Cart Issue</p>
-                  <h2 className="mt-2 text-xl font-semibold tracking-tight text-base-content">
-                    We couldn&apos;t validate this cart yet
-                  </h2>
-                  <p className="mt-2 text-sm leading-6 text-base-content/80">{resolveError}</p>
-                  <div className="mt-5 flex flex-wrap gap-3">
-                    {isDrawer ? (
-                      <Button variant="secondary" className={softButtonClass} onClick={handleKeepShopping}>
-                        Keep Shopping
-                      </Button>
-                    ) : (
-                      <Button asChild variant="secondary" className={softButtonClass}>
-                        <Link href={homeOShotHref}>Keep Shopping</Link>
-                      </Button>
-                    )}
-                    <Button asChild className={softButtonClass} onClick={onNavigate}>
-                      <Link href="/cart">Open Fallback Cart</Link>
+      {resolveError && !resolved && !loading && (
+        <div className="flex flex-1 flex-col justify-center">
+          <div className="rounded-2xl border border-error/20 bg-error/10 p-6">
+            <div className="relative flex items-start gap-3 sm:gap-4">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-error/15 text-error sm:h-12 sm:w-12">
+                <AlertCircle className="h-5 w-5" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <p className="text-[11px] uppercase tracking-[0.22em] text-error/80">Cart Issue</p>
+                <h2 className="mt-2 text-xl font-semibold tracking-tight text-base-content">
+                  We couldn&apos;t validate this cart yet
+                </h2>
+                <p className="mt-2 text-sm leading-6 text-base-content/80">{resolveError}</p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  {isDrawer ? (
+                    <Button variant="secondary" className={softButtonClass} onClick={handleKeepShopping}>
+                      Keep Shopping
                     </Button>
-                  </div>
+                  ) : (
+                    <Button asChild variant="secondary" className={softButtonClass}>
+                      <Link href={homeOShotHref}>Keep Shopping</Link>
+                    </Button>
+                  )}
+                  <Button asChild className={softButtonClass} onClick={onNavigate}>
+                    <Link href="/cart">Open Fallback Cart</Link>
+                  </Button>
                 </div>
               </div>
             </div>
           </div>
-        )}
+        </div>
+      )}
 
-        {!!resolved && (
-          <>
-            {resolveError && (
-              <div className="mb-4 rounded-xl border border-error/20 bg-error/10 px-4 py-3.5 text-base-content sm:mb-5 sm:px-5 sm:py-4">
-                <p className="font-medium text-error">Unable to fully validate your cart.</p>
-                <p className="mt-1 text-sm text-base-content/80">{resolveError}</p>
-              </div>
-            )}
+      {!!resolved && (
+        <>
+          {resolveError && (
+            <div className="mb-4 rounded-xl border border-error/20 bg-error/10 px-4 py-3.5 text-base-content sm:mb-5 sm:px-5 sm:py-4">
+              <p className="font-medium text-error">Unable to fully validate your cart.</p>
+              <p className="mt-1 text-sm text-base-content/80">{resolveError}</p>
+            </div>
+          )}
 
-            <div className={cn(!isDrawer && surfaceCardClass, !isDrawer && "overflow-hidden")}>
-              <div className="divide-y divide-base-300">
-                {resolvedItems.map((item, index) => {
-                  const isProcedure = item.kind === "procedure";
-                  const itemMeta = [
-                    isProcedure ? "Procedure" : "Product",
-                    item.fulfillment === "appointment" ? "Scheduling after payment" : "Pickup only",
-                    item.pricingMode === "increment_credit" ? "Prepaid blocks" : null,
-                  ]
-                    .filter(Boolean)
-                    .join(" · ");
+          <div className={cn(!isDrawer && surfaceCardClass, !isDrawer && "overflow-hidden")}>
+            <div className="divide-y divide-base-300">
+              {resolvedItems.map((item, index) => {
+                const isProcedure = item.kind === "procedure";
+                const itemMeta = [
+                  isProcedure ? "Procedure" : "Product",
+                  item.fulfillment === "appointment" ? "Scheduling after payment" : "Pickup only",
+                  item.pricingMode === "increment_credit" ? "Prepaid blocks" : null,
+                ]
+                  .filter(Boolean)
+                  .join(" · ");
 
-                  return (
-                    <article
-                      key={item.slug}
-                      className={cn("cart-item-reveal", isDrawer ? "py-4" : "px-4 py-4 sm:px-5 sm:py-5")}
-                      style={{ animationDelay: `${index * 60}ms` }}
-                    >
-                      <div className="relative flex gap-3 sm:gap-4">
-                        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border border-base-300 bg-base-200 sm:h-24 sm:w-24">
-                          {item.imagePath ? (
-                            <>
-                              <Image
-                                src={item.imagePath}
-                                alt={item.name}
-                                fill
-                                className="object-cover"
-                                sizes="(max-width: 640px) 80px, 96px"
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent" />
-                            </>
-                          ) : (
-                            <div className="flex h-full w-full items-center justify-center text-primary">
-                              {isProcedure ? (
-                                <Sparkles className="h-8 w-8" />
-                              ) : (
-                                <ShoppingBag className="h-8 w-8" />
-                              )}
-                            </div>
-                          )}
+                return (
+                  <article
+                    key={item.slug}
+                    className={cn("cart-item-reveal", isDrawer ? "py-4" : "px-4 py-4 sm:px-5 sm:py-5")}
+                    style={{ animationDelay: `${index * 60}ms` }}
+                  >
+                    <div className="relative flex gap-3 sm:gap-4">
+                      <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border border-base-300 bg-base-200 sm:h-24 sm:w-24">
+                        {item.imagePath ? (
+                          <>
+                            <Image
+                              src={item.imagePath}
+                              alt={item.name}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 640px) 80px, 96px"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent" />
+                          </>
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center text-primary">
+                            {isProcedure ? <Sparkles className="h-8 w-8" /> : <ShoppingBag className="h-8 w-8" />}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="relative min-w-0 flex-1">
+                        <button
+                          type="button"
+                          aria-label={`Remove ${item.name}`}
+                          onClick={() => removeItem(item.slug)}
+                          className="absolute right-0 top-0 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-base-300 bg-base-100 text-base-content/70 transition-colors duration-150 hover:bg-base-200 hover:text-base-content focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 sm:h-9 sm:w-9"
+                        >
+                          <X className="h-4 w-4" />
+                        </button>
+
+                        <div className="pr-10 sm:pr-12">
+                          <h2 className="text-[1.05rem] font-semibold tracking-tight text-base-content sm:text-lg">
+                            {item.name}
+                          </h2>
+                          <p className="mt-1.5 text-sm leading-5 text-base-content/65">{itemMeta}</p>
                         </div>
 
-                        <div className="relative min-w-0 flex-1">
-                          <button
-                            type="button"
-                            aria-label={`Remove ${item.name}`}
-                            onClick={() => removeItem(item.slug)}
-                            className="absolute right-0 top-0 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-base-300 bg-base-100 text-base-content/70 transition-colors duration-150 hover:bg-base-200 hover:text-base-content focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 sm:h-9 sm:w-9"
-                          >
-                            <X className="h-4 w-4" />
-                          </button>
-
-                          <div className="pr-10 sm:pr-12">
-                            <h2 className="text-[1.05rem] font-semibold tracking-tight text-base-content sm:text-lg">
-                              {item.name}
-                            </h2>
-                            <p className="mt-1.5 text-sm leading-5 text-base-content/65">{itemMeta}</p>
+                        <div className="mt-4 flex items-end justify-between gap-4 sm:mt-5">
+                          <div className="shrink-0">
+                            <QuantityControl
+                              item={item}
+                              onChange={(nextQuantity) => setQuantity(item.slug, nextQuantity)}
+                              compact
+                              hideLabel
+                            />
                           </div>
 
-                          <div className="mt-4 flex items-end justify-between gap-4 sm:mt-5">
-                            <div className="shrink-0">
-                              <QuantityControl
-                                item={item}
-                                onChange={(nextQuantity) => setQuantity(item.slug, nextQuantity)}
-                                compact
-                                hideLabel
-                              />
-                            </div>
-
-                            <div className="ml-auto text-right">
-                              <p className="text-[1.3rem] font-semibold leading-none tracking-tight text-base-content sm:text-[1.65rem]">
-                                {formatUsd(item.lineTotalCents)}
-                              </p>
-                            </div>
+                          <div className="ml-auto text-right">
+                            <p className="text-[1.3rem] font-semibold leading-none tracking-tight text-base-content sm:text-[1.65rem]">
+                              {formatUsd(item.lineTotalCents)}
+                            </p>
                           </div>
                         </div>
                       </div>
-                    </article>
-                  );
-                })}
-              </div>
-
-              {!isDrawer && (
-                <CartSummaryCard
-                  isDrawer={false}
-                  resolved={resolved}
-                  loading={loading}
-                  resolveError={resolveError}
-                  checkingOut={checkingOut}
-                  checkoutDisabled={checkoutDisabled}
-                  onCheckout={handleCheckout}
-                />
-              )}
+                    </div>
+                  </article>
+                );
+              })}
             </div>
-          </>
+
+            {!isDrawer && (
+              <CartSummaryCard
+                isDrawer={false}
+                resolved={resolved}
+                loading={loading}
+                resolveError={resolveError}
+                checkingOut={checkingOut}
+                checkoutDisabled={checkoutDisabled}
+                onCheckout={handleCheckout}
+              />
+            )}
+          </div>
+        </>
+      )}
+    </>
+  );
+
+  if (isDrawer) {
+    return (
+      <div className="flex h-full min-h-0 flex-col">
+        <div className="min-h-0 flex-1 overflow-y-auto sm:pr-1">{cartBody}</div>
+
+        {showDrawerFooter && (
+          <div className="-mx-4 -mb-4 mt-3 shrink-0 border-t border-base-300 bg-base-100/95 px-4 py-3 backdrop-blur-sm sm:-mx-6 sm:-mb-5 sm:mt-5 sm:px-6 sm:py-4">
+            <CartSummaryCard
+              isDrawer
+              resolved={resolved}
+              loading={loading}
+              resolveError={resolveError}
+              checkingOut={checkingOut}
+              checkoutDisabled={checkoutDisabled}
+              onCheckout={handleCheckout}
+            />
+          </div>
         )}
       </div>
+    );
+  }
 
-      {showDrawerFooter && (
-        <div className="-mx-4 -mb-4 mt-3 shrink-0 border-t border-base-300 bg-base-100/95 px-4 py-3 backdrop-blur-sm sm:-mx-6 sm:-mb-5 sm:mt-5 sm:px-6 sm:py-4">
-          <CartSummaryCard
-            isDrawer
-            resolved={resolved}
-            loading={loading}
-            resolveError={resolveError}
-            checkingOut={checkingOut}
-            checkoutDisabled={checkoutDisabled}
-            onCheckout={handleCheckout}
-          />
-        </div>
-      )}
+  return (
+    <div className="mx-auto max-w-7xl px-6 py-14 sm:py-16 md:px-8">
+      <div className="mb-10 text-center sm:mb-14">
+        <p className={eyebrowClass}>Checkout</p>
+        <h1 className="mt-4 text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light tracking-tight text-base-content">
+          Review your selections before checkout.
+        </h1>
+        <p className="mt-4 max-w-3xl mx-auto text-lg lg:text-xl leading-relaxed text-base-content/75">
+          Confirm your products and procedures, then add anything else that fits before paying online and choosing
+          your next steps.
+        </p>
+      </div>
+
+      <div className="flex flex-col gap-8 xl:grid xl:grid-cols-[minmax(0,2fr)_minmax(18rem,1fr)] xl:items-start xl:gap-10">
+        <CartRecommendationsSection recommendations={recommendations} />
+
+        <section className={cn("order-2 xl:order-1", !recommendations.length && "mx-auto w-full max-w-4xl")}>
+          <p className={cn(eyebrowClass, "mb-4")}>Current cart</p>
+          {cartBody}
+        </section>
+      </div>
     </div>
   );
 }
