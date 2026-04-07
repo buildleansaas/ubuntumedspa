@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DEFAULT_FORM_SUBMISSION, FORM_INPUTS } from "data";
 import * as yup from "yup";
 import { useRouter } from "next/navigation";
@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "components/ui/button";
 import { useToast } from "components/ui/use-toast";
 import { Loader } from "lucide-react";
+import useAffiliateLocalProfile from "hooks/use-affiliate-local-profile";
 import {
   AFFILIATE_REFERRAL_COOKIE,
   AFFILIATE_REF_PARAM,
@@ -37,9 +38,11 @@ export interface FormInput {
 const ConsultationForm: React.FC = () => {
   const router = useRouter();
   const { toast } = useToast();
+  const affiliateProfile = useAffiliateLocalProfile();
   const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState<FormState>(DEFAULT_FORM_SUBMISSION);
   const [affiliateReferral, setAffiliateReferral] = useState<AffiliateSnapshot | null>(null);
+  const nameInputRef = useRef<HTMLInputElement | null>(null);
   const wideFieldIds = ["name", "interests", "comments", "referral"] as const;
 
   const inputClassName =
@@ -66,6 +69,39 @@ const ConsultationForm: React.FC = () => {
       });
     }
   };
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      nameInputRef.current?.focus();
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!affiliateProfile) return;
+
+    setFormState((current) => {
+      const nextState = { ...current };
+      let hasChanges = false;
+
+      const shouldAutofill = (value: string, defaultValue: string) => !value.trim() || value === defaultValue;
+
+      if (shouldAutofill(current.name, DEFAULT_FORM_SUBMISSION.name)) {
+        nextState.name = affiliateProfile.affiliateName;
+        hasChanges = true;
+      }
+
+      if (shouldAutofill(current.email, DEFAULT_FORM_SUBMISSION.email)) {
+        nextState.email = affiliateProfile.email;
+        hasChanges = true;
+      }
+
+      return hasChanges ? nextState : current;
+    });
+  }, [affiliateProfile]);
 
   useEffect(() => {
     let cancelled = false;
@@ -217,6 +253,7 @@ const ConsultationForm: React.FC = () => {
                     className={inputClassName}
                     id={String(input.id)}
                     name={String(input.id)}
+                    ref={input.id === "name" ? nameInputRef : undefined}
                     type={input.type}
                     value={String(formState[input.id] ?? "")}
                     onChange={handleChange}
