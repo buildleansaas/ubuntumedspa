@@ -19,22 +19,6 @@ export default function JennyColemanPage() {
         health expertise with a holistic, patient‑first approach. She provides regenerative PRP therapies, advanced
         injection techniques, and practical wellness counseling to help patients look and feel their best — naturally.
       </p>
-      <section className="mt-8 rounded-2xl border border-base-300 bg-base-100 p-5 md:p-6">
-        <h2 className="text-xl md:text-2xl font-light mb-3">Related pediatric education projects</h2>
-        <p className="text-base text-base-content/80 leading-relaxed">
-          Jenny&apos;s pediatric teaching style also informs PedsCalc, a clinician-oriented pediatric calculation and
-          reference project, and Dear Pediatrician, a parent-facing guide library for everyday child health questions.
-          These education projects are separate from med spa treatment planning.
-        </p>
-        <div className="mt-4 flex flex-wrap gap-3 text-sm font-medium">
-          <a href="https://pedscalc.com" target="_blank" rel="noopener noreferrer" className="link link-primary">
-            Visit PedsCalc
-          </a>
-          <a href="https://dearpediatrician.com" target="_blank" rel="noopener noreferrer" className="link link-primary">
-            Visit Dear Pediatrician
-          </a>
-        </div>
-      </section>
     </div>
   );
 }
