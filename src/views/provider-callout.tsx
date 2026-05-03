@@ -28,6 +28,10 @@ export default function ProviderCallout() {
               advanced injection techniques, and practical wellness counseling to help you look and feel your best—
               naturally.
             </p>
+            <p className="mt-3 text-sm md:text-base text-base-content/80 leading-relaxed">
+              Her pediatric background also informs PedsCalc, a clinician-oriented pediatric calculation project, and
+              Dear Pediatrician, a parent education site for common child health questions.
+            </p>
           </div>
         </div>
       </div>

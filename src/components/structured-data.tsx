@@ -75,6 +75,7 @@ const author = [
     "@type": "Person",
     name: "Jenny Coleman",
     url: `${ORIGIN}/staff/jenny-coleman`,
+    sameAs: ["https://pedscalc.com", "https://dearpediatrician.com"],
   },
 ];
 
@@ -291,6 +292,7 @@ const getMarkup = ({
         url: author[0].url,
         jobTitle: "Aesthetic Nurse Practitioner",
         image: `${ORIGIN}/jenny.jpg`,
+        sameAs: author[0].sameAs,
         affiliation: {
           "@type": "MedicalBusiness",
           name: DEFAULT_BUSINESS.name,
