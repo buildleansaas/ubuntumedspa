@@ -69,6 +69,8 @@ export default async function ArticlePage({
 }) {
   try {
     const { Content, metadata } = await getPostData(params.slug);
+    if (!metadata.published) notFound();
+
     const normalizedTags = new Set(getMeaningfulTags(metadata.tags));
     const relatedProcedures = procedures
       .filter((procedure) => normalizedTags.has(procedure.name))
