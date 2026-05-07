@@ -1835,13 +1835,13 @@ export const procedures = [
     name: "Filler",
     slug: "filler",
     seo: {
-      title: "Dermal Fillers in Williamsburg, VA",
+      title: "Dermal Fillers in Williamsburg, VA | Lips, Cheeks & Under-Eyes",
       description:
-        "Dermal fillers in Williamsburg, VA for lips, cheeks, under-eyes, jawline contour, and natural-looking facial volume restoration with conservative treatment planning.",
+        "Dermal fillers in Williamsburg, VA for lips, cheeks, under-eyes, jawline contour, and natural-looking facial volume restoration with Jenny Coleman, MSN, RN, CPNP, PMHS.",
     },
     description:
       "Dermal fillers are injectable gels commonly used to restore facial volume, soften folds, enhance lips, and refine contour in areas such as cheeks, jawline, and under-eyes. At Williamsburg Med Spa, filler planning focuses on conservative placement, clear discussion of longevity and reversibility, and results that stay proportional to your features.",
-    headline: "Dermal fillers for lips, cheeks, under-eyes, and facial contour.",
+    headline: "Dermal fillers in Williamsburg for lips, cheeks, under-eyes, and facial contour.",
     subline:
       "Hyaluronic acid filler can restore volume, refine contour, soften folds, and support lip enhancement with a treatment plan built around proportion and longevity.",
     image: "/procedure/filler.png",
@@ -2196,12 +2196,12 @@ export const procedures = [
     name: "Blomdahl Ear Piercing",
     slug: "blomdahl-ear-piercing",
     seo: {
-      title: "Medical Ear Piercing in Williamsburg, VA | Blomdahl",
+      title: "Ear Piercing in Williamsburg, VA | Blomdahl Medical Piercing",
       description:
-        "Medical ear piercing in Williamsburg, VA using the Blomdahl system with sterile single-use cassettes and hypoallergenic jewelry for children, teens, and adults.",
+        "Ear piercing in Williamsburg, VA using the Blomdahl medical piercing system with sterile single-use cassettes and hypoallergenic jewelry for children, teens, and adults.",
     },
     description:
-      "Our Blomdahl medical ear piercing service uses sterile single-use cassettes and hypoallergenic medical plastic or titanium jewelry to reduce unnecessary tissue trauma and support cleaner healing. It is a strong fit for first piercings, sensitive skin, re-piercing, and families who want a clinical setting instead of mall-style piercing.",
+      "Our Blomdahl medical ear piercing service uses sterile single-use cassettes and hypoallergenic Medical Plastic or titanium jewelry to reduce unnecessary tissue trauma and support cleaner healing. It is a strong fit for first piercings, pediatric-aware ear piercing, sensitive ears, re-piercing, and families who want a clinical setting instead of mall-style piercing.",
     headline: "Medical ear piercing in Williamsburg for children, teens, and adults.",
     subline:
       "Blomdahl combines sterile technique, hypoallergenic jewelry, and gentle placement for first earrings, re-piercing, and sensitive ears.",
@@ -2209,7 +2209,7 @@ export const procedures = [
     price: "$45.00 per ear",
     // programmatic SEO copy
     blogHeadline:
-      "Planning ear piercing in Williamsburg? Review our guides on first earrings, sensitive skin, aftercare, and why Blomdahl differs from mall piercing.",
+      "Planning ear piercing in Williamsburg? Review our guides on first earrings, pediatric-aware piercing, sensitive ears, aftercare, ear piercing cost, and why Blomdahl differs from mall piercing.",
     benefitsHeadline:
       "Blomdahl ear piercing is designed for cleaner healing and calmer tissue response, especially for kids, sensitive skin, and first-time piercings.",
     benefits: [

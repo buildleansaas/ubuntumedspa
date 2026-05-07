@@ -6,8 +6,9 @@ import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near Kingsmill | Williamsburg Med Spa",
-  description: "Kingsmill residents can visit Williamsburg Med Spa for PRP therapies, fillers, and supportive aesthetic care.",
+  title: "Medical Spa Near Kingsmill, VA | Fillers, Botox & Ear Piercing",
+  description:
+    "Kingsmill residents can visit Williamsburg Med Spa for dermal fillers, Botox, Xeomin, PRP therapies, and Blomdahl medical ear piercing.",
   canonical: "/locations/kingsmill-va",
 });
 
@@ -18,15 +19,15 @@ export default function KingsmillPage() {
       <header className="mb-8 md:mb-10 text-center">
         <h1 className="text-3xl md:text-5xl font-light">Med Spa Near Kingsmill</h1>
         <p className="text-base md:text-lg text-base-content/70 mt-2">
-          A short trip from Kingsmill&apos;s riverfront community to our Williamsburg clinic.
+          A short trip from Kingsmill&apos;s riverfront community to Jenny Coleman&apos;s Williamsburg clinic.
         </p>
       </header>
 
       <section className="prose prose-neutral max-w-none text-base-content/90">
         <p>
-          From Kingsmill, it&apos;s a quick drive to Williamsburg Med Spa for regenerative PRP treatments, aesthetic
-          injections, and gentle, education‑focused care. Many patients appreciate being able to combine appointments
-          with errands or time in nearby New Town.
+          From Kingsmill, it&apos;s a quick drive to Williamsburg Med Spa for dermal fillers, Botox, Xeomin, regenerative
+          PRP treatments, Blomdahl medical ear piercing, and gentle, education-focused care. Many patients appreciate
+          being able to combine appointments with errands or time in nearby New Town.
         </p>
         <h2>Getting Here</h2>
         <p>
@@ -38,6 +39,12 @@ export default function KingsmillPage() {
       <div className="mt-8 flex flex-wrap gap-3">
         <Button asChild size="sm">
           <Link href="/consult">Book a Consultation</Link>
+        </Button>
+        <Button asChild size="sm" variant="secondary">
+          <Link href="/procedures/filler">Dermal Fillers</Link>
+        </Button>
+        <Button asChild size="sm" variant="secondary">
+          <Link href="/procedures/blomdahl-ear-piercing/near/kingsmill-va">Ear Piercing Near Kingsmill</Link>
         </Button>
         <Button asChild size="sm" variant="secondary">
           <Link href="/locations/williamsburg-va">Williamsburg Location Details</Link>

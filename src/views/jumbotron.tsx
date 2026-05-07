@@ -24,17 +24,28 @@ export default function Jumbotron() {
   return (
     <div className="text-center py-16 md:py-32 lg:py-48" id="procedures">
       <h1 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4">
-        Rejuvenate Your Life
+        Medical Spa in Williamsburg, VA
       </h1>
       <p className="text-base-content text-xl lg:text-2xl mb-3 max-w-2xl mx-auto">
-        Explore <strong>PRP services</strong> using <strong>your own blood components</strong> to support{" "}
-        <strong>joint care</strong>, <strong>aesthetic goals</strong>, <strong>sexual wellness</strong>, and overall{" "}
-        <strong>well-being</strong>.
+        Botox, Xeomin, dermal fillers, PRP treatments, and Blomdahl medical ear piercing with Jenny Coleman, MSN, RN,
+        CPNP, PMHS.
       </p>
       <p className="text-base-content/70 text-base md:text-lg mb-8 max-w-3xl mx-auto">
-        From intimate wellness and facial rejuvenation to hair restoration and joint-focused care, our PRP treatments
-        are personalized, natural-looking, and grounded in clear guidance.
+        Williamsburg Med Spa serves patients from Williamsburg, James City County, Kingsmill, Yorktown, and Newport News
+        with conservative treatment planning, clear education, and natural-looking goals.
       </p>
+      <div className="mb-6 flex flex-wrap justify-center gap-2 text-sm">
+        {[
+          ["Botox", "/procedures/botox"],
+          ["Dermal Fillers", "/procedures/filler"],
+          ["Blomdahl Ear Piercing", "/procedures/blomdahl-ear-piercing"],
+          ["PRP Hair Restoration", "/procedures/prp-hair-restoration"],
+        ].map(([label, href]) => (
+          <Link key={href} href={href} className="rounded-full border border-base-300 px-3 py-1 hover:border-primary">
+            {label}
+          </Link>
+        ))}
+      </div>
       <div className="mb-32">
         <div className="flex flex-wrap justify-center items-center gap-2">
           <Button asChild>

@@ -7,9 +7,9 @@ import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Williamsburg Med Spa Location | Hours, Directions & Parking",
+  title: "Medical Spa in Williamsburg, VA | Hours, Directions & Services",
   description:
-    "Find Williamsburg Med Spa at 3900 Powhatan Parkway in Williamsburg, VA. View clinic hours, parking, directions, nearby neighborhoods served, and quick links to treatment pages.",
+    "Visit Williamsburg Med Spa for Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, and Blomdahl medical ear piercing at 3900 Powhatan Parkway.",
   canonical: "/locations/williamsburg-va",
 });
 
@@ -21,8 +21,9 @@ export default function WilliamsburgLocationPage() {
       <header className="mb-8 md:mb-12 text-center">
         <h1 className="text-3xl md:text-5xl font-light">Visit Our Williamsburg Clinic</h1>
         <p className="text-base md:text-lg text-base-content/70 mt-2">
-          Use this page for clinic hours, parking, directions, and nearby neighborhoods served. If you&apos;re comparing
-          treatments, start with our{" "}
+          Use this page for clinic hours, parking, directions, and nearby neighborhoods served. Patients visit Jenny
+          Coleman for Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, and Blomdahl medical ear
+          piercing. If you&apos;re comparing treatments, start with our{" "}
           <Link href="/" className="link link-primary">
             medical spa homepage
           </Link>
@@ -58,7 +59,7 @@ export default function WilliamsburgLocationPage() {
       <section className="mb-10 md:mb-14">
         <h2 className="text-2xl md:text-3xl font-light mb-2">Popular Treatment Pages</h2>
         <p className="text-base md:text-lg text-base-content/80 mb-4">
-          Review the services patients most often ask about before scheduling.
+          Review the services Williamsburg patients most often ask about before scheduling with Jenny.
         </p>
         <div className="flex flex-wrap gap-3">
           <Button asChild size="sm">
@@ -78,6 +79,9 @@ export default function WilliamsburgLocationPage() {
           </Button>
           <Button asChild size="sm">
             <Link href="/procedures/blomdahl-ear-piercing">Medical Ear Piercing</Link>
+          </Button>
+          <Button asChild size="sm" variant="secondary">
+            <Link href="/procedures/blomdahl-ear-piercing/near/williamsburg-va">Ear Piercing Near Williamsburg</Link>
           </Button>
           <Button asChild size="sm">
             <Link href="/procedures/hyperhidrosis-treatment">Hyperhidrosis Treatment</Link>
@@ -107,6 +111,21 @@ export default function WilliamsburgLocationPage() {
         <p className="text-base md:text-lg text-base-content/80 mb-2">
           Williamsburg, James City County, Yorktown, Newport News, Toano, Norge, Lightfoot, New Town, Kingsmill,
           Ford&apos;s Colony
+        </p>
+        <p className="text-sm md:text-base text-base-content/70 mb-2">
+          If you searched for a medical spa near Williamsburg, VA, the most relevant starting points are{" "}
+          <Link href="/procedures/filler" className="link link-primary">
+            dermal fillers
+          </Link>
+          ,{" "}
+          <Link href="/procedures/botox" className="link link-primary">
+            Botox
+          </Link>
+          , and{" "}
+          <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
+            Blomdahl ear piercing
+          </Link>
+          .
         </p>
         <p className="text-sm md:text-base text-base-content/70">
           View all service areas on our{" "}

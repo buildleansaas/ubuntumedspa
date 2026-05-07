@@ -6,8 +6,9 @@ import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Serving James City County | Williamsburg Med Spa",
-  description: "A short drive from James City County: PRP therapies, fillers, and regenerative aesthetics with compassionate care at Williamsburg Med Spa.",
+  title: "Medical Spa Serving James City County | Fillers, PRP & Piercing",
+  description:
+    "A short drive from James City County: dermal fillers, Botox, Xeomin, PRP therapies, and Blomdahl medical ear piercing with Jenny Coleman.",
   canonical: "/locations/james-city-county-va",
 });
 
@@ -25,7 +26,8 @@ export default function JamesCityCountyPage() {
       <section className="prose prose-neutral max-w-none text-base-content/90">
         <p>
           Looking for a trusted medical spa close to home? Williamsburg Med Spa blends regenerative PRP therapies, dermal
-          fillers, and advanced aesthetic treatments with a warm, patient‑first approach. Our clinic is a quick hop from
+          fillers, Botox, Xeomin, Blomdahl medical ear piercing, and advanced aesthetic treatments with a warm,
+          patient-first approach. Our clinic is a quick hop from
           neighborhoods across James City County — including Norge, Toano, Lightfoot, and Greensprings — with easy access
           via Monticello Avenue and Route 199.
         </p>
@@ -58,6 +60,12 @@ export default function JamesCityCountyPage() {
         </Button>
         <Button asChild size="sm" variant="secondary">
           <Link href="/locations/williamsburg-va">Williamsburg Location Details</Link>
+        </Button>
+        <Button asChild size="sm" variant="secondary">
+          <Link href="/procedures/filler">Dermal Fillers</Link>
+        </Button>
+        <Button asChild size="sm" variant="secondary">
+          <Link href="/procedures/blomdahl-ear-piercing/near/james-city-county-va">Ear Piercing Near James City County</Link>
         </Button>
         <DirectionsButton size="sm" address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2707} longitude={-76.7075} />
       </div>

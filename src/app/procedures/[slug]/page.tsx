@@ -137,6 +137,20 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             {consultationSupportCopy}
           </p>
           {showOShotCredential && <CmaCredentialStrip centered className="mt-6 mx-auto max-w-3xl" />}
+          {procedure.slug === "blomdahl-ear-piercing" && (
+            <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm">
+              {[
+                ["Children's Ear Piercing", "/procedures/blomdahl-ear-piercing/for/children"],
+                ["Sensitive Ears", "/procedures/blomdahl-ear-piercing/for/sensitive-ears"],
+                ["Re-Piercing", "/procedures/blomdahl-ear-piercing/for/re-piercing"],
+                ["Near Williamsburg", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
+              ].map(([label, href]) => (
+                <Link key={href} href={href} className="rounded-full border border-base-300 px-3 py-1 hover:border-primary">
+                  {label}
+                </Link>
+              ))}
+            </div>
+          )}
           <div className="flex space-x-4 mx-auto my-8 justify-center">
             <Button asChild>
               <Link href="/consult">Book a Consultation</Link>
