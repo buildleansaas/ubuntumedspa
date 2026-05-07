@@ -29,5 +29,10 @@ yarn-error.log*
 .env
 .env*.local
 
+# local generated output
+/artifacts/seo-audit/
+/tmp/
+tsconfig.tsbuildinfo
+
 # vercel
 .vercel

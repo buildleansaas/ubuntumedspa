@@ -14,7 +14,7 @@ export default function Procedures({ headingTag = "h2" }: { headingTag?: Heading
           Medical Spa Treatments in Williamsburg, VA
         </Heading>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
-          Compare Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, and Blohmdahl medical ear piercing.
+          Compare Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, and Blomdahl medical ear piercing.
           Each service page explains who the treatment may fit, which goals it is commonly used for, and what to review
           during consultation.
         </p>
@@ -28,7 +28,7 @@ export default function Procedures({ headingTag = "h2" }: { headingTag?: Heading
               "botox",
               "filler",
               "xeomin",
-              "blohmdahl-ear-piercing",
+              "blomdahl-ear-piercing",
               "prp-hair-restoration",
               "prp-facial",
               "o-shot",

@@ -18,7 +18,7 @@ const treatmentLinks = [
   { href: "/procedures/filler", label: "Filler" },
   { href: "/procedures/o-shot", label: "O-Shot" },
   { href: "/procedures/p-shot", label: "P-Shot" },
-  { href: "/procedures/blohmdahl-ear-piercing", label: "Blohmdahl Ear Piercing" },
+  { href: "/procedures/blomdahl-ear-piercing", label: "Blomdahl Ear Piercing" },
 ] as const;
 
 const locationLinks = [

@@ -45,7 +45,31 @@ interface ProductProps {
   availability?: string;
 }
 
+interface EventProps {
+  name?: string;
+  description?: string;
+  startDate?: string;
+  endDate?: string;
+  eventStatus?: string;
+  eventAttendanceMode?: string;
+  url?: string;
+  imageUrls?: string[];
+  locationName?: string;
+  streetAddress?: string;
+  addressLocality?: string;
+  addressRegion?: string;
+  postalCode?: string;
+  addressCountry?: string;
+  organizerName?: string;
+  organizerUrl?: string;
+  offersUrl?: string;
+  price?: string;
+  priceCurrency?: string;
+  availability?: string;
+}
+
 interface StructuredDataProps {
+  id?: string;
   type:
     | "WebPage"
     | "Article"
@@ -55,7 +79,8 @@ interface StructuredDataProps {
     | "LocalBusiness"
     | "Service"
     | "Person"
-    | "Product";
+    | "Product"
+    | "Event";
   url?: string;
   headline?: string;
   description?: string;
@@ -68,6 +93,7 @@ interface StructuredDataProps {
   business?: LocalBusinessProps;
   service?: ServiceProps;
   product?: ProductProps;
+  event?: EventProps;
 }
 
 const author = [
@@ -115,6 +141,7 @@ const getMarkup = ({
   business,
   service,
   product,
+  event,
 }: StructuredDataProps) => {
   switch (type) {
     case "Organization": {
@@ -283,6 +310,52 @@ const getMarkup = ({
             : undefined,
       };
     }
+    case "Event": {
+      const e = event || {};
+      const eventUrl = e.url || url;
+      const eventImages = (e.imageUrls || imageUrls).map(getImageUrl);
+
+      return {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        name: e.name || headline,
+        description: e.description || description,
+        startDate: e.startDate,
+        endDate: e.endDate,
+        eventStatus: e.eventStatus || "https://schema.org/EventScheduled",
+        eventAttendanceMode: e.eventAttendanceMode || "https://schema.org/OfflineEventAttendanceMode",
+        image: eventImages.length ? eventImages : [`${ORIGIN}/logo.png`],
+        url: eventUrl.startsWith("http://") || eventUrl.startsWith("https://") ? eventUrl : `${ORIGIN}${eventUrl}`,
+        location: {
+          "@type": "Place",
+          name: e.locationName || DEFAULT_BUSINESS.name,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: e.streetAddress || DEFAULT_BUSINESS.streetAddress,
+            addressLocality: e.addressLocality || DEFAULT_BUSINESS.addressLocality,
+            addressRegion: e.addressRegion || DEFAULT_BUSINESS.addressRegion,
+            postalCode: e.postalCode || DEFAULT_BUSINESS.postalCode,
+            addressCountry: e.addressCountry || DEFAULT_BUSINESS.addressCountry,
+          },
+        },
+        organizer: {
+          "@type": "Organization",
+          name: e.organizerName || DEFAULT_BUSINESS.name,
+          url: e.organizerUrl || DEFAULT_BUSINESS.url,
+        },
+        offers: e.offersUrl
+          ? {
+              "@type": "Offer",
+              url: e.offersUrl.startsWith("http://") || e.offersUrl.startsWith("https://")
+                ? e.offersUrl
+                : `${ORIGIN}${e.offersUrl}`,
+              price: e.price || "0",
+              priceCurrency: e.priceCurrency || "USD",
+              availability: e.availability || "https://schema.org/InStock",
+            }
+          : undefined,
+      };
+    }
     case "Person": {
       return {
         "@context": "https://schema.org",
@@ -302,7 +375,7 @@ const getMarkup = ({
 };
 
 const StructuredData = (props: StructuredDataProps) => (
-  <Script id={`StructureData-${props.type}`} type="application/ld+json">
+  <Script id={`StructureData-${props.id || props.type}`} type="application/ld+json">
     {JSON.stringify(getMarkup(props))}
   </Script>
 );

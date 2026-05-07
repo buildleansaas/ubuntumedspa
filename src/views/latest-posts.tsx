@@ -6,7 +6,7 @@ export default async function LatestPosts() {
     "how-long-do-dermal-fillers-last-in-williamsburg-va",
     "dermal-fillers-in-williamsburg-va-lips-cheeks-under-eyes",
     "botox-vs-xeomin-williamsburg-va",
-    "medical-ear-piercing-in-williamsburg-va-blohmdahl",
+    "medical-ear-piercing-in-williamsburg-va-blomdahl",
     "hydrafacial-alternatives-in-williamsburg-va",
     "sculptra-alternatives-in-williamsburg-va",
   ];

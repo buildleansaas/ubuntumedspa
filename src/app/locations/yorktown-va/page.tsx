@@ -6,8 +6,9 @@ import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near Yorktown | Williamsburg Med Spa",
-  description: "Minutes from Yorktown: PRP therapies, fillers, and aesthetic care with an emphasis on comfort and natural results.",
+  title: "Med Spa Near Yorktown, VA | Fillers, PRP & Ear Piercing",
+  description:
+    "Visit Williamsburg Med Spa from Yorktown for Xeomin, dermal fillers, PRP therapies, hyperhidrosis care, and Blomdahl medical ear piercing.",
   canonical: "/locations/yorktown-va",
 });
 
@@ -32,6 +33,10 @@ export default function YorktownPage() {
           We welcome patients seeking joint support with PRP, collagen‑supporting facial treatments, or balanced filler
           enhancements. Expect a friendly consult, honest expectations, and personalized planning — never a one‑size‑fits‑all approach.
         </p>
+        <p>
+          Yorktown families also visit for Blomdahl medical ear piercing when they want hypoallergenic starter jewelry,
+          sterile disposable piercing cassettes, and an appointment-based alternative to a rushed retail piercing visit.
+        </p>
         <h2>Getting Here</h2>
         <p>
           From Yorktown, many patients take the Colonial Parkway toward Williamsburg or I‑64 to Route 199. Continue to
@@ -42,7 +47,7 @@ export default function YorktownPage() {
           <li>PRP for Joints — conservative, regenerative option for common joint issues</li>
           <li>PRP Facial — glow and texture support with your body’s own platelets</li>
           <li>Filler — refined, natural‑looking results tailored to your features</li>
-          <li>Blohmdahl Ear Piercing — medical‑grade, hypoallergenic system</li>
+          <li>Blomdahl Ear Piercing — medical‑grade, hypoallergenic system</li>
         </ul>
       </section>
 
@@ -52,6 +57,9 @@ export default function YorktownPage() {
         </Button>
         <Button asChild size="sm" variant="secondary">
           <Link href="/locations/williamsburg-va">Williamsburg Location Details</Link>
+        </Button>
+        <Button asChild size="sm" variant="secondary">
+          <Link href="/procedures/blomdahl-ear-piercing/near/yorktown-va">Ear Piercing Near Yorktown</Link>
         </Button>
         <DirectionsButton size="sm" address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2707} longitude={-76.7075} />
       </div>

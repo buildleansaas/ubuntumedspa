@@ -14,9 +14,9 @@ const TAG_ALIASES: Record<string, string> = {
   "Lip Filler": "Filler",
   "Cheek Filler": "Filler",
   "Under-Eye Filler": "Filler",
-  "Ear Piercing": "Blohmdahl Ear Piercing",
-  "Sensitive Skin": "Blohmdahl Ear Piercing",
-  "First-Time Piercings": "Blohmdahl Ear Piercing",
+  "Ear Piercing": "Blomdahl Ear Piercing",
+  "Sensitive Skin": "Blomdahl Ear Piercing",
+  "First-Time Piercings": "Blomdahl Ear Piercing",
   Hyperhidrosis: "Hyperhidrosis Treatment",
 };
 

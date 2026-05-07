@@ -1,6 +1,6 @@
 export const DEFAULT_TITLE = "Williamsburg Med Spa | Restorative Wellness & Natural Healing in Historic Williamsburg";
 export const DEFAULT_DESCRIPTION =
-  "Experience restorative wellness and natural healing at Williamsburg Med Spa. Offering PRP therapy, Blohmdahl ear piercing, and aesthetic treatments for your journey to wellness.";
+  "Experience restorative wellness and natural healing at Williamsburg Med Spa. Offering PRP therapy, Blomdahl ear piercing, and aesthetic treatments for your journey to wellness.";
 
 export const ORIGIN =
   process.env.NODE_ENV === "development"

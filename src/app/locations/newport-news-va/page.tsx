@@ -6,8 +6,9 @@ import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near Newport News | Williamsburg Med Spa",
-  description: "Visit Williamsburg Med Spa from Newport News for PRP therapies, fillers, and supportive aesthetic care focused on comfort and clarity.",
+  title: "Med Spa Near Newport News, VA | Fillers, PRP & Ear Piercing",
+  description:
+    "Visit Williamsburg Med Spa from Newport News for Xeomin, dermal fillers, PRP therapies, hyperhidrosis care, and Blomdahl medical ear piercing.",
   canonical: "/locations/newport-news-va",
 });
 
@@ -33,6 +34,10 @@ export default function NewportNewsPage() {
           thoughtful planning and attentive follow‑up. You’ll find on‑site parking and a welcoming atmosphere designed to
           make your visit easy and comfortable.
         </p>
+        <p>
+          Newport News families also compare Williamsburg Med Spa for Blomdahl medical ear piercing, especially when they
+          want hypoallergenic starter jewelry, sterile disposable piercing cassettes, and a calm appointment-based visit.
+        </p>
         <h2>Getting Here</h2>
         <p>
           Most patients take I‑64 to Route 199, then head toward New Town via Monticello Avenue. Turn onto Powhatan
@@ -43,7 +48,7 @@ export default function NewportNewsPage() {
           <li>PRP for Joints — support for common knee and shoulder complaints</li>
           <li>PRP Facial — texture, tone, and glow with a regenerative approach</li>
           <li>Filler — balanced feature enhancement with subtle results</li>
-          <li>Blohmdahl Ear Piercing — sterile, gentle, hypoallergenic system</li>
+          <li>Blomdahl Ear Piercing — sterile, gentle, hypoallergenic system</li>
         </ul>
       </section>
 
@@ -53,6 +58,9 @@ export default function NewportNewsPage() {
         </Button>
         <Button asChild size="sm" variant="secondary">
           <Link href="/locations/williamsburg-va">Williamsburg Location Details</Link>
+        </Button>
+        <Button asChild size="sm" variant="secondary">
+          <Link href="/procedures/blomdahl-ear-piercing/near/newport-news-va">Ear Piercing Near Newport News</Link>
         </Button>
         <DirectionsButton size="sm" address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2707} longitude={-76.7075} />
       </div>

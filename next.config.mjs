@@ -86,6 +86,31 @@ const nextConfig = {
         destination: "/procedures/o-shot/for/lichen-sclerosus",
         permanent: true,
       },
+      {
+        source: "/affiliates",
+        destination: "/consult",
+        permanent: true,
+      },
+      {
+        source: "/affiliates/:path*",
+        destination: "/consult",
+        permanent: true,
+      },
+      {
+        source: "/procedures/blohmdahl-ear-piercing",
+        destination: "/procedures/blomdahl-ear-piercing",
+        permanent: true,
+      },
+      {
+        source: "/procedures/blohmdahl-ear-piercing/near/:areaSlug",
+        destination: "/procedures/blomdahl-ear-piercing/near/:areaSlug",
+        permanent: true,
+      },
+      {
+        source: "/blog/medical-ear-piercing-in-williamsburg-va-blohmdahl",
+        destination: "/blog/blomdahl-ear-piercing-williamsburg-va",
+        permanent: true,
+      },
     ];
   },
   images: {

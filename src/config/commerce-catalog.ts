@@ -229,9 +229,9 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     stripePriceLookupKey: "wms_procedure_hyperhidrosis_treatment_1000_v1",
   },
   {
-    slug: "blohmdahl-ear-piercing",
+    slug: "blomdahl-ear-piercing",
     kind: "procedure",
-    name: "Blohmdahl Ear Piercing",
+    name: "Blomdahl Ear Piercing",
     shortDescription: "Charged per ear.",
     pricingMode: "quantity",
     unitAmountCents: 4500,
@@ -243,8 +243,8 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     requiresScheduling: true,
     fulfillment: "appointment",
     imagePath: "/procedure/ear-piercing.png",
-    stripeProductKey: "wms_procedure_blohmdahl_ear_piercing",
-    stripePriceLookupKey: "wms_procedure_blohmdahl_ear_piercing_45_v1",
+    stripeProductKey: "wms_procedure_blomdahl_ear_piercing",
+    stripePriceLookupKey: "wms_procedure_blomdahl_ear_piercing_45_v1",
   },
   {
     slug: "co2-lift",

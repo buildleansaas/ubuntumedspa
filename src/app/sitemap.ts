@@ -3,6 +3,8 @@ import { MetadataRoute } from "next";
 import { procedures, products } from "data";
 import { getPublishedAilmentEntries } from "lib/ailments/get-ailment-page-data";
 import { getPublishedBlogPosts } from "lib/blog";
+import { publishedEarPiercingIntentPages } from "lib/ear-piercing-intents";
+import { publishedEarPiercingAreas } from "lib/local-service-areas";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getPublishedBlogPosts();
@@ -85,6 +87,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...publishedProcedures.map((procedure) => ({
       url: `https://www.williamsburgmedspa.com/procedures/${procedure.slug}`,
+      lastModified: new Date(),
+    })),
+    ...publishedEarPiercingAreas.map((area) => ({
+      url: `https://www.williamsburgmedspa.com/procedures/blomdahl-ear-piercing/near/${area.slug}`,
+      lastModified: new Date(),
+    })),
+    ...publishedEarPiercingIntentPages.map((page) => ({
+      url: `https://www.williamsburgmedspa.com/procedures/blomdahl-ear-piercing/for/${page.slug}`,
       lastModified: new Date(),
     })),
     ...ailmentPages.map(({ procedureSlug, ailmentSlug }) => ({

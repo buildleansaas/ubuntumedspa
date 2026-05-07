@@ -48,7 +48,7 @@ export default function JamesCityCountyPage() {
           <li>PRP for Joints — knees, shoulders, and soft‑tissue concerns</li>
           <li>PRP Facial — support collagen and smoother skin texture</li>
           <li>Filler — natural contouring for cheeks, lips, and under‑eyes</li>
-          <li>Blohmdahl Medical Ear Piercing — sterile, gentle, hypoallergenic</li>
+          <li>Blomdahl Medical Ear Piercing — sterile, gentle, hypoallergenic</li>
         </ul>
       </section>
 

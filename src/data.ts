@@ -2193,25 +2193,25 @@ export const procedures = [
     ],
   },
   {
-    name: "Blohmdahl Ear Piercing",
-    slug: "blohmdahl-ear-piercing",
+    name: "Blomdahl Ear Piercing",
+    slug: "blomdahl-ear-piercing",
     seo: {
-      title: "Medical Ear Piercing in Williamsburg, VA | Blohmdahl",
+      title: "Medical Ear Piercing in Williamsburg, VA | Blomdahl",
       description:
-        "Medical ear piercing in Williamsburg, VA using the Blohmdahl system with sterile single-use cassettes and hypoallergenic jewelry for children, teens, and adults.",
+        "Medical ear piercing in Williamsburg, VA using the Blomdahl system with sterile single-use cassettes and hypoallergenic jewelry for children, teens, and adults.",
     },
     description:
-      "Our Blohmdahl medical ear piercing service uses sterile single-use cassettes and hypoallergenic medical plastic or titanium jewelry to reduce unnecessary tissue trauma and support cleaner healing. It is a strong fit for first piercings, sensitive skin, re-piercing, and families who want a clinical setting instead of mall-style piercing.",
+      "Our Blomdahl medical ear piercing service uses sterile single-use cassettes and hypoallergenic medical plastic or titanium jewelry to reduce unnecessary tissue trauma and support cleaner healing. It is a strong fit for first piercings, sensitive skin, re-piercing, and families who want a clinical setting instead of mall-style piercing.",
     headline: "Medical ear piercing in Williamsburg for children, teens, and adults.",
     subline:
-      "Blohmdahl combines sterile technique, hypoallergenic jewelry, and gentle placement for first earrings, re-piercing, and sensitive ears.",
+      "Blomdahl combines sterile technique, hypoallergenic jewelry, and gentle placement for first earrings, re-piercing, and sensitive ears.",
     image: "/procedure/ear-piercing.png",
     price: "$45.00 per ear",
     // programmatic SEO copy
     blogHeadline:
-      "Planning ear piercing in Williamsburg? Review our guides on first earrings, sensitive skin, aftercare, and why Blohmdahl differs from mall piercing.",
+      "Planning ear piercing in Williamsburg? Review our guides on first earrings, sensitive skin, aftercare, and why Blomdahl differs from mall piercing.",
     benefitsHeadline:
-      "Blohmdahl ear piercing is designed for cleaner healing and calmer tissue response, especially for kids, sensitive skin, and first-time piercings.",
+      "Blomdahl ear piercing is designed for cleaner healing and calmer tissue response, especially for kids, sensitive skin, and first-time piercings.",
     benefits: [
       {
         emoji: "🏥",
@@ -2236,60 +2236,60 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "Blohmdahl medical ear piercing supports several common ear-piercing situations, from a child's first earrings to re-piercing and sensitive-skin concerns. The focus is sterile technique, thoughtful placement, and healing-friendly materials.",
+      "Blomdahl medical ear piercing supports several common ear-piercing situations, from a child's first earrings to re-piercing and sensitive-skin concerns. The focus is sterile technique, thoughtful placement, and healing-friendly materials.",
     ailments: [
       {
         title: "First-Time Piercings",
         description: "Perfect for children and adults getting their ears pierced for the first time.",
-        blog_post_title: "Your Child's First Ear Piercing: Why Choose Blohmdahl",
-        blog_post_slug: "childs-first-ear-piercing-blohmdahl-method",
+        blog_post_title: "Your Child's First Ear Piercing: Why Choose Blomdahl",
+        blog_post_slug: "childs-first-ear-piercing-blomdahl-method",
         slug: "first-time-piercing",
         tag: "common",
       },
       {
         title: "Sensitive Skin",
         description: "Hypoallergenic materials ideal for those with metal allergies or sensitive skin.",
-        blog_post_title: "Ear Piercing for Sensitive Skin: The Blohmdahl Advantage",
-        blog_post_slug: "ear-piercing-sensitive-skin-blohmdahl",
+        blog_post_title: "Ear Piercing for Sensitive Skin: The Blomdahl Advantage",
+        blog_post_slug: "ear-piercing-sensitive-skin-blomdahl",
         slug: "sensitive-skin-piercing",
         tag: "common",
       },
       {
         title: "Re-Piercing",
         description: "Safe re-piercing of closed or partially closed ear holes.",
-        blog_post_title: "Re-Piercing Your Ears Safely with Blohmdahl",
-        blog_post_slug: "re-piercing-ears-safely-blohmdahl",
+        blog_post_title: "Re-Piercing Your Ears Safely with Blomdahl",
+        blog_post_slug: "re-piercing-ears-safely-blomdahl",
         slug: "ear-re-piercing",
         tag: "common",
       },
       {
         title: "Multiple Piercings",
         description: "Precise placement for second, third, or cartilage piercings.",
-        blog_post_title: "Creating Your Perfect Ear Stack with Blohmdahl",
-        blog_post_slug: "multiple-ear-piercings-blohmdahl",
+        blog_post_title: "Creating Your Perfect Ear Stack with Blomdahl",
+        blog_post_slug: "multiple-ear-piercings-blomdahl",
         slug: "multiple-piercings",
         tag: "uncommon",
       },
       {
         title: "Keloid Prevention",
         description: "Gentle technique and proper aftercare to minimize keloid formation risk.",
-        blog_post_title: "Preventing Keloids with Blohmdahl Ear Piercing",
-        blog_post_slug: "preventing-keloids-blohmdahl-piercing",
+        blog_post_title: "Preventing Keloids with Blomdahl Ear Piercing",
+        blog_post_slug: "preventing-keloids-blomdahl-piercing",
         slug: "keloid-prevention",
         tag: "uncommon",
       },
     ],
-    faqHeadline: "Everything you need to know about medical ear piercing with Blohmdahl at Williamsburg Med Spa.",
+    faqHeadline: "Everything you need to know about medical ear piercing with Blomdahl at Williamsburg Med Spa.",
     faqs: [
       {
         question: "What age can children get their ears pierced?",
         answer:
-          "We safely pierce ears for children as young as 3 months old. Our gentle Blohmdahl system and experienced staff ensure a positive experience for children of all ages.",
+          "Age eligibility is confirmed when booking. Jenny reviews the child's age, parent or guardian questions, timing, and aftercare expectations before the visit.",
       },
       {
-        question: "How is Blohmdahl different from mall piercing?",
+        question: "How is Blomdahl different from mall piercing?",
         answer:
-          "Blohmdahl uses medical-grade, pre-sterilized equipment and hypoallergenic materials. Unlike piercing guns, our system is gentler, more precise, and significantly reduces the risk of infection and complications.",
+          "Blomdahl uses medical-grade, pre-sterilized equipment and hypoallergenic materials. Unlike piercing guns, our system is gentler, more precise, and significantly reduces the risk of infection and complications.",
       },
       {
         question: "What jewelry materials are available?",
@@ -2304,7 +2304,7 @@ export const procedures = [
       {
         question: "Can I bring my own jewelry?",
         answer:
-          "For initial piercings, we use only Blohmdahl jewelry to ensure safety and proper healing. After healing is complete, you can switch to your own jewelry.",
+          "For initial piercings, we use only Blomdahl jewelry to ensure safety and proper healing. After healing is complete, you can switch to your own jewelry.",
       },
     ],
   },

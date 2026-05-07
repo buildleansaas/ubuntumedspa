@@ -24,8 +24,8 @@ export default function ProviderCallout() {
             <p className="text-base md:text-lg text-base-content/70 mb-2">Jenny Coleman — MSN, RN, CPNP, PMHS</p>
             <p className="text-sm md:text-base text-base-content/80 leading-relaxed">
               With 26 years in medicine and six years dedicated to aesthetics, Jenny blends primary care and mental
-              health expertise with a holistic, patient‑first approach. She combines regenerative PRP therapies,
-              advanced injection techniques, and practical wellness counseling to help you look and feel your best—
+              health expertise with a holistic, patient-first approach. She combines regenerative PRP therapies,
+              advanced injection techniques, and practical wellness counseling to help you look and feel your best,
               naturally.
             </p>
           </div>

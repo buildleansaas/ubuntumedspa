@@ -77,7 +77,7 @@ export default function WilliamsburgLocationPage() {
             <Link href="/procedures/prp-hair-restoration">PRP Hair Restoration</Link>
           </Button>
           <Button asChild size="sm">
-            <Link href="/procedures/blohmdahl-ear-piercing">Medical Ear Piercing</Link>
+            <Link href="/procedures/blomdahl-ear-piercing">Medical Ear Piercing</Link>
           </Button>
           <Button asChild size="sm">
             <Link href="/procedures/hyperhidrosis-treatment">Hyperhidrosis Treatment</Link>

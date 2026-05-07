@@ -34,7 +34,7 @@ export default async function Page() {
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-base-content/80">
             Williamsburg Med Spa is a medical spa in Williamsburg, VA offering Botox, Xeomin, dermal fillers, PRP
-            treatments, hyperhidrosis care, and Blohmdahl medical ear piercing with calm conversations, clear
+            treatments, hyperhidrosis care, and Blomdahl medical ear piercing with calm conversations, clear
             guidance, and treatment planning shaped around realistic goals.
           </p>
         </div>
