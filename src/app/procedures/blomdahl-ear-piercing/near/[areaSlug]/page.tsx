@@ -117,7 +117,7 @@ export default function EarPiercingAreaPage({ params }: Params) {
           For {area.name} patients, Williamsburg Med Spa is {area.earPiercingAngle}. {area.whyMedicalSetting}
         </p>
         <p className="text-base md:text-lg text-base-content/80">
-          {area.parentConcern} This page is intended for people comparing options for children's first piercings,
+          {area.parentConcern} This page is intended for people comparing options for children&apos;s first piercings,
           sensitive skin, re-piercing, or a more controlled piercing experience near {area.countyOrContext}.
         </p>
       </section>
