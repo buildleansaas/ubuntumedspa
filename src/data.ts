@@ -688,9 +688,9 @@ export const procedures = [
     name: "PRP Hair Restoration",
     slug: "prp-hair-restoration",
     seo: {
-      title: "PRP Hair Restoration in Williamsburg, VA",
+      title: "PRP Hair Restoration in Williamsburg, VA | Non-Surgical Hair Support",
       description:
-        "PRP Hair Restoration in Williamsburg, VA to help men and women improve hair density, reduce shedding, and support scalp health.",
+        "PRP Hair Restoration in Williamsburg, VA for men and women comparing non-surgical hair support, thinning hair treatment, and hair transplant alternatives.",
     },
     description:
       "PRP Hair Restoration with PRP is a natural solution for thinning hair or hair loss, that can stimulate new hair growth and improve overall scalp health. A series of three sessions, spaced six weeks apart, each lasting about an hour, use Platelet-Rich Plasma (PRP) therapy to naturally stimulate hair follicles. Suitable for both men and women, this safe and effective treatment offers a quick recovery time with visible results in as little as a few months after the final session. Results include a more youthful and healthy-looking head of hair, which can boost self-esteem and confidence. Overall, the PRP Hair Restoration is a non-invasive option that can help you regain your desired hair thickness and density.",
@@ -701,7 +701,7 @@ export const procedures = [
     price: "$600/tx",
     // programmatic SEO copy
     blogHeadline:
-      "Hair thinning or loss affecting your confidence? Dive deep into our Hair Restoration articles to explore the wonders of PRP therapy in stimulating hair growth. Find testimonials, expert advice, and more.",
+      "Hair thinning or loss affecting your confidence? Review PRP hair restoration, non-surgical hair support, and how PRP differs from hair transplant surgery.",
     benefitsHeadline:
       "Turn back the clock and let your hair be the statement of youth. PRP Hair Restoration, with its power of PRP, can transform thinning strands into a lush mane. Feel confident, look vibrant, and let every strand speak volumes.",
     benefits: [

@@ -30,6 +30,7 @@ const featuredGuideSlugs: Record<string, string> = {
   botox: "botox-vs-xeomin-williamsburg-va",
   xeomin: "botox-vs-xeomin-williamsburg-va",
   filler: "how-long-do-dermal-fillers-last-in-williamsburg-va",
+  "prp-hair-restoration": "prp-hair-restoration-vs-hair-transplant-williamsburg-va",
 };
 const featuredGuideCopy: Record<string, { button: string; heading: string; description: string; linkLabel: string }> = {
   botox: {
@@ -50,6 +51,13 @@ const featuredGuideCopy: Record<string, { button: string; heading: string; descr
     description:
       "Review how longevity can vary across lips, cheeks, under-eyes, and other treatment areas before you book.",
     linkLabel: "Read the dermal filler longevity guide",
+  },
+  "prp-hair-restoration": {
+    button: "PRP vs Hair Transplant",
+    heading: "Comparing PRP hair restoration with transplant surgery?",
+    description:
+      "Review how non-surgical PRP support differs from surgical follicle transplant planning before you choose a path.",
+    linkLabel: "Read the PRP hair restoration vs hair transplant guide",
   },
 };
 
