@@ -241,6 +241,23 @@ export default async function AilmentPage({ params }: Params) {
           </section>
         )}
 
+        {metadata.relatedGuide && (
+          <section className="my-32 max-w-5xl mx-auto scroll-mt-24" id="guide">
+            <div className="rounded-2xl border border-base-300 bg-base-200 p-6 text-center md:p-10">
+              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">{metadata.relatedGuide.eyebrow}</p>
+              <h2 className="mt-3 text-2xl md:text-4xl mx-auto leading-tight pb-4 font-light">
+                {metadata.relatedGuide.heading}
+              </h2>
+              <p className="mx-auto max-w-3xl text-base md:text-lg text-base-content/80 leading-relaxed">
+                {metadata.relatedGuide.description}
+              </p>
+              <Button asChild className="mt-6">
+                <Link href={metadata.relatedGuide.href}>{metadata.relatedGuide.linkLabel}</Link>
+              </Button>
+            </div>
+          </section>
+        )}
+
         <section className="my-32 max-w-5xl mx-auto scroll-mt-24" id="faqs">
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">{metadata.faqHeading}</h2>
           <Accordion type="single" collapsible className="text-left mb-12">

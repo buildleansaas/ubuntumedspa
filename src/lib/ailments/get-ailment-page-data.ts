@@ -28,6 +28,14 @@ export type AilmentProcessVisualization = {
   steps: AilmentProcessVisualizationStep[];
 };
 
+export type AilmentRelatedGuide = {
+  href: string;
+  eyebrow: string;
+  heading: string;
+  description: string;
+  linkLabel: string;
+};
+
 export type AilmentPageMetadata = {
   title: string;
   description: string;
@@ -47,6 +55,7 @@ export type AilmentPageMetadata = {
   expectationsSteps: AilmentPageStep[];
   faqHeading: string;
   faqs: AilmentPageFAQ[];
+  relatedGuide?: AilmentRelatedGuide;
   seoTitle: string;
   seoDescription: string;
 };
