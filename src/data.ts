@@ -594,25 +594,25 @@ export const procedures = [
         emoji: "⏲️",
         benefit: "Long-lasting Results",
         description:
-          "The effects of the PRP Breast Lift can last well over 18 months and, in some cases, even a lifetime.",
+          "Response and duration vary, and Jenny reviews realistic timing and maintenance during consultation.",
       },
     ],
     ailmentsHeadline:
-      "Unlock a new level of confidence and beauty with the PRP Breast Lift. Whether you're dealing with common issues like sagging breasts and loss of volume, or looking for a more unconventional solution to scars and decreased sensitivity, this minimally invasive treatment offers a range of benefits. It's not just about aesthetics; many women experience functional improvements and a boost in self-esteem. Explore how the PRP Breast Lift can tailor solutions for various aspects of breast health and appearance.",
+      "Review whether the PRP Breast Lift may fit breast appearance, texture, sensitivity, or scar-related concerns. This consultation-based treatment is discussed with realistic expectations, candidacy screening, and a clear review of alternatives.",
     ailments: [
       {
         title: "Sagging Breasts",
         description:
-          "Turn back time on sagging breasts with the PRP Breast Lift. Regain youthful perkiness without invasive surgery.",
-        blog_post_title: "Get Perky, Youthful Breasts Again with the PRP Breast Lift",
-        blog_post_slug: "get-perky-youthful-breasts-again-with-the-prp-breast-lift",
+          "Discuss breast laxity concerns and whether the PRP Breast Lift is a reasonable non-surgical option.",
+        blog_post_title: "PRP Breast Lift for Breast Laxity: What to Know",
+        blog_post_slug: "prp-breast-lift-for-breast-laxity-what-to-know",
         slug: "sagging-breasts",
         tag: "common",
       },
       {
         title: "Loss of Breast Volume",
         description:
-          "Restore lost volume in your breasts naturally with the PRP Breast Lift. Say goodbye to padding and fillers.",
+          "Review whether PRP-based care may support breast appearance goals without surgical planning.",
         blog_post_title: "Restore Natural Volume to Your Breasts with the PRP Breast Lift",
         blog_post_slug: "restore-natural-volume-to-your-breasts-with-the-prp-breast-lift",
         slug: "loss-of-breast-volume",
@@ -621,7 +621,7 @@ export const procedures = [
       {
         title: "Decreased Sensitivity",
         description:
-          "Reclaim sensitivity and pleasure in your breasts with the PRP Breast Lift. Feel more in your intimate moments.",
+          "Discuss decreased sensitivity concerns and whether PRP-based care belongs in the plan.",
         blog_post_title: "Regain Breast Sensitivity and Enhance Intimacy with the PRP Breast Lift",
         blog_post_slug: "regain-breast-sensitivity-and-enhance-intimacy-with-the-prp-breast-lift",
         slug: "decreased-sensitivity",
@@ -630,9 +630,9 @@ export const procedures = [
       {
         title: "Wrinkled Cleavage Area",
         description:
-          "Smooth out wrinkles in your cleavage area effortlessly with the PRP Breast Lift. Flaunt your décolletage with pride.",
-        blog_post_title: "Erase Cleavage Wrinkles with the PRP Breast Lift",
-        blog_post_slug: "erase-cleavage-wrinkles-with-the-prp-breast-lift",
+          "Soften the appearance of cleavage-area skin texture with a consultation-based treatment plan.",
+        blog_post_title: "Soften Cleavage Wrinkles with the PRP Breast Lift",
+        blog_post_slug: "soften-cleavage-wrinkles-with-the-prp-breast-lift",
         slug: "wrinkled-cleavage-area",
         tag: "common",
       },
@@ -739,12 +739,12 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "Revitalize your hair and restore your confidence with PRP Hair Restoration. This advanced treatment offers a solution to a multitude of hair concerns that both men and women face. Whether you're dealing with the frustrating onset of a receding hairline, patchy spots caused by alopecia, or even the dullness and lifelessness of aging hair, PRP Hair Restoration promises targeted treatment that fosters natural hair regrowth. Uncover the secrets of this innovative procedure and learn how it can serve your unique needs.",
+      "Review whether PRP Hair Restoration may fit your hair and scalp goals. This treatment is discussed for select men and women with thinning, shedding, early pattern changes, or texture concerns when follicles may still be active. A consultation helps clarify candidacy, realistic expectations, and whether medical evaluation should come first.",
     ailments: [
       {
         title: "Thinning Hair",
         description:
-          "Revitalize your sparse locks with PRP Hair Restoration. Experience thicker, fuller hair without chemicals.",
+          "Discuss PRP Hair Restoration when thinning hair or lower density may still involve active follicles.",
         blog_post_title: "Combat Thinning Hair Effectively with PRP Hair Restoration",
         blog_post_slug: "combat-thinning-hair-effectively-with-prp-hair-restoration",
         slug: "thinning-hair",
@@ -753,7 +753,7 @@ export const procedures = [
       {
         title: "Receding Hairline",
         description:
-          "Halt a receding hairline in its tracks with PRP Hair Restoration. Regrow natural hair at the front and sides.",
+          "Review whether early hairline changes are a reasonable fit for PRP or need a different hair-restoration plan.",
         blog_post_title: "Reclaim Your Hairline with PRP Hair Restoration",
         blog_post_slug: "reclaim-your-hairline-with-prp-hair-restoration",
         slug: "receding-hairline",
@@ -762,7 +762,7 @@ export const procedures = [
       {
         title: "Alopecia",
         description:
-          "Target patches of alopecia with the regenerative power of PRP Hair Restoration. Witness significant regrowth.",
+          "Ask whether alopecia-related patches need dermatology evaluation before PRP is considered.",
         blog_post_title: "Beat Alopecia with Natural Hair Regrowth from PRP Hair Restoration",
         blog_post_slug: "beat-alopecia-with-natural-hair-regrowth-from-prp-hair-restoration",
         slug: "alopecia",
@@ -780,9 +780,9 @@ export const procedures = [
       {
         title: "Hormonal Hair Loss",
         description:
-          "Reverse hair loss due to hormonal imbalances with PRP Hair Restoration. Reclaim your hair and your confidence.",
-        blog_post_title: "End Hormonal Hair Loss Once and for All with PRP Hair Restoration",
-        blog_post_slug: "end-hormonal-hair-loss-once-and-for-all-with-prp-hair-restoration",
+          "Review hair loss linked to hormonal changes and whether PRP belongs alongside medical evaluation.",
+        blog_post_title: "Managing Hormonal Hair Loss with PRP Hair Restoration",
+        blog_post_slug: "managing-hormonal-hair-loss-with-prp-hair-restoration",
         slug: "hormonal-hair-loss",
         tag: "uncommon",
       },
@@ -798,14 +798,14 @@ export const procedures = [
       {
         title: "Thinning Hair",
         description: "Revitalize your crowning glory with enhanced hair density and volume.",
-        blog_post_title: "Reverse Thinning Hair with PRP Hair Restoration",
-        blog_post_slug: "reverse-thinning-hair-with-prp-hair-restoration",
+        blog_post_title: "Support Thinning Hair with PRP Hair Restoration",
+        blog_post_slug: "support-thinning-hair-with-prp-hair-restoration",
         slug: "thinning-hair",
         tag: "common",
       },
       {
         title: "Receding Hairline",
-        description: "Turn back the clock on your receding hairline and regain a youthful appearance.",
+        description: "Review whether receding hairline concerns are early enough for non-surgical PRP support.",
         blog_post_title: "How PRP Hair Restoration Can Help Your Receding Hairline",
         blog_post_slug: "how-prp-hair-restoration-can-help-your-receding-hairline",
         slug: "receding-hairline",
@@ -821,9 +821,9 @@ export const procedures = [
       },
       {
         title: "Scalp Scars",
-        description: "Improve the appearance of unsightly scalp scars and enjoy wearing your hair any way you want.",
-        blog_post_title: "Eliminate Scalp Scars with PRP Hair Restoration",
-        blog_post_slug: "eliminate-scalp-scars-with-prp-hair-restoration",
+        description: "Discuss whether scalp-scar concerns are appropriate for PRP or need specialist review first.",
+        blog_post_title: "Scalp Scar Support with PRP Hair Restoration",
+        blog_post_slug: "scalp-scar-support-with-prp-hair-restoration",
         slug: "scalp-scars",
         tag: "uncommon",
       },
@@ -963,18 +963,18 @@ export const procedures = [
     ailments: [
       {
         title: "Fine Lines and Wrinkles",
-        description: "Smooth out fine lines and wrinkles with a PRP Facial. Get youthful, radiant skin naturally.",
-        blog_post_title: "Erase Fine Lines and Wrinkles with a PRP Facial",
-        blog_post_slug: "erase-fine-lines-and-wrinkles-with-a-prp-facial",
+        description: "Soften the appearance of fine lines and wrinkles with a PRP Facial consultation plan.",
+        blog_post_title: "Soften Fine Lines and Wrinkles with a PRP Facial",
+        blog_post_slug: "soften-fine-lines-and-wrinkles-with-a-prp-facial",
         slug: "fine-lines-and-wrinkles",
         tag: "common",
       },
       {
         title: "Acne Scars",
         description:
-          "Say goodbye to acne scars with the healing properties of a PRP Facial. Achieve an even skin tone effortlessly.",
-        blog_post_title: "Eliminate Acne Scars for Good with a PRP Facial",
-        blog_post_slug: "eliminate-acne-scars-for-good-with-a-prp-facial",
+          "Improve the appearance of acne scars with a PRP Facial plan when candidacy is appropriate.",
+        blog_post_title: "Improve Acne Scars with a PRP Facial",
+        blog_post_slug: "improve-acne-scars-with-a-prp-facial",
         slug: "acne-scars",
         tag: "common",
       },
@@ -990,7 +990,7 @@ export const procedures = [
       {
         title: "Uneven Skin Texture",
         description:
-          "Revamp rough, uneven skin into a smoother version with a PRP Facial. Touch and see the difference.",
+          "Discuss rough or uneven skin texture and whether a PRP Facial is a reasonable option.",
         blog_post_title: "Transform Your Skin's Texture with a PRP Facial",
         blog_post_slug: "transform-your-skins-texture-with-a-prp-facial",
         slug: "uneven-skin-texture",
@@ -1014,15 +1014,15 @@ export const procedures = [
       },
       {
         title: "Enlarged Pores",
-        description: "Shrink large pores and refine your skin with a PRP Facial. Witness the minimization instantly.",
-        blog_post_title: "Minimize Large Pores Effortlessly with a PRP Facial",
-        blog_post_slug: "minimize-large-pores-effortlessly-with-a-prp-facial",
+        description: "Improve the look of enlarged pores and skin texture with a PRP Facial plan.",
+        blog_post_title: "Minimize the Look of Large Pores with a PRP Facial",
+        blog_post_slug: "minimize-the-look-of-large-pores-with-a-prp-facial",
         slug: "enlarged-pores",
         tag: "common",
       },
       {
         title: "Sun Damage",
-        description: "Reverse the harmful effects of sun exposure with the rejuvenating PRP Facial.",
+        description: "Support sun-damaged-looking skin with a PRP Facial consultation and realistic treatment plan.",
         blog_post_title: "Repair Sun-Damaged Skin with a PRP Facial",
         blog_post_slug: "repair-sun-damaged-skin-with-a-prp-facial",
         slug: "sun-damage",
@@ -1189,7 +1189,7 @@ export const procedures = [
       },
       {
         title: "Age-Related Facial Changes",
-        description: "Combat the signs of aging like skin laxity and wrinkles with a PRP Face Lift.",
+        description: "Address age-related facial changes such as laxity and wrinkles with a PRP Face Lift consultation.",
         blog_post_title: "Combat Age-Related Changes with a PRP Face Lift",
         blog_post_slug: "combat-age-related-changes-with-a-prp-face-lift",
         slug: "age-related-facial-changes",
@@ -1205,7 +1205,7 @@ export const procedures = [
       },
       {
         title: "Uneven Facial Structure",
-        description: "Achieve balanced facial symmetry with the help of a PRP Face Lift.",
+        description: "Discuss facial balance concerns and whether a PRP Face Lift is an appropriate option.",
         blog_post_title: "Balance Your Facial Structure with a PRP Face Lift",
         blog_post_slug: "balance-your-facial-structure-with-a-prp-face-lift",
         slug: "uneven-facial-structure",
@@ -1214,14 +1214,14 @@ export const procedures = [
       {
         title: "Crow's Feet",
         description: "Reduce the fine lines that appear around the eyes, often called crow's feet.",
-        blog_post_title: "Eliminate Crow's Feet with PRP Face Lift",
-        blog_post_slug: "eliminate-crows-feet-with-prp-face-lift",
+        blog_post_title: "Soften Crow's Feet with PRP Face Lift",
+        blog_post_slug: "soften-crows-feet-with-prp-face-lift",
         slug: "crows-feet",
         tag: "uncommon",
       },
       {
         title: "Jowls",
-        description: "Lift and firm the lower part of your face to eliminate jowls.",
+        description: "Support the look of lower-face firmness and jowl softening with a consultation-based plan.",
         blog_post_title: "Lift and Tighten Jowls with PRP Face Lift",
         blog_post_slug: "lift-and-tighten-jowls-with-prp-face-lift",
         slug: "jowls",
@@ -1253,9 +1253,9 @@ export const procedures = [
       },
       {
         title: "Marionette Lines",
-        description: "Eliminate the lines running from the corners of your mouth down to your chin.",
-        blog_post_title: "Eliminate Marionette Lines with PRP Face Lift",
-        blog_post_slug: "eliminate-marionette-lines-with-prp-face-lift",
+        description: "Soften the appearance of lines running from the corners of your mouth down to your chin.",
+        blog_post_title: "Soften Marionette Lines with PRP Face Lift",
+        blog_post_slug: "soften-marionette-lines-with-prp-face-lift",
         slug: "marionette-lines",
         tag: "experimental",
       },
@@ -1306,28 +1306,28 @@ export const procedures = [
         "PRP Joint Restoration in Williamsburg, VA offering non-surgical support for knee, shoulder, and other joint pain with regenerative therapy.",
     },
     description:
-      "Joint Restoration using PRP therapy is a non-surgical solution for various joint issues, providing a potential alternative to joint replacement surgery. PRP's healing properties naturally stimulate tissue regeneration and reduce inflammation, rejuvenating your joints and leading to reduced discomfort and improved mobility. This innovative treatment can help to alleviate the symptoms of conditions such as osteoarthritis, rotator cuff tears, ACL injuries, and tennis elbow, among others. With a series of treatments, you may experience less pain, increased functionality, and possibly avoid the need for surgical intervention.",
-    headline: "Reclaim Your Mobility: Non-Surgical, Effective Relief!",
+      "Joint Restoration using PRP therapy is a non-surgical conversation for select joint and tendon concerns. Jenny reviews symptoms, history, prior care, and whether PRP, imaging, orthopedics, physical therapy, or another first step is appropriate.",
+    headline: "PRP Joint Restoration Consultation in Williamsburg",
     subline:
-      "Joint Restoration uses PRP therapy, which naturally stimulates tissue regeneration, offering a non-surgical solution for joint issues. The process rejuvenates your joints, leading to reduced discomfort and improved mobility.",
+      "Joint Restoration uses platelet-rich plasma in a consultation-based plan for select joint concerns. Candidacy depends on the diagnosis, severity, prior treatments, and whether another specialist should be involved.",
     image: "/procedure/wrist.jpg",
     price: "$800",
     // programmatic SEO copy
     blogHeadline:
-      "Facing joint issues and considering surgery? Explore non-surgical solutions in our Joint Restoration blog. Learn how PRP therapy aids tissue regeneration, helping many avoid invasive procedures.",
+      "Facing joint issues and comparing options? Explore how PRP may fit into non-surgical joint care and when specialist evaluation should come first.",
     benefitsHeadline:
-      "Say goodbye to joint discomfort and embrace a life of mobility. Joint Restoration using PRP offers a promising horizon for those seeking non-surgical relief. Walk, run, and dance through life with newfound ease and flexibility.",
+      "Review whether PRP Joint Restoration may support mobility goals as part of a non-surgical care conversation.",
     benefits: [
       {
         emoji: "🏃‍♂️",
         benefit: "Restored Mobility",
         description:
-          "Joint Restoration can lead to increased mobility and flexibility, improving overall physical function.",
+          "Joint Restoration may support mobility and flexibility goals for selected patients.",
       },
       {
         emoji: "🔥",
         benefit: "Pain Reduction",
-        description: "Many patients report significant reductions in joint pain and discomfort post-procedure.",
+        description: "Some patients discuss PRP when joint pain or discomfort is affecting daily movement.",
       },
       {
         emoji: "💪",
@@ -1338,16 +1338,16 @@ export const procedures = [
       {
         emoji: "🔄",
         benefit: "Joint Tissue Regeneration",
-        description: "Promotes the regeneration of joint tissues, aiding in the long-term health of the joint.",
+        description: "Supports a regenerative care conversation focused on joint tissue health and function.",
       },
     ],
     ailmentsHeadline:
-      "Harness the natural healing power of your own body with Joint Restoration using Platelet-Rich Plasma (PRP). This cutting-edge treatment provides relief from a wide array of joint and musculoskeletal issues, from osteoarthritis and tendonitis to ACL injuries and meniscus tears. Offering a non-surgical solution to chronic pain and restricted mobility, PRP Joint Restoration is revolutionizing the way we approach joint health. Learn more about this versatile treatment and discover how it can help you regain freedom of movement and an active lifestyle.",
+      "Learn how Joint Restoration using platelet-rich plasma may fit into care planning for select joint and musculoskeletal concerns. A consultation should clarify symptoms, prior care, candidacy, and whether orthopedic or physical therapy evaluation should come first.",
     ailments: [
       {
         title: "Osteoarthritis",
         description:
-          "Alleviate osteoarthritis pain and improve joint function with PRP Joint Restoration. Regain your mobility without surgery.",
+          "Discuss osteoarthritis-related pain and whether PRP belongs in a non-surgical care plan.",
         blog_post_title: "Managing Osteoarthritis Pain with PRP Joint Restoration",
         blog_post_slug: "managing-osteoarthritis-pain-with-prp-joint-restoration",
         slug: "osteoarthritis",
@@ -1356,7 +1356,7 @@ export const procedures = [
       {
         title: "Tendonitis",
         description:
-          "Reduce inflammation and accelerate the healing of tendons with PRP Joint Restoration. Get back to your active lifestyle.",
+          "Review tendonitis symptoms and whether PRP is appropriate alongside activity modification or other care.",
         blog_post_title: "Healing Tendonitis Effectively with PRP Joint Restoration",
         blog_post_slug: "healing-tendonitis-effectively-with-prp-joint-restoration",
         slug: "tendonitis",
@@ -1365,7 +1365,7 @@ export const procedures = [
       {
         title: "Rotator Cuff Tears",
         description:
-          "Repair damaged rotator cuffs and regain shoulder function with PRP Joint Restoration. Say goodbye to shoulder pain.",
+          "Review rotator cuff concerns and whether PRP, imaging, therapy, or orthopedic care should come first.",
         blog_post_title: "Repairing Rotator Cuff Tears with PRP Joint Restoration",
         blog_post_slug: "repairing-rotator-cuff-tears-with-prp-joint-restoration",
         slug: "rotator-cuff-tears",
@@ -1693,9 +1693,9 @@ export const procedures = [
       },
       {
         title: "Crow's Feet",
-        description: "Say goodbye to crow's feet with Xeomin injections and rejuvenate the area around your eyes.",
-        blog_post_title: "Erase Crow's Feet with Xeomin",
-        blog_post_slug: "erase-crows-feet-with-xeomin",
+        description: "Soften the appearance of crow's feet with a Xeomin consultation plan.",
+        blog_post_title: "Soften Crow's Feet with Xeomin",
+        blog_post_slug: "soften-crows-feet-with-xeomin",
         slug: "crows-feet",
         tag: "common",
       },
@@ -1718,8 +1718,8 @@ export const procedures = [
       {
         title: "Gummy Smile",
         description: "Improve your smile by reducing excessive gum display with Xeomin.",
-        blog_post_title: "Fix Your Gummy Smile with Xeomin",
-        blog_post_slug: "fix-your-gummy-smile-with-xeomin",
+        blog_post_title: "Improve a Gummy Smile with Xeomin",
+        blog_post_slug: "improve-a-gummy-smile-with-xeomin",
         slug: "gummy-smile",
         tag: "uncommon",
       },
@@ -1742,8 +1742,8 @@ export const procedures = [
       {
         title: "Hyperhidrosis",
         description: "Combat excessive sweating effectively with Xeomin treatment.",
-        blog_post_title: "Say Goodbye to Excessive Sweating with Xeomin",
-        blog_post_slug: "say-goodbye-to-excessive-sweating-with-xeomin",
+        blog_post_title: "Reduce Excessive Sweating with Xeomin",
+        blog_post_slug: "reduce-excessive-sweating-with-xeomin",
         slug: "hyperhidrosis",
         tag: "uncommon",
       },
@@ -1758,16 +1758,16 @@ export const procedures = [
       {
         title: "Smoker's Lines",
         description: "Smooth out the vertical lines above the upper lip commonly referred to as Smoker's Lines.",
-        blog_post_title: "Erase Smoker's Lines with Xeomin and Botox",
-        blog_post_slug: "erase-smokers-lines-with-xeomin-and-botox",
+        blog_post_title: "Soften Smoker's Lines with Xeomin and Botox",
+        blog_post_slug: "soften-smokers-lines-with-xeomin-and-botox",
         slug: "smokers-lines",
         tag: "common",
       },
       {
         title: "Marionette Lines",
-        description: "Eliminate the lines that run from the corners of the mouth down to the chin.",
-        blog_post_title: "Say Goodbye to Marionette Lines with Xeomin and Botox",
-        blog_post_slug: "say-goodbye-to-marionette-lines-with-xeomin-and-botox",
+        description: "Soften the appearance of lines that run from the corners of the mouth down to the chin.",
+        blog_post_title: "Soften Marionette Lines with Xeomin and Botox",
+        blog_post_slug: "soften-marionette-lines-with-xeomin-and-botox",
         slug: "marionette-lines",
         tag: "common",
       },
@@ -1891,8 +1891,8 @@ export const procedures = [
         title: "Nasolabial Folds",
         description:
           "Diminish the look of nasolabial folds, commonly known as laugh lines, for a refreshed facial appearance.",
-        blog_post_title: "Erase Laugh Lines with Dermal Fillers",
-        blog_post_slug: "erase-laugh-lines-with-dermal-fillers",
+        blog_post_title: "Soften Laugh Lines with Dermal Fillers",
+        blog_post_slug: "soften-laugh-lines-with-dermal-fillers",
         slug: "nasolabial-folds",
         tag: "common",
       },
@@ -1930,9 +1930,9 @@ export const procedures = [
       },
       {
         title: "Tear Troughs",
-        description: "Eliminate under-eye hollows and dark circles for a more rested look.",
-        blog_post_title: "Say Goodbye to Dark Circles with Dermal Fillers",
-        blog_post_slug: "say-goodbye-to-dark-circles-with-dermal-fillers",
+        description: "Improve the look of under-eye hollows and dark circles for a more rested appearance.",
+        blog_post_title: "Improve Dark Circles with Dermal Fillers",
+        blog_post_slug: "improve-dark-circles-with-dermal-fillers",
         slug: "tear-troughs",
         tag: "uncommon",
       },
@@ -1987,8 +1987,8 @@ export const procedures = [
       {
         title: "Smoker's Lines",
         description: "Smooth out fine lines around the mouth for a youthful appearance.",
-        blog_post_title: "Eliminate Smoker's Lines with Filler",
-        blog_post_slug: "eliminate-smokers-lines-with-filler",
+        blog_post_title: "Soften Smoker's Lines with Filler",
+        blog_post_slug: "soften-smokers-lines-with-filler",
         slug: "smokers-lines",
         tag: "common",
       },
@@ -2003,8 +2003,8 @@ export const procedures = [
       {
         title: "Crow's Feet",
         description: "Diminish the appearance of crow's feet around the eyes.",
-        blog_post_title: "Say Goodbye to Crow's Feet with Filler",
-        blog_post_slug: "say-goodbye-to-crows-feet-with-filler",
+        blog_post_title: "Soften Crow's Feet with Filler",
+        blog_post_slug: "soften-crows-feet-with-filler",
         slug: "crows-feet",
         tag: "common",
       },
@@ -2111,17 +2111,17 @@ export const procedures = [
     ailments: [
       {
         title: "Underarm Sweating",
-        description: "Say goodbye to underarm sweat stains and regain confidence in social and professional settings.",
-        blog_post_title: "How Xeomin Can Put an End to Underarm Sweating",
-        blog_post_slug: "how-xeomin-can-put-an-end-to-underarm-sweating",
+        description: "Reduce underarm sweat concerns that interfere with social and professional settings.",
+        blog_post_title: "How Xeomin Can Reduce Underarm Sweating",
+        blog_post_slug: "how-xeomin-can-reduce-underarm-sweating",
         slug: "underarm-sweating",
         tag: "common",
       },
       {
         title: "Sweaty Palms",
-        description: "No more awkward, sweaty handshakes. Achieve drier palms and a firmer grip on life.",
-        blog_post_title: "Eliminate Sweaty Palms with Xeomin",
-        blog_post_slug: "eliminate-sweaty-palms-with-xeomin",
+        description: "Discuss treatment for sweaty palms when hand moisture affects work, social life, or comfort.",
+        blog_post_title: "Reduce Sweaty Palms with Xeomin",
+        blog_post_slug: "reduce-sweaty-palms-with-xeomin",
         slug: "sweaty-palms",
         tag: "common",
       },
@@ -2136,7 +2136,7 @@ export const procedures = [
       },
       {
         title: "Facial Sweating",
-        description: "Put an end to the discomfort and embarrassment of excessive facial sweating. Feel fresh all day.",
+        description: "Review facial sweating concerns and whether Xeomin treatment is appropriate.",
         blog_post_title: "Manage Excessive Facial Sweating with Xeomin",
         blog_post_slug: "manage-excessive-facial-sweating-with-xeomin",
         slug: "facial-sweating",
@@ -2153,16 +2153,16 @@ export const procedures = [
       {
         title: "Groin (Inguinal Hyperhidrosis)",
         description: "Reduce unwanted moisture and discomfort in the groin area.",
-        blog_post_title: "Say Goodbye to Groin Sweat with Xeomin",
-        blog_post_slug: "say-goodbye-to-groin-sweat-with-xeomin",
+        blog_post_title: "Reduce Groin Sweating with Xeomin",
+        blog_post_slug: "reduce-groin-sweating-with-xeomin",
         slug: "groin-hyperhidrosis",
         tag: "uncommon",
       },
       {
         title: "Back (Dorsal Hyperhidrosis)",
-        description: "Alleviate excessive sweating on your back for enhanced comfort.",
-        blog_post_title: "Eliminate Back Sweating with Xeomin",
-        blog_post_slug: "eliminate-back-sweating-with-xeomin",
+        description: "Reduce excessive back sweating when it affects clothing, comfort, or daily confidence.",
+        blog_post_title: "Reduce Back Sweating with Xeomin",
+        blog_post_slug: "reduce-back-sweating-with-xeomin",
         slug: "back-hyperhidrosis",
         tag: "uncommon",
       },
@@ -2227,22 +2227,22 @@ export const procedures = [
         emoji: "🏥",
         benefit: "Medical-Grade Safety",
         description:
-          "Pre-sterilized, single-use cassettes ensure the highest hygiene standards, eliminating cross-contamination risks.",
+          "Pre-sterilized, single-use cassettes support a clean, controlled visit and reduce cross-contamination risk.",
       },
       {
         emoji: "🌿",
         benefit: "Hypoallergenic Materials",
-        description: "Medical plastic and titanium options perfect for sensitive skin and nickel allergies.",
+        description: "Medical plastic and titanium options are available for sensitive skin and nickel-allergy concerns.",
       },
       {
         emoji: "✨",
         benefit: "Gentle & Precise",
-        description: "Specialized technique minimizes tissue trauma, reducing pain and promoting faster healing.",
+        description: "The appointment is designed around careful placement, comfort, and clear aftercare.",
       },
       {
         emoji: "👶",
         benefit: "All Ages Welcome",
-        description: "Safe for infants, children, and adults with age-appropriate jewelry and gentle approach.",
+        description: "Available for children and adults with age-aware planning and Blomdahl starter jewelry.",
       },
     ],
     ailmentsHeadline:
@@ -2250,7 +2250,7 @@ export const procedures = [
     ailments: [
       {
         title: "First-Time Piercings",
-        description: "Perfect for children and adults getting their ears pierced for the first time.",
+        description: "A strong fit for children and adults getting their ears pierced for the first time.",
         blog_post_title: "Your Child's First Ear Piercing: Why Choose Blomdahl",
         blog_post_slug: "childs-first-ear-piercing-blomdahl-method",
         slug: "first-time-piercing",
@@ -2274,8 +2274,8 @@ export const procedures = [
       },
       {
         title: "Multiple Piercings",
-        description: "Precise placement for second, third, or cartilage piercings.",
-        blog_post_title: "Creating Your Perfect Ear Stack with Blomdahl",
+        description: "Careful placement discussion for second, third, or cartilage piercings.",
+        blog_post_title: "Planning an Ear Stack with Blomdahl",
         blog_post_slug: "multiple-ear-piercings-blomdahl",
         slug: "multiple-piercings",
         tag: "uncommon",
@@ -2304,7 +2304,7 @@ export const procedures = [
       {
         question: "What jewelry materials are available?",
         answer:
-          "We offer medical plastic and pure titanium options. Both are hypoallergenic and perfect for sensitive skin or those with nickel allergies.",
+          "We offer medical plastic and pure titanium options. Both are hypoallergenic options for sensitive skin or nickel-allergy concerns.",
       },
       {
         question: "How long does healing take?",
@@ -2359,7 +2359,7 @@ export const products = [
         emoji: "🌱",
         benefit: "Natural, Non-Invasive",
         description:
-          "Say goodbye to invasive treatments. Co2 Lift offers a natural way to uplift your skin’s health without needles or downtime.",
+          "Co2 Lift offers a non-needle option for patients exploring skin hydration and firmness support.",
       },
     ],
     faqHeadline: "Got Questions? Get All the Facts About Co2 Lift",
@@ -2425,7 +2425,7 @@ export const products = [
         emoji: "⌛",
         benefit: "Quick and Discreet",
         description:
-          "Each application takes just minutes, allowing for discreet use and fitting effortlessly into your self-care regimen.",
+          "Each application takes just minutes, allowing for discreet use within a self-care routine.",
       },
     ],
     faqHeadline: "Your Questions Answered: Get to Know Co2 V Lift for Women",
@@ -2522,8 +2522,8 @@ export const products = [
     name: "Definage Clinical Power Trio Pro",
     slug: "definage-clinical-power-trio-pro",
     description:
-      "Discover the epitome of skincare innovation with Definage Clinical Power Trio Pro. Developed by leading dermatologists, this advanced treatment harnesses the power of bioactive peptides and natural botanicals to reverse aging at a cellular level. Erase fine lines, restore elasticity, and reveal a youthful radiance like never before.",
-    headline: "Unlock the Secret to Everlasting Youth with Clinical-Grade Anti-Aging",
+      "Definage Clinical Power Trio Pro is a dermatologist-developed skincare system using bioactive peptides and botanicals to support smoother, firmer-looking skin.",
+    headline: "Clinical-Grade Skincare for Smoother, Firmer-Looking Skin",
     subline:
       "Integrate cutting-edge science into your skincare. Defy aging, rejuvenate your visage, and reclaim a youthful glow with Definage Clinical Power Trio Pro.",
     image: "/product/defenage-power-pro.jpg",
