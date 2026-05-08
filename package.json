@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "compress:artifacts": "node scripts/compress-artifacts.mjs",
     "sync:stripe-catalog": "tsx scripts/sync-stripe-catalog.ts"
   },
   "dependencies": {

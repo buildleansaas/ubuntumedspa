@@ -71,7 +71,7 @@ export default function Header() {
             <button
               type="button"
               aria-label="Open navigation menu"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-base-300 bg-base-100 text-base-content shadow-sm transition-colors duration-150 ease-out hover:border-base-content/15 hover:bg-base-200 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2 motion-reduce:transition-none"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-base-300 bg-base-100 text-base-content shadow-sm transition-all duration-150 ease-out hover:border-primary/35 hover:bg-base-200 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2 motion-reduce:transition-none"
             >
               <Menu className="h-[1.05rem] w-[1.05rem]" />
             </button>
@@ -96,7 +96,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="rounded-2xl px-4 py-3 text-lg tracking-tight text-base-content transition-colors hover:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2"
+                  className="rounded-full px-4 py-3 text-lg tracking-tight text-base-content transition-colors hover:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2"
                 >
                   {item.label}
                 </Link>

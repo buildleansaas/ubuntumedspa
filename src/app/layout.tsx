@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import Script from "next/script";
+import { Manrope } from "next/font/google";
 
 import "./globals.css";
 import { Toaster } from "components/ui/toaster";
@@ -17,6 +18,12 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
+const editorialSans = Manrope({
+  subsets: ["latin"],
+  variable: "--font-editorial-sans",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(ORIGIN),
   title: DEFAULT_TITLE,
@@ -31,8 +38,8 @@ export const metadata: Metadata = {
   },
   colorScheme: "light dark",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#1d2333" },
+    { media: "(prefers-color-scheme: light)", color: "#f4f5f5" },
+    { media: "(prefers-color-scheme: dark)", color: "#363d3b" },
   ],
   alternates: { canonical: "/" },
   openGraph: {
@@ -59,7 +66,7 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <html lang="en" className="bg-base-100">
+    <html lang="en" className={`${editorialSans.variable} bg-base-100`}>
       <Script strategy="afterInteractive" id="gtag" src="https://www.googletagmanager.com/gtag/js?id=G-FBEPLGSS9L" />
       <Script id="google-analytics" strategy="afterInteractive">
         {`

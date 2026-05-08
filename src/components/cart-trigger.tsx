@@ -23,13 +23,13 @@ export default function CartTrigger({ mode = "default", className }: CartTrigger
         "focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2",
         isCompact
           ? [
-              "relative inline-flex h-10 w-10 items-center justify-center rounded-full border bg-base-100 text-base-content shadow-sm transition-colors duration-150 ease-out motion-reduce:transition-none",
+              "relative inline-flex h-10 w-10 items-center justify-center rounded-full border bg-base-100 text-base-content shadow-sm transition-all duration-150 ease-out motion-reduce:transition-none",
               isCartOpen
                 ? "border-primary/25 text-primary"
-                : "border-base-300 hover:border-base-content/15 hover:bg-base-200",
+                : "border-base-300 hover:border-primary/35 hover:bg-base-200",
             ]
           : [
-              "group inline-flex items-center gap-2 rounded-full border px-4 py-2 text-left text-sm font-medium shadow-sm transition-colors duration-150 ease-out motion-reduce:transition-none",
+              "group inline-flex items-center gap-2 rounded-full border px-5 py-2 text-left text-sm font-semibold tracking-[0.01em] shadow-sm transition-all duration-150 ease-out motion-reduce:transition-none",
               isCartOpen
                 ? "border-primary/20 bg-base-100 text-primary"
                 : "border-primary/80 bg-primary text-primary-content hover:border-primary/20 hover:bg-base-100 hover:text-primary",

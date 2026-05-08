@@ -1,7 +1,46 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-  themes: corporate --default;
+  themes: wms-editorial --default, wms-dark;
+}
+
+@plugin "daisyui/theme" {
+  name: "wms-editorial";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-base-100: oklch(96.6% 0.002 230);
+  --color-base-200: oklch(91.5% 0.004 230);
+  --color-base-300: oklch(79.5% 0.005 245);
+  --color-base-content: oklch(33% 0.012 180);
+
+  --color-primary: oklch(59% 0.045 250);
+  --color-primary-content: oklch(98% 0.002 230);
+  --color-secondary: oklch(55% 0.028 80);
+  --color-secondary-content: oklch(98% 0.002 230);
+  --color-accent: oklch(66% 0.012 80);
+  --color-accent-content: oklch(28% 0.012 180);
+  --color-neutral: oklch(34% 0.012 180);
+  --color-neutral-content: oklch(96.6% 0.002 230);
+
+  --color-info: oklch(63% 0.058 235);
+  --color-info-content: oklch(98% 0.002 230);
+  --color-success: oklch(56% 0.09 155);
+  --color-success-content: oklch(98% 0.002 230);
+  --color-warning: oklch(72% 0.09 80);
+  --color-warning-content: oklch(26% 0.016 70);
+  --color-error: oklch(58% 0.15 25);
+  --color-error-content: oklch(98% 0.002 230);
+
+  --radius-selector: 999rem;
+  --radius-field: 999rem;
+  --radius-box: 0.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
 }
 
 @plugin "daisyui/theme" {
@@ -9,32 +48,32 @@
   prefersdark: true;
   color-scheme: dark;
 
-  --color-base-100: oklch(22% 0.018 262);
-  --color-base-200: oklch(25% 0.02 262);
-  --color-base-300: oklch(29% 0.022 262);
-  --color-base-content: oklch(92% 0.01 262);
+  --color-base-100: oklch(23% 0.012 180);
+  --color-base-200: oklch(27% 0.012 180);
+  --color-base-300: oklch(34% 0.012 180);
+  --color-base-content: oklch(92% 0.004 230);
 
-  --color-primary: oklch(68% 0.158 241.966);
-  --color-primary-content: oklch(15% 0.03 241.966);
-  --color-secondary: oklch(62% 0.046 257.417);
-  --color-secondary-content: oklch(96% 0.005 257.417);
-  --color-accent: oklch(66% 0.118 184.704);
-  --color-accent-content: oklch(15% 0.02 184.704);
-  --color-neutral: oklch(33% 0.022 262);
-  --color-neutral-content: oklch(90% 0.008 262);
+  --color-primary: oklch(66% 0.045 250);
+  --color-primary-content: oklch(18% 0.012 180);
+  --color-secondary: oklch(64% 0.028 80);
+  --color-secondary-content: oklch(18% 0.012 180);
+  --color-accent: oklch(73% 0.012 80);
+  --color-accent-content: oklch(18% 0.012 180);
+  --color-neutral: oklch(38% 0.012 180);
+  --color-neutral-content: oklch(92% 0.004 230);
 
-  --color-info: oklch(70% 0.126 221.723);
-  --color-info-content: oklch(15% 0.025 221.723);
-  --color-success: oklch(72% 0.194 149.214);
-  --color-success-content: oklch(15% 0.03 149.214);
-  --color-warning: oklch(85% 0.199 91.936);
-  --color-warning-content: oklch(18% 0.04 91.936);
-  --color-error: oklch(74% 0.191 22.216);
-  --color-error-content: oklch(16% 0.03 22.216);
+  --color-info: oklch(70% 0.058 235);
+  --color-info-content: oklch(18% 0.012 180);
+  --color-success: oklch(70% 0.09 155);
+  --color-success-content: oklch(18% 0.012 180);
+  --color-warning: oklch(78% 0.09 80);
+  --color-warning-content: oklch(18% 0.012 180);
+  --color-error: oklch(70% 0.15 25);
+  --color-error-content: oklch(18% 0.012 180);
 
-  --radius-selector: 0.25rem;
-  --radius-field: 0.25rem;
-  --radius-box: 0.25rem;
+  --radius-selector: 999rem;
+  --radius-field: 999rem;
+  --radius-box: 0.75rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
@@ -50,6 +89,7 @@ body {
   min-height: 100vh;
   background-color: var(--color-base-100);
   color: var(--color-base-content);
+  font-family: var(--font-editorial-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 @keyframes cart-item-reveal {
