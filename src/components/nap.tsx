@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import DirectionsButton from "components/directions-button";
+import OpenStreetMapEmbed from "components/open-street-map-embed";
 
 type NAPProps = {
   name: string;
@@ -57,18 +58,7 @@ export default function NAP({ name, addressLines, phone, hours = [], showMap = f
       </div>
       <div>
         {showMap && hasCoords && (
-          <div className="relative w-full h-64 rounded-lg overflow-hidden border border-base-300">
-            {/* Free OpenStreetMap embed (no API key). Adjust bbox padding for zoom */}
-            <iframe
-              title="Map"
-              className="absolute inset-0 w-full h-full"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              src={`https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(
-                `${longitude - 0.005},${latitude - 0.005},${longitude + 0.005},${latitude + 0.005}`
-              )}&layer=mapnik&marker=${latitude}%2C${longitude}`}
-            />
-          </div>
+          <OpenStreetMapEmbed title={`${name} map`} latitude={latitude} longitude={longitude} />
         )}
       </div>
     </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import StructuredData from "components/structured-data";
+import ServiceAreaDirections from "components/service-area-directions";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "components/ui/accordion";
 import { Button } from "components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "components/ui/card";
@@ -158,6 +159,8 @@ export default function EarPiercingAreaPage({ params }: Params) {
           ))}
         </div>
       </section>
+
+      <ServiceAreaDirections area={area} consultHref={consultHref} />
 
       <section className="mb-10 md:mb-14">
         <h2 className="text-2xl md:text-3xl font-light mb-3">Questions from {area.name} families</h2>

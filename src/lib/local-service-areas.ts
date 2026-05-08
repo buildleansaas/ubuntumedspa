@@ -22,6 +22,14 @@ export type LocalServiceArea = {
   parentIntent: boolean;
   localIntro: string;
   routeNote: string;
+  routeOrigin?: {
+    label: string;
+    zip: string;
+    latitude: number;
+    longitude: number;
+  };
+  routeSummary?: string;
+  routeHighlights: string[];
   nearbyNeighborhoods: string[];
   whyMedicalSetting: string;
   parentConcern: string;
@@ -76,6 +84,19 @@ export const localServiceAreas: LocalServiceArea[] = [
       "Williamsburg families can schedule Blomdahl ear piercing at our clinic on Powhatan Parkway, close to New Town and William & Mary.",
     routeNote:
       "The clinic has on-site parking and is easy to reach from New Town, William & Mary, Monticello Avenue, and nearby Williamsburg neighborhoods.",
+    routeOrigin: {
+      label: "central Williamsburg ZIP 23185",
+      zip: "23185",
+      latitude: 37.27,
+      longitude: -76.7,
+    },
+    routeSummary:
+      "Most Williamsburg appointments are a short local drive to Powhatan Parkway with on-site parking at the clinic.",
+    routeHighlights: [
+      "From central Williamsburg, plan around Richmond Road, Monticello Avenue, or local New Town routes depending on your starting point.",
+      "Powhatan Parkway is the final local approach for the clinic address.",
+      "Leave a few extra minutes for family ear-piercing visits so placement and aftercare are not rushed.",
+    ],
     nearbyNeighborhoods: ["New Town", "William & Mary", "Monticello Avenue", "Powhatan Parkway"],
     whyMedicalSetting:
       "The visit is planned around sterile technique, careful placement, hypoallergenic starter jewelry, and clear aftercare instead of a rushed retail counter experience.",
@@ -106,6 +127,19 @@ export const localServiceAreas: LocalServiceArea[] = [
       "Williamsburg Med Spa is a nearby clinical option for families across James City County who want medical-grade ear piercing.",
     routeNote:
       "Families from Toano, Norge, Lightfoot, New Town, and Ford's Colony can plan one appointment at the Williamsburg clinic.",
+    routeOrigin: {
+      label: "James City County ZIP 23188",
+      zip: "23188",
+      latitude: 37.35,
+      longitude: -76.77,
+    },
+    routeSummary:
+      "Many James City County families use local roads toward Williamsburg and Powhatan Parkway rather than making a separate retail stop.",
+    routeHighlights: [
+      "Upper James City County patients often come through Richmond Road or nearby neighborhood connectors.",
+      "New Town, Lightfoot, Norge, Toano, and Ford's Colony are practical same-appointment service areas.",
+      "For children, choose a time of day when the drive will not make the visit feel rushed.",
+    ],
     nearbyNeighborhoods: ["Toano", "Norge", "Lightfoot", "New Town", "Ford's Colony"],
     whyMedicalSetting:
       "A medical setting gives families time to discuss sterile equipment, starter jewelry, placement, and aftercare before the piercing happens.",
@@ -136,6 +170,19 @@ export const localServiceAreas: LocalServiceArea[] = [
       "Yorktown families can plan an appointment-based visit to Williamsburg Med Spa for children's first earrings or adult ear piercing.",
     routeNote:
       "The visit is a planned trip to the Williamsburg clinic, which helps avoid walk-in timing and gives space for aftercare questions.",
+    routeOrigin: {
+      label: "Yorktown ZIP 23691",
+      zip: "23691",
+      latitude: 37.26,
+      longitude: -76.55,
+    },
+    routeSummary:
+      "Yorktown families typically plan this as a Williamsburg appointment with enough time for placement, piercing, and aftercare.",
+    routeHighlights: [
+      "From Yorktown, most routes head northwest toward Williamsburg before connecting into the Powhatan Parkway area.",
+      "Families coming from Tabb or Grafton should allow extra buffer during school and commuter traffic.",
+      "The appointment-based visit is designed to avoid the uncertainty of walk-in retail piercing.",
+    ],
     nearbyNeighborhoods: ["Yorktown", "Tabb", "Grafton", "Lower Peninsula"],
     whyMedicalSetting:
       "The appointment centers on sterile equipment, hypoallergenic jewelry, and careful placement in a quieter clinical environment.",
@@ -166,6 +213,19 @@ export const localServiceAreas: LocalServiceArea[] = [
       "Newport News families who want a medical-grade alternative to retail piercing can schedule with Williamsburg Med Spa.",
     routeNote:
       "The appointment is a planned Williamsburg clinic visit rather than a walk-in retail stop, with time reserved for placement and aftercare.",
+    routeOrigin: {
+      label: "Newport News ZIP 23603",
+      zip: "23603",
+      latitude: 37.19,
+      longitude: -76.56,
+    },
+    routeSummary:
+      "Newport News patients usually plan the visit around I-64 or nearby Peninsula routes into Williamsburg.",
+    routeHighlights: [
+      "From northern Newport News, I-64 is often the simplest route toward Williamsburg before local roads to Powhatan Parkway.",
+      "Oyster Point, Denbigh, Kiln Creek, and City Center patients should account for bridge and commuter timing.",
+      "Build in time for the aftercare conversation before heading back to Newport News.",
+    ],
     nearbyNeighborhoods: ["Oyster Point", "Denbigh", "Kiln Creek", "City Center"],
     whyMedicalSetting:
       "A clinical visit can be a better fit for people comparing hypoallergenic starter jewelry, sensitive skin concerns, and aftercare support.",
@@ -196,6 +256,19 @@ export const localServiceAreas: LocalServiceArea[] = [
       "Toano families can reach Williamsburg Med Spa for a calm appointment focused on sterile ear piercing and aftercare.",
     routeNote:
       "The clinic is accessible from upper James City County and Richmond Road, with on-site parking near the entrance.",
+    routeOrigin: {
+      label: "Toano ZIP 23168",
+      zip: "23168",
+      latitude: 37.37,
+      longitude: -76.8,
+    },
+    routeSummary:
+      "Toano families generally approach Williamsburg through upper James City County and Richmond Road-area routes.",
+    routeHighlights: [
+      "Richmond Road is a practical corridor from Toano toward the Williamsburg clinic area.",
+      "Patients near Stonehouse should allow a little extra time for local turns before reaching Powhatan Parkway.",
+      "Avoid scheduling immediately before swimming, sports, or a long active afternoon after piercing.",
+    ],
     nearbyNeighborhoods: ["Toano", "Stonehouse", "Upper James City County", "Richmond Road"],
     whyMedicalSetting:
       "The appointment gives parents and adults time to review jewelry material, placement, and cleaning instructions.",
@@ -226,6 +299,19 @@ export const localServiceAreas: LocalServiceArea[] = [
       "Norge families can schedule a sterile, appointment-based ear piercing visit at the Williamsburg clinic.",
     routeNote:
       "The clinic is easy to reach from Norge and Richmond Road, making it practical for upper James City County families.",
+    routeOrigin: {
+      label: "Toano/Norge ZIP 23168",
+      zip: "23168",
+      latitude: 37.37,
+      longitude: -76.8,
+    },
+    routeSummary:
+      "Norge patients usually come down Richmond Road or nearby upper James City County routes toward Williamsburg.",
+    routeHighlights: [
+      "Richmond Road keeps the route familiar for Norge and Croaker families.",
+      "Lightfoot and New Town errands can be combined with the appointment if timing stays calm.",
+      "Bring any allergy or sensitivity history so starter jewelry can be discussed before piercing.",
+    ],
     nearbyNeighborhoods: ["Norge", "Croaker", "Lightfoot", "Richmond Road"],
     whyMedicalSetting:
       "A medical-grade system is useful for people who care about starter jewelry materials and a clear healing plan.",
@@ -256,6 +342,19 @@ export const localServiceAreas: LocalServiceArea[] = [
       "Lightfoot families can choose Williamsburg Med Spa for a nearby ear piercing visit with careful aftercare guidance.",
     routeNote:
       "The appointment can be planned around Lightfoot or New Town errands while still keeping the piercing visit private and unrushed.",
+    routeOrigin: {
+      label: "Williamsburg ZIP 23188 near Lightfoot",
+      zip: "23188",
+      latitude: 37.35,
+      longitude: -76.77,
+    },
+    routeSummary:
+      "Lightfoot families are close enough to schedule a dedicated piercing appointment without turning it into a full-day trip.",
+    routeHighlights: [
+      "Lightfoot and Richmond Road patients can usually reach the clinic through familiar Williamsburg-area roads.",
+      "New Town can be a useful landmark for planning the final part of the drive.",
+      "For younger children, schedule the piercing before errands rather than after a long day.",
+    ],
     nearbyNeighborhoods: ["Lightfoot", "New Town", "Norge", "Richmond Road"],
     whyMedicalSetting:
       "A clinical appointment gives families more privacy than a public retail counter and keeps the focus on clean technique.",
@@ -286,6 +385,19 @@ export const localServiceAreas: LocalServiceArea[] = [
       "Williamsburg Med Spa is minutes from New Town, making it convenient for families planning ear piercing around local errands.",
     routeNote:
       "The clinic is close enough to New Town for a practical appointment, while still offering a private clinical setting.",
+    routeOrigin: {
+      label: "central Williamsburg ZIP 23185 near New Town",
+      zip: "23185",
+      latitude: 37.27,
+      longitude: -76.7,
+    },
+    routeSummary:
+      "New Town patients are minutes from the clinic and can plan the visit around local errands without using a public retail counter.",
+    routeHighlights: [
+      "Monticello Avenue and nearby New Town streets are useful landmarks for the short local drive.",
+      "Powhatan Parkway is the final approach for the clinic address.",
+      "Keep the appointment window calm for children or sensitive-skin questions.",
+    ],
     nearbyNeighborhoods: ["New Town", "Monticello Avenue", "William & Mary", "Lightfoot"],
     whyMedicalSetting:
       "The visit is quick but not rushed, with time for placement, sterile technique, and aftercare instructions.",
@@ -316,6 +428,19 @@ export const localServiceAreas: LocalServiceArea[] = [
       "Kingsmill families can schedule a nearby Williamsburg clinic visit for medical-grade Blomdahl ear piercing.",
     routeNote:
       "The clinic is close to the Kingsmill community and offers on-site parking for appointment-based visits.",
+    routeOrigin: {
+      label: "central Williamsburg ZIP 23185 near Kingsmill",
+      zip: "23185",
+      latitude: 37.27,
+      longitude: -76.7,
+    },
+    routeSummary:
+      "Kingsmill families can plan a nearby Williamsburg visit with a private clinical setting and on-site parking.",
+    routeHighlights: [
+      "Kingsmill and Quarterpath patients typically use local Williamsburg routes toward Powhatan Parkway.",
+      "Leave time to review starter jewelry, placement, and aftercare before heading back.",
+      "Avoid scheduling directly before swimming or a high-activity plan.",
+    ],
     nearbyNeighborhoods: ["Kingsmill", "Quarterpath", "Grove", "Williamsburg"],
     whyMedicalSetting:
       "A quieter clinical setting can be a better fit for families who want a private first-piercing experience.",
@@ -346,6 +471,19 @@ export const localServiceAreas: LocalServiceArea[] = [
       "Ford's Colony families can plan a nearby Williamsburg appointment for sterile Blomdahl ear piercing.",
     routeNote:
       "The clinic is close to Ford's Colony and nearby residential communities, with on-site parking available.",
+    routeOrigin: {
+      label: "Williamsburg ZIP 23188 near Ford's Colony",
+      zip: "23188",
+      latitude: 37.35,
+      longitude: -76.77,
+    },
+    routeSummary:
+      "Ford's Colony families can make this a nearby appointment rather than a walk-in retail visit.",
+    routeHighlights: [
+      "Longhill Road, New Town, and nearby residential connectors are useful reference points for the drive.",
+      "Powhatan Parkway is the clinic's local address corridor.",
+      "Book ahead and allow time for a full first-piercing conversation if the appointment is for a child.",
+    ],
     nearbyNeighborhoods: ["Ford's Colony", "Longhill Road", "New Town", "Williamsburg"],
     whyMedicalSetting:
       "The appointment gives families time for placement questions, clean technique, and aftercare instructions.",
@@ -373,6 +511,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     parentIntent: true,
     localIntro: "Draft page for future Gloucester demand.",
     routeNote: "Draft page.",
+    routeHighlights: [],
     nearbyNeighborhoods: ["Gloucester"],
     whyMedicalSetting: "Draft page.",
     parentConcern: "Draft page.",
@@ -397,6 +536,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     parentIntent: true,
     localIntro: "Draft page for future West Point demand.",
     routeNote: "Draft page.",
+    routeHighlights: [],
     nearbyNeighborhoods: ["West Point"],
     whyMedicalSetting: "Draft page.",
     parentConcern: "Draft page.",
@@ -421,6 +561,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     parentIntent: true,
     localIntro: "Draft page for future Poquoson demand.",
     routeNote: "Draft page.",
+    routeHighlights: [],
     nearbyNeighborhoods: ["Poquoson"],
     whyMedicalSetting: "Draft page.",
     parentConcern: "Draft page.",
