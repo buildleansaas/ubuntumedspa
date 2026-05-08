@@ -26,23 +26,23 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <header className="flex w-full items-center justify-between gap-4 py-4 lg:py-5">
-      <Link href="/" className="min-w-0">
+    <header className="flex w-full items-center justify-between gap-3 py-3.5 sm:gap-4 lg:py-5">
+      <Link href="/" className="min-w-0 flex-1">
         <div className="flex items-center justify-start">
-          <picture className="hidden shrink-0 md:block">
+          <picture className="shrink-0">
             <source media="(prefers-color-scheme: dark)" srcSet="/logo.png" />
             <img
               width={548}
               height={747}
               src="/logo.png"
               alt="Williamsburg Med Spa logo"
-              className="h-[50px] w-auto"
+              className="h-10 w-auto sm:h-11 md:h-[50px]"
             />
           </picture>
-          <div className="ml-2 flex min-w-0 flex-col items-start justify-center">
-            <h1 className="text-lg font-bold tracking-tight text-base-content sm:text-xl md:text-2xl">
+          <div className="ml-2 flex min-w-0 flex-col items-start justify-center sm:ml-3">
+            <p className="truncate text-base font-bold tracking-tight text-base-content min-[380px]:text-lg sm:text-xl md:text-2xl">
               Williamsburg Med Spa
-            </h1>
+            </p>
             <h2 className="mt-0 hidden text-sm font-light text-base-content/75 lg:block">
               Restorative Wellness & Natural Healing
             </h2>

@@ -83,7 +83,7 @@ export default function Layout({ children }: LayoutProps) {
           <StructuredData type="LocalBusiness" />
           <div className="min-h-screen w-full">
             <div className="sticky top-0 z-40 w-full border-b border-base-300 bg-base-100 shadow-sm">
-              <div className="mx-auto w-full max-w-xl px-4 md:max-w-7xl md:px-8">
+              <div className="mx-auto w-full px-3 sm:px-4 md:max-w-7xl md:px-8">
                 <Header />
               </div>
             </div>
