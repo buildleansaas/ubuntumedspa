@@ -25,6 +25,8 @@ export type PostMetadata = Omit<RawPostMetadata, "title" | "description" | "imag
   image: string;
   tags: string[];
   slug: string;
+  routeSlug: string;
+  href: string;
   date: string;
   published: boolean;
 };
@@ -77,6 +79,8 @@ export const getPostData = cache(async (slug: string) => {
     image: typedMetadata.image || "/opengraph-image",
     tags: Array.isArray(typedMetadata.tags) ? typedMetadata.tags : [],
     slug: typedMetadata.slug || slug,
+    routeSlug: slug,
+    href: `/blog/${slug}`,
     date: normalizedDate,
     dateModified: normalizedDateModified || modifiedAt || normalizedDate,
     authorName: typedMetadata.authorName || "Jenny Coleman",

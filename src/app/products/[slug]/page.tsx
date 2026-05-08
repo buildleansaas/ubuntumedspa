@@ -155,7 +155,7 @@ export default async function ProductPage({ params: { slug } }: Params) {
             </div>
             <div className="max-w-3xl mx-auto">
               {articles.map((article) => (
-                <article key={article.slug} className="relative isolate flex flex-col gap-8 lg:flex-row">
+                <article key={article.routeSlug} className="relative isolate flex flex-col gap-8 lg:flex-row">
                   <div className="relative aspect-[16/9] bg-base-200 sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
                     <Image
                       src={article.image}
@@ -181,7 +181,7 @@ export default async function ProductPage({ params: { slug } }: Params) {
                     </div>
                     <div className="group relative max-w-xl">
                       <h2 className="mt-3 text-lg/snug sm:text-xl/snug md:text-2xl/snug font-semibold text-base-content hover:text-primary">
-                        <Link href={`/blog/${article.slug}`}>{article.title}</Link>
+                        <Link href={article.href}>{article.title}</Link>
                       </h2>
                       <p className="mt-2 text-sm leading-6 text-base-content/70">
                         {humanizeMedicalCopy(article.description)}

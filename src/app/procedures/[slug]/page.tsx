@@ -180,7 +180,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             )}
             {featuredGuide && featuredGuideCta && (
               <Button asChild variant="outline">
-                <Link href={`/blog/${featuredGuide.slug}`}>{featuredGuideCta.button}</Link>
+                <Link href={featuredGuide.href}>{featuredGuideCta.button}</Link>
               </Button>
             )}
           </div>
@@ -329,7 +329,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </div>
             <div className="max-w-3xl mx-auto">
               {articles.map((article) => (
-                <article key={article.slug} className="relative isolate flex flex-col gap-8 lg:flex-row">
+                <article key={article.routeSlug} className="relative isolate flex flex-col gap-8 lg:flex-row">
                   <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-base-200">
                     <Image
                       src={article.image}
@@ -355,7 +355,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                     </div>
                     <div className="group relative max-w-xl">
                       <h2 className="mt-3 text-lg/snug sm:text-xl/snug md:text-2xl/snug font-semibold text-base-content hover:text-base-content/80">
-                        <Link href={`/blog/${article.slug}`}>{article.title}</Link>
+                        <Link href={article.href}>{article.title}</Link>
                       </h2>
                       <p className="mt-2 text-sm leading-6 text-primary-content">{humanizeMedicalCopy(article.description)}</p>
                     </div>
@@ -370,7 +370,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">{featuredGuideCta.heading}</h2>
             <p className="text-base md:text-lg text-base-content/80 mb-6">{featuredGuideCta.description}</p>
             <Button asChild variant="secondary">
-              <Link href={`/blog/${featuredGuide.slug}`}>{featuredGuideCta.linkLabel}</Link>
+              <Link href={featuredGuide.href}>{featuredGuideCta.linkLabel}</Link>
             </Button>
           </div>
         )}

@@ -82,7 +82,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     ...articles.map((article) => ({
-      url: `https://www.williamsburgmedspa.com/blog/${article.slug}`,
+      url: `https://www.williamsburgmedspa.com${article.href}`,
       lastModified: new Date(article.dateModified ?? article.date),
     })),
     ...publishedProcedures.map((procedure) => ({

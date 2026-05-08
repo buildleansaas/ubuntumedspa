@@ -77,7 +77,7 @@ export default async function ArticlePage({
       .filter((procedure) => !("published" in procedure) || procedure.published !== false)
       .slice(0, 3);
     const relatedArticles = (await getPublishedBlogPosts())
-      .filter((article) => article.slug !== metadata.slug)
+      .filter((article) => article.routeSlug !== metadata.routeSlug)
       .map((article) => ({
         article,
         score: getMeaningfulTags(article.tags).filter((tag) => normalizedTags.has(tag)).length,
@@ -152,9 +152,9 @@ export default async function ArticlePage({
                 </h2>
                 <div className="mt-6 space-y-6">
                   {relatedArticles.map((article) => (
-                    <div key={article.slug}>
+                    <div key={article.routeSlug}>
                       <h3 className="text-lg font-medium text-base-content">
-                        <Link href={`/blog/${article.slug}`} className="underline-offset-4 hover:underline">
+                        <Link href={article.href} className="underline-offset-4 hover:underline">
                           {article.title}
                         </Link>
                       </h3>

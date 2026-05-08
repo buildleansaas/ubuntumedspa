@@ -1,40 +1,38 @@
-import BlogPostCard from "components/blog-post-card";
+import Link from "next/link";
+
+import BlogPostCollection from "components/blog-post-collection";
 import { getPublishedBlogPosts } from "lib/blog";
 
 export default async function LatestPosts() {
-  const featuredSlugs = [
-    "how-long-do-dermal-fillers-last-in-williamsburg-va",
-    "dermal-fillers-in-williamsburg-va-lips-cheeks-under-eyes",
-    "botox-vs-xeomin-williamsburg-va",
-    "medical-ear-piercing-in-williamsburg-va-blomdahl",
-    "hydrafacial-alternatives-in-williamsburg-va",
-    "sculptra-alternatives-in-williamsburg-va",
-  ];
-  const publishedArticles = await getPublishedBlogPosts();
-  const featuredArticles = featuredSlugs
-    .map((slug) => publishedArticles.find((article) => article.slug === slug))
-    .filter((article): article is NonNullable<typeof article> => Boolean(article));
-  const featuredSlugSet = new Set(featuredArticles.map((article) => article.slug));
-  const articles = [
-    ...featuredArticles,
-    ...publishedArticles.filter((article) => !featuredSlugSet.has(article.slug)),
-  ].slice(0, 6);
+  const articles = (await getPublishedBlogPosts()).slice(0, 6);
 
   return (
-    <div className="mx-auto max-w-2xl lg:max-w-4xl">
-      <div className="my-16 sm:my-24 lg:my-32">
-        <h2 className="sm:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light tracking-tight text-base-content">
-          Williamsburg Med Spa Blog
-        </h2>
-        <p className="mt-4 text-base md:text-lg lg:text-xl mb-8 max-w-4xl mx-auto text-center text-base-content/70">
+    <section className="mx-auto max-w-6xl px-6 md:px-0" aria-labelledby="latest-posts-heading">
+      <div className="my-16 sm:my-24 lg:my-28">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-3xl">
+            <p className="text-xs uppercase tracking-[0.22em] text-base-content/60">Latest Guidance</p>
+            <h2
+              id="latest-posts-heading"
+              className="mt-3 text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light tracking-tight text-base-content text-balance"
+            >
+              Williamsburg Med Spa Blog
+            </h2>
+          </div>
+          <Link
+            href="/blog"
+            className="self-start rounded-md border border-base-300 px-4 py-2 text-sm font-medium text-base-content transition-colors hover:border-primary/40 hover:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-base-100 md:self-auto"
+          >
+            View all articles
+          </Link>
+        </div>
+        <p className="mt-5 max-w-4xl text-base leading-relaxed text-base-content/70 md:text-lg">
           Read straightforward guidance on Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, and
           medical ear piercing from Williamsburg Med Spa. These articles are written to help you compare options,
           understand candidacy, and decide what to ask during consultation.
         </p>
+        <BlogPostCollection articles={articles} />
       </div>
-      <div className="mt-16 space-y-20 lg:mt-20 lg:space-y-20">
-        {articles.map((article) => <BlogPostCard key={article.slug} article={article} />)}
-      </div>
-    </div>
+    </section>
   );
 }
