@@ -30,6 +30,7 @@ const featuredGuideSlugs: Record<string, string> = {
   botox: "botox-vs-xeomin-williamsburg-va",
   xeomin: "botox-vs-xeomin-williamsburg-va",
   filler: "how-long-do-dermal-fillers-last-in-williamsburg-va",
+  "o-shot": "o-shot-for-urinary-incontinence-williamsburg-va",
   "prp-hair-restoration": "prp-hair-restoration-vs-hair-transplant-williamsburg-va",
 };
 const featuredGuideCopy: Record<string, { button: string; heading: string; description: string; linkLabel: string }> = {
@@ -51,6 +52,13 @@ const featuredGuideCopy: Record<string, { button: string; heading: string; descr
     description:
       "Review how longevity can vary across lips, cheeks, under-eyes, and other treatment areas before you book.",
     linkLabel: "Read the dermal filler longevity guide",
+  },
+  "o-shot": {
+    button: "O-Shot Bladder Leakage Guide",
+    heading: "Wondering whether the O-Shot can help with bladder leakage?",
+    description:
+      "Review how stress leakage, urge leakage, pelvic floor care, and O-Shot candidacy fit into a private consultation.",
+    linkLabel: "Read the O-Shot urinary incontinence guide",
   },
   "prp-hair-restoration": {
     button: "PRP vs Hair Transplant",
