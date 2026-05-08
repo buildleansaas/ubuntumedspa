@@ -117,6 +117,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
   const consultationSupportCopy =
     procedure.slug === "hyperhidrosis-treatment"
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
+      : procedure.slug === "o-shot"
+        ? "Consultation covers symptoms, candidacy, treatment areas, expected timing, and whether O-Shot® care fits your intimate wellness or bladder leakage concerns."
       : `Consultation covers candidacy, treatment areas, expected timing, and whether ${procedure.name} fits your goals with a conservative, natural-looking plan.`;
   const hyperhidrosisFeaturedAilments =
     procedure.slug === "hyperhidrosis-treatment"
