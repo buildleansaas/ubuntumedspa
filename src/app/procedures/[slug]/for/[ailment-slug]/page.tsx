@@ -213,6 +213,36 @@ export default async function AilmentPage({ params }: Params) {
           </div>
         </section>
 
+        {procedure.slug === "botox" && (
+          <section className="my-32 max-w-5xl mx-auto scroll-mt-24" id="botox-consultation">
+            <div className="rounded-2xl border border-base-300 bg-base-200 p-6 text-center md:p-10">
+              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Botox consultation</p>
+              <h2 className="mt-3 text-2xl md:text-4xl mx-auto leading-tight pb-4 font-light">
+                Plan Botox around the area you actually want to treat
+              </h2>
+              <p className="mx-auto max-w-3xl text-base md:text-lg text-base-content/80 leading-relaxed">
+                Jenny reviews movement, anatomy, prior treatment history, and your desired amount of expression before
+                recommending Botox, Xeomin, or a different plan. The visit is built around the specific area bothering
+                you most, not a one-size-fits-all injection pattern.
+              </p>
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
+                <Button asChild>
+                  <Link href="/consult">Book a Consultation</Link>
+                </Button>
+                <Button asChild variant="secondary">
+                  <Link href="/procedures/botox">Botox Details</Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/procedures/xeomin">Compare Xeomin</Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/locations/williamsburg-va">Williamsburg Location</Link>
+                </Button>
+              </div>
+            </div>
+          </section>
+        )}
+
         {Boolean(relatedAilments.length) && (
           <section className="my-32 max-w-7xl mx-auto scroll-mt-24" id="related">
             <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
