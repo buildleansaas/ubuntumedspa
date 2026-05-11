@@ -1866,22 +1866,25 @@ export const procedures = [
         emoji: "🌟",
         benefit: "Volume Restoration",
         description:
-          "Fillers restore lost volume in areas like cheeks, lips, and under-eye, resulting in a plumper and youthful appearance.",
+          "Fillers can restore support in selected areas such as cheeks, lips, and under-eyes when volume loss or proportion is part of the concern.",
       },
       {
         emoji: "🌈",
         benefit: "Contour Enhancement",
-        description: "Fillers can be used to sculpt and enhance facial contours, providing more definition and shape.",
+        description:
+          "Fillers can refine facial contours in areas such as cheeks, chin, jawline, and lips with a plan shaped around anatomy and balance.",
       },
       {
         emoji: "⌛",
-        benefit: "Immediate Results",
-        description: "Most filler treatments offer instantaneous results, allowing patients to see changes right away.",
+        benefit: "Visible Change",
+        description:
+          "Many patients see visible change soon after treatment, with final appearance depending on swelling, product choice, and settling time.",
       },
       {
         emoji: "🕐",
-        benefit: "Long-lasting Outcome",
-        description: "Depending on the type of filler used, results can last anywhere from 6 months to 2 years.",
+        benefit: "Maintenance Planning",
+        description:
+          "Longevity varies by filler type, treatment area, metabolism, and goals, so consultation should include a realistic maintenance plan.",
       },
     ],
     ailmentsHeadline:
@@ -1890,7 +1893,7 @@ export const procedures = [
       {
         title: "Nasolabial Folds",
         description:
-          "Diminish the look of nasolabial folds, commonly known as laugh lines, for a refreshed facial appearance.",
+          "Review whether smile-line filler, cheek support, or a combined plan makes the most sense for nasolabial folds.",
         blog_post_title: "Soften Laugh Lines with Dermal Fillers",
         blog_post_slug: "soften-laugh-lines-with-dermal-fillers",
         slug: "nasolabial-folds",
@@ -1898,7 +1901,8 @@ export const procedures = [
       },
       {
         title: "Marionette Lines",
-        description: "Lift and smooth marionette lines to restore a youthful curve to your smile.",
+        description:
+          "Discuss lower-face support, mouth-corner balance, and whether filler is appropriate for marionette lines.",
         blog_post_title: "Smooth Marionette Lines with Dermal Fillers",
         blog_post_slug: "smooth-marionette-lines-with-dermal-fillers",
         slug: "marionette-lines",
@@ -1906,31 +1910,35 @@ export const procedures = [
       },
       {
         title: "Lip Augmentation",
-        description: "Achieve fuller, plumper lips that complement your natural features.",
-        blog_post_title: "Get Your Dream Lips with Dermal Fillers",
+        description:
+          "Plan lip filler around shape, hydration, border definition, proportion, and how subtle or noticeable you want the change to be.",
+        blog_post_title: "Plan Lip Filler with Dermal Fillers",
         blog_post_slug: "get-your-dream-lips-with-dermal-fillers",
         slug: "lip-augmentation",
         tag: "common",
       },
       {
         title: "Cheek Enhancement",
-        description: "Add volume and lift to your cheeks for a youthful and rejuvenated look.",
-        blog_post_title: "Achieve Sculpted Cheeks with Dermal Fillers",
+        description:
+          "Review cheek support, contour, and whether midface volume loss is affecting nearby folds or under-eye transitions.",
+        blog_post_title: "Plan Cheek Support with Dermal Fillers",
         blog_post_slug: "achieve-sculpted-cheeks-with-dermal-fillers",
         slug: "cheek-enhancement",
         tag: "common",
       },
       {
         title: "Jawline Contouring",
-        description: "Define and sharpen your jawline to enhance your facial profile.",
-        blog_post_title: "Get a Chiseled Jawline with Dermal Fillers",
+        description:
+          "Discuss jawline definition, chin balance, and whether filler can support the lower-face contour you want.",
+        blog_post_title: "Plan Jawline Contouring with Dermal Fillers",
         blog_post_slug: "get-a-chiseled-jawline-with-dermal-fillers",
         slug: "jawline-contouring",
         tag: "uncommon",
       },
       {
         title: "Tear Troughs",
-        description: "Improve the look of under-eye hollows and dark circles for a more rested appearance.",
+        description:
+          "Carefully screen under-eye hollows, puffiness, skin quality, and whether filler is the right fit for the tear-trough area.",
         blog_post_title: "Improve Dark Circles with Dermal Fillers",
         blog_post_slug: "improve-dark-circles-with-dermal-fillers",
         slug: "tear-troughs",
@@ -1938,15 +1946,17 @@ export const procedures = [
       },
       {
         title: "Hand Rejuvenation",
-        description: "Restore a youthful appearance to your hands by addressing volume loss.",
-        blog_post_title: "Rejuvenate Your Hands with Dermal Fillers",
+        description:
+          "Review whether volume support in the hands is appropriate based on skin quality, anatomy, and treatment goals.",
+        blog_post_title: "Hand Volume Support with Dermal Fillers",
         blog_post_slug: "rejuvenate-your-hands-with-dermal-fillers",
         slug: "hand-rejuvenation",
         tag: "uncommon",
       },
       {
         title: "Nose Reshaping",
-        description: "Modify the shape of your nose without surgery for a balanced facial appearance.",
+        description:
+          "Non-surgical nose filler requires careful screening because anatomy, vascular risk, and expectations matter.",
         blog_post_title: "Reshape Your Nose with Dermal Fillers",
         blog_post_slug: "reshape-your-nose-with-dermal-fillers",
         slug: "nose-reshaping",
@@ -1954,23 +1964,26 @@ export const procedures = [
       },
       {
         title: "Chin Augmentation",
-        description: "Achieve a well-defined chin that enhances your overall facial harmony.",
-        blog_post_title: "Get a Balanced Profile with Chin Augmentation",
+        description:
+          "Discuss chin projection, lower-face proportion, and whether filler can support a more balanced profile.",
+        blog_post_title: "Plan Chin Augmentation with Dermal Fillers",
         blog_post_slug: "get-a-balanced-profile-with-chin-augmentation",
         slug: "chin-augmentation",
         tag: "uncommon",
       },
       {
         title: "Temples",
-        description: "Fill in hollow temples for a more youthful and complete facial rejuvenation.",
-        blog_post_title: "Revive Your Look by Filling Hollow Temples",
+        description:
+          "Temple filler is anatomy-dependent and should be discussed carefully when hollowing affects facial balance.",
+        blog_post_title: "Temple Hollowing and Dermal Fillers",
         blog_post_slug: "revive-your-look-by-filling-hollow-temples",
         slug: "temples",
         tag: "uncommon",
       },
       {
         title: "Forehead Contouring",
-        description: "Smooth out irregularities and achieve a more balanced forehead.",
+        description:
+          "Forehead filler is a specialized area that requires careful anatomy review, risk discussion, and conservative planning.",
         blog_post_title: "Achieving a Balanced Forehead with Filler",
         blog_post_slug: "achieving-a-balanced-forehead-with-filler",
         slug: "forehead-contouring",
@@ -1978,15 +1991,17 @@ export const procedures = [
       },
       {
         title: "Earlobe Repair",
-        description: "Revitalize sagging or stretched earlobes for a younger look.",
-        blog_post_title: "Turn Back Time on Your Earlobes with Filler",
+        description:
+          "Discuss whether filler can support thin, stretched, or volume-depleted earlobes before earrings or re-piercing.",
+        blog_post_title: "Earlobe Support with Dermal Fillers",
         blog_post_slug: "turn-back-time-on-your-earlobes-with-filler",
         slug: "earlobe-repair",
         tag: "uncommon",
       },
       {
         title: "Smoker's Lines",
-        description: "Smooth out fine lines around the mouth for a youthful appearance.",
+        description:
+          "Review whether filler, neuromodulator treatment, skin care, or a combined plan is most appropriate for vertical lip lines.",
         blog_post_title: "Soften Smoker's Lines with Filler",
         blog_post_slug: "soften-smokers-lines-with-filler",
         slug: "smokers-lines",
@@ -1994,15 +2009,17 @@ export const procedures = [
       },
       {
         title: "Acne Scars",
-        description: "Fill in depressed acne scars for smoother skin.",
-        blog_post_title: "Fill in Acne Scars for a Flawless Complexion",
+        description:
+          "Depressed acne scars need careful evaluation because filler may be only one part of a broader texture plan.",
+        blog_post_title: "Acne Scar Support with Dermal Fillers",
         blog_post_slug: "fill-in-acne-scars-for-a-flawless-complexion",
         slug: "acne-scars",
         tag: "common",
       },
       {
         title: "Crow's Feet",
-        description: "Diminish the appearance of crow's feet around the eyes.",
+        description:
+          "Crow's feet are usually a movement concern, so Jenny may discuss Botox or Xeomin before considering filler.",
         blog_post_title: "Soften Crow's Feet with Filler",
         blog_post_slug: "soften-crows-feet-with-filler",
         slug: "crows-feet",
@@ -2010,7 +2027,8 @@ export const procedures = [
       },
       {
         title: "Collarbone Contouring",
-        description: "Enhance the appearance of your collarbone for a more defined look.",
+        description:
+          "Collarbone contouring is a specialized request that requires careful discussion of expectations, risk, and alternatives.",
         blog_post_title: "Collarbone Contouring with Filler",
         blog_post_slug: "collarbone-contouring-with-filler",
         slug: "collarbone-contouring",

@@ -243,6 +243,36 @@ export default async function AilmentPage({ params }: Params) {
           </section>
         )}
 
+        {procedure.slug === "filler" && (
+          <section className="my-32 max-w-5xl mx-auto scroll-mt-24" id="filler-consultation">
+            <div className="rounded-2xl border border-base-300 bg-base-200 p-6 text-center md:p-10">
+              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Dermal filler consultation</p>
+              <h2 className="mt-3 text-2xl md:text-4xl mx-auto leading-tight pb-4 font-light">
+                Plan filler around anatomy, proportion, and the first area that matters most
+              </h2>
+              <p className="mx-auto max-w-3xl text-base md:text-lg text-base-content/80 leading-relaxed">
+                Jenny reviews facial structure, prior filler history, swelling risk, reversibility, and whether lips,
+                cheeks, under-eyes, or smile lines should be addressed first. The goal is a balanced plan that stays
+                proportional to your features.
+              </p>
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
+                <Button asChild>
+                  <Link href="/consult">Book a Consultation</Link>
+                </Button>
+                <Button asChild variant="secondary">
+                  <Link href="/procedures/filler">Filler Details</Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/blog/dermal-fillers-in-williamsburg-va-lips-cheeks-under-eyes">Read the Filler Guide</Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/locations/williamsburg-va">Williamsburg Location</Link>
+                </Button>
+              </div>
+            </div>
+          </section>
+        )}
+
         {Boolean(relatedAilments.length) && (
           <section className="my-32 max-w-7xl mx-auto scroll-mt-24" id="related">
             <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
