@@ -37,6 +37,11 @@ export default function NewportNewsPage() {
         <p>
           Newport News families also compare Williamsburg Med Spa for Blomdahl medical ear piercing, especially when they
           want hypoallergenic starter jewelry, sterile disposable piercing cassettes, and a calm appointment-based visit.
+          The dedicated{" "}
+          <Link href="/procedures/blomdahl-ear-piercing/near/newport-news-va">
+            medical ear piercing near Newport News
+          </Link>{" "}
+          page covers the trip, appointment flow, and parent-focused planning.
         </p>
         <h2>Getting Here</h2>
         <p>

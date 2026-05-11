@@ -36,6 +36,11 @@ export default function YorktownPage() {
         <p>
           Yorktown families also visit for Blomdahl medical ear piercing when they want hypoallergenic starter jewelry,
           sterile disposable piercing cassettes, and an appointment-based alternative to a rushed retail piercing visit.
+          The dedicated{" "}
+          <Link href="/procedures/blomdahl-ear-piercing/near/yorktown-va">
+            children&apos;s ear piercing near Yorktown
+          </Link>{" "}
+          page covers route planning, local questions, and what families can expect.
         </p>
         <h2>Getting Here</h2>
         <p>

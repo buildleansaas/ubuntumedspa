@@ -162,6 +162,10 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                 ["Sensitive Ears", "/procedures/blomdahl-ear-piercing/for/sensitive-ears"],
                 ["Re-Piercing", "/procedures/blomdahl-ear-piercing/for/re-piercing"],
                 ["Near Williamsburg", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
+                ["Near Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
+                ["Near Newport News", "/procedures/blomdahl-ear-piercing/near/newport-news-va"],
+                ["Blomdahl Guide", "/blog/blomdahl-ear-piercing-williamsburg-va"],
+                ["First Piercing Guide", "/blog/childrens-first-ear-piercing-williamsburg-va"],
               ].map(([label, href]) => (
                 <Link key={href} href={href} className="rounded-full border border-base-300 px-3 py-1 hover:border-primary">
                   {label}
@@ -210,6 +214,41 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               fulfillment={catalogItem.fulfillment}
               customerNote={catalogItem.customerNote}
             />
+          )}
+
+          {procedure.slug === "blomdahl-ear-piercing" && (
+            <section className="mt-10 max-w-4xl mx-auto rounded-xl border border-base-300 p-5 text-left">
+              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Planning by location</p>
+              <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">
+                Local Blomdahl ear piercing pages
+              </h2>
+              <p className="mt-3 text-base leading-relaxed text-base-content/75">
+                Families visit Williamsburg Med Spa from nearby communities for sterile, hypoallergenic Blomdahl ear
+                piercing with Jenny Coleman. Start with the local page closest to your route.
+              </p>
+              <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {[
+                  ["Medical ear piercing in Williamsburg", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
+                  [
+                    "Medical ear piercing near James City County",
+                    "/procedures/blomdahl-ear-piercing/near/james-city-county-va",
+                  ],
+                  ["Children's ear piercing near Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
+                  [
+                    "Medical ear piercing near Newport News",
+                    "/procedures/blomdahl-ear-piercing/near/newport-news-va",
+                  ],
+                ].map(([label, href]) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="rounded-lg border border-base-300 bg-base-100 px-4 py-3 text-sm font-medium text-base-content hover:border-primary"
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </section>
           )}
 
           {Boolean(hyperhidrosisFeaturedAilments.length) && (
