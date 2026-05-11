@@ -309,10 +309,6 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               {publishedAilments
                 ?.sort((a, b) => ailmentsSortOrder[a.tag] - ailmentsSortOrder[b.tag])
                 .map(({ title, tag, description, slug: ailmentSlug }) => {
-                  const isBotox = procedure.slug === "botox";
-                  const ctaHref = isBotox ? "/consult" : `/procedures/${procedure.slug}/for/${ailmentSlug}`;
-                  const ctaLabel = isBotox ? "Discuss This Area" : "Learn More";
-
                   return (
                     <Card
                       key={title}
@@ -331,7 +327,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                       <CardContent>{humanizeMedicalCopy(description)}</CardContent>
                       <CardFooter>
                         <Button asChild>
-                          <Link href={ctaHref}>{ctaLabel}</Link>
+                          <Link href={`/procedures/${procedure.slug}/for/${ailmentSlug}`}>Learn More</Link>
                         </Button>
                       </CardFooter>
                     </Card>
