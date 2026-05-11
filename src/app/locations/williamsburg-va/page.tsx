@@ -19,15 +19,23 @@ export default function WilliamsburgLocationPage() {
       <StructuredData type="LocalBusiness" />
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations", "Williamsburg, VA"]} />
       <header className="mb-8 md:mb-12 text-center">
-        <h1 className="text-3xl md:text-5xl font-light">Visit Our Williamsburg Clinic</h1>
+        <h1 className="text-3xl md:text-5xl font-light">Medical Spa in Williamsburg, VA</h1>
         <p className="text-base md:text-lg text-base-content/70 mt-2">
           Use this page for clinic hours, parking, directions, and nearby neighborhoods served. Patients visit Jenny
-          Coleman for Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, and Blomdahl medical ear
-          piercing. If you&apos;re comparing treatments, start with our{" "}
-          <Link href="/" className="link link-primary">
-            medical spa homepage
+          Coleman for{" "}
+          <Link href="/procedures/botox" className="link link-primary">
+            Botox
           </Link>
-          {" "}and procedure pages.
+          ,{" "}
+          <Link href="/procedures/xeomin" className="link link-primary">
+            Xeomin
+          </Link>
+          ,{" "}
+          <Link href="/procedures/filler" className="link link-primary">
+            dermal fillers
+          </Link>
+          , PRP treatments, hyperhidrosis care, O-Shot services, and Blomdahl medical ear piercing near New Town,
+          William & Mary, and James City County.
         </p>
       </header>
 
@@ -78,6 +86,9 @@ export default function WilliamsburgLocationPage() {
             <Link href="/procedures/prp-hair-restoration">PRP Hair Restoration</Link>
           </Button>
           <Button asChild size="sm">
+            <Link href="/procedures/o-shot">O-Shot</Link>
+          </Button>
+          <Button asChild size="sm">
             <Link href="/procedures/blomdahl-ear-piercing">Medical Ear Piercing</Link>
           </Button>
           <Button asChild size="sm" variant="secondary">
@@ -122,6 +133,10 @@ export default function WilliamsburgLocationPage() {
             Botox
           </Link>
           , and{" "}
+          <Link href="/procedures/xeomin" className="link link-primary">
+            Xeomin
+          </Link>
+          , with support for{" "}
           <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
             Blomdahl ear piercing
           </Link>

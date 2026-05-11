@@ -14,9 +14,9 @@ import { buildPageMetadata } from "lib/metadata";
 import StructuredData from "components/structured-data";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Medical Spa Williamsburg, VA | Botox, Fillers & Ear Piercing",
+  title: "Medical Spa in Williamsburg, VA | Botox, Fillers & PRP",
   description:
-    "Williamsburg Med Spa is a local medical spa in Williamsburg, VA for Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, and Blomdahl ear piercing.",
+    "Williamsburg Med Spa is a local med spa in Williamsburg, VA for Botox, Xeomin, dermal fillers, PRP, hyperhidrosis care, O-Shot services, and Blomdahl ear piercing.",
   canonical: "/",
 });
 
@@ -29,7 +29,7 @@ export default async function Page() {
           {
             question: "What medical spa services are available in Williamsburg, VA?",
             answer:
-              "Williamsburg Med Spa offers Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, and Blomdahl medical ear piercing in Williamsburg, VA.",
+              "Williamsburg Med Spa offers Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, O-Shot services, and Blomdahl medical ear piercing in Williamsburg, VA.",
           },
           {
             question: "Who provides treatments at Williamsburg Med Spa?",
@@ -51,12 +51,12 @@ export default async function Page() {
             id="home-local-intro-heading"
             className="mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content"
           >
-            Local care for injectables, PRP, hyperhidrosis treatment, and medical ear piercing.
+            Local care for Botox, Xeomin, dermal fillers, PRP, sweating treatment, and medical ear piercing.
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-base-content/80">
             Williamsburg Med Spa is a medical spa in Williamsburg, VA offering Botox, Xeomin, dermal fillers, PRP
-            treatments, hyperhidrosis care, and Blomdahl medical ear piercing with calm conversations, clear
-            guidance, and treatment planning shaped around realistic goals.
+            treatments, hyperhidrosis care, O-Shot services, and Blomdahl medical ear piercing with calm conversations,
+            clear guidance, and treatment planning shaped around realistic goals.
           </p>
         </div>
       </section>
