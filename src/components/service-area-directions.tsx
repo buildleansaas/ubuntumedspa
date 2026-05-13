@@ -1,6 +1,21 @@
-import OpenStreetMapEmbed, { buildOpenStreetMapDirectionsUrl } from "components/open-street-map-embed";
+import OpenStreetMapEmbed from "components/open-street-map-embed";
 import { Button } from "components/ui/button";
 import type { LocalServiceArea } from "lib/local-service-areas";
+
+function buildOpenStreetMapDirectionsUrl({
+  originLatitude,
+  originLongitude,
+  destinationLatitude,
+  destinationLongitude,
+}: {
+  originLatitude: number;
+  originLongitude: number;
+  destinationLatitude: number;
+  destinationLongitude: number;
+}) {
+  const route = `${originLatitude},${originLongitude};${destinationLatitude},${destinationLongitude}`;
+  return `https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=${encodeURIComponent(route)}`;
+}
 
 const clinic = {
   label: "Williamsburg Med Spa",
