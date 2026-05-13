@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/server";
-import { DEFAULT_TITLE } from "lib/seo";
+import { DEFAULT_TITLE, ORIGIN } from "lib/seo";
 
 type TwitterImageProperties = {
   title?: string;
@@ -7,6 +7,7 @@ type TwitterImageProperties = {
 };
 
 const PHONE_NUMBER = "+1 (804) 738-9483";
+const LOGO_URL = `${ORIGIN}/logo.png`;
 
 function getDisplayTitle(title: string) {
   return title === DEFAULT_TITLE ? "Medical Spa in\nWilliamsburg, VA" : title;
@@ -30,6 +31,21 @@ export async function createTwitterImage({ title = DEFAULT_TITLE }: TwitterImage
           fontFamily: "Arial, Helvetica, sans-serif",
         }}
       >
+        <img
+          src={LOGO_URL}
+          alt=""
+          width="154"
+          height="154"
+          style={{
+            position: "absolute",
+            top: 78,
+            right: 96,
+            width: 154,
+            height: 154,
+            objectFit: "contain",
+            opacity: 0.82,
+          }}
+        />
         <div style={{ display: "flex", flexDirection: "column", gap: 48 }}>
           <div
             style={{
