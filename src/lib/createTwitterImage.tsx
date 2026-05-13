@@ -1,10 +1,12 @@
 import { ImageResponse } from "next/server";
-import { DEFAULT_TITLE, ORIGIN } from "lib/seo";
+import { DEFAULT_TITLE } from "lib/seo";
 
 type TwitterImageProperties = {
   title?: string;
   description?: string;
 };
+
+const PHONE_NUMBER = "+1 (804) 738-9483";
 
 function getDisplayTitle(title: string) {
   return title === DEFAULT_TITLE ? "Medical Spa in\nWilliamsburg, VA" : title;
@@ -24,38 +26,62 @@ export async function createTwitterImage({ title = DEFAULT_TITLE }: TwitterImage
           justifyContent: "space-between",
           background: "#f3f5f6",
           color: "#273235",
-          padding: "86px 96px 56px",
+          padding: "106px 112px 88px",
           fontFamily: "Arial, Helvetica, sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`${ORIGIN}/logo.png`} width={58} height={58} alt="Williamsburg Med Spa logo" />
-          <div style={{ fontSize: 32, lineHeight: 1, color: "#273235" }}>Williamsburg Med Spa</div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 48 }}>
+          <div
+            style={{
+              width: 116,
+              height: 3,
+              background: "#6f89a1",
+            }}
+          />
+          <h1
+            style={{
+              margin: 0,
+              whiteSpace: "pre-line",
+              maxWidth: 1280,
+              fontSize: 116,
+              lineHeight: 1.04,
+              letterSpacing: "-0.065em",
+              fontWeight: 400,
+              color: "#273235",
+            }}
+          >
+            {displayTitle}
+          </h1>
         </div>
 
-        <h1
-          style={{
-            margin: "0 0 72px",
-            whiteSpace: "pre-line",
-            maxWidth: 1280,
-            fontSize: 104,
-            lineHeight: 1.12,
-            letterSpacing: "-0.055em",
-            fontWeight: 400,
-            color: "#273235",
-          }}
-        >
-          {displayTitle}
-        </h1>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: 30 }}>
-          <div style={{ height: 1, width: "100%", background: "#d4dbde" }} />
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <div style={{ fontSize: 29, lineHeight: 1.2, color: "#6b7a80" }}>
-              Botox · Fillers · PRP · O-Shot · Medical Ear Piercing
-            </div>
-            <div style={{ fontSize: 29, lineHeight: 1.2, color: "#6b7a80" }}>williamsburgmedspa.com</div>
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between" }}>
+          <p
+            style={{
+              margin: 0,
+              maxWidth: 860,
+              fontSize: 38,
+              lineHeight: 1.26,
+              color: "#627178",
+              letterSpacing: "-0.018em",
+            }}
+          >
+            Natural-looking aesthetic care, regenerative wellness, and medical ear piercing.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "#6f89a1",
+              color: "#ffffff",
+              borderRadius: 999,
+              padding: "23px 40px",
+              fontSize: 32,
+              lineHeight: 1,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            {PHONE_NUMBER}
           </div>
         </div>
       </div>
