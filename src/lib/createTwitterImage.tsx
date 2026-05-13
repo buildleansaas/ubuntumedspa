@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/server";
-import { DEFAULT_TITLE, ORIGIN } from "lib/seo";
+import { DEFAULT_TITLE } from "lib/seo";
 
 type TwitterImageProperties = {
   title?: string;
@@ -7,7 +7,7 @@ type TwitterImageProperties = {
 };
 
 const PHONE_NUMBER = "+1 (804) 738-9483";
-const LOGO_URL = `${ORIGIN}/logo.png`;
+const LOGO_URL = "https://www.williamsburgmedspa.com/logo.png";
 
 function getDisplayTitle(title: string) {
   return title === DEFAULT_TITLE ? "Medical Spa in\nWilliamsburg, VA" : title;
