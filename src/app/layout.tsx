@@ -67,8 +67,8 @@ export const metadata: Metadata = {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en" className={`${editorialSans.variable} bg-base-100`}>
-      <Script strategy="afterInteractive" id="gtag" src="https://www.googletagmanager.com/gtag/js?id=G-FBEPLGSS9L" />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script strategy="lazyOnload" id="gtag" src="https://www.googletagmanager.com/gtag/js?id=G-FBEPLGSS9L" />
+      <Script id="google-analytics" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}

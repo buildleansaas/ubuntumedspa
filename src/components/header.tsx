@@ -30,11 +30,11 @@ export default function Header() {
       <Link href="/" className="min-w-0 flex-1">
         <div className="flex items-center justify-start">
           <picture className="shrink-0">
-            <source media="(prefers-color-scheme: dark)" srcSet="/logo.png" />
+            <source type="image/webp" srcSet="/logo-header.webp" />
             <img
-              width={548}
-              height={747}
-              src="/logo.png"
+              width={70}
+              height={96}
+              src="/logo-header.png"
               alt="Williamsburg Med Spa logo"
               className="h-10 w-auto sm:h-11 md:h-[50px]"
             />
