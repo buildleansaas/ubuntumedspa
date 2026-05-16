@@ -7,7 +7,7 @@ import ClientUtilities from "components/client-utilities";
 import StructuredData from "components/structured-data";
 import Header from "components/header";
 import Footer from "components/footer";
-import CartDrawer from "components/cart-drawer";
+import CartDrawerLoader from "components/cart-drawer-loader";
 import { CartProvider } from "components/cart-provider";
 import { Metadata } from "next";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, ORIGIN } from "lib/seo";
@@ -77,7 +77,7 @@ export default function Layout({ children }: LayoutProps) {
       <body className="m-0 bg-base-100 p-0 text-base-content antialiased">
         <CartProvider>
           <ClientUtilities />
-          <CartDrawer />
+          <CartDrawerLoader />
           <StructuredData type="Organization" />
           <StructuredData type="LocalBusiness" />
           <div className="min-h-screen w-full">
