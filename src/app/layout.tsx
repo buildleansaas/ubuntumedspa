@@ -1,16 +1,14 @@
-import React, { Suspense } from "react";
+import React from "react";
 import Script from "next/script";
 import { Manrope } from "next/font/google";
 
 import "./globals.css";
-import { Toaster } from "components/ui/toaster";
+import ClientUtilities from "components/client-utilities";
 import StructuredData from "components/structured-data";
 import Header from "components/header";
 import Footer from "components/footer";
-import CartDrawer from "components/cart-drawer";
-import AffiliateReferralListener from "components/affiliate-referral-listener";
+import CartDrawerLoader from "components/cart-drawer-loader";
 import { CartProvider } from "components/cart-provider";
-import RouteProgressBar from "components/route-progress-bar";
 import { Metadata } from "next";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, ORIGIN } from "lib/seo";
 
@@ -67,8 +65,8 @@ export const metadata: Metadata = {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en" className={`${editorialSans.variable} bg-base-100`}>
-      <Script strategy="afterInteractive" id="gtag" src="https://www.googletagmanager.com/gtag/js?id=G-FBEPLGSS9L" />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script strategy="lazyOnload" id="gtag" src="https://www.googletagmanager.com/gtag/js?id=G-FBEPLGSS9L" />
+      <Script id="google-analytics" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -78,14 +76,8 @@ export default function Layout({ children }: LayoutProps) {
       </Script>
       <body className="m-0 bg-base-100 p-0 text-base-content antialiased">
         <CartProvider>
-          <Suspense fallback={null}>
-            <AffiliateReferralListener />
-          </Suspense>
-          <Suspense fallback={null}>
-            <RouteProgressBar />
-          </Suspense>
-          <CartDrawer />
-          <Toaster />
+          <ClientUtilities />
+          <CartDrawerLoader />
           <StructuredData type="Organization" />
           <StructuredData type="LocalBusiness" />
           <div className="min-h-screen w-full">

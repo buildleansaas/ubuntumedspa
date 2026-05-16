@@ -40,7 +40,8 @@ export const ProcedureCard = ({ product }: Props) => {
             width={500}
             src={product.image}
             alt={product.name}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            sizes="(min-width: 1280px) 18rem, (min-width: 1024px) 22vw, (min-width: 640px) 45vw, 92vw"
+            quality={70}
             className="object-cover w-full h-full rounded-md"
             draggable="false"
           />
@@ -57,6 +58,7 @@ export const ProcedureCard = ({ product }: Props) => {
                 aria-hidden="true"
                 width={300}
                 height={132}
+                sizes="40px"
                 className="h-[0.7rem] w-auto shrink-0"
               />
               Certified

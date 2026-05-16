@@ -31,21 +31,6 @@ function getBbox({
   ].join(",");
 }
 
-export function buildOpenStreetMapDirectionsUrl({
-  originLatitude,
-  originLongitude,
-  destinationLatitude,
-  destinationLongitude,
-}: {
-  originLatitude: number;
-  originLongitude: number;
-  destinationLatitude: number;
-  destinationLongitude: number;
-}) {
-  const route = `${originLatitude},${originLongitude};${destinationLatitude},${destinationLongitude}`;
-  return `https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=${encodeURIComponent(route)}`;
-}
-
 export default function OpenStreetMapEmbed({
   title,
   latitude,
