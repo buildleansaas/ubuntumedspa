@@ -1,6 +1,6 @@
-export const DEFAULT_TITLE = "Williamsburg Med Spa | Botox, Fillers, PRP & Ear Piercing";
+export const DEFAULT_TITLE = "Williamsburg Medical Spa for Botox, Fillers, PRP & Ear Piercing";
 export const DEFAULT_DESCRIPTION =
-  "A local medical spa in Williamsburg, VA for Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, O-Shot services, and Blomdahl ear piercing.";
+  "Visit Williamsburg Med Spa for natural-looking Botox, Xeomin, dermal fillers, PRP, O-Shot care, hyperhidrosis treatment, and Blomdahl medical ear piercing.";
 
 export const ORIGIN =
   process.env.NODE_ENV === "development"
