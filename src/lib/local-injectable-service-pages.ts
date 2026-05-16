@@ -113,6 +113,54 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       { href: "/locations/williamsburg-va", label: "Williamsburg clinic details" },
     ],
   },
+  {
+    procedureSlug: "xeomin",
+    areaSlug: "williamsburg-va",
+    serviceName: "Xeomin",
+    shortName: "Xeomin",
+    areaName: "Williamsburg, VA",
+    title: "Xeomin in Williamsburg, VA",
+    metaTitle: "Xeomin in Williamsburg, VA | Botox Alternative for Natural Movement",
+    metaDescription:
+      "Xeomin in Williamsburg, VA with Williamsburg Med Spa for frown lines, forehead lines, crow's feet, lip flip conversations, and natural-looking movement.",
+    intro:
+      "Williamsburg Med Spa offers Xeomin treatment planning for patients who want to soften expression lines while keeping natural facial movement.",
+    whyLocal:
+      "Patients researching Xeomin in Williamsburg often compare it with Botox and want a clear explanation of onset, dosing, treatment areas, and whether it fits their prior injectable history.",
+    treatmentPlanning:
+      "Xeomin may be considered for frown lines, forehead lines, crow's feet, bunny lines, lip flip conversations, and selected lower-face areas when anatomy and goals fit.",
+    trustNote:
+      "Jenny Coleman uses a conservative consultation-first approach so neuromodulator treatment is matched to your expression pattern, comfort level, and natural-looking goals.",
+    consultNote:
+      "During consultation, Jenny reviews your past response to neuromodulators, desired movement, timeline, medical history, and whether Xeomin or Botox is the better fit.",
+    faqs: [
+      {
+        question: "Is Xeomin different from Botox?",
+        answer:
+          "Yes. Xeomin and Botox are both neuromodulators, but they are different products. Jenny can help compare options based on goals, treatment history, and response.",
+      },
+      {
+        question: "How long does Xeomin last?",
+        answer:
+          "Many patients see results for about three to four months, but duration varies by dose, treatment area, metabolism, and muscle activity.",
+      },
+      {
+        question: "Can Xeomin be used for a natural-looking result?",
+        answer:
+          "Yes. Conservative dosing and movement-aware planning can soften lines while preserving natural expression.",
+      },
+      {
+        question: "What areas can Xeomin treat?",
+        answer:
+          "Common conversations include frown lines, forehead lines, crow's feet, bunny lines, lip flip, and selected lower-face areas when appropriate.",
+      },
+    ],
+    relatedLinks: [
+      { href: "/procedures/xeomin", label: "Main Xeomin service page" },
+      { href: "/procedures/botox/near/williamsburg-va", label: "Botox in Williamsburg" },
+      { href: "/locations/williamsburg-va", label: "Williamsburg clinic details" },
+    ],
+  },
 ];
 
 export function getLocalInjectableServicePage(procedureSlug: string, areaSlug: string) {
