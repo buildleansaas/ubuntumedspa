@@ -54,6 +54,13 @@ export default function LocalInjectableServicePage({ params }: Params) {
           { name: page.areaName, item: canonicalUrl },
         ]}
       />
+      <StructuredData type="LocalBusiness" />
+      <StructuredData
+        type="Person"
+        headline="Jenny Coleman, MSN, RN, CPNP, PMHS"
+        description="Jenny Coleman provides consultation-first injectable and regenerative aesthetic care at Williamsburg Med Spa."
+        url="/staff/jenny-coleman"
+      />
       <StructuredData
         type="Service"
         service={{ name: `${page.serviceName} in ${page.areaName}`, description: page.metaDescription, areaServed: page.areaName }}
