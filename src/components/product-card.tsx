@@ -28,7 +28,8 @@ export const ProductCard = ({ name, image, headline, subline, slug }: Props) => 
             width={500}
             src={image}
             alt={name}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            sizes="(min-width: 1280px) 18rem, (min-width: 1024px) 22vw, (min-width: 640px) 45vw, 92vw"
+            quality={70}
             className="object-cover w-full h-full rounded-md"
             draggable="false"
           />
