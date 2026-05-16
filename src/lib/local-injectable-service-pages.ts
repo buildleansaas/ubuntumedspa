@@ -65,6 +65,54 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       { href: "/locations/williamsburg-va", label: "Williamsburg clinic details" },
     ],
   },
+  {
+    procedureSlug: "filler",
+    areaSlug: "williamsburg-va",
+    serviceName: "Dermal Fillers",
+    shortName: "Filler",
+    areaName: "Williamsburg, VA",
+    title: "Dermal Fillers in Williamsburg, VA",
+    metaTitle: "Dermal Fillers in Williamsburg, VA | Lips, Cheeks & Facial Contour",
+    metaDescription:
+      "Dermal fillers in Williamsburg, VA with Williamsburg Med Spa for lips, cheeks, under-eyes, facial balancing, and conservative natural-looking volume.",
+    intro:
+      "Williamsburg Med Spa plans dermal filler visits around facial balance, proportion, and natural-looking volume rather than one-size-fits-all enhancement.",
+    whyLocal:
+      "Patients comparing dermal fillers in Williamsburg often want careful guidance on lips, cheeks, under-eyes, folds, facial contour, longevity, and what should or should not be treated.",
+    treatmentPlanning:
+      "Filler planning may include lip enhancement, cheek support, nasolabial folds, marionette lines, under-eye conversations, and facial balancing when appropriate.",
+    trustNote:
+      "Jenny Coleman reviews anatomy, prior filler history, medical considerations, and realistic expectations before recommending product choice or treatment timing.",
+    consultNote:
+      "During consultation, Jenny reviews your goals, facial movement, prior injectables, event timing, swelling expectations, and whether filler, Botox/Xeomin, PRP, or skincare would better match the concern.",
+    faqs: [
+      {
+        question: "How long do dermal fillers usually last?",
+        answer:
+          "Longevity varies by product, treatment area, metabolism, and amount used. Many hyaluronic acid fillers last months to over a year depending on location and plan.",
+      },
+      {
+        question: "Can filler look natural?",
+        answer:
+          "Yes. Conservative filler planning focuses on proportion, balance, and subtle support instead of changing the face dramatically.",
+      },
+      {
+        question: "What areas can filler treat?",
+        answer:
+          "Common conversations include lips, cheeks, folds, marionette lines, under-eye support, and contour. Not every area is right for every patient.",
+      },
+      {
+        question: "Is there downtime after filler?",
+        answer:
+          "Swelling, tenderness, and bruising can happen. Jenny reviews expected timing and aftercare before treatment, especially if you have an event coming up.",
+      },
+    ],
+    relatedLinks: [
+      { href: "/procedures/filler", label: "Main dermal filler service page" },
+      { href: "/procedures/botox/near/williamsburg-va", label: "Botox in Williamsburg" },
+      { href: "/locations/williamsburg-va", label: "Williamsburg clinic details" },
+    ],
+  },
 ];
 
 export function getLocalInjectableServicePage(procedureSlug: string, areaSlug: string) {
