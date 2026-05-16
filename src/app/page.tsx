@@ -14,9 +14,9 @@ import { buildPageMetadata } from "lib/metadata";
 import StructuredData from "components/structured-data";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Medical Spa in Williamsburg, VA | Botox, Fillers & PRP",
+  title: "Williamsburg Medical Spa for Botox, Fillers, PRP & Ear Piercing",
   description:
-    "Williamsburg Med Spa is a local med spa in Williamsburg, VA for Botox, Xeomin, dermal fillers, PRP, hyperhidrosis care, O-Shot services, and Blomdahl ear piercing.",
+    "Visit Williamsburg Med Spa for natural-looking Botox, Xeomin, dermal fillers, PRP, O-Shot care, hyperhidrosis treatment, and Blomdahl medical ear piercing.",
   canonical: "/",
 });
 
