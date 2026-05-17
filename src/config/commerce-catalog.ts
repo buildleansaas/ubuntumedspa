@@ -224,7 +224,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     maxQuantity: 10,
     requiresScheduling: true,
     fulfillment: "appointment",
-    imagePath: "/procedure/armpit.png",
+    imagePath: "/procedure/hyperhidrosis/general-hyperhidrosis-warm-weather.png",
     stripeProductKey: "wms_procedure_hyperhidrosis_treatment",
     stripePriceLookupKey: "wms_procedure_hyperhidrosis_treatment_1000_v1",
   },
