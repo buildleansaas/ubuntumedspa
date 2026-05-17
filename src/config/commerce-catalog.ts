@@ -94,7 +94,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     maxQuantity: 12,
     requiresScheduling: true,
     fulfillment: "appointment",
-    imagePath: "/procedure/hair.jpg",
+    imagePath: "/procedure/hair-restoration/prp-hair-restoration-consultation.png",
     stripeProductKey: "wms_procedure_prp_hair_restoration",
     stripePriceLookupKey: "wms_procedure_prp_hair_restoration_600_v1",
   },

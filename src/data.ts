@@ -707,7 +707,7 @@ export const procedures = [
     headline: "Regain Your Crowning Glory: Safe, Natural, Noticeable Results!",
     subline:
       "PRP Hair Restoration employs PRP therapy to naturally stimulate hair follicles, offering a solution for thinning hair or hair loss. After a few sessions, you can expect to see new hair growth and improved scalp health leading to a more youthful and thick head of hair.",
-    image: "/procedure/hair.jpg",
+    image: "/procedure/hair-restoration/prp-hair-restoration-consultation.png",
     price: "$600/tx",
     // programmatic SEO copy
     blogHeadline:
