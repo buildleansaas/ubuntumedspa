@@ -112,7 +112,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     maxQuantity: 10,
     requiresScheduling: true,
     fulfillment: "appointment",
-    imagePath: "/procedure/facial.webp",
+    imagePath: "/procedure/prp-facial-consultation-glow.webp",
     stripeProductKey: "wms_procedure_prp_facial",
     stripePriceLookupKey: "wms_procedure_prp_facial_600_v1",
   },
