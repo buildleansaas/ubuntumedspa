@@ -40,7 +40,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     maxQuantity: 10,
     requiresScheduling: true,
     fulfillment: "appointment",
-    imagePath: "/procedure/grapefruit.jpg",
+    imagePath: "/procedure/o-shot/womens-intimate-wellness-lifestyle.png",
     stripeProductKey: "wms_procedure_o_shot",
     stripePriceLookupKey: "wms_procedure_o_shot_1200_v1",
   },

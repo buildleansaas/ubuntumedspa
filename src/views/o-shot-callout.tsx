@@ -55,8 +55,8 @@ export default function OShotCallout() {
 
           <div className="relative aspect-square w-full max-w-[18rem] overflow-hidden rounded-2xl bg-base-200 sm:max-w-[20rem] md:w-[17rem] lg:w-[19rem] md:shrink-0">
             <Image
-              src={oShot.imagePath || "/procedure/grapefruit.jpg"}
-              alt="Grapefruit visual representing the O-Shot intimate wellness treatment"
+              src={oShot.imagePath || "/procedure/o-shot/womens-intimate-wellness-lifestyle.png"}
+              alt="Woman enjoying a confident, worry-free lifestyle after intimate wellness care planning"
               fill
               sizes="(max-width: 640px) 70vw, (max-width: 1024px) 272px, 304px"
               className="object-cover transition-transform duration-200 group-hover:scale-[1.02]"
