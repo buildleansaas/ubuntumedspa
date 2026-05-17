@@ -130,7 +130,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     maxQuantity: 10,
     requiresScheduling: true,
     fulfillment: "appointment",
-    imagePath: "/procedure/facelift.webp",
+    imagePath: "/procedure/prp-face-lift-consultation-refresh.webp",
     stripeProductKey: "wms_procedure_prp_face_lift",
     stripePriceLookupKey: "wms_procedure_prp_face_lift_1500_v1",
   },
