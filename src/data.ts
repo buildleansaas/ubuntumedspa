@@ -927,7 +927,7 @@ export const procedures = [
     headline: "Radiate Youthful Confidence: Boost Your Skin's Natural Healing Power!",
     subline:
       "The PRP Facial combines microdermabrasion with topical application of PRP, promoting collagen and elastin production to improve your skin. This treatment can leave your skin looking plumper, tighter, and with improved clarity that lasts up to 2 years.",
-    image: "/procedure/facial.webp",
+    image: "/procedure/prp-facial-consultation-glow.webp",
     price: "$600",
     // programmatic SEO copy
     blogHeadline:
