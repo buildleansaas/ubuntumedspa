@@ -2083,7 +2083,7 @@ export const procedures = [
     headline: "Hyperhidrosis treatment for underarms, palms, feet, and other sweat-prone areas.",
     subline:
       "Xeomin can help reduce excessive sweating in targeted areas with a localized, non-surgical treatment plan built around comfort and day-to-day function.",
-    image: "/procedure/armpit.png",
+    image: "/procedure/hyperhidrosis/general-hyperhidrosis-warm-weather.png",
     price: "$1,000+",
     // programmatic SEO copy
     blogHeadline:
