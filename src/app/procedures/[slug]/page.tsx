@@ -173,7 +173,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               ))}
             </div>
           )}
-          <div className="flex space-x-4 mx-auto my-8 justify-center">
+          <div className="mx-auto my-8 flex flex-wrap justify-center gap-3 sm:gap-4">
             <Button asChild>
               <Link href="/consult">Book a Consultation</Link>
             </Button>
