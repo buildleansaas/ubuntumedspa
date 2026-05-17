@@ -4,6 +4,7 @@ import { procedures, products } from "data";
 import { getPublishedAilmentEntries } from "lib/ailments/get-ailment-page-data";
 import { getPublishedBlogPosts } from "lib/blog";
 import { publishedEarPiercingIntentPages } from "lib/ear-piercing-intents";
+import { localInjectableServicePages } from "lib/local-injectable-service-pages";
 import { publishedEarPiercingAreas } from "lib/local-service-areas";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -87,6 +88,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...publishedProcedures.map((procedure) => ({
       url: `https://www.williamsburgmedspa.com/procedures/${procedure.slug}`,
+      lastModified: new Date(),
+    })),
+    ...localInjectableServicePages.map((page) => ({
+      url: `https://www.williamsburgmedspa.com/procedures/${page.procedureSlug}/near/${page.areaSlug}`,
       lastModified: new Date(),
     })),
     ...publishedEarPiercingAreas.map((area) => ({

@@ -90,7 +90,7 @@ export const procedures = [
     headline: "CMA-trained O-Shot® care for intimate wellness, sensitivity, comfort, and bladder leakage support.",
     subline:
       "The O-Shot® uses PRP prepared from your own blood in a discreet in-office procedure for patients looking for a non-hormonal, regenerative conversation around vulvovaginal tissue health and sexual wellness.",
-    image: "/procedure/grapefruit.jpg",
+    image: "/procedure/o-shot/womens-intimate-wellness-lifestyle.png",
     price: "$1,200",
     // programmatic SEO copy
     blogHeadline:
