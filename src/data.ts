@@ -90,7 +90,7 @@ export const procedures = [
     headline: "CMA-trained O-Shot® care for intimate wellness, sensitivity, comfort, and bladder leakage support.",
     subline:
       "The O-Shot® uses PRP prepared from your own blood in a discreet in-office procedure for patients looking for a non-hormonal, regenerative conversation around vulvovaginal tissue health and sexual wellness.",
-    image: "/procedure/o-shot/womens-intimate-wellness-lifestyle.png",
+    image: "/procedure/o-shot/womens-intimate-wellness-lifestyle.webp",
     price: "$1,200",
     // programmatic SEO copy
     blogHeadline:
@@ -566,7 +566,7 @@ export const procedures = [
     headline: "Embrace Your Curves: Natural, Non-Invasive Enhancement!",
     subline:
       "The PRP Breast Lift leverages the healing properties of PRP, stimulating the growth of new blood vessels and fatty tissue in the breast area. The result is fuller-looking breasts through a non-invasive process with minimal downtime and long-lasting results.",
-    image: "/procedure/breast.png",
+    image: "/procedure/breast.webp",
     price: "$1,800",
     // programmatic SEO copy
     blogHeadline:
@@ -707,7 +707,7 @@ export const procedures = [
     headline: "Regain Your Crowning Glory: Safe, Natural, Noticeable Results!",
     subline:
       "PRP Hair Restoration employs PRP therapy to naturally stimulate hair follicles, offering a solution for thinning hair or hair loss. After a few sessions, you can expect to see new hair growth and improved scalp health leading to a more youthful and thick head of hair.",
-    image: "/procedure/hair-restoration/prp-hair-restoration-consultation.png",
+    image: "/procedure/hair-restoration/prp-hair-restoration-consultation.webp",
     price: "$600/tx",
     // programmatic SEO copy
     blogHeadline:
@@ -927,7 +927,7 @@ export const procedures = [
     headline: "Radiate Youthful Confidence: Boost Your Skin's Natural Healing Power!",
     subline:
       "The PRP Facial combines microdermabrasion with topical application of PRP, promoting collagen and elastin production to improve your skin. This treatment can leave your skin looking plumper, tighter, and with improved clarity that lasts up to 2 years.",
-    image: "/procedure/facial.png",
+    image: "/procedure/facial.webp",
     price: "$600",
     // programmatic SEO copy
     blogHeadline:
@@ -1120,7 +1120,7 @@ export const procedures = [
     headline: "Redefine Your Beauty: Non-Invasive, Long-Lasting Rejuvenation!",
     subline:
       "The PRP Facelift combines the use of Botox, Filler, and the PRP Facial to rejuvenate and resculpt the face. This non-invasive procedure stimulates collagen production, fills in wrinkles, and provides a smoother, more youthful-looking skin with long-lasting results.",
-    image: "/procedure/facelift.png",
+    image: "/procedure/facelift.webp",
     price: "$1,500",
     // programmatic SEO copy
     blogHeadline:
@@ -1508,7 +1508,7 @@ export const procedures = [
     headline: "Botox injections planned around your natural expression.",
     subline:
       "We treat common Botox areas such as forehead lines, frown lines, crow's feet, and select lower-face zones with a conservative, movement-aware approach.",
-    image: "/procedure/botox.png",
+    image: "/procedure/botox.webp",
     price: "$250 increments",
     // programmatic SEO copy
     blogHeadline:
@@ -1648,7 +1648,7 @@ export const procedures = [
     headline: "Xeomin injections planned for subtle, natural-looking movement.",
     subline:
       "Xeomin can treat forehead lines, frown lines, crow's feet, lip flip concerns, bunny lines, and select lower-face areas with a conservative dosing approach.",
-    image: "/procedure/xeomin.png",
+    image: "/procedure/xeomin.webp",
     price: "$250 increments",
     // programmatic SEO copy
     blogHeadline:
@@ -1854,7 +1854,7 @@ export const procedures = [
     headline: "Dermal fillers in Williamsburg for lips, cheeks, under-eyes, and facial contour.",
     subline:
       "Hyaluronic acid filler can restore volume, refine contour, soften folds, and support lip enhancement with a treatment plan built around proportion and longevity.",
-    image: "/procedure/filler.png",
+    image: "/procedure/filler.webp",
     price: "$700 per syringe",
     // programmatic SEO copy
     blogHeadline:
@@ -2083,7 +2083,7 @@ export const procedures = [
     headline: "Hyperhidrosis treatment for underarms, palms, feet, and other sweat-prone areas.",
     subline:
       "Xeomin can help reduce excessive sweating in targeted areas with a localized, non-surgical treatment plan built around comfort and day-to-day function.",
-    image: "/procedure/hyperhidrosis/general-hyperhidrosis-warm-weather.png",
+    image: "/procedure/hyperhidrosis/general-hyperhidrosis-warm-weather.webp",
     price: "$1,000+",
     // programmatic SEO copy
     blogHeadline:
@@ -2121,7 +2121,7 @@ export const procedures = [
         id: "sms-01",
         quote: "Omg this is amazing and like took effect immediately! Thanks again!!",
         attribution: "Hyperhidrosis Treatment patient",
-        imageSrc: "/testimonials/hyperhidrosis-treatment/hyperhidrosis-01.png",
+        imageSrc: "/testimonials/hyperhidrosis-treatment/hyperhidrosis-01.webp",
       },
     ],
     ailmentsHeadline:
@@ -2233,7 +2233,7 @@ export const procedures = [
     headline: "Medical ear piercing in Williamsburg for children, teens, and adults.",
     subline:
       "Blomdahl combines sterile technique, hypoallergenic jewelry, and gentle placement for first earrings, re-piercing, and sensitive ears.",
-    image: "/procedure/ear-piercing.png",
+    image: "/procedure/ear-piercing.webp",
     price: "$45.00 per ear",
     // programmatic SEO copy
     blogHeadline:
