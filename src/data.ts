@@ -566,7 +566,7 @@ export const procedures = [
     headline: "Embrace Your Curves: Natural, Non-Invasive Enhancement!",
     subline:
       "The PRP Breast Lift leverages the healing properties of PRP, stimulating the growth of new blood vessels and fatty tissue in the breast area. The result is fuller-looking breasts through a non-invasive process with minimal downtime and long-lasting results.",
-    image: "/procedure/breast.webp",
+    image: "/procedure/prp-breast-lift-consultation-confidence.webp",
     price: "$1,800",
     // programmatic SEO copy
     blogHeadline:
