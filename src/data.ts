@@ -1120,7 +1120,7 @@ export const procedures = [
     headline: "Redefine Your Beauty: Non-Invasive, Long-Lasting Rejuvenation!",
     subline:
       "The PRP Facelift combines the use of Botox, Filler, and the PRP Facial to rejuvenate and resculpt the face. This non-invasive procedure stimulates collagen production, fills in wrinkles, and provides a smoother, more youthful-looking skin with long-lasting results.",
-    image: "/procedure/facelift.webp",
+    image: "/procedure/prp-face-lift-consultation-refresh.webp",
     price: "$1,500",
     // programmatic SEO copy
     blogHeadline:
