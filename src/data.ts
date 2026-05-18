@@ -1648,7 +1648,7 @@ export const procedures = [
     headline: "Xeomin injections planned for subtle, natural-looking movement.",
     subline:
       "Xeomin can treat forehead lines, frown lines, crow's feet, lip flip concerns, bunny lines, and select lower-face areas with a conservative dosing approach.",
-    image: "/procedure/xeomin.webp",
+    image: "/procedure/xeomin-brow-expression-closeup.webp",
     price: "$250 increments",
     // programmatic SEO copy
     blogHeadline:

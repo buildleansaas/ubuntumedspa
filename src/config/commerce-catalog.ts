@@ -186,7 +186,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     maxQuantity: 4,
     requiresScheduling: true,
     fulfillment: "appointment",
-    imagePath: "/procedure/xeomin.webp",
+    imagePath: "/procedure/xeomin-brow-expression-closeup.webp",
     stripeProductKey: "wms_procedure_xeomin",
     stripePriceLookupKey: "wms_procedure_xeomin_block_250_v1",
     customerNote:
