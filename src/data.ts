@@ -1508,7 +1508,7 @@ export const procedures = [
     headline: "Botox injections planned around your natural expression.",
     subline:
       "We treat common Botox areas such as forehead lines, frown lines, crow's feet, and select lower-face zones with a conservative, movement-aware approach.",
-    image: "/procedure/botox.webp",
+    image: "/procedure/botox-forehead-crows-feet-closeup.webp",
     price: "$250 increments",
     // programmatic SEO copy
     blogHeadline:
