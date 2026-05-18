@@ -148,7 +148,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     maxQuantity: 10,
     requiresScheduling: true,
     fulfillment: "appointment",
-    imagePath: "/procedure/wrist.jpg",
+    imagePath: "/procedure/prp-joint-restoration-consultation.webp",
     stripeProductKey: "wms_procedure_joint_restoration",
     stripePriceLookupKey: "wms_procedure_joint_restoration_800_v1",
   },

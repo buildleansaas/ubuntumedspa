@@ -1310,7 +1310,7 @@ export const procedures = [
     headline: "PRP Joint Restoration Consultation in Williamsburg",
     subline:
       "Joint Restoration uses platelet-rich plasma in a consultation-based plan for select joint concerns. Candidacy depends on the diagnosis, severity, prior treatments, and whether another specialist should be involved.",
-    image: "/procedure/wrist.jpg",
+    image: "/procedure/prp-joint-restoration-consultation.webp",
     price: "$800",
     // programmatic SEO copy
     blogHeadline:
