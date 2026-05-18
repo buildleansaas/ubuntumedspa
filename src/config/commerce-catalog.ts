@@ -206,7 +206,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     maxQuantity: 10,
     requiresScheduling: true,
     fulfillment: "appointment",
-    imagePath: "/procedure/filler.webp",
+    imagePath: "/procedure/filler-lips-cheeks-contour-closeup.webp",
     stripeProductKey: "wms_procedure_filler",
     stripePriceLookupKey: "wms_procedure_filler_700_v1",
   },
