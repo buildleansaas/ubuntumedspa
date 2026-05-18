@@ -58,7 +58,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     maxQuantity: 10,
     requiresScheduling: true,
     fulfillment: "appointment",
-    imagePath: "/procedure/banana.jpg",
+    imagePath: "/procedure/pshot-consultation-confidence.webp",
     stripeProductKey: "wms_procedure_p_shot",
     stripePriceLookupKey: "wms_procedure_p_shot_1900_v1",
   },
