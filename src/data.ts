@@ -360,7 +360,7 @@ export const procedures = [
     headline: "Regenerative support for erections, sensitivity, and penile tissue health.",
     subline:
       "The P-Shot uses platelet-rich plasma prepared from your own blood and is considered for select patients who want a non-surgical option as part of a broader sexual health plan.",
-    image: "/procedure/banana.jpg",
+    image: "/procedure/pshot-consultation-confidence.webp",
     price: "$1,900",
     // programmatic SEO copy
     blogHeadline:
