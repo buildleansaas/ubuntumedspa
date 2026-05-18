@@ -76,7 +76,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     maxQuantity: 10,
     requiresScheduling: true,
     fulfillment: "appointment",
-    imagePath: "/procedure/breast.webp",
+    imagePath: "/procedure/prp-breast-lift-consultation-confidence.webp",
     stripeProductKey: "wms_procedure_prp_breast_lift",
     stripePriceLookupKey: "wms_procedure_prp_breast_lift_1800_v1",
   },
