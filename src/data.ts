@@ -1854,7 +1854,7 @@ export const procedures = [
     headline: "Dermal fillers in Williamsburg for lips, cheeks, under-eyes, and facial contour.",
     subline:
       "Hyaluronic acid filler can restore volume, refine contour, soften folds, and support lip enhancement with a treatment plan built around proportion and longevity.",
-    image: "/procedure/filler.webp",
+    image: "/procedure/filler-lips-cheeks-contour-closeup.webp",
     price: "$700 per syringe",
     // programmatic SEO copy
     blogHeadline:
