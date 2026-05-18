@@ -166,7 +166,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     maxQuantity: 4,
     requiresScheduling: true,
     fulfillment: "appointment",
-    imagePath: "/procedure/botox.webp",
+    imagePath: "/procedure/botox-forehead-crows-feet-closeup.webp",
     stripeProductKey: "wms_procedure_botox",
     stripePriceLookupKey: "wms_procedure_botox_block_250_v1",
     customerNote:
