@@ -2233,7 +2233,7 @@ export const procedures = [
     headline: "Medical ear piercing in Williamsburg for children, teens, and adults.",
     subline:
       "Blomdahl combines sterile technique, hypoallergenic jewelry, and gentle placement for first earrings, re-piercing, and sensitive ears.",
-    image: "/procedure/ear-piercing.webp",
+    image: "/procedure/blomdahl-family-ear-piercing-consult.webp",
     price: "$45.00 per ear",
     // programmatic SEO copy
     blogHeadline:
