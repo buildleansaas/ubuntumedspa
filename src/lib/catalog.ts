@@ -19,6 +19,7 @@ export type CatalogItemRecord = {
   name?: string;
   pricingMode?: CatalogItemConfig["pricingMode"];
   unitAmountCents?: number;
+  quantityPriceBreaks?: CatalogItemConfig["quantityPriceBreaks"];
   currency?: CatalogItemConfig["currency"];
   displayPrice?: string;
   quantityLabel?: string;
@@ -39,6 +40,7 @@ export type ResolvedCartItem = CatalogItemConfig & {
   unitLabel: string;
   unitAmountCents: number;
   lineTotalCents: number;
+  usesQuantityPriceBreak?: boolean;
   stripeProductId?: string;
   stripePriceId?: string;
 };
@@ -126,12 +128,16 @@ export const resolveCart = async (rawItems: CartItemInput[]): Promise<ResolvedCa
 
     const quantity = validateQuantity(catalogItem, item.quantity);
 
+    const quantityPriceBreak = catalogItem.quantityPriceBreaks?.[quantity];
+    const unitAmountCents = quantityPriceBreak ?? catalogItem.unitAmountCents;
+
     items.push({
       ...catalogItem,
       quantity,
       unitLabel: catalogItem.quantityLabel,
-      unitAmountCents: catalogItem.unitAmountCents,
-      lineTotalCents: quantity * catalogItem.unitAmountCents,
+      unitAmountCents,
+      lineTotalCents: quantity * unitAmountCents,
+      usesQuantityPriceBreak: quantityPriceBreak !== undefined,
       stripeProductId: stripeRecords[item.slug]?.stripeProductId,
       stripePriceId: stripeRecords[item.slug]?.stripePriceId,
     });

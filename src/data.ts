@@ -2255,7 +2255,7 @@ export const procedures = [
     subline:
       "A sterile, appointment-based piercing visit with Jenny Coleman, hypoallergenic Blomdahl starter jewelry, placement planning, and aftercare for first earrings, re-piercing, and sensitive ears.",
     image: "/procedure/blomdahl-family-ear-piercing-consult.webp",
-    price: "$45.00 per ear",
+    price: "$45.00 per ear or $80.00 for both ears",
     // programmatic SEO copy
     blogHeadline:
       "Planning ear piercing in Williamsburg? Review our guides on first earrings, pediatric-aware piercing, sensitive ears, aftercare, ear piercing cost, and why Blomdahl differs from mall piercing.",
@@ -2339,7 +2339,7 @@ export const procedures = [
       {
         question: "How much does Blomdahl ear piercing cost?",
         answer:
-          "Williamsburg Med Spa lists Blomdahl ear piercing at $45 per ear. Final visit details, number of ears pierced, and any current starter jewelry options are confirmed when scheduling.",
+          "Williamsburg Med Spa lists Blomdahl ear piercing at $45 per ear, with both ears discounted to $80. Final visit details and current Blomdahl starter jewelry options are confirmed when scheduling.",
       },
       {
         question: "Are starter earrings included in the appointment?",
