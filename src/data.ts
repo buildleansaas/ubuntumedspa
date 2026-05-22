@@ -1505,10 +1505,10 @@ export const procedures = [
         "Botox injections in Williamsburg, VA for forehead lines, frown lines, crow's feet, and other targeted wrinkle-softening treatments planned around natural expression.",
     },
     description:
-      "Botox Cosmetic is a botulinum toxin type A injectable used to temporarily soften dynamic expression lines in appropriate adult candidates. At Williamsburg Med Spa, Botox planning focuses on forehead lines, frown lines, crow's feet, and selected lower-face areas with dosing shaped around your facial movement pattern so results look smooth, balanced, and natural.",
-    headline: "Botox injections planned around your natural expression.",
+      "Botox Cosmetic is a botulinum toxin type A injectable used to temporarily soften dynamic expression lines in appropriate adult candidates. At Williamsburg Med Spa, Jenny Coleman, MSN, RN, CPNP, PMHS plans Botox around forehead lines, frown lines, crow's feet, and selected lower-face areas with dosing shaped around your facial movement pattern so results look smooth, balanced, and natural.",
+    headline: "Nurse-led Botox in Williamsburg planned around your natural expression.",
     subline:
-      "We treat common Botox areas such as forehead lines, frown lines, crow's feet, and select lower-face zones with a conservative, movement-aware approach.",
+      "Jenny Coleman, MSN, RN, CPNP, PMHS treats common Botox areas such as forehead lines, frown lines, crow's feet, and select lower-face zones with a conservative, movement-aware approach.",
     image: "/procedure/botox-forehead-crows-feet-closeup.webp",
     price: "$250 increments",
     // programmatic SEO copy
@@ -1602,12 +1602,17 @@ export const procedures = [
       },
     ],
     faqHeadline:
-      "Get practical answers about Botox timing, common treatment areas, longevity, and how Botox compares with Xeomin.",
+      "Get practical answers about Botox cost, timing, common treatment areas, candidacy, longevity, and how Botox compares with Xeomin in Williamsburg.",
     faqs: [
       {
         question: "What is Botox commonly used for?",
         answer:
           "Botox Cosmetic is commonly used to temporarily improve the look of forehead lines, glabellar lines, and crow's feet in appropriate adult candidates.",
+      },
+      {
+        question: "How much does Botox cost in Williamsburg?",
+        answer:
+          "Williamsburg Med Spa lists Botox appointments in $250 increments. Your total depends on the areas treated, muscle strength, dosing plan, and whether Botox or Xeomin is the better fit for your goals.",
       },
       {
         question: "How soon will I notice Botox results?",
@@ -1627,7 +1632,12 @@ export const procedures = [
       {
         question: "Is there downtime after Botox?",
         answer:
-          "Most patients return to normal daily activities the same day. Your provider will review simple aftercare instructions based on treatment areas.",
+          "Most patients return to normal daily activities the same day. Jenny will review simple aftercare instructions based on the areas treated and your risk of bruising or tenderness.",
+      },
+      {
+        question: "Am I a good candidate for Botox?",
+        answer:
+          "Botox may be appropriate for adults with expression lines caused by repeated movement, but candidacy depends on your health history, medications, pregnancy or nursing status, prior injectable history, and the look you want to preserve.",
       },
       {
         question: "What side effects are possible?",
@@ -1851,10 +1861,10 @@ export const procedures = [
         "Dermal fillers in Williamsburg, VA for lips, cheeks, under-eyes, jawline contour, and natural-looking facial volume restoration with Jenny Coleman, MSN, RN, CPNP, PMHS.",
     },
     description:
-      "Dermal fillers are injectable gels commonly used to restore facial volume, soften folds, enhance lips, and refine contour in areas such as cheeks, jawline, and under-eyes. At Williamsburg Med Spa, filler planning focuses on conservative placement, clear discussion of longevity and reversibility, and results that stay proportional to your features.",
-    headline: "Dermal fillers in Williamsburg for lips, cheeks, under-eyes, and facial contour.",
+      "Dermal fillers are injectable gels commonly used to restore facial volume, soften folds, enhance lips, and refine contour in areas such as cheeks, jawline, and under-eyes. At Williamsburg Med Spa, Jenny Coleman, MSN, RN, CPNP, PMHS plans filler conservatively with clear discussion of longevity, swelling, reversibility, and results that stay proportional to your features.",
+    headline: "Nurse-led dermal fillers in Williamsburg for lips, cheeks, under-eyes, and facial contour.",
     subline:
-      "Hyaluronic acid filler can restore volume, refine contour, soften folds, and support lip enhancement with a treatment plan built around proportion and longevity.",
+      "Hyaluronic acid filler can restore volume, refine contour, soften folds, and support lip enhancement with a treatment plan built around proportion, safety screening, and realistic longevity.",
     image: "/procedure/filler-lips-cheeks-contour-closeup.webp",
     price: "$700 per syringe",
     // programmatic SEO copy
@@ -2037,7 +2047,7 @@ export const procedures = [
       },
     ],
     faqHeadline:
-      "Get practical answers about lip filler, cheek filler, under-eye filler, longevity, comfort, safety, and reversibility.",
+      "Get practical answers about lip filler, cheek filler, under-eye filler, cost, consultation planning, longevity, comfort, safety, and reversibility.",
     faqs: [
       {
         question: "What areas can be treated with dermal fillers?",
@@ -2045,9 +2055,14 @@ export const procedures = [
           "Dermal fillers can be used to plump lips, enhance cheek contours, reduce the appearance of fine lines and wrinkles, improve the jawline, and correct under-eye hollows.",
       },
       {
+        question: "How much do dermal fillers cost in Williamsburg?",
+        answer:
+          "Williamsburg Med Spa lists dermal filler at $700 per syringe. The number of syringes depends on the area, anatomy, prior filler history, and whether your goal is subtle hydration, shape refinement, or more visible volume support.",
+      },
+      {
         question: "How long do the results last?",
         answer:
-          "The longevity of filler results varies based on the type of filler used and individual factors. Generally, results can last from 6 months to over a year.",
+          "The longevity of filler results varies based on filler type, treatment area, metabolism, and movement. Many hyaluronic acid filler results last from about 6 months to over a year, but Jenny will discuss realistic maintenance timing for your specific plan.",
       },
       {
         question: "What should a filler consultation cover?",
@@ -2057,7 +2072,12 @@ export const procedures = [
       {
         question: "Are fillers safe?",
         answer:
-          "When administered by a trained professional, dermal fillers are generally safe. However, as with any procedure, there are potential risks, so it's essential to discuss with your practitioner.",
+          "Fillers have real medical risks even when performed carefully, so consultation should include anatomy, product choice, vascular risk, bruising or swelling expectations, and what to do if something does not feel right after treatment.",
+      },
+      {
+        question: "Am I a good candidate for filler?",
+        answer:
+          "Good filler candidates usually want proportionate volume or contour changes and are comfortable with swelling, bruising, maintenance, and risk discussion. Some concerns are better treated with Botox, skin care, biostimulators, or no injectable treatment.",
       },
       {
         question: "Is the procedure painful?",
