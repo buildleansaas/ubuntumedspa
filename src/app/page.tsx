@@ -15,9 +15,9 @@ import { buildPageMetadata } from "lib/metadata";
 import StructuredData from "components/structured-data";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Williamsburg Medical Spa for Botox, Fillers, PRP & Ear Piercing",
+  title: "Williamsburg Med Spa | Nurse-Led Botox, Fillers, PRP & Ear Piercing",
   description:
-    "Visit Williamsburg Med Spa for natural-looking Botox, Xeomin, dermal fillers, PRP, O-Shot care, hyperhidrosis treatment, and Blomdahl medical ear piercing.",
+    "Nurse-led medical spa in Williamsburg, VA for natural-looking Botox, Xeomin, fillers, PRP, O-Shot care, sweating treatment, and Blomdahl ear piercing.",
   canonical: "/",
 });
 
@@ -47,17 +47,17 @@ export default async function Page() {
       <Jumbotron />
       <section className="mb-14 px-6 md:mb-20 md:px-0" aria-labelledby="home-local-intro-heading">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Medical Spa in Williamsburg, VA</p>
+          <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Nurse-led medical spa in Williamsburg, VA</p>
           <h2
             id="home-local-intro-heading"
             className="mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content"
           >
-            Local care for Botox, Xeomin, dermal fillers, PRP, sweating treatment, and medical ear piercing.
+            Local care with Jenny Coleman, MSN, RN, CPNP, PMHS for Botox, Xeomin, dermal fillers, PRP, sweating treatment, and medical ear piercing.
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-base-content/80">
-            Williamsburg Med Spa is a medical spa in Williamsburg, VA offering Botox, Xeomin, dermal fillers, PRP
-            treatments, hyperhidrosis care, O-Shot services, and Blomdahl medical ear piercing with calm conversations,
-            clear guidance, and treatment planning shaped around realistic goals.
+            Williamsburg Med Spa is a nurse-led medical spa in Williamsburg, VA offering Botox, Xeomin, dermal fillers,
+            PRP treatments, hyperhidrosis care, O-Shot services, and Blomdahl medical ear piercing with calm
+            conversations, clear guidance, and treatment planning shaped around realistic goals.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-2">
             <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/botox/near/williamsburg-va">
