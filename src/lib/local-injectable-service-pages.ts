@@ -24,11 +24,11 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     shortName: "Botox",
     areaName: "Williamsburg, VA",
     title: "Botox in Williamsburg, VA",
-    metaTitle: "Botox in Williamsburg, VA | Natural-Looking Treatment Planning",
+    metaTitle: "Botox in Williamsburg, VA | Nurse-Led Natural-Looking Results",
     metaDescription:
-      "Botox in Williamsburg, VA with Jenny Coleman at Williamsburg Med Spa for frown lines, forehead lines, crow's feet, and conservative natural-looking results.",
+      "Botox in Williamsburg, VA with Jenny Coleman, MSN, RN, CPNP, PMHS for frown lines, forehead lines, crow's feet, pricing guidance, and conservative natural-looking results.",
     intro:
-      "Williamsburg Med Spa plans Botox treatments around your expression, goals, anatomy, and comfort level so the result looks refreshed rather than overdone.",
+      "Williamsburg Med Spa plans Botox treatments around your expression, goals, anatomy, comfort level, and budget so the result looks refreshed rather than overdone.",
     whyLocal:
       "Patients searching for Botox in Williamsburg often want a local injector who will explain dosing, timing, follow-up expectations, and how to avoid a frozen look.",
     treatmentPlanning:
@@ -42,6 +42,11 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
         question: "How long does Botox usually last?",
         answer:
           "Many patients notice Botox results for about three to four months, but timing varies by dose, treatment area, metabolism, and muscle activity.",
+      },
+      {
+        question: "How much does Botox cost in Williamsburg?",
+        answer:
+          "Williamsburg Med Spa lists Botox appointments in $250 increments. Jenny reviews areas, dosing, and whether Botox or Xeomin best fits your goals before confirming the plan.",
       },
       {
         question: "When should I book Botox before an event?",
@@ -74,9 +79,9 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     title: "Dermal Fillers in Williamsburg, VA",
     metaTitle: "Dermal Fillers in Williamsburg, VA | Lips, Cheeks & Facial Contour",
     metaDescription:
-      "Dermal fillers in Williamsburg, VA with Williamsburg Med Spa for lips, cheeks, under-eyes, facial balancing, and conservative natural-looking volume.",
+      "Dermal fillers in Williamsburg, VA with Jenny Coleman, MSN, RN, CPNP, PMHS for lips, cheeks, under-eyes, facial balancing, pricing guidance, and natural-looking volume.",
     intro:
-      "Williamsburg Med Spa plans dermal filler visits around facial balance, proportion, and natural-looking volume rather than one-size-fits-all enhancement.",
+      "Williamsburg Med Spa plans dermal filler visits around facial balance, proportion, safety screening, and natural-looking volume rather than one-size-fits-all enhancement.",
     whyLocal:
       "Patients comparing dermal fillers in Williamsburg often want careful guidance on lips, cheeks, under-eyes, folds, facial contour, longevity, and what should or should not be treated.",
     treatmentPlanning:
@@ -90,6 +95,11 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
         question: "How long do dermal fillers usually last?",
         answer:
           "Longevity varies by product, treatment area, metabolism, and amount used. Many hyaluronic acid fillers last months to over a year depending on location and plan.",
+      },
+      {
+        question: "How much do dermal fillers cost in Williamsburg?",
+        answer:
+          "Williamsburg Med Spa lists dermal filler at $700 per syringe. Jenny reviews the area, likely product amount, swelling expectations, and maintenance plan before treatment.",
       },
       {
         question: "Can filler look natural?",
