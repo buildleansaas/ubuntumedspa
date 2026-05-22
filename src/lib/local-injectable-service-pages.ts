@@ -24,9 +24,9 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     shortName: "Botox",
     areaName: "Williamsburg, VA",
     title: "Botox in Williamsburg, VA",
-    metaTitle: "Botox in Williamsburg, VA | Nurse-Led Natural-Looking Results",
+    metaTitle: "Botox in Williamsburg, VA | Nurse-Led Treatment Planning",
     metaDescription:
-      "Botox in Williamsburg, VA with Jenny Coleman, MSN, RN, CPNP, PMHS for frown lines, forehead lines, crow's feet, pricing guidance, and conservative natural-looking results.",
+      "Botox in Williamsburg, VA with Jenny Coleman for frown lines, forehead lines, crow's feet, pricing guidance, and conservative treatment planning.",
     intro:
       "Williamsburg Med Spa plans Botox treatments around your expression, goals, anatomy, comfort level, and budget so the result looks refreshed rather than overdone.",
     whyLocal:
@@ -59,6 +59,11 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
           "Yes. The goal at Williamsburg Med Spa is conservative, movement-aware treatment planning that softens lines while preserving a natural expression.",
       },
       {
+        question: "Am I a good candidate for Botox?",
+        answer:
+          "Candidacy depends on your health history, medications, pregnancy or nursing status, prior injectable history, and whether Botox or Xeomin better fits your movement pattern.",
+      },
+      {
         question: "Is Botox the same as Xeomin?",
         answer:
           "Botox and Xeomin are both neuromodulators, but they are different products. Jenny can review which option fits your goals, prior response, and treatment history.",
@@ -79,7 +84,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     title: "Dermal Fillers in Williamsburg, VA",
     metaTitle: "Dermal Fillers in Williamsburg, VA | Lips, Cheeks & Facial Contour",
     metaDescription:
-      "Dermal fillers in Williamsburg, VA with Jenny Coleman, MSN, RN, CPNP, PMHS for lips, cheeks, under-eyes, facial balancing, pricing guidance, and natural-looking volume.",
+      "Dermal fillers in Williamsburg, VA with Jenny Coleman for lips, cheeks, under-eyes, facial balancing, pricing guidance, and natural-looking volume.",
     intro:
       "Williamsburg Med Spa plans dermal filler visits around facial balance, proportion, safety screening, and natural-looking volume rather than one-size-fits-all enhancement.",
     whyLocal:
@@ -115,6 +120,11 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
         question: "Is there downtime after filler?",
         answer:
           "Swelling, tenderness, and bruising can happen. Jenny reviews expected timing and aftercare before treatment, especially if you have an event coming up.",
+      },
+      {
+        question: "What safety questions should I ask before filler?",
+        answer:
+          "Ask about anatomy, product choice, swelling and bruising, vascular risk, reversibility for hyaluronic acid fillers, and what symptoms should prompt a call after treatment.",
       },
     ],
     relatedLinks: [
