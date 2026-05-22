@@ -253,6 +253,7 @@ const syncCatalogItem = async ({
           name: item.name,
           pricingMode: item.pricingMode,
           unitAmountCents: item.unitAmountCents,
+          quantityPriceBreaks: item.quantityPriceBreaks,
           currency: item.currency,
           displayPrice: item.displayPrice,
           quantityLabel: item.quantityLabel,

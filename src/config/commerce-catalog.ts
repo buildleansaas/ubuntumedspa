@@ -11,6 +11,7 @@ export type CatalogItemConfig = {
   shortDescription: string;
   pricingMode: PricingMode;
   unitAmountCents: number;
+  quantityPriceBreaks?: Record<number, number>;
   currency: "usd";
   displayPrice: string;
   quantityLabel: string;
@@ -235,8 +236,11 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     shortDescription: "Charged per ear.",
     pricingMode: "quantity",
     unitAmountCents: 4500,
+    quantityPriceBreaks: {
+      2: 4000,
+    },
     currency: "usd",
-    displayPrice: "$45 per ear",
+    displayPrice: "$45 per ear, or $80 for both ears",
     quantityLabel: "ear",
     minQuantity: 1,
     maxQuantity: 2,
