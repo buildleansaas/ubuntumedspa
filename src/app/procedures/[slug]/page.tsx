@@ -158,22 +158,48 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           </p>
           {showOShotCredential && <CmaCredentialStrip centered className="mt-6 mx-auto max-w-3xl" />}
           {procedure.slug === "blomdahl-ear-piercing" && (
-            <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm">
-              {[
-                ["Children's Ear Piercing", "/procedures/blomdahl-ear-piercing/for/children"],
-                ["Sensitive Ears", "/procedures/blomdahl-ear-piercing/for/sensitive-ears"],
-                ["Re-Piercing", "/procedures/blomdahl-ear-piercing/for/re-piercing"],
-                ["Near Williamsburg", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
-                ["Near Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
-                ["Near Newport News", "/procedures/blomdahl-ear-piercing/near/newport-news-va"],
-                ["Blomdahl Guide", "/blog/blomdahl-ear-piercing-williamsburg-va"],
-                ["First Piercing Guide", "/blog/childrens-first-ear-piercing-williamsburg-va"],
-              ].map(([label, href]) => (
-                <Link key={href} href={href} className="rounded-full border border-base-300 px-3 py-1 hover:border-primary">
-                  {label}
-                </Link>
-              ))}
-            </div>
+            <>
+              <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm">
+                {[
+                  ["Children's Ear Piercing", "/procedures/blomdahl-ear-piercing/for/children"],
+                  ["Sensitive Ears", "/procedures/blomdahl-ear-piercing/for/sensitive-ears"],
+                  ["Re-Piercing", "/procedures/blomdahl-ear-piercing/for/re-piercing"],
+                  ["Near Williamsburg", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
+                  ["Near Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
+                  ["Near Newport News", "/procedures/blomdahl-ear-piercing/near/newport-news-va"],
+                  ["Blomdahl Guide", "/blog/blomdahl-ear-piercing-williamsburg-va"],
+                  ["First Piercing Guide", "/blog/childrens-first-ear-piercing-williamsburg-va"],
+                ].map(([label, href]) => (
+                  <Link key={href} href={href} className="rounded-full border border-base-300 px-3 py-1 hover:border-primary">
+                    {label}
+                  </Link>
+                ))}
+              </div>
+              <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-primary/30 bg-primary/10 p-5 text-left shadow-sm">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Williamsburg ear piercing appointments</p>
+                <h2 className="mt-2 text-2xl font-light tracking-tight text-base-content">
+                  Book Blomdahl ear piercing with clear pricing before you visit
+                </h2>
+                <div className="mt-4 grid gap-3 text-sm leading-relaxed text-base-content/80 sm:grid-cols-3">
+                  <div className="rounded-xl bg-base-100 p-3">
+                    <span className="block text-lg font-semibold text-base-content">$45 one ear</span>
+                    Starter jewelry and visit details are reviewed when scheduling.
+                  </div>
+                  <div className="rounded-xl bg-base-100 p-3">
+                    <span className="block text-lg font-semibold text-base-content">$80 both ears</span>
+                    A simple pair discount for families booking both ears in one visit.
+                  </div>
+                  <div className="rounded-xl bg-base-100 p-3">
+                    <span className="block text-lg font-semibold text-base-content">Nurse-led visit</span>
+                    Jenny Coleman, MSN, RN, CPNP, PMHS, reviews placement and aftercare.
+                  </div>
+                </div>
+                <p className="mt-4 text-sm text-base-content/70">
+                  Good fit for children&apos;s first piercings, sensitive ears, re-piercing questions, and families who want
+                  a local medical office instead of a mall kiosk.
+                </p>
+              </div>
+            </>
           )}
           <div className="mx-auto my-8 flex flex-wrap justify-center gap-3 sm:gap-4">
             <Button asChild>
@@ -184,7 +210,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                     : "/consult"
                 }
               >
-                {procedure.slug === "blomdahl-ear-piercing" ? "Request an Ear Piercing Visit" : "Book a Consultation"}
+                {procedure.slug === "blomdahl-ear-piercing" ? "Book Blomdahl Ear Piercing" : "Book a Consultation"}
               </Link>
             </Button>
             {Boolean(articles.length) && (
