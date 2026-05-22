@@ -51,6 +51,7 @@ export const FORM_INPUTS = [
       "Xeomin",
       "Filler",
       "Hyperhidrosis Treatment",
+      "Blomdahl Ear Piercing",
     ],
     helperText: "Select any treatments you would like to discuss so we can prepare.",
   },
@@ -2229,10 +2230,10 @@ export const procedures = [
         "Ear piercing in Williamsburg, VA using the Blomdahl medical piercing system with sterile single-use cassettes and hypoallergenic jewelry for children, teens, and adults.",
     },
     description:
-      "Our Blomdahl medical ear piercing service uses sterile single-use cassettes and hypoallergenic Medical Plastic or titanium jewelry to reduce unnecessary tissue trauma and support cleaner healing. It is a strong fit for first piercings, pediatric-aware ear piercing, sensitive ears, re-piercing, and families who want a clinical setting instead of mall-style piercing.",
-    headline: "Medical ear piercing in Williamsburg for children, teens, and adults.",
+      "Our Blomdahl medical ear piercing service uses sterile single-use cassettes and hypoallergenic Medical Plastic or titanium starter earrings to support cleaner healing. Jenny Coleman, MSN, RN, CPNP, PMHS brings pediatric nursing experience to appointments for children, teens, and adults who want careful placement, clear aftercare, and a clinical setting instead of mall-style piercing.",
+    headline: "Nurse-led Blomdahl ear piercing in Williamsburg for children, teens, and adults.",
     subline:
-      "Blomdahl combines sterile technique, hypoallergenic jewelry, and gentle placement for first earrings, re-piercing, and sensitive ears.",
+      "A sterile, appointment-based piercing visit with Jenny Coleman, hypoallergenic Blomdahl starter jewelry, placement planning, and aftercare for first earrings, re-piercing, and sensitive ears.",
     image: "/procedure/blomdahl-family-ear-piercing-consult.webp",
     price: "$45.00 per ear",
     // programmatic SEO copy
@@ -2307,7 +2308,8 @@ export const procedures = [
         tag: "uncommon",
       },
     ],
-    faqHeadline: "Everything you need to know about medical ear piercing with Blomdahl at Williamsburg Med Spa.",
+    faqHeadline:
+      "Everything you need to know about Blomdahl medical ear piercing, pricing, starter earrings, children's appointments, and how the visit differs from mall-style piercing.",
     faqs: [
       {
         question: "What age can children get their ears pierced?",
@@ -2315,9 +2317,19 @@ export const procedures = [
           "Age eligibility is confirmed when booking. Jenny reviews the child's age, parent or guardian questions, timing, and aftercare expectations before the visit.",
       },
       {
+        question: "How much does Blomdahl ear piercing cost?",
+        answer:
+          "Williamsburg Med Spa lists Blomdahl ear piercing at $45 per ear. Final visit details, number of ears pierced, and any current starter jewelry options are confirmed when scheduling.",
+      },
+      {
+        question: "Are starter earrings included in the appointment?",
+        answer:
+          "Initial piercings use Blomdahl starter earrings so the piercing, jewelry, and aftercare plan follow the same sterile medical ear piercing system. Ask when scheduling if you want to confirm the available styles before the visit.",
+      },
+      {
         question: "How is Blomdahl different from mall piercing?",
         answer:
-          "Blomdahl uses medical-grade, pre-sterilized equipment and hypoallergenic materials. Unlike piercing guns, our system is gentler, more precise, and significantly reduces the risk of infection and complications.",
+          "Blomdahl is appointment-based medical ear piercing that uses sterile disposable cassettes and hypoallergenic starter jewelry. Jenny also reviews placement, comfort, and aftercare instead of treating the piercing like a quick retail add-on.",
       },
       {
         question: "What jewelry materials are available?",
@@ -2325,9 +2337,14 @@ export const procedures = [
           "We offer medical plastic and pure titanium options. Both are hypoallergenic options for sensitive skin or nickel-allergy concerns.",
       },
       {
+        question: "Can babies or toddlers get their ears pierced?",
+        answer:
+          "Minimum age, consent, timing, and comfort expectations are confirmed directly with Williamsburg Med Spa before scheduling. Parents can call or request a visit so Jenny can review whether the timing is appropriate.",
+      },
+      {
         question: "How long does healing take?",
         answer:
-          "Earlobes typically heal in 6-8 weeks, while cartilage can take 3-6 months. Our gentle technique and quality materials often result in faster healing than traditional methods.",
+          "Earlobe healing commonly takes several weeks, and aftercare instructions should be followed until Jenny confirms it is appropriate to change earrings. Cartilage and re-piercing questions should be reviewed individually.",
       },
       {
         question: "Can I bring my own jewelry?",

@@ -34,8 +34,11 @@ export default function WilliamsburgLocationPage() {
           <Link href="/procedures/filler" className="link link-primary">
             dermal fillers
           </Link>
-          , PRP treatments, hyperhidrosis care, O-Shot services, and Blomdahl medical ear piercing near New Town,
-          William & Mary, and James City County.
+          , PRP treatments, hyperhidrosis care, O-Shot services, and{" "}
+          <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
+            nurse-led Blomdahl medical ear piercing
+          </Link>{" "}
+          near New Town, William & Mary, and James City County.
         </p>
       </header>
 
@@ -99,6 +102,29 @@ export default function WilliamsburgLocationPage() {
           </Button>
           <Button asChild size="sm">
             <Link href="/consult">Book a Consultation</Link>
+          </Button>
+        </div>
+      </section>
+
+      <section className="mb-10 md:mb-14 rounded-xl border border-base-300 p-5 md:p-6">
+        <h2 className="text-2xl md:text-3xl font-light mb-2">Ear Piercing Visits in Williamsburg</h2>
+        <p className="text-base md:text-lg text-base-content/80 mb-4">
+          Families who find the clinic while searching for ear piercing in Williamsburg can start with the main Blomdahl
+          service page. Jenny Coleman, MSN, RN, CPNP, PMHS uses sterile single-use cassettes and hypoallergenic starter
+          earrings for children, teens, and adults who want a more clinical appointment than mall-style piercing.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Button asChild size="sm">
+            <Link href="/procedures/blomdahl-ear-piercing">Blomdahl Ear Piercing</Link>
+          </Button>
+          <Button asChild size="sm" variant="secondary">
+            <Link href="/procedures/blomdahl-ear-piercing/for/children">Children&apos;s Ear Piercing</Link>
+          </Button>
+          <Button asChild size="sm" variant="secondary">
+            <Link href="/blog/ear-piercing-cost-williamsburg-va">Ear Piercing Cost</Link>
+          </Button>
+          <Button asChild size="sm" variant="secondary">
+            <Link href="/blog/medical-ear-piercing-vs-mall-piercing">Medical vs. Mall Piercing</Link>
           </Button>
         </div>
       </section>

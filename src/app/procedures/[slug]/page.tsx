@@ -127,6 +127,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
       : procedure.slug === "o-shot"
         ? "Consultation covers symptoms, candidacy, treatment areas, expected timing, and whether O-Shot® care fits your intimate wellness or bladder leakage concerns."
+      : procedure.slug === "blomdahl-ear-piercing"
+        ? "Ear piercing visits cover age or sensitivity questions, Blomdahl starter earring options, placement, aftercare, and whether the appointment is for a child, teen, adult, or re-piercing."
       : `Consultation covers candidacy, treatment areas, expected timing, and whether ${procedure.name} fits your goals with a conservative, natural-looking plan.`;
   const hyperhidrosisFeaturedAilments =
     procedure.slug === "hyperhidrosis-treatment"
@@ -175,11 +177,21 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           )}
           <div className="mx-auto my-8 flex flex-wrap justify-center gap-3 sm:gap-4">
             <Button asChild>
-              <Link href="/consult">Book a Consultation</Link>
+              <Link
+                href={
+                  procedure.slug === "blomdahl-ear-piercing"
+                    ? "/consult?procedure=blomdahl-ear-piercing&utm_source=website&utm_medium=procedure_page&utm_campaign=ear_piercing"
+                    : "/consult"
+                }
+              >
+                {procedure.slug === "blomdahl-ear-piercing" ? "Request an Ear Piercing Visit" : "Book a Consultation"}
+              </Link>
             </Button>
             {Boolean(articles.length) && (
               <Button asChild variant="secondary">
-                <Link href="#benefits">Explore Benefits</Link>
+                <Link href={procedure.slug === "blomdahl-ear-piercing" ? "#faqs" : "#benefits"}>
+                  {procedure.slug === "blomdahl-ear-piercing" ? "See Pricing & FAQs" : "Explore Benefits"}
+                </Link>
               </Button>
             )}
             {featuredGuide && featuredGuideCta && (
