@@ -28,7 +28,7 @@ export default function Jumbotron() {
       </h1>
       <p className="text-base-content text-xl lg:text-2xl mb-3 max-w-2xl mx-auto">
         A local med spa with Jenny Coleman, MSN, RN, CPNP, PMHS for Botox, Xeomin, dermal fillers, PRP treatments,
-        O-Shot services, and Blomdahl medical ear piercing.
+        O-Shot services, and Blomdahl medical ear piercing for babies, children, teens, and adults.
       </p>
       <p className="text-base-content/70 text-base md:text-lg mb-8 max-w-3xl mx-auto">
         Compare treatment options, check Williamsburg clinic details, or request a consultation for conservative planning,
