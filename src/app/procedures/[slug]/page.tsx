@@ -421,29 +421,29 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
         </div>
 
         {Boolean(articles.length) && (
-          <section className="my-32 scroll-mt-28" id="posts" aria-labelledby="procedure-posts-heading">
-            <div className="mx-auto max-w-6xl px-6 md:px-0">
-              <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-                <div className="max-w-3xl">
-                  <p className="text-xs uppercase tracking-[0.22em] text-base-content/60">Related Guidance</p>
+          <section className="my-20 scroll-mt-28 sm:my-24 lg:my-28" id="posts" aria-labelledby="procedure-posts-heading">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-0">
+              <div className="flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-end lg:justify-between">
+                <div className="max-w-2xl text-left">
+                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/60">Related Guidance</p>
                   <h2
                     id="procedure-posts-heading"
-                    className="mt-3 text-4xl/snug font-light tracking-tight text-base-content text-balance sm:text-5xl/snug md:text-6xl/snug"
+                    className="mt-3 max-w-2xl text-3xl font-light leading-tight tracking-tight text-base-content text-balance sm:text-4xl lg:text-5xl"
                   >
                     More About <span className="font-semibold">{procedure.name}</span>
                   </h2>
                 </div>
                 <Link
                   href="/blog"
-                  className="self-start rounded-md border border-base-300 px-4 py-2 text-sm font-medium text-base-content transition-colors hover:border-primary/40 hover:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-base-100 md:self-auto"
+                  className="self-start rounded-md border border-base-300 px-4 py-2 text-sm font-medium text-base-content transition-colors hover:border-primary/40 hover:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-base-100 lg:self-auto"
                 >
                   View all articles
                 </Link>
               </div>
-              <p className="mt-5 max-w-4xl text-base leading-relaxed text-base-content/70 md:text-lg">
+              <p className="mt-5 max-w-3xl text-left text-base leading-relaxed text-base-content/70 md:text-lg">
                 {humanizeMedicalCopy(procedure.blogHeadline)}
               </p>
-              <BlogPostCollection articles={articles} />
+              <BlogPostCollection articles={articles} className="mt-10" />
             </div>
           </section>
         )}
