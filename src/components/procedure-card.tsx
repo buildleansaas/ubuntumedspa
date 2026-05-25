@@ -33,16 +33,15 @@ export const ProcedureCard = ({ product }: Props) => {
 
   return (
     <div className="space-y-3">
-      <Link href={`/procedures/${product.slug}`} passHref className="relative group block">
-        <div className="aspect-w-1 aspect-h-1">
+      <Link href={`/procedures/${product.slug}`} passHref className="group block">
+        <div className="relative aspect-[3/2] w-full overflow-hidden rounded-md bg-base-200">
           <Image
-            height={500}
-            width={500}
+            fill
             src={product.image}
             alt={product.name}
             sizes="(min-width: 1280px) 18rem, (min-width: 1024px) 22vw, (min-width: 640px) 45vw, 92vw"
             quality={70}
-            className="object-cover w-full h-full rounded-md"
+            className="object-cover"
             draggable="false"
           />
         </div>
