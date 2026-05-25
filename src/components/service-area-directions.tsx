@@ -70,7 +70,7 @@ export default function ServiceAreaDirections({ area, consultHref }: ServiceArea
           longitude={clinic.longitude}
           originLatitude={area.routeOrigin.latitude}
           originLongitude={area.routeOrigin.longitude}
-          className="h-72 min-h-72 overflow-hidden rounded-2xl border border-base-300/80 md:h-full"
+          className="h-72 min-h-72 overflow-hidden rounded-2xl border border-base-300/80 md:h-96"
           zoomPadding={0.035}
         />
       </div>
