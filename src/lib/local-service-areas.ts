@@ -115,7 +115,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     hasLocationPage: true,
     serviceAreaLabel: "James City County, VA",
     targetQuery: "medical ear piercing james city county",
-    metaTitle: "Medical Ear Piercing Near James City County, VA | Blomdahl",
+    metaTitle: "Children's Ear Piercing Near James City County | Blomdahl",
     metaDescription:
       "Appointment-based Blomdahl ear piercing near James City County, VA with sterile equipment and hypoallergenic jewelry.",
     countyOrContext: "James City County",
@@ -158,7 +158,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     hasLocationPage: true,
     serviceAreaLabel: "Yorktown, VA",
     targetQuery: "children's ear piercing near yorktown va",
-    metaTitle: "Children's Ear Piercing Near Yorktown, VA | Blomdahl",
+    metaTitle: "Children's Medical Ear Piercing Near Yorktown | Blomdahl",
     metaDescription:
       "Medical-grade Blomdahl ear piercing near Yorktown, VA for children and adults at Williamsburg Med Spa.",
     countyOrContext: "York County",
@@ -201,7 +201,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     hasLocationPage: true,
     serviceAreaLabel: "Newport News, VA",
     targetQuery: "medical ear piercing near newport news",
-    metaTitle: "Medical Ear Piercing Near Newport News, VA | Blomdahl",
+    metaTitle: "Children's Ear Piercing Near Newport News, VA | Blomdahl",
     metaDescription:
       "Sterile, hypoallergenic Blomdahl ear piercing near Newport News, VA for children and adults at Williamsburg Med Spa.",
     countyOrContext: "Peninsula",
@@ -244,7 +244,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     hasLocationPage: true,
     serviceAreaLabel: "Toano, VA",
     targetQuery: "ear piercing near toano va",
-    metaTitle: "Ear Piercing Near Toano, VA | Medical-Grade Blomdahl",
+    metaTitle: "Medical Ear Piercing Near Toano, VA | Blomdahl",
     metaDescription:
       "Blomdahl medical ear piercing near Toano, VA with sterile equipment and hypoallergenic starter jewelry.",
     countyOrContext: "Upper James City County",
@@ -287,7 +287,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     hasLocationPage: true,
     serviceAreaLabel: "Norge, VA",
     targetQuery: "ear piercing near norge va",
-    metaTitle: "Ear Piercing Near Norge, VA | Hypoallergenic Blomdahl",
+    metaTitle: "Medical Ear Piercing Near Norge, VA | Blomdahl",
     metaDescription:
       "Medical-grade Blomdahl ear piercing near Norge, VA with hypoallergenic jewelry for children and adults.",
     countyOrContext: "Upper James City County",
@@ -330,7 +330,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     hasLocationPage: true,
     serviceAreaLabel: "Lightfoot, VA",
     targetQuery: "ear piercing near lightfoot va",
-    metaTitle: "Ear Piercing Near Lightfoot, VA | Medical-Grade Blomdahl",
+    metaTitle: "Medical Ear Piercing Near Lightfoot, VA | Blomdahl",
     metaDescription:
       "Sterile Blomdahl ear piercing near Lightfoot, VA in a calm appointment-based medical setting.",
     countyOrContext: "Greater Williamsburg",
@@ -373,7 +373,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     hasLocationPage: true,
     serviceAreaLabel: "New Town, Williamsburg, VA",
     targetQuery: "ear piercing near new town williamsburg",
-    metaTitle: "Ear Piercing Near New Town Williamsburg | Blomdahl",
+    metaTitle: "Medical Ear Piercing Near New Town Williamsburg | Blomdahl",
     metaDescription:
       "Medical-grade Blomdahl ear piercing near New Town Williamsburg with sterile equipment and hypoallergenic jewelry.",
     countyOrContext: "Williamsburg",
@@ -416,7 +416,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     hasLocationPage: true,
     serviceAreaLabel: "Kingsmill, VA",
     targetQuery: "ear piercing near kingsmill va",
-    metaTitle: "Ear Piercing Near Kingsmill, VA | Medical-Grade Blomdahl",
+    metaTitle: "Medical Ear Piercing Near Kingsmill, VA | Blomdahl",
     metaDescription:
       "Appointment-based Blomdahl ear piercing near Kingsmill, VA for children and adults at Williamsburg Med Spa.",
     countyOrContext: "Williamsburg resort area",
@@ -459,7 +459,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     hasLocationPage: true,
     serviceAreaLabel: "Ford's Colony, VA",
     targetQuery: "ear piercing near ford's colony va",
-    metaTitle: "Ear Piercing Near Ford's Colony, VA | Blomdahl",
+    metaTitle: "Medical Ear Piercing Near Ford's Colony, VA | Blomdahl",
     metaDescription:
       "Sterile, hypoallergenic Blomdahl ear piercing near Ford's Colony, VA at Williamsburg Med Spa.",
     countyOrContext: "Williamsburg residential community",

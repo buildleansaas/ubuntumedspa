@@ -26,6 +26,20 @@ const materialTrustNote =
 const aftercareTrustNote =
   "The appointment includes aftercare review so patients know when to leave starter earrings in place, how to care for the area, and when to call with concerns.";
 
+function getAreaHeadline(area: { name: string; serviceAreaLabel: string; parentIntent: boolean }) {
+  if (area.name === "Williamsburg") {
+    return "Medical Ear Piercing in Williamsburg, VA";
+  }
+
+  return area.parentIntent
+    ? `Children's Medical Ear Piercing near ${area.name}`
+    : `Medical Ear Piercing near ${area.name}`;
+}
+
+function getAreaEyebrow(area: { name: string; serviceAreaLabel: string }) {
+  return area.name === "Williamsburg" ? "Williamsburg medical-grade ear piercing" : `${area.serviceAreaLabel} service area`;
+}
+
 type Params = { params: { areaSlug: string } };
 
 export function generateStaticParams() {
@@ -56,6 +70,8 @@ export default function EarPiercingAreaPage({ params }: Params) {
   const consultHref = `/consult?procedure=blomdahl-ear-piercing&area=${area.slug}&utm_source=website&utm_medium=local_service_page&utm_campaign=ear_piercing_${area.slug}`;
   const canonicalUrl = `${ORIGIN}/procedures/blomdahl-ear-piercing/near/${area.slug}`;
   const relatedAreas = getRelatedEarPiercingAreas(area);
+  const headline = getAreaHeadline(area);
+  const eyebrow = getAreaEyebrow(area);
 
   return (
     <main className="max-w-xl md:max-w-6xl mx-auto md:px-8 py-12 md:py-16">
@@ -79,12 +95,10 @@ export default function EarPiercingAreaPage({ params }: Params) {
       <StructuredData type="FAQ" faqs={area.faqs} />
 
       <header className="text-center mb-10 md:mb-14">
-        <p className="text-sm uppercase tracking-wide text-base-content/60 mb-3">Medical-grade ear piercing</p>
-        <h1 className="text-3xl md:text-5xl font-light leading-tight">
-          Blomdahl Ear Piercing Near <span className="font-semibold">{area.name}</span>
-        </h1>
+        <p className="text-sm uppercase tracking-wide text-base-content/60 mb-3">{eyebrow}</p>
+        <h1 className="text-3xl md:text-5xl font-light leading-tight">{headline}</h1>
         <p className="text-base md:text-lg text-base-content/75 mt-4 max-w-3xl mx-auto">
-          {area.localIntro} Williamsburg Med Spa offers sterile, hypoallergenic Blomdahl ear piercing{" "}
+          {area.localIntro} Williamsburg Med Spa offers Blomdahl sterile ear piercing with hypoallergenic starter jewelry{" "}
           {area.distanceNote} for families and adults who want an appointment-based alternative to retail piercing.
         </p>
         <div className="flex flex-wrap justify-center gap-3 mt-6">
