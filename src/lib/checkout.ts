@@ -5,7 +5,7 @@ import { createPendingOrder, markOrderSession } from "lib/orders";
 import { getStripe } from "lib/stripe";
 
 const buildStripeLineItem = (item: ResolvedCartItem): Stripe.Checkout.SessionCreateParams.LineItem => {
-  if (item.stripePriceId) {
+  if (item.stripePriceId && !item.usesQuantityPriceBreak) {
     return {
       price: item.stripePriceId,
       quantity: item.quantity,
