@@ -246,7 +246,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     maxQuantity: 2,
     requiresScheduling: true,
     fulfillment: "appointment",
-    imagePath: "/procedure/blomdahl-family-ear-piercing-consult.webp",
+    imagePath: "/procedure/blomdahl-family-ear-piercing-consult-jenny.webp",
     stripeProductKey: "wms_procedure_blomdahl_ear_piercing",
     stripePriceLookupKey: "wms_procedure_blomdahl_ear_piercing_45_v1",
   },

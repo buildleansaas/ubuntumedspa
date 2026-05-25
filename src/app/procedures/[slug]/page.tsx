@@ -10,6 +10,7 @@ import CmaCredentialStrip from "components/cma-credential-strip";
 
 import CtaFooter from "components/cta-footer";
 import CatalogPurchasePanel from "components/catalog-purchase-panel";
+import BlogPostCollection from "components/blog-post-collection";
 import StructuredData from "components/structured-data";
 import { twMerge } from "tailwind-merge";
 import CtaButtons from "components/cta-buttons";
@@ -113,6 +114,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
   const procedure = procedures.find((procedure) => procedure.slug === slug);
   if (!procedure) return notFound();
   const catalogItem = getCatalogConfigBySlug(slug);
+  const heroImagePath = catalogItem?.imagePath;
   const publishedAilments = await getPublishedAilmentsForProcedure(procedure.slug);
   const articles = (await getPublishedBlogPosts())
     .filter(({ tags }) => tags?.includes(procedure.name))
@@ -145,99 +147,113 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
         service={{ name: procedure.name, description: procedure.description, areaServed: "Williamsburg, VA" }}
       />
       <StructuredData type="FAQ" faqs={procedure.faqs} />
-      <div className="max-w-7xl mx-auto py-16">
-        <div className="text-center">
-          <h1 className="text-3xl md:text-5xl mx-auto leading-tight pb-4">{pageHeading}</h1>
-          <p className="text-xl lg:text-2xl mb-8 max-w-5xl mx-auto font-light">{humanizeMedicalCopy(procedure.headline)}</p>
-          <p className="text-base md:text-lg max-w-4xl mx-auto text-base-content/75">
-            {humanizeMedicalCopy(procedure.subline)}
-          </p>
-          <p className="text-lg max-w-4xl mx-auto mt-4">{humanizeMedicalCopy(procedure.description)}</p>
-          <p className="text-sm md:text-base text-base-content/70 max-w-3xl mx-auto mt-4">
-            {consultationSupportCopy}
-          </p>
-          {showOShotCredential && <CmaCredentialStrip centered className="mt-6 mx-auto max-w-3xl" />}
-          {procedure.slug === "blomdahl-ear-piercing" && (
-            <>
-              <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <section className="grid items-center gap-10 border-b border-base-300 pb-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)]">
+          <div className="text-left">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-primary">Williamsburg med spa procedure</p>
+            <h1 className="max-w-4xl text-4xl font-light leading-tight tracking-tight text-base-content md:text-6xl">
+              {pageHeading}
+            </h1>
+            <p className="mt-5 max-w-3xl text-xl font-light leading-relaxed text-base-content/85 lg:text-2xl">
+              {humanizeMedicalCopy(procedure.headline)}
+            </p>
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-base-content/70 md:text-lg">
+              {humanizeMedicalCopy(procedure.subline)}
+            </p>
+            {showOShotCredential && <CmaCredentialStrip className="mt-6 max-w-3xl" />}
+            {procedure.slug === "blomdahl-ear-piercing" && (
+              <div className="mt-6 flex flex-wrap gap-2 text-sm">
                 {[
                   ["Children's Ear Piercing", "/procedures/blomdahl-ear-piercing/for/children"],
                   ["Sensitive Ears", "/procedures/blomdahl-ear-piercing/for/sensitive-ears"],
                   ["Re-Piercing", "/procedures/blomdahl-ear-piercing/for/re-piercing"],
-                  ["Near Williamsburg", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
-                  ["Near Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
-                  ["Near Newport News", "/procedures/blomdahl-ear-piercing/near/newport-news-va"],
-                  ["Blomdahl Guide", "/blog/blomdahl-ear-piercing-williamsburg-va"],
-                  ["First Piercing Guide", "/blog/childrens-first-ear-piercing-williamsburg-va"],
+                  ["Williamsburg", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
+                  ["Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
+                  ["Newport News", "/procedures/blomdahl-ear-piercing/near/newport-news-va"],
                 ].map(([label, href]) => (
-                  <Link key={href} href={href} className="rounded-full border border-base-300 px-3 py-1 hover:border-primary">
+                  <Link
+                    key={href}
+                    href={href}
+                    className="rounded-full border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
+                  >
                     {label}
                   </Link>
                 ))}
               </div>
-              <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-primary/30 bg-primary/10 p-5 text-left shadow-sm">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Williamsburg ear piercing appointments</p>
-                <h2 className="mt-2 text-2xl font-light tracking-tight text-base-content">
-                  Book Blomdahl ear piercing with clear pricing before you visit
-                </h2>
-                <div className="mt-4 grid gap-3 text-sm leading-relaxed text-base-content/80 sm:grid-cols-3">
-                  <div className="rounded-xl bg-base-100 p-3">
-                    <span className="block text-lg font-semibold text-base-content">$45 one ear</span>
-                    Starter jewelry and visit details are reviewed when scheduling.
-                  </div>
-                  <div className="rounded-xl bg-base-100 p-3">
-                    <span className="block text-lg font-semibold text-base-content">$80 both ears</span>
-                    A simple pair discount for families booking both ears in one visit.
-                  </div>
-                  <div className="rounded-xl bg-base-100 p-3">
-                    <span className="block text-lg font-semibold text-base-content">Nurse-led visit</span>
-                    Jenny Coleman, MSN, RN, CPNP, PMHS, reviews placement and aftercare.
-                  </div>
-                </div>
-                <p className="mt-4 text-sm text-base-content/70">
-                  Good fit for children&apos;s first piercings, sensitive ears, re-piercing questions, and families who want
-                  a local medical office instead of a mall kiosk.
-                </p>
-              </div>
-            </>
-          )}
-          <div className="mx-auto my-8 flex flex-wrap justify-center gap-3 sm:gap-4">
-            <Button asChild>
-              <Link
-                href={
-                  procedure.slug === "blomdahl-ear-piercing"
-                    ? "/consult?procedure=blomdahl-ear-piercing&utm_source=website&utm_medium=procedure_page&utm_campaign=ear_piercing"
-                    : "/consult"
-                }
-              >
-                {procedure.slug === "blomdahl-ear-piercing" ? "Book Blomdahl Ear Piercing" : "Book a Consultation"}
-              </Link>
-            </Button>
-            {Boolean(articles.length) && (
-              <Button asChild variant="secondary">
-                <Link href={procedure.slug === "blomdahl-ear-piercing" ? "#faqs" : "#benefits"}>
-                  {procedure.slug === "blomdahl-ear-piercing" ? "See Pricing & FAQs" : "Explore Benefits"}
+            )}
+            <div className="mt-8 flex flex-wrap gap-3 sm:gap-4">
+              <Button asChild>
+                <Link
+                  href={
+                    procedure.slug === "blomdahl-ear-piercing"
+                      ? "/consult?procedure=blomdahl-ear-piercing&utm_source=website&utm_medium=procedure_page&utm_campaign=ear_piercing"
+                      : "/consult"
+                  }
+                >
+                  {procedure.slug === "blomdahl-ear-piercing" ? "Book Blomdahl Ear Piercing" : "Book a Consultation"}
                 </Link>
               </Button>
-            )}
-            {featuredGuide && featuredGuideCta && (
-              <Button asChild variant="outline">
-                <Link href={featuredGuide.href}>{featuredGuideCta.button}</Link>
+              <Button asChild variant="secondary">
+                <Link href={catalogItem ? "#pricing" : "#benefits"}>{catalogItem ? "View Pricing" : "Explore Benefits"}</Link>
               </Button>
-            )}
+              {featuredGuide && featuredGuideCta && (
+                <Button asChild variant="outline">
+                  <Link href={featuredGuide.href}>{featuredGuideCta.button}</Link>
+                </Button>
+              )}
+            </div>
           </div>
-          <p className="text-sm md:text-base text-base-content/70 max-w-3xl mx-auto">
-            Serving patients from Williamsburg, James City County, Yorktown, Newport News, and nearby communities.
-            {" "}
-            <Link href="/locations/williamsburg-va" className="link link-primary">
-              View our Williamsburg location
-            </Link>
-            .
+
+          {heroImagePath && (
+            <div className="relative overflow-hidden rounded-[2rem] border border-base-300 bg-base-200 shadow-sm">
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src={heroImagePath}
+                  alt={`${procedure.name} at Williamsburg Med Spa`}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 520px"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          )}
+        </section>
+
+        <section className="mx-auto max-w-5xl pt-10 text-center" id="pricing">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+            {catalogItem ? "Pricing & booking" : "Treatment planning"}
           </p>
-          <p className="text-xs md:text-sm text-base-content/60 max-w-3xl mx-auto mt-3">
-            Educational content only. Treatment suitability, risk profile, and expected response are confirmed during
-            consultation.
-          </p>
+          {procedure.slug === "blomdahl-ear-piercing" ? (
+            <>
+              <h2 className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
+                Clear Blomdahl ear piercing pricing before you visit
+              </h2>
+              <div className="mx-auto mt-6 grid max-w-4xl gap-4 text-left md:grid-cols-3">
+                {[
+                  ["$45", "One ear", "Starter jewelry and visit details reviewed when scheduling."],
+                  ["$80", "Both ears", "A simple pair price for families booking both ears in one visit."],
+                  ["Nurse-led", "Placement + aftercare", "Jenny Coleman, MSN, RN, CPNP, PMHS reviews fit and care."],
+                ].map(([price, label, copy]) => (
+                  <div key={label} className="rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm">
+                    <p className="text-3xl font-semibold tracking-tight text-base-content">{price}</p>
+                    <h3 className="mt-2 text-base font-semibold text-base-content">{label}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-base-content/70">{copy}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
+              <h2 className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
+                A conservative plan built around your goals
+              </h2>
+              <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-base-content/70 md:text-lg">
+                {consultationSupportCopy}
+              </p>
+            </>
+          )}
+
           {catalogItem && (
             <CatalogPurchasePanel
               slug={catalogItem.slug}
@@ -253,42 +269,55 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               customerNote={catalogItem.customerNote}
             />
           )}
+        </section>
 
-          {procedure.slug === "blomdahl-ear-piercing" && (
-            <section className="mt-10 max-w-4xl mx-auto rounded-xl border border-base-300 p-5 text-left">
-              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Planning by location</p>
-              <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">
-                Local Blomdahl ear piercing pages
-              </h2>
-              <p className="mt-3 text-base leading-relaxed text-base-content/75">
-                Families visit Williamsburg Med Spa from nearby communities for sterile, hypoallergenic Blomdahl ear
-                piercing with Jenny Coleman. Start with the local page closest to your route.
+        <section className="mx-auto mt-10 max-w-4xl text-left">
+          <p className="text-base leading-relaxed text-base-content/75">{humanizeMedicalCopy(procedure.description)}</p>
+          <p className="mt-3 text-sm leading-relaxed text-base-content/65">{consultationSupportCopy}</p>
+          <p className="mt-4 text-sm text-base-content/70">
+            Serving patients from Williamsburg, James City County, Yorktown, Newport News, and nearby communities. {" "}
+            <Link href="/locations/williamsburg-va" className="link link-primary">
+              View our Williamsburg location
+            </Link>
+            .
+          </p>
+          <p className="mt-3 text-xs text-base-content/55">
+            Educational content only. Treatment suitability, risk profile, and expected response are confirmed during consultation.
+          </p>
+        </section>
+
+        {procedure.slug === "blomdahl-ear-piercing" && (
+          <section className="mx-auto mt-12 max-w-4xl text-left">
+            <div className="rounded-3xl border border-base-300 bg-base-100 p-6 shadow-sm">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Nearby pages</p>
+              <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">Plan around your route</h2>
+              <p className="mt-3 text-base leading-relaxed text-base-content/70">
+                Start with the local page closest to your visit for directions, expectations, and family planning notes.
               </p>
               <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {[
-                  ["Medical ear piercing in Williamsburg", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
-                  [
-                    "Medical ear piercing near James City County",
-                    "/procedures/blomdahl-ear-piercing/near/james-city-county-va",
-                  ],
-                  ["Children's ear piercing near Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
-                  [
-                    "Medical ear piercing near Newport News",
-                    "/procedures/blomdahl-ear-piercing/near/newport-news-va",
-                  ],
+                  ["Williamsburg", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
+                  ["James City County", "/procedures/blomdahl-ear-piercing/near/james-city-county-va"],
+                  ["Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
+                  ["Newport News", "/procedures/blomdahl-ear-piercing/near/newport-news-va"],
                 ].map(([label, href]) => (
                   <Link
                     key={href}
                     href={href}
-                    className="rounded-lg border border-base-300 bg-base-100 px-4 py-3 text-sm font-medium text-base-content hover:border-primary"
+                    className="group flex items-center justify-between rounded-2xl border border-base-300 bg-base-100 px-4 py-3 text-sm font-medium text-base-content transition hover:border-primary hover:text-primary"
                   >
-                    {label}
+                    <span>{label}</span>
+                    <span aria-hidden="true" className="text-base-content/35 transition group-hover:translate-x-0.5 group-hover:text-primary">
+                      →
+                    </span>
                   </Link>
                 ))}
               </div>
-            </section>
-          )}
+            </div>
+          </section>
+        )}
 
+        <div className="text-center">
           {Boolean(hyperhidrosisFeaturedAilments.length) && (
             <div className="mt-10 max-w-4xl mx-auto">
               <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Popular symptom pages</p>
@@ -304,7 +333,6 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               </div>
             </div>
           )}
-        </div>
 
         <div className="my-32 text-center max-w-5xl mx-auto" id="benefits">
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
@@ -393,50 +421,31 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
         </div>
 
         {Boolean(articles.length) && (
-          <div className="my-32" id="posts">
-            <div className="mb-16">
-              <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
-                More About <span className="font-semibold">{procedure.name}</span>
-              </h2>
-              <p className="text-lg lg:text-xl max-w-5xl mx-auto text-center">{humanizeMedicalCopy(procedure.blogHeadline)}</p>
+          <section className="my-32 scroll-mt-28" id="posts" aria-labelledby="procedure-posts-heading">
+            <div className="mx-auto max-w-6xl px-6 md:px-0">
+              <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+                <div className="max-w-3xl">
+                  <p className="text-xs uppercase tracking-[0.22em] text-base-content/60">Related Guidance</p>
+                  <h2
+                    id="procedure-posts-heading"
+                    className="mt-3 text-4xl/snug font-light tracking-tight text-base-content text-balance sm:text-5xl/snug md:text-6xl/snug"
+                  >
+                    More About <span className="font-semibold">{procedure.name}</span>
+                  </h2>
+                </div>
+                <Link
+                  href="/blog"
+                  className="self-start rounded-md border border-base-300 px-4 py-2 text-sm font-medium text-base-content transition-colors hover:border-primary/40 hover:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-base-100 md:self-auto"
+                >
+                  View all articles
+                </Link>
+              </div>
+              <p className="mt-5 max-w-4xl text-base leading-relaxed text-base-content/70 md:text-lg">
+                {humanizeMedicalCopy(procedure.blogHeadline)}
+              </p>
+              <BlogPostCollection articles={articles} />
             </div>
-            <div className="max-w-3xl mx-auto">
-              {articles.map((article) => (
-                <article key={article.routeSlug} className="relative isolate flex flex-col gap-8 lg:flex-row">
-                  <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-base-200">
-                    <Image
-                      src={article.image}
-                      alt={article.imageAlt ?? article.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 256px"
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 shadow-inner bg-gradient-to-br from-white/20" />
-                  </div>
-                  <div className="py-4">
-                    <div className="flex flex-wrap items-center text-xs gap-2">
-                      <Badge className="bg-purple-500 hover:bg-purple-600">
-                        {new Date(article.date).toLocaleDateString("en-GB", {
-                          dateStyle: "long",
-                        })}
-                      </Badge>
-                      {article.tags.map((tag) => (
-                        <Badge key={tag} className="bg-primary hover:bg-primary-focus">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                    <div className="group relative max-w-xl">
-                      <h2 className="mt-3 text-lg/snug sm:text-xl/snug md:text-2xl/snug font-semibold text-base-content hover:text-base-content/80">
-                        <Link href={article.href}>{article.title}</Link>
-                      </h2>
-                      <p className="mt-2 text-sm leading-6 text-primary-content">{humanizeMedicalCopy(article.description)}</p>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
+          </section>
         )}
         {featuredGuide && featuredGuideCta && (
           <div className="my-24 max-w-3xl mx-auto border-t border-base-300 pt-10 text-center">
@@ -448,6 +457,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           </div>
         )}
         <CtaFooter />
+      </div>
       </div>
     </>
   );
