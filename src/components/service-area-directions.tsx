@@ -29,34 +29,37 @@ export default function ServiceAreaDirections({ area, consultHref }: ServiceArea
   )}&destination=${encodeURIComponent(clinic.address)}`;
 
   return (
-    <section className="mb-10 md:mb-14">
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-[0.95fr_1.05fr] md:gap-8">
+    <section className="mb-8 md:mb-10">
+      <div className="grid grid-cols-1 gap-5 rounded-3xl border border-base-300/80 bg-base-100 p-5 shadow-sm md:grid-cols-[0.9fr_1.1fr] md:gap-7 md:p-7">
         <div>
-          <h2 className="text-2xl md:text-3xl font-light mb-3">Directions from {area.name}</h2>
-          <p className="text-base md:text-lg text-base-content/80 mb-4">
-            Use {area.routeOrigin.label} as a practical starting point for planning the trip to {clinic.label}.{" "}
-            {area.routeSummary}
+          <p className="text-sm font-semibold uppercase tracking-wide text-primary/80">Directions</p>
+          <h2 className="mt-2 text-2xl font-light md:text-3xl">Directions from {area.name}</h2>
+          <p className="mt-3 text-base leading-relaxed text-base-content/80 md:text-lg">
+            Use {area.routeOrigin.label} as a practical starting point for planning the trip to {clinic.label}. {area.routeSummary}
           </p>
-          <ul className="space-y-2 text-sm md:text-base text-base-content/75">
-            {area.routeHighlights.map((highlight) => (
-              <li key={highlight} className="rounded-xl border border-base-300 bg-base-100 px-4 py-3">
-                {highlight}
+          <ol className="mt-4 space-y-2 text-sm text-base-content/75 md:text-base">
+            {area.routeHighlights.map((highlight, index) => (
+              <li key={highlight} className="flex gap-3 rounded-2xl border border-base-300/80 bg-base-200/40 px-4 py-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-base-100 text-xs font-semibold text-primary">
+                  {index + 1}
+                </span>
+                <span className="leading-relaxed">{highlight}</span>
               </li>
             ))}
-          </ul>
+          </ol>
           <div className="mt-5 flex flex-wrap gap-3">
             <Button asChild>
-              <a href={osmHref} target="_blank" rel="noopener noreferrer">
-                Open OSM Directions
-              </a>
+              <a href={consultHref}>Request Ear Piercing Visit</a>
             </Button>
             <Button asChild variant="secondary">
               <a href={googleHref} target="_blank" rel="noopener noreferrer">
-                Open Google Directions
+                Google Directions
               </a>
             </Button>
             <Button asChild variant="outline">
-              <a href={consultHref}>Request Visit</a>
+              <a href={osmHref} target="_blank" rel="noopener noreferrer">
+                OSM Directions
+              </a>
             </Button>
           </div>
         </div>
@@ -67,7 +70,7 @@ export default function ServiceAreaDirections({ area, consultHref }: ServiceArea
           longitude={clinic.longitude}
           originLatitude={area.routeOrigin.latitude}
           originLongitude={area.routeOrigin.longitude}
-          className="h-72 md:h-full min-h-72"
+          className="h-72 min-h-72 overflow-hidden rounded-2xl border border-base-300/80 md:h-full"
           zoomPadding={0.035}
         />
       </div>
