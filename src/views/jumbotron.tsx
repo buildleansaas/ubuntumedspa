@@ -24,12 +24,26 @@ export default function Jumbotron() {
   return (
     <div className="text-center py-16 md:py-32 lg:py-48" id="procedures">
       <h1 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4">
-        Nurse-Led Medical Spa in Williamsburg, VA
+        Nurse Practitioner Led Medical Spa in Williamsburg, VA
       </h1>
       <p className="text-base-content text-xl lg:text-2xl mb-3 max-w-2xl mx-auto">
-        A local med spa with Jenny Coleman, MSN, RN, CPNP, PMHS for Botox, Xeomin, dermal fillers, PRP treatments,
-        O-Shot services, and Blomdahl medical ear piercing for babies, children, teens, and adults.
+        A local med spa with Jenny Coleman, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified
+        O-Shot provider and certified Blomdahl medical ear piercing provider.
       </p>
+      <div className="mb-4 flex flex-wrap justify-center gap-2 text-xs md:text-sm text-base-content/75">
+        {[
+          "MSN",
+          "RN",
+          "CPNP",
+          "PMHS",
+          "CMA-certified O-Shot provider",
+          "Certified Blomdahl provider",
+        ].map((credential) => (
+          <span key={credential} className="rounded-full bg-base-200 px-3 py-1">
+            {credential}
+          </span>
+        ))}
+      </div>
       <p className="text-base-content/70 text-base md:text-lg mb-8 max-w-3xl mx-auto">
         Compare treatment options, check Williamsburg clinic details, or request a consultation for conservative planning,
         clear education, and natural-looking goals.

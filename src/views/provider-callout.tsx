@@ -21,7 +21,21 @@ export default function ProviderCallout() {
             <h2 id="provider-callout-heading" className="text-2xl md:text-3xl font-light text-base-content mb-1">
               Meet Our Aesthetic Nurse Practitioner
             </h2>
-            <p className="text-base md:text-lg text-base-content/70 mb-2">Jenny Coleman — MSN, RN, CPNP, PMHS</p>
+            <p className="text-base md:text-lg text-base-content/70 mb-2">Jenny Coleman, MSN, RN, CPNP, PMHS</p>
+            <ul className="mb-3 flex flex-wrap gap-2 text-xs md:text-sm text-base-content/75" aria-label="Jenny Coleman credentials and certifications">
+              {[
+                "Master of Science in Nursing",
+                "Registered Nurse",
+                "Certified Pediatric Nurse Practitioner",
+                "Pediatric Mental Health Specialist",
+                "CMA-certified O-Shot provider",
+                "Certified Blomdahl provider",
+              ].map((credential) => (
+                <li key={credential} className="rounded-full bg-base-200 px-3 py-1">
+                  {credential}
+                </li>
+              ))}
+            </ul>
             <p className="text-sm md:text-base text-base-content/80 leading-relaxed">
               With 26 years in medicine and six years dedicated to aesthetics, Jenny blends primary care and mental
               health expertise with a holistic, patient-first approach. She combines regenerative PRP therapies,
