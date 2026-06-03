@@ -23,25 +23,27 @@ export default function Jumbotron() {
 
   return (
     <div className="text-center py-16 md:py-32 lg:py-48" id="procedures">
-      <h1 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4">
-        Nurse Practitioner Led Medical Spa in Williamsburg, VA
-      </h1>
-      <p className="text-base-content text-xl lg:text-2xl mb-3 max-w-2xl mx-auto">
-        A local med spa with Jenny Coleman, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified
-        O-Shot provider and certified Blomdahl medical ear piercing provider.
+      <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-primary/80">
+        Nurse Practitioner Led Medical Spa
       </p>
-      <div className="mb-4 flex flex-wrap justify-center gap-2 text-xs md:text-sm text-base-content/75">
+      <h1 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4 max-w-4xl">
+        Natural-Looking Aesthetic Care in Williamsburg, VA
+      </h1>
+      <p className="text-base-content text-lg md:text-xl lg:text-2xl mb-6 max-w-3xl mx-auto">
+        Jenny Coleman, MSN, RN, CPNP, PMHS provides Botox, Xeomin, fillers, PRP, O-Shot care,
+        and medical ear piercing in a calm Williamsburg clinic.
+      </p>
+      <div className="mb-8 mx-auto grid max-w-4xl grid-cols-1 gap-3 text-left sm:grid-cols-2 lg:grid-cols-4">
         {[
-          "MSN",
-          "RN",
-          "CPNP",
-          "PMHS",
-          "CMA-certified O-Shot provider",
-          "Certified Blomdahl provider",
-        ].map((credential) => (
-          <span key={credential} className="rounded-full bg-base-200 px-3 py-1">
-            {credential}
-          </span>
+          ["Nurse Practitioner Led", "Clinical aesthetic planning"],
+          ["26 Years in Medicine", "Experienced provider care"],
+          ["CMA-Certified O-Shot", "Cellular Medicine Association"],
+          ["Certified Blomdahl Provider", "Medical ear piercing"],
+        ].map(([credential, detail]) => (
+          <div key={credential} className="rounded-2xl border border-primary/15 bg-base-100/80 px-4 py-3 shadow-sm">
+            <p className="text-sm font-semibold text-base-content">{credential}</p>
+            <p className="mt-1 text-xs text-base-content/60">{detail}</p>
+          </div>
         ))}
       </div>
       <p className="text-base-content/70 text-base md:text-lg mb-8 max-w-3xl mx-auto">
