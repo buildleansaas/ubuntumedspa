@@ -34,6 +34,39 @@ const featuredGuideSlugs: Record<string, string> = {
   "o-shot": "o-shot-for-urinary-incontinence-williamsburg-va",
   "prp-hair-restoration": "prp-hair-restoration-vs-hair-transplant-williamsburg-va",
 };
+const relatedServiceLinks: Record<string, Array<[string, string]>> = {
+  botox: [
+    ["Compare Xeomin", "/procedures/xeomin"],
+    ["Plan dermal fillers", "/procedures/filler"],
+    ["Book a consultation", "/consult"],
+  ],
+  xeomin: [
+    ["Compare Botox", "/procedures/botox"],
+    ["Plan dermal fillers", "/procedures/filler"],
+    ["Book a consultation", "/consult"],
+  ],
+  filler: [
+    ["Compare Botox", "/procedures/botox"],
+    ["Compare Xeomin", "/procedures/xeomin"],
+    ["Book a consultation", "/consult"],
+  ],
+  "prp-breast-lift": [
+    ["PRP hair restoration", "/procedures/prp-hair-restoration"],
+    ["O-Shot PRP wellness", "/procedures/o-shot"],
+    ["Book a consultation", "/consult"],
+  ],
+  "prp-hair-restoration": [
+    ["Compare PRP breast lift", "/procedures/prp-breast-lift"],
+    ["Read PRP vs hair transplant", "/blog/prp-hair-restoration-vs-hair-transplant-williamsburg-va"],
+    ["Book a consultation", "/consult"],
+  ],
+  "blomdahl-ear-piercing": [
+    ["Children's ear piercing", "/procedures/blomdahl-ear-piercing/for/children"],
+    ["Sensitive ears", "/procedures/blomdahl-ear-piercing/for/sensitive-ears"],
+    ["Book a consultation", "/consult"],
+  ],
+};
+
 const featuredGuideCopy: Record<string, { button: string; heading: string; description: string; linkLabel: string }> = {
   botox: {
     button: "Botox vs Xeomin Guide",
@@ -124,6 +157,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
   const pageHeading = procedure.seo?.title?.split("|")[0].trim() || `${procedure.name} in Williamsburg, VA`;
   const featuredGuide = articles.find((article) => article.slug === featuredGuideSlugs[procedure.slug]);
   const featuredGuideCta = featuredGuide ? featuredGuideCopy[procedure.slug] : undefined;
+  const relatedLinks = relatedServiceLinks[procedure.slug] ?? [];
   const consultationSupportCopy =
     procedure.slug === "hyperhidrosis-treatment"
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
@@ -254,6 +288,15 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </>
           )}
 
+          {Boolean(relatedLinks.length) && (
+            <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm">
+              {relatedLinks.map(([label, href]) => (
+                <Link key={href} href={href} className="rounded-full border border-base-300 px-3 py-1 hover:border-primary">
+                  {label}
+                </Link>
+              ))}
+            </div>
+          )}
           {catalogItem && (
             <CatalogPurchasePanel
               slug={catalogItem.slug}
