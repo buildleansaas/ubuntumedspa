@@ -24,29 +24,14 @@ export default function Jumbotron() {
   return (
     <div className="text-center py-16 md:py-32 lg:py-48" id="procedures">
       <h1 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4">
-        Rejuvenate Your Life at a Medical Spa in Williamsburg, VA
+        Rejuvenate Your Life
       </h1>
       <p className="text-base-content text-xl lg:text-2xl mb-3 max-w-2xl mx-auto">
-        Botox, Xeomin, dermal fillers, PRP treatments, O-Shot services, sweating treatment, and Blomdahl medical ear
-        piercing with Jenny Coleman, MSN, RN, CPNP, PMHS.
+        A Williamsburg medical spa for natural-looking Botox, Xeomin, fillers, PRP, intimate wellness, and medical ear
+        piercing.
       </p>
-      <div className="mb-4 flex flex-wrap justify-center gap-2 text-xs md:text-sm text-base-content/75">
-        {[
-          "MSN",
-          "RN",
-          "CPNP",
-          "PMHS",
-          "CMA-certified O-Shot provider",
-          "Certified Blomdahl provider",
-        ].map((credential) => (
-          <span key={credential} className="rounded-full bg-base-200 px-3 py-1">
-            {credential}
-          </span>
-        ))}
-      </div>
       <p className="text-base-content/70 text-base md:text-lg mb-8 max-w-3xl mx-auto">
-        Start with the service you are researching, then book a Williamsburg consultation for conservative planning,
-        clear education, local clinic details, and natural-looking goals.
+        Led by Jenny Coleman, MSN, RN, CPNP, PMHS, with thoughtful consults and clear guidance before treatment.
       </p>
       <div className="mb-6 flex flex-wrap justify-center gap-2 text-sm">
         {[
@@ -65,7 +50,7 @@ export default function Jumbotron() {
       <div className="mb-32">
         <div className="flex flex-wrap justify-center items-center gap-2">
           <Button asChild>
-            <Link href="/consult">Book a Williamsburg Consultation</Link>
+            <Link href="/consult">Book a Consultation</Link>
           </Button>
           <Button variant="secondary" onClick={handleAction}>
             +1 (804) 738-9483
