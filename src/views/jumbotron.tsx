@@ -27,8 +27,8 @@ export default function Jumbotron() {
         Nurse Practitioner Led Medical Spa in Williamsburg, VA
       </h1>
       <p className="text-base-content text-xl lg:text-2xl mb-3 max-w-2xl mx-auto">
-        A local med spa with Jenny Coleman, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified
-        O-Shot provider and certified Blomdahl medical ear piercing provider.
+        Botox, Xeomin, dermal fillers, PRP treatments, O-Shot services, sweating treatment, and Blomdahl medical ear
+        piercing with Jenny Coleman, MSN, RN, CPNP, PMHS.
       </p>
       <div className="mb-4 flex flex-wrap justify-center gap-2 text-xs md:text-sm text-base-content/75">
         {[
@@ -45,8 +45,8 @@ export default function Jumbotron() {
         ))}
       </div>
       <p className="text-base-content/70 text-base md:text-lg mb-8 max-w-3xl mx-auto">
-        Compare treatment options, check Williamsburg clinic details, or request a consultation for conservative planning,
-        clear education, and natural-looking goals.
+        Start with the service you are researching, then book a Williamsburg consultation for conservative planning,
+        clear education, local clinic details, and natural-looking goals.
       </p>
       <div className="mb-6 flex flex-wrap justify-center gap-2 text-sm">
         {[
