@@ -560,10 +560,10 @@ export const procedures = [
     seo: {
       title: "PRP Breast Lift in Williamsburg, VA",
       description:
-        "Non-surgical PRP Breast Lift in Williamsburg, VA for fuller-looking breasts, improved cleavage, and minimal downtime at Williamsburg Med Spa.",
+        "PRP Breast Lift consultation in Williamsburg, VA for patients asking about subtle PRP-based breast skin, texture, cleavage, and appearance support without implant surgery.",
     },
     description:
-      "The PRP Breast Lift utilizes Platelet-Rich Plasma (PRP) therapy, derived from the patient's own blood, which is injected into the breast area. This stimulates the growth of new blood vessels and fatty tissue, leading to a fuller-looking breast. Unlike traditional breast augmentation procedures, the PRP Breast Lift is non-invasive, has minimal downtime, and produces natural results that last for about well over 18 months, even a lifetime for some. The procedure is also less expensive than surgery, making it an affordable option. Overall, the PRP Breast Lift is a safe and effective way to boost a woman's self-confidence by providing a natural way to enhance the appearance of their breasts.",
+      "A PRP Breast Lift consultation reviews whether platelet-rich plasma prepared from your own blood is a reasonable fit for subtle breast-area skin quality, texture, cleavage, or appearance goals. It is not breast augmentation, does not replace implant surgery or a surgical lift, and results vary. Jenny reviews candidacy, realistic expectations, medical history, contraindications, and whether a different medical or surgical path makes more sense before treatment is planned. Overall, the PRP Breast Lift conversation is for patients who want a conservative non-surgical discussion about their self-confidence by providing a natural way to enhance the appearance of their breasts.",
     headline: "Embrace Your Curves: Natural, Non-Invasive Enhancement!",
     subline:
       "The PRP Breast Lift leverages the healing properties of PRP, stimulating the growth of new blood vessels and fatty tissue in the breast area. The result is fuller-looking breasts through a non-invasive process with minimal downtime and long-lasting results.",
@@ -704,7 +704,7 @@ export const procedures = [
         "PRP Hair Restoration in Williamsburg, VA for men and women comparing non-surgical hair support, thinning hair treatment, and hair transplant alternatives.",
     },
     description:
-      "PRP Hair Restoration with PRP is a natural solution for thinning hair or hair loss, that can stimulate new hair growth and improve overall scalp health. A series of three sessions, spaced six weeks apart, each lasting about an hour, use Platelet-Rich Plasma (PRP) therapy to naturally stimulate hair follicles. Suitable for both men and women, this safe and effective treatment offers a quick recovery time with visible results in as little as a few months after the final session. Results include a more youthful and healthy-looking head of hair, which can boost self-esteem and confidence. Overall, the PRP Hair Restoration is a non-invasive option that can help you regain your desired hair thickness and density.",
+      "PRP hair restoration is a non-surgical consultation option for selected men and women noticing thinning hair, shedding, or early density changes. PRP uses platelet-rich plasma prepared from your own blood and placed into the scalp as hair-supportive care. It is not a hair transplant, does not create new follicles, and results vary by diagnosis, pattern, timing, medications, and overall health. Jenny reviews whether PRP, dermatology care, medication, transplant consultation, or another path makes the most sense before treatment is planned. When appropriate, a series of treatments can boost self-esteem and confidence. Overall, the PRP Hair Restoration is a non-invasive option that can help you regain your desired hair thickness and density.",
     headline: "Regain Your Crowning Glory: Safe, Natural, Noticeable Results!",
     subline:
       "PRP Hair Restoration employs PRP therapy to naturally stimulate hair follicles, offering a solution for thinning hair or hair loss. After a few sessions, you can expect to see new hair growth and improved scalp health leading to a more youthful and thick head of hair.",
@@ -1677,7 +1677,7 @@ export const procedures = [
         emoji: "🛡",
         benefit: "Prevents New Wrinkle Formation",
         description:
-          "Regular Xeomin treatments can prevent the formation of new wrinkles by limiting muscle contractions.",
+          "Maintenance treatment may help slow the look of movement-related lines when it is appropriate for your anatomy and goals.",
       },
       {
         emoji: "⏳",
@@ -1688,7 +1688,7 @@ export const procedures = [
         emoji: "💉",
         benefit: "No Downtime",
         description:
-          "Post-treatment, patients can immediately return to their daily activities with no necessary recovery period.",
+          "Most patients return to normal routines the same day, with simple aftercare instructions and risk review.",
       },
     ],
     ailmentsHeadline:
@@ -1696,7 +1696,7 @@ export const procedures = [
     ailments: [
       {
         title: "Forehead Wrinkles",
-        description: "Smooth out forehead wrinkles with Xeomin for a youthful and fresh look.",
+        description: "Soften forehead movement with Xeomin while keeping expression natural and dosing conservative.",
         blog_post_title: "Eliminating Forehead Wrinkles with Xeomin",
         blog_post_slug: "eliminating-forehead-wrinkles-with-xeomin",
         slug: "forehead-wrinkles",
@@ -1760,7 +1760,7 @@ export const procedures = [
       },
       {
         title: "Migraines",
-        description: "Reduce the frequency and severity of migraines through targeted Xeomin injections.",
+        description: "Migraine concerns should be managed with a medical clinician. Cosmetic Xeomin visits can clarify whether your concern belongs in medical neurology care first.",
         blog_post_title: "Managing Migraines Effectively with Xeomin",
         blog_post_slug: "managing-migraines-effectively-with-xeomin",
         slug: "migraines",
