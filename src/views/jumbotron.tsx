@@ -9,69 +9,76 @@ function isMobileUserAgent() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
 }
 
+const serviceLinks = [
+  ["Botox", "/procedures/botox"],
+  ["Xeomin", "/procedures/xeomin"],
+  ["Dermal Fillers", "/procedures/filler"],
+  ["PRP Hair Restoration", "/procedures/prp-hair-restoration"],
+  ["O-Shot", "/procedures/o-shot"],
+  ["Blomdahl Ear Piercing", "/procedures/blomdahl-ear-piercing"],
+] as const;
+
 export default function Jumbotron() {
   const { handleCopy } = useCopyToClipBoard();
 
   const handleAction = () => {
     try {
       // @ts-ignore
-      window.gtag && window.gtag('event', 'phone_click', { label: 'jumbotron', value: '8047389483' });
+      window.gtag && window.gtag("event", "phone_click", { label: "jumbotron", value: "8047389483" });
     } catch {}
     if (isMobileUserAgent()) window.location.href = `tel:${8047389483}`;
     else handleCopy("8047389483");
   };
 
   return (
-    <div className="text-center py-16 md:py-32 lg:py-48" id="procedures">
-      <h1 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4">
-        Nurse Practitioner Led Medical Spa in Williamsburg, VA
-      </h1>
-      <p className="text-base-content text-xl lg:text-2xl mb-3 max-w-2xl mx-auto">
-        Botox, Xeomin, dermal fillers, PRP treatments, O-Shot services, sweating treatment, and Blomdahl medical ear
-        piercing with Jenny Coleman, MSN, RN, CPNP, PMHS.
-      </p>
-      <div className="mb-4 flex flex-wrap justify-center gap-2 text-xs md:text-sm text-base-content/75">
-        {[
-          "MSN",
-          "RN",
-          "CPNP",
-          "PMHS",
-          "CMA-certified O-Shot provider",
-          "Certified Blomdahl provider",
-        ].map((credential) => (
-          <span key={credential} className="rounded-full bg-base-200 px-3 py-1">
-            {credential}
-          </span>
-        ))}
-      </div>
-      <p className="text-base-content/70 text-base md:text-lg mb-8 max-w-3xl mx-auto">
-        Start with the service you are researching, then book a Williamsburg consultation for conservative planning,
-        clear education, local clinic details, and natural-looking goals.
-      </p>
-      <div className="mb-6 flex flex-wrap justify-center gap-2 text-sm">
-        {[
-          ["Botox", "/procedures/botox"],
-          ["Xeomin", "/procedures/xeomin"],
-          ["Dermal Fillers", "/procedures/filler"],
-          ["O-Shot", "/procedures/o-shot"],
-          ["Blomdahl Ear Piercing", "/procedures/blomdahl-ear-piercing"],
-          ["Williamsburg Location", "/locations/williamsburg-va"],
-        ].map(([label, href]) => (
-          <Link key={href} href={href} className="rounded-full border border-base-300 px-3 py-1 hover:border-primary">
-            {label}
-          </Link>
-        ))}
-      </div>
-      <div className="mb-32">
-        <div className="flex flex-wrap justify-center items-center gap-2">
-          <Button asChild>
-            <Link href="/consult">Book a Williamsburg Consultation</Link>
-          </Button>
-          <Button variant="secondary" onClick={handleAction}>
-            +1 (804) 738-9483
-          </Button>
+    <section className="border-t border-base-300 bg-[#111c18] text-[#dbe0dc]" id="procedures">
+      <div className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-24 lg:py-28">
+        <div className="max-w-4xl">
+          <p className="text-[12px] uppercase tracking-[0.32em] text-[#a9b0ac] md:text-sm">Williamsburg Med Spa</p>
+          <h1 className="mt-5 max-w-5xl text-5xl font-light tracking-[-0.06em] text-[#edf1ee] sm:text-6xl md:text-7xl lg:text-8xl">
+            Rejuvenate Your Life
+          </h1>
+          <p className="mt-8 max-w-3xl text-2xl font-light leading-relaxed text-[#c8ceca] md:text-3xl md:leading-relaxed">
+            A <strong className="font-semibold text-[#edf1ee]">medical spa in Williamsburg, VA</strong> for{" "}
+            <strong className="font-semibold text-[#edf1ee]">Botox and Xeomin</strong>, dermal fillers, PRP treatments,
+            O-Shot services, sweating treatment, and Blomdahl medical ear piercing.
+          </p>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#aeb6b1] md:text-xl md:leading-9">
+            Work with Jenny Coleman, MSN, RN, CPNP, PMHS for conservative planning, clear education, and
+            natural-looking aesthetic goals from a local Williamsburg clinic.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-2 text-sm text-[#b9c0bc]">
+            {serviceLinks.map(([label, href]) => (
+              <Link
+                key={href}
+                href={href}
+                className="rounded-full border border-[#dbe0dc]/20 px-3 py-1.5 transition hover:border-[#dbe0dc]/60 hover:text-[#edf1ee]"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <Button asChild className="bg-[#edf1ee] text-[#111c18] hover:bg-white">
+              <Link href="/consult">Book a Williamsburg Consultation</Link>
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={handleAction}
+              className="border border-[#dbe0dc]/20 bg-transparent text-[#edf1ee] hover:bg-[#dbe0dc]/10"
+            >
+              +1 (804) 738-9483
+            </Button>
+          </div>
+
+          <div className="mt-9 space-y-2 text-base leading-7 text-[#a9b0ac]">
+            <p>3900 Powhatan Parkway, Williamsburg, VA 23188</p>
+            <p>Botox, Xeomin, fillers, PRP, intimate wellness, and medical ear piercing in Williamsburg.</p>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
