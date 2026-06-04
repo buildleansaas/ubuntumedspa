@@ -357,7 +357,7 @@ export const procedures = [
         "P-Shot treatment in Williamsburg, VA using platelet-rich plasma (PRP) to support erections, sensitivity, blood flow, and penile tissue health at Williamsburg Med Spa.",
     },
     description:
-      "The P-Shot (Priapus Shot) is a platelet-rich plasma (PRP) procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness. Patients usually ask about it for erection quality, sensitivity, blood flow concerns, or post-procedure recovery goals. It should be evaluated as an adjunct option after a medical review, not as a guaranteed fix for every cause of erectile or sexual dysfunction.",
+      "The P-Shot (Priapus Shot) is a platelet-rich plasma (PRP) procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness. Patients usually ask about it for erection quality, sensitivity, blood flow concerns, or post-procedure recovery goals. It should be evaluated as an adjunct option after a medical review, not as a fix for every cause of erectile or sexual dysfunction.",
     headline: "Regenerative support for erections, sensitivity, and penile tissue health.",
     subline:
       "The P-Shot uses platelet-rich plasma prepared from your own blood and is considered for select patients who want a non-surgical option as part of a broader sexual health plan.",
@@ -924,7 +924,7 @@ export const procedures = [
         "Collagen-stimulating PRP Facial in Williamsburg, VA to improve skin texture, tone, and radiance using your body’s own platelets.",
     },
     description:
-      "The PRP Facial treatment is an innovative and non-invasive procedure that uses Platelet-Rich Plasma (PRP) therapy to improve overall skin texture, enhance elasticity, and promote a youthful-looking complexion. During the treatment, a small sample of the patient's blood is taken and spun in a centrifuge to separate the PRP from the red blood cells. This PRP is topically applied after a microdermabrasion procedure which has been enhanced with PRP to stimulate collagen and elastin production. The combination of microdermabrasion and PRP helps to resurface the skin and remove dead skin cells while promoting rejuvenation and repair, leaving the skin plumper and tighter looking with improved clarity. The results of the PRP Facial can be seen as a gradual improvement to skin texture and brightness that can last from any where from 6 months up to 2 years. Overall, the PRP Facial is a safe and effective way to naturally revitalize the skin by tapping into the power of the patient's own blood platelets, and it's suitable for people with different skin types or conditions.",
+      "The PRP Facial treatment is an innovative and non-invasive procedure that uses Platelet-Rich Plasma (PRP) therapy to improve overall skin texture, enhance elasticity, and promote a youthful-looking complexion. During the treatment, a small sample of the patient's blood is taken and spun in a centrifuge to separate the PRP from the red blood cells. This PRP is topically applied after a microdermabrasion procedure which has been enhanced with PRP to stimulate collagen and elastin production. The combination of microdermabrasion and PRP helps to resurface the skin and remove dead skin cells while promoting rejuvenation and repair, leaving the skin plumper and tighter looking with improved clarity. The results of the PRP Facial can be seen as a gradual improvement to skin texture and brightness that can last from any where from 6 months up to 2 years. Overall, the PRP Facial is discussed as a PRP-based skin treatment that uses the patient's own blood platelets, with candidacy, risks, and expected response reviewed during consultation.",
     headline: "Radiate Youthful Confidence: Boost Your Skin's Natural Healing Power!",
     subline:
       "The PRP Facial combines microdermabrasion with topical application of PRP, promoting collagen and elastin production to improve your skin. This treatment can leave your skin looking plumper, tighter, and with improved clarity that lasts up to 2 years.",
@@ -1270,7 +1270,7 @@ export const procedures = [
       },
     ],
     faqHeadline:
-      "Redefine and rejuvenate with the PRP Face Lift. This procedure offers natural-looking results without the need for surgery.",
+      "Redefine and rejuvenate with the PRP Face Lift. This procedure is a non-surgical consultation option for patients who want natural-looking volume and skin-support goals reviewed carefully.",
     faqs: [
       {
         question: "How is the PRP Face Lift different from a traditional face lift?",
@@ -2448,7 +2448,7 @@ export const products = [
       "Introducing Co2 V Lift for Women, a advanced carboxytherapy gel that targets intimate areas to restore youthfulness, firmness, and hydration. Specially formulated for women’s delicate skin, this product offers non-invasive revitalization where you need it most.",
     headline: "Achieve Intimate Rejuvenation with the Science of Carboxytherapy!",
     subline:
-      "Experience Co2 V Lift for Women—a unique, science-backed treatment focused on feminine care for intimate skin rejuvenation. Elevate your self-care routine to the next level.",
+      "Experience Co2 V Lift for Women, a science-backed treatment focused on feminine care for intimate skin rejuvenation. Elevate your self-care routine to the next level.",
     image: "/product/c02-v-lift.webp",
     imageAlt: "Co2 V Lift for Women Intimate Skin Care",
     price: "$500",
