@@ -14,6 +14,28 @@ export type LocalInjectableServicePage = {
   consultNote: string;
   faqs: Array<{ question: string; answer: string }>;
   relatedLinks: Array<{ href: string; label: string }>;
+  heroChips?: string[];
+  fitGuidance?: {
+    goodFit: string[];
+    considerInstead: string[];
+  };
+  treatmentAreas?: Array<{ title: string; body: string; href?: string }>;
+  pricing?: {
+    heading: string;
+    body: string;
+    note: string;
+  };
+  comparison?: {
+    heading: string;
+    body: string;
+    links: Array<{ href: string; label: string }>;
+  };
+  consultationSteps?: Array<{ title: string; body: string }>;
+  providerNote?: {
+    heading: string;
+    body: string;
+    links: Array<{ href: string; label: string }>;
+  };
 };
 
 export const localInjectableServicePages: LocalInjectableServicePage[] = [
@@ -24,19 +46,92 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     shortName: "Botox",
     areaName: "Williamsburg, VA",
     title: "Botox in Williamsburg, VA",
-    metaTitle: "Botox in Williamsburg, VA | Nurse-Led Treatment Planning",
+    metaTitle: "Botox in Williamsburg, VA for Forehead Lines, Frown Lines & Crow's Feet",
     metaDescription:
-      "Botox in Williamsburg, VA with Jenny Coleman for frown lines, forehead lines, crow's feet, pricing guidance, and conservative treatment planning.",
+      "Botox in Williamsburg, VA for forehead lines, frown lines, crow's feet, lip flip consults, pricing guidance, and natural-looking treatment planning with Jenny Coleman.",
     intro:
-      "Williamsburg Med Spa plans Botox treatments around your expression, goals, anatomy, comfort level, and budget so the result looks refreshed rather than overdone.",
+      "Conservative Botox treatment planning for frown lines, forehead lines, crow's feet, and natural-looking movement with Williamsburg Med Spa.",
     whyLocal:
-      "Patients searching for Botox in Williamsburg often want a local injector who will explain dosing, timing, follow-up expectations, and how to avoid a frozen look.",
+      "Patients searching for Botox in Williamsburg often want a local injector who will explain dosing, timing, follow-up expectations, pricing, and how to avoid a frozen look.",
     treatmentPlanning:
-      "Common Botox areas include frown lines, forehead lines, crow's feet, brow shaping support, lip flip conversations, and selected lower-face concerns when appropriate.",
+      "Common Botox conversations include frown lines, forehead lines, crow's feet, lip flip consults, brow balance, and selected lower-face concerns when anatomy and goals fit.",
     trustNote:
-      "Jenny Coleman, MSN, RN, CPNP, PMHS brings a medical background and conservative planning style to injectable visits, with education before treatment decisions.",
+      "Jenny Coleman, MSN, RN, CPNP, PMHS reviews your expression, goals, prior injectable history, timing, comfort level, and budget before recommending Botox, Xeomin, or another option.",
     consultNote:
-      "During consultation, Jenny reviews your expression at rest and with movement, prior injectable history, upcoming events, medication history, and whether Botox or Xeomin is the better fit.",
+      "During consultation, Jenny reviews your face at rest and with movement, prior injectable history, upcoming events, medication history, and whether Botox or Xeomin is the better fit.",
+    heroChips: ["Forehead lines", "Frown lines / 11s", "Crow's feet", "Lip flip consults", "Botox vs Xeomin guidance", "$250 treatment-credit increments"],
+    fitGuidance: {
+      goodFit: [
+        "You want to soften frown lines, forehead lines, or crow's feet without losing natural expression.",
+        "You are planning around a wedding, reunion, photo session, or other event and want realistic timing guidance.",
+        "You want help deciding whether Botox or Xeomin makes more sense for your movement pattern and prior treatment history.",
+        "You prefer conservative treatment planning before committing to a dose or product.",
+      ],
+      considerInstead: [
+        "If the concern is volume loss, dermal filler may be part of the conversation instead.",
+        "If the concern is skin texture, Jenny may discuss skincare, PRP, or facial treatments instead of Botox alone.",
+        "If you are pregnant, nursing, or have a medical contraindication, treatment may need to wait or change.",
+        "If you want a permanent result or a promised outcome, Botox is not that kind of treatment.",
+      ],
+    },
+    treatmentAreas: [
+      {
+        title: "Frown lines / 11 lines",
+        body: "Between-the-brows lines from repeated expression. Treatment planning looks at muscle strength, brow position, and how much movement you want to keep.",
+        href: "/procedures/botox/for/frown-lines",
+      },
+      {
+        title: "Forehead lines",
+        body: "Horizontal forehead movement lines where conservative dosing matters because over-treatment can affect brow heaviness.",
+        href: "/procedures/botox/for/forehead-lines",
+      },
+      {
+        title: "Crow's feet",
+        body: "Smile lines around the eyes where the goal is often softening, not removing every sign of expression.",
+        href: "/procedures/botox/for/crows-feet",
+      },
+      {
+        title: "Lip flip consults",
+        body: "A small neuromodulator plan may be discussed for selected patients, but it is different from lip filler and needs the right anatomy.",
+        href: "/procedures/botox/for/lip-flip",
+      },
+      {
+        title: "Brow balance and lower-face questions",
+        body: "Some advanced areas can be discussed when anatomy, goals, and risk profile make them appropriate.",
+      },
+    ],
+    pricing: {
+      heading: "Botox pricing at Williamsburg Med Spa",
+      body:
+        "Botox is prepaid online in $250 treatment-credit blocks. The credit is applied to your Botox visit, and any unused value remains as account credit. Jenny reviews treatment areas, likely dosing range, and whether Botox or Xeomin is the better fit before confirming the plan.",
+      note: "Final treatment cost depends on treatment areas, dose strategy, product choice, and candidacy.",
+    },
+    comparison: {
+      heading: "Not sure whether Botox or Xeomin is better?",
+      body:
+        "Botox and Xeomin are both neuromodulators, but they are not interchangeable products. If you have used one before, want a natural-looking result, or are comparing options, Jenny can review your history and goals during consultation.",
+      links: [
+        { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Read the Botox vs Xeomin guide" },
+        { href: "/procedures/xeomin/near/williamsburg-va", label: "View Xeomin in Williamsburg" },
+        { href: "/procedures/xeomin", label: "Main Xeomin service page" },
+      ],
+    },
+    consultationSteps: [
+      { title: "Movement review", body: "Jenny reviews your face at rest and with expression so the plan matches how your muscles actually move." },
+      { title: "Goal setting", body: "You discuss subtle softening, stronger smoothing, event timing, and how much natural movement you want to keep." },
+      { title: "Product discussion", body: "Botox versus Xeomin is reviewed if your history, goals, or prior response make that comparison useful." },
+      { title: "Treatment plan and pricing", body: "Areas, dose strategy, timing, and treatment-credit expectations are explained before treatment." },
+      { title: "Aftercare and follow-up expectations", body: "Jenny reviews aftercare, onset timing, and the typical settling window so you know what to watch for." },
+    ],
+    providerNote: {
+      heading: "Nurse-led Botox planning in Williamsburg",
+      body:
+        "Botox planning at Williamsburg Med Spa is consultation-first. Jenny Coleman, MSN, RN, CPNP, PMHS focuses on conservative, movement-aware treatment decisions so patients can ask questions before choosing a product or dose plan.",
+      links: [
+        { href: "/staff/jenny-coleman", label: "Meet Jenny Coleman" },
+        { href: "/locations/williamsburg-va", label: "Williamsburg clinic details" },
+      ],
+    },
     faqs: [
       {
         question: "How long does Botox usually last?",
@@ -46,7 +141,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       {
         question: "How much does Botox cost in Williamsburg?",
         answer:
-          "Williamsburg Med Spa lists Botox appointments in $250 increments. Jenny reviews areas, dosing, and whether Botox or Xeomin best fits your goals before confirming the plan.",
+          "Williamsburg Med Spa lists Botox in $250 treatment-credit increments. The credit is applied to your visit, and Jenny reviews areas, dosing, and whether Botox or Xeomin best fits your goals before confirming the plan.",
       },
       {
         question: "When should I book Botox before an event?",
@@ -56,7 +151,17 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       {
         question: "Can Botox look natural?",
         answer:
-          "Yes. The goal at Williamsburg Med Spa is conservative, movement-aware treatment planning that softens lines while preserving a natural expression.",
+          "Yes. The goal at Williamsburg Med Spa is conservative, movement-aware treatment planning that softens lines while preserving natural expression.",
+      },
+      {
+        question: "What areas can Botox treat?",
+        answer:
+          "Common cosmetic conversations include frown lines, forehead lines, crow's feet, lip flip consults, brow balance, and selected lower-face areas when appropriate.",
+      },
+      {
+        question: "Is Botox the same as Xeomin?",
+        answer:
+          "Botox and Xeomin are both neuromodulators, but they are different products. Jenny can review which option fits your goals, prior response, and treatment history.",
       },
       {
         question: "Am I a good candidate for Botox?",
@@ -64,14 +169,27 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
           "Candidacy depends on your health history, medications, pregnancy or nursing status, prior injectable history, and whether Botox or Xeomin better fits your movement pattern.",
       },
       {
-        question: "Is Botox the same as Xeomin?",
+        question: "Can Botox help with forehead lines?",
         answer:
-          "Botox and Xeomin are both neuromodulators, but they are different products. Jenny can review which option fits your goals, prior response, and treatment history.",
+          "Botox can be discussed for forehead movement lines, but dosing should be conservative and anatomy-aware because forehead treatment can affect brow position.",
+      },
+      {
+        question: "Can Botox help with crow's feet?",
+        answer:
+          "Botox is commonly discussed for crow's feet around the eyes. The plan should account for smile movement and the level of softening you want.",
+      },
+      {
+        question: "What should I avoid after Botox?",
+        answer:
+          "Jenny reviews aftercare at your visit. General guidance often includes avoiding rubbing the treated area, strenuous exercise, and certain heat or facial treatments for a short window after injection.",
       },
     ],
     relatedLinks: [
       { href: "/procedures/botox", label: "Main Botox service page" },
       { href: "/procedures/xeomin/near/williamsburg-va", label: "Xeomin in Williamsburg" },
+      { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Botox vs Xeomin guide" },
+      { href: "/procedures/filler/near/williamsburg-va", label: "Dermal fillers in Williamsburg" },
+      { href: "/staff/jenny-coleman", label: "Meet Jenny Coleman" },
       { href: "/locations/williamsburg-va", label: "Williamsburg clinic details" },
     ],
   },
