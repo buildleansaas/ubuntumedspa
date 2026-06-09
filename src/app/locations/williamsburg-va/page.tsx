@@ -67,6 +67,29 @@ export default function WilliamsburgLocationPage() {
         </p>
       </section>
 
+      <section className="mb-10 md:mb-14 rounded-2xl border border-base-300 p-5 md:p-6">
+        <h2 className="text-2xl md:text-3xl font-light mb-2">If You Searched “Med Spa Near Me” in Williamsburg</h2>
+        <p className="text-base md:text-lg text-base-content/80 mb-4">
+          Start with the specific treatment question, not a generic spa menu. Jenny Coleman sees patients for
+          consultation-led Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, O-Shot consultations, and
+          nurse-led Blomdahl medical ear piercing at the Williamsburg clinic.
+        </p>
+        <div className="grid gap-4 md:grid-cols-3 text-sm text-base-content/75">
+          <div className="rounded-xl border border-base-300 p-4">
+            <h3 className="font-medium text-base-content mb-1">Injectables</h3>
+            <p>Compare Botox, Xeomin, and filler by movement lines, facial balance, and natural-looking goals.</p>
+          </div>
+          <div className="rounded-xl border border-base-300 p-4">
+            <h3 className="font-medium text-base-content mb-1">Regenerative care</h3>
+            <p>Use PRP pages to understand skin, hair, and joint questions before deciding whether to book.</p>
+          </div>
+          <div className="rounded-xl border border-base-300 p-4">
+            <h3 className="font-medium text-base-content mb-1">Family-friendly piercing</h3>
+            <p>Review Blomdahl medical ear piercing for children, teens, adults, sensitive ears, and aftercare.</p>
+          </div>
+        </div>
+      </section>
+
       <section className="mb-10 md:mb-14">
         <h2 className="text-2xl md:text-3xl font-light mb-2">Popular Treatment Pages</h2>
         <p className="text-base md:text-lg text-base-content/80 mb-4">
