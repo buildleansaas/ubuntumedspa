@@ -82,6 +82,15 @@ const travelGroups = [
   },
 ];
 
+const localIntentLinks = [
+  { label: "Med spa near Yorktown", href: "/locations/yorktown-va" },
+  { label: "Med spa near Toano", href: "/locations/toano-va" },
+  { label: "Med spa near Norge", href: "/locations/norge-va" },
+  { label: "Med spa near Lightfoot", href: "/locations/lightfoot-va" },
+  { label: "Med spa near James City County", href: "/locations/james-city-county-va" },
+  { label: "Med spa near Newport News", href: "/locations/newport-news-va" },
+];
+
 const locationFaqs = [
   {
     question: "Is Williamsburg Med Spa worth the drive from nearby cities?",
@@ -164,6 +173,27 @@ export default function LocationsIndexPage() {
           <Button asChild variant="secondary">
             <Link href="/locations/williamsburg-va">View Williamsburg Clinic Details</Link>
           </Button>
+        </div>
+      </section>
+
+      <section className="mb-10 md:mb-12 rounded-2xl border border-base-300 bg-base-100 p-6 md:p-8">
+        <div className="max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Local med spa searches</p>
+          <h2 className="mt-3 text-2xl md:text-3xl font-light">Start with the area closest to your route</h2>
+          <p className="mt-3 text-base md:text-lg text-base-content/80">
+            If you searched for a med spa near me, these local pages explain the practical route, visit timing, and treatment starting points before you book.
+          </p>
+        </div>
+        <div className="mt-5 flex flex-wrap gap-2">
+          {localIntentLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="rounded-full border border-base-300 bg-base-100 px-3 py-1.5 text-sm text-base-content/75 transition hover:border-primary hover:text-primary"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
       </section>
 

@@ -170,6 +170,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   ["Williamsburg", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
                   ["Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
                   ["Newport News", "/procedures/blomdahl-ear-piercing/near/newport-news-va"],
+                  ["Toano", "/procedures/blomdahl-ear-piercing/near/toano-va"],
+                  ["Norge", "/procedures/blomdahl-ear-piercing/near/norge-va"],
+                  ["Lightfoot", "/procedures/blomdahl-ear-piercing/near/lightfoot-va"],
                 ].map(([label, href]) => (
                   <Link
                     key={href}
@@ -275,9 +278,13 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           <p className="text-base leading-relaxed text-base-content/75">{humanizeMedicalCopy(procedure.description)}</p>
           <p className="mt-3 text-sm leading-relaxed text-base-content/65">{consultationSupportCopy}</p>
           <p className="mt-4 text-sm text-base-content/70">
-            Serving patients from Williamsburg, James City County, Yorktown, Newport News, and nearby communities. {" "}
+            Serving patients from Williamsburg, James City County, Yorktown, Newport News, Toano, Norge, Lightfoot, and nearby communities. {" "}
+            <Link href="/locations" className="link link-primary">
+              Compare nearby service areas
+            </Link>
+            {" "}or{" "}
             <Link href="/locations/williamsburg-va" className="link link-primary">
-              View our Williamsburg location
+              view our Williamsburg location
             </Link>
             .
           </p>
@@ -300,6 +307,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   ["James City County", "/procedures/blomdahl-ear-piercing/near/james-city-county-va"],
                   ["Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
                   ["Newport News", "/procedures/blomdahl-ear-piercing/near/newport-news-va"],
+                  ["Toano", "/procedures/blomdahl-ear-piercing/near/toano-va"],
+                  ["Norge", "/procedures/blomdahl-ear-piercing/near/norge-va"],
+                  ["Lightfoot", "/procedures/blomdahl-ear-piercing/near/lightfoot-va"],
                 ].map(([label, href]) => (
                   <Link
                     key={href}
