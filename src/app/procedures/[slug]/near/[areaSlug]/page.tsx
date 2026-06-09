@@ -31,7 +31,7 @@ export function generateMetadata({ params }: Params): Metadata {
   return buildPageMetadata({
     title: page.metaTitle,
     description: page.metaDescription,
-    canonical: `/procedures/${page.procedureSlug}/near/${page.areaSlug}`,
+    canonical: `${ORIGIN}/procedures/${page.procedureSlug}/near/${page.areaSlug}`,
   });
 }
 
