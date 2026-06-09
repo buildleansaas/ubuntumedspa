@@ -26,6 +26,9 @@ const locationLinks = [
   { href: "/locations/james-city-county-va", label: "James City County" },
   { href: "/locations/yorktown-va", label: "Yorktown" },
   { href: "/locations/newport-news-va", label: "Newport News" },
+  { href: "/locations/toano-va", label: "Toano" },
+  { href: "/locations/norge-va", label: "Norge" },
+  { href: "/locations/lightfoot-va", label: "Lightfoot" },
 ] as const;
 
 export default function Footer() {
