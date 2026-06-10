@@ -72,10 +72,10 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     consultNote:
       "During consultation, Jenny reviews your face at rest and with movement, prior injectable history, upcoming events, medication history, and whether Botox or Xeomin is the better fit.",
     heroImage: {
-      src: "/procedure/williamsburg-botox-jenny-source.webp",
-      alt: "Jenny Coleman at Williamsburg Med Spa",
-      width: 540,
-      height: 720,
+      src: "/procedure/williamsburg-botox-jenny-ai-consultation.webp",
+      alt: "Jenny Coleman reviewing Botox treatment planning at Williamsburg Med Spa",
+      width: 1536,
+      height: 1024,
     },
     heroChips: ["Forehead lines", "Frown lines / 11s", "Crow's feet", "Lip flip consults", "Botox vs Xeomin guidance", "$250 treatment-credit increments"],
     fitGuidance: {
