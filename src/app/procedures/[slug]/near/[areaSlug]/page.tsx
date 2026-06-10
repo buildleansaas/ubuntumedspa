@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -72,26 +73,45 @@ export default function LocalInjectableServicePage({ params }: Params) {
       />
       <StructuredData type="FAQ" faqs={page.faqs} />
 
-      <header className="text-center mb-10 md:mb-14 px-4 md:px-0">
-        <p className="text-sm uppercase tracking-wide text-base-content/60 mb-3">Williamsburg injectable treatment planning</p>
-        <h1 className="text-3xl md:text-5xl font-light leading-tight">{page.title}</h1>
-        <p className="text-base md:text-lg text-base-content/75 mt-4 max-w-3xl mx-auto">{page.intro}</p>
-        {page.heroChips ? (
-          <div className="flex flex-wrap justify-center gap-2 mt-5">
-            {page.heroChips.map((chip) => (
-              <span key={chip} className="rounded-full border border-base-300 bg-base-100 px-3 py-1 text-xs md:text-sm text-base-content/75">
-                {chip}
-              </span>
-            ))}
+      <header className="mb-10 md:mb-14 px-4 md:px-0">
+        <div className={page.heroImage ? "grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(360px,0.82fr)]" : "text-center"}>
+          <div className={page.heroImage ? "text-left" : "text-center"}>
+            <p className="text-sm uppercase tracking-wide text-base-content/60 mb-3">Williamsburg injectable treatment planning</p>
+            <h1 className="text-3xl md:text-5xl font-light leading-tight">{page.title}</h1>
+            <p className={page.heroImage ? "text-base md:text-lg text-base-content/75 mt-4 max-w-2xl" : "text-base md:text-lg text-base-content/75 mt-4 max-w-3xl mx-auto"}>
+              {page.intro}
+            </p>
+            {page.heroChips ? (
+              <div className={page.heroImage ? "flex flex-wrap gap-2 mt-5" : "flex flex-wrap justify-center gap-2 mt-5"}>
+                {page.heroChips.map((chip) => (
+                  <span key={chip} className="rounded-full border border-base-300 bg-base-100 px-3 py-1 text-xs md:text-sm text-base-content/75">
+                    {chip}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+            <div className={page.heroImage ? "flex flex-wrap gap-3 mt-6" : "flex flex-wrap justify-center gap-3 mt-6"}>
+              <Button asChild>
+                <Link href={consultHref}>{primaryCtaLabel}</Link>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link href={secondaryCta.href}>{secondaryCta.label}</Link>
+              </Button>
+            </div>
           </div>
-        ) : null}
-        <div className="flex flex-wrap justify-center gap-3 mt-6">
-          <Button asChild>
-            <Link href={consultHref}>{primaryCtaLabel}</Link>
-          </Button>
-          <Button asChild variant="secondary">
-            <Link href={secondaryCta.href}>{secondaryCta.label}</Link>
-          </Button>
+          {page.heroImage ? (
+            <div className="overflow-hidden rounded-2xl border border-base-300 bg-base-200 shadow-sm">
+              <Image
+                src={page.heroImage.src}
+                alt={page.heroImage.alt}
+                width={page.heroImage.width}
+                height={page.heroImage.height}
+                priority
+                className="h-full w-full object-cover"
+                sizes="(min-width: 768px) 42vw, 100vw"
+              />
+            </div>
+          ) : null}
         </div>
       </header>
 
@@ -208,15 +228,30 @@ export default function LocalInjectableServicePage({ params }: Params) {
 
       {page.comparison ? (
         <section className="mb-10 md:mb-14 px-4 md:px-0">
-          <div className="rounded-xl bg-primary/10 p-5 md:p-6">
-            <h2 className="text-2xl md:text-3xl font-light mb-3">{page.comparison.heading}</h2>
-            <p className="text-base md:text-lg text-base-content/80 mb-4">{page.comparison.body}</p>
-            <div className="flex flex-wrap gap-2">
-              {page.comparison.links.map((link) => (
-                <Button key={link.href} asChild variant="secondary" size="sm">
-                  <Link href={link.href}>{link.label}</Link>
-                </Button>
-              ))}
+          <div className="overflow-hidden rounded-xl bg-primary/10">
+            <div className={page.comparison.image ? "grid items-center gap-0 md:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.7fr)]" : ""}>
+              <div className="p-5 md:p-6">
+                <h2 className="text-2xl md:text-3xl font-light mb-3">{page.comparison.heading}</h2>
+                <p className="text-base md:text-lg text-base-content/80 mb-4">{page.comparison.body}</p>
+                <div className="flex flex-wrap gap-2">
+                  {page.comparison.links.map((link) => (
+                    <Button key={link.href} asChild variant="secondary" size="sm">
+                      <Link href={link.href}>{link.label}</Link>
+                    </Button>
+                  ))}
+                </div>
+              </div>
+              {page.comparison.image ? (
+                <Image
+                  src={page.comparison.image.src}
+                  alt={page.comparison.image.alt}
+                  width={page.comparison.image.width}
+                  height={page.comparison.image.height}
+                  loading="lazy"
+                  className="h-full min-h-64 w-full object-cover"
+                  sizes="(min-width: 768px) 34vw, 100vw"
+                />
+              ) : null}
             </div>
           </div>
         </section>

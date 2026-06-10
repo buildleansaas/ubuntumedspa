@@ -14,6 +14,12 @@ export type LocalInjectableServicePage = {
   consultNote: string;
   faqs: Array<{ question: string; answer: string }>;
   relatedLinks: Array<{ href: string; label: string }>;
+  heroImage?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
   heroChips?: string[];
   fitGuidance?: {
     goodFit: string[];
@@ -29,6 +35,12 @@ export type LocalInjectableServicePage = {
     heading: string;
     body: string;
     links: Array<{ href: string; label: string }>;
+    image?: {
+      src: string;
+      alt: string;
+      width: number;
+      height: number;
+    };
   };
   consultationSteps?: Array<{ title: string; body: string }>;
   providerNote?: {
@@ -59,6 +71,12 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       "Jenny Coleman, MSN, RN, CPNP, PMHS reviews your expression, goals, prior injectable history, timing, comfort level, and budget before recommending Botox, Xeomin, or another option.",
     consultNote:
       "During consultation, Jenny reviews your face at rest and with movement, prior injectable history, upcoming events, medication history, and whether Botox or Xeomin is the better fit.",
+    heroImage: {
+      src: "/procedure/williamsburg-botox-consultation.webp",
+      alt: "Botox consultation at Williamsburg Med Spa",
+      width: 1400,
+      height: 933,
+    },
     heroChips: ["Forehead lines", "Frown lines / 11s", "Crow's feet", "Lip flip consults", "Botox vs Xeomin guidance", "$250 treatment-credit increments"],
     fitGuidance: {
       goodFit: [
@@ -115,6 +133,12 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
         { href: "/procedures/xeomin/near/williamsburg-va", label: "View Xeomin in Williamsburg" },
         { href: "/procedures/xeomin", label: "Main Xeomin service page" },
       ],
+      image: {
+        src: "/procedure/botox-xeomin-consultation-planning.webp",
+        alt: "Botox and Xeomin consultation planning in Williamsburg",
+        width: 1400,
+        height: 933,
+      },
     },
     consultationSteps: [
       { title: "Movement review", body: "Jenny reviews your face at rest and with expression so the plan matches how your muscles actually move." },
