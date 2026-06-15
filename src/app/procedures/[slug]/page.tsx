@@ -161,6 +161,25 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               {humanizeMedicalCopy(procedure.subline)}
             </p>
             {showOShotCredential && <CmaCredentialStrip className="mt-6 max-w-3xl" />}
+            {procedure.slug === "hyperhidrosis-treatment" && (
+              <div className="mt-6 flex flex-wrap gap-2 text-sm">
+                {[
+                  ["Underarm sweating", "/procedures/hyperhidrosis-treatment/for/underarm-sweating"],
+                  ["Treatment areas", "#applications"],
+                  ["Pricing", "#pricing"],
+                  ["FAQs", "#faqs"],
+                  ["Botox vs Xeomin", "/blog/botox-vs-xeomin-williamsburg-va"],
+                ].map(([label, href]) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="rounded-full border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            )}
             {procedure.slug === "blomdahl-ear-piercing" && (
               <div className="mt-6 flex flex-wrap gap-2 text-sm">
                 {[
