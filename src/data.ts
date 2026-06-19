@@ -699,44 +699,46 @@ export const procedures = [
     name: "PRP Hair Restoration",
     slug: "prp-hair-restoration",
     seo: {
-      title: "PRP Hair Restoration in Williamsburg, VA | Non-Surgical Hair Support",
+      title: "PRP Hair Restoration in Williamsburg, VA | Thinning Hair Consult",
       description:
-        "PRP Hair Restoration in Williamsburg, VA for men and women comparing non-surgical hair support, thinning hair treatment, and hair transplant alternatives.",
+        "Consult-led PRP hair restoration in Williamsburg, VA for thinning hair, shedding, and early density concerns near James City County, Yorktown, and Newport News.",
     },
     description:
-      "PRP Hair Restoration with PRP is a natural solution for thinning hair or hair loss, that can stimulate new hair growth and improve overall scalp health. A series of three sessions, spaced six weeks apart, each lasting about an hour, use Platelet-Rich Plasma (PRP) therapy to naturally stimulate hair follicles. Suitable for both men and women, this safe and effective treatment offers a quick recovery time with visible results in as little as a few months after the final session. Results include a more youthful and healthy-looking head of hair, which can boost self-esteem and confidence. Overall, the PRP Hair Restoration is a non-invasive option that can help you regain your desired hair thickness and density.",
-    headline: "Regain Your Crowning Glory: Safe, Natural, Noticeable Results!",
+      "PRP Hair Restoration at Williamsburg Med Spa is a consult-led, non-surgical option for select men and women noticing thinning hair, shedding, widening part lines, or early pattern changes. Jenny Coleman, MSN, RN, CPNP, PMHS reviews your timeline, scalp concerns, health history, medications, and goals before discussing whether platelet-rich plasma belongs in your plan or whether medical evaluation should come first. Treatment uses PRP prepared from a small sample of your own blood and placed into targeted scalp areas to support existing follicles when they may still be active. PRP is not a hair transplant, does not create new follicles in bald areas, and results vary, so the visit focuses on candidacy, realistic expectations, session planning, maintenance, and when a dermatology or transplant specialist may be more appropriate.",
+    headline: "PRP hair restoration in Williamsburg, VA for thinning hair and density concerns",
     subline:
-      "PRP Hair Restoration employs PRP therapy to naturally stimulate hair follicles, offering a solution for thinning hair or hair loss. After a few sessions, you can expect to see new hair growth and improved scalp health leading to a more youthful and thick head of hair.",
+      "Considering PRP for hair loss near Williamsburg, James City County, Yorktown, or Newport News? Start with a conservative consultation that reviews your pattern, possible causes, and whether non-surgical follicle support is a reasonable next step.",
     image: "/procedure/hair-restoration/prp-hair-restoration-consultation.webp",
     price: "$600/tx",
     // programmatic SEO copy
     blogHeadline:
-      "Hair thinning or loss affecting your confidence? Review PRP hair restoration, non-surgical hair support, and how PRP differs from hair transplant surgery.",
+      "Researching PRP hair restoration, thinning hair treatment, or hair transplant alternatives near Williamsburg? Learn when PRP may fit, when to seek medical evaluation first, and what to ask during consultation.",
     benefitsHeadline:
-      "Turn back the clock and let your hair be the statement of youth. PRP Hair Restoration, with its power of PRP, can transform thinning strands into a lush mane. Feel confident, look vibrant, and let every strand speak volumes.",
+      "PRP hair restoration is best framed as non-surgical support for selected thinning-hair concerns, not a guaranteed regrowth promise. A careful consult helps match your hair-loss pattern with the right next step.",
     benefits: [
       {
-        emoji: "💇‍♂️",
-        benefit: "Promotes Hair Growth",
-        description: "PRP Hair Restoration naturally stimulates hair follicles, promoting the growth of new hair.",
-      },
-      {
-        emoji: "🌿",
-        benefit: "Natural Solution",
+        emoji: "🔎",
+        benefit: "Consult-led candidacy review",
         description:
-          "The treatment uses PRP derived from your own blood, making it a holistic approach to hair restoration.",
+          "Jenny reviews your hair-loss timeline, pattern, scalp symptoms, medications, and goals before recommending PRP or another next step.",
       },
       {
-        emoji: "🕐",
-        benefit: "Quick Recovery",
-        description: "There's minimal downtime, allowing you to return to your daily activities almost immediately.",
-      },
-      {
-        emoji: "🤴",
-        benefit: "Boosted Confidence",
+        emoji: "🩸",
+        benefit: "Uses your own platelet-rich plasma",
         description:
-          "Achieving a fuller head of hair can lead to enhanced self-esteem and confidence in personal and professional arenas.",
+          "PRP is prepared from a small blood draw and placed into targeted scalp areas as non-surgical support for existing follicles.",
+      },
+      {
+        emoji: "📍",
+        benefit: "Local Williamsburg care",
+        description:
+          "Convenient for patients comparing hair-loss options in Williamsburg, James City County, Yorktown, Newport News, and nearby Hampton Roads communities.",
+      },
+      {
+        emoji: "🧭",
+        benefit: "Clear next-step guidance",
+        description:
+          "If sudden shedding, patchy loss, scalp symptoms, advanced bald areas, or medical factors are present, Jenny can discuss when dermatology or a transplant specialist should be involved.",
       },
     ],
     ailmentsHeadline:
@@ -745,60 +747,7 @@ export const procedures = [
       {
         title: "Thinning Hair",
         description:
-          "Discuss PRP Hair Restoration when thinning hair or lower density may still involve active follicles.",
-        blog_post_title: "Combat Thinning Hair Effectively with PRP Hair Restoration",
-        blog_post_slug: "combat-thinning-hair-effectively-with-prp-hair-restoration",
-        slug: "thinning-hair",
-        tag: "common",
-      },
-      {
-        title: "Receding Hairline",
-        description:
-          "Review whether early hairline changes are a reasonable fit for PRP or need a different hair-restoration plan.",
-        blog_post_title: "Reclaim Your Hairline with PRP Hair Restoration",
-        blog_post_slug: "reclaim-your-hairline-with-prp-hair-restoration",
-        slug: "receding-hairline",
-        tag: "common",
-      },
-      {
-        title: "Alopecia",
-        description:
-          "Ask whether alopecia-related patches need dermatology evaluation before PRP is considered.",
-        blog_post_title: "Beat Alopecia with Natural Hair Regrowth from PRP Hair Restoration",
-        blog_post_slug: "beat-alopecia-with-natural-hair-regrowth-from-prp-hair-restoration",
-        slug: "alopecia",
-        tag: "uncommon",
-      },
-      {
-        title: "Scalp Scars",
-        description:
-          "Minimize visible scalp scars with PRP Hair Restoration. Create a smoother, more even scalp surface.",
-        blog_post_title: "Fade Scalp Scars for a Smooth Surface with PRP Hair Restoration",
-        blog_post_slug: "fade-scalp-scars-for-a-smooth-surface-with-prp-hair-restoration",
-        slug: "scalp-scars",
-        tag: "uncommon",
-      },
-      {
-        title: "Hormonal Hair Loss",
-        description:
-          "Review hair loss linked to hormonal changes and whether PRP belongs alongside medical evaluation.",
-        blog_post_title: "Managing Hormonal Hair Loss with PRP Hair Restoration",
-        blog_post_slug: "managing-hormonal-hair-loss-with-prp-hair-restoration",
-        slug: "hormonal-hair-loss",
-        tag: "uncommon",
-      },
-      {
-        title: "Poor Hair Texture",
-        description:
-          "Improve the texture of dull, lifeless hair with PRP Hair Restoration. Enjoy more manageable, vibrant locks.",
-        blog_post_title: "Transform Dull Hair into Vibrant Locks with PRP Hair Restoration",
-        blog_post_slug: "transform-dull-hair-into-vibrant-locks-with-prp-hair-restoration",
-        slug: "poor-hair-texture",
-        tag: "common",
-      },
-      {
-        title: "Thinning Hair",
-        description: "Revitalize your crowning glory with enhanced hair density and volume.",
+          "Discuss PRP when thinning hair, lower density, or a widening part line may still involve active follicles.",
         blog_post_title: "Support Thinning Hair with PRP Hair Restoration",
         blog_post_slug: "support-thinning-hair-with-prp-hair-restoration",
         slug: "thinning-hair",
@@ -806,7 +755,8 @@ export const procedures = [
       },
       {
         title: "Receding Hairline",
-        description: "Review whether receding hairline concerns are early enough for non-surgical PRP support.",
+        description:
+          "Review whether early hairline or temple changes are reasonable for non-surgical PRP support or need transplant input.",
         blog_post_title: "How PRP Hair Restoration Can Help Your Receding Hairline",
         blog_post_slug: "how-prp-hair-restoration-can-help-your-receding-hairline",
         slug: "receding-hairline",
@@ -814,7 +764,8 @@ export const procedures = [
       },
       {
         title: "Alopecia",
-        description: "Target the root cause of alopecia and encourage new hair growth.",
+        description:
+          "Patchy, sudden, painful, or inflamed hair loss should be medically evaluated before cosmetic PRP is considered.",
         blog_post_title: "Combat Alopecia with PRP Hair Restoration",
         blog_post_slug: "combat-alopecia-with-prp-hair-restoration",
         slug: "alopecia",
@@ -822,7 +773,8 @@ export const procedures = [
       },
       {
         title: "Scalp Scars",
-        description: "Discuss whether scalp-scar concerns are appropriate for PRP or need specialist review first.",
+        description:
+          "Discuss whether scalp-scar concerns are appropriate for PRP support or need specialist review first.",
         blog_post_title: "Scalp Scar Support with PRP Hair Restoration",
         blog_post_slug: "scalp-scar-support-with-prp-hair-restoration",
         slug: "scalp-scars",
@@ -830,7 +782,8 @@ export const procedures = [
       },
       {
         title: "Hormonal Hair Loss",
-        description: "Balance hair loss triggered by hormonal changes and regain your self-confidence.",
+        description:
+          "Hormone-related thinning may need medical workup alongside any discussion of PRP or maintenance planning.",
         blog_post_title: "Manage Hormonal Hair Loss with PRP Hair Restoration",
         blog_post_slug: "manage-hormonal-hair-loss-with-prp-hair-restoration",
         slug: "hormonal-hair-loss",
@@ -838,7 +791,8 @@ export const procedures = [
       },
       {
         title: "Poor Hair Texture",
-        description: "Bring new life to limp, dull hair with improved texture and shine.",
+        description:
+          "Review whether texture or density changes are part of a broader thinning pattern before choosing a treatment path.",
         blog_post_title: "Revitalize Your Hair Texture with PRP Hair Restoration",
         blog_post_slug: "revitalize-your-hair-texture-with-prp-hair-restoration",
         slug: "poor-hair-texture",
@@ -846,7 +800,8 @@ export const procedures = [
       },
       {
         title: "Patchy Beard Growth",
-        description: "Fill in the gaps in your beard for a fuller, more robust facial hair appearance.",
+        description:
+          "Ask whether facial-hair patchiness is appropriate for PRP discussion or better evaluated through another route.",
         blog_post_title: "Correct Patchy Beard Growth with PRP Hair Restoration",
         blog_post_slug: "correct-patchy-beard-growth-with-prp-hair-restoration",
         slug: "patchy-beard-growth",
@@ -854,7 +809,8 @@ export const procedures = [
       },
       {
         title: "Eyebrow Thinning",
-        description: "Regain fuller, natural-looking eyebrows without the need for makeup.",
+        description:
+          "Eyebrow thinning can have medical or dermatologic causes, so candidacy should be reviewed carefully before PRP.",
         blog_post_title: "Tackle Eyebrow Thinning with PRP Hair Restoration",
         blog_post_slug: "tackle-eyebrow-thinning-with-prp-hair-restoration",
         slug: "eyebrow-thinning",
@@ -862,7 +818,8 @@ export const procedures = [
       },
       {
         title: "Post-Chemo Hair Regrowth",
-        description: "Accelerate the process of natural hair regrowth after chemotherapy treatment.",
+        description:
+          "Cancer-related hair changes should be coordinated with the oncology or medical team before cosmetic treatment planning.",
         blog_post_title: "Speed Up Post-Chemo Hair Regrowth with PRP Hair Restoration",
         blog_post_slug: "speed-up-post-chemo-hair-regrowth-with-prp-hair-restoration",
         slug: "post-chemo-hair-regrowth",
@@ -870,7 +827,8 @@ export const procedures = [
       },
       {
         title: "Dandruff",
-        description: "Improve scalp health to reduce dandruff and flaking.",
+        description:
+          "Flaking, itching, redness, or scaling may signal a scalp condition that should be diagnosed before PRP planning.",
         blog_post_title: "Combat Dandruff with Improved Scalp Health via PRP Hair Restoration",
         blog_post_slug: "combat-dandruff-with-improved-scalp-health-via-prp-hair-restoration",
         slug: "dandruff",
@@ -878,7 +836,8 @@ export const procedures = [
       },
       {
         title: "Seasonal Hair Loss",
-        description: "Manage seasonal shedding and keep your hair strong all year round.",
+        description:
+          "Seasonal shedding should be reviewed in context with stress, health changes, nutrition, medications, and timing.",
         blog_post_title: "Prevent Seasonal Hair Loss with PRP Hair Restoration",
         blog_post_slug: "prevent-seasonal-hair-loss-with-prp-hair-restoration",
         slug: "seasonal-hair-loss",
@@ -886,32 +845,37 @@ export const procedures = [
       },
     ],
     faqHeadline:
-      "Experience a renewed sense of confidence with advanced Hair Restoration techniques. Harnessing the power of PRP, it's a natural approach to combat thinning and balding.",
+      "Common questions about PRP hair restoration in Williamsburg, VA",
     faqs: [
       {
-        question: "How does PRP Hair Restoration work?",
+        question: "How does PRP hair restoration work?",
         answer:
-          "PRP Hair Restoration involves drawing a small amount of the patient's blood, processing it to concentrate the platelet-rich plasma, and then injecting it into the scalp. The growth factors in PRP stimulate hair follicles, promoting thicker and healthier hair growth.",
+          "PRP hair restoration uses platelet-rich plasma prepared from a small sample of your own blood. The PRP is placed into targeted scalp areas to support existing follicles when your pattern and history suggest PRP may be appropriate.",
       },
       {
-        question: "How many sessions are needed?",
+        question: "Who is a good candidate for PRP hair restoration?",
         answer:
-          "The number of sessions varies based on individual needs. Typically, patients might require multiple sessions spaced a month apart, followed by maintenance treatments once or twice a year.",
+          "PRP may be discussed for selected men and women with earlier thinning, shedding, or density concerns when follicles may still be active. Sudden, patchy, painful, inflamed, or unexplained hair loss should be medically evaluated before cosmetic treatment.",
       },
       {
-        question: "Is the procedure painful?",
+        question: "Is PRP the same as a hair transplant?",
         answer:
-          "A local anesthetic is applied to numb the scalp, minimizing discomfort. Most patients feel a mild pressure or tingling sensation during the procedure.",
+          "No. PRP is non-surgical support for existing follicles; it does not move follicles or create new follicles in bald areas. Advanced hair loss or goals such as rebuilding a hairline may require a hair-transplant specialist's opinion.",
       },
       {
-        question: "When can I expect to see results?",
+        question: "How many PRP hair sessions are usually discussed?",
         answer:
-          "Visible results, such as reduced hair shedding and thicker hair growth, typically become noticeable 3-6 months after starting treatments.",
+          "Plans vary by candidacy, goals, and response. Many PRP conversations include an initial series followed by maintenance discussion, but Jenny reviews timing and expectations during consultation instead of promising a fixed result.",
       },
       {
-        question: "Is PRP Hair Restoration suitable for everyone?",
+        question: "When might Jenny recommend medical evaluation before PRP?",
         answer:
-          "While PRP is beneficial for many individuals with hair thinning, it's crucial to consult with a specialist to determine if the procedure is right for you.",
+          "Jenny may recommend dermatology or medical evaluation first if you have sudden heavy shedding, patchy loss, scalp pain, itching, burning, redness, scaling, signs of scarring hair loss, or a medical condition that may be contributing.",
+      },
+      {
+        question: "Do you see PRP hair restoration patients from outside Williamsburg?",
+        answer:
+          "Yes. Williamsburg Med Spa commonly serves patients from Williamsburg, James City County, Yorktown, Newport News, and surrounding Hampton Roads communities who want a consult-led discussion of non-surgical hair restoration options.",
       },
     ],
   },
