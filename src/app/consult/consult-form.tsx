@@ -208,7 +208,7 @@ const ConsultationForm: React.FC = () => {
       <div className="border-b border-base-300 pb-6">
         <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Consultation intake</p>
         <p className="mt-3 max-w-2xl text-base text-base-content/70">
-          Share the essentials below so we can prepare for your visit and reach out with next steps.
+          Share the essentials below so Jenny can prepare for the right treatment conversation and the team can route you to scheduling.
         </p>
       </div>
 
@@ -341,7 +341,7 @@ const ConsultationForm: React.FC = () => {
               <Loader className="mr-2 size-4 animate-spin" /> Sending...
             </>
           ) : (
-            "Submit"
+            "Request consultation"
           )}
         </Button>
       </div>
