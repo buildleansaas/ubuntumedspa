@@ -14,7 +14,7 @@ export default function Procedures({ headingTag = "h2" }: { headingTag?: Heading
           Medical Spa Treatments in Williamsburg, VA
         </Heading>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
-          Compare Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, and Blomdahl medical ear piercing for babies, children, teens, and adults. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation.
+          Compare Botox, Xeomin, dermal fillers, PRP treatments, microneedling with PRP, hyperhidrosis care, and Blomdahl medical ear piercing for babies, children, teens, and adults. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation.
         </p>
       </div>
 
@@ -29,6 +29,7 @@ export default function Procedures({ headingTag = "h2" }: { headingTag?: Heading
               "blomdahl-ear-piercing",
               "prp-hair-restoration",
               "prp-facial",
+              "microneedling-with-prp",
               "o-shot",
               "p-shot",
               "joint-restoration",

@@ -131,6 +131,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
         ? "Consultation covers symptoms, candidacy, treatment areas, expected timing, and whether O-Shot® care fits your intimate wellness or bladder leakage concerns."
       : procedure.slug === "blomdahl-ear-piercing"
         ? "Ear piercing visits cover age or sensitivity questions, Blomdahl starter earring options, placement, aftercare, and whether the appointment is for a child, teen, adult, or re-piercing."
+      : procedure.slug === "microneedling-with-prp"
+        ? "Consultation covers skin goals, acne-scar or texture concerns, PRP candidacy, downtime, aftercare, and whether microneedling with PRP or another skin option is the better fit."
       : `Consultation covers candidacy, treatment areas, expected timing, and whether ${procedure.name} fits your goals with a conservative, natural-looking plan.`;
   const hyperhidrosisFeaturedAilments =
     procedure.slug === "hyperhidrosis-treatment"
@@ -180,6 +182,25 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                 ))}
               </div>
             )}
+            {procedure.slug === "microneedling-with-prp" && (
+              <div className="mt-6 flex flex-wrap gap-2 text-sm">
+                {[
+                  ["Acne scars", "#applications"],
+                  ["Skin texture", "#applications"],
+                  ["Downtime", "#faqs"],
+                  ["PRP Facial", "/procedures/prp-facial"],
+                  ["Book consult", "/consult?procedure=microneedling-with-prp&utm_source=website&utm_medium=procedure_page&utm_campaign=microneedling_prp"],
+                ].map(([label, href]) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="rounded-full border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            )}
             {procedure.slug === "blomdahl-ear-piercing" && (
               <div className="mt-6 flex flex-wrap gap-2 text-sm">
                 {[
@@ -209,10 +230,16 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   href={
                     procedure.slug === "blomdahl-ear-piercing"
                       ? "/consult?procedure=blomdahl-ear-piercing&utm_source=website&utm_medium=procedure_page&utm_campaign=ear_piercing"
-                      : "/consult"
+                      : procedure.slug === "microneedling-with-prp"
+                        ? "/consult?procedure=microneedling-with-prp&utm_source=website&utm_medium=procedure_page&utm_campaign=microneedling_prp"
+                        : "/consult"
                   }
                 >
-                  {procedure.slug === "blomdahl-ear-piercing" ? "Book Blomdahl Ear Piercing" : "Book a Consultation"}
+                  {procedure.slug === "blomdahl-ear-piercing"
+                    ? "Book Blomdahl Ear Piercing"
+                    : procedure.slug === "microneedling-with-prp"
+                      ? "Book Microneedling with PRP Consult"
+                      : "Book a Consultation"}
                 </Link>
               </Button>
               <Button asChild variant="secondary">
