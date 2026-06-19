@@ -177,91 +177,91 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
   title: "Botox Party",
   published: true,
   canonicalPath: "/events/botox-party",
-  metadataTitle: "Host a Botox Party in Williamsburg, VA | Williamsburg Med Spa",
+  metadataTitle: "Botox Parties in Williamsburg, VA | Host Private Injectable Events",
   metadataDescription:
-    "Plan a Botox party with Williamsburg Med Spa. Bring 5 or more paid Botox guests and the host's Botox is free, with bonus products and procedure credits for larger groups.",
+    "Host a Botox party in Williamsburg, VA with Williamsburg Med Spa. Bring paid Botox guests, plan a private injectable event, and introduce friends to PRP, skin, wellness, and product options.",
   heroImageSrc: "/events/botox-party-hero.webp",
   heroImageAlt: "A stylish group of women laughing together at an intimate outdoor botox party gathering",
   thumbnailImageSrc: "/events/botox-party-thumb.webp",
   thumbnailImageAlt: "Women socializing at a chic botox party gathering",
   listing: {
     eyebrow: "Featured Event",
-    title: "Host a Botox party and make your own treatment free.",
+    title: "Host a Botox party that introduces friends to Williamsburg Med Spa.",
     description:
-      "Bring 5 or more paid Botox guests and the host's Botox is free. Every additional 5 paid Botox guests unlocks more free products and procedure credits.",
-    highlights: ["5+ paid Botox guests", "Host Botox free", "Extra 5s add perks"],
+      "Bring together friends who are already curious about Botox. The event starts with a Botox plan and gives guests an easy way to ask about PRP, skin, wellness, and product options without turning the party into a generic sales pitch.",
+    highlights: ["Botox-led event", "Private group planning", "PRP questions welcome"],
     ctaLabel: "Plan a Botox Party",
   },
   hero: {
     eyebrow: "Williamsburg Med Spa Event",
-    heading: "Bring 5 or more paid Botox guests and the host's Botox is free.",
+    heading: "Turn real friend-group interest into a private Botox event.",
     body:
-      "The more the merrier. Every additional 5 paid Botox guests comes with more free products and procedure credits for the host.",
-    highlights: ["5+ paid Botox guests", "Host Botox free", "Every extra 5 adds perks", "Quick planning call"],
+      "Botox is the door-opener. The party format helps curious friends meet Jenny, ask practical questions, and learn which next step may fit them, from injectables to PRP, skin, wellness, or products.",
+    highlights: ["Botox-led party", "Private planning call", "PRP and skin questions welcome", "Individual screening still required"],
     primaryCtaLabel: "Plan My Party",
     secondaryCtaLabel: "Read About Botox",
     secondaryCtaHref: "/procedures/botox",
   },
   rewards: {
-    eyebrow: "Host rewards",
-    heading: "More guests, more host rewards.",
+    eyebrow: "Why host",
+    heading: "A social first step into Jenny's services.",
     body:
-      "Five paid Botox guests gets the host Botox free. Every additional five adds free products and procedure credits.",
+      "The point is not to make the party feel like a clinic waiting room. It is to give the host a clear reason to invite friends, make Botox feel approachable, and open the door to thoughtful conversations about other treatment paths.",
     cards: [
       {
-        eyebrow: "5 paid Botox guests",
-        title: "Host Botox free",
-        description: "Once your party brings in five paid Botox guests, the host's Botox treatment is on us.",
+        eyebrow: "For curious friends",
+        title: "Botox is the easy first question",
+        description: "Most guests already understand Botox enough to ask about it. That makes it a natural starting point for a group event.",
       },
       {
-        eyebrow: "10 paid Botox guests",
-        title: "Free Botox plus bonus perks",
+        eyebrow: "For the host",
+        title: "Give friends a reason to come together",
         description:
-          "At ten paid Botox guests, the host reward includes free Botox plus extra free products and procedure credits.",
+          "The host helps gather people who trust each other, then Williamsburg Med Spa helps shape the planning call, guest flow, and next steps.",
       },
       {
-        eyebrow: "15+ paid Botox guests",
-        title: "Keep stacking rewards",
+        eyebrow: "For future care",
+        title: "Introduce PRP, skin, wellness, and products naturally",
         description:
-          "Every additional five paid Botox guests unlocks more free products and procedure credits for the host.",
+          "Guests who start with Botox questions can also ask about PRP, skin quality, wellness goals, and medical-grade product options without pressure.",
       },
     ],
   },
   process: {
     eyebrow: "How it works",
-    heading: "Plan it like a medical event, not a guessing game.",
+    heading: "Plan the party around Botox, then leave room for the bigger conversation.",
     body:
-      "The process is straightforward: send the details, schedule the planning call, confirm what your group wants, and host the event with the reward structure already understood.",
+      "The process is straightforward: send the basics, schedule the planning call, confirm the Botox-led guest flow, and flag which other services your group may want to ask about.",
     steps: [
       {
-        title: "Share the basics",
+        title: "Share the guest list idea",
         description:
-          "Tell us the guest count, the timing, the location idea, and whether your group wants Botox only or a few add-on conversations too.",
+          "Tell us how many people are interested, whether they are Botox-first, and what questions they keep bringing up.",
       },
       {
         title: "Book a planning call",
         description:
-          "After the form, you'll choose a short call so we can review the party setup, guest flow, and what needs to happen before the event.",
+          "After the form, choose a short call so we can review the setup, timing, location idea, and what needs to happen before the event.",
       },
       {
-        title: "Confirm the details",
+        title: "Shape the treatment conversation",
         description:
-          "We'll finalize the guest list target, the treatment mix, and the practical details that make the day run smoothly.",
+          "Botox remains the anchor, but Jenny can prepare to answer questions about PRP, skin, wellness, products, or other services that fit the group.",
       },
       {
-        title: "Host the party",
+        title: "Host the event",
         description:
-          "Once the party is complete and the paid Botox guest count is confirmed, your host rewards follow the tier you reached.",
+          "Guests still receive individual screening and candidacy review. The party format creates access and comfort, not one-size-fits-all treatment.",
       },
     ],
   },
   support: {
     eyebrow: "Planning notes",
-    heading: "The best parties start with a real guest list and realistic expectations.",
+    heading: "Use Botox as the reason to gather, not the limit of the conversation.",
     body:
-      "This page is built for hosts who already have interest from friends, neighbors, or contacts and want to turn that interest into a cleanly organized Botox event.",
+      "This page is built for hosts who already have friends, neighbors, coworkers, or clients asking about Botox and want to make the first step feel social, organized, and credible.",
     supportingBody:
-      "If your group is also curious about other injectables, regenerative care, products, or another service on the site, include that in the form so the planning call can be specific instead of generic.",
+      "If your group is also curious about PRP, skin quality, wellness, products, or another service on the site, include that in the form so Jenny can prepare for the planning call.",
     notes: [
       {
         title: "Built for real friend groups",
@@ -269,9 +269,9 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
           "This works best when you already have a few friends or contacts who have been talking about Botox and want to coordinate together.",
       },
       {
-        title: "Add-ons are welcome",
+        title: "Add-on conversations are welcome",
         description:
-          "Botox is the core offer, but we can also plan around other injectables, regenerative care, ear piercing, and medical-grade products if that better fits the group.",
+          "Botox is the core offer, but the party can also tee up PRP, skin, wellness, product, and follow-up consultation questions for interested guests.",
       },
       {
         title: "Medical screening still matters",
@@ -340,15 +340,15 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
       },
       {
         id: "desiredTreatments",
-        label: "Anything else your group may want to discuss?",
+        label: "Other services your group may ask about",
         type: "checkbox",
         layout: "full",
-        required: true,
+        required: false,
         lockedOptions: ["Botox"],
         defaultValue: ["Botox"],
         optionGroups: buildBotoxPartyAddOnOptionGroups(),
         helperText:
-          "Botox stays included because the host offer is based on paid Botox guests. Use the add-ons below to flag anything else your group wants to ask about.",
+          "Botox stays included because the party is Botox-led. Check anything else guests may want Jenny to be ready to discuss, including PRP or skin questions.",
       },
       {
         id: "comments",
@@ -368,9 +368,9 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
           "Paid Botox guests count toward the host reward. We confirm the qualifying guest count through the actual party bookings and treatments completed.",
       },
       {
-        question: "Can guests ask about other treatments or products too?",
+        question: "Can guests ask about PRP, skin, or wellness services too?",
         answer:
-          "Yes. The host promotion is Botox-led, but the planning form lets you flag other injectables, regenerative procedures, products, and other services your group wants to discuss.",
+          "Yes. Botox is the anchor for the party, but the planning form lets you flag PRP, skin, wellness, product, and follow-up consultation questions Jenny should be ready to discuss.",
       },
       {
         question: "Where can a Botox party happen?",

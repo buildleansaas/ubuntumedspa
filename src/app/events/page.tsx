@@ -8,9 +8,9 @@ import { buildPageMetadata } from "lib/metadata";
 import { getPublishedEvents } from "lib/events";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Events in Williamsburg, VA | Williamsburg Med Spa",
+  title: "Botox Parties in Williamsburg, VA | Private Med Spa Events",
   description:
-    "Explore hosted event options from Williamsburg Med Spa, starting with Botox Party planning for friend groups and private gatherings.",
+    "Host a Botox party in Williamsburg, VA with Williamsburg Med Spa. Plan a private injectable event for friends and introduce guests to Botox, PRP, skin, and wellness options.",
   canonical: "/events",
 });
 
@@ -21,15 +21,37 @@ export default function EventsPage() {
     <div className="max-w-xl md:max-w-7xl mx-auto md:px-8 py-12 md:py-16">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Events"]} />
 
-      <section className="mx-auto max-w-4xl text-center">
-        <p className="mb-3 text-sm uppercase tracking-[0.18em] text-base-content/60">Events</p>
+      <section className="mx-auto max-w-5xl text-center">
+        <p className="mb-3 text-sm uppercase tracking-[0.18em] text-base-content/60">Botox Parties in Williamsburg</p>
         <h1 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light leading-tight">
-          Group events that make planning easier and the offer clearer.
+          Host the Botox party your friends already keep asking about.
         </h1>
         <p className="mt-4 text-base md:text-lg text-base-content/70 max-w-3xl mx-auto">
-          We&apos;re starting with one event type and building the category intentionally. Each event page explains the
-          offer, the planning workflow, and what guests need to know before anything is confirmed.
+          Williamsburg Med Spa helps hosts turn real friend-group interest into a private, organized Botox-led event.
+          Guests can start with injectable questions, then learn what else may fit them, including PRP, skin, wellness,
+          and medical-grade product options.
         </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Button asChild>
+            <Link href="/events/botox-party">Plan a Botox Party</Link>
+          </Button>
+          <Button asChild variant="secondary">
+            <Link href="/procedures/botox">Read About Botox</Link>
+          </Button>
+        </div>
+      </section>
+
+      <section className="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-3" aria-label="Why host a Botox party">
+        {[
+          ["Private group format", "Make the first step feel easier for friends who are curious but not ready to book alone."],
+          ["Botox-led gateway", "Keep the event focused on Botox while giving guests a natural way to ask about PRP and other services."],
+          ["Planning call first", "Share your guest count, timing, and location idea before anything is confirmed."],
+        ].map(([title, description]) => (
+          <div key={title} className="rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm">
+            <h2 className="text-lg font-medium text-base-content">{title}</h2>
+            <p className="mt-2 text-sm leading-6 text-base-content/70">{description}</p>
+          </div>
+        ))}
       </section>
 
       <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
