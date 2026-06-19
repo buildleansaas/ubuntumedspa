@@ -112,6 +112,20 @@ export default async function ArticlePage({
         <article className="mx-auto mt-12 w-full max-w-3xl">
           <Content />
         </article>
+        {metadata?.faqs && metadata.faqs.length > 0 && (
+          <section className="mx-auto mt-16 w-full max-w-3xl border-t border-base-300 pt-10" id="faqs">
+            <p className="text-xs uppercase tracking-[0.18em] text-base-content/60">FAQ</p>
+            <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">Frequently asked questions</h2>
+            <div className="mt-6 space-y-6">
+              {metadata.faqs.map(({ question, answer }) => (
+                <div key={question}>
+                  <h3 className="text-lg font-medium text-base-content">{question}</h3>
+                  <p className="mt-2 leading-relaxed text-base-content/75">{answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
         {(relatedProcedures.length > 0 || relatedArticles.length > 0) && (
           <div className="mx-auto mt-16 w-full max-w-3xl border-t border-base-300 pt-10">
             {relatedProcedures.length > 0 && (
