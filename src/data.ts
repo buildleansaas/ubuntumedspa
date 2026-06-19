@@ -45,6 +45,7 @@ export const FORM_INPUTS = [
       "Breast Lift",
       "Hair Restoration",
       "PRP Facial",
+      "Microneedling with PRP",
       "PRP Face Lift",
       "Joint Restoration",
       "Botox",
@@ -1069,6 +1070,139 @@ export const procedures = [
         question: "What sets the PRP Facial apart from other facials?",
         answer:
           "The PRP Facial harnesses the natural healing factors in your PRP, making it a holistic approach to skin rejuvenation that provides longer-lasting results than traditional facials.",
+      },
+    ],
+  },
+  {
+    name: "Microneedling with PRP",
+    slug: "microneedling-with-prp",
+    seo: {
+      title: "Microneedling with PRP in Williamsburg, VA",
+      description:
+        "Microneedling with PRP in Williamsburg, VA for patients comparing collagen-supporting skin rejuvenation, texture care, acne-scar support, and PRP facial options.",
+    },
+    description:
+      "Microneedling with PRP is a consultation-based skin rejuvenation service at Williamsburg Med Spa. The treatment uses controlled microneedling with platelet-rich plasma prepared from your own blood to support the skin's natural repair response. Jenny reviews your skin goals, history, sensitivities, medications, downtime tolerance, and whether microneedling with PRP is a reasonable fit before building a plan.",
+    headline: "Microneedling with PRP for texture, tone, and skin refresh goals",
+    subline:
+      "For Williamsburg-area patients comparing PRP facial options, microneedling with PRP can be discussed for uneven texture, acne-scar appearance, fine lines, pores, sun-damaged-looking skin, and overall skin quality. Candidacy and timing depend on your skin, health history, and expectations.",
+    image: "/procedure/prp-facial-consultation-glow.webp",
+    price: "$600",
+    blogHeadline:
+      "Compare microneedling with PRP, PRP facial care, and other skin rejuvenation options before your Williamsburg consultation.",
+    benefitsHeadline:
+      "Microneedling with PRP is designed for patients who want a regenerative skin conversation without jumping straight to lasers, surgery, or aggressive resurfacing.",
+    benefits: [
+      {
+        emoji: "✨",
+        benefit: "Texture and tone support",
+        description:
+          "Patients often discuss microneedling with PRP for rough texture, uneven tone, dullness, or early aging concerns.",
+      },
+      {
+        emoji: "🧬",
+        benefit: "PRP-based planning",
+        description:
+          "Platelet-rich plasma from your own blood is used alongside microneedling as part of a natural repair-focused skin plan.",
+      },
+      {
+        emoji: "🕒",
+        benefit: "Downtime conversation",
+        description:
+          "Jenny reviews redness, aftercare, sun exposure, event timing, and whether your schedule fits treatment and healing.",
+      },
+      {
+        emoji: "🧭",
+        benefit: "Consult-first candidacy",
+        description:
+          "A consultation helps decide whether microneedling with PRP, another PRP facial, home care, or referral is the better next step.",
+      },
+    ],
+    ailmentsHeadline:
+      "Use a consultation to compare microneedling with PRP for acne-scar appearance, enlarged pores, fine lines, dullness, sun-damaged-looking skin, and uneven texture. Treatment recommendations depend on skin type, history, current irritation, medications, prior procedures, and how much downtime you can tolerate.",
+    ailments: [
+      {
+        title: "Acne Scars",
+        description:
+          "Discuss whether microneedling with PRP is appropriate for the appearance of acne scars and uneven texture.",
+        blog_post_title: "Microneedling with PRP for Acne Scar Appearance in Williamsburg",
+        blog_post_slug: "microneedling-with-prp-acne-scars-williamsburg-va",
+        slug: "acne-scars",
+        tag: "common",
+      },
+      {
+        title: "Uneven Skin Texture",
+        description:
+          "Review rough or uneven texture and whether a staged microneedling with PRP plan makes sense.",
+        blog_post_title: "Microneedling with PRP for Uneven Skin Texture",
+        blog_post_slug: "microneedling-with-prp-uneven-skin-texture",
+        slug: "uneven-skin-texture",
+        tag: "common",
+      },
+      {
+        title: "Fine Lines",
+        description:
+          "Compare microneedling with PRP with other rejuvenation options for early fine-line concerns.",
+        blog_post_title: "Microneedling with PRP for Fine Lines",
+        blog_post_slug: "microneedling-with-prp-fine-lines",
+        slug: "fine-lines",
+        tag: "common",
+      },
+      {
+        title: "Enlarged Pores",
+        description:
+          "Talk through pore appearance, oiliness, texture, and realistic expectations for PRP microneedling.",
+        blog_post_title: "Microneedling with PRP for Enlarged Pores",
+        blog_post_slug: "microneedling-with-prp-enlarged-pores",
+        slug: "enlarged-pores",
+        tag: "common",
+      },
+      {
+        title: "Dull Skin",
+        description:
+          "Consider microneedling with PRP when dullness or skin-quality concerns are part of a broader refresh plan.",
+        blog_post_title: "Microneedling with PRP for Dull Skin",
+        blog_post_slug: "microneedling-with-prp-dull-skin",
+        slug: "dull-skin",
+        tag: "common",
+      },
+      {
+        title: "Sun-Damaged-Looking Skin",
+        description:
+          "Review sun exposure history, pigmentation concerns, aftercare, and whether PRP microneedling is a good fit.",
+        blog_post_title: "Microneedling with PRP for Sun-Damaged-Looking Skin",
+        blog_post_slug: "microneedling-with-prp-sun-damage",
+        slug: "sun-damage",
+        tag: "uncommon",
+      },
+    ],
+    faqHeadline:
+      "Microneedling with PRP questions to review before booking a Williamsburg skin consultation.",
+    faqs: [
+      {
+        question: "Is microneedling with PRP offered at Williamsburg Med Spa?",
+        answer:
+          "Yes. Microneedling with PRP can be discussed during consultation for skin texture, tone, acne-scar appearance, pores, fine lines, and overall skin quality when candidacy is appropriate.",
+      },
+      {
+        question: "How is microneedling with PRP different from a basic PRP Facial?",
+        answer:
+          "Both use platelet-rich plasma, but microneedling with PRP focuses on controlled microchannels in the skin plus PRP application. Jenny can explain which PRP skin option fits your goals and downtime tolerance.",
+      },
+      {
+        question: "Does microneedling with PRP guarantee collagen or scar improvement?",
+        answer:
+          "No treatment can guarantee a specific result. The consultation should cover realistic expectations, skin history, treatment spacing, aftercare, and whether another option would be more appropriate.",
+      },
+      {
+        question: "How much downtime should I plan for?",
+        answer:
+          "Many patients plan around temporary redness, sensitivity, dryness, and sun avoidance. Exact aftercare and timing depend on your skin, treatment intensity, and Jenny's instructions.",
+      },
+      {
+        question: "Who should not book microneedling with PRP without a consult first?",
+        answer:
+          "Patients with active skin irritation, infection, certain medication considerations, pregnancy questions, clotting concerns, or recent procedures should review candidacy before treatment.",
       },
     ],
   },
