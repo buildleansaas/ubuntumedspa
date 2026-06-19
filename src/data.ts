@@ -2097,44 +2097,44 @@ export const procedures = [
     seo: {
       title: "Hyperhidrosis Treatment in Williamsburg, VA | Underarms, Palms & Feet",
       description:
-        "Hyperhidrosis treatment in Williamsburg, VA using Xeomin to help reduce excessive sweating in underarms, sweaty palms, sweaty feet, and other localized areas.",
+        "Hyperhidrosis treatment in Williamsburg, VA using Xeomin for excessive underarm sweating, sweaty palms, sweaty feet, facial sweating, and other localized areas.",
     },
     description:
-      "Hyperhidrosis treatment uses Xeomin injections to reduce excessive sweating in targeted areas such as underarms, palms, and feet. At Williamsburg Med Spa, treatment planning starts with the area disrupting daily life most, whether that means visible sweat stains, clammy hands, damp shoes, or a localized sweating pattern that has not responded well to topical options.",
-    headline: "Hyperhidrosis treatment for underarms, palms, feet, and other sweat-prone areas.",
+      "Hyperhidrosis treatment uses Xeomin injections to reduce excessive sweating in targeted areas such as underarms, palms, feet, face, scalp, back, and other localized zones. At Williamsburg Med Spa, treatment planning starts with the area disrupting daily life most, whether that means visible sweat stains, clammy hands, damp shoes, facial sweating, or a pattern that has not responded well to topical antiperspirants.",
+    headline: "Hyperhidrosis treatment in Williamsburg for underarms, palms, feet, facial sweating, and other sweat-prone areas.",
     subline:
-      "Xeomin can help reduce excessive sweating in targeted areas with a localized, non-surgical treatment plan built around comfort and day-to-day function.",
+      "Xeomin can help reduce excessive sweating in targeted areas with a localized, non-surgical treatment plan built around comfort, clothing confidence, handshakes, workouts, professional settings, and day-to-day function.",
     image: "/procedure/hyperhidrosis/hyperhidrosis-confidence-lifestyle.webp",
     price: "$1,000+",
     // programmatic SEO copy
     blogHeadline:
-      "Looking for hyperhidrosis treatment in Williamsburg? Start with underarm sweating, sweaty palms, and sweaty feet, then review how Xeomin is used and what maintenance may look like.",
+      "Looking for hyperhidrosis treatment in Williamsburg? Start with underarm sweating, sweaty palms, sweaty feet, facial sweating, and how Xeomin can fit a maintenance plan for excessive sweating.",
     benefitsHeadline:
-      "Hyperhidrosis treatment can reduce day-to-day disruption from visible sweat, damp hands, and moisture-prone feet while keeping treatment localized to the area that bothers you most.",
+      "Hyperhidrosis treatment can reduce day-to-day disruption from visible sweat, damp hands, moisture-prone feet, facial sweating, and other localized sweating patterns while keeping care focused on the area that bothers you most.",
     benefits: [
       {
         emoji: "🌬",
         benefit: "Excessive Sweat Reduction",
         description:
-          "Our Hyperhidrosis treatment with Xeomin effectively reduces excessive sweating, providing enhanced comfort.",
+          "Xeomin is used in targeted treatment zones to reduce sweat-gland signaling for excessive sweating that topical options have not controlled well.",
       },
       {
         emoji: "💼",
-        benefit: "Boosted Confidence",
+        benefit: "Daily Confidence",
         description:
-          "By addressing excessive sweating, one can feel more self-assured in social and professional encounters.",
+          "Patients often ask about treatment because sweat marks, clammy hands, damp feet, or facial sweating are affecting clothing choices, work, workouts, or social comfort.",
       },
       {
         emoji: "⏳",
-        benefit: "Quick Treatment",
+        benefit: "Focused In-Office Visit",
         description:
-          "Hyperhidrosis treatments using Xeomin injections are typically quick, often finishing within an hour.",
+          "Your appointment centers on mapping the highest-impact sweating area, reviewing candidacy, and placing localized Xeomin treatment where it can help most.",
       },
       {
         emoji: "🔒",
-        benefit: "Long-lasting Results",
+        benefit: "Maintenance Planning",
         description:
-          "Xeomin injection results for hyperhidrosis can last up to 7-8 months, giving you prolonged relief.",
+          "Results build over days and are temporary, so Jenny reviews expected timing and when a maintenance visit may make sense for your sweating pattern.",
       },
     ],
     testimonials: [
@@ -2212,32 +2212,37 @@ export const procedures = [
       {
         question: "What areas can be treated for hyperhidrosis?",
         answer:
-          "Common treatment areas include underarms, palms, feet, and some other localized zones where excessive sweating is consistently disruptive.",
+          "Common treatment areas include underarms, palms, feet, facial sweating, scalp sweating, back sweating, and some other localized zones where excessive sweating is consistently disruptive.",
       },
       {
-        question: "How does the treatment work?",
+        question: "How does Xeomin help excessive sweating?",
         answer:
-          "Our Hyperhidrosis treatment uses Xeomin injections to block nerve signals to sweat glands, significantly decreasing sweat production.",
+          "Xeomin is placed in a targeted pattern to reduce the nerve signaling that tells sweat glands in that area to produce sweat.",
       },
       {
         question: "How long can relief last?",
         answer:
-          "While the treatment provides relief, it is not permanent. Results from Xeomin injections can last up to 7-8 months.",
+          "Relief is temporary and varies by person, treatment area, and dose strategy. Many patients plan maintenance after several months once sweating begins returning.",
       },
       {
         question: "How soon can I see results?",
         answer:
-          "Results can be observed shortly after the treatment and typically improve over a few days.",
+          "Sweating reduction usually builds over days rather than appearing instantly, with fuller response reviewed after the treatment has had time to settle.",
       },
       {
         question: "What causes hyperhidrosis?",
         answer:
-          "Hyperhidrosis, or excessive sweating, can arise from genetics, hormonal shifts, certain medications, or specific medical conditions.",
+          "Hyperhidrosis, or excessive sweating, can be primary, genetic, medication-related, hormone-related, or connected to another medical condition. Consultation helps decide whether localized treatment is appropriate.",
+      },
+      {
+        question: "Is hyperhidrosis treatment only for underarms?",
+        answer:
+          "No. Underarms are common, but patients also ask about sweaty palms, sweaty feet, facial sweating, scalp sweating, back sweating, and other localized patterns.",
       },
       {
         question: "Are there any side effects?",
         answer:
-          "Side effects are generally minimal with Xeomin injections. Some might experience temporary injection site reactions, but serious side effects are rare.",
+          "Temporary injection-site tenderness, bruising, or localized weakness can happen. Jenny reviews medical history, treatment area, and risk profile before recommending care.",
       },
     ],
   },
