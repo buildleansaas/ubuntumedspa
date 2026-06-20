@@ -1,0 +1,31 @@
+# Williamsburg Med Spa
+> Med spa in Williamsburg, VA - aesthetic treatments, injectables, skincare, and consultations serving the Historic Triangle.
+Canonical domain: https://www.williamsburgmedspa.com
+Primary language: en
+
+## Data basis
+Generated (UTC): 2026-06-20T22:36:28.927821+00:00
+page source: Next.js app-router static route inventory
+
+## Priority pages
+- [Ubuntumedspa](https://www.williamsburgmedspa.com/) - Core crawl and citation destination.
+- [Affiliates](https://www.williamsburgmedspa.com/affiliates) - Core crawl and citation destination.
+- [Blog](https://www.williamsburgmedspa.com/blog) - Core crawl and citation destination.
+- [Cart](https://www.williamsburgmedspa.com/cart) - Core crawl and citation destination.
+- [Consult](https://www.williamsburgmedspa.com/consult) - Core crawl and citation destination.
+- [Events](https://www.williamsburgmedspa.com/events) - Core crawl and citation destination.
+- [Locations](https://www.williamsburgmedspa.com/locations) - Core crawl and citation destination.
+- [Procedures](https://www.williamsburgmedspa.com/procedures) - Core crawl and citation destination.
+- [Products](https://www.williamsburgmedspa.com/products) - Core crawl and citation destination.
+- [Locations / Fords Colony Va](https://www.williamsburgmedspa.com/locations/fords-colony-va) - Core crawl and citation destination.
+- [Locations / James City County Va](https://www.williamsburgmedspa.com/locations/james-city-county-va) - Core crawl and citation destination.
+- [Locations / Kingsmill Va](https://www.williamsburgmedspa.com/locations/kingsmill-va) - Core crawl and citation destination.
+- [Locations / Lightfoot Va](https://www.williamsburgmedspa.com/locations/lightfoot-va) - Core crawl and citation destination.
+- [Locations / New Town Va](https://www.williamsburgmedspa.com/locations/new-town-va) - Core crawl and citation destination.
+- [Locations / Newport News Va](https://www.williamsburgmedspa.com/locations/newport-news-va) - Core crawl and citation destination.
+- [Locations / Norge Va](https://www.williamsburgmedspa.com/locations/norge-va) - Core crawl and citation destination.
+- [Locations / Toano Va](https://www.williamsburgmedspa.com/locations/toano-va) - Core crawl and citation destination.
+- [Locations / Williamsburg Va](https://www.williamsburgmedspa.com/locations/williamsburg-va) - Core crawl and citation destination.
+- [Locations / Yorktown Va](https://www.williamsburgmedspa.com/locations/yorktown-va) - Core crawl and citation destination.
+- [Staff / Jenny Brady](https://www.williamsburgmedspa.com/staff/jenny-brady) - Core crawl and citation destination.
+- [Staff / Jenny Coleman](https://www.williamsburgmedspa.com/staff/jenny-coleman) - Core crawl and citation destination.
