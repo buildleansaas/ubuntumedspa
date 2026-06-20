@@ -35,6 +35,36 @@ export interface FormInput {
   options?: string[];
 }
 
+const PROCEDURE_INTERESTS: Record<string, string[]> = {
+  botox: ["Botox"],
+  xeomin: ["Xeomin"],
+  filler: ["Filler"],
+  "dermal-fillers": ["Filler"],
+  "lip-filler": ["Filler"],
+  hyperhidrosis: ["Hyperhidrosis Treatment"],
+  "hyperhidrosis-treatment": ["Hyperhidrosis Treatment"],
+  "blomdahl-ear-piercing": ["Blomdahl Ear Piercing"],
+  "ear-piercing": ["Blomdahl Ear Piercing"],
+  "prp-facial": ["PRP Facial"],
+  "prp-face-lift": ["PRP Face Lift"],
+  "prp-facelift": ["PRP Face Lift"],
+  "hair-restoration": ["Hair Restoration"],
+  "microneedling-with-prp": ["Microneedling with PRP"],
+  "o-shot": ["O-Shot"],
+  "p-shot": ["P-Shot"],
+};
+
+const getConsultSourceContext = () => {
+  const url = getCurrentBrowserUrl();
+  if (!url) return null;
+
+  const procedure = url.searchParams.get("procedure")?.trim();
+  const intent = url.searchParams.get("intent")?.trim();
+  const area = url.searchParams.get("area")?.trim();
+
+  return procedure || intent || area ? { procedure, intent, area } : null;
+};
+
 const ConsultationForm: React.FC = () => {
   const router = useRouter();
   const { toast } = useToast();
@@ -42,6 +72,7 @@ const ConsultationForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState<FormState>(DEFAULT_FORM_SUBMISSION);
   const [affiliateReferral, setAffiliateReferral] = useState<AffiliateSnapshot | null>(null);
+  const [sourceContext, setSourceContext] = useState<ReturnType<typeof getConsultSourceContext>>(null);
   const nameInputRef = useRef<HTMLInputElement | null>(null);
   const wideFieldIds = ["name", "interests", "comments", "referral"] as const;
 
@@ -77,6 +108,30 @@ const ConsultationForm: React.FC = () => {
 
     return () => {
       window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  useEffect(() => {
+    const applySourceContext = () => {
+      const context = getConsultSourceContext();
+      setSourceContext(context);
+
+      const procedureInterests = context?.procedure ? PROCEDURE_INTERESTS[context.procedure] : undefined;
+      if (!procedureInterests?.length) return;
+
+      setFormState((current) => ({
+        ...current,
+        interests: Array.from(new Set([...current.interests, ...procedureInterests])),
+      }));
+    };
+
+    applySourceContext();
+    const unsubscribe = subscribeToLocationChange(applySourceContext);
+    window.addEventListener("popstate", applySourceContext);
+
+    return () => {
+      unsubscribe();
+      window.removeEventListener("popstate", applySourceContext);
     };
   }, []);
 
@@ -210,6 +265,16 @@ const ConsultationForm: React.FC = () => {
         <p className="mt-3 max-w-2xl text-base text-base-content/70">
           Share the essentials below so Jenny can prepare for the right treatment conversation and the team can route you to scheduling.
         </p>
+        {sourceContext ? (
+          <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm leading-6 text-base-content/75">
+            <p className="font-medium text-base-content">We carried over the page you came from.</p>
+            <p className="mt-1">
+              {sourceContext.procedure ? `Treatment interest: ${sourceContext.procedure.replaceAll("-", " ")}. ` : ""}
+              {sourceContext.intent ? `Question/topic: ${sourceContext.intent.replaceAll("-", " ")}. ` : ""}
+              {sourceContext.area ? `Nearby area: ${sourceContext.area.replaceAll("-", " ")}.` : ""}
+            </p>
+          </div>
+        ) : null}
       </div>
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
