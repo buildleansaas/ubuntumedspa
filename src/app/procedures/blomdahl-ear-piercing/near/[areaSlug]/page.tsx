@@ -63,6 +63,20 @@ export function generateMetadata({ params }: Params): Metadata {
   });
 }
 
+function ScanItem({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <li className="flex gap-3 rounded-2xl border border-base-300/80 bg-base-100 p-4 shadow-sm">
+      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
+        ✓
+      </span>
+      <div>
+        <p className="font-medium text-base-content">{label}</p>
+        <p className="mt-1 text-sm leading-relaxed text-base-content/75">{children}</p>
+      </div>
+    </li>
+  );
+}
+
 export default function EarPiercingAreaPage({ params }: Params) {
   const area = getPublishedEarPiercingAreaBySlug(params.areaSlug);
   if (!area || !procedure) return notFound();
@@ -72,9 +86,20 @@ export default function EarPiercingAreaPage({ params }: Params) {
   const relatedAreas = getRelatedEarPiercingAreas(area);
   const headline = getAreaHeadline(area);
   const eyebrow = getAreaEyebrow(area);
+  const visitFit = area.parentIntent ? "Children, teens, and sensitive ears" : "Adults, re-piercing, and sensitive ears";
+  const trustCards = [
+    ["Sterile disposable system", "Blomdahl uses sterile disposable piercing cassettes designed to reduce cross-contamination risk."],
+    ["Hypoallergenic jewelry", "Medical Plastic and Medical Grade Titanium options are available for sensitive skin and nickel concerns."],
+    [
+      "Calm family visit",
+      area.parentIntent
+        ? "Parents can ask questions, review aftercare, and avoid a rushed mall setting."
+        : "Appointments are planned around comfort, placement, and aftercare.",
+    ],
+  ];
 
   return (
-    <main className="max-w-xl md:max-w-6xl mx-auto md:px-8 py-12 md:py-16">
+    <main className="mx-auto max-w-xl px-4 py-10 md:max-w-6xl md:px-8 md:py-12">
       <StructuredData
         type="Breadcrumb"
         breadcrumbItems={[
@@ -94,124 +119,154 @@ export default function EarPiercingAreaPage({ params }: Params) {
       />
       <StructuredData type="FAQ" faqs={area.faqs} />
 
-      <header className="text-center mb-10 md:mb-14">
-        <p className="text-sm uppercase tracking-wide text-base-content/60 mb-3">{eyebrow}</p>
-        <h1 className="text-3xl md:text-5xl font-light leading-tight">{headline}</h1>
-        <p className="text-base md:text-lg text-base-content/75 mt-4 max-w-3xl mx-auto">
-          {area.localIntro} Williamsburg Med Spa offers Blomdahl sterile ear piercing with hypoallergenic starter jewelry{" "}
-          {area.distanceNote} for families and adults who want an appointment-based alternative to retail piercing.
-        </p>
-        <div className="flex flex-wrap justify-center gap-3 mt-6">
-          <Button asChild>
-            <Link href={consultHref}>Request an Ear Piercing Visit</Link>
-          </Button>
-          <Button asChild variant="secondary">
-            <Link href="/procedures/blomdahl-ear-piercing">View Ear Piercing Details</Link>
-          </Button>
+      <header className="mb-8 grid gap-6 rounded-3xl border border-base-300/80 bg-base-100 p-5 shadow-sm md:mb-10 md:grid-cols-[1.35fr_0.65fr] md:items-center md:p-8">
+        <div>
+          <p className="mb-3 text-sm uppercase tracking-wide text-base-content/60">{eyebrow}</p>
+          <h1 className="text-3xl font-light leading-tight md:text-5xl">{headline}</h1>
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-base-content/75 md:text-lg">
+            {area.localIntro} Williamsburg Med Spa offers Blomdahl sterile ear piercing with hypoallergenic starter jewelry {area.distanceNote} for families and adults who want an appointment-based alternative to retail piercing.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button asChild>
+              <Link href={consultHref}>Request an Ear Piercing Visit</Link>
+            </Button>
+            <Button asChild variant="secondary">
+              <Link href="/procedures/blomdahl-ear-piercing">View Ear Piercing Details</Link>
+            </Button>
+          </div>
         </div>
+        <aside className="rounded-2xl bg-base-200/70 p-4 md:p-5">
+          <p className="text-xs font-semibold uppercase tracking-wide text-base-content/55">Quick read</p>
+          <dl className="mt-4 space-y-4 text-sm">
+            <div>
+              <dt className="text-base-content/55">Best for</dt>
+              <dd className="font-medium text-base-content">{visitFit}</dd>
+            </div>
+            <div>
+              <dt className="text-base-content/55">Visit style</dt>
+              <dd className="font-medium text-base-content">Appointment-based, not retail-counter rushed</dd>
+            </div>
+            <div>
+              <dt className="text-base-content/55">What parents can ask about</dt>
+              <dd className="font-medium text-base-content">Placement, jewelry material, healing, and aftercare</dd>
+            </div>
+          </dl>
+        </aside>
       </header>
 
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-14">
-        {[
-          ["Sterile disposable system", "Blomdahl uses sterile disposable piercing cassettes designed to reduce cross-contamination risk."],
-          ["Hypoallergenic jewelry", "Medical Plastic and Medical Grade Titanium options are available for sensitive skin and nickel concerns."],
-          ["Calm family visit", area.parentIntent ? "Parents can ask questions, review aftercare, and avoid a rushed mall setting." : "Appointments are planned around comfort, placement, and aftercare."],
-        ].map(([title, body]) => (
-          <Card key={title}>
-            <CardHeader>
+      <section className="mb-8 grid grid-cols-1 gap-3 md:mb-10 md:grid-cols-3 md:gap-4">
+        {trustCards.map(([title, body]) => (
+          <Card key={title} className="h-full">
+            <CardHeader className="pb-2">
               <CardTitle className="text-lg">{title}</CardTitle>
             </CardHeader>
-            <CardContent className="text-sm text-base-content/80">{body}</CardContent>
+            <CardContent className="text-sm leading-relaxed text-base-content/80">{body}</CardContent>
           </Card>
         ))}
       </section>
 
-      <section className="mb-10 md:mb-14">
-        <h2 className="text-2xl md:text-3xl font-light mb-3">Why {area.name} families choose a medical setting</h2>
-        <p className="text-base md:text-lg text-base-content/80 mb-4">
-          For {area.name} patients, Williamsburg Med Spa is {area.earPiercingAngle}. {area.whyMedicalSetting}
-        </p>
-        <p className="text-base md:text-lg text-base-content/80">
-          {area.parentConcern} This page is intended for people comparing options for children&apos;s first piercings,
-          sensitive skin, re-piercing, or a more controlled piercing experience near {area.countyOrContext}.
-        </p>
+      <section className="mb-8 grid gap-5 md:mb-10 md:grid-cols-[0.9fr_1.1fr] md:items-start">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-wide text-primary/80">Why medical-grade piercing</p>
+          <h2 className="mt-2 text-2xl font-light md:text-3xl">Why {area.name} families choose a medical setting</h2>
+          <p className="mt-3 text-base leading-relaxed text-base-content/75 md:text-lg">
+            For {area.name} patients, Williamsburg Med Spa is {area.earPiercingAngle}. {area.whyMedicalSetting}
+          </p>
+        </div>
+        <ul className="grid gap-3 sm:grid-cols-2">
+          <ScanItem label="Not a rushed counter visit">Appointments leave room for placement, questions, and comfort.</ScanItem>
+          <ScanItem label="Sensitive-ear friendly">Hypoallergenic starter jewelry helps families compare safer material choices.</ScanItem>
+          <ScanItem label="Pediatric-aware care">{area.pediatricAngle || "Parent questions, child comfort, and aftercare are part of the process."}</ScanItem>
+          <ScanItem label="Clear healing guidance">Aftercare is reviewed before patients leave the clinic.</ScanItem>
+        </ul>
       </section>
 
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-10 md:mb-14">
+      <section className="mb-8 grid grid-cols-1 gap-4 md:mb-10 md:grid-cols-2 md:gap-5">
         <Card>
           <CardHeader>
             <CardTitle>A pediatric-aware Blomdahl provider near {area.name}</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3 text-sm md:text-base text-base-content/80">
+          <CardContent className="space-y-3 text-sm leading-relaxed text-base-content/80 md:text-base">
             <p>{area.providerTrustNote || providerTrustNote}</p>
-            <p>{area.pediatricAngle || "The visit is appointment-based, so parent questions, child comfort, and aftercare are part of the process."}</p>
+            <p>{area.parentConcern}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader>
             <CardTitle>Clean materials and starter jewelry</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3 text-sm md:text-base text-base-content/80">
-            <p>{area.blomdahlAngle || blomdahlTrustNote}</p>
-            <p>{area.materialNote || materialTrustNote}</p>
-            <p>{area.aftercareNote || aftercareTrustNote}</p>
+          <CardContent>
+            <ul className="space-y-3 text-sm leading-relaxed text-base-content/80 md:text-base">
+              <li><strong className="text-base-content">Sterile cassettes:</strong> {area.blomdahlAngle || blomdahlTrustNote}</li>
+              <li><strong className="text-base-content">Material options:</strong> {area.materialNote || materialTrustNote}</li>
+              <li><strong className="text-base-content">Aftercare:</strong> {area.aftercareNote || aftercareTrustNote}</li>
+            </ul>
           </CardContent>
         </Card>
       </section>
 
-      <section className="mb-10 md:mb-14">
-        <h2 className="text-2xl md:text-3xl font-light mb-3">Planning your visit from {area.name}</h2>
-        <p className="text-base md:text-lg text-base-content/80 mb-4">{area.routeNote}</p>
-        <p className="text-base md:text-lg text-base-content/80 mb-4">
-          {area.visitLogistics} The clinic is in Williamsburg, VA.
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {area.nearbyNeighborhoods.map((neighborhood) => (
-            <span key={neighborhood} className="rounded-full border border-base-300 px-3 py-1 text-sm">
-              {neighborhood}
-            </span>
-          ))}
+      <section className="mb-8 rounded-3xl border border-base-300/80 bg-base-100 p-5 shadow-sm md:mb-10 md:p-7">
+        <div className="grid gap-5 md:grid-cols-[0.8fr_1.2fr] md:items-start">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-primary/80">Visit planning</p>
+            <h2 className="mt-2 text-2xl font-light md:text-3xl">Planning your visit from {area.name}</h2>
+          </div>
+          <div className="space-y-4 text-base leading-relaxed text-base-content/80 md:text-lg">
+            <p>{area.routeNote}</p>
+            <p>{area.visitLogistics} The clinic is in Williamsburg, VA.</p>
+            <div className="flex flex-wrap gap-2 pt-1">
+              {area.nearbyNeighborhoods.map((neighborhood) => (
+                <span key={neighborhood} className="rounded-full border border-base-300 bg-base-100 px-3 py-1 text-sm">
+                  {neighborhood}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       <ServiceAreaDirections area={area} consultHref={consultHref} />
 
-      <section className="mb-10 md:mb-14">
-        <h2 className="text-2xl md:text-3xl font-light mb-3">Questions from {area.name} families</h2>
-        <Accordion type="single" collapsible className="text-left">
-          {area.faqs.map(({ question, answer }) => (
-            <AccordionItem key={question} value={question}>
-              <AccordionTrigger>{question}</AccordionTrigger>
-              <AccordionContent>{answer}</AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </section>
-
-      <section className="mb-10 md:mb-14">
-        <h2 className="text-2xl md:text-3xl font-light mb-3">Nearby service areas</h2>
-        <div className="flex flex-wrap gap-2">
-          {relatedAreas.map((item) => (
-            <Link
-              key={item.slug}
-              href={`/procedures/blomdahl-ear-piercing/near/${item.slug}`}
-              className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary"
-            >
-              {item.name}
-            </Link>
-          ))}
+      <section className="mb-8 grid gap-6 md:mb-10 md:grid-cols-[1fr_0.85fr] md:items-start">
+        <div>
+          <h2 className="mb-3 text-2xl font-light md:text-3xl">Questions from {area.name} families</h2>
+          <Accordion type="single" collapsible className="text-left">
+            {area.faqs.map(({ question, answer }) => (
+              <AccordionItem key={question} value={question}>
+                <AccordionTrigger>{question}</AccordionTrigger>
+                <AccordionContent>{answer}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
+        <aside className="rounded-3xl border border-base-300/80 bg-base-100 p-5 shadow-sm">
+          <h2 className="text-xl font-light">Nearby service areas</h2>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {relatedAreas.map((item) => (
+              <Link
+                key={item.slug}
+                href={`/procedures/blomdahl-ear-piercing/near/${item.slug}`}
+                className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        </aside>
       </section>
 
-      <section className="rounded-xl border border-base-300 p-5 md:p-6">
-        <h2 className="text-2xl md:text-3xl font-light mb-2">Plan your visit</h2>
-        <p className="text-base md:text-lg text-base-content/80 mb-4">
-          Book a consultation request and mention ear piercing, your preferred timing, and whether the visit is for a
-          child, teen, or adult.
-        </p>
-        <Button asChild>
-          <Link href={consultHref}>Start Request</Link>
-        </Button>
+      <section className="rounded-3xl border border-primary/20 bg-primary/5 p-5 md:p-7">
+        <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
+          <div>
+            <h2 className="text-2xl font-light md:text-3xl">Plan your visit</h2>
+            <p className="mt-2 text-base leading-relaxed text-base-content/80 md:text-lg">
+              Book a consultation request and mention ear piercing, your preferred timing, and whether the visit is for a child, teen, or adult.
+            </p>
+          </div>
+          <Button asChild>
+            <Link href={consultHref}>Request an Ear Piercing Visit</Link>
+          </Button>
+        </div>
       </section>
     </main>
   );
