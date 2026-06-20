@@ -10,7 +10,7 @@ const nextConfig = {
         source: "/:path*",
         has: [{ type: "host", value: "williamsburgmedspa.com" }],
         destination: "https://www.williamsburgmedspa.com/:path*",
-        permanent: true,
+        statusCode: 308,
       },
       {
         source: "/procedures/feminine-intimacy-prp-protocols",

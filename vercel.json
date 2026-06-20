@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "williamsburgmedspa.com"
+        }
+      ],
+      "destination": "https://www.williamsburgmedspa.com/$1",
+      "statusCode": 308
+    }
+  ]
+}
