@@ -78,6 +78,9 @@ export default function MembershipAmountPicker() {
           <p className="mt-3 max-w-2xl text-base leading-7 text-base-content/70">
             Start with a suggested amount or type your own. Your selected amount becomes treatment credit toward eligible procedures based on current listed prices, subject to change.
           </p>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-base-content/60">
+            Use the same name, email, and phone at checkout and booking so Williamsburg Med Spa can match your balance to your visit.
+          </p>
 
           <div className="mt-6 inline-flex rounded-full border border-base-300 bg-base-200 p-1">
             {(["monthly", "yearly"] as SpaMembershipPeriod[]).map((option) => (
@@ -191,6 +194,9 @@ export default function MembershipAmountPicker() {
           </button>
           <p className="mt-3 text-xs leading-5 text-[#6e5b51]">
             Terms: your selected amount becomes treatment credit toward eligible Williamsburg Med Spa procedures at current listed prices, subject to change. Treatment candidacy and recommendations are confirmed during consultation.
+          </p>
+          <p className="mt-2 text-xs leading-5 text-[#6e5b51]">
+            Use the same name, email, and phone when booking so the team can match your Spa Membership balance.
           </p>
         </aside>
       </div>

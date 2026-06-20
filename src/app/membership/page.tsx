@@ -4,14 +4,14 @@ import Link from "next/link";
 import MembershipAmountPicker from "./membership-amount-picker";
 
 export const metadata: Metadata = {
-  title: "Spa Membership in Williamsburg, VA | Botox & Treatment Credit",
+  title: "Med Spa Membership in Williamsburg, VA | Treatment Credit",
   description:
-    "Build a custom monthly or yearly med spa balance for Botox, Xeomin, PRP, skin, and wellness treatments at Williamsburg Med Spa. Choose your amount and use credit when you are ready.",
+    "Choose a monthly or yearly med spa credit amount for Botox, Xeomin, PRP, skin, and wellness treatments at Williamsburg Med Spa. Start at $100.",
   alternates: { canonical: "/membership" },
   openGraph: {
-    title: "Spa Membership in Williamsburg, VA | Botox & Treatment Credit",
+    title: "Med Spa Membership in Williamsburg, VA | Treatment Credit",
     description:
-      "Choose a custom monthly or yearly amount, build treatment credit, and use your balance toward eligible Williamsburg Med Spa services.",
+      "Choose a monthly or yearly amount, build treatment credit, and use your balance toward eligible Williamsburg Med Spa services.",
     url: "/membership",
   },
 };
@@ -70,6 +70,11 @@ const faqs = [
       "You receive treatment credit in the amount you choose. For example, a $100 membership amount gives you $100 in credit toward eligible procedures based on current listed prices, subject to change. Processing fees are added separately at checkout.",
   },
   {
+    question: "How does the team match my balance when I book?",
+    answer:
+      "Use the same name, email address, and phone number when you check out and when you book. That gives the Williamsburg Med Spa team the clearest way to match your Spa Membership balance to your appointment.",
+  },
+  {
     question: "Are processing fees included?",
     answer: "Processing fees are added at checkout so your selected membership amount can go into your treatment credit balance.",
   },
@@ -107,24 +112,33 @@ export default function MembershipPage() {
 
       <section className="grid gap-8 py-8 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-center lg:py-14">
         <div>
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary">Williamsburg Med Spa Spa Membership</p>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary">Williamsburg Med Spa Membership</p>
           <h1 className="max-w-4xl text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            Build your med spa budget before your next visit
+            Keep up with your treatments without the appointment-day bill shock
           </h1>
           <p className="mt-5 max-w-3xl text-lg leading-8 text-base-content/75">
-            Choose a custom monthly or yearly amount, let your treatment credit build, and use your balance toward Botox, Xeomin, PRP, skin, wellness, and eligible future treatments at Williamsburg Med Spa.
+            Choose a monthly or yearly amount, build treatment credit automatically, and use your balance toward Botox, Xeomin, PRP, skin, wellness, and eligible future treatments at Williamsburg Med Spa.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Link href="#custom-amount" className="rounded-full bg-primary px-6 py-3 text-center font-semibold text-primary-content shadow-lg shadow-primary/20 hover:bg-primary/90">
-              Start my Spa Membership
-            </Link>
-            <Link href="#gift-cards" className="rounded-full border border-base-300 bg-base-100 px-6 py-3 text-center font-semibold hover:bg-base-200">
-              Buy a gift card
+              Choose my membership amount
             </Link>
           </div>
           <p className="mt-4 text-sm text-base-content/60">
             Starts at $100/month. A $100 membership amount gives you $100 in treatment credit. Processing fees are added separately.
           </p>
+          <div className="mt-6 grid gap-3 text-sm sm:grid-cols-2 lg:max-w-3xl">
+            {[
+              "Your selected amount becomes treatment credit",
+              "Use it toward eligible procedures",
+              "Choose monthly or yearly billing",
+              "Manage the subscription through secure Stripe checkout",
+            ].map((item) => (
+              <div key={item} className="rounded-2xl border border-base-300 bg-base-100 px-4 py-3 font-medium text-base-content/75">
+                {item}
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="rounded-[2rem] bg-[#efe4dc] p-6 text-[#332821] shadow-xl shadow-base-content/5">
@@ -136,6 +150,7 @@ export default function MembershipPage() {
             <li>• Monthly or yearly stored-value checkout</li>
             <li>• Custom amount, with $100 step controls</li>
             <li>• Credit applies to eligible services at current listed prices, subject to change</li>
+            <li>• Use the same name, email, and phone when booking so the team can match your balance</li>
           </ul>
         </div>
       </section>
