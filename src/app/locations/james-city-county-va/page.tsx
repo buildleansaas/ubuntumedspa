@@ -6,9 +6,9 @@ import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near James City County, VA | Fillers, Botox, PRP & Piercing",
+  title: "James City County Med Spa | Botox, Fillers & Ear Piercing",
   description:
-    "Williamsburg Med Spa serves James City County with Botox, Xeomin, dermal fillers, PRP, hyperhidrosis care, and Blomdahl medical ear piercing near New Town.",
+    "Need a medical spa? James City County patients visit for nurse-led Botox, fillers, PRP, hyperhidrosis care, and Blomdahl ear piercing near New Town.",
   canonical: "/locations/james-city-county-va",
 });
 

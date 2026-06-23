@@ -6,9 +6,9 @@ import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near Newport News, VA | Botox, Fillers, PRP & Piercing",
+  title: "Newport News Med Spa | Botox, Fillers & Ear Piercing",
   description:
-    "Planning a med spa visit from Newport News? Compare Botox, Xeomin, dermal fillers, PRP, hyperhidrosis care, and medical ear piercing at Williamsburg Med Spa.",
+    "Need a medical spa? Newport News patients can visit for nurse-led Botox, fillers, PRP, hyperhidrosis care, and Blomdahl ear piercing. Book a consult.",
   canonical: "/locations/newport-news-va",
 });
 
