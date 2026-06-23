@@ -7,9 +7,9 @@ import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Medical Spa in Williamsburg, VA | Hours, Directions & Services",
+  title: "Williamsburg Med Spa | Botox, Fillers & Ear Piercing",
   description:
-    "Visit Williamsburg Med Spa for Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, and Blomdahl medical ear piercing at 3900 Powhatan Parkway.",
+    "Need a medical spa? Williamsburg patients choose nurse-led Botox, fillers, PRP, hyperhidrosis care, and Blomdahl ear piercing. Book a consult.",
   canonical: "/locations/williamsburg-va",
 });
 
