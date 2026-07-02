@@ -1607,7 +1607,7 @@ export const procedures = [
     headline: "Nurse-led Botox in Williamsburg planned around your natural expression.",
     subline:
       "Jenny Coleman, MSN, RN, CPNP, PMHS treats common Botox areas such as forehead lines, frown lines, crow's feet, and select lower-face zones with a conservative, movement-aware approach.",
-    image: "/procedure/botox-forehead-crows-feet-closeup.webp",
+    image: "/procedure/blomdahl-family-ear-piercing-consult-jenny.webp",
     price: "$250 increments",
     // programmatic SEO copy
     blogHeadline:
