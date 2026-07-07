@@ -33,6 +33,7 @@ const featuredGuideSlugs: Record<string, string> = {
   filler: "how-long-do-dermal-fillers-last-in-williamsburg-va",
   "o-shot": "o-shot-for-urinary-incontinence-williamsburg-va",
   "prp-hair-restoration": "prp-hair-restoration-vs-hair-transplant-williamsburg-va",
+  "blomdahl-ear-piercing": "medical-ear-piercing-vs-mall-piercing",
 };
 const featuredGuideCopy: Record<string, { button: string; heading: string; description: string; linkLabel: string }> = {
   botox: {
@@ -67,6 +68,13 @@ const featuredGuideCopy: Record<string, { button: string; heading: string; descr
     description:
       "Review how non-surgical PRP support differs from surgical follicle transplant planning before you choose a path.",
     linkLabel: "Read the PRP hair restoration vs hair transplant guide",
+  },
+  "blomdahl-ear-piercing": {
+    button: "Blomdahl vs Mall Piercing",
+    heading: "Comparing Blomdahl with mall ear piercing?",
+    description:
+      "Review the differences in setting, sterile single-use equipment, starter jewelry, pediatric-aware support, and aftercare before you book.",
+    linkLabel: "Read the Blomdahl vs mall ear piercing guide",
   },
 };
 
@@ -207,12 +215,11 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   ["Children's Ear Piercing", "/procedures/blomdahl-ear-piercing/for/children"],
                   ["Sensitive Ears", "/procedures/blomdahl-ear-piercing/for/sensitive-ears"],
                   ["Re-Piercing", "/procedures/blomdahl-ear-piercing/for/re-piercing"],
+                  ["Blomdahl vs Mall", "/blog/medical-ear-piercing-vs-mall-piercing"],
+                  ["Aftercare", "/blog/ear-piercing-aftercare-williamsburg-va"],
                   ["Williamsburg", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
                   ["Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
                   ["Newport News", "/procedures/blomdahl-ear-piercing/near/newport-news-va"],
-                  ["Toano", "/procedures/blomdahl-ear-piercing/near/toano-va"],
-                  ["Norge", "/procedures/blomdahl-ear-piercing/near/norge-va"],
-                  ["Lightfoot", "/procedures/blomdahl-ear-piercing/near/lightfoot-va"],
                 ].map(([label, href]) => (
                   <Link
                     key={href}
@@ -341,6 +348,39 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         {procedure.slug === "blomdahl-ear-piercing" && (
           <section className="mx-auto mt-12 max-w-4xl text-left">
+            <div className="rounded-3xl border border-base-300 bg-base-100 p-6 shadow-sm">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Choose your ear piercing path</p>
+              <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">
+                Start with the question your family is actually asking
+              </h2>
+              <p className="mt-3 text-base leading-relaxed text-base-content/70">
+                Parents, sensitive-ear patients, re-piercing patients, and local “near me” searchers need different answers. These guides keep the Blomdahl details practical while bringing every path back to the Williamsburg appointment.
+              </p>
+              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {[
+                  ["First ear piercing for children", "/procedures/blomdahl-ear-piercing/for/children", "For parents choosing a calm first-earrings appointment."],
+                  ["Sensitive ears or nickel concerns", "/procedures/blomdahl-ear-piercing/for/sensitive-ears", "For families comparing Medical Plastic, titanium, and hypoallergenic starter earrings."],
+                  ["Re-piercing closed or problem piercings", "/procedures/blomdahl-ear-piercing/for/re-piercing", "For patients who need placement reviewed before piercing again."],
+                  ["Blomdahl vs mall ear piercing", "/blog/medical-ear-piercing-vs-mall-piercing", "For parents comparing a medical setting with retail piercing."],
+                  ["Medical Plastic vs titanium", "/blog/blomdahl-medical-plastic-vs-titanium-earrings", "For sensitive-ear patients choosing starter jewelry."],
+                  ["Ear piercing aftercare", "/blog/ear-piercing-aftercare-williamsburg-va", "For cleaning, healing, sports, swimming, and when to call."],
+                ].map(([label, href, copy]) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="group rounded-2xl border border-base-300 bg-base-100 px-4 py-4 transition hover:border-primary hover:shadow-sm"
+                  >
+                    <span className="block text-base font-semibold text-base-content group-hover:text-primary">{label}</span>
+                    <span className="mt-1 block text-sm leading-relaxed text-base-content/65">{copy}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {procedure.slug === "blomdahl-ear-piercing" && (
+          <section className="mx-auto mt-8 max-w-4xl text-left">
             <div className="rounded-3xl border border-base-300 bg-base-100 p-6 shadow-sm">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Nearby pages</p>
               <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">Plan around your route</h2>
