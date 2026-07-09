@@ -176,6 +176,25 @@ export default function EarPiercingAreaPage({ params }: Params) {
 
       <ServiceAreaDirections area={area} consultHref={consultHref} />
 
+      <section className="mb-10 md:mb-14 rounded-xl border border-base-300 p-5 md:p-6">
+        <h2 className="text-2xl md:text-3xl font-light mb-3">Compare before you book</h2>
+        <p className="text-base md:text-lg text-base-content/80 mb-4">
+          If you are weighing convenience against a more controlled appointment, start with the Blomdahl comparison guides and then choose the visit path that fits your family.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {[
+            ["Blomdahl vs mall ear piercing", "/blog/medical-ear-piercing-vs-mall-piercing"],
+            ["Medical Plastic vs titanium", "/blog/blomdahl-medical-plastic-vs-titanium-earrings"],
+            ["Children's first ear piercing", "/procedures/blomdahl-ear-piercing/for/children"],
+            ["Sensitive ears", "/procedures/blomdahl-ear-piercing/for/sensitive-ears"],
+          ].map(([label, href]) => (
+            <Link key={href} href={href} className="rounded-lg border border-base-300 px-3 py-2 text-sm font-medium hover:border-primary hover:text-primary">
+              {label}
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="mb-10 md:mb-14">
         <h2 className="text-2xl md:text-3xl font-light mb-3">Questions from {area.name} families</h2>
         <Accordion type="single" collapsible className="text-left">

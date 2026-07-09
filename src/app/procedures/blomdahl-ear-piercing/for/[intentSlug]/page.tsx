@@ -105,6 +105,25 @@ export default function EarPiercingIntentPage({ params }: Params) {
         </ul>
       </section>
 
+      <section className="mb-10 md:mb-14 rounded-xl border border-base-300 p-5 md:p-6">
+        <h2 className="text-2xl md:text-3xl font-light mb-3">Helpful Blomdahl guides</h2>
+        <p className="text-base md:text-lg text-base-content/80 mb-4">
+          Compare the main decisions before you book: medical piercing vs mall piercing, starter earring material, re-piercing, and aftercare.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {[
+            ["Blomdahl vs mall ear piercing", "/blog/medical-ear-piercing-vs-mall-piercing"],
+            ["Medical Plastic vs titanium", "/blog/blomdahl-medical-plastic-vs-titanium-earrings"],
+            ["Ear piercing aftercare", "/blog/ear-piercing-aftercare-williamsburg-va"],
+            ["Ear re-piercing guide", "/blog/ear-re-piercing-williamsburg-va"],
+          ].map(([label, href]) => (
+            <Link key={href} href={href} className="rounded-lg border border-base-300 px-3 py-2 text-sm font-medium hover:border-primary hover:text-primary">
+              {label}
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="mb-10 md:mb-14">
         <h2 className="text-2xl md:text-3xl font-light mb-3">Questions</h2>
         <Accordion type="single" collapsible className="text-left">
