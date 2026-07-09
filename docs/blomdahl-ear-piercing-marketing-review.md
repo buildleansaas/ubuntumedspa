@@ -69,6 +69,13 @@ Pass. The content now targets:
 
 Pass. Copy avoids scare tactics and overclaims. It explains sterile equipment, starter jewelry, placement review, and aftercare in direct parent language without implying retail piercing is automatically unsafe.
 
+## Final marketing QA fixes
+
+- Replaced generic disclaimer-style helper copy with appointment-fit language that keeps the reader moving toward Jenny and the consultation.
+- Removed operator/searcher language from the hub path copy and rewrote it for nearby families.
+- Updated reviewed dates on the refreshed Blomdahl guide assets.
+- Confirmed the comparison angle stays factual: it compares setting, protocol, materials, and support without attacking a named competitor.
+
 ## Remaining proof-layer recommendation
 
 When assets are available, add:

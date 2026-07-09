@@ -53,7 +53,7 @@ function ArticleHeader({ metadata }: { metadata: Metadata }) {
         </p>
         <p className="mt-1">Last reviewed: {reviewedLabel}</p>
         <p className="mt-2 text-base-content/70">
-          This article is for education only and does not replace personalized medical advice.
+          Use this guide to prepare for a conversation with Williamsburg Med Spa about fit, timing, and next steps.
         </p>
       </div>
     </div>

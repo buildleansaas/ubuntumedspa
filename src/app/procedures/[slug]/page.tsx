@@ -342,7 +342,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             .
           </p>
           <p className="mt-3 text-xs text-base-content/55">
-            Educational content only. Treatment suitability, risk profile, and expected response are confirmed during consultation.
+            Jenny confirms fit, timing, materials, and aftercare during your appointment or consultation.
           </p>
         </section>
 
@@ -354,7 +354,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                 Start with the question your family is actually asking
               </h2>
               <p className="mt-3 text-base leading-relaxed text-base-content/70">
-                Parents, sensitive-ear patients, re-piercing patients, and local “near me” searchers need different answers. These guides keep the Blomdahl details practical while bringing every path back to the Williamsburg appointment.
+                Parents, sensitive-ear patients, re-piercing patients, and nearby families need different answers. These guides keep the Blomdahl details practical and make it easier to choose the right Williamsburg appointment.
               </p>
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {[
@@ -489,7 +489,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                       <CardContent>{humanizeMedicalCopy(description)}</CardContent>
                       <CardFooter>
                         <Button asChild>
-                          <Link href={`/procedures/${procedure.slug}/for/${ailmentSlug}`}>Learn More</Link>
+                          <Link href={`/procedures/${procedure.slug}/for/${ailmentSlug}`}>
+                            {procedure.slug === "blomdahl-ear-piercing" ? "Read guide" : "Learn More"}
+                          </Link>
                         </Button>
                       </CardFooter>
                     </Card>
