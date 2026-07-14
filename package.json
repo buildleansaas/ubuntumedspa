@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "verify:seo": "node scripts/verify-seo.mjs",
     "compress:artifacts": "node scripts/compress-artifacts.mjs",
     "sync:stripe-catalog": "tsx scripts/sync-stripe-catalog.ts"
   },

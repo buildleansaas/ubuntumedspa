@@ -60,7 +60,7 @@ export default function LocalInjectableServicePage({ params }: Params) {
           { name: page.areaName, item: canonicalUrl },
         ]}
       />
-      <StructuredData type="LocalBusiness" />
+
       <StructuredData
         type="Person"
         headline="Jenny Coleman, MSN, RN, CPNP, PMHS"
