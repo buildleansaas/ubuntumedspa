@@ -97,13 +97,13 @@ export default function WilliamsburgLocationPage() {
         </p>
         <div className="flex flex-wrap gap-3">
           <Button asChild size="sm">
-            <Link href="/procedures/botox/near/williamsburg-va">Botox in Williamsburg</Link>
+            <Link href="/procedures/botox">Botox in Williamsburg</Link>
           </Button>
           <Button asChild size="sm">
             <Link href="/procedures/xeomin/near/williamsburg-va">Xeomin in Williamsburg</Link>
           </Button>
           <Button asChild size="sm">
-            <Link href="/procedures/filler/near/williamsburg-va">Dermal Fillers in Williamsburg</Link>
+            <Link href="/procedures/filler">Dermal Fillers in Williamsburg</Link>
           </Button>
           <Button asChild size="sm">
             <Link href="/procedures/prp-facial">PRP Facial</Link>

@@ -61,10 +61,10 @@ export default async function Page() {
             calm education, and treatment planning shaped around realistic goals.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-2">
-            <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/botox/near/williamsburg-va">
+            <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/botox">
               Botox in Williamsburg
             </Link>
-            <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/filler/near/williamsburg-va">
+            <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/filler">
               Fillers in Williamsburg
             </Link>
             <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/xeomin/near/williamsburg-va">
