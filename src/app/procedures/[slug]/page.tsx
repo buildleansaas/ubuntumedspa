@@ -78,6 +78,30 @@ const featuredGuideCopy: Record<string, { button: string; heading: string; descr
   },
 };
 
+const relatedProcedureLinks: Record<string, Array<{ href: string; label: string }>> = {
+  botox: [
+    { href: "/procedures/xeomin", label: "Xeomin" },
+    { href: "/procedures/filler", label: "dermal fillers" },
+    { href: "/procedures/hyperhidrosis-treatment", label: "sweating treatment" },
+  ],
+  xeomin: [
+    { href: "/procedures/botox", label: "Botox" },
+    { href: "/procedures/filler", label: "dermal fillers" },
+  ],
+  filler: [
+    { href: "/procedures/botox", label: "Botox" },
+    { href: "/procedures/xeomin", label: "Xeomin" },
+  ],
+  "prp-facial": [
+    { href: "/procedures/microneedling-with-prp", label: "microneedling with PRP" },
+    { href: "/procedures/prp-face-lift", label: "PRP Face Lift" },
+  ],
+  "microneedling-with-prp": [
+    { href: "/procedures/prp-facial", label: "PRP Facial" },
+    { href: "/procedures/prp-face-lift", label: "PRP Face Lift" },
+  ],
+};
+
 type Params = { params: { slug: string } };
 
 export async function generateMetadata({ params }: Params) {
@@ -132,6 +156,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
   const pageHeading = procedure.seo?.title?.split("|")[0].trim() || `${procedure.name} in Williamsburg, VA`;
   const featuredGuide = articles.find((article) => article.slug === featuredGuideSlugs[procedure.slug]);
   const featuredGuideCta = featuredGuide ? featuredGuideCopy[procedure.slug] : undefined;
+  const relatedLinks = relatedProcedureLinks[procedure.slug] ?? [];
   const consultationSupportCopy =
     procedure.slug === "hyperhidrosis-treatment"
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
@@ -341,9 +366,30 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </Link>
             .
           </p>
-          <p className="mt-3 text-xs text-base-content/55">
-            Jenny confirms fit, timing, materials, and aftercare during your appointment or consultation.
+          <p className="mt-4 border-y border-base-300 py-4 text-sm leading-relaxed text-base-content/70">
+            Care is provided by{" "}
+            <Link href="/staff/jenny-coleman" className="link link-primary">
+              Jenny Coleman, MSN, RN, CPNP, PMHS
+            </Link>{" "}
+            at our{" "}
+            <Link href="/locations/williamsburg-va" className="link link-primary">
+              Williamsburg office at 3900 Powhatan Parkway
+            </Link>
+            . Visits are appointment-led so Jenny can review fit, timing, treatment areas, pricing, and aftercare before you proceed.
           </p>
+          {Boolean(relatedLinks.length) && (
+            <p className="mt-4 text-sm leading-relaxed text-base-content/65">
+              Compare related options: {relatedLinks.map((item, index) => (
+                <span key={item.href}>
+                  {index > 0 && (index === relatedLinks.length - 1 ? " and " : ", ")}
+                  <Link href={item.href} className="link link-primary">
+                    {item.label}
+                  </Link>
+                </span>
+              ))}
+              .
+            </p>
+          )}
         </section>
 
         {procedure.slug === "blomdahl-ear-piercing" && (

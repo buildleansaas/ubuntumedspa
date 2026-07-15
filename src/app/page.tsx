@@ -5,7 +5,7 @@ import Link from "next/link";
 import CtaFooter from "components/cta-footer";
 import Jumbotron from "views/jumbotron";
 import OShotCallout from "views/o-shot-callout";
-import AffiliateProgramCallout from "views/affiliate-program-callout";
+
 import ProviderCallout from "views/provider-callout";
 import Procedures from "views/procedures";
 import LatestPosts from "views/latest-posts";
@@ -61,10 +61,10 @@ export default async function Page() {
             calm education, and treatment planning shaped around realistic goals.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-2">
-            <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/botox/near/williamsburg-va">
+            <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/botox">
               Botox in Williamsburg
             </Link>
-            <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/filler/near/williamsburg-va">
+            <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/filler">
               Fillers in Williamsburg
             </Link>
             <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/xeomin/near/williamsburg-va">
@@ -88,7 +88,7 @@ export default async function Page() {
       <ProviderCallout />
       <OShotCallout />
       <Procedures />
-      <AffiliateProgramCallout />
+
       <Products />
       <BotoxPartyCallout />
       <LatestPosts />

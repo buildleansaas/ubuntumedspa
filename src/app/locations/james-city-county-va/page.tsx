@@ -15,9 +15,9 @@ export const metadata: Metadata = buildPageMetadata({
 const neighborhoods = ["Norge", "Toano", "Lightfoot", "Greensprings", "New Town", "Kingsmill", "Ford's Colony"];
 
 const serviceLinks = [
-  { href: "/procedures/filler/near/james-city-county-va", label: "Dermal fillers near James City County", note: "Natural contouring for lips, cheeks, under-eyes, and facial balance." },
-  { href: "/procedures/botox/near/james-city-county-va", label: "Botox near James City County", note: "Consultation-led wrinkle treatment for movement-related lines." },
-  { href: "/procedures/xeomin/near/james-city-county-va", label: "Xeomin near James City County", note: "A purified neuromodulator option for frown lines and facial movement." },
+  { href: "/procedures/filler", label: "Dermal fillers near James City County", note: "Natural contouring for lips, cheeks, under-eyes, and facial balance." },
+  { href: "/procedures/botox", label: "Botox near James City County", note: "Consultation-led wrinkle treatment for movement-related lines." },
+  { href: "/procedures/xeomin", label: "Xeomin near James City County", note: "A purified neuromodulator option for frown lines and facial movement." },
   { href: "/procedures/blomdahl-ear-piercing/near/james-city-county-va", label: "Medical ear piercing near James City County", note: "Sterile Blomdahl piercing with hypoallergenic starter jewelry." },
 ];
 

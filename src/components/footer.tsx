@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import FooterLocationCta from "components/footer-location-cta";
-import FooterAffiliateCta from "components/footer-affiliate-cta";
+
 
 const primaryLinks = [
   { href: "/consult", label: "Consult" },
@@ -9,7 +9,7 @@ const primaryLinks = [
   { href: "/products", label: "Products" },
   { href: "/locations", label: "Locations" },
   { href: "/blog", label: "Blog" },
-  { href: "/affiliates", label: "Affiliates" },
+
 ] as const;
 
 const treatmentLinks = [
@@ -37,9 +37,8 @@ export default function Footer() {
   return (
     <footer className="mt-20 w-full border-t border-base-300 text-base-content">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
-        <div className="grid gap-12 py-12 lg:grid-cols-2 lg:gap-16">
+        <div className="py-12">
           <FooterLocationCta />
-          <FooterAffiliateCta />
         </div>
 
         <div className="grid gap-10 border-t border-base-300 py-12 md:grid-cols-2 xl:grid-cols-[1.2fr_1fr_1fr_1fr]">

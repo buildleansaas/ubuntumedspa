@@ -13,9 +13,9 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 const serviceLinks = [
-  { href: "/procedures/botox/near/newport-news-va", label: "Botox near Newport News", note: "Expression-line consultation with a natural, measured plan." },
-  { href: "/procedures/xeomin/near/newport-news-va", label: "Xeomin near Newport News", note: "A neuromodulator option for frown lines and movement-related concerns." },
-  { href: "/procedures/filler/near/newport-news-va", label: "Dermal fillers near Newport News", note: "Lips, cheeks, under-eyes, and balanced facial support." },
+  { href: "/procedures/botox", label: "Botox near Newport News", note: "Expression-line consultation with a natural, measured plan." },
+  { href: "/procedures/xeomin", label: "Xeomin near Newport News", note: "A neuromodulator option for frown lines and movement-related concerns." },
+  { href: "/procedures/filler", label: "Dermal fillers near Newport News", note: "Lips, cheeks, under-eyes, and balanced facial support." },
   { href: "/procedures/blomdahl-ear-piercing/near/newport-news-va", label: "Medical ear piercing near Newport News", note: "Sterile Blomdahl piercing for children, teens, and adults." },
 ];
 

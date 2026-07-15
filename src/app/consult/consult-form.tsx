@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { DEFAULT_FORM_SUBMISSION, FORM_INPUTS } from "data";
 import * as yup from "yup";
 import { useRouter } from "next/navigation";
@@ -73,7 +73,6 @@ const ConsultationForm: React.FC = () => {
   const [formState, setFormState] = useState<FormState>(DEFAULT_FORM_SUBMISSION);
   const [affiliateReferral, setAffiliateReferral] = useState<AffiliateSnapshot | null>(null);
   const [sourceContext, setSourceContext] = useState<ReturnType<typeof getConsultSourceContext>>(null);
-  const nameInputRef = useRef<HTMLInputElement | null>(null);
   const wideFieldIds = ["name", "interests", "comments", "referral"] as const;
 
   const inputClassName =
@@ -100,16 +99,6 @@ const ConsultationForm: React.FC = () => {
       });
     }
   };
-
-  useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
-      nameInputRef.current?.focus();
-    });
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-    };
-  }, []);
 
   useEffect(() => {
     const applySourceContext = () => {
@@ -318,7 +307,6 @@ const ConsultationForm: React.FC = () => {
                     className={inputClassName}
                     id={String(input.id)}
                     name={String(input.id)}
-                    ref={input.id === "name" ? nameInputRef : undefined}
                     type={input.type}
                     value={String(formState[input.id] ?? "")}
                     onChange={handleChange}

@@ -48,14 +48,14 @@ export default function OShotCallout() {
                 Book Now
               </InstantCheckoutButton>
               <Button asChild variant="secondary">
-                <Link href="/procedures/o-shot">Learn More</Link>
+                <Link href="/procedures/o-shot">Explore O-Shot Care</Link>
               </Button>
             </div>
           </div>
 
           <div className="relative aspect-square w-full max-w-[18rem] overflow-hidden rounded-2xl bg-base-200 sm:max-w-[20rem] md:w-[17rem] lg:w-[19rem] md:shrink-0">
             <Image
-              src={oShot.imagePath || "/procedure/o-shot/womens-intimate-wellness-lifestyle.png"}
+              src={oShot.imagePath || "/procedure/o-shot/womens-intimate-wellness-lifestyle.webp"}
               alt="Woman enjoying a confident, worry-free lifestyle after intimate wellness care planning"
               fill
               sizes="(max-width: 640px) 70vw, (max-width: 1024px) 272px, 304px"

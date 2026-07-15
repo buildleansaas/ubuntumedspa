@@ -2240,7 +2240,7 @@ export const procedures = [
         id: "sms-01",
         quote: "Omg this is amazing and like took effect immediately! Thanks again!!",
         attribution: "Hyperhidrosis Treatment patient",
-        imageSrc: "/testimonials/hyperhidrosis-treatment/hyperhidrosis-01.webp",
+        imageSrc: "/testimonials/hyperhidrosis-treatment/hyperhidrosis-01.png",
       },
     ],
     ailmentsHeadline:

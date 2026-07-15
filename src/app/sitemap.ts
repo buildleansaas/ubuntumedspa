@@ -3,6 +3,7 @@ import { MetadataRoute } from "next";
 import { procedures, products } from "data";
 import { getPublishedAilmentEntries } from "lib/ailments/get-ailment-page-data";
 import { getPublishedBlogPosts } from "lib/blog";
+import { getPublishedEvents } from "lib/events";
 import { publishedEarPiercingIntentPages } from "lib/ear-piercing-intents";
 import { localInjectableServicePages } from "lib/local-injectable-service-pages";
 import { publishedEarPiercingAreas } from "lib/local-service-areas";
@@ -12,75 +13,59 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const ailmentPages = await getPublishedAilmentEntries();
   const publishedProcedures = procedures.filter((procedure) => !("published" in procedure) || procedure.published !== false);
   const publishedProducts = products.filter((product) => !("published" in product) || product.published !== false);
+  const publishedEvents = getPublishedEvents();
 
   const urls = [
     {
       url: "https://www.williamsburgmedspa.com",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/consult",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/blog",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/procedures",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/products",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/staff/jenny-coleman",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/locations",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/locations/williamsburg-va",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/locations/james-city-county-va",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/locations/yorktown-va",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/locations/newport-news-va",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/locations/toano-va",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/locations/norge-va",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/locations/lightfoot-va",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/locations/new-town-va",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/locations/kingsmill-va",
-      lastModified: new Date(),
     },
     {
       url: "https://www.williamsburgmedspa.com/locations/fords-colony-va",
-      lastModified: new Date(),
     },
     ...articles.map((article) => ({
       url: `https://www.williamsburgmedspa.com${article.href}`,
@@ -88,27 +73,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...publishedProcedures.map((procedure) => ({
       url: `https://www.williamsburgmedspa.com/procedures/${procedure.slug}`,
-      lastModified: new Date(),
     })),
     ...localInjectableServicePages.map((page) => ({
       url: `https://www.williamsburgmedspa.com/procedures/${page.procedureSlug}/near/${page.areaSlug}`,
-      lastModified: new Date(),
     })),
     ...publishedEarPiercingAreas.map((area) => ({
       url: `https://www.williamsburgmedspa.com/procedures/blomdahl-ear-piercing/near/${area.slug}`,
-      lastModified: new Date(),
     })),
     ...publishedEarPiercingIntentPages.map((page) => ({
       url: `https://www.williamsburgmedspa.com/procedures/blomdahl-ear-piercing/for/${page.slug}`,
-      lastModified: new Date(),
     })),
     ...ailmentPages.map(({ procedureSlug, ailmentSlug }) => ({
       url: `https://www.williamsburgmedspa.com/procedures/${procedureSlug}/for/${ailmentSlug}`,
-      lastModified: new Date(),
     })),
     ...publishedProducts.map((product) => ({
       url: `https://www.williamsburgmedspa.com/products/${product.slug}`,
-      lastModified: new Date(),
+    })),
+    {
+      url: "https://www.williamsburgmedspa.com/events",
+    },
+    ...publishedEvents.map((event) => ({
+      url: `https://www.williamsburgmedspa.com${event.canonicalPath}`,
     })),
   ];
 

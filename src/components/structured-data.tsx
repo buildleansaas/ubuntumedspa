@@ -1,4 +1,3 @@
-import Script from "next/script";
 
 const SITE_NAME = "Williamsburg Med Spa";
 const DEFAULT_DESCRIPTION = "";
@@ -375,9 +374,11 @@ const getMarkup = ({
 };
 
 const StructuredData = (props: StructuredDataProps) => (
-  <Script id={`StructureData-${props.id || props.type}`} type="application/ld+json">
-    {JSON.stringify(getMarkup(props))}
-  </Script>
+  <script
+    id={`StructuredData-${props.id || props.type}`}
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{ __html: JSON.stringify(getMarkup(props)).replace(/</g, "\\u003c") }}
+  />
 );
 
 export default StructuredData;
