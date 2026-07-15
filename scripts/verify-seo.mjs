@@ -2,7 +2,8 @@
 
 import { URL } from "node:url";
 
-const baseUrl = new URL(process.argv[2] || process.env.SEO_BASE_URL || "http://127.0.0.1:3000");
+const targetArg = process.argv.slice(2).find((argument) => !argument.startsWith("-"));
+const baseUrl = new URL(targetArg || process.env.SEO_BASE_URL || "http://127.0.0.1:3000");
 const canonicalOrigin = "https://www.williamsburgmedspa.com";
 const failures = [];
 const warnings = [];
@@ -60,6 +61,7 @@ for (let index = 0; index < sitemapUrls.length; index += 8) {
 }
 
 const internalPaths = new Set();
+const imagePaths = new Set();
 let jsonLdBlocks = 0;
 for (const { canonicalUrl, response, html } of pages) {
   const expectedPath = normalizePath(canonicalUrl);
@@ -82,13 +84,28 @@ for (const { canonicalUrl, response, html } of pages) {
 
   const jsonLd = extractAll(html, /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi);
   if (!jsonLd.length) fail(`${canonicalUrl} has no server-rendered JSON-LD`);
+  let medicalBusinessBlocks = 0;
   for (const raw of jsonLd) {
     try {
-      JSON.parse(unescapeHtml(raw));
+      const parsed = JSON.parse(unescapeHtml(raw));
+      const schemas = Array.isArray(parsed?.["@graph"]) ? parsed["@graph"] : [parsed];
+      medicalBusinessBlocks += schemas.filter((schema) => schema?.["@type"] === "MedicalBusiness").length;
+      for (const faqSchema of schemas.filter((schema) => schema?.["@type"] === "FAQPage")) {
+        const questions = (faqSchema.mainEntity || []).map((entry) => entry?.name).filter(Boolean);
+        if (new Set(questions).size !== questions.length) fail(`${canonicalUrl} has duplicate FAQ schema questions`);
+      }
       jsonLdBlocks += 1;
     } catch (error) {
       fail(`${canonicalUrl} has invalid JSON-LD: ${error.message}`);
     }
+  }
+  if (medicalBusinessBlocks !== 1) fail(`${canonicalUrl} has ${medicalBusinessBlocks} MedicalBusiness schema blocks`);
+
+  for (const rawSrc of extractAll(html, /<img[^>]+src=["']([^"']+)["'][^>]*>/gi)) {
+    const src = unescapeHtml(rawSrc);
+    if (/^(?:data:|blob:)/i.test(src)) continue;
+    const resolved = new URL(src, baseUrl);
+    if (resolved.origin === baseUrl.origin) imagePaths.add(`${resolved.pathname}${resolved.search}`);
   }
 
   for (const rawHref of extractAll(html, /<a[^>]+href=["']([^"']+)["'][^>]*>/gi)) {
@@ -107,6 +124,16 @@ for (const { canonicalUrl, response, html } of pages) {
 for (const path of internalPaths) {
   const response = await fetchLocal(path, { redirect: "manual" });
   if (response.status >= 400) fail(`internal link ${path} returned ${response.status}`);
+}
+
+for (const path of imagePaths) {
+  const response = await fetch(new URL(path, baseUrl));
+  if (!response.ok) {
+    fail(`rendered image ${path} returned ${response.status}`);
+    continue;
+  }
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.startsWith("image/")) fail(`rendered image ${path} returned ${contentType || "no content type"}`);
 }
 
 const affiliateResponse = await fetch(new URL("/affiliates", baseUrl), { redirect: "manual" });
@@ -152,5 +179,5 @@ if (failures.length) {
 }
 
 console.log(
-  `SEO verification passed: ${sitemapUrls.length} sitemap URLs, ${internalPaths.size} internal paths, ${jsonLdBlocks} server-rendered JSON-LD blocks, 0 failures.`
+  `SEO verification passed: ${sitemapUrls.length} sitemap URLs, ${internalPaths.size} internal paths, ${imagePaths.size} rendered image URLs, ${jsonLdBlocks} server-rendered JSON-LD blocks, 0 failures.`
 );
