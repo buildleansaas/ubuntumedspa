@@ -43,7 +43,9 @@ export const ProductCard = ({ name, image, headline, subline, slug }: Props) => 
       <div className="flex flex-wrap items-end gap-2">
         {catalogItem && <AddToCartButton slug={catalogItem.slug} kind={catalogItem.kind} quantity={catalogItem.minQuantity} />}
         <Button asChild variant="secondary">
-          <Link href={`/products/${slug}`}>Learn More</Link>
+          <Link href={`/products/${slug}`}>
+            Learn More<span className="sr-only"> about {humanizeMedicalCopy(headline)}</span>
+          </Link>
         </Button>
       </div>
     </div>
