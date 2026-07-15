@@ -70,7 +70,9 @@ export const ProcedureCard = ({ product }: Props) => {
       <div className="flex flex-wrap items-end gap-2">
         {catalogItem && <AddToCartButton slug={catalogItem.slug} kind={catalogItem.kind} quantity={catalogItem.minQuantity} />}
         <Button asChild variant="secondary">
-          <Link href={`/procedures/${product.slug}`}>Learn More</Link>
+          <Link href={`/procedures/${product.slug}`}>
+            Learn More<span className="sr-only"> about {humanizeMedicalCopy(product.headline)}</span>
+          </Link>
         </Button>
       </div>
     </div>

@@ -48,7 +48,7 @@ export default function OShotCallout() {
                 Book Now
               </InstantCheckoutButton>
               <Button asChild variant="secondary">
-                <Link href="/procedures/o-shot">Learn More</Link>
+                <Link href="/procedures/o-shot">Explore O-Shot Care</Link>
               </Button>
             </div>
           </div>
