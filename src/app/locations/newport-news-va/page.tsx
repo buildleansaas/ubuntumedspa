@@ -76,7 +76,7 @@ export default function NewportNewsPage() {
           </div>
         </div>
         <aside className="rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm">
-          <h2 className="text-xl font-light mb-3">Quick read</h2>
+          <h2 className="text-xl font-light mb-3">Plan your visit</h2>
           <dl className="space-y-3 text-sm text-base-content/75">
             <div>
               <dt className="font-medium text-base-content">Best for</dt>

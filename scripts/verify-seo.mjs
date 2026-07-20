@@ -166,7 +166,7 @@ for (const owner of [
   const pattern = new RegExp(`href=["']${owner.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`);
   if (!pattern.test(newportNews)) fail(`Newport News owner does not directly link to ${owner}`);
 }
-if (/Popular searches|Easy internal links/.test(newportNews)) {
+if (/Quick read|Popular searches|Easy internal links/.test(newportNews)) {
   fail("Newport News owner exposes operator-facing SEO language");
 }
 if (!newportNews.includes("How do I choose between Botox/Xeomin and dermal filler?")) {
