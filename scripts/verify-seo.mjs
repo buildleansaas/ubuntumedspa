@@ -78,8 +78,12 @@ for (const { canonicalUrl, response, html } of pages) {
   const canonicalMatches = extractAll(html, /<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["'][^>]*>/gi);
   if (canonicalMatches.length !== 1) {
     fail(`${canonicalUrl} has ${canonicalMatches.length} canonical links`);
-  } else if (normalizePath(unescapeHtml(canonicalMatches[0])) !== expectedPath) {
-    fail(`${canonicalUrl} canonical points to ${canonicalMatches[0]}`);
+  } else {
+    const renderedCanonical = unescapeHtml(canonicalMatches[0]);
+    const expectedCanonical = `${canonicalOrigin}${expectedPath}`;
+    if (renderedCanonical !== expectedCanonical) {
+      fail(`${canonicalUrl} canonical points to ${renderedCanonical}, expected ${expectedCanonical}`);
+    }
   }
 
   const jsonLd = extractAll(html, /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi);
