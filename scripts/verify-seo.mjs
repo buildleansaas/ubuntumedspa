@@ -224,6 +224,27 @@ const ownerPageExpectations = {
     forbiddenHtml: [/id=["']prp-hair-restoration-quantity["']/],
     offer: { name: "PRP Hair Restoration", price: "600", currency: "USD" },
   },
+  "/locations/james-city-county-va": {
+    required: [
+      "Med Spa Near James City County, VA",
+      "Choose the right treatment starting point",
+      "Consultation-led care close to James City County",
+      "3900 Powhatan Parkway, Williamsburg, VA 23188",
+      "James City County med spa visit FAQs",
+      "Book a Consultation",
+    ],
+    forbidden: ["search for a med spa near me", "page should answer", "pages tied to James City County intent"],
+    requiredHtml: [
+      /href=["']\/consult\?utm_source=website&amp;utm_medium=location_page&amp;utm_campaign=james_city_county["']/,
+      /href=["']\/procedures\/botox["']/,
+      /href=["']\/procedures\/xeomin["']/,
+      /href=["']\/procedures\/filler["']/,
+      /href=["']\/procedures\/prp-hair-restoration["']/,
+      /href=["']\/procedures\/hyperhidrosis-treatment["']/,
+      /href=["']\/procedures\/blomdahl-ear-piercing\/near\/james-city-county-va["']/,
+    ],
+    requiredSchemas: ["FAQPage"],
+  },
 };
 for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
   const page = pages.find((candidate) => normalizePath(candidate.canonicalUrl) === path);
@@ -245,10 +266,15 @@ for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
     if (forbiddenHtml.test(page.html)) fail(`${path} contains forbidden owner-page HTML: ${forbiddenHtml}`);
   }
 
-  const serviceSchemas = extractAll(page.html, /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)
+  const schemas = extractAll(page.html, /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)
     .map((raw) => JSON.parse(unescapeHtml(raw)))
-    .flatMap((schema) => (Array.isArray(schema?.["@graph"]) ? schema["@graph"] : [schema]))
-    .filter((schema) => schema?.["@type"] === "Service");
+    .flatMap((schema) => (Array.isArray(schema?.["@graph"]) ? schema["@graph"] : [schema]));
+  const serviceSchemas = schemas.filter((schema) => schema?.["@type"] === "Service");
+  for (const requiredSchema of expectation.requiredSchemas || []) {
+    if (!schemas.some((schema) => schema?.["@type"] === requiredSchema)) {
+      fail(`${path} is missing required ${requiredSchema} schema`);
+    }
+  }
   if (expectation.offer) {
     const matchingServices = serviceSchemas.filter((schema) => schema?.name === expectation.offer.name);
     if (matchingServices.length !== 1) {
@@ -274,6 +300,7 @@ const priorityPaths = [
   "/events",
   "/events/botox-party",
   "/locations/williamsburg-va",
+  "/locations/james-city-county-va",
   "/blog",
   "/consult",
 ];
