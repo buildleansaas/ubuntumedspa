@@ -49,6 +49,7 @@ const PROCEDURE_INTERESTS: Record<string, string[]> = {
   "prp-face-lift": ["PRP Face Lift"],
   "prp-facelift": ["PRP Face Lift"],
   "hair-restoration": ["Hair Restoration"],
+  "prp-hair-restoration": ["Hair Restoration"],
   "microneedling-with-prp": ["Microneedling with PRP"],
   "o-shot": ["O-Shot"],
   "p-shot": ["P-Shot"],

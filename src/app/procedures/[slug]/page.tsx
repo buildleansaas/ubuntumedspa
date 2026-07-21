@@ -160,6 +160,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
   const consultationSupportCopy =
     procedure.slug === "prp-breast-lift"
       ? "If you have not completed a candidacy consultation, book that first. After Jenny confirms the treatment fits your goals, you can pay and choose one treatment time."
+      : procedure.slug === "prp-hair-restoration"
+        ? "Start with a hair-loss consultation before paying. Jenny reviews your pattern, timeline, scalp symptoms, health history, medications, and whether PRP, medical evaluation, or a transplant specialist is the more useful next step."
       : procedure.slug === "hyperhidrosis-treatment"
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
       : procedure.slug === "o-shot"
@@ -274,6 +276,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                         ? "/consult?procedure=microneedling-with-prp&utm_source=website&utm_medium=procedure_page&utm_campaign=microneedling_prp"
                         : procedure.slug === "prp-breast-lift"
                           ? "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift"
+                          : procedure.slug === "prp-hair-restoration"
+                            ? "/consult?procedure=prp-hair-restoration&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_hair_restoration"
                         : "/consult"
                   }
                 >
@@ -283,7 +287,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                       ? "Book Microneedling with PRP Consult"
                       : procedure.slug === "prp-breast-lift"
                         ? "Book a Private PRP Breast Consultation"
-                      : "Book a Consultation"}
+                        : procedure.slug === "prp-hair-restoration"
+                          ? "Book a PRP Hair Consultation"
+                        : "Book a Consultation"}
                 </Link>
               </Button>
               <Button asChild variant="secondary">
@@ -356,6 +362,62 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           </section>
         )}
 
+        {procedure.slug === "prp-hair-restoration" && (
+          <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="prp-hair-fit">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Choose the right next step</p>
+            <h2 id="prp-hair-fit" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
+              Is PRP a reasonable fit for your hair-loss pattern?
+            </h2>
+            <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
+              <p>
+                Research suggests platelet-rich plasma may improve hair density for some people with pattern hair loss, but response varies and
+                treatment protocols are not standardized. A consultation can review the pattern and whether medical or dermatology evaluation
+                should come before a cosmetic treatment.
+              </p>
+              <p>
+                PRP may support existing follicles. It does not create new follicles in a bald area, diagnose the cause of shedding, or move follicles
+                the way hair transplant surgery does.
+              </p>
+            </div>
+
+            <ul className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 md:grid-cols-3">
+              {[
+                ["PRP may belong in the conversation", "Gradual thinning, a widening part, lower density, or earlier pattern changes where follicles may still be active."],
+                ["Medical evaluation may come first", "Sudden or patchy loss, rapid shedding, scalp pain, redness, scaling, or a new medication or health change."],
+                ["A transplant specialist may be more useful", "Advanced bald areas or a goal that requires moving follicles to rebuild coverage or a hairline."],
+              ].map(([title, copy]) => (
+                <li key={title}>
+                  <h3 className="font-semibold text-base-content">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-base-content/70">{copy}</p>
+                </li>
+              ))}
+            </ul>
+
+            <ol className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 sm:grid-cols-2">
+              {[
+                ["01", "Consultation and pattern review", "Review when the change started, where it is happening, scalp symptoms, health history, medications, prior treatment, and your goals."],
+                ["02", "Blood draw and PRP preparation", "A small blood sample is processed to prepare the platelet-rich portion used for treatment."],
+                ["03", "Targeted scalp treatment", "Jenny confirms the selected scalp areas and reviews what to expect before PRP is placed with small injections."],
+                ["04", "Aftercare and next-step plan", "Leave with guidance for temporary tenderness, redness, swelling, bruising, or pinpoint bleeding and when to contact the office."],
+              ].map(([number, title, copy]) => (
+                <li key={number} className="grid grid-cols-[2.5rem_1fr] gap-3">
+                  <span className="text-sm font-semibold tracking-[0.12em] text-primary">{number}</span>
+                  <div>
+                    <h3 className="font-semibold text-base-content">{title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-base-content/70">{copy}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <p className="mt-8 border-t border-base-300 pt-6 text-sm leading-relaxed text-base-content/70">
+              PRP hair restoration is <strong className="font-semibold text-base-content">{catalogItem?.displayPrice}</strong>. Book the consultation
+              first if Jenny has not already reviewed your candidacy. If PRP fits your plan, purchase one session and choose one appointment time
+              after checkout.
+            </p>
+          </section>
+        )}
+
         <section className="mx-auto max-w-5xl pt-10 text-center" id="pricing">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
             {catalogItem ? "Pricing & booking" : "Treatment planning"}
@@ -402,6 +464,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               minQuantity={catalogItem.minQuantity}
               maxQuantity={catalogItem.maxQuantity}
               fulfillment={catalogItem.fulfillment}
+              purchaseLabel={catalogItem.purchaseLabel}
               customerNote={catalogItem.customerNote}
             />
           )}
@@ -409,7 +472,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         <section className="mx-auto mt-10 max-w-4xl text-left">
           <p className="text-base leading-relaxed text-base-content/75">{humanizeMedicalCopy(procedure.description)}</p>
-          {procedure.slug !== "prp-breast-lift" && (
+          {procedure.slug !== "prp-breast-lift" && procedure.slug !== "prp-hair-restoration" && (
             <p className="mt-3 text-sm leading-relaxed text-base-content/65">{consultationSupportCopy}</p>
           )}
           <p className="mt-4 text-sm text-base-content/70">
@@ -537,6 +600,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
             {procedure.slug === "prp-breast-lift" ? (
               "What this treatment approach involves"
+            ) : procedure.slug === "prp-hair-restoration" ? (
+              "What PRP hair restoration may support"
             ) : (
               <><span className="font-bold">{procedure.name}</span> Benefits</>
             )}

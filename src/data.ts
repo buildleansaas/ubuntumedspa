@@ -720,7 +720,7 @@ export const procedures = [
     blogHeadline:
       "Researching PRP hair restoration, thinning hair treatment, or hair transplant alternatives near Williamsburg? Learn when PRP may fit, when to seek medical evaluation first, and what to ask during consultation.",
     benefitsHeadline:
-      "PRP hair restoration is best framed as non-surgical support for selected thinning-hair concerns, not a guaranteed regrowth promise. A careful consult helps match your hair-loss pattern with the right next step.",
+      "PRP may support hair density for selected thinning patterns, but response varies. A careful consultation helps you choose between PRP, medical evaluation, and a transplant specialist without promising regrowth.",
     benefits: [
       {
         emoji: "🔎",
@@ -871,7 +871,7 @@ export const procedures = [
       {
         question: "How many PRP hair sessions are usually discussed?",
         answer:
-          "Plans vary by candidacy, goals, and response. Many PRP conversations include an initial series followed by maintenance discussion, but Jenny reviews timing and expectations during consultation instead of promising a fixed result.",
+          "There is no universal session count. Published PRP protocols vary, so Jenny confirms whether a series makes sense, how sessions would be spaced, and when progress should be reassessed only after reviewing your pattern and candidacy.",
       },
       {
         question: "When might Jenny recommend medical evaluation before PRP?",
