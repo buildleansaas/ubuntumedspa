@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { readFile } from "node:fs/promises";
 import { URL } from "node:url";
 
 const targetArg = process.argv.slice(2).find((argument) => !argument.startsWith("-"));
@@ -10,6 +11,10 @@ const warnings = [];
 
 const fail = (message) => failures.push(message);
 const warn = (message) => warnings.push(message);
+const consultFormSource = await readFile(new URL("../src/app/consult/consult-form.tsx", import.meta.url), "utf8");
+if (!/"prp-hair-restoration"\s*:\s*\["Hair Restoration"\]/.test(consultFormSource)) {
+  fail("consult form does not map procedure=prp-hair-restoration to the Hair Restoration interest");
+}
 const normalizePath = (value) => {
   const url = new URL(value, canonicalOrigin);
   const path = url.pathname === "/" ? "/" : url.pathname.replace(/\/$/, "");
@@ -201,7 +206,7 @@ const ownerPageExpectations = {
     forbidden: ["even a lifetime", "safe and effective way", "stimulating the growth of new blood vessels and fatty tissue"],
     requiredHtml: [/href=["']\/consult\?procedure=prp-breast-lift&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=prp_breast_lift["']/],
     forbiddenHtml: [/id=["']prp-breast-lift-quantity["']/],
-    offer: { price: "1800", currency: "USD" },
+    offer: { name: "PRP Breast Lift", price: "1800", currency: "USD" },
   },
   "/procedures/prp-hair-restoration": {
     required: [
@@ -211,12 +216,13 @@ const ownerPageExpectations = {
       "Medical evaluation may come first",
       "$600 per treatment",
       "purchase one session and choose one appointment time after checkout",
+      "For patients cleared to proceed",
       "Book a PRP Hair Consultation",
     ],
     forbidden: ["guaranteed regrowth", "creates new hair follicles", "permanent hair restoration", "little to no downtime"],
     requiredHtml: [/href=["']\/consult\?procedure=prp-hair-restoration&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=prp_hair_restoration["']/],
     forbiddenHtml: [/id=["']prp-hair-restoration-quantity["']/],
-    offer: { price: "600", currency: "USD" },
+    offer: { name: "PRP Hair Restoration", price: "600", currency: "USD" },
   },
 };
 for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
@@ -244,9 +250,13 @@ for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
     .flatMap((schema) => (Array.isArray(schema?.["@graph"]) ? schema["@graph"] : [schema]))
     .filter((schema) => schema?.["@type"] === "Service");
   if (expectation.offer) {
-    const offer = serviceSchemas[0]?.offers;
+    const matchingServices = serviceSchemas.filter((schema) => schema?.name === expectation.offer.name);
+    if (matchingServices.length !== 1) {
+      fail(`${path} must render exactly one ${expectation.offer.name} Service schema; found ${matchingServices.length}`);
+    }
+    const offer = matchingServices[0]?.offers;
     if (String(offer?.price) !== expectation.offer.price || offer?.priceCurrency !== expectation.offer.currency) {
-      fail(`${path} Service schema is missing the ${expectation.offer.price} ${expectation.offer.currency} offer`);
+      fail(`${path} ${expectation.offer.name} Service schema is missing the ${expectation.offer.price} ${expectation.offer.currency} offer`);
     }
   }
 }

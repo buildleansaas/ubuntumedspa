@@ -371,11 +371,11 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
               <p>
                 Research suggests platelet-rich plasma may improve hair density for some people with pattern hair loss, but response varies and
-                treatment protocols are not standardized. A consultation should identify what kind of hair loss you may be dealing with before a
-                cosmetic treatment is chosen.
+                treatment protocols are not standardized. A consultation can review the pattern and whether medical or dermatology evaluation
+                should come before a cosmetic treatment.
               </p>
               <p>
-                PRP supports existing follicles. It does not create new follicles in a bald area, diagnose the cause of shedding, or move follicles
+                PRP may support existing follicles. It does not create new follicles in a bald area, diagnose the cause of shedding, or move follicles
                 the way hair transplant surgery does.
               </p>
             </div>
@@ -397,7 +397,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               {[
                 ["01", "Consultation and pattern review", "Review when the change started, where it is happening, scalp symptoms, health history, medications, prior treatment, and your goals."],
                 ["02", "Blood draw and PRP preparation", "A small blood sample is processed to prepare the platelet-rich portion used for treatment."],
-                ["03", "Targeted scalp treatment", "Jenny reviews the selected scalp areas and comfort plan before PRP is placed with small injections."],
+                ["03", "Targeted scalp treatment", "Jenny confirms the selected scalp areas and reviews what to expect before PRP is placed with small injections."],
                 ["04", "Aftercare and next-step plan", "Leave with guidance for temporary tenderness, redness, swelling, bruising, or pinpoint bleeding and when to contact the office."],
               ].map(([number, title, copy]) => (
                 <li key={number} className="grid grid-cols-[2.5rem_1fr] gap-3">
@@ -411,9 +411,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </ol>
 
             <p className="mt-8 border-t border-base-300 pt-6 text-sm leading-relaxed text-base-content/70">
-              One PRP hair treatment session is <strong className="font-semibold text-base-content">{catalogItem?.displayPrice}</strong>. Book the
-              consultation first if Jenny has not already reviewed your candidacy. If PRP fits your plan, purchase one session and choose one
-              appointment time after checkout.
+              PRP hair restoration is <strong className="font-semibold text-base-content">{catalogItem?.displayPrice}</strong>. Book the consultation
+              first if Jenny has not already reviewed your candidacy. If PRP fits your plan, purchase one session and choose one appointment time
+              after checkout.
             </p>
           </section>
         )}
@@ -464,6 +464,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               minQuantity={catalogItem.minQuantity}
               maxQuantity={catalogItem.maxQuantity}
               fulfillment={catalogItem.fulfillment}
+              purchaseLabel={catalogItem.purchaseLabel}
               customerNote={catalogItem.customerNote}
             />
           )}
@@ -471,7 +472,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         <section className="mx-auto mt-10 max-w-4xl text-left">
           <p className="text-base leading-relaxed text-base-content/75">{humanizeMedicalCopy(procedure.description)}</p>
-          {procedure.slug !== "prp-breast-lift" && (
+          {procedure.slug !== "prp-breast-lift" && procedure.slug !== "prp-hair-restoration" && (
             <p className="mt-3 text-sm leading-relaxed text-base-content/65">{consultationSupportCopy}</p>
           )}
           <p className="mt-4 text-sm text-base-content/70">

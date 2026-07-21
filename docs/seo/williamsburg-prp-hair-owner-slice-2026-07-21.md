@@ -1,7 +1,7 @@
 # PRP Hair Restoration owner-page slice
 
-Date: 2026-07-21  
-Owner URL: `https://www.williamsburgmedspa.com/procedures/prp-hair-restoration`  
+Date: 2026-07-21
+Owner URL: `https://www.williamsburgmedspa.com/procedures/prp-hair-restoration`
 Parent sequence: PRP Breast Lift owner page, PR #73
 
 ## Release state
@@ -10,7 +10,7 @@ This is the next prepared owner-page slice in the protected Williamsburg sequenc
 
 ## Current owner-page evidence
 
-Search Console property: `sc-domain:williamsburgmedspa.com`  
+Search Console property: `sc-domain:williamsburgmedspa.com`
 Latest complete date used: 2026-07-17
 
 | Window | Clicks | Impressions | CTR | Average position |
