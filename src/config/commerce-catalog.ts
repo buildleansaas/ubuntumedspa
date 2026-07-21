@@ -74,12 +74,14 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     displayPrice: "$1,800",
     quantityLabel: "treatment",
     minQuantity: 1,
-    maxQuantity: 10,
+    maxQuantity: 1,
     requiresScheduling: true,
     fulfillment: "appointment",
     imagePath: "/procedure/prp-breast-lift-consultation-confidence.webp",
     stripeProductKey: "wms_procedure_prp_breast_lift",
     stripePriceLookupKey: "wms_procedure_prp_breast_lift_1800_v1",
+    customerNote:
+      "If you have not completed a candidacy consultation, book that first. Pay only after Jenny confirms the treatment fits your goals.",
   },
   {
     slug: "prp-hair-restoration",

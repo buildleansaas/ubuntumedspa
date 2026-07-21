@@ -158,7 +158,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
   const featuredGuideCta = featuredGuide ? featuredGuideCopy[procedure.slug] : undefined;
   const relatedLinks = relatedProcedureLinks[procedure.slug] ?? [];
   const consultationSupportCopy =
-    procedure.slug === "hyperhidrosis-treatment"
+    procedure.slug === "prp-breast-lift"
+      ? "If you have not completed a candidacy consultation, book that first. After Jenny confirms the treatment fits your goals, you can pay and choose one treatment time."
+      : procedure.slug === "hyperhidrosis-treatment"
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
       : procedure.slug === "o-shot"
         ? "Consultation covers symptoms, candidacy, treatment areas, expected timing, and whether O-Shot® care fits your intimate wellness or bladder leakage concerns."
@@ -179,7 +181,13 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Procedures", procedure.name]} />
       <StructuredData
         type="Service"
-        service={{ name: procedure.name, description: procedure.description, areaServed: "Williamsburg, VA" }}
+        service={{
+          name: procedure.name,
+          description: procedure.description,
+          areaServed: "Williamsburg, VA",
+          price: catalogItem ? String(catalogItem.unitAmountCents / 100) : undefined,
+          priceCurrency: catalogItem ? "USD" : undefined,
+        }}
       />
       <StructuredData type="FAQ" faqs={procedure.faqs} />
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
@@ -264,6 +272,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                       ? "/consult?procedure=blomdahl-ear-piercing&utm_source=website&utm_medium=procedure_page&utm_campaign=ear_piercing"
                       : procedure.slug === "microneedling-with-prp"
                         ? "/consult?procedure=microneedling-with-prp&utm_source=website&utm_medium=procedure_page&utm_campaign=microneedling_prp"
+                        : procedure.slug === "prp-breast-lift"
+                          ? "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift"
                         : "/consult"
                   }
                 >
@@ -271,6 +281,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                     ? "Book Blomdahl Ear Piercing"
                     : procedure.slug === "microneedling-with-prp"
                       ? "Book Microneedling with PRP Consult"
+                      : procedure.slug === "prp-breast-lift"
+                        ? "Book a Private PRP Breast Consultation"
                       : "Book a Consultation"}
                 </Link>
               </Button>
@@ -300,6 +312,49 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </div>
           )}
         </section>
+
+        {procedure.slug === "prp-breast-lift" && (
+          <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="prp-breast-lift-expectations">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">What to expect</p>
+            <h2 id="prp-breast-lift-expectations" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
+              What a PRP Breast Lift can and cannot do
+            </h2>
+            <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
+              <p>
+                Prepared from your own blood, platelet-rich plasma is injected according to the plan you make with Jenny. Published evidence for
+                cosmetic breast benefits is limited, so any change in appearance or skin quality is uncertain.
+              </p>
+              <p>
+                This treatment does not replace a surgical breast lift or breast augmentation. It does not remove loose skin, reposition breast
+                tissue, or create implant-like volume. Your consultation is where you can compare the change you want with what this treatment can
+                realistically support.
+              </p>
+            </div>
+
+            <ol className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 sm:grid-cols-2">
+              {[
+                ["01", "Private consultation", "Review your goals, breast history, prior procedures, current symptoms, and whether PRP fits the concern you want to address."],
+                ["02", "Blood draw and preparation", "A small blood sample is processed to prepare the platelet-rich plasma used for your treatment."],
+                ["03", "Personalized treatment", "Jenny reviews the selected areas, comfort plan, and injection approach with you before treatment begins."],
+                ["04", "Aftercare and follow-up", "Leave with guidance for tenderness, swelling, bruising, activity, and when to contact the office."],
+              ].map(([number, title, copy]) => (
+                <li key={number} className="grid grid-cols-[2.5rem_1fr] gap-3">
+                  <span className="text-sm font-semibold tracking-[0.12em] text-primary">{number}</span>
+                  <div>
+                    <h3 className="font-semibold text-base-content">{title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-base-content/70">{copy}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <p className="mt-8 border-t border-base-300 pt-6 text-sm leading-relaxed text-base-content/70">
+              Full upfront payment for one treatment visit is <strong className="font-semibold text-base-content">{catalogItem?.displayPrice}</strong>.
+              If you have not completed a candidacy consultation, book that first. After Jenny confirms fit and payment is complete, choose one
+              treatment time.
+            </p>
+          </section>
+        )}
 
         <section className="mx-auto max-w-5xl pt-10 text-center" id="pricing">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
@@ -354,7 +409,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         <section className="mx-auto mt-10 max-w-4xl text-left">
           <p className="text-base leading-relaxed text-base-content/75">{humanizeMedicalCopy(procedure.description)}</p>
-          <p className="mt-3 text-sm leading-relaxed text-base-content/65">{consultationSupportCopy}</p>
+          {procedure.slug !== "prp-breast-lift" && (
+            <p className="mt-3 text-sm leading-relaxed text-base-content/65">{consultationSupportCopy}</p>
+          )}
           <p className="mt-4 text-sm text-base-content/70">
             Serving patients from Williamsburg, James City County, Yorktown, Newport News, Toano, Norge, Lightfoot, and nearby communities. {" "}
             <Link href="/locations" className="link link-primary">
@@ -478,7 +535,11 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         <div className="my-32 text-center max-w-5xl mx-auto" id="benefits">
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
-            <span className="font-bold">{procedure.name}</span> Benefits
+            {procedure.slug === "prp-breast-lift" ? (
+              "What this treatment approach involves"
+            ) : (
+              <><span className="font-bold">{procedure.name}</span> Benefits</>
+            )}
           </h2>
           <p className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.benefitsHeadline)}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -552,7 +613,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
             Frequently Asked Questions about <span className="font-bold">{procedure.name}</span>
           </h2>
-          <h2 className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.faqHeadline)}</h2>
+          <p className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.faqHeadline)}</p>
           <Accordion type="single" collapsible className="text-left mb-12">
             {procedure.faqs.map(({ question, answer }) => (
               <AccordionItem key={question} value={question}>
