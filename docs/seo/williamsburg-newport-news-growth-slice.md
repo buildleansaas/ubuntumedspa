@@ -63,6 +63,7 @@ The page is currently submitted and indexed. Google-selected and user-declared c
 - Add matching FAQ structured data.
 - Strengthen direct links to the existing Botox, filler, PRP, medical ear-piercing, consultation, location, and directions owners.
 - Extend automated SEO verification for the Newport News route.
+- Pin preview-environment canonicals to the production `www` origin in `src/lib/seo.ts` so preview QA verifies the URL Google should index. This does not change production output.
 
 ### Explicitly frozen
 
@@ -140,13 +141,14 @@ Checks:
 
 Expected pre-implementation result: targeted SEO verification fails on the missing patient-choice/FAQ contract and operator-facing labels.
 
-### Commit 2: Implement the focused page improvement
+### Commit 2: Implement the focused page improvement and preview-canonical correction
 
 Files:
 
 - `src/app/locations/newport-news-va/page.tsx`
+- `src/lib/seo.ts`
 
-No other customer-facing route may change.
+No other customer-facing production route may change. The shared helper correction is limited to removing preview-host canonical generation; production already uses the same `www` origin.
 
 ### Commit 3: Verification and plan receipt
 
@@ -173,7 +175,7 @@ Implementation may be prepared and reviewed in a draft PR immediately. Productio
 Merge only if all are true:
 
 1. D7 checkpoint does not show a protected-owner rollback condition.
-2. PR scope is limited to this owner page, SEO verification, and this plan.
+2. PR scope is limited to this owner page, SEO verification, this plan, and the two-line preview-canonical helper correction documented above.
 3. Preview desktop and mobile QA pass.
 4. CI and Vercel preview checks pass.
 5. Metadata, H1, URL, and canonical remain unchanged.
