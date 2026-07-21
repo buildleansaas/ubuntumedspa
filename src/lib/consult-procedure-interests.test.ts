@@ -11,3 +11,11 @@ test("PRP Breast Lift consultation URLs map to the exact visible interest", () =
   assert.ok(interests.includes("PRP Breast Lift"));
   assert.ok(!interests.includes("Breast Lift"));
 });
+
+test("PRP Hair Restoration consultation URLs map to the Hair Restoration interest", () => {
+  assert.deepEqual(getProcedureInterests("prp-hair-restoration"), ["Hair Restoration"]);
+  assert.deepEqual(getProcedureInterests("hair-restoration"), ["Hair Restoration"]);
+
+  const interests = FORM_INPUTS.find((input) => input.id === "interests")?.options ?? [];
+  assert.ok(interests.includes("Hair Restoration"));
+});

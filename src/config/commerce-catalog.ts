@@ -23,6 +23,7 @@ export type CatalogItemConfig = {
   stripeProductKey: string;
   stripePriceLookupKey: string;
   schedulingCategory?: "consult" | "paid_procedure";
+  purchaseLabel?: string;
   customerNote?: string;
 };
 
@@ -100,6 +101,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     imagePath: "/procedure/hair-restoration/prp-hair-restoration-consultation.webp",
     stripeProductKey: "wms_procedure_prp_hair_restoration",
     stripePriceLookupKey: "wms_procedure_prp_hair_restoration_600_v1",
+    purchaseLabel: "For patients cleared to proceed",
     customerNote:
       "If you have not completed a hair-loss consultation, book that first. Purchase one session only after Jenny confirms PRP is a reasonable fit and discusses your next-step plan.",
   },
