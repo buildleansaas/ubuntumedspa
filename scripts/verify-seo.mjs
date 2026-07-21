@@ -705,6 +705,22 @@ const ownerPageExpectations = {
     requiredConsultHref:
       "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift",
     forbiddenHtml: [/id=["']prp-breast-lift-quantity["']/],
+    offer: { price: "1800", currency: "USD" },
+  },
+  "/procedures/prp-hair-restoration": {
+    required: [
+      "Is PRP a reasonable fit for your hair-loss pattern?",
+      "Research suggests platelet-rich plasma may improve hair density for some people with pattern hair loss",
+      "does not create new follicles in a bald area",
+      "Medical evaluation may come first",
+      "$600 per treatment",
+      "purchase one session and choose one appointment time after checkout",
+      "Book a PRP Hair Consultation",
+    ],
+    forbidden: ["guaranteed regrowth", "creates new hair follicles", "permanent hair restoration", "little to no downtime"],
+    requiredHtml: [/href=["']\/consult\?procedure=prp-hair-restoration&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=prp_hair_restoration["']/],
+    forbiddenHtml: [/id=["']prp-hair-restoration-quantity["']/],
+    offer: { price: "600", currency: "USD" },
   },
 };
 for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
@@ -764,9 +780,22 @@ for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
     if (serviceSchemas.length !== 1 || serviceSchemas[0]?.name !== "PRP Breast Lift") {
       fail(`${path} must expose exactly one PRP Breast Lift Service schema`);
     }
-    const offer = serviceSchemas.find((schema) => schema?.name === "PRP Breast Lift")?.offers;
-    if (String(offer?.price) !== "1800" || offer?.priceCurrency !== "USD") {
-      fail(`${path} Service schema is missing the $1,800 USD offer`);
+  }
+  if (path === "/procedures/prp-hair-restoration") {
+    if (serviceSchemas.length !== 1 || serviceSchemas[0]?.name !== "PRP Hair Restoration") {
+      fail(`${path} must expose exactly one PRP Hair Restoration Service schema`);
+    }
+  }
+  if (expectation.offer) {
+    const offerName =
+      path === "/procedures/prp-breast-lift"
+        ? "PRP Breast Lift"
+        : path === "/procedures/prp-hair-restoration"
+          ? "PRP Hair Restoration"
+          : null;
+    const offer = (offerName ? serviceSchemas.find((schema) => schema?.name === offerName) : serviceSchemas[0])?.offers;
+    if (String(offer?.price) !== expectation.offer.price || offer?.priceCurrency !== expectation.offer.currency) {
+      fail(`${path} Service schema is missing the ${expectation.offer.price} ${expectation.offer.currency} offer`);
     }
   }
 }
@@ -780,6 +809,7 @@ const priorityPaths = [
   "/procedures/hyperhidrosis-treatment",
   "/procedures/microneedling-with-prp",
   "/procedures/prp-breast-lift",
+  "/procedures/prp-hair-restoration",
   "/events",
   "/events/botox-party",
   "/locations/williamsburg-va",
