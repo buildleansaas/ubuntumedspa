@@ -2,6 +2,7 @@
 
 import { Button } from "components/ui/button";
 import useCopyToClipBoard from "hooks/use-copy-to-clipboard";
+import { trackPhoneClick } from "lib/analytics";
 import Link from "next/link";
 
 function isMobileUserAgent() {
@@ -13,10 +14,7 @@ export default function Jumbotron() {
   const { handleCopy } = useCopyToClipBoard();
 
   const handleAction = () => {
-    try {
-      // @ts-ignore
-      window.gtag && window.gtag('event', 'phone_click', { label: 'jumbotron', value: '8047389483' });
-    } catch {}
+    trackPhoneClick("jumbotron");
     if (isMobileUserAgent()) window.location.href = `tel:${8047389483}`;
     else handleCopy("8047389483");
   };

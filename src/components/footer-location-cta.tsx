@@ -1,6 +1,5 @@
-import Link from "next/link";
-
 import DirectionsButton from "components/directions-button";
+import TrackedPhoneLink from "components/tracked-phone-link";
 import { Button } from "components/ui/button";
 
 export default function FooterLocationCta() {
@@ -18,7 +17,12 @@ export default function FooterLocationCta() {
 
       <div className="mt-6 flex flex-wrap gap-3">
         <Button asChild variant="secondary">
-          <Link href={`tel:${"+1 (804) 738-9483".replace(/[^0-9+]/g, "")}`}>+1 (804) 738-9483</Link>
+          <TrackedPhoneLink
+            href={`tel:${"+1 (804) 738-9483".replace(/[^0-9+]/g, "")}`}
+            location="footer_location"
+          >
+            +1 (804) 738-9483
+          </TrackedPhoneLink>
         </Button>
         <DirectionsButton address={address} latitude={37.2729739} longitude={-76.7635887}>
           Get Directions
