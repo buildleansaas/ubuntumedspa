@@ -90,7 +90,7 @@ export default function LightfootPage() {
       <div className="mt-8 flex flex-wrap gap-3">
         <Button asChild size="sm"><Link href="/consult">Book a Consultation</Link></Button>
         <Button asChild size="sm" variant="secondary"><Link href="/locations/williamsburg-va">Williamsburg Location Details</Link></Button>
-        <DirectionsButton size="sm" address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2707} longitude={-76.7075} />
+        <DirectionsButton size="sm" address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2729739} longitude={-76.7635887} />
       </div>
     </div>
   );

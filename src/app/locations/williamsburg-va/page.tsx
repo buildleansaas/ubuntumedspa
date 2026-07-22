@@ -50,8 +50,8 @@ export default function WilliamsburgLocationPage() {
           hours={["Mon–Fri 6:00pm–8:00pm", "Sat–Sun 10:00am–6:00pm"]}
           showMap={true}
           mapsQuery="3900 Powhatan Parkway, Williamsburg, VA 23188"
-          latitude={37.2707}
-          longitude={-76.7075}
+          latitude={37.2729739}
+          longitude={-76.7635887}
         />
       </section>
 
@@ -210,7 +210,7 @@ export default function WilliamsburgLocationPage() {
           <Button asChild>
             <Link href="/consult">Book a Consultation</Link>
           </Button>
-          <DirectionsButton address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2707} longitude={-76.7075} />
+          <DirectionsButton address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2729739} longitude={-76.7635887} />
         </div>
       </section>
 

@@ -6,8 +6,8 @@ import type { LocalServiceArea } from "lib/local-service-areas";
 const clinic = {
   label: "Williamsburg Med Spa",
   address: "3900 Powhatan Parkway, Williamsburg, VA 23188",
-  latitude: 37.2707,
-  longitude: -76.7075,
+  latitude: 37.2729739,
+  longitude: -76.7635887,
 };
 
 type ServiceAreaDirectionsProps = {
