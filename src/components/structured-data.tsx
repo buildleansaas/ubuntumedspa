@@ -111,8 +111,8 @@ const DEFAULT_BUSINESS: Required<LocalBusinessProps> = {
   addressRegion: "VA",
   postalCode: "23188",
   addressCountry: "US",
-  latitude: 37.2707,
-  longitude: -76.7075,
+  latitude: 37.2729739,
+  longitude: -76.7635887,
   openingHours: [
     "Mo-Fr 18:00-20:00",
     "Sa-Su 10:00-18:00",

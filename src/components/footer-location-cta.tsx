@@ -20,7 +20,7 @@ export default function FooterLocationCta() {
         <Button asChild variant="secondary">
           <Link href={`tel:${"+1 (804) 738-9483".replace(/[^0-9+]/g, "")}`}>+1 (804) 738-9483</Link>
         </Button>
-        <DirectionsButton address={address} latitude={37.2707} longitude={-76.7075}>
+        <DirectionsButton address={address} latitude={37.2729739} longitude={-76.7635887}>
           Get Directions
         </DirectionsButton>
       </div>

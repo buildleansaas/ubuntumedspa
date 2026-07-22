@@ -136,7 +136,7 @@ Data inputs (confirmed)
 - practitioner: “Jenny Coleman” (use as `founder` or `employee` in LocalBusiness if desired)
 - telephone: “+1-804-738-9483”
 - address: “3900 Powhatan Parkway, Williamsburg, VA 23188, US”
-- geo: latitude 37.2707, longitude -76.7075 (replace with precise coordinates for the address when available)
+- geo: latitude 37.2729739, longitude -76.7635887 (verified against the live Google Business Profile for 3900 Powhatan Parkway)
 - openingHours: Mon–Fri 18:00-20:00; Sat–Sun 10:00-18:00
 - sameAs: Instagram, Facebook, LinkedIn (to be provided)
 
@@ -442,8 +442,8 @@ Replace placeholders and render globally (e.g., in `src/app/layout.tsx`). Values
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 37.2707,
-    "longitude": -76.7075
+    "latitude": 37.2729739,
+    "longitude": -76.7635887
   },
   "openingHours": [
     "Mo-Fr 18:00-20:00",
