@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DEFAULT_FORM_SUBMISSION, FORM_INPUTS } from "data";
 import * as yup from "yup";
 import { useRouter } from "next/navigation";
@@ -16,6 +16,7 @@ import {
   type AffiliateSnapshot,
 } from "lib/affiliates";
 import { getCurrentBrowserUrl, subscribeToLocationChange } from "lib/client-location";
+import { createOnceTracker, trackConsultStart, trackConsultSubmitSuccess } from "lib/analytics";
 import { cn } from "lib/utils";
 
 export interface FormState {
@@ -73,6 +74,7 @@ const ConsultationForm: React.FC = () => {
   const [formState, setFormState] = useState<FormState>(DEFAULT_FORM_SUBMISSION);
   const [affiliateReferral, setAffiliateReferral] = useState<AffiliateSnapshot | null>(null);
   const [sourceContext, setSourceContext] = useState<ReturnType<typeof getConsultSourceContext>>(null);
+  const trackFirstInteraction = useRef(createOnceTracker(trackConsultStart)).current;
   const wideFieldIds = ["name", "interests", "comments", "referral"] as const;
 
   const inputClassName =
@@ -228,6 +230,7 @@ const ConsultationForm: React.FC = () => {
       const body = await response.json();
 
       if (response.status === 200) {
+        trackConsultSubmitSuccess();
         setFormState({
           ...DEFAULT_FORM_SUBMISSION,
           referral: affiliateReferral?.affiliateName || DEFAULT_FORM_SUBMISSION.referral,
@@ -247,6 +250,7 @@ const ConsultationForm: React.FC = () => {
   return (
     <form
       className="mx-auto max-w-3xl rounded-[1.75rem] border border-base-300 bg-base-100 px-6 py-6 shadow-sm sm:px-8 sm:py-8 md:px-10 md:py-10"
+      onChangeCapture={trackFirstInteraction}
       onSubmit={onSubmit}
     >
       <div className="border-b border-base-300 pb-6">

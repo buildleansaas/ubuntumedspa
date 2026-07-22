@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import useCopyToClipBoard from "hooks/use-copy-to-clipboard";
+import { trackPhoneClick } from "lib/analytics";
 
 function isMobileUserAgent() {
   if (typeof window === "undefined") return false;
@@ -13,6 +14,7 @@ export default function CtaButtons() {
   const { handleCopy } = useCopyToClipBoard();
 
   const handleAction = () => {
+    trackPhoneClick("site_cta");
     if (isMobileUserAgent()) window.location.href = `tel:${8047389483}`;
     else handleCopy("8047389483");
   };

@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import OpenStreetMapEmbed from "components/open-street-map-embed";
+import TrackedPhoneLink from "components/tracked-phone-link";
 
 type NAPProps = {
   name: string;
@@ -34,9 +34,9 @@ export default function NAP({ name, addressLines, phone, hours = [], showMap = f
           ))}
         </address>
         <div className="mt-2">
-          <Link className="link link-primary" href={`tel:${toTel(phone)}`}>
+          <TrackedPhoneLink className="link link-primary" href={`tel:${toTel(phone)}`} location="location_nap">
             {phone}
-          </Link>
+          </TrackedPhoneLink>
         </div>
         <div className="mt-3">
           <DirectionsButton address={directionsAddress} latitude={latitude} longitude={longitude} size="sm">
