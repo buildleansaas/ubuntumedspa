@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(ORIGIN),
   title: DEFAULT_TITLE,
   description: DEFAULT_DESCRIPTION,
+  verification: {
+    yandex: "9aeb7acc4382de30",
+  },
   icons: {
     icon: [
       { url: "/favicon.png?v=2", type: "image/png", sizes: "256x256" },
