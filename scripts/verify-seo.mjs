@@ -5,6 +5,7 @@ import { URL } from "node:url";
 const targetArg = process.argv.slice(2).find((argument) => !argument.startsWith("-"));
 const baseUrl = new URL(targetArg || process.env.SEO_BASE_URL || "http://127.0.0.1:3000");
 const canonicalOrigin = "https://www.williamsburgmedspa.com";
+const expectedClinicGeo = { latitude: 37.2729739, longitude: -76.7635887 };
 const failures = [];
 const warnings = [];
 
@@ -89,7 +90,15 @@ for (const { canonicalUrl, response, html } of pages) {
     try {
       const parsed = JSON.parse(unescapeHtml(raw));
       const schemas = Array.isArray(parsed?.["@graph"]) ? parsed["@graph"] : [parsed];
-      medicalBusinessBlocks += schemas.filter((schema) => schema?.["@type"] === "MedicalBusiness").length;
+      const medicalBusinesses = schemas.filter((schema) => schema?.["@type"] === "MedicalBusiness");
+      medicalBusinessBlocks += medicalBusinesses.length;
+      for (const medicalBusiness of medicalBusinesses) {
+        const latitude = Number(medicalBusiness?.geo?.latitude);
+        const longitude = Number(medicalBusiness?.geo?.longitude);
+        if (latitude !== expectedClinicGeo.latitude || longitude !== expectedClinicGeo.longitude) {
+          fail(`${canonicalUrl} MedicalBusiness geo is ${latitude},${longitude}; expected ${expectedClinicGeo.latitude},${expectedClinicGeo.longitude}`);
+        }
+      }
       for (const faqSchema of schemas.filter((schema) => schema?.["@type"] === "FAQPage")) {
         const questions = (faqSchema.mainEntity || []).map((entry) => entry?.name).filter(Boolean);
         if (new Set(questions).size !== questions.length) fail(`${canonicalUrl} has duplicate FAQ schema questions`);
