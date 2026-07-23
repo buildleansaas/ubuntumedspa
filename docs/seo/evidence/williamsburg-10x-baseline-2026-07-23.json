@@ -1,13 +1,20 @@
 {
   "generated_at_utc": "2026-07-23",
   "site": "https://www.williamsburgmedspa.com",
+  "source_artifact_sha256": {
+    "gsc_page_query_current_prev.json": "3d966fbb96d2b960c3ef6ee5a999d8760f5010330f6ff1d06b881252581cdb84",
+    "gsc_summary.json": "335ab813b4a8d3b036f1ca62934964fb38b91c21428766f628bac58f427ecb84",
+    "bing_full.json": "26ad4a50a4b065347af59d2efdfd7c0fb3ae236f10ce095e0665dd7c75f9c7e5",
+    "dataforseo_serp_all_raw.json": "ebb41a6d147e327ba5fb5644ffc938c4fd855a40d09c8205c721bad7cfa2f9c9",
+    "dataforseo_search_volume_raw.json": "dc9453a6051978ec1e84e7747547ce807ba5db7d4e7c1f3af398855316cb175d"
+  },
   "methodology": {
     "google_search_console": {
       "property": "sc-domain:williamsburgmedspa.com",
       "latest_complete_date": "2026-07-20",
       "current_window": ["2026-06-23", "2026-07-20"],
       "previous_window": ["2026-05-26", "2026-06-22"],
-      "note": "Site totals use date-dimension aggregation. Page and query dimensions are reported separately because Search Console aggregation can differ by dimension and anonymizes some queries."
+      "note": "Site totals use date-dimension aggregation. Page and query dimensions are reported separately because Search Console aggregation can differ by dimension and anonymizes some queries. The 28-day page window overlaps PR #68's 2026-07-15 deployment, so URL rows are mixed pre/post history and do not by themselves prove the current live query owner."
     },
     "bing_webmaster_tools": {
       "current_window": ["2026-06-23", "2026-07-20"],
@@ -42,27 +49,27 @@
       "average_position_change": 2.43
     },
     "current_top_pages": [
-      {"url": "https://www.williamsburgmedspa.com/", "clicks": 23, "impressions": 2288, "ctr_percent": 1.005, "position": 25.071},
-      {"url": "https://www.williamsburgmedspa.com/procedures/blomdahl-medical-ear-piercing", "clicks": 15, "impressions": 394, "ctr_percent": 3.807, "position": 9.038},
-      {"url": "https://www.williamsburgmedspa.com/med-spa-near-me", "clicks": 8, "impressions": 38, "ctr_percent": 21.053, "position": 12.763},
-      {"url": "https://www.williamsburgmedspa.com/procedures/filler", "clicks": 4, "impressions": 267, "ctr_percent": 1.498, "position": 56.251},
-      {"url": "https://www.williamsburgmedspa.com/procedures/prp-breast-lift", "clicks": 3, "impressions": 150, "ctr_percent": 2.0, "position": 18.38},
-      {"url": "https://www.williamsburgmedspa.com/affiliates", "clicks": 2, "impressions": 77, "ctr_percent": 2.597, "position": 8.935},
-      {"url": "https://www.williamsburgmedspa.com/locations/newport-news-va", "clicks": 2, "impressions": 672, "ctr_percent": 0.298, "position": 19.482},
-      {"url": "https://www.williamsburgmedspa.com/procedures/blomdahl-ear-piercing", "clicks": 2, "impressions": 56, "ctr_percent": 3.571, "position": 7.464},
-      {"url": "https://www.williamsburgmedspa.com/procedures/prp-hair-restoration", "clicks": 2, "impressions": 298, "ctr_percent": 0.671, "position": 37.644},
-      {"url": "https://www.williamsburgmedspa.com/blog", "clicks": 1, "impressions": 82, "ctr_percent": 1.22, "position": 47.049}
+      {"url": "https://www.williamsburgmedspa.com/", "clicks": 23, "impressions": 2288, "ctr_percent": 1.005, "position": 25.131},
+      {"url": "https://williamsburgmedspa.com/", "clicks": 15, "impressions": 193, "ctr_percent": 7.772, "position": 8.321, "live_behavior": "expected permanent redirect to https://www.williamsburgmedspa.com/; historical/canonical host signal, not a separate owner"},
+      {"url": "https://www.williamsburgmedspa.com/procedures/blomdahl-ear-piercing", "clicks": 15, "impressions": 394, "ctr_percent": 3.807, "position": 9.033, "live_status_verified_2026_07_23": 200, "live_canonical_verified_2026_07_23": "https://www.williamsburgmedspa.com/procedures/blomdahl-ear-piercing"},
+      {"url": "https://www.williamsburgmedspa.com/procedures/prp-breast-lift", "clicks": 3, "impressions": 150, "ctr_percent": 2.0, "position": 23.8},
+      {"url": "https://www.williamsburgmedspa.com/locations/newport-news-va", "clicks": 2, "impressions": 672, "ctr_percent": 0.298, "position": 19.497},
+      {"url": "https://www.williamsburgmedspa.com/procedures/filler", "clicks": 2, "impressions": 267, "ctr_percent": 0.749, "position": 55.843},
+      {"url": "https://www.williamsburgmedspa.com/locations/james-city-county-va", "clicks": 1, "impressions": 92, "ctr_percent": 1.087, "position": 52.478},
+      {"url": "https://www.williamsburgmedspa.com/procedures/joint-restoration", "clicks": 1, "impressions": 14, "ctr_percent": 7.143, "position": 6.071},
+      {"url": "https://www.williamsburgmedspa.com/procedures/prp-facial", "clicks": 1, "impressions": 310, "ctr_percent": 0.323, "position": 46.868},
+      {"url": "https://www.williamsburgmedspa.com/procedures/prp-hair-restoration", "clicks": 1, "impressions": 298, "ctr_percent": 0.336, "position": 43.362}
     ],
     "protected_or_high_value_queries": [
-      {"query": "medical spa williamsburg", "clicks": 0, "impressions": 576, "ctr_percent": 0, "position": 3.095},
-      {"query": "botox williamsburg", "clicks": 0, "impressions": 159, "ctr_percent": 0, "position": 18.811},
-      {"query": "ear piercing williamsburg va", "clicks": 1, "impressions": 129, "ctr_percent": 0.775, "position": 6.186},
+      {"query": "medical spa williamsburg", "clicks": 0, "impressions": 576, "ctr_percent": 0, "position": 3.116},
+      {"query": "botox williamsburg", "clicks": 1, "impressions": 159, "ctr_percent": 0.629, "position": 18.799},
+      {"query": "ear piercing williamsburg va", "clicks": 3, "impressions": 56, "ctr_percent": 5.357, "position": 6.25},
       {"query": "med spa williamsburg va", "clicks": 2, "impressions": 129, "ctr_percent": 1.55, "position": 3.814},
-      {"query": "med spa williamsburg", "clicks": 1, "impressions": 117, "ctr_percent": 0.855, "position": 14.701},
-      {"query": "botox williamsburg va", "clicks": 0, "impressions": 45, "ctr_percent": 0, "position": 24.311},
+      {"query": "med spa williamsburg", "clicks": 1, "impressions": 117, "ctr_percent": 0.855, "position": 14.684},
+      {"query": "botox williamsburg va", "clicks": 1, "impressions": 45, "ctr_percent": 2.222, "position": 24.311},
       {"query": "botox near me", "clicks": 0, "impressions": 41, "ctr_percent": 0, "position": 8.0},
       {"query": "dermal fillers williamsburg va", "clicks": 0, "impressions": 33, "ctr_percent": 0, "position": 10.606},
-      {"query": "hydrafacial williamsburg va", "clicks": 0, "impressions": 32, "ctr_percent": 0, "position": 18.719}
+      {"query": "hydrafacial williamsburg va", "clicks": 0, "impressions": 32, "ctr_percent": 0, "position": 18.688}
     ]
   },
   "bing": {
@@ -77,15 +84,15 @@
   },
   "dataforseo": {
     "local_serp_presence": [
-      {"keyword": "medical spa williamsburg", "site_organic_position": 1},
-      {"keyword": "med spa williamsburg va", "site_organic_position": 3},
-      {"keyword": "ear piercing williamsburg va", "site_organic_position": 4},
-      {"keyword": "prp breast lift near me", "site_organic_position": 1},
-      {"keyword": "prp hair restoration williamsburg va", "site_organic_position": 1},
-      {"keyword": "botox williamsburg va", "site_organic_position": null},
-      {"keyword": "lip filler williamsburg va", "site_organic_position": null},
-      {"keyword": "microneedling williamsburg va", "site_organic_position": null},
-      {"keyword": "med spa newport news va", "site_organic_position": null}
+      {"keyword": "medical spa williamsburg", "url": "https://www.williamsburgmedspa.com/", "organic_rank_group": 1, "absolute_serp_position": 4},
+      {"keyword": "med spa williamsburg va", "url": "https://www.williamsburgmedspa.com/", "organic_rank_group": 3, "absolute_serp_position": 7},
+      {"keyword": "ear piercing williamsburg va", "url": "https://www.williamsburgmedspa.com/procedures/blomdahl-ear-piercing", "organic_rank_group": 4, "absolute_serp_position": 10},
+      {"keyword": "prp breast lift near me", "url": "https://www.williamsburgmedspa.com/procedures/prp-breast-lift", "organic_rank_group": 1, "absolute_serp_position": 4},
+      {"keyword": "prp hair restoration williamsburg va", "url": "https://www.williamsburgmedspa.com/procedures/prp-hair-restoration", "organic_rank_group": 1, "absolute_serp_position": 4},
+      {"keyword": "botox williamsburg va", "url": "https://www.williamsburgmedspa.com/", "organic_rank_group": 9, "absolute_serp_position": 15},
+      {"keyword": "lip filler williamsburg va", "url": "https://www.williamsburgmedspa.com/", "organic_rank_group": 11, "absolute_serp_position": 18},
+      {"keyword": "microneedling williamsburg va", "url": "https://www.williamsburgmedspa.com/", "organic_rank_group": 16, "absolute_serp_position": 21},
+      {"keyword": "med spa newport news va", "url": "https://www.williamsburgmedspa.com/locations/newport-news-va", "organic_rank_group": 9, "absolute_serp_position": 13}
     ],
     "keyword_demand": [
       {"keyword": "medical spa near me", "monthly_search_volume": 49500},
@@ -104,21 +111,20 @@
       "observed_competitors": [
         {"name": "Colonial Aesthetics & Wellness", "rating": 5.0, "reviews": 232},
         {"name": "Youthful Beginnings Med Spa", "rating": 4.9, "reviews": 186},
-        {"name": "Couture Med Spa", "rating": 4.8, "reviews": 94}
+        {"name": "Couture Med Spa", "rating": 4.7, "reviews": 94}
       ],
       "interpretation": "The clinic has strong organic relevance for core Williamsburg terms but is not converting that relevance into captured local-pack visibility in the observed mobile snapshot."
     }
   },
   "ga4": {
-    "production_measurement_id": "G-FBEPLGSS9L",
-    "accessible_ubuntu_stream_measurement_id": "G-Q9LX7K1BRY",
-    "accessible_property_id": "320013557",
+    "production_stream_identifier": "redacted; present in deployed source",
+    "accessible_other_stream_identifier": "redacted",
     "accessible_property_data_rows": 0,
     "production_browser_collection_observed": true,
     "production_zero_pii_events_verified": ["consult_start", "phone_click"],
     "submit_success_implementation_verified": true,
     "status": "ownership_mismatch",
-    "interpretation": "Production sends analytics requests, but the authenticated account cannot read the receiving production property. Do not report a conversion baseline until ownership/access is reconciled."
+    "interpretation": "Production sends analytics requests, but the authenticated operating account cannot read the receiving production property. A May 2023 repository change intentionally selected the current production stream. Preserve continuity: recover access to that property rather than silently replacing it, and do not report a conversion baseline until access is reconciled."
   },
   "technical_and_indexing": {
     "sitemap_urls": 90,
@@ -126,6 +132,10 @@
     "sitemap_submission_warnings": 0,
     "production_crawl": {"sitemap_urls": 90, "internal_paths": 114, "json_ld_blocks": 430, "failures": 0},
     "blog_inspection": "Discovered - currently not indexed",
+    "unsubstantiated_404_probes": [
+      {"path": "/procedures/blomdahl-medical-ear-piercing", "live_status": 404, "current_28d_gsc_page_rows": 0, "repository_path_matches": 0, "decision": "No redirect or owner claim without a verified historical source."},
+      {"path": "/med-spa-near-me", "live_status": 404, "current_28d_gsc_page_rows": 0, "repository_path_matches": 0, "decision": "No redirect or owner claim without a verified historical source."}
+    ],
     "known_audit_collector_defects": [
       "Independent page evidence was duplicated between /blog and /affiliates.",
       "Legacy shipped-history detection used git log --all and could report branch-only commits as shipped.",

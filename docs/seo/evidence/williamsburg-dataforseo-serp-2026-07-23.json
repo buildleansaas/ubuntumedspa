@@ -1,0 +1,625 @@
+{
+  "provider": "DataForSEO",
+  "captured_at_utc": "2026-07-23",
+  "source_artifact_sha256": {
+    "serp-all-raw.json": "ebb41a6d147e327ba5fb5644ffc938c4fd855a40d09c8205c721bad7cfa2f9c9",
+    "search-volume-raw.json": "dc9453a6051978ec1e84e7747547ce807ba5db7d4e7c1f3af398855316cb175d"
+  },
+  "serp_methodology": {
+    "search_engine": "Google",
+    "location": "Williamsburg, Virginia, United States",
+    "device": "mobile",
+    "rank_note": "organic_rank_group counts organic listings only; absolute_serp_position includes local-pack and other SERP features. A single captured SERP is directional evidence, not a durable rank guarantee."
+  },
+  "queries": [
+    {
+      "keyword": "medical spa williamsburg",
+      "target_domain_organic_results": [
+        {
+          "url": "https://www.williamsburgmedspa.com/",
+          "title": "Williamsburg Med Spa: Botox, Fillers, PRP & Ear Piercing",
+          "organic_rank_group": 1,
+          "absolute_serp_position": 4
+        },
+        {
+          "url": "https://www.williamsburgmedspa.com/locations/williamsburg-va",
+          "title": "Medical Spa in Williamsburg, VA | Hours, Directions & Services",
+          "organic_rank_group": 26,
+          "absolute_serp_position": 33
+        }
+      ],
+      "local_pack_results": [
+        {
+          "name": "Couture Med Spa",
+          "domain": "www.couturemedspa.com",
+          "local_pack_rank": 1,
+          "rating": 4.7,
+          "reviews": 94
+        },
+        {
+          "name": "Youthful Beginnings Medi Spa",
+          "domain": "youthfulbeginnings.com",
+          "local_pack_rank": 2,
+          "rating": 5,
+          "reviews": 186
+        },
+        {
+          "name": "Colonial Aesthetics & Wellness",
+          "domain": "colonialaesthetic.com",
+          "local_pack_rank": 3,
+          "rating": 5,
+          "reviews": 232
+        }
+      ]
+    },
+    {
+      "keyword": "med spa williamsburg va",
+      "target_domain_organic_results": [
+        {
+          "url": "https://www.williamsburgmedspa.com/",
+          "title": "Williamsburg Med Spa: Botox, Fillers, PRP & Ear Piercing",
+          "organic_rank_group": 3,
+          "absolute_serp_position": 7
+        },
+        {
+          "url": "https://www.williamsburgmedspa.com/locations/newport-news-va",
+          "title": "Med Spa Near Newport News, VA | Botox, Fillers, PRP & Piercing",
+          "organic_rank_group": 22,
+          "absolute_serp_position": 30
+        }
+      ],
+      "local_pack_results": [
+        {
+          "name": "Couture Med Spa",
+          "domain": "www.couturemedspa.com",
+          "local_pack_rank": 1,
+          "rating": 4.7,
+          "reviews": 94
+        },
+        {
+          "name": "Youthful Beginnings Medi Spa",
+          "domain": "youthfulbeginnings.com",
+          "local_pack_rank": 2,
+          "rating": 5,
+          "reviews": 186
+        },
+        {
+          "name": "Colonial Aesthetics & Wellness",
+          "domain": "colonialaesthetic.com",
+          "local_pack_rank": 3,
+          "rating": 5,
+          "reviews": 232
+        }
+      ]
+    },
+    {
+      "keyword": "botox williamsburg va",
+      "target_domain_organic_results": [
+        {
+          "url": "https://www.williamsburgmedspa.com/",
+          "title": "Williamsburg Med Spa: Botox, Fillers, PRP & Ear Piercing",
+          "organic_rank_group": 9,
+          "absolute_serp_position": 15
+        },
+        {
+          "url": "https://www.williamsburgmedspa.com/blog/botox-vs-xeomin-williamsburg-va",
+          "title": "Botox vs Xeomin in Williamsburg, VA: How to Choose",
+          "organic_rank_group": 23,
+          "absolute_serp_position": 33
+        }
+      ],
+      "local_pack_results": [
+        {
+          "name": "Colonial Aesthetics & Wellness",
+          "domain": "colonialaesthetic.com",
+          "local_pack_rank": 1,
+          "rating": 5,
+          "reviews": 232
+        },
+        {
+          "name": "Youthful Beginnings Medi Spa",
+          "domain": "youthfulbeginnings.com",
+          "local_pack_rank": 2,
+          "rating": 5,
+          "reviews": 186
+        },
+        {
+          "name": "Couture Med Spa",
+          "domain": "www.couturemedspa.com",
+          "local_pack_rank": 3,
+          "rating": 4.7,
+          "reviews": 94
+        }
+      ]
+    },
+    {
+      "keyword": "ear piercing williamsburg va",
+      "target_domain_organic_results": [
+        {
+          "url": "https://www.williamsburgmedspa.com/procedures/blomdahl-ear-piercing",
+          "title": "Ear Piercing in Williamsburg, VA | Blomdahl Medical Piercing",
+          "organic_rank_group": 4,
+          "absolute_serp_position": 10
+        }
+      ],
+      "local_pack_results": [
+        {
+          "name": "Penny and a Sixpence",
+          "domain": "pennyandasixpence.com",
+          "local_pack_rank": 1,
+          "rating": 5,
+          "reviews": 29
+        },
+        {
+          "name": "Claire's",
+          "domain": "stores.claires.com",
+          "local_pack_rank": 2,
+          "rating": 4.4,
+          "reviews": 80
+        },
+        {
+          "name": "Williamsburg Premium Outlets",
+          "domain": "www.premiumoutlets.com",
+          "local_pack_rank": 3,
+          "rating": 4.4,
+          "reviews": 12100
+        }
+      ]
+    },
+    {
+      "keyword": "lip filler williamsburg va",
+      "target_domain_organic_results": [
+        {
+          "url": "https://www.williamsburgmedspa.com/",
+          "title": "Williamsburg Med Spa: Botox, Fillers, PRP & Ear Piercing",
+          "organic_rank_group": 11,
+          "absolute_serp_position": 18
+        }
+      ],
+      "local_pack_results": [
+        {
+          "name": "Colonial Aesthetics & Wellness",
+          "domain": "colonialaesthetic.com",
+          "local_pack_rank": 1,
+          "rating": 5,
+          "reviews": 232
+        },
+        {
+          "name": "Youthful Beginnings Medi Spa",
+          "domain": "youthfulbeginnings.com",
+          "local_pack_rank": 2,
+          "rating": 5,
+          "reviews": 186
+        },
+        {
+          "name": "Couture Med Spa",
+          "domain": "www.couturemedspa.com",
+          "local_pack_rank": 3,
+          "rating": 4.7,
+          "reviews": 94
+        }
+      ]
+    },
+    {
+      "keyword": "prp breast lift near me",
+      "target_domain_organic_results": [
+        {
+          "url": "https://www.williamsburgmedspa.com/procedures/prp-breast-lift",
+          "title": "PRP Breast Lift in Williamsburg, VA",
+          "organic_rank_group": 1,
+          "absolute_serp_position": 4
+        }
+      ],
+      "local_pack_results": [
+        {
+          "name": "PSCHR Plastic Surgery Center of Hampton Roads",
+          "domain": "pschr.com",
+          "local_pack_rank": 1,
+          "rating": 4.9,
+          "reviews": 285
+        },
+        {
+          "name": "Roger Emory, MD",
+          "domain": "www.plsurgery.com",
+          "local_pack_rank": 2,
+          "rating": 5,
+          "reviews": 193
+        },
+        {
+          "name": "Colonial Aesthetics & Wellness",
+          "domain": "colonialaesthetic.com",
+          "local_pack_rank": 3,
+          "rating": 5,
+          "reviews": 232
+        }
+      ]
+    },
+    {
+      "keyword": "prp hair restoration williamsburg va",
+      "target_domain_organic_results": [
+        {
+          "url": "https://www.williamsburgmedspa.com/procedures/prp-hair-restoration",
+          "title": "PRP Hair Restoration in Williamsburg, VA | Thinning Hair Consult",
+          "organic_rank_group": 1,
+          "absolute_serp_position": 4
+        },
+        {
+          "url": "https://www.williamsburgmedspa.com/",
+          "title": "Williamsburg Med Spa: Botox, Fillers, PRP & Ear Piercing",
+          "organic_rank_group": 9,
+          "absolute_serp_position": 13
+        }
+      ],
+      "local_pack_results": [
+        {
+          "name": "Colonial Aesthetics & Wellness",
+          "domain": "colonialaesthetic.com",
+          "local_pack_rank": 1,
+          "rating": 5,
+          "reviews": 232
+        },
+        {
+          "name": "Advanced Medicine Modern Aesthetics - AMMA",
+          "domain": "www.google.com",
+          "local_pack_rank": 2,
+          "rating": 5,
+          "reviews": 10
+        },
+        {
+          "name": "D & S Wellness Spa LLC",
+          "domain": "www.dandswellnessspa.com",
+          "local_pack_rank": 3,
+          "rating": 5,
+          "reviews": 49
+        }
+      ]
+    },
+    {
+      "keyword": "microneedling williamsburg va",
+      "target_domain_organic_results": [
+        {
+          "url": "https://www.williamsburgmedspa.com/",
+          "title": "Williamsburg Med Spa: Botox, Fillers, PRP & Ear Piercing",
+          "organic_rank_group": 16,
+          "absolute_serp_position": 21
+        }
+      ],
+      "local_pack_results": [
+        {
+          "name": "Colonial Aesthetics & Wellness",
+          "domain": "colonialaesthetic.com",
+          "local_pack_rank": 1,
+          "rating": 5,
+          "reviews": 232
+        },
+        {
+          "name": "Youthful Beginnings Medi Spa",
+          "domain": "youthfulbeginnings.com",
+          "local_pack_rank": 2,
+          "rating": 5,
+          "reviews": 186
+        },
+        {
+          "name": "Couture Med Spa",
+          "domain": "www.couturemedspa.com",
+          "local_pack_rank": 3,
+          "rating": 4.7,
+          "reviews": 94
+        }
+      ]
+    },
+    {
+      "keyword": "med spa newport news va",
+      "target_domain_organic_results": [
+        {
+          "url": "https://www.williamsburgmedspa.com/locations/newport-news-va",
+          "title": "Med Spa Near Newport News, VA | Botox, Fillers, PRP & Piercing",
+          "organic_rank_group": 9,
+          "absolute_serp_position": 13
+        }
+      ],
+      "local_pack_results": [
+        {
+          "name": "Numa Spa",
+          "domain": "numaspa.com",
+          "local_pack_rank": 1,
+          "rating": 4.9,
+          "reviews": 617
+        },
+        {
+          "name": "PSCHR Plastic Surgery Center of Hampton Roads - MedSpa",
+          "domain": "pschr.com",
+          "local_pack_rank": 2,
+          "rating": 4.8,
+          "reviews": 33
+        },
+        {
+          "name": "PSCHR Plastic Surgery Center of Hampton Roads",
+          "domain": "pschr.com",
+          "local_pack_rank": 3,
+          "rating": 4.9,
+          "reviews": 974
+        }
+      ]
+    }
+  ],
+  "capture_errors": [
+    {
+      "keyword": "medical spa yorktown va",
+      "status_code": 40101,
+      "status_message": "Internal SE Server Error",
+      "interpretation": "No ranking conclusion drawn for this keyword."
+    }
+  ],
+  "keyword_volume_methodology": {
+    "location": "United States",
+    "note": "National estimates unless the keyword itself contains a locality."
+  },
+  "keyword_demand": [
+    {
+      "keyword": "medical spa williamsburg",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "medical spa williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "med spa williamsburg",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "med spa williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "medspa williamsburg",
+      "monthly_search_volume": 70
+    },
+    {
+      "keyword": "medspa williamsburg va",
+      "monthly_search_volume": 40
+    },
+    {
+      "keyword": "best med spa williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "botox williamsburg",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "botox williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "botox near me",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "xeomin williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "lip flip williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "hyperhidrosis treatment williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "botox newport news",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "botox newport news va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "botox yorktown va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "lip filler williamsburg",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "lip filler williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "dermal fillers williamsburg",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "dermal fillers williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "filler williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "cheek filler williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "ear piercing williamsburg",
+      "monthly_search_volume": 70
+    },
+    {
+      "keyword": "ear piercing williamsburg va",
+      "monthly_search_volume": 50
+    },
+    {
+      "keyword": "pediatric ear piercing williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "medical ear piercing williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "blomdahl ear piercing",
+      "monthly_search_volume": 260
+    },
+    {
+      "keyword": "hypoallergenic ear piercing",
+      "monthly_search_volume": 12100
+    },
+    {
+      "keyword": "ear piercing for sensitive ears",
+      "monthly_search_volume": 170
+    },
+    {
+      "keyword": "ear piercing cost",
+      "monthly_search_volume": 2900
+    },
+    {
+      "keyword": "ear piercing aftercare",
+      "monthly_search_volume": 9900
+    },
+    {
+      "keyword": "prp breast lift",
+      "monthly_search_volume": 590
+    },
+    {
+      "keyword": "prp breast lift near me",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "prp breast lift williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "vampire breast lift",
+      "monthly_search_volume": 5400
+    },
+    {
+      "keyword": "vampire breast lift near me",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "non surgical breast lift williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "prp hair restoration williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "prp hair restoration near me",
+      "monthly_search_volume": 390
+    },
+    {
+      "keyword": "prp hair treatment near me",
+      "monthly_search_volume": 1900
+    },
+    {
+      "keyword": "female hair restoration williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "hair restoration williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "prp facial williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "prp facial near me",
+      "monthly_search_volume": 1900
+    },
+    {
+      "keyword": "vampire facial williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "microneedling williamsburg va",
+      "monthly_search_volume": 20
+    },
+    {
+      "keyword": "microneedling with prp williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "co2 lift williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "o shot williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "o shot near me",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "p shot williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "p shot near me",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "joint restoration williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "prp joint injections williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "med spa newport news va",
+      "monthly_search_volume": 10
+    },
+    {
+      "keyword": "medical spa newport news va",
+      "monthly_search_volume": 10
+    },
+    {
+      "keyword": "med spa yorktown va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "medical spa yorktown va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "med spa james city county va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "medical spa near me",
+      "monthly_search_volume": 49500
+    },
+    {
+      "keyword": "laser hair removal williamsburg va",
+      "monthly_search_volume": 140
+    },
+    {
+      "keyword": "hydrafacial williamsburg va",
+      "monthly_search_volume": 30
+    },
+    {
+      "keyword": "coolsculpting williamsburg va",
+      "monthly_search_volume": 10
+    },
+    {
+      "keyword": "weight loss injections williamsburg va",
+      "monthly_search_volume": null
+    },
+    {
+      "keyword": "semaglutide williamsburg va",
+      "monthly_search_volume": null
+    }
+  ],
+  "source_receipts": {
+    "serp_raw_sha256": "ebb41a6d147e327ba5fb5644ffc938c4fd855a40d09c8205c721bad7cfa2f9c9",
+    "search_volume_raw_sha256": "dc9453a6051978ec1e84e7747547ce807ba5db7d4e7c1f3af398855316cb175d",
+    "raw_artifacts": "Captured locally outside the repository; this committed file is the normalized, secret-free evidence extract."
+  }
+}
