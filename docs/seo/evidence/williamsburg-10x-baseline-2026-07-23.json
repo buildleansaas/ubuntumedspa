@@ -2,6 +2,7 @@
   "generated_at_utc": "2026-07-23",
   "site": "https://www.williamsburgmedspa.com",
   "source_artifact_sha256": {
+    "williamsburg_gsc_daily_2026_07_23.csv": "e18e44940c0fa7c61ac983b844263fff84859efd46a711e6cd2646d6aac03836",
     "gsc_page_query_current_prev.json": "3d966fbb96d2b960c3ef6ee5a999d8760f5010330f6ff1d06b881252581cdb84",
     "gsc_summary.json": "335ab813b4a8d3b036f1ca62934964fb38b91c21428766f628bac58f427ecb84",
     "bing_full.json": "26ad4a50a4b065347af59d2efdfd7c0fb3ae236f10ce095e0665dd7c75f9c7e5",
@@ -76,10 +77,10 @@
     "current_28d": {"clicks": 7, "impressions": 145},
     "previous_28d": {"clicks": 2, "impressions": 64},
     "current_top_queries": [
-      {"query": "medspa williamsburg va", "clicks": 1, "impressions": 4},
-      {"query": "botox williamsburg va", "clicks": 1, "impressions": 1},
-      {"query": "prp injections williamsburg va", "clicks": 1, "impressions": 1},
-      {"query": "where to get lip filler williamsburg va", "clicks": 1, "impressions": 1}
+      {"query": "medspa williamsburg va", "clicks": 1, "impressions": 14},
+      {"query": "botox williamsburg va", "clicks": 1, "impressions": 9},
+      {"query": "prp injections williamsburg va", "clicks": 1, "impressions": 5},
+      {"query": "where to get lip filler williamsburg va", "clicks": 1, "impressions": 2}
     ]
   },
   "dataforseo": {
@@ -110,7 +111,7 @@
       "site_returned_in_captured_results": false,
       "observed_competitors": [
         {"name": "Colonial Aesthetics & Wellness", "rating": 5.0, "reviews": 232},
-        {"name": "Youthful Beginnings Med Spa", "rating": 4.9, "reviews": 186},
+        {"name": "Youthful Beginnings Medi Spa", "rating": 5.0, "reviews": 186},
         {"name": "Couture Med Spa", "rating": 4.7, "reviews": 94}
       ],
       "interpretation": "The clinic has strong organic relevance for core Williamsburg terms but is not converting that relevance into captured local-pack visibility in the observed mobile snapshot."

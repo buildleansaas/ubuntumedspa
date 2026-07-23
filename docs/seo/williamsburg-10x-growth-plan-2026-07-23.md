@@ -68,7 +68,7 @@ Every target gets one primary owner. Supporting pages may link to the owner but 
 The site has strong organic relevance for core Williamsburg med-spa terms but was absent from the three-result local pack captured for `medical spa williamsburg`. The observed local leaders have material review proof:
 
 - Colonial Aesthetics & Wellness: 232 reviews.
-- Youthful Beginnings Med Spa: 186 reviews.
+- Youthful Beginnings Medi Spa: 186 reviews.
 - Couture Med Spa: 94 reviews.
 
 The clinic’s technical location consistency has been repaired. The remaining local gap is authority, proof, engagement, and category/service completeness.

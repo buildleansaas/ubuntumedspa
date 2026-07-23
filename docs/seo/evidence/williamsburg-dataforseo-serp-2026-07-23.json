@@ -347,7 +347,7 @@
     {
       "keyword": "medical spa yorktown va",
       "status_code": 40101,
-      "status_message": "Internal SE Server Error",
+      "status_message": "Internal SE Server Error.",
       "interpretation": "No ranking conclusion drawn for this keyword."
     }
   ],
