@@ -24,6 +24,20 @@ const fetchLocal = (value, options) => {
 const extractAll = (html, expression) => [...html.matchAll(expression)].map((match) => match[1]);
 const unescapeHtml = (value) =>
   value.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+const getTagAttributes = (tag) => {
+  const attributes = {};
+  const source = tag.replace(/^<\w+\s*|\/?>$/g, "");
+  for (const match of source.matchAll(/([^\s=/>]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/g)) {
+    attributes[match[1].toLowerCase()] = unescapeHtml(match[2] ?? match[3] ?? match[4] ?? "");
+  }
+  return attributes;
+};
+const getVisibleText = (html) =>
+  unescapeHtml(
+    html
+      .replace(/<(script|style|noscript)\b[^>]*>[\s\S]*?<\/\1>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+  ).replace(/\s+/g, " ");
 
 const robotsResponse = await fetch(new URL("/robots.txt", baseUrl));
 if (!robotsResponse.ok) fail(`/robots.txt returned ${robotsResponse.status}`);
@@ -73,6 +87,29 @@ for (const { canonicalUrl, response, html } of pages) {
 
   const titleCount = (html.match(/<title(?:\s[^>]*)?>[\s\S]*?<\/title>/gi) || []).length;
   if (titleCount !== 1) fail(`${canonicalUrl} has ${titleCount} title elements`);
+  const viewportTags = (html.match(/<meta\b[^>]*>/gi) || []).filter(
+    (tag) => getTagAttributes(tag).name?.toLowerCase() === "viewport"
+  );
+  if (viewportTags.length !== 1) {
+    fail(`${canonicalUrl} has ${viewportTags.length} viewport meta tags`);
+  } else {
+    const content = (getTagAttributes(viewportTags[0]).content || "").toLowerCase();
+    const directives = Object.fromEntries(
+      content
+        .split(",")
+        .map((part) => part.trim().split("=").map((value) => value.trim()))
+        .filter(([key, value]) => key && value)
+    );
+    const maximumScale = directives["maximum-scale"] ? Number(directives["maximum-scale"]) : undefined;
+    if (
+      directives.width !== "device-width" ||
+      Number(directives["initial-scale"]) !== 1 ||
+      directives["user-scalable"] === "no" ||
+      (maximumScale !== undefined && maximumScale < 5)
+    ) {
+      fail(`${canonicalUrl} has invalid viewport metadata: ${content}`);
+    }
+  }
   const h1Count = (html.match(/<h1(?:\s[^>]*)?>[\s\S]*?<\/h1>/gi) || []).length;
   if (h1Count !== 1) fail(`${canonicalUrl} has ${h1Count} H1 elements`);
 
@@ -159,6 +196,54 @@ for (const owner of ["/procedures/botox", "/procedures/filler", "/procedures/blo
   if (!pattern.test(home)) fail(`homepage does not directly link to query owner ${owner}`);
 }
 
+const ownerPageExpectations = {
+  "/procedures/prp-breast-lift": {
+    required: [
+      "What a PRP Breast Lift can and cannot do",
+      "Prepared from your own blood",
+      "Published evidence for cosmetic breast benefits is limited",
+      "does not replace a surgical breast lift or breast augmentation",
+      "$1,800",
+      "Full upfront payment for one treatment visit",
+      "Book a Private PRP Breast Consultation",
+    ],
+    forbidden: ["even a lifetime", "safe and effective way", "stimulating the growth of new blood vessels and fatty tissue"],
+    requiredHtml: [/href=["']\/consult\?procedure=prp-breast-lift&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=prp_breast_lift["']/],
+    forbiddenHtml: [/id=["']prp-breast-lift-quantity["']/],
+  },
+};
+for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
+  const page = pages.find((candidate) => normalizePath(candidate.canonicalUrl) === path);
+  if (!page) {
+    fail(`owner page missing from sitemap: ${path}`);
+    continue;
+  }
+  const text = getVisibleText(page.html);
+  for (const required of expectation.required) {
+    if (!text.includes(required)) fail(`${path} missing required owner-page copy: ${required}`);
+  }
+  for (const forbidden of expectation.forbidden) {
+    if (text.includes(forbidden)) fail(`${path} contains unsupported owner-page copy: ${forbidden}`);
+  }
+  for (const requiredHtml of expectation.requiredHtml || []) {
+    if (!requiredHtml.test(page.html)) fail(`${path} missing required owner-page HTML: ${requiredHtml}`);
+  }
+  for (const forbiddenHtml of expectation.forbiddenHtml || []) {
+    if (forbiddenHtml.test(page.html)) fail(`${path} contains forbidden owner-page HTML: ${forbiddenHtml}`);
+  }
+
+  const serviceSchemas = extractAll(page.html, /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)
+    .map((raw) => JSON.parse(unescapeHtml(raw)))
+    .flatMap((schema) => (Array.isArray(schema?.["@graph"]) ? schema["@graph"] : [schema]))
+    .filter((schema) => schema?.["@type"] === "Service");
+  if (path === "/procedures/prp-breast-lift") {
+    const offer = serviceSchemas[0]?.offers;
+    if (String(offer?.price) !== "1800" || offer?.priceCurrency !== "USD") {
+      fail(`${path} Service schema is missing the $1,800 USD offer`);
+    }
+  }
+}
+
 const priorityPaths = [
   "/",
   "/procedures/botox",
@@ -167,6 +252,7 @@ const priorityPaths = [
   "/procedures/blomdahl-ear-piercing/for/sensitive-ears",
   "/procedures/hyperhidrosis-treatment",
   "/procedures/microneedling-with-prp",
+  "/procedures/prp-breast-lift",
   "/events",
   "/events/botox-party",
   "/locations/williamsburg-va",
