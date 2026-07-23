@@ -1,0 +1,142 @@
+{
+  "generated_at_utc": "2026-07-23",
+  "site": "https://www.williamsburgmedspa.com",
+  "methodology": {
+    "google_search_console": {
+      "property": "sc-domain:williamsburgmedspa.com",
+      "latest_complete_date": "2026-07-20",
+      "current_window": ["2026-06-23", "2026-07-20"],
+      "previous_window": ["2026-05-26", "2026-06-22"],
+      "note": "Site totals use date-dimension aggregation. Page and query dimensions are reported separately because Search Console aggregation can differ by dimension and anonymizes some queries."
+    },
+    "bing_webmaster_tools": {
+      "current_window": ["2026-06-23", "2026-07-20"],
+      "previous_window": ["2026-05-26", "2026-06-22"]
+    },
+    "dataforseo": {
+      "location": "Williamsburg, Virginia, United States",
+      "device": "mobile",
+      "captured_at": "2026-07-23",
+      "note": "Keyword volumes are national United States estimates unless the keyword itself contains a locality. Local rankings are Williamsburg mobile snapshots, not permanent rank guarantees."
+    }
+  },
+  "gsc": {
+    "current_28d": {
+      "clicks": 64,
+      "impressions": 4750,
+      "ctr_percent": 1.347,
+      "average_position": 28.02
+    },
+    "previous_28d": {
+      "clicks": 53,
+      "impressions": 4351,
+      "ctr_percent": 1.218,
+      "average_position": 25.59
+    },
+    "change": {
+      "clicks": 11,
+      "clicks_percent": 20.75,
+      "impressions": 399,
+      "impressions_percent": 9.17,
+      "ctr_percentage_points": 0.129,
+      "average_position_change": 2.43
+    },
+    "current_top_pages": [
+      {"url": "https://www.williamsburgmedspa.com/", "clicks": 23, "impressions": 2288, "ctr_percent": 1.005, "position": 25.071},
+      {"url": "https://www.williamsburgmedspa.com/procedures/blomdahl-medical-ear-piercing", "clicks": 15, "impressions": 394, "ctr_percent": 3.807, "position": 9.038},
+      {"url": "https://www.williamsburgmedspa.com/med-spa-near-me", "clicks": 8, "impressions": 38, "ctr_percent": 21.053, "position": 12.763},
+      {"url": "https://www.williamsburgmedspa.com/procedures/filler", "clicks": 4, "impressions": 267, "ctr_percent": 1.498, "position": 56.251},
+      {"url": "https://www.williamsburgmedspa.com/procedures/prp-breast-lift", "clicks": 3, "impressions": 150, "ctr_percent": 2.0, "position": 18.38},
+      {"url": "https://www.williamsburgmedspa.com/affiliates", "clicks": 2, "impressions": 77, "ctr_percent": 2.597, "position": 8.935},
+      {"url": "https://www.williamsburgmedspa.com/locations/newport-news-va", "clicks": 2, "impressions": 672, "ctr_percent": 0.298, "position": 19.482},
+      {"url": "https://www.williamsburgmedspa.com/procedures/blomdahl-ear-piercing", "clicks": 2, "impressions": 56, "ctr_percent": 3.571, "position": 7.464},
+      {"url": "https://www.williamsburgmedspa.com/procedures/prp-hair-restoration", "clicks": 2, "impressions": 298, "ctr_percent": 0.671, "position": 37.644},
+      {"url": "https://www.williamsburgmedspa.com/blog", "clicks": 1, "impressions": 82, "ctr_percent": 1.22, "position": 47.049}
+    ],
+    "protected_or_high_value_queries": [
+      {"query": "medical spa williamsburg", "clicks": 0, "impressions": 576, "ctr_percent": 0, "position": 3.095},
+      {"query": "botox williamsburg", "clicks": 0, "impressions": 159, "ctr_percent": 0, "position": 18.811},
+      {"query": "ear piercing williamsburg va", "clicks": 1, "impressions": 129, "ctr_percent": 0.775, "position": 6.186},
+      {"query": "med spa williamsburg va", "clicks": 2, "impressions": 129, "ctr_percent": 1.55, "position": 3.814},
+      {"query": "med spa williamsburg", "clicks": 1, "impressions": 117, "ctr_percent": 0.855, "position": 14.701},
+      {"query": "botox williamsburg va", "clicks": 0, "impressions": 45, "ctr_percent": 0, "position": 24.311},
+      {"query": "botox near me", "clicks": 0, "impressions": 41, "ctr_percent": 0, "position": 8.0},
+      {"query": "dermal fillers williamsburg va", "clicks": 0, "impressions": 33, "ctr_percent": 0, "position": 10.606},
+      {"query": "hydrafacial williamsburg va", "clicks": 0, "impressions": 32, "ctr_percent": 0, "position": 18.719}
+    ]
+  },
+  "bing": {
+    "current_28d": {"clicks": 7, "impressions": 145},
+    "previous_28d": {"clicks": 2, "impressions": 64},
+    "current_top_queries": [
+      {"query": "medspa williamsburg va", "clicks": 1, "impressions": 4},
+      {"query": "botox williamsburg va", "clicks": 1, "impressions": 1},
+      {"query": "prp injections williamsburg va", "clicks": 1, "impressions": 1},
+      {"query": "where to get lip filler williamsburg va", "clicks": 1, "impressions": 1}
+    ]
+  },
+  "dataforseo": {
+    "local_serp_presence": [
+      {"keyword": "medical spa williamsburg", "site_organic_position": 1},
+      {"keyword": "med spa williamsburg va", "site_organic_position": 3},
+      {"keyword": "ear piercing williamsburg va", "site_organic_position": 4},
+      {"keyword": "prp breast lift near me", "site_organic_position": 1},
+      {"keyword": "prp hair restoration williamsburg va", "site_organic_position": 1},
+      {"keyword": "botox williamsburg va", "site_organic_position": null},
+      {"keyword": "lip filler williamsburg va", "site_organic_position": null},
+      {"keyword": "microneedling williamsburg va", "site_organic_position": null},
+      {"keyword": "med spa newport news va", "site_organic_position": null}
+    ],
+    "keyword_demand": [
+      {"keyword": "medical spa near me", "monthly_search_volume": 49500},
+      {"keyword": "hypoallergenic ear piercing", "monthly_search_volume": 12100},
+      {"keyword": "ear piercing aftercare", "monthly_search_volume": 9900},
+      {"keyword": "vampire breast lift", "monthly_search_volume": 5400},
+      {"keyword": "ear piercing cost", "monthly_search_volume": 2900},
+      {"keyword": "prp hair treatment near me", "monthly_search_volume": 1900},
+      {"keyword": "prp breast lift", "monthly_search_volume": 590},
+      {"keyword": "prp hair restoration near me", "monthly_search_volume": 390},
+      {"keyword": "blomdahl ear piercing", "monthly_search_volume": 260},
+      {"keyword": "ear piercing for sensitive ears", "monthly_search_volume": 170}
+    ],
+    "maps_medical_spa_williamsburg": {
+      "site_returned_in_captured_results": false,
+      "observed_competitors": [
+        {"name": "Colonial Aesthetics & Wellness", "rating": 5.0, "reviews": 232},
+        {"name": "Youthful Beginnings Med Spa", "rating": 4.9, "reviews": 186},
+        {"name": "Couture Med Spa", "rating": 4.8, "reviews": 94}
+      ],
+      "interpretation": "The clinic has strong organic relevance for core Williamsburg terms but is not converting that relevance into captured local-pack visibility in the observed mobile snapshot."
+    }
+  },
+  "ga4": {
+    "production_measurement_id": "G-FBEPLGSS9L",
+    "accessible_ubuntu_stream_measurement_id": "G-Q9LX7K1BRY",
+    "accessible_property_id": "320013557",
+    "accessible_property_data_rows": 0,
+    "production_browser_collection_observed": true,
+    "production_zero_pii_events_verified": ["consult_start", "phone_click"],
+    "submit_success_implementation_verified": true,
+    "status": "ownership_mismatch",
+    "interpretation": "Production sends analytics requests, but the authenticated account cannot read the receiving production property. Do not report a conversion baseline until ownership/access is reconciled."
+  },
+  "technical_and_indexing": {
+    "sitemap_urls": 90,
+    "sitemap_submission_errors": 0,
+    "sitemap_submission_warnings": 0,
+    "production_crawl": {"sitemap_urls": 90, "internal_paths": 114, "json_ld_blocks": 430, "failures": 0},
+    "blog_inspection": "Discovered - currently not indexed",
+    "known_audit_collector_defects": [
+      "Independent page evidence was duplicated between /blog and /affiliates.",
+      "Legacy shipped-history detection used git log --all and could report branch-only commits as shipped.",
+      "Expected apex-to-www redirects could be misclassified as actionable indexing failures."
+    ]
+  },
+  "ten_x_operating_target": {
+    "baseline_clicks_per_28d": 64,
+    "literal_10x_clicks_per_28d": 640,
+    "baseline_impressions_per_28d": 4750,
+    "literal_10x_impressions_per_28d": 47500,
+    "planning_note": "These are arithmetic targets, not forecasts. The operating strategy combines qualified impression growth, CTR gains, local-pack visibility, and measured consultation conversion rather than pursuing impression volume alone."
+  }
+}
