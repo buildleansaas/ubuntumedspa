@@ -1,8 +1,11 @@
 # Williamsburg Med Spa: Protect Current Wins + 10x Organic Growth Plan
 
-Date: 2026-07-23  
-Production: https://www.williamsburgmedspa.com  
-Evidence snapshot: [`evidence/williamsburg-10x-baseline-2026-07-23.json`](./evidence/williamsburg-10x-baseline-2026-07-23.json)  
+Date: 2026-07-23
+
+Production: https://www.williamsburgmedspa.com
+
+Evidence snapshot: [`evidence/williamsburg-10x-baseline-2026-07-23.json`](./evidence/williamsburg-10x-baseline-2026-07-23.json)
+
 Execution ledger: https://github.com/buildleansaas/ubuntumedspa/issues/71
 
 ## Executive decision
