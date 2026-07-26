@@ -79,8 +79,12 @@ for (const { canonicalUrl, response, html } of pages) {
   const canonicalMatches = extractAll(html, /<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["'][^>]*>/gi);
   if (canonicalMatches.length !== 1) {
     fail(`${canonicalUrl} has ${canonicalMatches.length} canonical links`);
-  } else if (normalizePath(unescapeHtml(canonicalMatches[0])) !== expectedPath) {
-    fail(`${canonicalUrl} canonical points to ${canonicalMatches[0]}`);
+  } else {
+    const renderedCanonical = unescapeHtml(canonicalMatches[0]);
+    const expectedCanonical = `${canonicalOrigin}${expectedPath}`;
+    if (renderedCanonical !== expectedCanonical) {
+      fail(`${canonicalUrl} canonical points to ${renderedCanonical}, expected ${expectedCanonical}`);
+    }
   }
 
   const jsonLd = extractAll(html, /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi);
@@ -159,6 +163,28 @@ for (const owner of ["/procedures/botox", "/procedures/filler", "/procedures/blo
   if (!pattern.test(home)) fail(`homepage does not directly link to query owner ${owner}`);
 }
 
+const newportNews = pages.find((page) => normalizePath(page.canonicalUrl) === "/locations/newport-news-va")?.html || "";
+for (const owner of [
+  "/procedures/botox",
+  "/procedures/filler",
+  "/procedures/prp-facial",
+  "/procedures/blomdahl-ear-piercing/near/newport-news-va",
+  "/consult",
+  "/locations/williamsburg-va",
+]) {
+  const pattern = new RegExp(`href=["']${owner.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`);
+  if (!pattern.test(newportNews)) fail(`Newport News owner does not directly link to ${owner}`);
+}
+if (/Quick read|Popular searches|Easy internal links/.test(newportNews)) {
+  fail("Newport News owner exposes operator-facing SEO language");
+}
+if (!newportNews.includes("How do I choose between Botox/Xeomin and dermal filler?")) {
+  fail("Newport News owner is missing the visible Botox/filler decision answer");
+}
+if (!newportNews.includes('"@type":"FAQPage"')) {
+  fail("Newport News owner is missing server-rendered FAQPage schema");
+}
+
 const priorityPaths = [
   "/",
   "/procedures/botox",
@@ -170,6 +196,7 @@ const priorityPaths = [
   "/events",
   "/events/botox-party",
   "/locations/williamsburg-va",
+  "/locations/newport-news-va",
   "/blog",
   "/consult",
 ];
