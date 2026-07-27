@@ -14,11 +14,21 @@ export default function JennyColemanPage() {
       <StructuredData type="Person" />
       <h1 className="text-3xl md:text-5xl font-light mb-4">Jenny Coleman</h1>
       <p className="text-base md:text-lg text-base-content/70 mb-6">MSN, RN, CPNP, PMHS</p>
-      <p className="text-base md:text-lg text-base-content/80 leading-relaxed">
-        With over two decades in medicine and a specialized focus on aesthetics, Jenny blends primary care and mental
-        health expertise with a holistic, patient‑first approach. She provides regenerative PRP therapies, advanced
-        injection techniques, and practical wellness counseling to help patients look and feel their best — naturally.
-      </p>
+      <div className="space-y-6 text-base md:text-lg text-base-content/80 leading-relaxed">
+        <p>
+          With over two decades in medicine and a specialized focus on aesthetics, Jenny blends primary care and mental
+          health expertise with a holistic, patient‑first approach. She provides regenerative PRP therapies, advanced
+          injection techniques, and practical wellness counseling to help patients look and feel their best naturally.
+        </p>
+        <div>
+          <h2 className="text-2xl font-light mb-3">What to Expect in a Consultation</h2>
+          <p>
+            During a consultation with Jenny, you can discuss what you want to change, what you prefer to preserve, and
+            how care needs to fit your schedule. Bring questions about available options, timing, and follow-up so you
+            can make an informed decision before moving forward.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

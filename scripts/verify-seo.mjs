@@ -24,6 +24,16 @@ const fetchLocal = (value, options) => {
 const extractAll = (html, expression) => [...html.matchAll(expression)].map((match) => match[1]);
 const unescapeHtml = (value) =>
   value.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+const visibleWordCount = (html) => {
+  const main = html.match(/<main(?:\s[^>]*)?>([\s\S]*?)<\/main>/i)?.[1] || html;
+  const text = unescapeHtml(
+    main
+      .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+  ).replace(/\s+/g, " ").trim();
+  return text ? text.split(" ").length : 0;
+};
 
 const robotsResponse = await fetch(new URL("/robots.txt", baseUrl));
 if (!robotsResponse.ok) fail(`/robots.txt returned ${robotsResponse.status}`);
@@ -185,6 +195,15 @@ if (!newportNews.includes('"@type":"FAQPage"')) {
   fail("Newport News owner is missing server-rendered FAQPage schema");
 }
 
+for (const [path, minimum] of [
+  ["/locations/fords-colony-va", 180],
+  ["/staff/jenny-coleman", 180],
+]) {
+  const html = pages.find((page) => normalizePath(page.canonicalUrl) === path)?.html || "";
+  const words = visibleWordCount(html);
+  if (words < minimum) fail(`${path} has ${words} visible words; expected at least ${minimum}`);
+}
+
 const priorityPaths = [
   "/",
   "/procedures/botox",
@@ -197,6 +216,8 @@ const priorityPaths = [
   "/events/botox-party",
   "/locations/williamsburg-va",
   "/locations/newport-news-va",
+  "/locations/fords-colony-va",
+  "/staff/jenny-coleman",
   "/blog",
   "/consult",
 ];

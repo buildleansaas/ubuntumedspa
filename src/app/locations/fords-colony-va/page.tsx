@@ -28,6 +28,12 @@ export default function FordsColonyPage() {
           PRP therapies, fillers, and aesthetic treatments with a focus on natural‑looking results and clear, honest
           guidance.
         </p>
+        <h2>Planning Your Visit</h2>
+        <p>
+          If you&apos;re comparing treatments, start with a consultation. Bring questions about your goals, timing, and what
+          a natural-looking result means to you. You&apos;ll have space to review available options before deciding whether
+          care at our Williamsburg clinic fits your needs.
+        </p>
         <h2>Getting Here</h2>
         <p>
           Take local routes toward Route 199 and Monticello Avenue, then continue to Powhatan Parkway. You&apos;ll find
