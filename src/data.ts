@@ -42,7 +42,7 @@ export const FORM_INPUTS = [
     options: [
       "O-Shot",
       "P-Shot",
-      "Breast Lift",
+      "PRP Breast Lift",
       "Hair Restoration",
       "PRP Facial",
       "Microneedling with PRP",
