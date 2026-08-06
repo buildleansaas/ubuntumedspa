@@ -226,7 +226,7 @@ const ownerPageExpectations = {
   "/procedures/prp-breast-lift": {
     required: [
       "What a PRP Breast Lift can and cannot do",
-      "Prepared from your own blood",
+      "In published medical literature",
       "Published evidence for cosmetic breast benefits is limited",
       "does not replace a surgical breast lift or breast augmentation",
       "$1,800",
@@ -244,6 +244,9 @@ const ownerPageExpectations = {
       "Jenny reviews progress and any follow-up plan",
       "Candidacy review should cover pregnancy",
       "After Jenny confirms the treatment fits your goals",
+      "platelet-rich plasma is delivered by injection",
+      "The treatment uses injections rather than implants",
+      "PRP procedures generally involve a blood draw",
     ],
     requiredHtml: [/href=["']\/consult\?procedure=prp-breast-lift&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=prp_breast_lift["']/],
     forbiddenHtml: [/id=["']prp-breast-lift-quantity["']/],
