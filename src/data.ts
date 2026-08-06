@@ -564,7 +564,7 @@ export const procedures = [
         "Learn about PRP breast injections in Williamsburg, VA, including limited evidence, realistic limits, risks, candidacy, and how they differ from surgery.",
     },
     description:
-      "At Williamsburg Med Spa, the visit starts with a private consultation about the specific change you want. Jenny explains what is known, what remains uncertain, and how PRP breast injections differ from augmentation or a surgical lift. If you decide to proceed, PRP is prepared from a small sample of your own blood and injected according to your treatment plan.",
+      "This Williamsburg page explains what is known, what remains uncertain, and how PRP breast injections differ from augmentation or a surgical lift. Before paying, use a private consultation to confirm candidacy, the clinic's current protocol, risks, aftercare, and whether another type of care better fits your goal.",
     headline: "Considering PRP breast injections? Start with clear expectations",
     subline:
       "PRP is prepared from your own blood, but cosmetic breast benefits have not been established in robust clinical studies. It cannot lift loose tissue or add implant-like volume.",
@@ -583,9 +583,9 @@ export const procedures = [
       },
       {
         emoji: "📍",
-        benefit: "Personalized Placement",
+        benefit: "Questions Before Treatment",
         description:
-          "Jenny reviews the areas you want to address and plans placement around your anatomy and goals.",
+          "Ask the clinic to explain intended injection areas, comfort measures, evidence limits, risks, and alternatives before you proceed.",
       },
       {
         emoji: "🌿",
@@ -600,7 +600,7 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "Start with the concern you want to discuss. Jenny will review whether a subtle PRP-based approach fits your goal or whether another type of evaluation or treatment makes more sense.",
+      "Start with the concern you want to discuss, then use a consultation to decide whether PRP belongs in the conversation or another evaluation or treatment makes more sense.",
     ailments: [
       {
         title: "Sagging Breasts",
@@ -623,7 +623,7 @@ export const procedures = [
       {
         title: "Decreased Sensitivity",
         description:
-          "Discuss sensitivity concerns privately so Jenny can determine whether PRP belongs in the conversation or another evaluation is needed.",
+          "Discuss sensitivity concerns privately and ask whether diagnostic evaluation or another type of care should come before cosmetic treatment.",
         blog_post_title: "PRP and Breast Sensitivity: Evidence and Alternatives",
         blog_post_slug: "regain-breast-sensitivity-and-enhance-intimacy-with-the-prp-breast-lift",
         slug: "decreased-sensitivity",
@@ -672,22 +672,22 @@ export const procedures = [
       {
         question: "How does the PRP Breast Lift differ from traditional breast augmentation?",
         answer:
-          "A PRP Breast Lift uses platelet-rich plasma prepared from your own blood and delivered by injection. It does not remove excess skin, reposition breast tissue, or add implant-like volume, so the expected change is much subtler than a surgical lift or augmentation.",
+          "A PRP Breast Lift uses platelet-rich plasma prepared from a blood sample and delivered by injection. It does not remove excess skin, reposition breast tissue, or add implant-like volume. Any cosmetic change, if one occurs, is uncertain and should not be compared with the predictable structural changes of surgery.",
       },
       {
         question: "What happens during a PRP Breast Lift appointment?",
         answer:
-          "Your visit includes a review of the treatment plan, a blood draw, preparation of platelet-rich plasma, and targeted injections based on the areas selected with Jenny. Exact placement, comfort measures, and aftercare are reviewed for you before treatment.",
+          "PRP procedures generally involve a blood draw, preparation of platelet-rich plasma, and injections. Before paying, ask the clinic to confirm the exact sequence, intended injection areas, comfort measures, and aftercare used for this service.",
       },
       {
         question: "What should I expect after treatment?",
         answer:
-          "Tenderness, swelling, redness, or bruising can occur after injections. Jenny will review activity and aftercare guidance, what is expected during recovery, and when to contact the office.",
+          "Tenderness, swelling, redness, or bruising can occur after injections. Ask for the clinic's current written instructions about activity, expected recovery effects, and when to contact the office.",
       },
       {
         question: "How soon will I see a change, and how long will it last?",
         answer:
-          "There is no universal timeline or guaranteed duration for PRP breast treatment. Published evidence for cosmetic PRP breast procedures is limited, so Jenny reviews progress and any follow-up plan around your individual response rather than promising a fixed result.",
+          "There is no established timeline or guaranteed duration for a cosmetic change from PRP breast treatment. Published evidence is limited, so do not rely on a fixed result or duration when deciding whether to proceed.",
       },
       {
         question: "Is the PRP Breast Lift suitable for everyone?",
@@ -697,7 +697,7 @@ export const procedures = [
       {
         question: "What are the risks of PRP breast injections?",
         answer:
-          "Long-term effectiveness and complications of cosmetic PRP breast injections are not well established. Possible effects include soreness, swelling, bruising, bleeding, infection, irritation, or an unsatisfactory cosmetic result. Candidacy review should cover pregnancy, breastfeeding, breast cancer history or risk, prior breast procedures, abnormal imaging, and current symptoms. Tell your breast-imaging team about prior breast injections.",
+          "Long-term effectiveness and complications of cosmetic PRP breast injections are not well established. Possible effects include soreness, swelling, bruising, bleeding, infection, irritation, or an unsatisfactory cosmetic result. A qualified clinician should review your health history, medications, prior breast procedures, screening or imaging history, and current symptoms before any cosmetic breast injection. Tell your breast-imaging team about prior breast injections.",
       },
     ],
   },

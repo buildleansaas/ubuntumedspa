@@ -159,7 +159,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
   const relatedLinks = relatedProcedureLinks[procedure.slug] ?? [];
   const consultationSupportCopy =
     procedure.slug === "prp-breast-lift"
-      ? "If you have not completed a candidacy consultation, book that first. After Jenny confirms the treatment fits your goals, you can pay and choose one treatment time."
+      ? "If you have not completed a candidacy consultation, book that first. Use checkout only after the clinic confirms you are eligible to proceed; payment covers one treatment visit."
       : procedure.slug === "hyperhidrosis-treatment"
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
       : procedure.slug === "o-shot"
@@ -315,28 +315,28 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         {procedure.slug === "prp-breast-lift" && (
           <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="prp-breast-lift-expectations">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">What to expect</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Before you decide</p>
             <h2 id="prp-breast-lift-expectations" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
               What a PRP Breast Lift can and cannot do
             </h2>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
               <p>
-                Prepared from your own blood, platelet-rich plasma is injected according to the plan you make with Jenny. Published evidence for
-                cosmetic breast benefits is limited, so any change in appearance or skin quality is uncertain.
+                Prepared from your own blood sample, platelet-rich plasma is delivered by injection. Published evidence for cosmetic breast benefits
+                is limited, so any change in appearance or skin quality is uncertain.
               </p>
               <p>
                 This treatment does not replace a surgical breast lift or breast augmentation. It does not remove loose skin, reposition breast
-                tissue, or create implant-like volume. Your consultation is where you can compare the change you want with what this treatment can
-                realistically support.
+                tissue, or create implant-like volume. Use a consultation to compare the change you want with the limited published evidence and
+                decide whether a different type of care would better fit your goal.
               </p>
             </div>
 
             <ol className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 sm:grid-cols-2">
               {[
-                ["01", "Private consultation", "Review your goals, breast history, prior procedures, current symptoms, and whether PRP fits the concern you want to address."],
-                ["02", "Blood draw and preparation", "A small blood sample is processed to prepare the platelet-rich plasma used for your treatment."],
-                ["03", "Personalized treatment", "Jenny reviews the selected areas, comfort plan, and injection approach with you before treatment begins."],
-                ["04", "Aftercare and follow-up", "Leave with guidance for tenderness, swelling, bruising, activity, and when to contact the office."],
+                ["01", "Confirm candidacy first", "Share your health history, prior breast procedures, screening or imaging history, current symptoms, and cosmetic goal with the qualified clinician reviewing candidacy."],
+                ["02", "Confirm the delivery method", "Ask the clinic to confirm the blood-draw, PRP-preparation, and injection steps used for this service before you proceed."],
+                ["03", "Ask about the limits", "Discuss the limited evidence, uncertain cosmetic benefit, injection risks, and alternatives to PRP breast treatment."],
+                ["04", "Plan for recovery questions", "Ask what tenderness, swelling, bruising, or other effects warrant a call and request the clinic's current aftercare instructions."],
               ].map(([number, title, copy]) => (
                 <li key={number} className="grid grid-cols-[2.5rem_1fr] gap-3">
                   <span className="text-sm font-semibold tracking-[0.12em] text-primary">{number}</span>
@@ -350,8 +350,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
             <p className="mt-8 border-t border-base-300 pt-6 text-sm leading-relaxed text-base-content/70">
               Full upfront payment for one treatment visit is <strong className="font-semibold text-base-content">{catalogItem?.displayPrice}</strong>.
-              If you have not completed a candidacy consultation, book that first. After Jenny confirms fit and payment is complete, choose one
-              treatment time.
+              If you have not completed a candidacy consultation, book that first. Use checkout only after the clinic confirms you are eligible to
+              proceed; payment covers one treatment visit.
             </p>
           </section>
         )}
@@ -432,7 +432,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             <Link href="/locations/williamsburg-va" className="link link-primary">
               Williamsburg office at 3900 Powhatan Parkway
             </Link>
-            . Visits are appointment-led so Jenny can review fit, timing, treatment areas, pricing, and aftercare before you proceed.
+            . {procedure.slug === "prp-breast-lift"
+              ? "Use the consultation to confirm candidacy, the clinic's current treatment protocol, pricing, risks, and aftercare before you proceed."
+              : "Visits are appointment-led so Jenny can review fit, timing, treatment areas, pricing, and aftercare before you proceed."}
           </p>
           {Boolean(relatedLinks.length) && (
             <p className="mt-4 text-sm leading-relaxed text-base-content/65">
