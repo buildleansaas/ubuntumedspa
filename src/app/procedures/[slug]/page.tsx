@@ -335,8 +335,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             <ol className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 sm:grid-cols-2">
               {[
                 ["01", "Confirm candidacy first", "Share your health history, prior breast procedures, screening or imaging history, current symptoms, and cosmetic goal with the qualified clinician reviewing candidacy."],
-                ["02", "Confirm the delivery method", "Ask the clinic to confirm the blood-draw, PRP-preparation, and injection steps used for this service before you proceed."],
-                ["03", "Ask about the limits", "Discuss the limited evidence, uncertain cosmetic benefit, injection risks, and alternatives to PRP breast treatment."],
+                ["02", "Confirm the delivery method", "Ask the clinic whether and how this service is delivered, what preparation is involved, and which risks apply to the clinic's confirmed method before you proceed."],
+                ["03", "Ask about the limits", "Discuss the limited evidence, uncertain cosmetic benefit, risks associated with the clinic's confirmed delivery method, and alternatives to PRP breast treatment."],
                 ["04", "Plan for recovery questions", "Ask what tenderness, swelling, bruising, or other effects warrant a call and request the clinic's current aftercare instructions."],
               ].map(([number, title, copy]) => (
                 <li key={number} className="grid grid-cols-[2.5rem_1fr] gap-3">

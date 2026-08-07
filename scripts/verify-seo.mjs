@@ -247,6 +247,8 @@ const ownerPageExpectations = {
       "platelet-rich plasma is delivered by injection",
       "The treatment uses injections rather than implants",
       "PRP procedures generally involve a blood draw",
+      "blood-draw, PRP-preparation, and injection steps used for this service",
+      "injection risks, and alternatives to PRP breast treatment",
     ],
     requiredHtml: [/href=["']\/consult\?procedure=prp-breast-lift&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=prp_breast_lift["']/],
     forbiddenHtml: [/id=["']prp-breast-lift-quantity["']/],
