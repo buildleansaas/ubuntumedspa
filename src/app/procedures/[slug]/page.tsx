@@ -321,9 +321,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </h2>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
               <p>
-                In published medical literature, PRP generally refers to platelet-rich plasma prepared from a person&apos;s own blood. The clinic&apos;s exact
-                protocol for this service must be confirmed during consultation. Published evidence for cosmetic breast benefits is limited, so any
-                change in appearance or skin quality is uncertain.
+                Published medical literature describes different PRP preparations and delivery approaches. The clinic&apos;s exact protocol for this service
+                must be confirmed during consultation. Published evidence for cosmetic breast benefits is limited, so any change in appearance or skin
+                quality is uncertain.
               </p>
               <p>
                 This treatment does not replace a surgical breast lift or breast augmentation. It does not remove loose skin, reposition breast

@@ -23,7 +23,7 @@ const fetchLocal = (value, options) => {
 };
 const extractAll = (html, expression) => [...html.matchAll(expression)].map((match) => match[1]);
 const unescapeHtml = (value) =>
-  value.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+  value.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;|&#x27;|&apos;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
 const getTagAttributes = (tag) => {
   const attributes = {};
   const source = tag.replace(/^<\w+\s*|\/?>$/g, "");
@@ -226,7 +226,7 @@ const ownerPageExpectations = {
   "/procedures/prp-breast-lift": {
     required: [
       "What a PRP Breast Lift can and cannot do",
-      "In published medical literature",
+      "Published medical literature describes different PRP preparations",
       "Published evidence for cosmetic breast benefits is limited",
       "does not replace a surgical breast lift or breast augmentation",
       "$1,800",
@@ -249,6 +249,11 @@ const ownerPageExpectations = {
       "PRP procedures generally involve a blood draw",
       "blood-draw, PRP-preparation, and injection steps used for this service",
       "injection risks, and alternatives to PRP breast treatment",
+      "prepared from a person's own blood",
+      "your own blood components",
+      "our PRP treatments are personalized, natural-looking",
+      "realistic changes",
+      "a subtle appearance change is realistic",
     ],
     requiredHtml: [/href=["']\/consult\?procedure=prp-breast-lift&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=prp_breast_lift["']/],
     forbiddenHtml: [/id=["']prp-breast-lift-quantity["']/],

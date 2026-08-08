@@ -567,12 +567,12 @@ export const procedures = [
       "This Williamsburg page explains what is known, what remains uncertain, and why a PRP Breast Lift should not be compared with augmentation or a surgical lift. Before paying, use a private consultation to confirm candidacy, the clinic's current protocol, risks, aftercare, and whether another type of care better fits your goal.",
     headline: "Considering a PRP Breast Lift? Start with clear expectations",
     subline:
-      "In published literature, PRP generally refers to platelet-rich plasma prepared from a person's own blood. Cosmetic breast benefits have not been established in robust clinical studies, and the clinic's exact protocol must be confirmed before treatment.",
+      "Published medical literature describes different PRP preparations and delivery approaches. Cosmetic breast benefits have not been established in robust clinical studies, and the clinic's exact protocol must be confirmed before treatment.",
     image: "/procedure/prp-breast-lift-consultation-confidence.webp",
     price: "$1,800",
     // programmatic SEO copy
     blogHeadline:
-      "Read practical guidance about PRP breast treatment, candidacy, recovery, realistic outcomes, and the questions worth asking before you book.",
+      "Read practical guidance about PRP breast treatment, candidacy, recovery questions, evidence limits, and what to ask before you book.",
     benefitsHeadline:
       "A consultation-led decision with protocol questions, evidence limits, and clear expectations before you proceed.",
     benefits: [
@@ -580,7 +580,7 @@ export const procedures = [
         emoji: "🩸",
         benefit: "Confirm the Protocol",
         description:
-          "Published PRP reports generally describe preparation from a person's own blood. Ask the clinic to confirm whether and how that applies to this service.",
+          "The exact preparation and delivery method for this service is not documented on this page. Ask the clinic to explain its current protocol before you decide.",
       },
       {
         emoji: "📍",
@@ -616,7 +616,7 @@ export const procedures = [
       {
         title: "Loss of Breast Volume",
         description:
-          "Review whether a subtle appearance change is realistic. PRP does not provide implant-like volume.",
+          "Any cosmetic change, if one occurs, is uncertain. PRP does not provide implant-like volume.",
         blog_post_title: "PRP and Breast Volume: Realistic Limits",
         blog_post_slug: "restore-natural-volume-to-your-breasts-with-the-prp-breast-lift",
         slug: "loss-of-breast-volume",
@@ -669,7 +669,7 @@ export const procedures = [
       },
     ],
     faqHeadline:
-      "Get clear answers about the treatment process, realistic changes, recovery, and when a different type of care may be the better fit.",
+      "Get clear answers about evidence limits, recovery questions, and when a different type of care may be the better fit.",
     faqs: [
       {
         question: "How does the PRP Breast Lift differ from traditional breast augmentation?",
