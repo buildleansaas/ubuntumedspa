@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { readFileSync } from "node:fs";
 import { URL } from "node:url";
 
 const targetArg = process.argv.slice(2).find((argument) => !argument.startsWith("-"));
@@ -38,6 +39,66 @@ const getVisibleText = (html) =>
       .replace(/<(script|style|noscript)\b[^>]*>[\s\S]*?<\/\1>/gi, " ")
       .replace(/<[^>]+>/g, " ")
   ).replace(/\s+/g, " ");
+
+const unsupportedPrpBreastClaimClasses = [
+  {
+    name: "blood-source or blood-component assertion",
+    expression:
+      /\b(?:uses?|using|contains?|made|prepared|derived|drawn)\b.{0,60}\b(?:your|a person's|the patient's|patient's|their)\s+(?:own\s+)?blood(?:\s+components?)?\b|\b(?:your|a person's|the patient's|patient's|their)\s+(?:own\s+)?blood(?:\s+components?)?\b.{0,60}\b(?:used|component|preparation|derived|prepared|drawn)\b/i,
+    fixtures: [
+      "This treatment uses components drawn from your blood.",
+      "The preparation is derived from the patient's own blood components.",
+    ],
+  },
+  {
+    name: "delivery-method presupposition",
+    expression:
+      /\b(?:injection|injections|injected)\b.{0,50}\b(?:method|steps?|used|for this service)\b|\b(?:is|are|will be)\s+(?:delivered|administered|injected)\s+(?:by|through|via|using)\b/i,
+    fixtures: [
+      "Ask the clinic to confirm the injection method used for this service.",
+      "The treatment is delivered via injection.",
+    ],
+  },
+  {
+    name: "favorable cosmetic-outcome implication",
+    expression:
+      /\b(?:natural[- ]looking|subtle|modest|realistic)\s+(?:cosmetic\s+)?(?:result|results|outcome|outcomes|change|changes|improvement|improvements)\b|\b(?:cosmetic|appearance)\s+(?:improvement|improvements|change|changes)\s+(?:is|are|may be)\s+(?:achievable|realistic|expected|likely)\b/i,
+    fixtures: [
+      "Our PRP care is tailored for natural-looking outcomes.",
+      "Ask whether a modest cosmetic improvement is achievable.",
+    ],
+  },
+];
+
+for (const claimClass of unsupportedPrpBreastClaimClasses) {
+  for (const fixture of claimClass.fixtures) {
+    if (!claimClass.expression.test(fixture)) {
+      fail(`PRP Breast Lift claim detector missed ${claimClass.name} fixture: ${fixture}`);
+    }
+  }
+}
+
+const procedureDataSource = unescapeHtml(readFileSync(new URL("../src/data.ts", import.meta.url), "utf8"));
+const ownerDataStart = procedureDataSource.indexOf('name: "PRP Breast Lift"');
+const ownerDataEnd = procedureDataSource.indexOf('name: "PRP Hair Restoration"', ownerDataStart + 1);
+if (ownerDataStart === -1 || ownerDataEnd === -1) {
+  fail("could not isolate the PRP Breast Lift owner-data source contract");
+} else {
+  const ownerDataSource = procedureDataSource.slice(ownerDataStart, ownerDataEnd);
+  const ownerSourceTargets = [
+    ["PRP Breast Lift owner data", ownerDataSource],
+    ["procedure route source", unescapeHtml(readFileSync(new URL("../src/app/procedures/[slug]/page.tsx", import.meta.url), "utf8"))],
+    ["shared footer source", unescapeHtml(readFileSync(new URL("../src/components/footer.tsx", import.meta.url), "utf8"))],
+  ];
+
+  for (const [sourceName, source] of ownerSourceTargets) {
+    for (const claimClass of unsupportedPrpBreastClaimClasses) {
+      if (claimClass.expression.test(source)) {
+        fail(`${sourceName} contains unsupported ${claimClass.name}`);
+      }
+    }
+  }
+}
 
 const robotsResponse = await fetch(new URL("/robots.txt", baseUrl));
 if (!robotsResponse.ok) fail(`/robots.txt returned ${robotsResponse.status}`);
