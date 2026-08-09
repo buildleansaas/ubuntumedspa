@@ -47,6 +47,7 @@ export default function Footer() {
             <h3 className="mt-3 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content">
               Rejuvenate Your Life
             </h3>
+            {/* PRP_BREAST_SHARED_COPY_CONTRACT_START */}
             <p className="mt-4 text-base md:text-lg leading-relaxed text-base-content/80">
               Explore personalized services for <strong>joint concerns</strong>, <strong>aesthetic goals</strong>,{" "}
               <strong>sexual wellness</strong>, and overall <strong>well-being</strong>.
@@ -55,6 +56,7 @@ export default function Footer() {
               From intimate wellness and facial rejuvenation to hair and joint-focused care, treatment decisions begin
               with candidacy, realistic expectations, and clear guidance.
             </p>
+            {/* PRP_BREAST_SHARED_COPY_CONTRACT_END */}
             <div className="mt-5 space-y-2 text-sm leading-6 text-base-content/65">
               <p>3900 Powhatan Parkway, Williamsburg, VA 23188</p>
               <p>+1 (804) 738-9483</p>

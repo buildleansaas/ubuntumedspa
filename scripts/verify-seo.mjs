@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { URL } from "node:url";
 
@@ -44,29 +45,45 @@ const unsupportedPrpBreastClaimClasses = [
   {
     name: "blood-source or blood-component assertion",
     expression:
-      /\b(?:uses?|using|contains?|made|prepared|derived|drawn)\b.{0,60}\b(?:your|a person's|the patient's|patient's|their)\s+(?:own\s+)?blood(?:\s+components?)?\b|\b(?:your|a person's|the patient's|patient's|their)\s+(?:own\s+)?blood(?:\s+components?)?\b.{0,60}\b(?:used|component|preparation|derived|prepared|drawn)\b/i,
+      /\b(?:uses?|using|contains?|made|prepared|derived|drawn)\b.{0,60}\b(?:your|a person's|the patient's|patient's|their)\s+(?:own\s+)?blood(?:\s+components?)?\b|\b(?:your|a person's|the patient's|patient's|their)\s+(?:own\s+)?blood(?:\s+components?)?\b.{0,60}\b(?:used|component|preparation|derived|prepared|drawn|processed|converted)\b|\b(?:plasma|platelets?|treatment|preparation)\s+(?:comes?|is|are)\s+from\s+(?:your|a person's|the patient's|patient's|their)\s+(?:own\s+)?blood\b|\bautologous\s+(?:blood|plasma|platelets?|platelet[- ]rich plasma)\b|\b(?:plasma|platelets?|platelet[- ]rich plasma)\b.{0,50}\b(?:blood draw|blood sample|sample of (?:the patient's|your|their) blood)\b/i,
     fixtures: [
       "This treatment uses components drawn from your blood.",
       "The preparation is derived from the patient's own blood components.",
+      "The plasma comes from your own blood.",
+      "Your blood is processed into the treatment.",
+      "Autologous plasma is collected from a small blood sample.",
+      "Platelet-rich plasma is prepared after a blood draw.",
     ],
+    allowedFixtures: ["Ask the clinic to explain the current preparation before you decide."],
   },
   {
     name: "delivery-method presupposition",
     expression:
-      /\b(?:injection|injections|injected)\b.{0,50}\b(?:method|steps?|used|for this service)\b|\b(?:is|are|will be)\s+(?:delivered|administered|injected)\s+(?:by|through|via|using)\b/i,
+      /\b(?:injection|injections|injected)\b.{0,50}\b(?:method|steps?|used|for this service)\b|\b(?:is|are|will be)\s+(?:delivered|administered|injected)\s+(?:by|through|via|using)\b|\b(?:procedure|treatment|service)\s+(?:involves?|uses?|includes?)\b.{0,30}\b(?:injection|injections|needle|needle-based)\b|\bneedle-based\s+(?:method|technique|approach)\b.{0,40}\b(?:used|for this service)\b|\b(?:placed|delivered|administered)\b.{0,45}\b(?:breast tissue|breast area|treatment area)\b.{0,30}\b(?:needle|injection|injections)\b|\b(?:injectable|injection-based|needle-based)\s+(?:plan|treatment|procedure|service|approach)\b/i,
     fixtures: [
       "Ask the clinic to confirm the injection method used for this service.",
       "The treatment is delivered via injection.",
+      "This procedure involves injections.",
+      "Confirm the needle-based technique used for this service.",
+      "The preparation is placed into breast tissue with a fine needle.",
+      "Review whether an injectable plan may fit.",
     ],
+    allowedFixtures: ["Ask the clinic whether and how this service is delivered."],
   },
   {
     name: "favorable cosmetic-outcome implication",
     expression:
-      /\b(?:natural[- ]looking|subtle|modest|realistic)\s+(?:cosmetic\s+)?(?:result|results|outcome|outcomes|change|changes|improvement|improvements)\b|\b(?:cosmetic|appearance)\s+(?:improvement|improvements|change|changes)\s+(?:is|are|may be)\s+(?:achievable|realistic|expected|likely)\b/i,
+      /\b(?:natural[- ]looking|subtle|modest|realistic)\s+(?:cosmetic\s+)?(?:result|results|outcome|outcomes|change|changes|improvement|improvements)\b|\b(?:cosmetic|appearance)\s+(?:improvement|improvements|change|changes)\s+(?:is|are|may be)\s+(?:achievable|realistic|expected|likely)\b|\b(?:visible|noticeable)\s+lift\b.{0,30}\b(?:may|can|could|will)\s+(?:occur|happen|result)\b|\b(?:treatment|procedure|service)\s+(?:may|can|could|will)\s+(?:improve|enhance|lift)\b.{0,40}\b(?:breast|appearance|contour|skin)\b|\bfuller[- ]looking\s+(?:breasts?|appearance|contour)?\b|\b(?:firmer\s*(?:,|and)\s*perkier|perkier\s*(?:,|and)\s*firmer)\b|\blifted\s+(?:breast\s+)?appearance\b/i,
     fixtures: [
       "Our PRP care is tailored for natural-looking outcomes.",
       "Ask whether a modest cosmetic improvement is achievable.",
+      "A visible lift may occur.",
+      "The treatment can improve breast appearance.",
+      "The service can create fuller-looking breasts.",
+      "Expect firmer, perkier breasts.",
+      "A lifted appearance is possible.",
     ],
+    allowedFixtures: ["Any cosmetic change, if one occurs, is uncertain."],
   },
 ];
 
@@ -76,19 +93,55 @@ for (const claimClass of unsupportedPrpBreastClaimClasses) {
       fail(`PRP Breast Lift claim detector missed ${claimClass.name} fixture: ${fixture}`);
     }
   }
+  for (const fixture of claimClass.allowedFixtures) {
+    if (claimClass.expression.test(fixture)) {
+      fail(`PRP Breast Lift claim detector rejected allowed ${claimClass.name} fixture: ${fixture}`);
+    }
+  }
 }
 
+const sourceContractHash = (value) => createHash("sha256").update(value.replace(/\r\n/g, "\n").trim()).digest("hex");
+const extractMarkedSource = (source, startMarker, endMarker) => {
+  const start = source.indexOf(startMarker);
+  const end = source.indexOf(endMarker, start + startMarker.length);
+  if (start === -1 || end === -1) return null;
+  return source.slice(start + startMarker.length, end);
+};
+const assertSourceContract = (name, source, expectedHash) => {
+  if (source === null) {
+    fail(`${name} markers are missing`);
+    return;
+  }
+  const actualHash = sourceContractHash(source);
+  if (actualHash !== expectedHash) fail(`${name} changed outside its reviewed clinical copy contract (${actualHash})`);
+};
+
 const procedureDataSource = unescapeHtml(readFileSync(new URL("../src/data.ts", import.meta.url), "utf8"));
+const procedureRouteSource = unescapeHtml(readFileSync(new URL("../src/app/procedures/[slug]/page.tsx", import.meta.url), "utf8"));
+const sharedFooterSource = unescapeHtml(readFileSync(new URL("../src/components/footer.tsx", import.meta.url), "utf8"));
 const ownerDataStart = procedureDataSource.indexOf('name: "PRP Breast Lift"');
 const ownerDataEnd = procedureDataSource.indexOf('name: "PRP Hair Restoration"', ownerDataStart + 1);
 if (ownerDataStart === -1 || ownerDataEnd === -1) {
   fail("could not isolate the PRP Breast Lift owner-data source contract");
 } else {
   const ownerDataSource = procedureDataSource.slice(ownerDataStart, ownerDataEnd);
+  const routeOwnerSource = extractMarkedSource(
+    procedureRouteSource,
+    "PRP_BREAST_OWNER_COPY_CONTRACT_START",
+    "PRP_BREAST_OWNER_COPY_CONTRACT_END"
+  );
+  const sharedFooterContractSource = extractMarkedSource(
+    sharedFooterSource,
+    "PRP_BREAST_SHARED_COPY_CONTRACT_START",
+    "PRP_BREAST_SHARED_COPY_CONTRACT_END"
+  );
+  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "12036496067bc17536ea0d1775a19e8b65c0c2f09f02890c8e867ca33d896506");
+  assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "472712ce62938c1f2386335e7055f690046c3494a7d24ebe0cc617003f60db6b");
+  assertSourceContract("shared footer clinical copy", sharedFooterContractSource, "9a254fb69945627b989dec2c688c7c7c37fd0655408afe49e7da703bc387d9ec");
   const ownerSourceTargets = [
     ["PRP Breast Lift owner data", ownerDataSource],
-    ["procedure route source", unescapeHtml(readFileSync(new URL("../src/app/procedures/[slug]/page.tsx", import.meta.url), "utf8"))],
-    ["shared footer source", unescapeHtml(readFileSync(new URL("../src/components/footer.tsx", import.meta.url), "utf8"))],
+    ["procedure route source", routeOwnerSource || ""],
+    ["shared footer source", sharedFooterContractSource || ""],
   ];
 
   for (const [sourceName, source] of ownerSourceTargets) {
@@ -285,6 +338,10 @@ if (!newportNews.includes('"@type":"FAQPage"')) {
 
 const ownerPageExpectations = {
   "/procedures/prp-breast-lift": {
+    title: "PRP Breast Lift in Williamsburg, VA",
+    description:
+      "Learn about PRP Breast Lift consultation in Williamsburg, VA, including limited evidence, realistic limits, candidacy questions, and how it differs from surgery.",
+    h1: "PRP Breast Lift in Williamsburg, VA",
     required: [
       "What a PRP Breast Lift can and cannot do",
       "Published medical literature describes different PRP preparations",
@@ -327,6 +384,17 @@ for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
     continue;
   }
   const text = getVisibleText(page.html);
+  const title = getVisibleText(page.html.match(/<title(?:\s[^>]*)?>([\s\S]*?)<\/title>/i)?.[1] || "");
+  const descriptionTag = (page.html.match(/<meta\b[^>]*>/gi) || []).find(
+    (tag) => getTagAttributes(tag).name?.toLowerCase() === "description"
+  );
+  const description = descriptionTag ? getTagAttributes(descriptionTag).content || "" : "";
+  const h1 = getVisibleText(page.html.match(/<h1(?:\s[^>]*)?>([\s\S]*?)<\/h1>/i)?.[1] || "");
+  if (expectation.title && title !== expectation.title) fail(`${path} title is ${JSON.stringify(title)}, expected ${JSON.stringify(expectation.title)}`);
+  if (expectation.description && description !== expectation.description) {
+    fail(`${path} meta description is ${JSON.stringify(description)}, expected ${JSON.stringify(expectation.description)}`);
+  }
+  if (expectation.h1 && h1 !== expectation.h1) fail(`${path} H1 is ${JSON.stringify(h1)}, expected ${JSON.stringify(expectation.h1)}`);
   for (const required of expectation.required) {
     if (!text.includes(required)) fail(`${path} missing required owner-page copy: ${required}`);
   }
@@ -345,7 +413,10 @@ for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
     .flatMap((schema) => (Array.isArray(schema?.["@graph"]) ? schema["@graph"] : [schema]))
     .filter((schema) => schema?.["@type"] === "Service");
   if (path === "/procedures/prp-breast-lift") {
-    const offer = serviceSchemas[0]?.offers;
+    if (serviceSchemas.length !== 1 || serviceSchemas[0]?.name !== "PRP Breast Lift") {
+      fail(`${path} must expose exactly one PRP Breast Lift Service schema`);
+    }
+    const offer = serviceSchemas.find((schema) => schema?.name === "PRP Breast Lift")?.offers;
     if (String(offer?.price) !== "1800" || offer?.priceCurrency !== "USD") {
       fail(`${path} Service schema is missing the $1,800 USD offer`);
     }

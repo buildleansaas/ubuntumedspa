@@ -580,13 +580,13 @@ export const procedures = [
         emoji: "🩸",
         benefit: "Confirm the Protocol",
         description:
-          "The exact preparation and delivery method for this service is not documented on this page. Ask the clinic to explain its current protocol before you decide.",
+          "This page does not document how the clinic currently performs this service. Ask whether and how it is prepared and delivered before you decide.",
       },
       {
         emoji: "📍",
         benefit: "Questions Before Treatment",
         description:
-          "Ask the clinic to explain the delivery method, intended treatment areas, comfort measures, evidence limits, risks, and alternatives before you proceed.",
+          "Ask whether and how the service is delivered, which areas would be considered, and what risks, comfort measures, evidence limits, and alternatives apply before you proceed.",
       },
       {
         emoji: "🌿",
@@ -634,7 +634,7 @@ export const procedures = [
       {
         title: "Wrinkled Cleavage Area",
         description:
-          "Review cleavage-area skin texture and whether an injectable or skin-focused plan may fit your goals.",
+          "Review cleavage-area skin texture and whether a skin-focused plan or another type of care may fit your goals.",
         blog_post_title: "PRP for Cleavage-Area Texture: What Is Known",
         blog_post_slug: "soften-cleavage-wrinkles-with-the-prp-breast-lift",
         slug: "wrinkled-cleavage-area",
@@ -679,12 +679,12 @@ export const procedures = [
       {
         question: "What happens during a PRP Breast Lift appointment?",
         answer:
-          "Published PRP procedures vary, and this page does not establish the clinic's exact sequence. Before paying, ask the clinic to confirm the preparation and delivery method, intended treatment areas, comfort measures, and aftercare used for this service.",
+          "Published PRP procedures vary, and this page does not establish the clinic's exact sequence. Before paying, ask whether and how this service is prepared and delivered, what the visit involves, which areas would be considered, and what comfort measures or aftercare instructions apply.",
       },
       {
         question: "What should I expect after treatment?",
         answer:
-          "Recovery effects depend on the delivery method and individual response. Ask for the clinic's current written instructions about activity, expected effects, warning signs, and when to contact the office.",
+          "What to expect afterward depends on whether and how the service is delivered and on individual response. Ask for the clinic's current written instructions about activity, expected effects, warning signs, and when to contact the office.",
       },
       {
         question: "How soon will I see a change, and how long will it last?",
@@ -699,7 +699,7 @@ export const procedures = [
       {
         question: "What risks should I ask about before PRP breast treatment?",
         answer:
-          "Long-term effectiveness and complications of cosmetic PRP breast procedures are not well established. Ask the qualified clinician to explain the clinic's delivery method and its risks, then review your health history, medications, prior breast procedures, screening or imaging history, and current symptoms before you proceed.",
+          "Long-term effectiveness and complications of cosmetic PRP breast procedures are not well established. Ask the qualified clinician whether and how the clinic delivers this service and what risks apply to that confirmed approach, then review your health history, medications, prior breast procedures, screening or imaging history, and current symptoms before you proceed.",
       },
     ],
   },

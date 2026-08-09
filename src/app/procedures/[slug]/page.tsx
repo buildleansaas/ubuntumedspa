@@ -313,6 +313,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           )}
         </section>
 
+        {/* PRP_BREAST_OWNER_COPY_CONTRACT_START */}
         {procedure.slug === "prp-breast-lift" && (
           <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="prp-breast-lift-expectations">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Before you decide</p>
@@ -335,8 +336,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             <ol className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 sm:grid-cols-2">
               {[
                 ["01", "Confirm candidacy first", "Share your health history, prior breast procedures, screening or imaging history, current symptoms, and cosmetic goal with the qualified clinician reviewing candidacy."],
-                ["02", "Confirm the delivery method", "Ask the clinic whether and how this service is delivered, what preparation is involved, and which risks apply to the clinic's confirmed method before you proceed."],
-                ["03", "Ask about the limits", "Discuss the limited evidence, uncertain cosmetic benefit, risks associated with the clinic's confirmed delivery method, and alternatives to PRP breast treatment."],
+                ["02", "Confirm how the service is performed", "Ask whether and how this service is prepared and delivered, what the visit involves, and which risks apply to the clinic's confirmed approach before you proceed."],
+                ["03", "Ask about the limits", "Discuss the limited evidence, uncertain cosmetic benefit, risks of whatever approach the clinic confirms, and alternatives to PRP breast treatment."],
                 ["04", "Plan for recovery questions", "Ask what tenderness, swelling, bruising, or other effects warrant a call and request the clinic's current aftercare instructions."],
               ].map(([number, title, copy]) => (
                 <li key={number} className="grid grid-cols-[2.5rem_1fr] gap-3">
@@ -356,6 +357,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </p>
           </section>
         )}
+        {/* PRP_BREAST_OWNER_COPY_CONTRACT_END */}
 
         <section className="mx-auto max-w-5xl pt-10 text-center" id="pricing">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
