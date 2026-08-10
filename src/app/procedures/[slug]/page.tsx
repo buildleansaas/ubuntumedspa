@@ -157,6 +157,10 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
   const featuredGuide = articles.find((article) => article.slug === featuredGuideSlugs[procedure.slug]);
   const featuredGuideCta = featuredGuide ? featuredGuideCopy[procedure.slug] : undefined;
   const relatedLinks = relatedProcedureLinks[procedure.slug] ?? [];
+  const ownerConsultationHref =
+    procedure.slug === "prp-breast-lift"
+      ? "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift"
+      : undefined;
   const consultationSupportCopy =
     procedure.slug === "prp-breast-lift"
       ? "If you have not completed a candidacy consultation, book that first. Use checkout only after the clinic confirms you are eligible to proceed; payment covers one treatment visit."
@@ -562,7 +566,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           {Boolean(procedure.testimonials?.length) && (
             <ProcedureTestimonials procedureName={procedure.name} items={procedure.testimonials} />
           )}
-          <CtaButtons />
+          <CtaButtons consultHref={ownerConsultationHref} />
         </div>
 
         {hasAilments && (
@@ -610,7 +614,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   );
                 })}
             </div>
-            <CtaButtons />
+            <CtaButtons consultHref={ownerConsultationHref} />
           </div>
         )}
 
@@ -627,7 +631,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               </AccordionItem>
             ))}
           </Accordion>
-          <CtaButtons />
+          <CtaButtons consultHref={ownerConsultationHref} />
         </div>
 
         {Boolean(articles.length) && (
@@ -666,7 +670,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </Button>
           </div>
         )}
-        <CtaFooter />
+        <CtaFooter consultHref={ownerConsultationHref} />
       </div>
       </div>
     </>

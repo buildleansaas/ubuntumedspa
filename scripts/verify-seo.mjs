@@ -45,7 +45,7 @@ const unsupportedPrpBreastClaimClasses = [
   {
     name: "blood-source or blood-component assertion",
     expression:
-      /\b(?:uses?|using|contains?|made|prepared|derived|drawn)\b.{0,60}\b(?:your|a person's|the patient's|patient's|their)\s+(?:own\s+)?blood(?:\s+components?)?\b|\b(?:your|a person's|the patient's|patient's|their)\s+(?:own\s+)?blood(?:\s+components?)?\b.{0,60}\b(?:used|component|preparation|derived|prepared|drawn|processed|converted)\b|\b(?:plasma|platelets?|treatment|preparation)\s+(?:comes?|is|are)\s+from\s+(?:your|a person's|the patient's|patient's|their)\s+(?:own\s+)?blood\b|\bautologous\s+(?:blood|plasma|platelets?|platelet[- ]rich plasma)\b|\b(?:plasma|platelets?|platelet[- ]rich plasma)\b.{0,50}\b(?:blood draw|blood sample|sample of (?:the patient's|your|their) blood)\b/i,
+      /\b(?:uses?|using|contains?|made|prepared|derived|drawn)\b.{0,60}\b(?:your|a person's|the patient's|patient's|their)\s+(?:own\s+)?blood(?:\s+components?)?\b|\b(?:your|a person's|the patient's|patient's|their)\s+(?:own\s+)?blood(?:\s+components?)?\b.{0,60}\b(?:used|component|preparation|derived|prepared|drawn|processed|converted)\b|\b(?:plasma|platelets?|treatment|preparation)\s+(?:comes?|is|are)\s+from\s+(?:your|a person's|the patient's|patient's|their)\s+(?:own\s+)?blood\b|\bautologous\s+(?:blood|plasma|platelets?|platelet[- ]rich plasma)\b|\b(?:plasma|platelets?|platelet[- ]rich plasma)\b.{0,50}\b(?:blood draw|blood sample|sample of (?:the patient's|your|their) blood)\b|\b(?:collects?|collected|collecting|obtains?|obtained|obtaining|takes?|took|taken)\b.{0,60}\b(?:a\s+)?sample\s+of\s+(?:your|a person's|the patient's|patient's|their)\s+(?:own\s+)?blood\b/i,
     fixtures: [
       "This treatment uses components drawn from your blood.",
       "The preparation is derived from the patient's own blood components.",
@@ -53,13 +53,14 @@ const unsupportedPrpBreastClaimClasses = [
       "Your blood is processed into the treatment.",
       "Autologous plasma is collected from a small blood sample.",
       "Platelet-rich plasma is prepared after a blood draw.",
+      "We collect a sample of the patient's blood for the procedure.",
     ],
     allowedFixtures: ["Ask the clinic to explain the current preparation before you decide."],
   },
   {
     name: "delivery-method presupposition",
     expression:
-      /\b(?:injection|injections|injected)\b.{0,50}\b(?:method|steps?|used|for this service)\b|\b(?:is|are|will be)\s+(?:delivered|administered|injected)\s+(?:by|through|via|using)\b|\b(?:procedure|treatment|service)\s+(?:involves?|uses?|includes?)\b.{0,30}\b(?:injection|injections|needle|needle-based)\b|\bneedle-based\s+(?:method|technique|approach)\b.{0,40}\b(?:used|for this service)\b|\b(?:placed|delivered|administered)\b.{0,45}\b(?:breast tissue|breast area|treatment area)\b.{0,30}\b(?:needle|injection|injections)\b|\b(?:injectable|injection-based|needle-based)\s+(?:plan|treatment|procedure|service|approach)\b/i,
+      /\b(?:injection|injections|injected)\b.{0,50}\b(?:method|steps?|used|for this service)\b|\b(?:is|are|will be)\s+(?:delivered|administered|injected)\s+(?:by|through|via|using|with)\b|\b(?:procedure|treatment|service)\s+(?:involves?|uses?|includes?)\b.{0,30}\b(?:injection|injections|needle|needle-based)\b|\bneedle-based\s+(?:method|technique|approach)\b.{0,40}\b(?:used|for this service)\b|\b(?:placed|delivered|administered|injected)\b.{0,45}\b(?:breast tissue|breast area|treatment area)\b|\b(?:injectable|injection-based|needle-based)\s+(?:plan|treatment|procedure|service|approach)\b/i,
     fixtures: [
       "Ask the clinic to confirm the injection method used for this service.",
       "The treatment is delivered via injection.",
@@ -67,13 +68,15 @@ const unsupportedPrpBreastClaimClasses = [
       "Confirm the needle-based technique used for this service.",
       "The preparation is placed into breast tissue with a fine needle.",
       "Review whether an injectable plan may fit.",
+      "The treatment is injected directly into breast tissue.",
+      "This service is administered with a series of small needles.",
     ],
     allowedFixtures: ["Ask the clinic whether and how this service is delivered."],
   },
   {
     name: "favorable cosmetic-outcome implication",
     expression:
-      /\b(?:natural[- ]looking|subtle|modest|realistic)\s+(?:cosmetic\s+)?(?:result|results|outcome|outcomes|change|changes|improvement|improvements)\b|\b(?:cosmetic|appearance)\s+(?:improvement|improvements|change|changes)\s+(?:is|are|may be)\s+(?:achievable|realistic|expected|likely)\b|\b(?:visible|noticeable)\s+lift\b.{0,30}\b(?:may|can|could|will)\s+(?:occur|happen|result)\b|\b(?:treatment|procedure|service)\s+(?:may|can|could|will)\s+(?:improve|enhance|lift)\b.{0,40}\b(?:breast|appearance|contour|skin)\b|\bfuller[- ]looking\s+(?:breasts?|appearance|contour)?\b|\b(?:firmer\s*(?:,|and)\s*perkier|perkier\s*(?:,|and)\s*firmer)\b|\blifted\s+(?:breast\s+)?appearance\b/i,
+      /\b(?:natural[- ]looking|subtle|modest|realistic)\s+(?:cosmetic\s+)?(?:result|results|outcome|outcomes|change|changes|improvement|improvements)\b|\b(?:cosmetic|appearance)\s+(?:improvement|improvements|change|changes)\s+(?:is|are|may be)\s+(?:achievable|realistic|expected|likely)\b|\b(?:visible|noticeable|subtle|modest)\s+lift\b.{0,30}\b(?:may|can|could|will)\s+(?:occur|happen|result)\b|\b(?:treatment|procedure|service)\s+(?:may|can|could|will)\s+(?:improve|enhance|lift)\b.{0,40}\b(?:breast|appearance|contour|skin)\b|\b(?:treatment|procedure|service)\s+(?:may|can|could|will)\s+make\b.{0,30}\bbreasts?\b.{0,30}\b(?:look|appear)\s+(?:more\s+)?(?:youthful|lifted|fuller|firmer|perkier)\b|\bfuller[- ]looking\s+(?:breasts?|appearance|contour)?\b|\b(?:firmer\s*(?:,|and)\s*perkier|perkier\s*(?:,|and)\s*firmer)\b|\blifted\s+(?:breast\s+)?appearance\b/i,
     fixtures: [
       "Our PRP care is tailored for natural-looking outcomes.",
       "Ask whether a modest cosmetic improvement is achievable.",
@@ -82,6 +85,8 @@ const unsupportedPrpBreastClaimClasses = [
       "The service can create fuller-looking breasts.",
       "Expect firmer, perkier breasts.",
       "A lifted appearance is possible.",
+      "A subtle lift may occur.",
+      "The procedure may make the breasts look more youthful.",
     ],
     allowedFixtures: ["Any cosmetic change, if one occurs, is uncertain."],
   },
@@ -374,6 +379,8 @@ const ownerPageExpectations = {
       "a subtle appearance change is realistic",
     ],
     requiredHtml: [/href=["']\/consult\?procedure=prp-breast-lift&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=prp_breast_lift["']/],
+    requiredConsultHref:
+      "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift",
     forbiddenHtml: [/id=["']prp-breast-lift-quantity["']/],
   },
 };
@@ -406,6 +413,17 @@ for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
   }
   for (const forbiddenHtml of expectation.forbiddenHtml || []) {
     if (forbiddenHtml.test(page.html)) fail(`${path} contains forbidden owner-page HTML: ${forbiddenHtml}`);
+  }
+  if (expectation.requiredConsultHref) {
+    const consultationCtas = [...page.html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)]
+      .map((match) => ({ attributes: getTagAttributes(`<a ${match[1]}>`), text: getVisibleText(match[2]) }))
+      .filter(({ text }) => /book.*consultation/i.test(text));
+    if (!consultationCtas.length) fail(`${path} has no consultation CTA links`);
+    for (const { attributes, text: linkText } of consultationCtas) {
+      if (unescapeHtml(attributes.href || "") !== expectation.requiredConsultHref) {
+        fail(`${path} consultation CTA ${JSON.stringify(linkText)} drops procedure attribution: ${attributes.href || "(missing href)"}`);
+      }
+    }
   }
 
   const serviceSchemas = extractAll(page.html, /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)
