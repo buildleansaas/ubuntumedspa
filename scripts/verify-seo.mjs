@@ -41,20 +41,29 @@ const getVisibleText = (html) =>
       .replace(/<[^>]+>/g, " ")
   ).replace(/\s+/g, " ");
 
+const splitClinicalClauses = (value) =>
+  String(value)
+    .split(/(?<=[.!?])\s+|\n+|\b(?:but|however|yet)\b/gi)
+    .map((segment) => segment.trim())
+    .filter(Boolean);
+const isEvidenceLimitClause = (segment) =>
+  /\b(?:unknown|uncertain|open question|not (?:been )?(?:established|demonstrated|proven|known)|does not establish|do not establish|cannot establish|evidence is insufficient|insufficient evidence|no\b.{0,100}\b(?:promised|guaranteed|established)|if (?:one|any) occurs?)\b/i.test(
+    segment
+  );
+
 const unsupportedPrpBreastClaimClasses = [
   {
     name: "blood-source or blood-component assertion",
     expression: {
       test(value) {
-        return String(value)
-          .split(/(?<=[.!?])\s+|\n+/)
-          .some((segment) =>
-            /\bautologous\s+(?:blood|plasma|platelets?|platelet[- ]rich plasma)\b/i.test(segment) ||
-            /\bblood\b.{0,100}\b(?:is\s+|was\s+|are\s+|were\s+)?(?:collected|drawn|obtained|taken|processed|separated|used|converted)\b/i.test(segment) ||
-            /\b(?:collects?|collected|collecting|draws?|drawing|drew|drawn|obtains?|obtained|obtaining|takes?|taking|took|taken)\b.{0,100}\bblood\b/i.test(segment) ||
-            /\b(?:plasma|platelets?|platelet[- ]rich plasma|treatment|preparation|components?|prp)\b.{0,100}\b(?:comes?\s+from|is\s+from|are\s+from|derived\s+from|drawn\s+from|made\s+from|prepared\s+(?:from|after)|separated\s+from|taken\s+from|obtained\s+from|supplied\s+by|uses?|using|contains?|consists?\s+of)\b.{0,100}\b(?:blood|bloodstream|plasma|platelets?)\b/i.test(segment) ||
-            /\b(?:blood|bloodstream|plasma|platelets?)\b.{0,100}\b(?:component|preparation|plasma|platelets?|treatment|prp|suppl(?:y|ies|ied))\b/i.test(segment)
+        return splitClinicalClauses(value).some((segment) => {
+          if (isEvidenceLimitClause(segment) || /\b(?:ask|confirm)\b.{0,80}\bwhether\b/i.test(segment) || /\bwhether\b.{0,120}\?$/i.test(segment)) {
+            return false;
+          }
+          return /\b(?:blood|bloodstream|venous|venipuncture|centrifug(?:e|ed|es|ation)|specimen|plasma|platelets?|platelet[- ]rich plasma|autologous)\b/i.test(
+            segment
           );
+        });
       },
     },
     fixtures: [
@@ -73,33 +82,32 @@ const unsupportedPrpBreastClaimClasses = [
       "Patient-sourced blood components form the preparation.",
       "PRP consists of components taken from the patient bloodstream.",
       "Patient blood supplies the components used in PRP.",
+      "PRP is produced from a venous sample taken at the appointment.",
+      "A centrifuge concentrates the collected specimen into PRP.",
+      "The visit begins with venipuncture so the material can be prepared.",
     ],
     allowedFixtures: [
       "Ask the clinic to explain the current preparation before you decide.",
       "Ask the clinic to explain whether any blood collection is part of its current protocol.",
+      "Ask whether PRP comes from your blood.",
     ],
   },
   {
     name: "delivery-method presupposition",
     expression: {
       test(value) {
-        return String(value)
-          .split(/(?<=[.!?])\s+|\n+/)
-          .some((segment) => {
-            if (
-              /\b(?:(?:ask|confirm with)\b.{0,60}|depends?\s+on\s+)\bwhether(?:\s+and\s+how)?\b.{0,60}\b(?:delivers?|delivered|administers?|administered|injects?|injected|needles?|injections?)\b/i.test(segment) ||
-              /\b(?:does not|do not|cannot)\s+establish\b.{0,80}\b(?:delivers?|delivered|administers?|administered|injects?|injected|needles?|injections?)\b/i.test(segment)
-            ) {
-              return false;
-            }
-            return (
-              /\b(?:injects?|injected|injecting|administers?|administered|administering|delivers?|delivered|delivering|places?|placed|placing|introduces?|introduced|introducing)\b.{0,80}\b(?:preparation|prp|treatment|service|breast tissue|breast area|treatment area|needle|needles|injection|injections)\b/i.test(segment) ||
-              /\b(?:preparation|prp|treatment|service)\b.{0,40}\b(?:goes?|enters?|is\s+put|is\s+placed|is\s+introduced)\b.{0,60}\b(?:breast|tissue|treatment area|needle|needles|injection|injections)\b/i.test(segment) ||
-              /\b(?:needle|needles|injection|injections)\b.{0,80}\b(?:injects?|administers?|administered|deliver|delivers|delivered|places?|placed|introduces?|introduced|used|method|technique|approach|service|treatment)\b/i.test(segment) ||
-              /\b(?:procedure|treatment|service)\s+(?:involves?|uses?|includes?|is|are|will be)\b.{0,60}\b(?:injection|injections|injected|needle|needle-based|administered|delivered)\b/i.test(segment) ||
-              /\b(?:injectable|injection-based|needle-based)\s+(?:plan|treatment|procedure|service|approach|method|technique)\b/i.test(segment)
-            );
-          });
+        return splitClinicalClauses(value).some((segment) => {
+          if (
+            isEvidenceLimitClause(segment) ||
+            (/\bwhether\b/i.test(segment) &&
+              /\b(?:used|part of|delivered|administered|injected|performed|whether and how|how)\b/i.test(segment))
+          ) {
+            return false;
+          }
+          return /\b(?:inject(?:s|ed|ing|ion|ions|able)?|needles?|needle[- ]based|microneedl(?:e|es|ed|ing)|administer(?:s|ed|ing)?|deliver(?:s|ed|ing)?|appl(?:y|ies|ied|ying)|introduc(?:e|es|ed|ing)|insert(?:s|ed|ing)?|venipuncture)\b/i.test(
+            segment
+          );
+        });
       },
     },
     fixtures: [
@@ -118,39 +126,33 @@ const unsupportedPrpBreastClaimClasses = [
       "PRP goes into the breast with a fine needle.",
       "The clinician introduces PRP into breast tissue.",
       "A fine needle places PRP in the treatment area.",
+      "The clinician applies PRP to the breast with microneedling.",
+      "The page does not establish whether needles are used, but PRP is injected into tissue.",
     ],
     allowedFixtures: [
       "Ask the clinic whether and how this service is delivered.",
       "The page does not establish whether needles or injections are used.",
+      "It is unknown whether injections are part of this service.",
+      "Whether a needle is used remains an open question.",
     ],
   },
   {
     name: "favorable cosmetic-outcome implication",
     expression: {
       test(value) {
-        return String(value)
-          .split(/(?<=[.!?])\s+|\n+/)
-          .some((segment) => {
-            if (
-              /\b(?:does not|do not|has not|have not|is not|are not|isn't|aren't)\b.{0,80}\b(?:establish|established|promise|promised|guarantee|guaranteed|expected)\b/i.test(segment) ||
-              /\bno\b.{0,80}\b(?:promise|promised|guarantee|guaranteed|established)\b/i.test(segment) ||
-              /\bif\s+(?:one|any)\s+occurs?\b|\buncertain\b/i.test(segment)
-            ) {
-              return false;
-            }
-            return (
-              /\b(?:natural[- ]looking|subtle|modest|realistic)\s+(?:cosmetic\s+)?(?:result|results|outcome|outcomes|change|changes|improvement|improvements)\b/i.test(segment) ||
-              /\b(?:visible|noticeable|subtle|modest|gentle)\s+(?:lift|lifting effect)\b/i.test(segment) ||
-              /\b(?:youthful|younger|lifted|fuller|firmer|perkier)\b.{0,40}\b(?:appearance|breasts?|contour|look|effect)\b/i.test(segment) ||
-              /\b(?:appearance|breasts?|contour)\b.{0,40}\b(?:youthful|younger|lifted|fuller|firmer|perkier)\b/i.test(segment) ||
-              /\b(?:treatment|procedure|service|this|patients?)\b.{0,30}\b(?:may|can|could|will)\b.{0,30}\b(?:create|make|leave|improve|enhance|lift|notice)\b.{0,80}\b(?:breast|appearance|contour|skin|youthful|younger|lift|lifting|fuller|firmer|perkier)\b/i.test(segment) ||
-              /\b(?:treatment|procedure|service|prp)\b.{0,30}\b(?:improves?|improved|enhances?|enhanced|firms?|firmed|tightens?|tightened|refreshes?|refreshed)\b.{0,80}\b(?:breast|appearance|contour|skin|firmness|fullness|shape|tone|texture)\b/i.test(segment) ||
-              /\b(?:treatment|procedure|service)\b.{0,20}\blifts?\b.{0,30}\b(?:breasts?|appearance|contour|skin)\b/i.test(segment) ||
-              /\b(?:breasts?|appearance|contour|skin|firmness|fullness|shape|tone|texture)\b.{0,30}\b(?:is|are|looks?|appears?|feels?|becomes?)\b.{0,20}\b(?:improved|enhanced|lifted|firmer|fuller|perkier|younger|youthful|tightened|refreshed)\b/i.test(segment) ||
-              /\b(?:patients?|breasts?)\b.{0,30}\b(?:get|gain|show|have|achieve|notice)\b.{0,50}\b(?:lifted|fuller|firmer|perkier|younger|youthful|enhanced|improved)\b/i.test(segment) ||
-              /\b(?:fuller[- ]looking|firmer\s*(?:,|and)\s*perkier|perkier\s*(?:,|and)\s*firmer|lifted\s+(?:breast\s+)?appearance|youthful\s+appearance)\b/i.test(segment)
+        return splitClinicalClauses(value).some((segment) => {
+          if (isEvidenceLimitClause(segment)) return false;
+          const normalized = segment.replace(/\b(?:prp|surgical|traditional)?[- ]*breast[- ]lift\b/gi, " ");
+          const hasOutcomeLanguage =
+            /\b(?:natural[- ]looking|subtle|modest|realistic|visible|noticeable|gentle|youthful|younger|lifted|fuller|firmer|perkier|toned|improv(?:e|es|ed|ement|ements)|enhanc(?:e|es|ed|ement|ements)|lifts?|lifting|firms?|firmed|tightens?|tightened|refreshes?|refreshed)\b/i.test(
+              normalized
             );
-          });
+          const hasCosmeticContext =
+            /\b(?:breasts?|chest|appearance|contour|skin|firmness|fullness|shape|tone|texture|results?|outcomes?|changes?|improvements?|lift|lifting effect)\b/i.test(
+              normalized
+            );
+          return hasOutcomeLanguage && hasCosmeticContext;
+        });
       },
     },
     fixtures: [
@@ -170,12 +172,16 @@ const unsupportedPrpBreastClaimClasses = [
       "The treatment enhances breast contour.",
       "PRP improves breast firmness.",
       "Patients get a more lifted contour.",
+      "PRP may help the chest look more toned.",
+      "No result is guaranteed, but the procedure can improve breast contour.",
     ],
     allowedFixtures: [
       "Any cosmetic change, if one occurs, is uncertain.",
       "Published evidence does not establish a cosmetic benefit.",
       "A natural-looking result is not established.",
       "No subtle lift or youthful appearance is promised.",
+      "A subtle lift has not been demonstrated.",
+      "Evidence is insufficient to conclude that the breasts become firmer.",
     ],
   },
 ];
@@ -231,19 +237,6 @@ if (ownerDataStart === -1 || ownerDataEnd === -1) {
   assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "12036496067bc17536ea0d1775a19e8b65c0c2f09f02890c8e867ca33d896506");
   assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "472712ce62938c1f2386335e7055f690046c3494a7d24ebe0cc617003f60db6b");
   assertSourceContract("shared footer clinical copy", sharedFooterContractSource, "9a254fb69945627b989dec2c688c7c7c37fd0655408afe49e7da703bc387d9ec");
-  const ownerSourceTargets = [
-    ["PRP Breast Lift owner data", ownerDataSource],
-    ["procedure route source", routeOwnerSource || ""],
-    ["shared footer source", sharedFooterContractSource || ""],
-  ];
-
-  for (const [sourceName, source] of ownerSourceTargets) {
-    for (const claimClass of unsupportedPrpBreastClaimClasses) {
-      if (claimClass.expression.test(source)) {
-        fail(`${sourceName} contains unsupported ${claimClass.name}`);
-      }
-    }
-  }
 }
 
 const robotsResponse = await fetch(new URL("/robots.txt", baseUrl));
@@ -479,6 +472,13 @@ for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
     continue;
   }
   const text = getVisibleText(page.html);
+  if (path === "/procedures/prp-breast-lift") {
+    for (const claimClass of unsupportedPrpBreastClaimClasses) {
+      if (claimClass.expression.test(text)) {
+        fail(`${path} rendered text contains unsupported ${claimClass.name}`);
+      }
+    }
+  }
   const title = getVisibleText(page.html.match(/<title(?:\s[^>]*)?>([\s\S]*?)<\/title>/i)?.[1] || "");
   const descriptionTag = (page.html.match(/<meta\b[^>]*>/gi) || []).find(
     (tag) => getTagAttributes(tag).name?.toLowerCase() === "description"
