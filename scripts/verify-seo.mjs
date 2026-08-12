@@ -43,7 +43,7 @@ const getVisibleText = (html) =>
 
 const splitClinicalClauses = (value) =>
   String(value)
-    .split(/(?<=[.!?])\s+|\n+|\b(?:but|however|yet)\b/gi)
+    .split(/(?<=[.!?])\s+|\n+|;|\b(?:but|however|yet|although|while|nevertheless)\b/gi)
     .map((segment) => segment.trim())
     .filter(Boolean);
 const isEvidenceLimitClause = (segment) =>
@@ -51,17 +51,22 @@ const isEvidenceLimitClause = (segment) =>
     segment
   );
 
+const isProtocolQuestionClause = (segment) =>
+  /\b(?:ask|confirm)\b.{0,100}\b(?:if|whether)\b/i.test(segment) ||
+  /^(?:does|do|is|are|how|what|whether)\b[^.!]*\?$/i.test(segment.trim());
+
 const unsupportedPrpBreastClaimClasses = [
   {
     name: "blood-source or blood-component assertion",
     expression: {
       test(value) {
         return splitClinicalClauses(value).some((segment) => {
-          if (isEvidenceLimitClause(segment) || /\b(?:ask|confirm)\b.{0,80}\bwhether\b/i.test(segment) || /\bwhether\b.{0,120}\?$/i.test(segment)) {
+          if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) {
             return false;
           }
-          return /\b(?:blood|bloodstream|venous|venipuncture|centrifug(?:e|ed|es|ation)|specimen|plasma|platelets?|platelet[- ]rich plasma|autologous)\b/i.test(
-            segment
+          return (
+            /\b(?:blood|bloodstream|venous|venipuncture|phlebotomy|centrifug(?:e|ed|es|ation)|specimen|plasma|platelets?|platelet[- ]rich plasma|autologous)\b/i.test(segment) ||
+            /\b(?:sample|material|preparation)\b.{0,80}\b(?:spun|concentrated|processed|prepared)\b|\b(?:spun|concentrated|processed|prepared)\b.{0,80}\b(?:sample|material|preparation)\b/i.test(segment)
           );
         });
       },
@@ -85,11 +90,16 @@ const unsupportedPrpBreastClaimClasses = [
       "PRP is produced from a venous sample taken at the appointment.",
       "A centrifuge concentrates the collected specimen into PRP.",
       "The visit begins with venipuncture so the material can be prepared.",
+      "The sample is spun down and concentrated before treatment.",
+      "The material is processed into a concentrated preparation before use.",
+      "The visit starts with phlebotomy before the material is prepared.",
     ],
     allowedFixtures: [
       "Ask the clinic to explain the current preparation before you decide.",
       "Ask the clinic to explain whether any blood collection is part of its current protocol.",
       "Ask whether PRP comes from your blood.",
+      "Does the clinic collect blood for this service?",
+      "Ask the clinic if blood collection is part of its current protocol.",
     ],
   },
   {
@@ -99,12 +109,13 @@ const unsupportedPrpBreastClaimClasses = [
         return splitClinicalClauses(value).some((segment) => {
           if (
             isEvidenceLimitClause(segment) ||
+            isProtocolQuestionClause(segment) ||
             (/\bwhether\b/i.test(segment) &&
               /\b(?:used|part of|delivered|administered|injected|performed|whether and how|how)\b/i.test(segment))
           ) {
             return false;
           }
-          return /\b(?:inject(?:s|ed|ing|ion|ions|able)?|needles?|needle[- ]based|microneedl(?:e|es|ed|ing)|administer(?:s|ed|ing)?|deliver(?:s|ed|ing)?|appl(?:y|ies|ied|ying)|introduc(?:e|es|ed|ing)|insert(?:s|ed|ing)?|venipuncture)\b/i.test(
+          return /\b(?:inject(?:s|ed|ing|ion|ions|able)?|needles?|needle[- ]based|microneedl(?:e|es|ed|ing)|administer(?:s|ed|ing)?|deliver(?:s|ed|ing)?|appl(?:y|ies|ied|ying)|introduc(?:e|es|ed|ing)|insert(?:s|ed|ing)?|plac(?:e|es|ed|ing)|deposit(?:s|ed|ing)?|venipuncture)\b/i.test(
             segment
           );
         });
@@ -128,12 +139,18 @@ const unsupportedPrpBreastClaimClasses = [
       "A fine needle places PRP in the treatment area.",
       "The clinician applies PRP to the breast with microneedling.",
       "The page does not establish whether needles are used, but PRP is injected into tissue.",
+      "PRP is placed beneath the skin of the breast.",
+      "The clinician deposits the preparation into breast tissue.",
+      "The page does not establish the method, although PRP is injected into tissue.",
+      "It is unknown whether needles are used; the preparation is administered into breast tissue.",
     ],
     allowedFixtures: [
       "Ask the clinic whether and how this service is delivered.",
       "The page does not establish whether needles or injections are used.",
       "It is unknown whether injections are part of this service.",
       "Whether a needle is used remains an open question.",
+      "Is the preparation injected or applied topically?",
+      "How, if at all, is this service administered?",
     ],
   },
   {
