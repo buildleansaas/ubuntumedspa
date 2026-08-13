@@ -47,13 +47,13 @@ const splitClinicalClauses = (value) =>
     .map((segment) => segment.trim())
     .filter(Boolean);
 const isEvidenceLimitClause = (segment) =>
-  /\b(?:unknown|uncertain|open question|not (?:been )?(?:established|demonstrated|proven|known)|does not establish|do not establish|cannot establish|evidence is insufficient|insufficient evidence|no\b.{0,100}\b(?:promised|guaranteed|established)|if (?:one|any) occurs?)\b/i.test(
+  /\b(?:unknown|uncertain|open question|not (?:been )?(?:established|demonstrated|proven|known)|does not (?:establish|promise)|do not (?:establish|promise)|cannot establish|evidence is insufficient|insufficient evidence|no\b.{0,100}\b(?:promised|guaranteed|established)|if (?:one|any) occurs?)\b/i.test(
     segment
   );
 
 const isProtocolQuestionClause = (segment) =>
   /\b(?:ask|confirm)\b.{0,100}\b(?:if|whether)\b/i.test(segment) ||
-  /^(?:does|do|is|are|how|what|whether)\b[^.!]*\?$/i.test(segment.trim());
+  /^(?:can|does|do|is|are|how|what|whether)\b[^.!]*\?$/i.test(segment.trim());
 
 const unsupportedPrpBreastClaimClasses = [
   {
@@ -66,7 +66,8 @@ const unsupportedPrpBreastClaimClasses = [
           }
           return (
             /\b(?:blood|bloodstream|venous|venipuncture|phlebotomy|centrifug(?:e|ed|es|ation)|specimen|plasma|platelets?|platelet[- ]rich plasma|autologous)\b/i.test(segment) ||
-            /\b(?:sample|material|preparation)\b.{0,80}\b(?:spun|concentrated|processed|prepared)\b|\b(?:spun|concentrated|processed|prepared)\b.{0,80}\b(?:sample|material|preparation)\b/i.test(segment)
+            /\b(?:sample|material|preparation)\b.{0,80}\b(?:spun|concentrated|processed|prepared|collected)\b|\b(?:spun|concentrated|processed|prepared|collected)\b.{0,80}\b(?:sample|material|preparation)\b/i.test(segment) ||
+            /\b(?:cells?|growth factors?)\b.{0,80}\b(?:obtained|collected|isolated|patient sample)\b|\b(?:vial|sample)\b.{0,50}\b(?:arm|patient)\b/i.test(segment)
           );
         });
       },
@@ -93,6 +94,10 @@ const unsupportedPrpBreastClaimClasses = [
       "The sample is spun down and concentrated before treatment.",
       "The material is processed into a concentrated preparation before use.",
       "The visit starts with phlebotomy before the material is prepared.",
+      "The visit uses cells obtained from the patient.",
+      "The service uses material collected from you.",
+      "The service begins by collecting a vial from your arm.",
+      "The treatment uses growth factors isolated from a patient sample.",
     ],
     allowedFixtures: [
       "Ask the clinic to explain the current preparation before you decide.",
@@ -199,6 +204,130 @@ const unsupportedPrpBreastClaimClasses = [
       "No subtle lift or youthful appearance is promised.",
       "A subtle lift has not been demonstrated.",
       "Evidence is insufficient to conclude that the breasts become firmer.",
+    ],
+  },
+  {
+    name: "provider protocol or sequence assertion",
+    expression: {
+      test(value) {
+        return splitClinicalClauses(value).some((segment) => {
+          if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment) || /\bask\b/i.test(segment)) return false;
+          return (
+            /\b(?:appointment|visit|service|procedure)\b.{0,80}\b(?:begins?|starts?|ends?|consists?|follow-up review|preparation)\b/i.test(segment) ||
+            /\b(?:begins?|starts?|ends?|consists?)\b.{0,80}\b(?:appointment|visit|service|procedure)\b/i.test(segment)
+          );
+        });
+      },
+    },
+    fixtures: [
+      "The appointment begins with preparation and ends with a follow-up review.",
+      "The visit starts with a review and includes treatment preparation.",
+      "This service consists of preparation, treatment, and follow-up.",
+    ],
+    allowedFixtures: [
+      "The current sequence is not documented in verified project sources.",
+      "Ask the clinic what happens during the service.",
+      "Does the visit include a follow-up review?",
+    ],
+  },
+  {
+    name: "candidacy or eligibility assertion",
+    expression: {
+      test(value) {
+        return splitClinicalClauses(value).some((segment) => {
+          if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
+          if (/\b(?:cannot|can't|does not|doesn't)\b.{0,60}\b(?:right for|eligible|candidate|suitable|appropriate)\b/i.test(segment)) return false;
+          return /\b(?:ideal candidate|good candidate|eligible|suitable|appropriate for|right for|fits? your goals?|healthy adults?)\b/i.test(segment);
+        });
+      },
+    },
+    fixtures: [
+      "This service is appropriate for healthy adults who want a nonsurgical option.",
+      "You are eligible if you are in good health.",
+      "Jenny confirms whether the treatment fits your goals.",
+    ],
+    allowedFixtures: [
+      "This page cannot decide whether the service is right for you.",
+      "Ask whether you are eligible before purchasing.",
+      "No candidacy criteria are documented here.",
+    ],
+  },
+  {
+    name: "downtime or recovery assertion",
+    expression: {
+      test(value) {
+        return splitClinicalClauses(value).some((segment) => {
+          if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
+          return /\b(?:no downtime|little downtime|minimal downtime|return|resume)\b.{0,80}\b(?:normal activit|work|same day|next day)\b|\brecovery\b.{0,50}\b(?:takes?|lasts?|days?|hours?|quick|short)\b/i.test(segment);
+        });
+      },
+    },
+    fixtures: [
+      "Most patients return to normal activity the same day.",
+      "There is little downtime and you can resume work the next day.",
+      "Recovery takes about two days.",
+    ],
+    allowedFixtures: [
+      "This page does not document downtime or recovery.",
+      "Ask the clinic whether you can return to work the same day.",
+    ],
+  },
+  {
+    name: "aftercare instruction assertion",
+    expression: {
+      test(value) {
+        return splitClinicalClauses(value).some((segment) => {
+          if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
+          return /\b(?:avoid|refrain from|do not|don't)\b.{0,80}\b(?:exercise|activity|sun|heat|water|alcohol|medication|hours?|days?)\b|\baftercare\b.{0,60}\b(?:requires?|includes?|involves?|instructions? are)\b/i.test(segment);
+        });
+      },
+    },
+    fixtures: [
+      "Avoid strenuous exercise for 24 hours after the visit.",
+      "Aftercare requires keeping the area dry for one day.",
+    ],
+    allowedFixtures: [
+      "This page does not document aftercare instructions.",
+      "Ask whether you should avoid exercise after the visit.",
+    ],
+  },
+  {
+    name: "risk or side-effect assertion",
+    expression: {
+      test(value) {
+        return splitClinicalClauses(value).some((segment) => {
+          if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
+          return /\b(?:soreness|tenderness|swelling|bruising|irritation|redness|infection|bleeding|pain)\b/i.test(segment);
+        });
+      },
+    },
+    fixtures: [
+      "Temporary swelling and bruising can occur.",
+      "Common side effects include soreness, redness, and irritation.",
+    ],
+    allowedFixtures: [
+      "This page does not establish whether swelling or bruising can occur.",
+      "Ask whether pain or redness can occur.",
+    ],
+  },
+  {
+    name: "result duration or guarantee assertion",
+    expression: {
+      test(value) {
+        return splitClinicalClauses(value).some((segment) => {
+          if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
+          return /\b(?:results?|effects?|improvements?|changes?)\b.{0,80}\b(?:lasts?|lasting|months?|years?|permanent|guaranteed|expected)\b|\bguarantee(?:d|s)?\b.{0,50}\b(?:result|outcome|change)\b/i.test(segment);
+        });
+      },
+    },
+    fixtures: [
+      "Results typically last 12 months.",
+      "A visible change is expected within six weeks.",
+      "The clinic guarantees a cosmetic result.",
+    ],
+    allowedFixtures: [
+      "This page does not promise a result, timeline, or duration.",
+      "Ask whether the clinic guarantees any result.",
     ],
   },
 ];
