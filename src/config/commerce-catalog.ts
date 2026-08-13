@@ -81,7 +81,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     stripeProductKey: "wms_procedure_prp_breast_lift",
     stripePriceLookupKey: "wms_procedure_prp_breast_lift_1800_v1",
     customerNote:
-      "If you have not completed a candidacy consultation, book that first. Use checkout only after the clinic confirms you are eligible to proceed.",
+      "Checkout is for one treatment visit. Contact the clinic before purchasing if you need the current service details or written purchase terms.",
   },
   {
     slug: "prp-hair-restoration",

@@ -561,53 +561,53 @@ export const procedures = [
     seo: {
       title: "PRP Breast Lift in Williamsburg, VA",
       description:
-        "Learn about PRP Breast Lift consultation in Williamsburg, VA, including limited evidence, realistic limits, candidacy questions, and how it differs from surgery.",
+        "Compare the PRP Breast Lift service in Williamsburg, VA with surgical options, review the $1,800 one-visit price, and request current service details.",
     },
     description:
-      "This Williamsburg page explains what is known, what remains uncertain, and why a PRP Breast Lift should not be compared with augmentation or a surgical lift. Before paying, use a private consultation to confirm candidacy, the clinic's current protocol, risks, aftercare, and whether another type of care better fits your goal.",
+      "This Williamsburg decision guide does not document the clinic's current method or promise a cosmetic result. Before choosing a PRP Breast Lift, ask what the service includes, what one $1,800 visit covers, and whether a different cosmetic or surgical option better matches your goal.",
     headline: "Considering a PRP Breast Lift? Start with clear expectations",
     subline:
-      "Published medical literature describes different PRP preparations and delivery approaches. Cosmetic breast benefits have not been established in robust clinical studies, and the clinic's exact protocol must be confirmed before treatment.",
+      "The service name does not promise the structural change associated with surgery, implant-like volume, or a fixed result. Ask the clinic for its current service details and purchase terms before you decide.",
     image: "/procedure/prp-breast-lift-consultation-confidence.webp",
     price: "$1,800",
     // programmatic SEO copy
     blogHeadline:
-      "Read practical guidance about PRP breast treatment, candidacy, recovery questions, evidence limits, and what to ask before you book.",
+      "Read practical guidance about PRP breast treatment, purchase questions, alternatives, and what to ask before you book.",
     benefitsHeadline:
-      "A consultation-led decision with protocol questions, evidence limits, and clear expectations before you proceed.",
+      "A decision guide for defining the service, comparing alternatives, and understanding the one-visit purchase before you proceed.",
     benefits: [
       {
         emoji: "🩸",
-        benefit: "Confirm the Protocol",
+        benefit: "Request the Current Details",
         description:
-          "This page does not document how the clinic currently performs this service. Ask whether and how it is prepared and delivered before you decide.",
+          "This page does not document how the clinic currently performs this service. Ask for that information before you decide.",
       },
       {
         emoji: "📍",
-        benefit: "Questions Before Treatment",
+        benefit: "Questions Before Purchase",
         description:
-          "Ask whether and how the service is delivered, which areas would be considered, and what risks, comfort measures, evidence limits, and alternatives apply before you proceed.",
+          "Ask what happens during the service, what the visit includes, what result is promised, and which written terms govern the purchase.",
       },
       {
         emoji: "🌿",
         benefit: "Not a Surgical Substitute",
         description:
-          "Do not expect this service to remove skin, reposition breast tissue, or create implant-like volume. Ask whether another type of care better fits your goal.",
+          "Do not assume the service name means skin removal, tissue repositioning, or implant-like volume. Compare distinct surgical options when those are your goals.",
       },
       {
         emoji: "💬",
         benefit: "Straightforward Expectations",
         description:
-          "You can discuss likely fit, limitations, recovery, pricing, and alternatives before deciding whether to proceed.",
+          "Compare the stated service, one-visit price, intended goal, and alternatives before deciding whether to proceed.",
       },
     ],
     ailmentsHeadline:
-      "Start with the concern you want to discuss, then use a consultation to decide whether PRP belongs in the conversation or another evaluation or treatment makes more sense.",
+      "Start with the concern you want to discuss, then compare the clinic's current service description with other cosmetic or surgical options.",
     ailments: [
       {
         title: "Sagging Breasts",
         description:
-          "Discuss mild laxity or upper-breast appearance concerns while keeping expectations separate from a surgical breast lift.",
+          "Describe the laxity or upper-breast appearance concern you want to discuss without assuming this service provides a surgical lift.",
         blog_post_title: "PRP Breast Lift for Breast Laxity: What to Know",
         blog_post_slug: "prp-breast-lift-for-breast-laxity-what-to-know",
         slug: "sagging-breasts",
@@ -616,7 +616,7 @@ export const procedures = [
       {
         title: "Loss of Breast Volume",
         description:
-          "Any cosmetic change, if one occurs, is uncertain. PRP does not provide implant-like volume.",
+          "If added volume is your goal, do not assume this service provides an implant-like change.",
         blog_post_title: "PRP and Breast Volume: Realistic Limits",
         blog_post_slug: "restore-natural-volume-to-your-breasts-with-the-prp-breast-lift",
         slug: "loss-of-breast-volume",
@@ -625,7 +625,7 @@ export const procedures = [
       {
         title: "Decreased Sensitivity",
         description:
-          "Discuss sensitivity concerns privately and ask whether diagnostic evaluation or another type of care should come before cosmetic treatment.",
+          "Describe the sensitivity concern privately and ask which type of licensed medical evaluation is appropriate before choosing cosmetic care.",
         blog_post_title: "PRP and Breast Sensitivity: Evidence and Alternatives",
         blog_post_slug: "regain-breast-sensitivity-and-enhance-intimacy-with-the-prp-breast-lift",
         slug: "decreased-sensitivity",
@@ -634,7 +634,7 @@ export const procedures = [
       {
         title: "Wrinkled Cleavage Area",
         description:
-          "Review cleavage-area skin texture and whether a skin-focused plan or another type of care may fit your goals.",
+          "Describe the cleavage-area skin texture you want to discuss and compare the clinic's current options.",
         blog_post_title: "PRP for Cleavage-Area Texture: What Is Known",
         blog_post_slug: "soften-cleavage-wrinkles-with-the-prp-breast-lift",
         slug: "wrinkled-cleavage-area",
@@ -643,7 +643,7 @@ export const procedures = [
       {
         title: "Asymmetrical Breasts",
         description:
-          "Discuss mild appearance differences and the limits of a non-surgical treatment for structural asymmetry.",
+          "Describe the appearance difference you want to discuss and do not assume a nonsurgical service changes structural asymmetry.",
         blog_post_title: "PRP and Breast Asymmetry: Non-Surgical Limits",
         blog_post_slug: "balance-your-breasts-naturally-with-the-prp-breast-lift",
         slug: "asymmetrical-breasts",
@@ -652,7 +652,7 @@ export const procedures = [
       {
         title: "Stretch Marks",
         description:
-          "Review breast-area stretch marks and whether PRP or another skin treatment is the more appropriate option.",
+          "Describe the breast-area stretch marks you want to discuss and compare the clinic's current skin-focused options.",
         blog_post_title: "PRP for Breast Stretch Marks: Evidence and Other Options",
         blog_post_slug: "fade-stretch-marks-on-your-breasts-with-the-prp-breast-lift",
         slug: "stretch-marks",
@@ -661,7 +661,7 @@ export const procedures = [
       {
         title: "Surgical Scars",
         description:
-          "Discuss fully healed scars, timing, and whether the scar should be evaluated before any cosmetic treatment.",
+          "Describe the scar concern and ask which type of licensed medical evaluation is appropriate before choosing cosmetic care.",
         blog_post_title: "PRP and Healed Breast Scars: Questions to Ask",
         blog_post_slug: "minimize-surgical-scars-with-the-prp-breast-lift",
         slug: "surgical-scars",
@@ -669,37 +669,37 @@ export const procedures = [
       },
     ],
     faqHeadline:
-      "Get clear answers about evidence limits, recovery questions, and when a different type of care may be the better fit.",
+      "Use these questions to define the current service, compare alternatives, and understand the one-visit purchase.",
     faqs: [
       {
         question: "How does the PRP Breast Lift differ from traditional breast augmentation?",
         answer:
-          "A PRP Breast Lift should not be expected to remove excess skin, reposition breast tissue, or add implant-like volume. Any cosmetic change, if one occurs, is uncertain and should not be compared with the predictable structural changes of surgery. Confirm the clinic's exact protocol before deciding.",
+          "Do not treat the service name as a promise of the skin removal, tissue repositioning, or volume change associated with mastopexy, implants, or fat transfer. Ask the clinic to define the intended goal of its service before comparing it with those distinct procedures.",
       },
       {
         question: "What happens during a PRP Breast Lift appointment?",
         answer:
-          "Published PRP procedures vary, and this page does not establish the clinic's exact sequence. Before paying, ask whether and how this service is prepared and delivered, what the visit involves, which areas would be considered, and what comfort measures or aftercare instructions apply.",
+          "The current sequence is not documented in verified project sources. Before paying, ask the clinic what happens during the service, what the visit includes, and which written terms govern the purchase.",
       },
       {
-        question: "What should I expect after treatment?",
+        question: "What details should I request before buying?",
         answer:
-          "What to expect afterward depends on whether and how the service is delivered and on individual response. Ask for the clinic's current written instructions about activity, expected effects, warning signs, and when to contact the office.",
+          "Request the current service description, method, intended goal, one-visit inclusions, purchase terms, and any instructions the clinic provides for that service.",
       },
       {
-        question: "How soon will I see a change, and how long will it last?",
+        question: "Does this page promise a result or timeline?",
         answer:
-          "There is no established timeline or guaranteed duration for a cosmetic change from PRP breast treatment. Published evidence is limited, so do not rely on a fixed result or duration when deciding whether to proceed.",
+          "No. This page does not promise a cosmetic result, degree of change, response timeline, or duration. Ask the clinic to identify any promise it makes before you purchase.",
       },
       {
-        question: "Is the PRP Breast Lift suitable for everyone?",
+        question: "Can this page decide whether the service is right for me?",
         answer:
-          "No. Your health history, breast concerns, prior procedures, current symptoms, and goals all matter. New lumps, pain, discharge, skin changes, or other breast symptoms need appropriate medical evaluation. This aesthetic treatment does not replace breast screening or diagnostic care.",
+          "No. This page is a service and purchase guide, not an individual medical evaluation. Ask an appropriately licensed professional which evaluation fits your concern before choosing cosmetic care.",
       },
       {
-        question: "What risks should I ask about before PRP breast treatment?",
+        question: "Where is the clinic's risk information for this service?",
         answer:
-          "Long-term effectiveness and complications of cosmetic PRP breast procedures are not well established. Ask the qualified clinician whether and how the clinic delivers this service and what risks apply to that confirmed approach, then review your health history, medications, prior breast procedures, screening or imaging history, and current symptoms before you proceed.",
+          "This page does not publish a verified risk profile because the clinic's current method is not documented in verified project sources. Ask the clinic to provide method-specific risk information before you purchase.",
       },
     ],
   },

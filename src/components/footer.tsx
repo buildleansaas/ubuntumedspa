@@ -53,8 +53,8 @@ export default function Footer() {
               <strong>sexual wellness</strong>, and overall <strong>well-being</strong>.
             </p>
             <p className="mt-3 text-sm md:text-base leading-relaxed text-base-content/70">
-              From intimate wellness and facial rejuvenation to hair and joint-focused care, treatment decisions begin
-              with candidacy, realistic expectations, and clear guidance.
+              From intimate wellness and facial rejuvenation to hair and joint-focused care, compare current service
+              details, pricing, and next steps before you book.
             </p>
             {/* PRP_BREAST_SHARED_COPY_CONTRACT_END */}
             <div className="mt-5 space-y-2 text-sm leading-6 text-base-content/65">

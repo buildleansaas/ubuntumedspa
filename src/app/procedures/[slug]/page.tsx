@@ -163,7 +163,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
       : undefined;
   const consultationSupportCopy =
     procedure.slug === "prp-breast-lift"
-      ? "If you have not completed a candidacy consultation, book that first. Use checkout only after the clinic confirms you are eligible to proceed; payment covers one treatment visit."
+      ? "This page does not document the clinic's current method or promise a cosmetic result. Ask for the current service details before purchasing the one-visit treatment."
       : procedure.slug === "hyperhidrosis-treatment"
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
       : procedure.slug === "o-shot"
@@ -326,23 +326,21 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </h2>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
               <p>
-                Published medical literature describes different PRP preparations and delivery approaches. The clinic&apos;s exact protocol for this service
-                must be confirmed during consultation. Published evidence for cosmetic breast benefits is limited, so any change in appearance or skin
-                quality is uncertain.
+                This page does not document the clinic&apos;s current method for this service and does not promise a cosmetic result. Before choosing it,
+                ask the clinic to define what the service includes, how it is performed, and what one paid visit covers.
               </p>
               <p>
-                This treatment does not replace a surgical breast lift or breast augmentation. It does not remove loose skin, reposition breast
-                tissue, or create implant-like volume. Use a consultation to compare the change you want with the limited published evidence and
-                decide whether a different type of care would better fit your goal.
+                Do not treat the name “PRP Breast Lift” as a promise of the structural changes associated with mastopexy, implants, or fat transfer.
+                Compare the change you want with those distinct options before deciding what kind of appointment to book.
               </p>
             </div>
 
             <ol className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 sm:grid-cols-2">
               {[
-                ["01", "Confirm candidacy first", "Share your health history, prior breast procedures, screening or imaging history, current symptoms, and cosmetic goal with the qualified clinician reviewing candidacy."],
-                ["02", "Confirm how the service is performed", "Ask whether and how this service is prepared and delivered, what the visit involves, and which risks apply to the clinic's confirmed approach before you proceed."],
-                ["03", "Ask about the limits", "Discuss the limited evidence, uncertain cosmetic benefit, risks of whatever approach the clinic confirms, and alternatives to PRP breast treatment."],
-                ["04", "Plan for recovery questions", "Ask what tenderness, swelling, bruising, or other effects warrant a call and request the clinic's current aftercare instructions."],
+                ["01", "Define the change you want", "Write down the appearance concern you want to discuss so you can compare this service with other cosmetic or surgical options."],
+                ["02", "Request the current service details", "Ask the clinic what happens during the service, what the visit includes, and which written terms govern the purchase."],
+                ["03", "Ask what is and is not promised", "Request a direct explanation of the intended cosmetic goal, the limits of that goal, and whether the clinic promises any result or timeline."],
+                ["04", "Compare the alternatives", "If your goal involves removing skin, repositioning tissue, or adding volume, compare this service with an appropriate surgical consultation before deciding."],
               ].map(([number, title, copy]) => (
                 <li key={number} className="grid grid-cols-[2.5rem_1fr] gap-3">
                   <span className="text-sm font-semibold tracking-[0.12em] text-primary">{number}</span>
@@ -356,8 +354,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
             <p className="mt-8 border-t border-base-300 pt-6 text-sm leading-relaxed text-base-content/70">
               Full upfront payment for one treatment visit is <strong className="font-semibold text-base-content">{catalogItem?.displayPrice}</strong>.
-              If you have not completed a candidacy consultation, book that first. Use checkout only after the clinic confirms you are eligible to
-              proceed; payment covers one treatment visit.
+              The checkout is for one visit. Contact the clinic before purchasing if you need the current service details or written purchase terms.
             </p>
           </section>
         )}
@@ -440,7 +437,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               Williamsburg office at 3900 Powhatan Parkway
             </Link>
             . {procedure.slug === "prp-breast-lift"
-              ? "Use the consultation to confirm candidacy, the clinic's current treatment protocol, pricing, risks, and aftercare before you proceed."
+              ? "Ask the clinic to define the current service, one-visit purchase terms, and available alternatives before you decide."
               : "Visits are appointment-led so Jenny can review fit, timing, treatment areas, pricing, and aftercare before you proceed."}
           </p>
           {Boolean(relatedLinks.length) && (

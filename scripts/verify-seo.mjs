@@ -251,9 +251,9 @@ if (ownerDataStart === -1 || ownerDataEnd === -1) {
     "PRP_BREAST_SHARED_COPY_CONTRACT_START",
     "PRP_BREAST_SHARED_COPY_CONTRACT_END"
   );
-  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "12036496067bc17536ea0d1775a19e8b65c0c2f09f02890c8e867ca33d896506");
-  assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "472712ce62938c1f2386335e7055f690046c3494a7d24ebe0cc617003f60db6b");
-  assertSourceContract("shared footer clinical copy", sharedFooterContractSource, "9a254fb69945627b989dec2c688c7c7c37fd0655408afe49e7da703bc387d9ec");
+  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "fe8ba06d588fe66bf1a922fee51f3e0df3368bf8e47c8df1a2645cd3a06ea37d");
+  assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "300174bac9ca3e131b611f663dfb530332159a8abe8fa1f810267148eeda758c");
+  assertSourceContract("shared footer clinical copy", sharedFooterContractSource, "aa96d5b0cca7dadcc9fb2e42bdf88c90839424fcc8118c2a1c9a956d98fbeec5");
 }
 
 const robotsResponse = await fetch(new URL("/robots.txt", baseUrl));
@@ -443,13 +443,13 @@ const ownerPageExpectations = {
   "/procedures/prp-breast-lift": {
     title: "PRP Breast Lift in Williamsburg, VA",
     description:
-      "Learn about PRP Breast Lift consultation in Williamsburg, VA, including limited evidence, realistic limits, candidacy questions, and how it differs from surgery.",
+      "Compare the PRP Breast Lift service in Williamsburg, VA with surgical options, review the $1,800 one-visit price, and request current service details.",
     h1: "PRP Breast Lift in Williamsburg, VA",
     required: [
       "What a PRP Breast Lift can and cannot do",
-      "Published medical literature describes different PRP preparations",
-      "Published evidence for cosmetic breast benefits is limited",
-      "does not replace a surgical breast lift or breast augmentation",
+      "does not document the clinic's current method",
+      "does not promise a cosmetic result",
+      "mastopexy, implants, or fat transfer",
       "$1,800",
       "Full upfront payment for one treatment visit",
       "Book a Private PRP Breast Consultation",
@@ -475,6 +475,13 @@ const ownerPageExpectations = {
       "our PRP treatments are personalized, natural-looking",
       "realistic changes",
       "a subtle appearance change is realistic",
+      "Published medical literature describes different PRP preparations",
+      "Published evidence for cosmetic breast benefits is limited",
+      "Confirm candidacy first",
+      "qualified clinician reviewing candidacy",
+      "screening or imaging history",
+      "tenderness, swelling, bruising",
+      "method-specific risk information applies",
     ],
     requiredHtml: [/href=["']\/consult\?procedure=prp-breast-lift&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=prp_breast_lift["']/],
     requiredConsultHref:
