@@ -577,7 +577,7 @@ export const procedures = [
       "A decision guide for defining the service, comparing alternatives, and understanding the one-visit purchase before you proceed.",
     benefits: [
       {
-        emoji: "🩸",
+        emoji: "❓",
         benefit: "Request the Current Details",
         description:
           "This page does not document how the clinic currently performs this service. Ask for that information before you decide.",

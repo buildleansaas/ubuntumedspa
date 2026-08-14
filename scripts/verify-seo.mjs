@@ -67,7 +67,8 @@ const unsupportedPrpBreastClaimClasses = [
           return (
             /\b(?:blood|bloodstream|venous|venipuncture|phlebotomy|centrifug(?:e|ed|es|ation)|specimen|plasma|platelets?|platelet[- ]rich plasma|autologous)\b/i.test(segment) ||
             /\b(?:sample|material|preparation)\b.{0,80}\b(?:spun|concentrated|processed|prepared|collected)\b|\b(?:spun|concentrated|processed|prepared|collected)\b.{0,80}\b(?:sample|material|preparation)\b/i.test(segment) ||
-            /\b(?:cells?|growth factors?)\b.{0,80}\b(?:obtained|collected|isolated|patient sample)\b|\b(?:vial|sample)\b.{0,50}\b(?:arm|patient)\b/i.test(segment)
+            /\b(?:cells?|growth factors?)\b.{0,80}\b(?:obtained|collected|isolated|patient sample)\b|\b(?:vial|sample)\b.{0,50}\b(?:arm|patient)\b/i.test(segment) ||
+            /\b(?:material|preparation)\b.{0,80}\b(?:comes? from|derived from|supplied by|provided by)\b.{0,50}\b(?:the patient|patient|you|your body)\b/i.test(segment)
           );
         });
       },
@@ -98,6 +99,7 @@ const unsupportedPrpBreastClaimClasses = [
       "The service uses material collected from you.",
       "The service begins by collecting a vial from your arm.",
       "The treatment uses growth factors isolated from a patient sample.",
+      "The preparation comes from material supplied by the patient.",
     ],
     allowedFixtures: [
       "Ask the clinic to explain the current preparation before you decide.",
@@ -148,6 +150,7 @@ const unsupportedPrpBreastClaimClasses = [
       "The clinician deposits the preparation into breast tissue.",
       "The page does not establish the method, although PRP is injected into tissue.",
       "It is unknown whether needles are used; the preparation is administered into breast tissue.",
+      "Guided placement delivers the preparation to the target tissue.",
     ],
     allowedFixtures: [
       "Ask the clinic whether and how this service is delivered.",
@@ -196,6 +199,7 @@ const unsupportedPrpBreastClaimClasses = [
       "Patients get a more lifted contour.",
       "PRP may help the chest look more toned.",
       "No result is guaranteed, but the procedure can improve breast contour.",
+      "Patients may see a refreshed breast contour.",
     ],
     allowedFixtures: [
       "Any cosmetic change, if one occurs, is uncertain.",
@@ -214,7 +218,8 @@ const unsupportedPrpBreastClaimClasses = [
           if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment) || /\bask\b/i.test(segment)) return false;
           return (
             /\b(?:appointment|visit|service|procedure)\b.{0,80}\b(?:begins?|starts?|ends?|consists?|follow-up review|preparation)\b/i.test(segment) ||
-            /\b(?:begins?|starts?|ends?|consists?)\b.{0,80}\b(?:appointment|visit|service|procedure)\b/i.test(segment)
+            /\b(?:begins?|starts?|ends?|consists?)\b.{0,80}\b(?:appointment|visit|service|procedure)\b/i.test(segment) ||
+            /\b(?:first|initially)\b.{0,80}\b(?:then|next)\b.{0,80}\b(?:finally|follow-up|recheck)\b/i.test(segment)
           );
         });
       },
@@ -223,6 +228,7 @@ const unsupportedPrpBreastClaimClasses = [
       "The appointment begins with preparation and ends with a follow-up review.",
       "The visit starts with a review and includes treatment preparation.",
       "This service consists of preparation, treatment, and follow-up.",
+      "First we prepare the area, then treat it, and finally recheck the result.",
     ],
     allowedFixtures: [
       "The current sequence is not documented in verified project sources.",
@@ -237,7 +243,7 @@ const unsupportedPrpBreastClaimClasses = [
         return splitClinicalClauses(value).some((segment) => {
           if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
           if (/\b(?:cannot|can't|does not|doesn't)\b.{0,60}\b(?:right for|eligible|candidate|suitable|appropriate)\b/i.test(segment)) return false;
-          return /\b(?:ideal candidate|good candidate|eligible|suitable|appropriate for|right for|fits? your goals?|healthy adults?)\b/i.test(segment);
+          return /\b(?:ideal candidate|good candidate|eligible|suitable|best[- ]suited|well[- ]suited|works? best for|recommended for|appropriate for|right for|fits? your goals?|healthy adults?)\b/i.test(segment);
         });
       },
     },
@@ -245,6 +251,7 @@ const unsupportedPrpBreastClaimClasses = [
       "This service is appropriate for healthy adults who want a nonsurgical option.",
       "You are eligible if you are in good health.",
       "Jenny confirms whether the treatment fits your goals.",
+      "This service is best suited to adults with mild appearance concerns.",
     ],
     allowedFixtures: [
       "This page cannot decide whether the service is right for you.",
@@ -258,7 +265,7 @@ const unsupportedPrpBreastClaimClasses = [
       test(value) {
         return splitClinicalClauses(value).some((segment) => {
           if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
-          return /\b(?:no downtime|little downtime|minimal downtime|return|resume)\b.{0,80}\b(?:normal activit|work|same day|next day)\b|\brecovery\b.{0,50}\b(?:takes?|lasts?|days?|hours?|quick|short)\b/i.test(segment);
+          return /\b(?:no downtime|little downtime|minimal downtime|return|resume)\b.{0,80}\b(?:normal activit|work|same day|next day)\b|\brecovery\b.{0,50}\b(?:takes?|lasts?|days?|hours?|quick|short)\b|\bback\b.{0,40}\b(?:at (?:(?:your|their|his|her|the|a) )?desk|to work|to normal activit)\b.{0,40}\b(?:within|in|by)\b.{0,20}\b(?:hours?|days?|same day|next day)\b/i.test(segment);
         });
       },
     },
@@ -266,6 +273,7 @@ const unsupportedPrpBreastClaimClasses = [
       "Most patients return to normal activity the same day.",
       "There is little downtime and you can resume work the next day.",
       "Recovery takes about two days.",
+      "Most patients are back at their desk within hours.",
     ],
     allowedFixtures: [
       "This page does not document downtime or recovery.",
@@ -278,13 +286,14 @@ const unsupportedPrpBreastClaimClasses = [
       test(value) {
         return splitClinicalClauses(value).some((segment) => {
           if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
-          return /\b(?:avoid|refrain from|do not|don't)\b.{0,80}\b(?:exercise|activity|sun|heat|water|alcohol|medication|hours?|days?)\b|\baftercare\b.{0,60}\b(?:requires?|includes?|involves?|instructions? are)\b/i.test(segment);
+          return /\b(?:avoid|refrain from|do not|don't)\b.{0,80}\b(?:exercise|activity|sun|heat|water|alcohol|medication|hours?|days?)\b|\baftercare\b.{0,60}\b(?:requires?|includes?|involves?|instructions? are)\b|\bkeep\b.{0,50}\b(?:area|site|skin)\b.{0,50}\b(?:clean|dry)\b|\b(?:ice|apply|use)\b.{0,50}\b(?:area|site|skin)\b|\bsleep\b.{0,30}\bupright\b/i.test(segment);
         });
       },
     },
     fixtures: [
       "Avoid strenuous exercise for 24 hours after the visit.",
       "Aftercare requires keeping the area dry for one day.",
+      "Keep the treated area clean overnight.",
     ],
     allowedFixtures: [
       "This page does not document aftercare instructions.",
@@ -297,13 +306,14 @@ const unsupportedPrpBreastClaimClasses = [
       test(value) {
         return splitClinicalClauses(value).some((segment) => {
           if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
-          return /\b(?:soreness|tenderness|swelling|bruising|irritation|redness|infection|bleeding|pain)\b/i.test(segment);
+          return /\b(?:soreness|tenderness|swelling|bruising|irritation|redness|infection|bleeding|pain|treatment[- ]site reaction|adverse (?:reaction|event|effect))\b/i.test(segment);
         });
       },
     },
     fixtures: [
       "Temporary swelling and bruising can occur.",
       "Common side effects include soreness, redness, and irritation.",
+      "A temporary treatment-site reaction is possible.",
     ],
     allowedFixtures: [
       "This page does not establish whether swelling or bruising can occur.",
@@ -316,7 +326,7 @@ const unsupportedPrpBreastClaimClasses = [
       test(value) {
         return splitClinicalClauses(value).some((segment) => {
           if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
-          return /\b(?:results?|effects?|improvements?|changes?)\b.{0,80}\b(?:lasts?|lasting|months?|years?|permanent|guaranteed|expected)\b|\bguarantee(?:d|s)?\b.{0,50}\b(?:result|outcome|change)\b/i.test(segment);
+          return /\b(?:results?|effects?|improvements?|changes?|benefits?)\b.{0,80}\b(?:lasts?|lasting|remains?|persists?|continues?|sustained|months?|years?|through the year|permanent|guaranteed|expected)\b|\bguarantee(?:d|s)?\b.{0,50}\b(?:result|outcome|change)\b/i.test(segment);
         });
       },
     },
@@ -324,6 +334,7 @@ const unsupportedPrpBreastClaimClasses = [
       "Results typically last 12 months.",
       "A visible change is expected within six weeks.",
       "The clinic guarantees a cosmetic result.",
+      "Benefits may remain through the year.",
     ],
     allowedFixtures: [
       "This page does not promise a result, timeline, or duration.",
@@ -380,7 +391,7 @@ if (ownerDataStart === -1 || ownerDataEnd === -1) {
     "PRP_BREAST_SHARED_COPY_CONTRACT_START",
     "PRP_BREAST_SHARED_COPY_CONTRACT_END"
   );
-  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "fe8ba06d588fe66bf1a922fee51f3e0df3368bf8e47c8df1a2645cd3a06ea37d");
+  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "ef4c429a0465d06b087738f161ef1fe59b45b7a10a9e0cbb10a898226a619d8f");
   assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "300174bac9ca3e131b611f663dfb530332159a8abe8fa1f810267148eeda758c");
   assertSourceContract("shared footer clinical copy", sharedFooterContractSource, "aa96d5b0cca7dadcc9fb2e42bdf88c90839424fcc8118c2a1c9a956d98fbeec5");
 }
@@ -611,6 +622,7 @@ const ownerPageExpectations = {
       "screening or imaging history",
       "tenderness, swelling, bruising",
       "method-specific risk information applies",
+      "🩸",
     ],
     requiredHtml: [/href=["']\/consult\?procedure=prp-breast-lift&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=prp_breast_lift["']/],
     requiredConsultHref:
