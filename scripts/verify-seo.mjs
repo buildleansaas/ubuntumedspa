@@ -41,9 +41,9 @@ const getVisibleText = (html) =>
       .replace(/<[^>]+>/g, " ")
   ).replace(/\s+/g, " ");
 
-const splitClinicalClauses = (value) =>
+const splitClinicalClauseBoundaries = (value) =>
   String(value)
-    .split(/(?<=[.!?])\s+|\n+|;|\b(?:but|however|yet|although|while|nevertheless)\b/gi)
+    .split(/(?<=[.!?])\s+|\n+|;|,\s*(?:and|or)\s+|\b(?:but|however|yet|although|while|nevertheless)\b/gi)
     .map((segment) => segment.trim())
     .filter(Boolean);
 const isEvidenceLimitClause = (segment) =>
@@ -54,6 +54,20 @@ const isEvidenceLimitClause = (segment) =>
 const isProtocolQuestionClause = (segment) =>
   /\b(?:ask|confirm)\b.{0,100}\b(?:if|whether)\b/i.test(segment) ||
   /^(?:can|does|do|is|are|how|what|whether)\b[^.!]*\?$/i.test(segment.trim());
+
+const splitClinicalClauses = (value) =>
+  splitClinicalClauseBoundaries(value).flatMap((segment) => {
+    if (!isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment) || /\bwhether\b/i.test(segment)) {
+      return [segment];
+    }
+    const conjunction = segment.match(
+      /\s+and\s+(?=(?:a\b|an\b|the\b|this\b|that\b|these\b|those\b|we\b|you\b|they\b|patients?\b|healthy\b|adults?\b|people\b|results?\b|effects?\b|benefits?\b|bruising\b|swelling\b|keep\b|leave\b|avoid\b|return\b))/i
+    );
+    if (!conjunction || conjunction.index === undefined) return [segment];
+    const left = segment.slice(0, conjunction.index).trim();
+    const right = segment.slice(conjunction.index + conjunction[0].length).trim();
+    return isEvidenceLimitClause(left) && right ? [left, right] : [segment];
+  });
 
 const unsupportedPrpBreastClaimClasses = [
   {
@@ -68,7 +82,8 @@ const unsupportedPrpBreastClaimClasses = [
             /\b(?:blood|bloodstream|venous|venipuncture|phlebotomy|centrifug(?:e|ed|es|ation)|specimen|plasma|platelets?|platelet[- ]rich plasma|autologous)\b/i.test(segment) ||
             /\b(?:sample|material|preparation)\b.{0,80}\b(?:spun|concentrated|processed|prepared|collected)\b|\b(?:spun|concentrated|processed|prepared|collected)\b.{0,80}\b(?:sample|material|preparation)\b/i.test(segment) ||
             /\b(?:cells?|growth factors?)\b.{0,80}\b(?:obtained|collected|isolated|patient sample)\b|\b(?:vial|sample)\b.{0,50}\b(?:arm|patient)\b/i.test(segment) ||
-            /\b(?:material|preparation)\b.{0,80}\b(?:comes? from|derived from|supplied by|provided by)\b.{0,50}\b(?:the patient|patient|you|your body)\b/i.test(segment)
+            /\b(?:material|preparation|concentrate|product)\b.{0,80}\b(?:comes? from|derived from|supplied by|provided by|obtained from|taken from|collected from)\b.{0,60}\b(?:the patient|patient|person receiving|recipient|individual receiving|you|your body)\b/i.test(segment) ||
+            /\b(?:vial|sample|specimen)\b.{0,50}\bfrom\b.{0,40}\b(?:the patient|patient|person|you|your body)\b.{0,80}\b(?:suppl(?:y|ies|ied)|provid(?:e|es|ed)|forms?|becomes?)\b.{0,50}\b(?:preparation|material|product|service)\b/i.test(segment)
           );
         });
       },
@@ -100,6 +115,9 @@ const unsupportedPrpBreastClaimClasses = [
       "The service begins by collecting a vial from your arm.",
       "The treatment uses growth factors isolated from a patient sample.",
       "The preparation comes from material supplied by the patient.",
+      "The service uses a concentrate obtained from the person receiving it.",
+      "The blood source is not established, and a vial from the patient supplies the preparation.",
+      "The blood source is not established and a vial from the patient supplies the preparation.",
     ],
     allowedFixtures: [
       "Ask the clinic to explain the current preparation before you decide.",
@@ -219,7 +237,8 @@ const unsupportedPrpBreastClaimClasses = [
           return (
             /\b(?:appointment|visit|service|procedure)\b.{0,80}\b(?:begins?|starts?|ends?|consists?|follow-up review|preparation)\b/i.test(segment) ||
             /\b(?:begins?|starts?|ends?|consists?)\b.{0,80}\b(?:appointment|visit|service|procedure)\b/i.test(segment) ||
-            /\b(?:first|initially)\b.{0,80}\b(?:then|next)\b.{0,80}\b(?:finally|follow-up|recheck)\b/i.test(segment)
+            /\b(?:first|initially)\b.{0,80}\b(?:then|next)\b.{0,80}\b(?:finally|follow-up|recheck)\b/i.test(segment) ||
+            /\bwe\b.{0,100}\b(?:cleanse|prepare|review|assess)\b.{0,100}\b(?:perform|provide|complete|treat)\b/i.test(segment)
           );
         });
       },
@@ -229,6 +248,9 @@ const unsupportedPrpBreastClaimClasses = [
       "The visit starts with a review and includes treatment preparation.",
       "This service consists of preparation, treatment, and follow-up.",
       "First we prepare the area, then treat it, and finally recheck the result.",
+      "We cleanse the area, perform the service, and check the site afterward.",
+      "This page does not establish the sequence, and the visit starts with preparation and ends with follow-up.",
+      "The sequence is not established and the visit starts with preparation and ends with follow-up.",
     ],
     allowedFixtures: [
       "The current sequence is not documented in verified project sources.",
@@ -243,7 +265,7 @@ const unsupportedPrpBreastClaimClasses = [
         return splitClinicalClauses(value).some((segment) => {
           if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
           if (/\b(?:cannot|can't|does not|doesn't)\b.{0,60}\b(?:right for|eligible|candidate|suitable|appropriate)\b/i.test(segment)) return false;
-          return /\b(?:ideal candidate|good candidate|eligible|suitable|best[- ]suited|well[- ]suited|works? best for|recommended for|appropriate for|right for|fits? your goals?|healthy adults?)\b/i.test(segment);
+          return /\b(?:ideal candidate|good candidate|eligible|suitable|best[- ]suited|well[- ]suited|works? best for|recommended for|intended for|appropriate for|right for|fits? your goals?|healthy adults?)\b/i.test(segment);
         });
       },
     },
@@ -252,6 +274,9 @@ const unsupportedPrpBreastClaimClasses = [
       "You are eligible if you are in good health.",
       "Jenny confirms whether the treatment fits your goals.",
       "This service is best suited to adults with mild appearance concerns.",
+      "The treatment is intended for adults with minor cosmetic concerns.",
+      "This page cannot decide whether the service is right for you, and healthy adults are eligible.",
+      "Candidacy is not established and healthy adults are eligible.",
     ],
     allowedFixtures: [
       "This page cannot decide whether the service is right for you.",
@@ -265,7 +290,7 @@ const unsupportedPrpBreastClaimClasses = [
       test(value) {
         return splitClinicalClauses(value).some((segment) => {
           if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
-          return /\b(?:no downtime|little downtime|minimal downtime|return|resume)\b.{0,80}\b(?:normal activit|work|same day|next day)\b|\brecovery\b.{0,50}\b(?:takes?|lasts?|days?|hours?|quick|short)\b|\bback\b.{0,40}\b(?:at (?:(?:your|their|his|her|the|a) )?desk|to work|to normal activit)\b.{0,40}\b(?:within|in|by)\b.{0,20}\b(?:hours?|days?|same day|next day)\b/i.test(segment);
+          return /\b(?:no downtime|little downtime|minimal downtime|return|resume)\b.{0,80}\b(?:normal activit|work|same day|next day)\b|\brecovery\b.{0,50}\b(?:takes?|lasts?|days?|hours?|quick|short)\b|\bback\b.{0,40}\b(?:at (?:(?:your|their|his|her|the|a) )?desk|to work|to normal activit)\b.{0,40}\b(?:within|in|by)\b.{0,20}\b(?:hours?|days?|same day|next day)\b|\b(?:head|go|return)\b.{0,50}\b(?:straight )?back\b.{0,30}\b(?:to )?(?:the )?(?:office|work|normal activit)\b/i.test(segment);
         });
       },
     },
@@ -274,6 +299,9 @@ const unsupportedPrpBreastClaimClasses = [
       "There is little downtime and you can resume work the next day.",
       "Recovery takes about two days.",
       "Most patients are back at their desk within hours.",
+      "Patients can head straight back to the office after the visit.",
+      "Recovery timing is uncertain, and patients return to normal activity the same day.",
+      "Recovery timing is uncertain and patients return to normal activity the same day.",
     ],
     allowedFixtures: [
       "This page does not document downtime or recovery.",
@@ -286,7 +314,7 @@ const unsupportedPrpBreastClaimClasses = [
       test(value) {
         return splitClinicalClauses(value).some((segment) => {
           if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
-          return /\b(?:avoid|refrain from|do not|don't)\b.{0,80}\b(?:exercise|activity|sun|heat|water|alcohol|medication|hours?|days?)\b|\baftercare\b.{0,60}\b(?:requires?|includes?|involves?|instructions? are)\b|\bkeep\b.{0,50}\b(?:area|site|skin)\b.{0,50}\b(?:clean|dry)\b|\b(?:ice|apply|use)\b.{0,50}\b(?:area|site|skin)\b|\bsleep\b.{0,30}\bupright\b/i.test(segment);
+          return /\b(?:avoid|refrain from|do not|don't)\b.{0,80}\b(?:exercise|activity|sun|heat|water|alcohol|medication|hours?|days?)\b|\baftercare\b.{0,60}\b(?:requires?|includes?|involves?|instructions? are)\b|\bkeep\b.{0,50}\b(?:area|site|skin)\b.{0,50}\b(?:clean|dry)\b|\b(?:leave|keep)\b.{0,50}\b(?:dressing|bandage|covering)\b.{0,50}\b(?:in place|on|until|overnight|morning|hours?)\b|\b(?:ice|apply|use)\b.{0,50}\b(?:area|site|skin)\b|\bsleep\b.{0,30}\bupright\b/i.test(segment);
         });
       },
     },
@@ -294,6 +322,9 @@ const unsupportedPrpBreastClaimClasses = [
       "Avoid strenuous exercise for 24 hours after the visit.",
       "Aftercare requires keeping the area dry for one day.",
       "Keep the treated area clean overnight.",
+      "Leave the dressing in place until morning.",
+      "Aftercare is not established, and keep the treated area clean overnight.",
+      "Aftercare is not established and keep the treated area clean overnight.",
     ],
     allowedFixtures: [
       "This page does not document aftercare instructions.",
@@ -306,7 +337,7 @@ const unsupportedPrpBreastClaimClasses = [
       test(value) {
         return splitClinicalClauses(value).some((segment) => {
           if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
-          return /\b(?:soreness|tenderness|swelling|bruising|irritation|redness|infection|bleeding|pain|treatment[- ]site reaction|adverse (?:reaction|event|effect))\b/i.test(segment);
+          return /\b(?:soreness|tenderness|swelling|bruising|irritation|redness|warmth|discoloration|infection|bleeding|pain|treatment[- ]site reaction|adverse (?:reaction|event|effect))\b/i.test(segment);
         });
       },
     },
@@ -314,6 +345,9 @@ const unsupportedPrpBreastClaimClasses = [
       "Temporary swelling and bruising can occur.",
       "Common side effects include soreness, redness, and irritation.",
       "A temporary treatment-site reaction is possible.",
+      "Warmth and discoloration may develop at the treatment site.",
+      "It is unknown whether swelling occurs, and bruising is common.",
+      "Side effects are uncertain and bruising is common.",
     ],
     allowedFixtures: [
       "This page does not establish whether swelling or bruising can occur.",
@@ -326,7 +360,7 @@ const unsupportedPrpBreastClaimClasses = [
       test(value) {
         return splitClinicalClauses(value).some((segment) => {
           if (isEvidenceLimitClause(segment) || isProtocolQuestionClause(segment)) return false;
-          return /\b(?:results?|effects?|improvements?|changes?|benefits?)\b.{0,80}\b(?:lasts?|lasting|remains?|persists?|continues?|sustained|months?|years?|through the year|permanent|guaranteed|expected)\b|\bguarantee(?:d|s)?\b.{0,50}\b(?:result|outcome|change)\b/i.test(segment);
+          return /\b(?:results?|effects?|improvements?|changes?|benefits?|lift)\b.{0,80}\b(?:holds?|lasts?|lasting|remains?|persists?|continues?|sustained|months?|years?|through the year|permanent|guaranteed|expected)\b|\bguarantee(?:d|s)?\b.{0,50}\b(?:result|outcome|change)\b/i.test(segment);
         });
       },
     },
@@ -335,6 +369,9 @@ const unsupportedPrpBreastClaimClasses = [
       "A visible change is expected within six weeks.",
       "The clinic guarantees a cosmetic result.",
       "Benefits may remain through the year.",
+      "The lift holds for roughly a year.",
+      "The duration is uncertain, and results last for twelve months.",
+      "The duration is uncertain and results last for twelve months.",
     ],
     allowedFixtures: [
       "This page does not promise a result, timeline, or duration.",
