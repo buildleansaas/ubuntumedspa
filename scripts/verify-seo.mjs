@@ -264,7 +264,7 @@ const unsupportedPrpBreastClaimClasses = [
       "No sequence is documented and our provider reviews the area before treatment.",
     ],
     allowedFixtures: [
-      "The current sequence is not documented in verified project sources.",
+      "This page does not include the clinic's current visit sequence.",
       "Ask the clinic what happens during the service.",
       "Does the visit include a follow-up review?",
     ],
@@ -394,6 +394,26 @@ const unsupportedPrpBreastClaimClasses = [
       "Ask whether the clinic guarantees any result.",
     ],
   },
+  {
+    name: "operator or internal-source language",
+    expression: {
+      test(value) {
+        return /\b(?:verified project sources?|project sources?|owner page|protected query|query owner|release train|fact[- ]gated)\b/i.test(
+          value
+        );
+      },
+    },
+    fixtures: [
+      "The current sequence is not documented in verified project sources.",
+      "This is the owner page for PRP Breast Lift.",
+      "The protected query remains on this page.",
+      "This page is fact-gated until protocol notes arrive.",
+    ],
+    allowedFixtures: [
+      "This page does not include the clinic's current visit sequence.",
+      "Ask the clinic what happens during the service.",
+    ],
+  },
 ];
 
 for (const claimClass of unsupportedPrpBreastClaimClasses) {
@@ -444,7 +464,7 @@ if (ownerDataStart === -1 || ownerDataEnd === -1) {
     "PRP_BREAST_SHARED_COPY_CONTRACT_START",
     "PRP_BREAST_SHARED_COPY_CONTRACT_END"
   );
-  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "ef4c429a0465d06b087738f161ef1fe59b45b7a10a9e0cbb10a898226a619d8f");
+  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "868b1066d529daecd56c05567d6b99f396b3251c63fe9b4e635ce502cf1386f8");
   assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "300174bac9ca3e131b611f663dfb530332159a8abe8fa1f810267148eeda758c");
   assertSourceContract("shared footer clinical copy", sharedFooterContractSource, "aa96d5b0cca7dadcc9fb2e42bdf88c90839424fcc8118c2a1c9a956d98fbeec5");
 }
@@ -675,6 +695,10 @@ const ownerPageExpectations = {
       "screening or imaging history",
       "tenderness, swelling, bruising",
       "method-specific risk information applies",
+      "verified project sources",
+      "project sources",
+      "owner page",
+      "protected query",
       "🩸",
     ],
     requiredHtml: [/href=["']\/consult\?procedure=prp-breast-lift&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=prp_breast_lift["']/],

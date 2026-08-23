@@ -679,7 +679,7 @@ export const procedures = [
       {
         question: "What happens during a PRP Breast Lift appointment?",
         answer:
-          "The current sequence is not documented in verified project sources. Before paying, ask the clinic what happens during the service, what the visit includes, and which written terms govern the purchase.",
+          "This page does not include the clinic's current visit sequence. Before paying, ask the clinic what happens during the service, what the visit includes, and which written terms govern the purchase.",
       },
       {
         question: "What details should I request before buying?",
@@ -699,7 +699,7 @@ export const procedures = [
       {
         question: "Where is the clinic's risk information for this service?",
         answer:
-          "This page does not publish a verified risk profile because the clinic's current method is not documented in verified project sources. Ask the clinic to provide method-specific risk information before you purchase.",
+          "This page does not include a clinic-confirmed risk list for this service. Ask the clinic for the risks that apply to how it currently performs the service before you purchase.",
       },
     ],
   },
