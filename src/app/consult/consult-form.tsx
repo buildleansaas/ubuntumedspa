@@ -17,6 +17,7 @@ import {
 } from "lib/affiliates";
 import { getCurrentBrowserUrl, subscribeToLocationChange } from "lib/client-location";
 import { createOnceTracker, trackConsultStart, trackConsultSubmitSuccess } from "lib/analytics";
+import { getProcedureInterests } from "lib/consult-procedure-interests";
 import { cn } from "lib/utils";
 
 export interface FormState {
@@ -35,25 +36,6 @@ export interface FormInput {
   helperText?: string;
   options?: string[];
 }
-
-const PROCEDURE_INTERESTS: Record<string, string[]> = {
-  botox: ["Botox"],
-  xeomin: ["Xeomin"],
-  filler: ["Filler"],
-  "dermal-fillers": ["Filler"],
-  "lip-filler": ["Filler"],
-  hyperhidrosis: ["Hyperhidrosis Treatment"],
-  "hyperhidrosis-treatment": ["Hyperhidrosis Treatment"],
-  "blomdahl-ear-piercing": ["Blomdahl Ear Piercing"],
-  "ear-piercing": ["Blomdahl Ear Piercing"],
-  "prp-facial": ["PRP Facial"],
-  "prp-face-lift": ["PRP Face Lift"],
-  "prp-facelift": ["PRP Face Lift"],
-  "hair-restoration": ["Hair Restoration"],
-  "microneedling-with-prp": ["Microneedling with PRP"],
-  "o-shot": ["O-Shot"],
-  "p-shot": ["P-Shot"],
-};
 
 const getConsultSourceContext = () => {
   const url = getCurrentBrowserUrl();
@@ -107,7 +89,7 @@ const ConsultationForm: React.FC = () => {
       const context = getConsultSourceContext();
       setSourceContext(context);
 
-      const procedureInterests = context?.procedure ? PROCEDURE_INTERESTS[context.procedure] : undefined;
+      const procedureInterests = getProcedureInterests(context?.procedure);
       if (!procedureInterests?.length) return;
 
       setFormState((current) => ({

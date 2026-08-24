@@ -2,7 +2,7 @@
 
 import CartContent from "components/cart-content";
 import { useCart } from "components/cart-provider";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "components/ui/sheet";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "components/ui/sheet";
 
 export default function CartDrawer() {
   const { isCartOpen, openCart, closeCart } = useCart();
@@ -15,6 +15,9 @@ export default function CartDrawer() {
             <SheetTitle className="text-[1.75rem] font-light tracking-tight text-base-content sm:text-3xl">
               <span className="font-semibold">Cart</span>
             </SheetTitle>
+            <SheetDescription className="sr-only">
+              Review selected treatments and products before continuing to Stripe checkout.
+            </SheetDescription>
           </SheetHeader>
         </div>
         <div className="min-h-0 flex-1 px-4 py-3.5 sm:px-6 sm:py-5">

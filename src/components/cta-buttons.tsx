@@ -10,7 +10,7 @@ function isMobileUserAgent() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
 }
 
-export default function CtaButtons() {
+export default function CtaButtons({ consultHref = "/consult" }: { consultHref?: string }) {
   const { handleCopy } = useCopyToClipBoard();
 
   const handleAction = () => {
@@ -21,7 +21,7 @@ export default function CtaButtons() {
   return (
     <div className="flex flex-wrap justify-center items-center gap-2">
       <Button asChild>
-        <Link href="/consult">Book a Consultation</Link>
+        <Link href={consultHref}>Book a Consultation</Link>
       </Button>
       <Button variant="secondary" onClick={handleAction}>
         +1 (804) 738-9483

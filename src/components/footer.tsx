@@ -47,15 +47,16 @@ export default function Footer() {
             <h3 className="mt-3 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content">
               Rejuvenate Your Life
             </h3>
+            {/* PRP_BREAST_SHARED_COPY_CONTRACT_START */}
             <p className="mt-4 text-base md:text-lg leading-relaxed text-base-content/80">
-              Explore <strong>PRP services</strong> using <strong>your own blood components</strong> to support{" "}
-              <strong>joint care</strong>, <strong>aesthetic goals</strong>, <strong>sexual wellness</strong>, and
-              overall <strong>well-being</strong>.
+              Explore personalized services for <strong>joint concerns</strong>, <strong>aesthetic goals</strong>,{" "}
+              <strong>sexual wellness</strong>, and overall <strong>well-being</strong>.
             </p>
             <p className="mt-3 text-sm md:text-base leading-relaxed text-base-content/70">
-              From intimate wellness and facial rejuvenation to hair restoration and joint-focused care, our PRP
-              treatments are personalized, natural-looking, and grounded in clear guidance.
+              From intimate wellness and facial rejuvenation to hair and joint-focused care, compare current service
+              details, pricing, and next steps before you book.
             </p>
+            {/* PRP_BREAST_SHARED_COPY_CONTRACT_END */}
             <div className="mt-5 space-y-2 text-sm leading-6 text-base-content/65">
               <p>3900 Powhatan Parkway, Williamsburg, VA 23188</p>
               <p>+1 (804) 738-9483</p>

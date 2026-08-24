@@ -1,7 +1,7 @@
 "use client";
 import CtaButtons from "./cta-buttons";
 
-export default function CtaFooter() {
+export default function CtaFooter({ consultHref }: { consultHref?: string }) {
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-8 z-10">
       <div className="text-center pt-16 sm:pt-20" id="cta">
@@ -17,7 +17,7 @@ export default function CtaFooter() {
           you plan next steps.
         </p>
         <div className="mb-32">
-          <CtaButtons />
+          <CtaButtons consultHref={consultHref} />
         </div>
       </div>
     </div>

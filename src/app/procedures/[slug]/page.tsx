@@ -157,8 +157,14 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
   const featuredGuide = articles.find((article) => article.slug === featuredGuideSlugs[procedure.slug]);
   const featuredGuideCta = featuredGuide ? featuredGuideCopy[procedure.slug] : undefined;
   const relatedLinks = relatedProcedureLinks[procedure.slug] ?? [];
+  const ownerConsultationHref =
+    procedure.slug === "prp-breast-lift"
+      ? "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift"
+      : undefined;
   const consultationSupportCopy =
-    procedure.slug === "hyperhidrosis-treatment"
+    procedure.slug === "prp-breast-lift"
+      ? "This page does not document the clinic's current method or promise a cosmetic result. Ask for the current service details before purchasing the one-visit treatment."
+      : procedure.slug === "hyperhidrosis-treatment"
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
       : procedure.slug === "o-shot"
         ? "Consultation covers symptoms, candidacy, treatment areas, expected timing, and whether O-Shot® care fits your intimate wellness or bladder leakage concerns."
@@ -179,7 +185,13 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Procedures", procedure.name]} />
       <StructuredData
         type="Service"
-        service={{ name: procedure.name, description: procedure.description, areaServed: "Williamsburg, VA" }}
+        service={{
+          name: procedure.name,
+          description: procedure.description,
+          areaServed: "Williamsburg, VA",
+          price: catalogItem ? String(catalogItem.unitAmountCents / 100) : undefined,
+          priceCurrency: catalogItem ? "USD" : undefined,
+        }}
       />
       <StructuredData type="FAQ" faqs={procedure.faqs} />
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
@@ -264,6 +276,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                       ? "/consult?procedure=blomdahl-ear-piercing&utm_source=website&utm_medium=procedure_page&utm_campaign=ear_piercing"
                       : procedure.slug === "microneedling-with-prp"
                         ? "/consult?procedure=microneedling-with-prp&utm_source=website&utm_medium=procedure_page&utm_campaign=microneedling_prp"
+                        : procedure.slug === "prp-breast-lift"
+                          ? "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift"
                         : "/consult"
                   }
                 >
@@ -271,6 +285,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                     ? "Book Blomdahl Ear Piercing"
                     : procedure.slug === "microneedling-with-prp"
                       ? "Book Microneedling with PRP Consult"
+                      : procedure.slug === "prp-breast-lift"
+                        ? "Book a Private PRP Breast Consultation"
                       : "Book a Consultation"}
                 </Link>
               </Button>
@@ -300,6 +316,49 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </div>
           )}
         </section>
+
+        {/* PRP_BREAST_OWNER_COPY_CONTRACT_START */}
+        {procedure.slug === "prp-breast-lift" && (
+          <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="prp-breast-lift-expectations">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Before you decide</p>
+            <h2 id="prp-breast-lift-expectations" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
+              What a PRP Breast Lift can and cannot do
+            </h2>
+            <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
+              <p>
+                This page does not document the clinic&apos;s current method for this service and does not promise a cosmetic result. Before choosing it,
+                ask the clinic to define what the service includes, how it is performed, and what one paid visit covers.
+              </p>
+              <p>
+                Do not treat the name “PRP Breast Lift” as a promise of the structural changes associated with mastopexy, implants, or fat transfer.
+                Compare the change you want with those distinct options before deciding what kind of appointment to book.
+              </p>
+            </div>
+
+            <ol className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 sm:grid-cols-2">
+              {[
+                ["01", "Define the change you want", "Write down the appearance concern you want to discuss so you can compare this service with other cosmetic or surgical options."],
+                ["02", "Request the current service details", "Ask the clinic what happens during the service, what the visit includes, and which written terms govern the purchase."],
+                ["03", "Ask what is and is not promised", "Request a direct explanation of the intended cosmetic goal, the limits of that goal, and whether the clinic promises any result or timeline."],
+                ["04", "Compare the alternatives", "If your goal involves removing skin, repositioning tissue, or adding volume, compare this service with an appropriate surgical consultation before deciding."],
+              ].map(([number, title, copy]) => (
+                <li key={number} className="grid grid-cols-[2.5rem_1fr] gap-3">
+                  <span className="text-sm font-semibold tracking-[0.12em] text-primary">{number}</span>
+                  <div>
+                    <h3 className="font-semibold text-base-content">{title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-base-content/70">{copy}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <p className="mt-8 border-t border-base-300 pt-6 text-sm leading-relaxed text-base-content/70">
+              Full upfront payment for one treatment visit is <strong className="font-semibold text-base-content">{catalogItem?.displayPrice}</strong>.
+              The checkout is for one visit. Contact the clinic before purchasing if you need the current service details or written purchase terms.
+            </p>
+          </section>
+        )}
+        {/* PRP_BREAST_OWNER_COPY_CONTRACT_END */}
 
         <section className="mx-auto max-w-5xl pt-10 text-center" id="pricing">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
@@ -354,7 +413,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         <section className="mx-auto mt-10 max-w-4xl text-left">
           <p className="text-base leading-relaxed text-base-content/75">{humanizeMedicalCopy(procedure.description)}</p>
-          <p className="mt-3 text-sm leading-relaxed text-base-content/65">{consultationSupportCopy}</p>
+          {procedure.slug !== "prp-breast-lift" && (
+            <p className="mt-3 text-sm leading-relaxed text-base-content/65">{consultationSupportCopy}</p>
+          )}
           <p className="mt-4 text-sm text-base-content/70">
             Serving patients from Williamsburg, James City County, Yorktown, Newport News, Toano, Norge, Lightfoot, and nearby communities. {" "}
             <Link href="/locations" className="link link-primary">
@@ -375,7 +436,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             <Link href="/locations/williamsburg-va" className="link link-primary">
               Williamsburg office at 3900 Powhatan Parkway
             </Link>
-            . Visits are appointment-led so Jenny can review fit, timing, treatment areas, pricing, and aftercare before you proceed.
+            . {procedure.slug === "prp-breast-lift"
+              ? "Ask the clinic to define the current service, one-visit purchase terms, and available alternatives before you decide."
+              : "Visits are appointment-led so Jenny can review fit, timing, treatment areas, pricing, and aftercare before you proceed."}
           </p>
           {Boolean(relatedLinks.length) && (
             <p className="mt-4 text-sm leading-relaxed text-base-content/65">
@@ -478,7 +541,11 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         <div className="my-32 text-center max-w-5xl mx-auto" id="benefits">
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
-            <span className="font-bold">{procedure.name}</span> Benefits
+            {procedure.slug === "prp-breast-lift" ? (
+              "What this treatment approach involves"
+            ) : (
+              <><span className="font-bold">{procedure.name}</span> Benefits</>
+            )}
           </h2>
           <p className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.benefitsHeadline)}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -496,7 +563,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           {Boolean(procedure.testimonials?.length) && (
             <ProcedureTestimonials procedureName={procedure.name} items={procedure.testimonials} />
           )}
-          <CtaButtons />
+          <CtaButtons consultHref={ownerConsultationHref} />
         </div>
 
         {hasAilments && (
@@ -544,7 +611,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   );
                 })}
             </div>
-            <CtaButtons />
+            <CtaButtons consultHref={ownerConsultationHref} />
           </div>
         )}
 
@@ -552,7 +619,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
             Frequently Asked Questions about <span className="font-bold">{procedure.name}</span>
           </h2>
-          <h2 className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.faqHeadline)}</h2>
+          <p className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.faqHeadline)}</p>
           <Accordion type="single" collapsible className="text-left mb-12">
             {procedure.faqs.map(({ question, answer }) => (
               <AccordionItem key={question} value={question}>
@@ -561,7 +628,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               </AccordionItem>
             ))}
           </Accordion>
-          <CtaButtons />
+          <CtaButtons consultHref={ownerConsultationHref} />
         </div>
 
         {Boolean(articles.length) && (
@@ -600,7 +667,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </Button>
           </div>
         )}
-        <CtaFooter />
+        <CtaFooter consultHref={ownerConsultationHref} />
       </div>
       </div>
     </>

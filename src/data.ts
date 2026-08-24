@@ -42,7 +42,7 @@ export const FORM_INPUTS = [
     options: [
       "O-Shot",
       "P-Shot",
-      "Breast Lift",
+      "PRP Breast Lift",
       "Hair Restoration",
       "PRP Facial",
       "Microneedling with PRP",
@@ -561,51 +561,53 @@ export const procedures = [
     seo: {
       title: "PRP Breast Lift in Williamsburg, VA",
       description:
-        "Non-surgical PRP Breast Lift in Williamsburg, VA for fuller-looking breasts, improved cleavage, and minimal downtime at Williamsburg Med Spa.",
+        "Compare the PRP Breast Lift service in Williamsburg, VA with surgical options, review the $1,800 one-visit price, and request current service details.",
     },
     description:
-      "The PRP Breast Lift utilizes Platelet-Rich Plasma (PRP) therapy, derived from the patient's own blood, which is injected into the breast area. This stimulates the growth of new blood vessels and fatty tissue, leading to a fuller-looking breast. Unlike traditional breast augmentation procedures, the PRP Breast Lift is non-invasive, has minimal downtime, and produces natural results that last for about well over 18 months, even a lifetime for some. The procedure is also less expensive than surgery, making it an affordable option. Overall, the PRP Breast Lift is a safe and effective way to boost a woman's self-confidence by providing a natural way to enhance the appearance of their breasts.",
-    headline: "Embrace Your Curves: Natural, Non-Invasive Enhancement!",
+      "This Williamsburg decision guide does not document the clinic's current method or promise a cosmetic result. Before choosing a PRP Breast Lift, ask what the service includes, what one $1,800 visit covers, and whether a different cosmetic or surgical option better matches your goal.",
+    headline: "Considering a PRP Breast Lift? Start with clear expectations",
     subline:
-      "The PRP Breast Lift leverages the healing properties of PRP, stimulating the growth of new blood vessels and fatty tissue in the breast area. The result is fuller-looking breasts through a non-invasive process with minimal downtime and long-lasting results.",
+      "The service name does not promise the structural change associated with surgery, implant-like volume, or a fixed result. Ask the clinic for its current service details and purchase terms before you decide.",
     image: "/procedure/prp-breast-lift-consultation-confidence.webp",
     price: "$1,800",
     // programmatic SEO copy
     blogHeadline:
-      "Dreaming of fuller, natural-looking breasts without invasive surgeries? Our PRP Breast Lift blog section unveils the power of PRP therapy in breast enhancement. Join us in exploring its benefits and real-world outcomes.",
+      "Read practical guidance about PRP breast treatment, purchase questions, alternatives, and what to ask before you book.",
     benefitsHeadline:
-      "Celebrate your body with naturally fuller and radiant breasts. The PRP Breast Lift offers a non-surgical path to accentuate your curves, boosting self-confidence. Relish in the allure of lasting results and minimal downtime.",
+      "A decision guide for defining the service, comparing alternatives, and understanding the one-visit purchase before you proceed.",
     benefits: [
       {
-        emoji: "🌸",
-        benefit: "Natural Enhancement",
-        description: "The PRP Breast Lift offers a natural and non-invasive way to achieve fuller-looking breasts.",
-      },
-      {
-        emoji: "⏳",
-        benefit: "Minimal Downtime",
+        emoji: "❓",
+        benefit: "Request the Current Details",
         description:
-          "Unlike traditional surgeries, this procedure requires very little recovery time, letting you get back to your routine swiftly.",
+          "This page does not document how the clinic currently performs this service. Ask for that information before you decide.",
       },
       {
-        emoji: "💰",
-        benefit: "Cost-effective",
-        description: "Compared to surgical alternatives, the PRP Breast Lift is a more affordable option for many.",
-      },
-      {
-        emoji: "⏲️",
-        benefit: "Long-lasting Results",
+        emoji: "📍",
+        benefit: "Questions Before Purchase",
         description:
-          "Response and duration vary, and Jenny reviews realistic timing and maintenance during consultation.",
+          "Ask what happens during the service, what the visit includes, what result is promised, and which written terms govern the purchase.",
+      },
+      {
+        emoji: "🌿",
+        benefit: "Not a Surgical Substitute",
+        description:
+          "Do not assume the service name means skin removal, tissue repositioning, or implant-like volume. Compare distinct surgical options when those are your goals.",
+      },
+      {
+        emoji: "💬",
+        benefit: "Straightforward Expectations",
+        description:
+          "Compare the stated service, one-visit price, intended goal, and alternatives before deciding whether to proceed.",
       },
     ],
     ailmentsHeadline:
-      "Review whether the PRP Breast Lift may fit breast appearance, texture, sensitivity, or scar-related concerns. This consultation-based treatment is discussed with realistic expectations, candidacy screening, and a clear review of alternatives.",
+      "Start with the concern you want to discuss, then compare the clinic's current service description with other cosmetic or surgical options.",
     ailments: [
       {
         title: "Sagging Breasts",
         description:
-          "Discuss breast laxity concerns and whether the PRP Breast Lift is a reasonable non-surgical option.",
+          "Describe the laxity or upper-breast appearance concern you want to discuss without assuming this service provides a surgical lift.",
         blog_post_title: "PRP Breast Lift for Breast Laxity: What to Know",
         blog_post_slug: "prp-breast-lift-for-breast-laxity-what-to-know",
         slug: "sagging-breasts",
@@ -614,8 +616,8 @@ export const procedures = [
       {
         title: "Loss of Breast Volume",
         description:
-          "Review whether PRP-based care may support breast appearance goals without surgical planning.",
-        blog_post_title: "Restore Natural Volume to Your Breasts with the PRP Breast Lift",
+          "If added volume is your goal, do not assume this service provides an implant-like change.",
+        blog_post_title: "PRP and Breast Volume: Realistic Limits",
         blog_post_slug: "restore-natural-volume-to-your-breasts-with-the-prp-breast-lift",
         slug: "loss-of-breast-volume",
         tag: "common",
@@ -623,8 +625,8 @@ export const procedures = [
       {
         title: "Decreased Sensitivity",
         description:
-          "Discuss decreased sensitivity concerns and whether PRP-based care belongs in the plan.",
-        blog_post_title: "Regain Breast Sensitivity and Enhance Intimacy with the PRP Breast Lift",
+          "Describe the sensitivity concern privately and ask which type of licensed medical evaluation is appropriate before choosing cosmetic care.",
+        blog_post_title: "PRP and Breast Sensitivity: Evidence and Alternatives",
         blog_post_slug: "regain-breast-sensitivity-and-enhance-intimacy-with-the-prp-breast-lift",
         slug: "decreased-sensitivity",
         tag: "uncommon",
@@ -632,8 +634,8 @@ export const procedures = [
       {
         title: "Wrinkled Cleavage Area",
         description:
-          "Soften the appearance of cleavage-area skin texture with a consultation-based treatment plan.",
-        blog_post_title: "Soften Cleavage Wrinkles with the PRP Breast Lift",
+          "Describe the cleavage-area skin texture you want to discuss and compare the clinic's current options.",
+        blog_post_title: "PRP for Cleavage-Area Texture: What Is Known",
         blog_post_slug: "soften-cleavage-wrinkles-with-the-prp-breast-lift",
         slug: "wrinkled-cleavage-area",
         tag: "common",
@@ -641,8 +643,8 @@ export const procedures = [
       {
         title: "Asymmetrical Breasts",
         description:
-          "Balance out asymmetrical breasts safely and naturally with the PRP Breast Lift. Achieve a harmonious look without surgery.",
-        blog_post_title: "Balance Your Breasts Naturally with the PRP Breast Lift",
+          "Describe the appearance difference you want to discuss and do not assume a nonsurgical service changes structural asymmetry.",
+        blog_post_title: "PRP and Breast Asymmetry: Non-Surgical Limits",
         blog_post_slug: "balance-your-breasts-naturally-with-the-prp-breast-lift",
         slug: "asymmetrical-breasts",
         tag: "uncommon",
@@ -650,8 +652,8 @@ export const procedures = [
       {
         title: "Stretch Marks",
         description:
-          "Diminish the appearance of stretch marks on your breasts with the PRP Breast Lift. Reveal smoother, younger-looking skin.",
-        blog_post_title: "Fade Stretch Marks on Your Breasts with the PRP Breast Lift",
+          "Describe the breast-area stretch marks you want to discuss and compare the clinic's current skin-focused options.",
+        blog_post_title: "PRP for Breast Stretch Marks: Evidence and Other Options",
         blog_post_slug: "fade-stretch-marks-on-your-breasts-with-the-prp-breast-lift",
         slug: "stretch-marks",
         tag: "common",
@@ -659,40 +661,45 @@ export const procedures = [
       {
         title: "Surgical Scars",
         description:
-          "Reduce the visibility of surgical scars on your breasts with the PRP Breast Lift. Enjoy cleaner, unblemished skin.",
-        blog_post_title: "Minimize Surgical Scars with the PRP Breast Lift",
+          "Describe the scar concern and ask which type of licensed medical evaluation is appropriate before choosing cosmetic care.",
+        blog_post_title: "PRP and Healed Breast Scars: Questions to Ask",
         blog_post_slug: "minimize-surgical-scars-with-the-prp-breast-lift",
         slug: "surgical-scars",
         tag: "uncommon",
       },
     ],
     faqHeadline:
-      "Discover a natural approach to enhancing your curves with the PRP Breast Lift. Achieve fuller and revitalized breasts without surgery.",
+      "Use these questions to define the current service, compare alternatives, and understand the one-visit purchase.",
     faqs: [
       {
         question: "How does the PRP Breast Lift differ from traditional breast augmentation?",
         answer:
-          "Unlike surgical breast augmentation, the PRP Breast Lift uses PRP therapy derived from the patient's blood to stimulate the growth of new blood vessels and fatty tissue, resulting in natural-looking fuller breasts.",
+          "Do not treat the service name as a promise of the skin removal, tissue repositioning, or volume change associated with mastopexy, implants, or fat transfer. Ask the clinic to define the intended goal of its service before comparing it with those distinct procedures.",
       },
       {
-        question: "Is there any downtime associated with the procedure?",
+        question: "What happens during a PRP Breast Lift appointment?",
         answer:
-          "The PRP Breast Lift is minimally invasive with little to no downtime. Most patients can return to their regular activities shortly after the procedure.",
+          "This page does not include the clinic's current visit sequence. Before paying, ask the clinic what happens during the service, what the visit includes, and which written terms govern the purchase.",
       },
       {
-        question: "How long do the results last?",
+        question: "What details should I request before buying?",
         answer:
-          "The results from a PRP Breast Lift can last for over 18 months, and in some cases, even longer. However, individual experiences may vary.",
+          "Request the current service description, method, intended goal, one-visit inclusions, purchase terms, and any instructions the clinic provides for that service.",
       },
       {
-        question: "Are there any side effects?",
+        question: "Does this page promise a result or timeline?",
         answer:
-          "Possible side effects include temporary redness, swelling, and bruising at the injection site. However, since PRP is derived from the patient's blood, the risk of allergic reactions or serious side effects is minimal.",
+          "No. This page does not promise a cosmetic result, degree of change, response timeline, or duration. Ask the clinic to identify any promise it makes before you purchase.",
       },
       {
-        question: "Is the PRP Breast Lift suitable for everyone?",
+        question: "Can this page decide whether the service is right for me?",
         answer:
-          "While the procedure is safe for most individuals, a consultation with a qualified practitioner is essential to determine if you're a good candidate for the treatment.",
+          "No. This page is a service and purchase guide, not an individual medical evaluation. Ask an appropriately licensed professional which evaluation fits your concern before choosing cosmetic care.",
+      },
+      {
+        question: "Where is the clinic's risk information for this service?",
+        answer:
+          "This page does not include a clinic-confirmed risk list for this service. Ask the clinic for the risks that apply to how it currently performs the service before you purchase.",
       },
     ],
   },
