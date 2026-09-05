@@ -14,6 +14,7 @@ type Props = {
   minQuantity: number;
   maxQuantity: number;
   fulfillment: "pickup" | "appointment";
+  purchaseLabel?: string;
   customerNote?: string;
 };
 
@@ -28,6 +29,7 @@ export default function CatalogPurchasePanel({
   minQuantity,
   maxQuantity,
   fulfillment,
+  purchaseLabel,
   customerNote,
 }: Props) {
   const isAppointment = fulfillment === "appointment";
@@ -37,7 +39,7 @@ export default function CatalogPurchasePanel({
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
-            {kind === "procedure" ? "Reserve appointment" : "Reserve for pickup"}
+            {purchaseLabel || (kind === "procedure" ? "Reserve appointment" : "Reserve for pickup")}
           </p>
           <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-2">
             <h2 className="text-2xl font-light tracking-tight text-base-content">{name}</h2>

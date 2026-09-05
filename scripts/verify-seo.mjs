@@ -13,6 +13,10 @@ const warnings = [];
 
 const fail = (message) => failures.push(message);
 const warn = (message) => warnings.push(message);
+const consultInterestSource = readFileSync(new URL("../src/lib/consult-procedure-interests.ts", import.meta.url), "utf8");
+if (!/"prp-hair-restoration"\s*:\s*\["Hair Restoration"\]/.test(consultInterestSource)) {
+  fail("consult form does not map procedure=prp-hair-restoration to the Hair Restoration interest");
+}
 const normalizePath = (value) => {
   const url = new URL(value, canonicalOrigin);
   const path = url.pathname === "/" ? "/" : url.pathname.replace(/\/$/, "");
@@ -705,6 +709,25 @@ const ownerPageExpectations = {
     requiredConsultHref:
       "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift",
     forbiddenHtml: [/id=["']prp-breast-lift-quantity["']/],
+    offer: { name: "PRP Breast Lift", price: "1800", currency: "USD" },
+  },
+  "/procedures/prp-hair-restoration": {
+    required: [
+      "Is PRP a reasonable fit for your hair-loss pattern?",
+      "Research suggests platelet-rich plasma may improve hair density for some people with pattern hair loss",
+      "does not create new follicles in a bald area",
+      "Medical evaluation may come first",
+      "$600 per treatment",
+      "purchase one session and choose one appointment time after checkout",
+      "For patients cleared to proceed",
+      "Book a PRP Hair Consultation",
+    ],
+    forbidden: ["guaranteed regrowth", "creates new hair follicles", "permanent hair restoration", "little to no downtime"],
+    requiredHtml: [/href=["']\/consult\?procedure=prp-hair-restoration&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=prp_hair_restoration["']/],
+    requiredConsultHref:
+      "/consult?procedure=prp-hair-restoration&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_hair_restoration",
+    forbiddenHtml: [/id=["']prp-hair-restoration-quantity["']/],
+    offer: { name: "PRP Hair Restoration", price: "600", currency: "USD" },
   },
 };
 for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
@@ -764,9 +787,20 @@ for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
     if (serviceSchemas.length !== 1 || serviceSchemas[0]?.name !== "PRP Breast Lift") {
       fail(`${path} must expose exactly one PRP Breast Lift Service schema`);
     }
-    const offer = serviceSchemas.find((schema) => schema?.name === "PRP Breast Lift")?.offers;
-    if (String(offer?.price) !== "1800" || offer?.priceCurrency !== "USD") {
-      fail(`${path} Service schema is missing the $1,800 USD offer`);
+  }
+  if (path === "/procedures/prp-hair-restoration") {
+    if (serviceSchemas.length !== 1 || serviceSchemas[0]?.name !== "PRP Hair Restoration") {
+      fail(`${path} must expose exactly one PRP Hair Restoration Service schema`);
+    }
+  }
+  if (expectation.offer) {
+    const matchingServices = serviceSchemas.filter((schema) => schema?.name === expectation.offer.name);
+    if (matchingServices.length !== 1) {
+      fail(`${path} must render exactly one ${expectation.offer.name} Service schema; found ${matchingServices.length}`);
+    }
+    const offer = matchingServices[0]?.offers;
+    if (String(offer?.price) !== expectation.offer.price || offer?.priceCurrency !== expectation.offer.currency) {
+      fail(`${path} ${expectation.offer.name} Service schema is missing the ${expectation.offer.price} ${expectation.offer.currency} offer`);
     }
   }
 }
@@ -780,6 +814,7 @@ const priorityPaths = [
   "/procedures/hyperhidrosis-treatment",
   "/procedures/microneedling-with-prp",
   "/procedures/prp-breast-lift",
+  "/procedures/prp-hair-restoration",
   "/events",
   "/events/botox-party",
   "/locations/williamsburg-va",

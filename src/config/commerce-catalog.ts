@@ -23,6 +23,7 @@ export type CatalogItemConfig = {
   stripeProductKey: string;
   stripePriceLookupKey: string;
   schedulingCategory?: "consult" | "paid_procedure";
+  purchaseLabel?: string;
   customerNote?: string;
 };
 
@@ -88,18 +89,21 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     kind: "procedure",
     name: "PRP Hair Restoration",
     shortDescription: "Charged per treatment session.",
-    pricingMode: "quantity",
+    pricingMode: "fixed",
     unitAmountCents: 60000,
     currency: "usd",
     displayPrice: "$600 per treatment",
     quantityLabel: "treatment",
     minQuantity: 1,
-    maxQuantity: 12,
+    maxQuantity: 1,
     requiresScheduling: true,
     fulfillment: "appointment",
     imagePath: "/procedure/hair-restoration/prp-hair-restoration-consultation.webp",
     stripeProductKey: "wms_procedure_prp_hair_restoration",
     stripePriceLookupKey: "wms_procedure_prp_hair_restoration_600_v1",
+    purchaseLabel: "For patients cleared to proceed",
+    customerNote:
+      "If you have not completed a hair-loss consultation, book that first. Purchase one session only after Jenny confirms PRP is a reasonable fit and discusses your next-step plan.",
   },
   {
     slug: "prp-facial",
