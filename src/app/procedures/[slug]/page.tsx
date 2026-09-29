@@ -162,12 +162,16 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
       ? "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift"
       : procedure.slug === "prp-hair-restoration"
         ? "/consult?procedure=prp-hair-restoration&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_hair_restoration"
+        : procedure.slug === "filler"
+          ? "/consult?procedure=filler&utm_source=website&utm_medium=procedure_page&utm_campaign=dermal_filler"
         : undefined;
   const consultationSupportCopy =
     procedure.slug === "prp-breast-lift"
       ? "This page does not document the clinic's current method or promise a cosmetic result. Ask for the current service details before purchasing the one-visit treatment."
       : procedure.slug === "prp-hair-restoration"
         ? "Start with a hair-loss consultation before paying. Jenny reviews your pattern, timeline, scalp symptoms, health history, medications, and whether PRP, medical evaluation, or a transplant specialist is the more useful next step."
+      : procedure.slug === "filler"
+      ? "Consultation starts with the area you want to discuss, whether that is lips, cheeks, smile lines, under-eyes, or facial balance, plus your prior injectables, event timing, and whether filler, a wrinkle relaxer, or another option is the better fit."
       : procedure.slug === "hyperhidrosis-treatment"
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
       : procedure.slug === "o-shot"
@@ -282,8 +286,10 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                         ? "/consult?procedure=microneedling-with-prp&utm_source=website&utm_medium=procedure_page&utm_campaign=microneedling_prp"
                         : procedure.slug === "prp-breast-lift"
                           ? "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift"
-                          : procedure.slug === "prp-hair-restoration"
-                            ? "/consult?procedure=prp-hair-restoration&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_hair_restoration"
+                        : procedure.slug === "prp-hair-restoration"
+                          ? "/consult?procedure=prp-hair-restoration&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_hair_restoration"
+                          : procedure.slug === "filler"
+                            ? "/consult?procedure=filler&utm_source=website&utm_medium=procedure_page&utm_campaign=dermal_filler"
                         : "/consult"
                   }
                 >
@@ -295,6 +301,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                         ? "Book a Private PRP Breast Consultation"
                         : procedure.slug === "prp-hair-restoration"
                           ? "Book a PRP Hair Consultation"
+                          : procedure.slug === "filler"
+                            ? "Book a Filler Consultation"
                         : "Book a Consultation"}
                 </Link>
               </Button>
@@ -420,6 +428,62 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               PRP hair restoration is <strong className="font-semibold text-base-content">{catalogItem?.displayPrice}</strong>. Book the consultation
               first if Jenny has not already reviewed your candidacy. If PRP fits your plan, purchase one session and choose one appointment time
               after checkout.
+            </p>
+          </section>
+        )}
+
+        {procedure.slug === "filler" && (
+          <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="filler-fit">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Choose the right next step</p>
+            <h2 id="filler-fit" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
+              Is dermal filler a reasonable fit for the change you want?
+            </h2>
+            <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
+              <p>
+                Dermal filler restores or reshapes volume in areas such as lips, cheeks, smile lines, and under-eyes. It does not
+                relax the movement-related expression lines that Botox and Xeomin address, and it is not a substitute for medical
+                evaluation of a new or changing skin concern.
+              </p>
+              <p>
+                Results are not permanent. Longevity varies by filler type, treatment area, metabolism, and movement, so realistic
+                maintenance timing is part of the conversation before treatment.
+              </p>
+            </div>
+
+            <ul className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 md:grid-cols-3">
+              {[
+                ["Filler may belong in the conversation", "Volume loss or proportion goals in lips, cheeks, smile lines, marionette lines, or facial contour and balance."],
+                ["A wrinkle relaxer may fit better", "Movement-related expression lines such as forehead lines, frown lines, or crow's feet, which Botox and Xeomin address instead."],
+                ["Careful screening comes first", "Under-eye hollows, nose reshaping, or temple hollowing, where anatomy and vascular risk matter and filler may not be the right fit."],
+              ].map(([title, copy]) => (
+                <li key={title}>
+                  <h3 className="font-semibold text-base-content">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-base-content/70">{copy}</p>
+                </li>
+              ))}
+            </ul>
+
+            <ol className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 sm:grid-cols-2">
+              {[
+                ["01", "Consultation and anatomy review", "Jenny reviews your goals, facial movement, prior injectables, event timing, swelling expectations, and whether filler, Botox/Xeomin, PRP, or skincare better matches the concern."],
+                ["02", "Treatment plan and product choice", "A conservative plan is shaped around proportion and balance, with product choice, likely amount, and expected swelling or bruising reviewed before anything is done."],
+                ["03", "Treatment visit", "Filler is placed by injection in the planned areas once the plan is confirmed with you."],
+                ["04", "Aftercare and maintenance plan", "Leave with guidance for temporary swelling, tenderness, or bruising, what should prompt a call after treatment, and a realistic maintenance timeline."],
+              ].map(([number, title, copy]) => (
+                <li key={number} className="grid grid-cols-[2.5rem_1fr] gap-3">
+                  <span className="text-sm font-semibold tracking-[0.12em] text-primary">{number}</span>
+                  <div>
+                    <h3 className="font-semibold text-base-content">{title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-base-content/70">{copy}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <p className="mt-8 border-t border-base-300 pt-6 text-sm leading-relaxed text-base-content/70">
+              Dermal filler at Williamsburg Med Spa is <strong className="font-semibold text-base-content">{catalogItem?.displayPrice}</strong>. The
+              number of syringes depends on the areas treated, anatomy, and your goals; the likely amount is reviewed with you during
+              consultation before you pay.
             </p>
           </section>
         )}
