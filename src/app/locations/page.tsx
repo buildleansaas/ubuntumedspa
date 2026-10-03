@@ -32,36 +32,6 @@ const locations = [
     slug: "newport-news-va",
     summary: "A practical destination for Newport News residents seeking regenerative PRP and aesthetic care.",
   },
-  {
-    name: "Toano",
-    slug: "toano-va",
-    summary: "An easy trip from Toano for thoughtful consultations and restorative treatment planning.",
-  },
-  {
-    name: "Norge",
-    slug: "norge-va",
-    summary: "Quick access along Richmond Road for nearby aesthetic and wellness visits.",
-  },
-  {
-    name: "Lightfoot",
-    slug: "lightfoot-va",
-    summary: "Close for patients in Lightfoot who want a calm, destination-style appointment.",
-  },
-  {
-    name: "New Town",
-    slug: "new-town-va",
-    summary: "A few minutes from New Town's shops and restaurants.",
-  },
-  {
-    name: "Kingsmill",
-    slug: "kingsmill-va",
-    summary: "Close to Kingsmill's riverfront community.",
-  },
-  {
-    name: "Ford's Colony",
-    slug: "fords-colony-va",
-    summary: "Nearby care for residents of Ford's Colony.",
-  },
 ];
 
 const travelGroups = [
@@ -84,9 +54,6 @@ const travelGroups = [
 
 const localIntentLinks = [
   { label: "Med spa near Yorktown", href: "/locations/yorktown-va" },
-  { label: "Med spa near Toano", href: "/locations/toano-va" },
-  { label: "Med spa near Norge", href: "/locations/norge-va" },
-  { label: "Med spa near Lightfoot", href: "/locations/lightfoot-va" },
   { label: "Med spa near James City County", href: "/locations/james-city-county-va" },
   { label: "Med spa near Newport News", href: "/locations/newport-news-va" },
 ];

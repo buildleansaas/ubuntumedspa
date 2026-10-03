@@ -100,7 +100,7 @@ export default function WilliamsburgLocationPage() {
             <Link href="/procedures/botox">Botox in Williamsburg</Link>
           </Button>
           <Button asChild size="sm">
-            <Link href="/procedures/xeomin/near/williamsburg-va">Xeomin in Williamsburg</Link>
+            <Link href="/procedures/xeomin">Xeomin in Williamsburg</Link>
           </Button>
           <Button asChild size="sm">
             <Link href="/procedures/filler">Dermal Fillers in Williamsburg</Link>
@@ -141,10 +141,10 @@ export default function WilliamsburgLocationPage() {
             <Link href="/procedures/blomdahl-ear-piercing">Blomdahl Ear Piercing</Link>
           </Button>
           <Button asChild size="sm" variant="secondary">
-            <Link href="/procedures/blomdahl-ear-piercing/for/children">Children&apos;s Ear Piercing</Link>
+            <Link href="/procedures/blomdahl-ear-piercing/for/children">Infant &amp; Kids Ear Piercing</Link>
           </Button>
           <Button asChild size="sm" variant="secondary">
-            <Link href="/blog/ear-piercing-cost-williamsburg-va">Ear Piercing Cost</Link>
+            <Link href="/procedures/blomdahl-ear-piercing#pricing">Ear Piercing Cost</Link>
           </Button>
           <Button asChild size="sm" variant="secondary">
             <Link href="/blog/medical-ear-piercing-vs-mall-piercing">Medical vs. Mall Piercing</Link>

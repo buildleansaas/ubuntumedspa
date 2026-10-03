@@ -32,14 +32,14 @@ export default function BlogPostCard({ article, priority = false, variant = "gri
 
         <div className="min-w-0">
           <DateTag date={article.date} className="px-2.5 py-0.5 text-[11px]" />
-          <h2 className="mt-2 text-base/snug font-semibold tracking-tight text-base-content text-balance">
+          <h3 className="mt-2 text-base/snug font-semibold tracking-tight text-base-content text-balance">
             <Link
               href={article.href}
               className="rounded-md transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-4 focus-visible:ring-offset-base-100"
             >
               {article.title}
             </Link>
-          </h2>
+          </h3>
           <p className="mt-2 line-clamp-2 text-sm leading-6 text-base-content/70">
             {humanizeMedicalCopy(article.description)}
           </p>
@@ -88,14 +88,14 @@ export default function BlogPostCard({ article, priority = false, variant = "gri
         </div>
 
         <div className="mt-4">
-          <h2 className={titleClassName}>
+          <h3 className={titleClassName}>
             <Link
               href={article.href}
               className="rounded-md transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-4 focus-visible:ring-offset-base-100"
             >
               {article.title}
             </Link>
-          </h2>
+          </h3>
           <p className="mt-3 text-sm leading-7 text-base-content/70">
             {humanizeMedicalCopy(article.description)}
           </p>

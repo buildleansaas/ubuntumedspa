@@ -42,7 +42,7 @@ const serviceLinks = [
     note: "Explore consultation-led treatment for excessive sweating affecting daily comfort.",
   },
   {
-    href: "/procedures/blomdahl-ear-piercing/near/james-city-county-va",
+    href: "/procedures/blomdahl-ear-piercing",
     label: "Blomdahl medical ear piercing",
     note: "Plan a nurse-led piercing visit with sterile single-use cassettes and aftercare guidance.",
   },

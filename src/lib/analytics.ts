@@ -1,4 +1,4 @@
-export type PhoneCtaLocation = "jumbotron" | "site_cta" | "footer_location" | "location_nap";
+export type PhoneCtaLocation = "jumbotron" | "site_cta" | "footer_location" | "location_nap" | "service_page";
 
 type ConsultEventName = "consult_start" | "consult_submit_success";
 type AnalyticsEventName = ConsultEventName | "phone_click";

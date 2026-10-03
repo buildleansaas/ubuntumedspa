@@ -2355,20 +2355,20 @@ export const procedures = [
     name: "Blomdahl Ear Piercing",
     slug: "blomdahl-ear-piercing",
     seo: {
-      title: "Ear Piercing in Williamsburg, VA | Blomdahl Medical Piercing",
+      title: "Ear Piercing in Williamsburg, VA | Infant, Kids & Adults | Blomdahl",
       description:
-        "Ear piercing in Williamsburg, VA using the Blomdahl medical piercing system with sterile single-use cassettes and hypoallergenic jewelry for children, teens, and adults.",
+        "Ear piercing in Williamsburg, VA for infants, kids, teens, and adults. Blomdahl medical piercing with sterile single-use cassettes, hypoallergenic earrings, and a pediatric nurse practitioner. $45 per ear.",
     },
     description:
       "Our Blomdahl medical ear piercing service uses sterile single-use cassettes and hypoallergenic Medical Plastic or titanium starter earrings to support cleaner healing. Jenny Coleman, MSN, RN, CPNP, PMHS brings pediatric nursing experience to appointments for children, teens, and adults who want careful placement, clear aftercare, and a clinical setting instead of mall-style piercing.",
-    headline: "Nurse-led Blomdahl ear piercing in Williamsburg for children, teens, and adults.",
+    headline: "Nurse-led Blomdahl ear piercing in Williamsburg for infants, children, teens, and adults.",
     subline:
       "A sterile, appointment-based piercing visit with Jenny Coleman, hypoallergenic Blomdahl starter jewelry, placement planning, and aftercare for first earrings, re-piercing, and sensitive ears.",
     image: "/procedure/blomdahl-family-ear-piercing-consult.webp",
     price: "$45.00 per ear or $80.00 for both ears",
     // programmatic SEO copy
     blogHeadline:
-      "Planning ear piercing in Williamsburg? Review our guides on first earrings, pediatric-aware piercing, sensitive ears, aftercare, ear piercing cost, and why Blomdahl differs from mall piercing.",
+      "Planning ear piercing in Williamsburg? Review our guides on aftercare, starter earring materials, and why Blomdahl differs from mall piercing.",
     benefitsHeadline:
       "Blomdahl ear piercing is designed for cleaner healing and calmer tissue response, especially for kids, sensitive skin, and first-time piercings.",
     benefits: [
@@ -2468,7 +2468,7 @@ export const procedures = [
       {
         question: "What age can children get their ears pierced?",
         answer:
-          "Age eligibility is confirmed when booking. Jenny reviews the child's age, parent or guardian questions, timing, and aftercare expectations before the visit.",
+          "Jenny pierces infants, children, teens, and adults. Babies are generally pierced at 6 months or older with pediatrician guidance. Jenny reviews age, health history, timing, and aftercare expectations at the visit.",
       },
       {
         question: "How much does Blomdahl ear piercing cost?",
@@ -2493,7 +2493,7 @@ export const procedures = [
       {
         question: "Can babies or toddlers get their ears pierced?",
         answer:
-          "Minimum age, consent, timing, and comfort expectations are confirmed directly with Williamsburg Med Spa before scheduling. Parents can call or request a visit so Jenny can review whether the timing is appropriate.",
+          "Yes. Jenny is a pediatric nurse practitioner and generally pierces babies at 6 months or older with pediatrician guidance. She will not pierce if she has any safety concerns, and parents leave with aftercare written for babies and toddlers.",
       },
       {
         question: "How long does healing take?",

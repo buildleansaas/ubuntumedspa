@@ -31,9 +31,9 @@ export default function Header() {
             <p className="truncate text-base font-bold tracking-tight text-base-content min-[380px]:text-lg sm:text-xl md:text-2xl">
               Williamsburg Med Spa
             </p>
-            <h2 className="mt-0 hidden text-sm font-light text-base-content/75 lg:block">
+            <p className="mt-0 hidden text-sm font-light text-base-content/75 lg:block">
               Restorative Wellness & Natural Healing
-            </h2>
+            </p>
           </div>
         </div>
       </Link>
