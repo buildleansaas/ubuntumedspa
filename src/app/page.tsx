@@ -67,7 +67,7 @@ export default async function Page() {
             <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/filler">
               Fillers in Williamsburg
             </Link>
-            <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/xeomin/near/williamsburg-va">
+            <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/xeomin">
               Xeomin in Williamsburg
             </Link>
             <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/locations/williamsburg-va">
@@ -79,8 +79,8 @@ export default async function Page() {
             <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/locations/yorktown-va">
               Yorktown med spa
             </Link>
-            <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/locations/toano-va">
-              Toano med spa
+            <Link className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary" href="/procedures/blomdahl-ear-piercing">
+              Ear piercing in Williamsburg
             </Link>
           </div>
         </div>

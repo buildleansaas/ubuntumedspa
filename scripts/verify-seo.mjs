@@ -746,7 +746,7 @@ const ownerPageExpectations = {
       /href=["']\/procedures\/filler["']/,
       /href=["']\/procedures\/prp-hair-restoration["']/,
       /href=["']\/procedures\/hyperhidrosis-treatment["']/,
-      /href=["']\/procedures\/blomdahl-ear-piercing\/near\/james-city-county-va["']/,
+      /href=["']\/procedures\/blomdahl-ear-piercing["']/,
     ],
     requiredSchemas: ["FAQPage"],
   },
@@ -831,11 +831,35 @@ for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
   }
 }
 
+const consolidatedRedirects = [
+  ["/blog/baby-ear-piercing-williamsburg-va", "/procedures/blomdahl-ear-piercing/for/children"],
+  ["/blog/ear-piercing-cost-williamsburg-va", "/procedures/blomdahl-ear-piercing"],
+  ["/blog/medical-ear-piercing-in-williamsburg-va-blohmdahl", "/procedures/blomdahl-ear-piercing"],
+  ["/procedures/blomdahl-ear-piercing/near/fords-colony-va", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
+  ["/locations/toano-va", "/locations/williamsburg-va"],
+  ["/procedures/botox/near/williamsburg-va", "/procedures/botox"],
+  ["/procedures/botox/for/crows-feet", "/procedures/botox"],
+  ["/procedures/feminine-intimacy-prp-protocols/for/urinary-incontinence", "/procedures/o-shot"],
+];
+for (const [source, destination] of consolidatedRedirects) {
+  const response = await fetchLocal(source, { redirect: "manual" });
+  const location = response.headers.get("location");
+  if (![301, 308].includes(response.status) || !location || normalizePath(location) !== destination) {
+    fail(`${source} should permanently redirect to ${destination} (got ${response.status} ${location ?? "no location"})`);
+  }
+}
+for (const [, destination] of consolidatedRedirects) {
+  if (!sitemapUrls.some((url) => normalizePath(url) === destination)) {
+    fail(`redirect destination missing from sitemap: ${destination}`);
+  }
+}
+
 const priorityPaths = [
   "/",
   "/procedures/botox",
   "/procedures/filler",
   "/procedures/blomdahl-ear-piercing",
+  "/procedures/blomdahl-ear-piercing/for/children",
   "/procedures/blomdahl-ear-piercing/for/sensitive-ears",
   "/procedures/hyperhidrosis-treatment",
   "/procedures/microneedling-with-prp",

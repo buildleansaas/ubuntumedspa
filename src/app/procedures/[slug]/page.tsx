@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { Badge } from "components/ui/badge";
 import { Button } from "components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "components/ui/accordion";
 import CmaCredentialStrip from "components/cma-credential-strip";
 
@@ -14,6 +14,7 @@ import BlogPostCollection from "components/blog-post-collection";
 import StructuredData from "components/structured-data";
 import { twMerge } from "tailwind-merge";
 import CtaButtons from "components/cta-buttons";
+import TrackedPhoneLink from "components/tracked-phone-link";
 import { notFound } from "next/navigation";
 import ProcedureTestimonials from "components/procedure-testimonials";
 import { getPublishedAilmentsForProcedure } from "lib/ailments/get-ailment-page-data";
@@ -177,12 +178,6 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
       : procedure.slug === "microneedling-with-prp"
         ? "Consultation covers skin goals, acne-scar or texture concerns, PRP candidacy, downtime, aftercare, and whether microneedling with PRP or another skin option is the better fit."
       : `Consultation covers candidacy, treatment areas, expected timing, and whether ${procedure.name} fits your goals with a conservative, natural-looking plan.`;
-  const hyperhidrosisFeaturedAilments =
-    procedure.slug === "hyperhidrosis-treatment"
-      ? ["underarm-sweating", "sweaty-palms", "sweaty-feet"]
-          .map((featuredSlug) => publishedAilments.find((ailment) => ailment.slug === featuredSlug))
-          .filter((ailment): ailment is NonNullable<typeof ailment> => Boolean(ailment))
-      : [];
 
   return (
     <>
@@ -215,7 +210,6 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             {procedure.slug === "hyperhidrosis-treatment" && (
               <div className="mt-6 flex flex-wrap gap-2 text-sm">
                 {[
-                  ["Underarm sweating", "/procedures/hyperhidrosis-treatment/for/underarm-sweating"],
                   ["Treatment areas", "#applications"],
                   ["Pricing", "#pricing"],
                   ["FAQs", "#faqs"],
@@ -253,7 +247,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             {procedure.slug === "blomdahl-ear-piercing" && (
               <div className="mt-6 flex flex-wrap gap-2 text-sm">
                 {[
-                  ["Children's Ear Piercing", "/procedures/blomdahl-ear-piercing/for/children"],
+                  ["Infant & Kids Ear Piercing", "/procedures/blomdahl-ear-piercing/for/children"],
                   ["Sensitive Ears", "/procedures/blomdahl-ear-piercing/for/sensitive-ears"],
                   ["Re-Piercing", "/procedures/blomdahl-ear-piercing/for/re-piercing"],
                   ["Blomdahl vs Mall", "/blog/medical-ear-piercing-vs-mall-piercing"],
@@ -301,6 +295,13 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               <Button asChild variant="secondary">
                 <Link href={catalogItem ? "#pricing" : "#benefits"}>{catalogItem ? "View Pricing" : "Explore Benefits"}</Link>
               </Button>
+              {procedure.slug === "blomdahl-ear-piercing" && (
+                <Button asChild variant="outline">
+                  <TrackedPhoneLink href="tel:+18047389483" location="service_page">
+                    Call (804) 738-9483
+                  </TrackedPhoneLink>
+                </Button>
+              )}
               {featuredGuide && featuredGuideCta && (
                 <Button asChild variant="outline">
                   <Link href={featuredGuide.href}>{featuredGuideCta.button}</Link>
@@ -521,6 +522,36 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
         </section>
 
         {procedure.slug === "blomdahl-ear-piercing" && (
+          <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="infant-ear-piercing">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Babies & young kids</p>
+            <h2 id="infant-ear-piercing" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
+              Infant &amp; baby ear piercing with a pediatric nurse practitioner
+            </h2>
+            <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
+              <p>
+                Jenny Coleman is a certified pediatric nurse practitioner (CPNP), so infant and baby ear piercing is a big part of her
+                practice. Babies are generally pierced at 6 months or older with your pediatrician&apos;s guidance, and Jenny will not
+                pierce if she has any safety concerns.
+              </p>
+              <p>
+                Visits are private and unhurried. Jenny reviews health history and placement with you, uses a sterile single-use Blomdahl
+                cassette and hypoallergenic starter earrings, and teaches aftercare written for babies and toddlers before you leave.
+              </p>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button asChild>
+                <Link href="/procedures/blomdahl-ear-piercing/for/children">Infant &amp; kids ear piercing details</Link>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link href="/consult?procedure=blomdahl-ear-piercing&intent=children&utm_source=website&utm_medium=procedure_page&utm_campaign=ear_piercing_infant">
+                  Book a baby&apos;s first earrings
+                </Link>
+              </Button>
+            </div>
+          </section>
+        )}
+
+        {procedure.slug === "blomdahl-ear-piercing" && (
           <section className="mx-auto mt-12 max-w-4xl text-left">
             <div className="rounded-3xl border border-base-300 bg-base-100 p-6 shadow-sm">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Choose your ear piercing path</p>
@@ -532,7 +563,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               </p>
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {[
-                  ["First ear piercing for children", "/procedures/blomdahl-ear-piercing/for/children", "For parents choosing a calm first-earrings appointment."],
+                  ["Infant, baby & kids ear piercing", "/procedures/blomdahl-ear-piercing/for/children", "For parents planning a baby's or child's first earrings."],
                   ["Sensitive ears or nickel concerns", "/procedures/blomdahl-ear-piercing/for/sensitive-ears", "For families comparing Medical Plastic, titanium, and hypoallergenic starter earrings."],
                   ["Re-piercing closed or problem piercings", "/procedures/blomdahl-ear-piercing/for/re-piercing", "For patients who need placement reviewed before piercing again."],
                   ["Blomdahl vs mall ear piercing", "/blog/medical-ear-piercing-vs-mall-piercing", "For parents comparing a medical setting with retail piercing."],
@@ -564,12 +595,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {[
                   ["Williamsburg", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
-                  ["James City County", "/procedures/blomdahl-ear-piercing/near/james-city-county-va"],
                   ["Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
                   ["Newport News", "/procedures/blomdahl-ear-piercing/near/newport-news-va"],
-                  ["Toano", "/procedures/blomdahl-ear-piercing/near/toano-va"],
-                  ["Norge", "/procedures/blomdahl-ear-piercing/near/norge-va"],
-                  ["Lightfoot", "/procedures/blomdahl-ear-piercing/near/lightfoot-va"],
                 ].map(([label, href]) => (
                   <Link
                     key={href}
@@ -588,21 +615,6 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
         )}
 
         <div className="text-center">
-          {Boolean(hyperhidrosisFeaturedAilments.length) && (
-            <div className="mt-10 max-w-4xl mx-auto">
-              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Popular symptom pages</p>
-              <p className="mt-3 text-base md:text-lg leading-relaxed text-base-content/75">
-                Start with the symptom page that best matches what is disrupting daily life most.
-              </p>
-              <div className="mt-5 flex flex-wrap justify-center gap-3">
-                {hyperhidrosisFeaturedAilments.map((ailment) => (
-                  <Button key={ailment.slug} asChild variant="secondary" size="sm">
-                    <Link href={`/procedures/${procedure.slug}/for/${ailment.slug}`}>{ailment.title}</Link>
-                  </Button>
-                ))}
-              </div>
-            </div>
-          )}
 
         <div className="my-32 text-center max-w-5xl mx-auto" id="benefits">
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
@@ -650,7 +662,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               {publishedAilments
                 ?.sort((a, b) => ailmentsSortOrder[a.tag] - ailmentsSortOrder[b.tag])
-                .map(({ title, tag, description, slug: ailmentSlug }) => {
+                .map(({ title, tag, description }) => {
                   return (
                     <Card
                       key={title}
@@ -667,13 +679,6 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                         </CardTitle>
                       </CardHeader>
                       <CardContent>{humanizeMedicalCopy(description)}</CardContent>
-                      <CardFooter>
-                        <Button asChild>
-                          <Link href={`/procedures/${procedure.slug}/for/${ailmentSlug}`}>
-                            {procedure.slug === "blomdahl-ear-piercing" ? "Read guide" : "Learn More"}
-                          </Link>
-                        </Button>
-                      </CardFooter>
                     </Card>
                   );
                 })}

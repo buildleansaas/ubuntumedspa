@@ -15,46 +15,122 @@ export type EarPiercingIntentPage = {
   beforeVisit: string[];
   faqs: { question: string; answer: string }[];
   relatedAreaSlugs: string[];
+  showPricing?: boolean;
+  sections?: EarPiercingIntentSection[];
+};
+
+export type EarPiercingIntentSection = {
+  heading: string;
+  paragraphs?: string[];
+  bullets?: string[];
+  steps?: { title: string; description: string }[];
 };
 
 export const earPiercingIntentPages: EarPiercingIntentPage[] = [
   {
     slug: "children",
     status: "published",
-    title: "Children's Ear Piercing",
-    metaTitle: "Children's Ear Piercing in Williamsburg, VA | Blomdahl",
+    title: "Infant & Kids Ear Piercing",
+    metaTitle: "Infant & Baby Ear Piercing in Williamsburg, VA | Pediatric NP",
     metaDescription:
-      "Pediatric-aware Blomdahl ear piercing for children in Williamsburg, VA with Jenny Coleman, MSN, RN, CPNP, PMHS.",
-    h1: "Children's Ear Piercing in Williamsburg, VA",
+      "Gentle Blomdahl ear piercing for infants, babies, and kids in Williamsburg, VA with pediatric nurse practitioner Jenny Coleman. Sterile, hypoallergenic, $45 per ear.",
+    h1: "Infant, Baby & Kids Ear Piercing in Williamsburg, VA",
     audience:
-      "For parents planning a child's first earrings and looking for a calm, medically aware appointment instead of a rushed retail setting.",
+      "For parents planning a baby's or child's first earrings who want a calm, private appointment with a pediatric nurse practitioner instead of a busy retail counter.",
     whyJenny:
-      "Jenny Coleman, MSN, RN, CPNP, PMHS brings pediatric nursing experience to the visit, so parent questions, child comfort, and aftercare are part of the appointment.",
+      "Jenny Coleman, MSN, RN, CPNP, PMHS is a pediatric nurse practitioner. She is used to working with infants, young children, and nervous parents, explains each step in simple language, and makes sure aftercare is clear before your family leaves.",
     whyBlomdahl:
-      "Blomdahl's medical ear piercing system uses sterile disposable piercing cassettes and hypoallergenic starter jewelry, including Medical Plastic and Medical Grade Titanium options.",
+      "Blomdahl's medical ear piercing system uses sterile, single-use piercing cassettes and hypoallergenic starter earrings in Medical Plastic or Medical Grade Titanium, which helps families worried about nickel or sensitive skin.",
     beforeVisit: [
-      "Choose a time when your child is rested and not rushing to sports, swimming, or a large event afterward.",
-      "Bring allergy or sensitivity history, especially if your child has reacted to jewelry before.",
-      "Plan time for placement discussion, piercing, and aftercare instructions.",
+      "For babies, check in with your pediatrician first, especially if your baby is under 12 months.",
+      "Pick a time when your baby or child is fed, rested, and not rushing to sports, swimming, or a big event afterward.",
+      "Bring any allergy or skin sensitivity history, especially past reactions to jewelry.",
+      "Decide whether you'd like both ears done in one visit or one ear at a time. Jenny can talk through both.",
+      "Plan time for placement discussion, the piercing itself, and aftercare teaching.",
+    ],
+    showPricing: true,
+    sections: [
+      {
+        heading: "What age can babies get their ears pierced?",
+        paragraphs: [
+          "Jenny generally pierces babies at 6 months or older, with your pediatrician's guidance. She reviews health history at the visit and will not pierce if she has any safety concerns.",
+          "For older children, readiness depends on the child, parent preference, and whether they can sit for a brief appointment and leave new earrings alone while they heal. Some families pierce early, others wait until their child can be part of the decision.",
+        ],
+      },
+      {
+        heading: "What happens at the appointment",
+        steps: [
+          {
+            title: "Consultation",
+            description: "Jenny reviews health history, skin sensitivity, timing, and placement (usually the lobe), and answers parent questions before anything happens.",
+          },
+          {
+            title: "Preparation",
+            description: "The ears are cleaned, placement is marked and checked with you, and your child is settled comfortably.",
+          },
+          {
+            title: "Piercing",
+            description: "A quick, controlled piercing with a sterile single-use Blomdahl cassette. Both ears can usually be done in one visit.",
+          },
+          {
+            title: "Aftercare teaching",
+            description: "You leave with written aftercare and know what to watch for, when earrings can be changed, and how to reach Jenny with questions.",
+          },
+        ],
+      },
+      {
+        heading: "Why parents choose a pediatric nurse practitioner",
+        bullets: [
+          "A calm, appointment-based visit with no mall noise, lines, or pressure.",
+          "Sterile single-use cassettes instead of shared piercing guns or tools.",
+          "Hypoallergenic Blomdahl starter earrings chosen for sensitive baby skin.",
+          "Aftercare written for babies and toddlers, including drool, curious hands, and naps.",
+          "A provider who will slow down for a nervous child or parent.",
+        ],
+      },
+      {
+        heading: "Aftercare for babies and young kids",
+        bullets: [
+          "Clean the piercings as Jenny shows you at the visit, typically twice a day.",
+          "Keep little hands off the earrings and avoid twisting them.",
+          "Keep hair, lotions, and shampoo away from the new piercings while they heal.",
+          "Leave the starter earrings in until Jenny says they can be changed.",
+          "Call right away if you notice spreading redness, swelling, drainage, or fever.",
+        ],
+      },
     ],
     faqs: [
       {
-        question: "Why choose a pediatric-aware provider for children's ear piercing?",
+        question: "How young can a baby get their ears pierced?",
         answer:
-          "A pediatric-aware provider can slow the appointment down, explain each step in age-appropriate language, and help parents understand aftercare before leaving.",
+          "Jenny generally pierces babies at 6 months or older, with pediatrician guidance. She reviews health history at the visit and will not pierce if she has any safety concerns.",
       },
       {
-        question: "Does Jenny use only Blomdahl jewelry for starter earrings?",
+        question: "Does ear piercing hurt for babies?",
         answer:
-          "Yes. Initial piercings use Blomdahl starter jewelry so the visit follows the Blomdahl system and aftercare expectations.",
+          "No piercing is completely painless, but the Blomdahl piercing is very quick. Many babies cry briefly from surprise and settle quickly with a parent. A calm setting and a prepared parent help a lot.",
       },
       {
-        question: "Can parents ask questions before the piercing happens?",
+        question: "Can both ears be pierced at the same visit?",
+        answer: "Yes, for most babies and children. Jenny can talk through doing both ears together or one at a time.",
+      },
+      {
+        question: "How much does infant or kids ear piercing cost?",
         answer:
-          "Yes. The appointment includes time for placement, jewelry, comfort, and aftercare questions before piercing.",
+          "$45 for one ear or $80 for both ears in one visit. That includes the appointment, sterile Blomdahl cassette, hypoallergenic starter earrings, and aftercare support.",
+      },
+      {
+        question: "What if my child has sensitive skin or a nickel allergy?",
+        answer:
+          "Blomdahl Medical Plastic contains no metal, and Medical Grade Titanium is also an option. Jenny reviews skin and allergy history at the visit.",
+      },
+      {
+        question: "Why choose a pediatric nurse practitioner over a mall kiosk?",
+        answer:
+          "You get a private, unhurried appointment with a medical provider who works with children every day, sterile single-use equipment, hypoallergenic starter earrings, and clear aftercare before you leave.",
       },
     ],
-    relatedAreaSlugs: ["williamsburg-va", "james-city-county-va", "yorktown-va", "newport-news-va"],
+    relatedAreaSlugs: ["williamsburg-va", "yorktown-va", "newport-news-va"],
   },
   {
     slug: "sensitive-ears",
@@ -92,7 +168,7 @@ export const earPiercingIntentPages: EarPiercingIntentPage[] = [
           "Yes. Blomdahl ear piercing is available for children and adults who want a careful, appointment-based visit.",
       },
     ],
-    relatedAreaSlugs: ["williamsburg-va", "norge-va", "toano-va", "lightfoot-va"],
+    relatedAreaSlugs: ["williamsburg-va", "yorktown-va", "newport-news-va"],
   },
   {
     slug: "re-piercing",
@@ -130,21 +206,7 @@ export const earPiercingIntentPages: EarPiercingIntentPage[] = [
           "No. Forcing jewelry through can irritate or injure the tissue. Schedule a visit for review instead.",
       },
     ],
-    relatedAreaSlugs: ["williamsburg-va", "new-town-va", "kingsmill-va", "fords-colony-va"],
-  },
-  {
-    slug: "babies",
-    status: "draft",
-    title: "Baby Ear Piercing",
-    metaTitle: "Baby Ear Piercing in Williamsburg, VA | Blomdahl",
-    metaDescription: "Pediatric-aware baby ear piercing in Williamsburg, VA.",
-    h1: "Baby Ear Piercing in Williamsburg, VA",
-    audience: "Draft until Jenny confirms minimum age and consent policy.",
-    whyJenny: "Draft until confirmed.",
-    whyBlomdahl: "Draft until confirmed.",
-    beforeVisit: ["Draft until confirmed."],
-    faqs: [],
-    relatedAreaSlugs: ["williamsburg-va"],
+    relatedAreaSlugs: ["williamsburg-va", "yorktown-va", "newport-news-va"],
   },
 ];
 
