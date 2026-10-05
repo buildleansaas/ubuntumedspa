@@ -633,6 +633,20 @@ for (const owner of ["/procedures/botox", "/procedures/filler", "/procedures/blo
   const pattern = new RegExp(`href=["']${owner.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`);
   if (!pattern.test(home)) fail(`homepage does not directly link to query owner ${owner}`);
 }
+const homeTitle = getVisibleText(home.match(/<title(?:\s[^>]*)?>([\s\S]*?)<\/title>/i)?.[1] || "");
+if (!homeTitle.includes("Fillers")) {
+  fail("homepage title drops the preserved broad Filler visibility");
+}
+const homeLinks = [...home.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)].map((match) => ({
+  attributes: getTagAttributes(`<a ${match[1]}>`),
+  text: getVisibleText(match[2]),
+}));
+const homeFillerChip = homeLinks.some(
+  (link) => link.attributes.href === "/procedures/filler" && /fillers in williamsburg/i.test(link.text)
+);
+if (!homeFillerChip) {
+  fail("homepage drops the descriptive Fillers in Williamsburg link to the filler service owner");
+}
 
 const newportNews = pages.find((page) => normalizePath(page.canonicalUrl) === "/locations/newport-news-va")?.html || "";
 for (const owner of [
@@ -748,6 +762,36 @@ const ownerPageExpectations = {
       /href=["']\/procedures\/hyperhidrosis-treatment["']/,
       /href=["']\/procedures\/blomdahl-ear-piercing["']/,
     ],
+    requiredSchemas: ["FAQPage"],
+  },
+  "/procedures/filler": {
+    title: "Dermal Fillers in Williamsburg, VA | Lips, Cheeks & Under-Eyes",
+    h1: "Dermal Fillers in Williamsburg, VA",
+    required: [
+      "Is dermal filler a reasonable fit for the change you want?",
+      "restores or reshapes volume",
+      "does not relax the movement-related expression lines that Botox and Xeomin address",
+      "Results are not permanent",
+      "Longevity varies by filler type, treatment area, metabolism, and movement",
+      "Filler may belong in the conversation",
+      "A wrinkle relaxer may fit better",
+      "Careful screening comes first",
+      "Book a Filler Consultation",
+      "$700 per syringe",
+    ],
+    forbidden: [
+      "permanent filler results",
+      "guaranteed results",
+      "no downtime",
+      "completely safe",
+      "erase wrinkles",
+      "owner page",
+      "protected query",
+      "page should answer",
+    ],
+    requiredHtml: [/href=["']\/consult\?procedure=filler&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=dermal_filler["']/],
+    requiredConsultHref: "/consult?procedure=filler&utm_source=website&utm_medium=procedure_page&utm_campaign=dermal_filler",
+    offer: { name: "Filler", price: "700", currency: "USD" },
     requiredSchemas: ["FAQPage"],
   },
 };
