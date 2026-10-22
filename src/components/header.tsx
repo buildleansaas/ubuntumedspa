@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { href: "/locations", label: "Locations" },
   { href: "/products", label: "Products" },
   { href: "/procedures", label: "Procedures" },
+  { href: "/membership", label: "Membership" },
   { href: "/events", label: "Events" },
   { href: "/blog", label: "Blog" },
 
