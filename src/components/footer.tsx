@@ -58,6 +58,22 @@ export default function Footer() {
               <p>3900 Powhatan Parkway, Williamsburg, VA 23188</p>
               <p>+1 (804) 738-9483</p>
             </div>
+            {/* Local Biz Legends verified-profile badge (LBL issue 135). The image is a live SVG
+                from LBL; it 404s if the profile stops qualifying. */}
+            <a
+              className="mt-6 inline-block"
+              href="https://www.localbizlegends.com/businesses/williamsburg-med-spa-williamsburg-va"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element -- third-party SVG badge, served and sized by LBL */}
+              <img
+                src="https://www.localbizlegends.com/badge/williamsburg-med-spa-williamsburg-va"
+                alt="Verified on Local Biz Legends"
+                width={269}
+                height={64}
+                loading="lazy"
+                style={{ border: 0, maxWidth: "100%", height: "auto" }}
+              />
+            </a>
           </div>
 
           <div>
