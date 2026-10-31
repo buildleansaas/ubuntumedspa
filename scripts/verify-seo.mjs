@@ -468,8 +468,8 @@ if (ownerDataStart === -1 || ownerDataEnd === -1) {
     "PRP_BREAST_SHARED_COPY_CONTRACT_START",
     "PRP_BREAST_SHARED_COPY_CONTRACT_END"
   );
-  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "868b1066d529daecd56c05567d6b99f396b3251c63fe9b4e635ce502cf1386f8");
-  assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "300174bac9ca3e131b611f663dfb530332159a8abe8fa1f810267148eeda758c");
+  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "8c8b0646315f25481ba713a11b50a7bfab2b9a431c003f92f8ab3224b099edbd");
+  assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "e8ca5d52259f9826c065a73009541d81b46d3ad3528ffebfd9887e2d270ca76c");
   assertSourceContract("shared footer clinical copy", sharedFooterContractSource, "aa96d5b0cca7dadcc9fb2e42bdf88c90839424fcc8118c2a1c9a956d98fbeec5");
 }
 
@@ -894,9 +894,9 @@ if (!newportNews.includes('"@type":"FAQPage"')) {
 
 const ownerPageExpectations = {
   "/procedures/prp-breast-lift": {
-    title: "PRP Breast Lift in Williamsburg, VA",
+    title: "Breast Lift Williamsburg VA | PRP, Not Surgery",
     description:
-      "Compare the PRP Breast Lift service in Williamsburg, VA with surgical options, review the $1,800 one-visit price, and request current service details.",
+      "Breast lift in Williamsburg, VA: the $1,800 PRP visit is not surgery and does not promise a cosmetic result.",
     h1: "PRP Breast Lift in Williamsburg, VA",
     required: [
       "What a PRP Breast Lift can and cannot do",
@@ -948,8 +948,15 @@ const ownerPageExpectations = {
     offer: { name: "PRP Breast Lift", price: "1800", currency: "USD" },
   },
   "/procedures/prp-hair-restoration": {
+    title: "Hair Transplant Williamsburg VA | PRP Is Not Surgery",
+    description:
+      "Female hair transplant or hairline transplant in Williamsburg? PRP does not move follicles. Ask when a specialist fits.",
+    h1: "PRP Hair Restoration in Williamsburg, VA",
     required: [
       "Is PRP a reasonable fit for your hair-loss pattern?",
+      "female hair transplant",
+      "hairline transplant in Williamsburg",
+      "this visit is not that surgery",
       "Research suggests platelet-rich plasma may improve hair density for some people with pattern hair loss",
       "does not create new follicles in a bald area",
       "Medical evaluation may come first",

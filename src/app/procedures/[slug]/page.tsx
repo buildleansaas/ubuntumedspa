@@ -350,6 +350,10 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </h2>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
               <p>
+                If you are comparing a breast lift in Williamsburg, VA, start here. The $1,800 PRP visit is not mastopexy, implants, or fat
+                transfer, and this page does not promise a cosmetic result.
+              </p>
+              <p>
                 This page does not document the clinic&apos;s current method for this service and does not promise a cosmetic result. Before choosing it,
                 ask the clinic to define what the service includes, how it is performed, and what one paid visit covers.
               </p>
@@ -391,6 +395,10 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               Is PRP a reasonable fit for your hair-loss pattern?
             </h2>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
+              <p>
+                If you searched for a female hair transplant or a hairline transplant in Williamsburg, this visit is not that surgery. PRP does
+                not move follicles. A transplant specialist may be more useful when the goal is to rebuild a hairline.
+              </p>
               <p>
                 Research suggests platelet-rich plasma may improve hair density for some people with pattern hair loss, but response varies and
                 treatment protocols are not standardized. A consultation can review the pattern and whether medical or dermatology evaluation

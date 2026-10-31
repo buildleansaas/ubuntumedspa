@@ -12,23 +12,27 @@ Owner: https://www.williamsburgmedspa.com/procedures/filler
 - `dermal fillers williamsburg va`: 86 impressions, average position 11.1, 0 clicks
 - `dermal fillers newport news`: 88 impressions, average position 9.4, 0 clicks
 
-## #119 PRP breast lift, continue as #71 Slice 1
+## #119 PRP breast lift CTR slice under #71
 
 Owner: https://www.williamsburgmedspa.com/procedures/prp-breast-lift
+
+Slice 1 (PR #73) already shipped and finished D7, D14, and D28. These Oct 2026 rows are the baseline for the new snippet, not a second copy of Slice 1.
 
 - `breast lift williamsburg`: 98 impressions, average position 10.3, 0 clicks
 - `breast lift williamsburg va`: 100 impressions, average position 15.6, 0 clicks
 
-This issue stays open until Slice 1 ships or is superseded. Do not open a parallel PR.
+The H1 stays `PRP Breast Lift in Williamsburg, VA`. The title now leads with breast lift in Williamsburg and says the PRP visit is not surgery. The page still does not promise a cosmetic result.
 
-## #120 PRP hair, continue as #71 Slice 2
+## #120 PRP hair CTR slice under #71
 
 Owner: https://www.williamsburgmedspa.com/procedures/prp-hair-restoration
+
+The hair slice (PR #74) already finished D7 and D28. These Oct 2026 rows are the baseline for the new snippet.
 
 - `female hair transplant williamsburg`: 83 impressions, average position 3.3, 0 clicks on the procedure page
 - `hairline transplant williamsburg`: 77 impressions, average position 6.1, 0 clicks
 
-This issue stays open until the hair slice D7 measurement is complete. Do not open a parallel PR.
+The H1 stays `PRP Hair Restoration in Williamsburg, VA`. The title answers the transplant query by saying PRP is not surgery, and the page still says PRP does not move follicles.
 
 ## #121 IndexNow thin copy
 
