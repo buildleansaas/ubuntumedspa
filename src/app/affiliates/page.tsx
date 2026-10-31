@@ -7,6 +7,7 @@ import StructuredData from "components/structured-data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "components/ui/accordion";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
+import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 import AffiliateRegistrationForm from "./affiliate-registration-form";
 import AffiliateShareScripts from "./affiliate-share-scripts";
@@ -71,7 +72,9 @@ const promotionIdeas = [
     title: "Injectables people already ask about",
     description:
       "Botox, Xeomin, filler, and hyperhidrosis treatment are strong referral categories because people naturally ask who feels experienced, gentle, and trustworthy with injectables.",
-    bestFor: "Wrinkles, sweat control, lip filler, and natural-looking refreshes.",
+    bestFor: LIP_FILLER_ENABLED
+      ? "Wrinkles, sweat control, lip filler, and natural-looking refreshes."
+      : "Wrinkles, sweat control, and natural-looking refreshes.",
     href: "/procedures",
     cta: "View procedures",
   },

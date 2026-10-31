@@ -20,6 +20,7 @@ import { getPublishedAilmentsForProcedure } from "lib/ailments/get-ailment-page-
 import { getPublishedBlogPosts } from "lib/blog";
 import { getCatalogConfigBySlug } from "config/commerce-catalog";
 import { humanizeMedicalCopy } from "lib/humanize";
+import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
 const ailmentsTagLabels = {
@@ -51,8 +52,9 @@ const featuredGuideCopy: Record<string, { button: string; heading: string; descr
   filler: {
     button: "Filler Longevity Guide",
     heading: "Wondering how long dermal fillers last?",
-    description:
-      "Review how longevity can vary across lips, cheeks, under-eyes, and other treatment areas before you book.",
+    description: LIP_FILLER_ENABLED
+      ? "Review how longevity can vary across lips, cheeks, under-eyes, and other treatment areas before you book."
+      : "Review how longevity can vary across cheeks, under-eyes, and other treatment areas before you book.",
     linkLabel: "Read the dermal filler longevity guide",
   },
   "oh-shot": {
@@ -171,7 +173,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
       : procedure.slug === "prp-hair-restoration"
         ? "Start with a hair-loss consultation before paying. Jenny reviews your pattern, timeline, scalp symptoms, health history, medications, and whether PRP, medical evaluation, or a transplant specialist is the more useful next step."
       : procedure.slug === "filler"
-      ? "Consultation starts with the area you want to discuss, whether that is lips, cheeks, smile lines, under-eyes, or facial balance, plus your prior injectables, event timing, and whether filler, a wrinkle relaxer, or another option is the better fit."
+      ? LIP_FILLER_ENABLED
+        ? "Consultation starts with the area you want to discuss, whether that is lips, cheeks, smile lines, under-eyes, or facial balance, plus your prior injectables, event timing, and whether filler, a wrinkle relaxer, or another option is the better fit."
+        : "Consultation starts with the area you want to discuss, whether that is cheeks, smile lines, under-eyes, or facial balance, plus your prior injectables, event timing, and whether filler, a wrinkle relaxer, or another option is the better fit."
       : procedure.slug === "hyperhidrosis-treatment"
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
       : procedure.slug === "oh-shot"
@@ -440,7 +444,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </h2>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
               <p>
-                Dermal filler restores or reshapes volume in areas such as lips, cheeks, smile lines, and under-eyes. It does not
+                {LIP_FILLER_ENABLED
+                  ? "Dermal filler restores or reshapes volume in areas such as lips, cheeks, smile lines, and under-eyes. It does not"
+                  : "Dermal filler restores or reshapes volume in areas such as cheeks, smile lines, and under-eyes. It does not"}
                 relax the movement-related expression lines that Botox and Xeomin address, and it is not a substitute for medical
                 evaluation of a new or changing skin concern.
               </p>
@@ -452,7 +458,9 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
             <ul className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 md:grid-cols-3">
               {[
-                ["Filler may belong in the conversation", "Volume loss or proportion goals in lips, cheeks, smile lines, marionette lines, or facial contour and balance."],
+                ["Filler may belong in the conversation", LIP_FILLER_ENABLED
+                  ? "Volume loss or proportion goals in lips, cheeks, smile lines, marionette lines, or facial contour and balance."
+                  : "Volume loss or proportion goals in cheeks, smile lines, marionette lines, or facial contour and balance."],
                 ["A wrinkle relaxer may fit better", "Movement-related expression lines such as forehead lines, frown lines, or crow's feet, which Botox and Xeomin address instead."],
                 ["Careful screening comes first", "Under-eye hollows, nose reshaping, or temple hollowing, where anatomy and vascular risk matter and filler may not be the right fit."],
               ].map(([title, copy]) => (

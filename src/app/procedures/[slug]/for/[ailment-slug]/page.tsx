@@ -13,6 +13,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "components/ui/card";
 import { Button } from "components/ui/button";
 import { getAilmentPageData, isAilmentPagePublished } from "lib/ailments/get-ailment-page-data";
 import ProviderCallout from "views/provider-callout";
+import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 const ORIGIN = "https://www.williamsburgmedspa.com";
 
@@ -251,8 +252,9 @@ export default async function AilmentPage({ params }: Params) {
                 Plan filler around anatomy, proportion, and the first area that matters most
               </h2>
               <p className="mx-auto max-w-3xl text-base md:text-lg text-base-content/80 leading-relaxed">
-                Jenny reviews facial structure, prior filler history, swelling risk, reversibility, and whether lips,
-                cheeks, under-eyes, or smile lines should be addressed first. The goal is a balanced plan that stays
+                Jenny reviews facial structure, prior filler history, swelling risk, reversibility, and whether{" "}
+                {LIP_FILLER_ENABLED ? "lips, cheeks, under-eyes, or smile lines" : "cheeks, under-eyes, or smile lines"}{" "}
+                should be addressed first. The goal is a balanced plan that stays
                 proportional to your features.
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">

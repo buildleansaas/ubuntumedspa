@@ -2,10 +2,28 @@ import addMDX from "@next/mdx";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
+import { LIP_FILLER_ENABLED } from "./src/config/feature-flags.mjs";
+
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   async redirects() {
+    const lipFillerRedirects = LIP_FILLER_ENABLED
+      ? []
+      : [
+          {
+            source: "/procedures/filler/for/lip-augmentation",
+            destination: "/procedures/filler",
+            permanent: false,
+          },
+          {
+            source: "/blog/get-your-dream-lips-with-dermal-fillers",
+            destination: "/procedures/filler",
+            permanent: false,
+          },
+        ];
+
     return [
+      ...lipFillerRedirects,
       {
         source: "/:path*",
         has: [{ type: "host", value: "williamsburgmedspa.com" }],

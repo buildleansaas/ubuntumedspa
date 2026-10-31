@@ -4,6 +4,7 @@ import Link from "next/link";
 import StructuredData from "components/structured-data";
 import ConsultationForm from "./consult-form";
 import { buildPageMetadata } from "lib/metadata";
+import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Book a Med Spa Consultation in Williamsburg, VA",
@@ -14,7 +15,9 @@ export const metadata: Metadata = buildPageMetadata({
 
 const consultationPaths = [
   "Botox, Xeomin, and subtle wrinkle-relaxer planning",
-  "Dermal filler conversations for lips, cheeks, smile lines, or facial balance",
+  LIP_FILLER_ENABLED
+    ? "Dermal filler conversations for lips, cheeks, smile lines, or facial balance"
+    : "Dermal filler conversations for cheeks, smile lines, or facial balance",
   "PRP facial, PRP Face Lift, PRP hair restoration, and other regenerative options",
   "Hyperhidrosis care for underarm, palm, foot, or localized sweating patterns",
   "Blomdahl medical ear piercing for children, teens, adults, and re-piercing",
