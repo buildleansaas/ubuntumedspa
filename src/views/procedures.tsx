@@ -31,7 +31,7 @@ export default function Procedures({ headingTag = "h2" }: { headingTag?: Heading
               "prp-facial",
               "microneedling-with-prp",
               "oh-shot",
-              "p-shot",
+              "pe-shot",
               "joint-restoration",
               "hyperhidrosis-treatment",
             ];

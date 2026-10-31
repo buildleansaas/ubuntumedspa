@@ -8,7 +8,7 @@ import { humanizeMedicalCopy } from "lib/humanize";
 
 const CMA_CERTIFIED_PROCEDURE_SLUGS = new Set([
   "oh-shot",
-  "p-shot",
+  "pe-shot",
   "prp-breast-lift",
   "prp-hair-restoration",
   "prp-facial",

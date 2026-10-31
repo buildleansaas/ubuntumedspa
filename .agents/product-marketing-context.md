@@ -5,7 +5,7 @@
 ## Product Overview
 **One-liner:** Williamsburg Med Spa is a Williamsburg, VA medical spa offering calm, medically grounded aesthetic, regenerative, intimate wellness, and medical ear piercing services with Jenny Coleman, MSN, RN, CPNP, PMHS.
 
-**What it does:** The clinic helps local patients compare and plan treatments such as OH-Shot, PRP hair restoration, P-Shot, PRP therapies, Botox, Xeomin, dermal fillers, hyperhidrosis treatment, and Blomdahl medical ear piercing. Content should help patients understand candidacy, alternatives, risks, and what to ask before booking.
+**What it does:** The clinic helps local patients compare and plan treatments such as OH-Shot, PRP hair restoration, Pe-Shot, PRP therapies, Botox, Xeomin, dermal fillers, hyperhidrosis treatment, and Blomdahl medical ear piercing. Content should help patients understand candidacy, alternatives, risks, and what to ask before booking.
 
 **Product category:** Local medical spa, aesthetic clinic, regenerative PRP clinic, OH-Shot provider, medical ear piercing provider.
 
