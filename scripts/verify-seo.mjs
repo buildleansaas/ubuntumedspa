@@ -883,9 +883,18 @@ const consolidatedRedirects = [
   ["/locations/toano-va", "/locations/williamsburg-va"],
   ["/procedures/botox/near/williamsburg-va", "/procedures/botox"],
   ["/procedures/botox/for/crows-feet", "/procedures/botox"],
-  ["/procedures/feminine-intimacy-prp-protocols/for/urinary-incontinence", "/procedures/o-shot"],
+  ["/procedures/feminine-intimacy-prp-protocols/for/urinary-incontinence", "/procedures/oh-shot"],
+  ["/procedures/o-shot", "/procedures/oh-shot"],
+  ["/procedures/o-shot/for/urinary-incontinence", "/procedures/oh-shot"],
+  ["/procedures/oh-shot/for/urinary-incontinence", "/procedures/oh-shot"],
+  ["/blog/o-shot-for-vaginal-dryness-what-to-know", "/blog/oh-shot-for-vaginal-dryness-what-to-know"],
+  ["/blog/o-shot-for-urinary-incontinence-williamsburg-va", "/blog/oh-shot-for-urinary-incontinence-williamsburg-va"],
 ];
-for (const [source, destination] of consolidatedRedirects) {
+const assetRedirects = [
+  ["/procedure/o-shot/womens-intimate-wellness-lifestyle.webp", "/procedure/oh-shot/womens-intimate-wellness-lifestyle.webp"],
+  ["/blog/o-shot/urinary-incontinence-confidence.png", "/blog/oh-shot/urinary-incontinence-confidence.png"],
+];
+for (const [source, destination] of [...consolidatedRedirects, ...assetRedirects]) {
   const response = await fetchLocal(source, { redirect: "manual" });
   const location = response.headers.get("location");
   if (![301, 308].includes(response.status) || !location || normalizePath(location) !== destination) {

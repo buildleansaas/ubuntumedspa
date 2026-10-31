@@ -101,7 +101,7 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
       priority: 3,
     },
   ],
-  "o-shot": [
+  "oh-shot": [
     {
       slug: "co2-v-lift-for-women",
       reason: "A related pickup product for patients interested in ongoing intimate-area self-care between visits.",
@@ -115,7 +115,7 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
   ],
   "co2-v-lift-for-women": [
     {
-      slug: "o-shot",
+      slug: "oh-shot",
       reason: "Often explored when someone wants an in-office conversation in addition to at-home intimate care.",
       priority: 1,
     },

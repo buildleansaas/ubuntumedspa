@@ -2,20 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 
 import CmaCredentialStrip from "components/cma-credential-strip";
+import LegacyOhShotHash from "components/legacy-oh-shot-hash";
 import InstantCheckoutButton from "components/instant-checkout-button";
 import { Button } from "components/ui/button";
 import { getCatalogConfigBySlug } from "config/commerce-catalog";
 
 export default function OShotCallout() {
-  const oShot = getCatalogConfigBySlug("o-shot");
+  const oShot = getCatalogConfigBySlug("oh-shot");
   if (!oShot) return null;
 
   return (
     <section
-      id="o-shot-callout"
+      id="oh-shot-callout"
       className="mb-14 scroll-mt-24 py-6 md:mb-20 md:py-8 lg:py-10"
-      aria-labelledby="o-shot-callout-heading"
+      aria-labelledby="oh-shot-callout-heading"
     >
+      <LegacyOhShotHash />
       <div className="mx-auto max-w-5xl">
         <article className="group relative isolate flex flex-col gap-8 md:flex-row md:items-center md:justify-between lg:gap-12">
           <div className="max-w-2xl flex-1">
@@ -24,16 +26,16 @@ export default function OShotCallout() {
             </p>
 
             <h2
-              id="o-shot-callout-heading"
+              id="oh-shot-callout-heading"
               className="mt-3 max-w-2xl text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content text-balance"
             >
-              <span className="font-semibold">O-Shot®</span> for comfort, sensation, and intimate confidence.
+              <span className="font-semibold">OH-Shot</span> for comfort, sensation, and intimate confidence.
             </h2>
 
             <p className="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-base-content/80">
               A discreet in-office PRP treatment for women who want greater comfort, improved sensitivity, and more
               confidence with intimacy. If dryness, reduced sensation, mild stress urinary leakage, or
-              intimacy-related discomfort have become part of the conversation, the O-Shot® may be a supportive option
+              intimacy-related discomfort have become part of the conversation, the OH-Shot may be a supportive option
               to discuss.
             </p>
 
@@ -48,14 +50,14 @@ export default function OShotCallout() {
                 Book Now
               </InstantCheckoutButton>
               <Button asChild variant="secondary">
-                <Link href="/procedures/o-shot">Explore O-Shot Care</Link>
+                <Link href="/procedures/oh-shot">Explore OH-Shot Care</Link>
               </Button>
             </div>
           </div>
 
           <div className="relative aspect-square w-full max-w-[18rem] overflow-hidden rounded-2xl bg-base-200 sm:max-w-[20rem] md:w-[17rem] lg:w-[19rem] md:shrink-0">
             <Image
-              src={oShot.imagePath || "/procedure/o-shot/womens-intimate-wellness-lifestyle.webp"}
+              src={oShot.imagePath || "/procedure/oh-shot/womens-intimate-wellness-lifestyle.webp"}
               alt="Woman enjoying a confident, worry-free lifestyle after intimate wellness care planning"
               fill
               sizes="(max-width: 640px) 70vw, (max-width: 1024px) 272px, 304px"

@@ -16,7 +16,7 @@ const treatmentLinks = [
   { href: "/procedures/botox", label: "Botox" },
   { href: "/procedures/xeomin", label: "Xeomin" },
   { href: "/procedures/filler", label: "Filler" },
-  { href: "/procedures/o-shot", label: "O-Shot" },
+  { href: "/procedures/oh-shot", label: "OH-Shot" },
   { href: "/procedures/p-shot", label: "P-Shot" },
   { href: "/procedures/blomdahl-ear-piercing", label: "Blomdahl Ear Piercing" },
 ] as const;

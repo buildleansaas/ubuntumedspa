@@ -26,7 +26,7 @@ export default function Jumbotron() {
       </h1>
       <p className="text-base-content text-xl lg:text-2xl mb-3 max-w-2xl mx-auto">
         A local med spa with Jenny Coleman, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified
-        O-Shot provider and certified Blomdahl medical ear piercing provider.
+        OH-Shot provider and certified Blomdahl medical ear piercing provider.
       </p>
       <div className="mb-4 flex flex-wrap justify-center gap-2 text-xs md:text-sm text-base-content/75">
         {[
@@ -34,7 +34,7 @@ export default function Jumbotron() {
           "RN",
           "CPNP",
           "PMHS",
-          "CMA-certified O-Shot provider",
+          "CMA-certified OH-Shot provider",
           "Certified Blomdahl provider",
         ].map((credential) => (
           <span key={credential} className="rounded-full bg-base-200 px-3 py-1">
@@ -51,7 +51,7 @@ export default function Jumbotron() {
           ["Botox", "/procedures/botox"],
           ["Xeomin", "/procedures/xeomin"],
           ["Dermal Fillers", "/procedures/filler"],
-          ["O-Shot", "/procedures/o-shot"],
+          ["OH-Shot", "/procedures/oh-shot"],
           ["Blomdahl Ear Piercing", "/procedures/blomdahl-ear-piercing"],
           ["Williamsburg Location", "/locations/williamsburg-va"],
         ].map(([label, href]) => (

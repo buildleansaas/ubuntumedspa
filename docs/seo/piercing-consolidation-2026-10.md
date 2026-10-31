@@ -27,7 +27,7 @@ Goal: one strong owner page per intent, and fewer, stronger URLs (90 → 49 in t
 - 7 piercing `/near/` pages (James City County, Toano, Norge, Lightfoot, New Town, Kingsmill, Ford's Colony) → `/near/williamsburg-va`.
 - 6 `/locations/` neighborhood pages → `/locations/williamsburg-va`.
 - Botox, filler, Xeomin `/near/williamsburg-va` → parent service pages (they duplicated the parent titles).
-- All `/procedures/{botox,filler,o-shot,hyperhidrosis-treatment}/for/*` condition pages → parent service pages. The condition cards still show on the parent pages without links. The legacy feminine-intimacy redirects now go straight to `/procedures/o-shot`, so there are no two-hop chains.
+- All `/procedures/{botox,filler,oh-shot,hyperhidrosis-treatment}/for/*` condition pages → parent service pages. The condition cards still show on the parent pages without links. The legacy feminine-intimacy redirects now go straight to `/procedures/oh-shot`, so there are no two-hop chains.
 - 4 old PRP posts → matching PRP service pages or `/procedures`.
 
 The `[slug]/for/[ailmentSlug]` and `[slug]/near/[areaSlug]` routes and their data stay in the repo but are unreachable because the redirects run first. Restore a page by removing its redirect and adding it back to the sitemap.

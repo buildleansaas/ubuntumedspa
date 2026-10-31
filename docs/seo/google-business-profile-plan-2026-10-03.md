@@ -61,7 +61,7 @@ Prices are from the website (`src/data.ts`). Jenny confirms before publishing.
 | PRP Hair Restoration | $600/treatment |
 | PRP Face Lift | $1,500 |
 | PRP Breast Lift | $1,800 |
-| O-Shot | $1,200 |
+| OH-Shot | $1,200 |
 | Hyperhidrosis Treatment | $1,000+ |
 | Joint Restoration | $800 |
 

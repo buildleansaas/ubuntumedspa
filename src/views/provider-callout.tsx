@@ -28,7 +28,7 @@ export default function ProviderCallout() {
                 "Registered Nurse",
                 "Certified Pediatric Nurse Practitioner",
                 "Pediatric Mental Health Specialist",
-                "CMA-certified O-Shot provider",
+                "CMA-certified OH-Shot provider",
                 "Certified Blomdahl provider",
               ].map((credential) => (
                 <li key={credential} className="rounded-full bg-base-200 px-3 py-1">

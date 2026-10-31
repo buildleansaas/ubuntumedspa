@@ -1,12 +1,17 @@
 const LEGACY_INTIMACY_PROCEDURE_SLUG_ALIASES = {
-  "feminine-intimacy-prp-protocols": "o-shot",
+  "feminine-intimacy-prp-protocols": "oh-shot",
+  "o-shot": "oh-shot",
   "male-intimacy-prp-protocols": "p-shot",
 } as const;
 
 const LEGACY_INTIMACY_PROCEDURE_NAME_ALIASES = {
-  "Feminine Intimacy PRP Protocols": "O-Shot",
+  "Feminine Intimacy PRP Protocols": "OH-Shot",
   "Male Intimacy PRP Protocols": "P-Shot",
-  "O Shot": "O-Shot",
+  "O Shot": "OH-Shot",
+  "O-Shot": "OH-Shot",
+  "O-Shot®": "OH-Shot",
+  "Oshot": "OH-Shot",
+  "OSHOT": "OH-Shot",
   "P Shot": "P-Shot",
 } as const;
 

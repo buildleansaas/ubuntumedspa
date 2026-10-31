@@ -244,7 +244,9 @@ const ConsultationForm: React.FC = () => {
           <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm leading-6 text-base-content/75">
             <p className="font-medium text-base-content">We carried over the page you came from.</p>
             <p className="mt-1">
-              {sourceContext.procedure ? `Treatment interest: ${sourceContext.procedure.replaceAll("-", " ")}. ` : ""}
+              {sourceContext.procedure
+                ? `Treatment interest: ${(getProcedureInterests(sourceContext.procedure) ?? [sourceContext.procedure.replaceAll("-", " ")]).join(", ")}. `
+                : ""}
               {sourceContext.intent ? `Question/topic: ${sourceContext.intent.replaceAll("-", " ")}. ` : ""}
               {sourceContext.area ? `Nearby area: ${sourceContext.area.replaceAll("-", " ")}.` : ""}
             </p>
