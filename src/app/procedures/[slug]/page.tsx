@@ -32,7 +32,7 @@ const featuredGuideSlugs: Record<string, string> = {
   botox: "botox-vs-xeomin-williamsburg-va",
   xeomin: "botox-vs-xeomin-williamsburg-va",
   filler: "how-long-do-dermal-fillers-last-in-williamsburg-va",
-  "o-shot": "o-shot-for-urinary-incontinence-williamsburg-va",
+  "oh-shot": "oh-shot-for-urinary-incontinence-williamsburg-va",
   "prp-hair-restoration": "prp-hair-restoration-vs-hair-transplant-williamsburg-va",
   "blomdahl-ear-piercing": "medical-ear-piercing-vs-mall-piercing",
 };
@@ -56,12 +56,12 @@ const featuredGuideCopy: Record<string, { button: string; heading: string; descr
       "Review how longevity can vary across lips, cheeks, under-eyes, and other treatment areas before you book.",
     linkLabel: "Read the dermal filler longevity guide",
   },
-  "o-shot": {
-    button: "O-Shot Bladder Leakage Guide",
-    heading: "Wondering whether the O-Shot can help with bladder leakage?",
+  "oh-shot": {
+    button: "OH-Shot Bladder Leakage Guide",
+    heading: "Wondering whether the OH-Shot can help with bladder leakage?",
     description:
-      "Review how stress leakage, urge leakage, pelvic floor care, and O-Shot candidacy fit into a private consultation.",
-    linkLabel: "Read the O-Shot urinary incontinence guide",
+      "Review how stress leakage, urge leakage, pelvic floor care, and OH-Shot candidacy fit into a private consultation.",
+    linkLabel: "Read the OH-Shot urinary incontinence guide",
   },
   "prp-hair-restoration": {
     button: "PRP vs Hair Transplant",
@@ -153,7 +153,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
     .filter(({ tags }) => tags?.includes(procedure.name))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   const hasAilments = Boolean(publishedAilments.length);
-  const showOShotCredential = procedure.slug === "o-shot";
+  const showOShotCredential = procedure.slug === "oh-shot";
   const pageHeading = procedure.seo?.title?.split("|")[0].trim() || `${procedure.name} in Williamsburg, VA`;
   const featuredGuide = articles.find((article) => article.slug === featuredGuideSlugs[procedure.slug]);
   const featuredGuideCta = featuredGuide ? featuredGuideCopy[procedure.slug] : undefined;
@@ -175,8 +175,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
       ? "Consultation starts with the area you want to discuss, whether that is lips, cheeks, smile lines, under-eyes, or facial balance, plus your prior injectables, event timing, and whether filler, a wrinkle relaxer, or another option is the better fit."
       : procedure.slug === "hyperhidrosis-treatment"
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
-      : procedure.slug === "o-shot"
-        ? "Consultation covers symptoms, candidacy, treatment areas, expected timing, and whether O-Shot® care fits your intimate wellness or bladder leakage concerns."
+      : procedure.slug === "oh-shot"
+        ? "Consultation covers symptoms, candidacy, treatment areas, expected timing, and whether OH-Shot care fits your intimate wellness or bladder leakage concerns."
       : procedure.slug === "blomdahl-ear-piercing"
         ? "Ear piercing visits cover age or sensitivity questions, Blomdahl starter earring options, placement, aftercare, and whether the appointment is for a child, teen, adult, or re-piercing."
       : procedure.slug === "microneedling-with-prp"
@@ -714,7 +714,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
               How can{" "}
               {[
-                "o-shot",
+                "oh-shot",
                 "p-shot",
                 "prp-face-lift",
                 "prp-facial",

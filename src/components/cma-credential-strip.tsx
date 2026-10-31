@@ -27,7 +27,7 @@ export default function CmaCredentialStrip({ className, centered = false }: CmaC
       <div className="min-w-0">
         <p className="text-[10px] uppercase tracking-[0.2em] text-base-content/55">Certified Provider</p>
         <p className="mt-1 text-sm leading-5 text-base-content/75">
-          Cellular Medicine Association-trained and certified O-Shot® provider.
+          Cellular Medicine Association-trained and certified OH-Shot provider.
         </p>
       </div>
     </div>

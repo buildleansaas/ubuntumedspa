@@ -29,9 +29,9 @@ export type CatalogItemConfig = {
 
 export const COMMERCE_CATALOG: CatalogItemConfig[] = [
   {
-    slug: "o-shot",
+    slug: "oh-shot",
     kind: "procedure",
-    name: "O-Shot",
+    name: "OH-Shot",
     shortDescription: "Full upfront payment for one treatment visit.",
     pricingMode: "fixed",
     unitAmountCents: 120000,
@@ -42,7 +42,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     maxQuantity: 10,
     requiresScheduling: true,
     fulfillment: "appointment",
-    imagePath: "/procedure/o-shot/womens-intimate-wellness-lifestyle.webp",
+    imagePath: "/procedure/oh-shot/womens-intimate-wellness-lifestyle.webp",
     stripeProductKey: "wms_procedure_o_shot",
     stripePriceLookupKey: "wms_procedure_o_shot_1200_v1",
   },

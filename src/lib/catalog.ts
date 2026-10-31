@@ -119,6 +119,9 @@ export const resolveCart = async (rawItems: CartItemInput[]): Promise<ResolvedCa
 
   const stripeRecords = await getCatalogRecords();
   const items: ResolvedCartItem[] = [];
+  const legacyStripeRecordSlugs: Record<string, string> = {
+    "oh-shot": "o-shot",
+  };
 
   for (const item of deduped.values()) {
     const catalogItem = COMMERCE_CATALOG.find((entry) => entry.slug === item.slug);
@@ -131,6 +134,9 @@ export const resolveCart = async (rawItems: CartItemInput[]): Promise<ResolvedCa
     const quantityPriceBreak = catalogItem.quantityPriceBreaks?.[quantity];
     const unitAmountCents = quantityPriceBreak ?? catalogItem.unitAmountCents;
 
+    const legacySlug = legacyStripeRecordSlugs[item.slug];
+    const stripeRecord = stripeRecords[item.slug] ?? (legacySlug ? stripeRecords[legacySlug] : undefined);
+
     items.push({
       ...catalogItem,
       quantity,
@@ -138,8 +144,8 @@ export const resolveCart = async (rawItems: CartItemInput[]): Promise<ResolvedCa
       unitAmountCents,
       lineTotalCents: quantity * unitAmountCents,
       usesQuantityPriceBreak: quantityPriceBreak !== undefined,
-      stripeProductId: stripeRecords[item.slug]?.stripeProductId,
-      stripePriceId: stripeRecords[item.slug]?.stripePriceId,
+      stripeProductId: stripeRecord?.stripeProductId,
+      stripePriceId: stripeRecord?.stripePriceId,
     });
   }
 

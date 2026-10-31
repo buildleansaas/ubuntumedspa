@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import CtaFooter from "components/cta-footer";
 import Jumbotron from "views/jumbotron";
-import OShotCallout from "views/o-shot-callout";
+import OShotCallout from "views/oh-shot-callout";
 
 import ProviderCallout from "views/provider-callout";
 import Procedures from "views/procedures";
@@ -17,7 +17,7 @@ import StructuredData from "components/structured-data";
 export const metadata: Metadata = buildPageMetadata({
   title: "Williamsburg Med Spa: Botox, Fillers, PRP & Ear Piercing",
   description:
-    "Nurse practitioner led med spa in Williamsburg, VA for Botox, Xeomin, fillers, PRP, O-Shot care, sweating treatment and medical ear piercing with Jenny Coleman.",
+    "Nurse practitioner led med spa in Williamsburg, VA for Botox, Xeomin, fillers, PRP, OH-Shot care, sweating treatment and medical ear piercing with Jenny Coleman.",
   canonical: "/",
 });
 
@@ -30,12 +30,12 @@ export default async function Page() {
           {
             question: "What medical spa services are available in Williamsburg, VA?",
             answer:
-              "Williamsburg Med Spa offers Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, O-Shot services, and Blomdahl medical ear piercing in Williamsburg, VA.",
+              "Williamsburg Med Spa offers Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, OH-Shot services, and Blomdahl medical ear piercing in Williamsburg, VA.",
           },
           {
             question: "Who provides treatments at Williamsburg Med Spa?",
             answer:
-              "Treatments are provided by Jenny Coleman, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified O-Shot provider and certified Blomdahl provider, with a focus on conservative planning, patient education, and natural-looking goals.",
+              "Treatments are provided by Jenny Coleman, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified OH-Shot provider and certified Blomdahl provider, with a focus on conservative planning, patient education, and natural-looking goals.",
           },
           {
             question: "Does Williamsburg Med Spa serve nearby areas?",
@@ -56,7 +56,7 @@ export default async function Page() {
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-base-content/80">
             Williamsburg Med Spa is a Nurse Practitioner led medical spa in Williamsburg, VA. Jenny Coleman brings
-            MSN, RN, CPNP, PMHS, Cellular Medicine Association-certified O-Shot provider training, and
+            MSN, RN, CPNP, PMHS, Cellular Medicine Association-certified OH-Shot provider training, and
             certified Blomdahl provider training for medical ear piercing, so care starts with medical screening,
             calm education, and treatment planning shaped around realistic goals.
           </p>
@@ -102,13 +102,13 @@ export default async function Page() {
             <article className="rounded-3xl border border-base-300 bg-base-100 p-6">
               <h3 className="text-xl font-medium text-base-content">What medical spa services are available in Williamsburg, VA?</h3>
               <p className="mt-3 text-base leading-relaxed text-base-content/75">
-                Williamsburg Med Spa offers Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, O-Shot services, and Blomdahl medical ear piercing in Williamsburg, VA.
+                Williamsburg Med Spa offers Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, OH-Shot services, and Blomdahl medical ear piercing in Williamsburg, VA.
               </p>
             </article>
             <article className="rounded-3xl border border-base-300 bg-base-100 p-6">
               <h3 className="text-xl font-medium text-base-content">Who provides treatments at Williamsburg Med Spa?</h3>
               <p className="mt-3 text-base leading-relaxed text-base-content/75">
-                Treatments are provided by Jenny Coleman, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified O-Shot provider and certified Blomdahl provider, with a focus on conservative planning, patient education, and natural-looking goals.
+                Treatments are provided by Jenny Coleman, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified OH-Shot provider and certified Blomdahl provider, with a focus on conservative planning, patient education, and natural-looking goals.
               </p>
             </article>
             <article className="rounded-3xl border border-base-300 bg-base-100 p-6">

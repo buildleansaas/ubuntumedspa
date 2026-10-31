@@ -44,8 +44,8 @@ const surfaceCardClass = "relative overflow-hidden rounded-2xl border border-bas
 const surfaceAccentClass = "hidden";
 const eyebrowClass = "text-[11px] uppercase tracking-[0.24em] text-base-content/60";
 const softButtonClass = "rounded-md";
-const homeOShotHref = "/#o-shot-callout";
-const homeOShotHash = "#o-shot-callout";
+const homeOShotHref = "/#oh-shot-callout";
+const homeOShotHash = "#oh-shot-callout";
 
 function QuantityControl({
   item,
@@ -355,7 +355,7 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
 
     if (typeof window !== "undefined" && window.location.pathname === "/") {
       window.requestAnimationFrame(() => {
-        const element = document.getElementById("o-shot-callout");
+        const element = document.getElementById("oh-shot-callout");
         if (!element) {
           router.push(homeOShotHref, { scroll: true });
           return;

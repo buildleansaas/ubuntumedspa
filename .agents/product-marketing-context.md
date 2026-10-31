@@ -5,9 +5,9 @@
 ## Product Overview
 **One-liner:** Williamsburg Med Spa is a Williamsburg, VA medical spa offering calm, medically grounded aesthetic, regenerative, intimate wellness, and medical ear piercing services with Jenny Coleman, MSN, RN, CPNP, PMHS.
 
-**What it does:** The clinic helps local patients compare and plan treatments such as O-Shot, PRP hair restoration, P-Shot, PRP therapies, Botox, Xeomin, dermal fillers, hyperhidrosis treatment, and Blomdahl medical ear piercing. Content should help patients understand candidacy, alternatives, risks, and what to ask before booking.
+**What it does:** The clinic helps local patients compare and plan treatments such as OH-Shot, PRP hair restoration, P-Shot, PRP therapies, Botox, Xeomin, dermal fillers, hyperhidrosis treatment, and Blomdahl medical ear piercing. Content should help patients understand candidacy, alternatives, risks, and what to ask before booking.
 
-**Product category:** Local medical spa, aesthetic clinic, regenerative PRP clinic, O-Shot provider, medical ear piercing provider.
+**Product category:** Local medical spa, aesthetic clinic, regenerative PRP clinic, OH-Shot provider, medical ear piercing provider.
 
 **Product type:** Local healthcare-adjacent service business.
 
@@ -26,7 +26,7 @@
 - Find a local provider they can trust with sensitive concerns.
 
 **Use cases:**
-- A woman comparing O-Shot care for bladder leakage, dryness, sensitivity, or intimacy concerns.
+- A woman comparing OH-Shot care for bladder leakage, dryness, sensitivity, or intimacy concerns.
 - A parent looking for medical-grade Blomdahl ear piercing for a child or baby.
 - A patient comparing PRP hair restoration with hair transplant surgery.
 - A patient comparing Botox, Xeomin, fillers, PRP, or hyperhidrosis treatment options near Williamsburg.
@@ -54,7 +54,7 @@
 **Emotional tension:** "I need help with this, but I do not want to be judged, sold to, or promised something unrealistic."
 
 ## Competitive Landscape
-**Direct:** Local med spas, aesthetic injectors, PRP clinics, O-Shot providers, piercing studios.
+**Direct:** Local med spas, aesthetic injectors, PRP clinics, OH-Shot providers, piercing studios.
 
 **Secondary:** Dermatology, gynecology, urology, plastic surgery, pelvic floor therapy, hair transplant clinics, retail piercing locations.
 
@@ -63,7 +63,7 @@
 ## Differentiation
 **Key differentiators:**
 - Jenny Coleman has a long medical background and pediatric/mental health credentials.
-- O-Shot positioning is tied to CMA training and branded protocol context.
+- OH-Shot positioning is tied to CMA training and branded protocol context.
 - Blomdahl ear piercing is medical-grade, hypoallergenic, and strong for pediatric/first-piercing trust.
 - Content should be unusually clear about who is and is not a likely fit.
 
@@ -108,14 +108,14 @@
 - "Private."
 - "Someone I can trust with this."
 
-**Words to use:** private, consult, candidacy, medical-grade, sterile, hypoallergenic, Blomdahl, O-Shot, CMA-trained, PRP, bladder leakage, stress leakage, local Williamsburg, pediatric awareness, realistic expectations.
+**Words to use:** private, consult, candidacy, medical-grade, sterile, hypoallergenic, Blomdahl, OH-Shot, CMA-trained, PRP, bladder leakage, stress leakage, local Williamsburg, pediatric awareness, realistic expectations.
 
 **Words to avoid:** cure, guaranteed, FDA-approved, miracle, reverse, eliminate, fix, painless, perfect, revolutionary, life-changing, "feminine intimacy" as the main term.
 
 **Glossary:**
 | Term | Meaning |
 |------|---------|
-| O-Shot | Branded PRP intimate wellness procedure associated with Dr. Charles Runels and CMA training. |
+| OH-Shot | Branded PRP intimate wellness procedure associated with Dr. Charles Runels and CMA training. |
 | PRP | Platelet-rich plasma prepared from a patient's blood. |
 | Blomdahl | Medical-grade hypoallergenic piercing system used for children and adults. |
 | Stress leakage | Urine leakage with coughing, sneezing, laughing, lifting, or exercise. |
@@ -139,7 +139,7 @@
 | Theme | Proof |
 |-------|-------|
 | Medical trust | Jenny Coleman, MSN, RN, CPNP, PMHS; long medical background. |
-| O-Shot authority | CMA/O-Shot training and branded protocol context. |
+| OH-Shot authority | CMA/OH-Shot training and branded protocol context. |
 | Pediatric trust | Pediatric-aware Blomdahl medical ear piercing. |
 | Local relevance | Williamsburg clinic serving nearby communities within about 30 miles. |
 
@@ -149,7 +149,7 @@
 **Conversion action:** Book a consultation, call the clinic, or navigate to a relevant service page.
 
 **Current priorities:**
-- O-Shot urinary incontinence and intimate wellness cluster.
+- OH-Shot urinary incontinence and intimate wellness cluster.
 - Blomdahl ear piercing local service-area cluster.
 - PRP hair restoration comparison cluster.
 - GSC-informed content refreshes and internal link cleanup.

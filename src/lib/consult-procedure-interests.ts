@@ -15,7 +15,8 @@ export const PROCEDURE_INTERESTS: Record<string, string[]> = {
   "hair-restoration": ["Hair Restoration"],
   "prp-hair-restoration": ["Hair Restoration"],
   "microneedling-with-prp": ["Microneedling with PRP"],
-  "o-shot": ["O-Shot"],
+  "o-shot": ["OH-Shot"],
+  "oh-shot": ["OH-Shot"],
   "p-shot": ["P-Shot"],
 };
 

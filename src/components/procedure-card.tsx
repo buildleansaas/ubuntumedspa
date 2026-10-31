@@ -7,7 +7,7 @@ import { getCatalogConfigBySlug } from "config/commerce-catalog";
 import { humanizeMedicalCopy } from "lib/humanize";
 
 const CMA_CERTIFIED_PROCEDURE_SLUGS = new Set([
-  "o-shot",
+  "oh-shot",
   "p-shot",
   "prp-breast-lift",
   "prp-hair-restoration",

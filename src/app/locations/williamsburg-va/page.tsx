@@ -34,7 +34,7 @@ export default function WilliamsburgLocationPage() {
           <Link href="/procedures/filler" className="link link-primary">
             dermal fillers
           </Link>
-          , PRP treatments, hyperhidrosis care, O-Shot services, and{" "}
+          , PRP treatments, hyperhidrosis care, OH-Shot services, and{" "}
           <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
             nurse-led Blomdahl medical ear piercing
           </Link>{" "}
@@ -71,7 +71,7 @@ export default function WilliamsburgLocationPage() {
         <h2 className="text-2xl md:text-3xl font-light mb-2">If You Searched “Med Spa Near Me” in Williamsburg</h2>
         <p className="text-base md:text-lg text-base-content/80 mb-4">
           Start with the specific treatment question, not a generic spa menu. Jenny Coleman sees patients for
-          consultation-led Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, O-Shot consultations, and
+          consultation-led Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, OH-Shot consultations, and
           nurse-led Blomdahl medical ear piercing at the Williamsburg clinic.
         </p>
         <div className="grid gap-4 md:grid-cols-3 text-sm text-base-content/75">
@@ -112,7 +112,7 @@ export default function WilliamsburgLocationPage() {
             <Link href="/procedures/prp-hair-restoration">PRP Hair Restoration</Link>
           </Button>
           <Button asChild size="sm">
-            <Link href="/procedures/o-shot">O-Shot</Link>
+            <Link href="/procedures/oh-shot">OH-Shot</Link>
           </Button>
           <Button asChild size="sm">
             <Link href="/procedures/blomdahl-ear-piercing">Medical Ear Piercing</Link>

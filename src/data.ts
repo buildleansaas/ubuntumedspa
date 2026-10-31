@@ -40,7 +40,7 @@ export const FORM_INPUTS = [
     label: "Interests",
     type: "checkbox",
     options: [
-      "O-Shot",
+      "OH-Shot",
       "P-Shot",
       "PRP Breast Lift",
       "Hair Restoration",
@@ -80,260 +80,260 @@ export type ProcedureTestimonial = {
 
 export const procedures = [
   {
-    name: "O-Shot",
-    slug: "o-shot",
+    name: "OH-Shot",
+    slug: "oh-shot",
     seo: {
-      title: "O-Shot® in Williamsburg, VA | PRP Intimate Wellness",
+      title: "OH-Shot in Williamsburg, VA | PRP Intimate Wellness",
       description:
-        "O-Shot® in Williamsburg, VA with a CMA-trained provider for PRP intimate wellness, bladder leakage support, dryness, sensitivity, and comfort concerns.",
+        "OH-Shot in Williamsburg, VA with a CMA-trained provider for PRP intimate wellness, bladder leakage support, dryness, sensitivity, and comfort concerns.",
     },
     description:
-      "The O-Shot® is a branded platelet-rich plasma (PRP) procedure developed through the Cellular Medicine Association framework and used for select intimate wellness concerns. At Williamsburg Med Spa, patients usually ask about the O-Shot® for dryness, decreased sensitivity, discomfort with intimacy, orgasm concerns, or mild stress urinary leakage. Jenny Coleman reviews candidacy privately so treatment fits the symptom pattern, medical history, and whether pelvic floor care, hormone review, urology, or another first step should come first.",
-    headline: "CMA-trained O-Shot® care for intimate wellness, sensitivity, comfort, and bladder leakage support.",
+      "The OH-Shot is a branded platelet-rich plasma (PRP) procedure developed through the Cellular Medicine Association framework and used for select intimate wellness concerns. At Williamsburg Med Spa, patients usually ask about the OH-Shot for dryness, decreased sensitivity, discomfort with intimacy, orgasm concerns, or mild stress urinary leakage. Jenny Coleman reviews candidacy privately so treatment fits the symptom pattern, medical history, and whether pelvic floor care, hormone review, urology, or another first step should come first.",
+    headline: "CMA-trained OH-Shot care for intimate wellness, sensitivity, comfort, and bladder leakage support.",
     subline:
-      "The O-Shot® uses PRP prepared from your own blood in a discreet in-office procedure for patients looking for a non-hormonal, regenerative conversation around vulvovaginal tissue health and sexual wellness.",
-    image: "/procedure/o-shot/womens-intimate-wellness-lifestyle.webp",
+      "The OH-Shot uses PRP prepared from your own blood in a discreet in-office procedure for patients looking for a non-hormonal, regenerative conversation around vulvovaginal tissue health and sexual wellness.",
+    image: "/procedure/oh-shot/womens-intimate-wellness-lifestyle.webp",
     price: "$1,200",
     // programmatic SEO copy
     blogHeadline:
-      "Researching the O-Shot® near Williamsburg? Review candidacy, cost factors, urinary leakage support, dryness, sensitivity, and how PRP-based intimate wellness may fit into a private consultation.",
+      "Researching the OH-Shot near Williamsburg? Review candidacy, cost factors, urinary leakage support, dryness, sensitivity, and how PRP-based intimate wellness may fit into a private consultation.",
     benefitsHeadline:
-      "The O-Shot® is a brand-specific PRP protocol discussed with patients who want non-surgical support for tissue quality, comfort, lubrication, sensitivity, and select bladder leakage concerns.",
+      "The OH-Shot is a brand-specific PRP protocol discussed with patients who want non-surgical support for tissue quality, comfort, lubrication, sensitivity, and select bladder leakage concerns.",
     benefits: [
       {
         emoji: "💪",
         benefit: "CMA Protocol Framework",
         description:
-          "Jenny is trained through the Cellular Medicine Association framework behind the branded O-Shot® procedure.",
+          "Jenny is trained through the Cellular Medicine Association framework behind the branded OH-Shot procedure.",
       },
       {
         emoji: "🌊",
         benefit: "Dryness and Comfort Support",
         description:
-          "Some patients ask about the O-Shot® when dryness, irritation, painful intimacy, or reduced tissue resilience are part of the picture.",
+          "Some patients ask about the OH-Shot when dryness, irritation, painful intimacy, or reduced tissue resilience are part of the picture.",
       },
       {
         emoji: "🌡",
         benefit: "Sensitivity and Sexual Wellness",
         description:
-          "The O-Shot® may be discussed when decreased sensation, arousal changes, or orgasm concerns overlap with tissue health goals.",
+          "The OH-Shot may be discussed when decreased sensation, arousal changes, or orgasm concerns overlap with tissue health goals.",
       },
       {
         emoji: "❤️",
         benefit: "Bladder Leakage Conversation",
         description:
-          "For mild stress leakage, Jenny can help determine whether O-Shot® care belongs in the plan or whether pelvic floor or urology care should come first.",
+          "For mild stress leakage, Jenny can help determine whether OH-Shot care belongs in the plan or whether pelvic floor or urology care should come first.",
       },
     ],
     ailmentsHeadline:
-      "Patients often research the O-Shot® when bladder leakage, vaginal dryness, painful intimacy, reduced sensitivity, low libido, or menopausal tissue changes begin affecting daily life. The right plan depends on diagnosis, symptom pattern, prior treatment response, and whether PRP-based care is a reasonable next step.",
+      "Patients often research the OH-Shot when bladder leakage, vaginal dryness, painful intimacy, reduced sensitivity, low libido, or menopausal tissue changes begin affecting daily life. The right plan depends on diagnosis, symptom pattern, prior treatment response, and whether PRP-based care is a reasonable next step.",
     ailments: [
       {
         title: "Vaginal Dryness",
         description:
-          "For patients whose dryness persists despite moisturizers, lubricants, hormone review, or other first-line care, the O-Shot® may be discussed as part of a broader comfort plan.",
-        blog_post_title: "O-Shot for Vaginal Dryness: What to Know",
-        blog_post_slug: "o-shot-for-vaginal-dryness-what-to-know",
+          "For patients whose dryness persists despite moisturizers, lubricants, hormone review, or other first-line care, the OH-Shot may be discussed as part of a broader comfort plan.",
+        blog_post_title: "OH-Shot for Vaginal Dryness: What to Know",
+        blog_post_slug: "oh-shot-for-vaginal-dryness-what-to-know",
         slug: "vaginal-dryness",
         tag: "common",
       },
       {
         title: "Sexual Dysfunction",
         description:
-          "The O-Shot® may be considered when reduced arousal, decreased sensation, orgasm concerns, or intimacy-related discomfort appear tied to tissue health and response.",
-        blog_post_title: "Understanding the O-Shot for Sexual Dysfunction",
-        blog_post_slug: "understanding-o-shot-for-sexual-dysfunction",
+          "The OH-Shot may be considered when reduced arousal, decreased sensation, orgasm concerns, or intimacy-related discomfort appear tied to tissue health and response.",
+        blog_post_title: "Understanding the OH-Shot for Sexual Dysfunction",
+        blog_post_slug: "understanding-oh-shot-for-sexual-dysfunction",
         slug: "sexual-dysfunction",
         tag: "common",
       },
       {
         title: "Low Libido",
         description:
-          "Low libido often has hormonal, relational, medication, and stress-related drivers, but the O-Shot® may be discussed when sensitivity, arousal, or discomfort overlap.",
-        blog_post_title: "O-Shot and Low Libido: Treatment Overview",
-        blog_post_slug: "o-shot-and-low-libido-treatment-overview",
+          "Low libido often has hormonal, relational, medication, and stress-related drivers, but the OH-Shot may be discussed when sensitivity, arousal, or discomfort overlap.",
+        blog_post_title: "OH-Shot and Low Libido: Treatment Overview",
+        blog_post_slug: "oh-shot-and-low-libido-treatment-overview",
         slug: "low-libido",
         tag: "common",
       },
       {
         title: "Dyspareunia",
         description:
-          "When painful intercourse is linked to dryness, tissue fragility, or sensitivity, the O-Shot® may be reviewed after evaluation and first-line options.",
-        blog_post_title: "O-Shot for Dyspareunia: What to Discuss",
-        blog_post_slug: "o-shot-for-dyspareunia-what-to-discuss",
+          "When painful intercourse is linked to dryness, tissue fragility, or sensitivity, the OH-Shot may be reviewed after evaluation and first-line options.",
+        blog_post_title: "OH-Shot for Dyspareunia: What to Discuss",
+        blog_post_slug: "oh-shot-for-dyspareunia-what-to-discuss",
         slug: "dyspareunia",
         tag: "common",
       },
       {
         title: "Urinary Incontinence",
         description:
-          "Some patients ask about the O-Shot® when mild stress leakage, coughing leaks, or exercise-related bladder leakage overlap with tissue thinning or menopausal changes.",
-        blog_post_title: "O-Shot for Urinary Incontinence: Treatment Overview",
-        blog_post_slug: "o-shot-for-urinary-incontinence-treatment-overview",
+          "Some patients ask about the OH-Shot when mild stress leakage, coughing leaks, or exercise-related bladder leakage overlap with tissue thinning or menopausal changes.",
+        blog_post_title: "OH-Shot for Urinary Incontinence: Treatment Overview",
+        blog_post_slug: "oh-shot-for-urinary-incontinence-treatment-overview",
         slug: "urinary-incontinence",
         tag: "common",
       },
       {
         title: "Lichen Sclerosus",
         description:
-          "For confirmed lichen sclerosus under medical management, the O-Shot® may be discussed for tissue comfort and resilience, not as a replacement for standard care.",
-        blog_post_title: "O-Shot and Lichen Sclerosus: Adjunct Care Overview",
-        blog_post_slug: "o-shot-and-lichen-sclerosus-adjunct-care-overview",
+          "For confirmed lichen sclerosus under medical management, the OH-Shot may be discussed for tissue comfort and resilience, not as a replacement for standard care.",
+        blog_post_title: "OH-Shot and Lichen Sclerosus: Adjunct Care Overview",
+        blog_post_slug: "oh-shot-and-lichen-sclerosus-adjunct-care-overview",
         slug: "lichen-sclerosus",
         tag: "uncommon",
       },
       {
         title: "Anorgasmia",
         description:
-          "The O-Shot® may be reviewed for patients reporting reduced sensation or difficulty reaching orgasm when local tissue response is part of the concern.",
-        blog_post_title: "O-Shot for Anorgasmia: Treatment Overview",
-        blog_post_slug: "o-shot-for-anorgasmia-treatment-overview",
+          "The OH-Shot may be reviewed for patients reporting reduced sensation or difficulty reaching orgasm when local tissue response is part of the concern.",
+        blog_post_title: "OH-Shot for Anorgasmia: Treatment Overview",
+        blog_post_slug: "oh-shot-for-anorgasmia-treatment-overview",
         slug: "anorgasmia",
         tag: "common",
       },
       {
         title: "Genital Arousal Disorder",
         description:
-          "Complex arousal concerns often need more than one kind of care, but the O-Shot® may be part of a broader discussion of sensation and tissue health.",
-        blog_post_title: "O-Shot for Genital Arousal Disorder: What to Discuss",
-        blog_post_slug: "o-shot-for-genital-arousal-disorder-what-to-discuss",
+          "Complex arousal concerns often need more than one kind of care, but the OH-Shot may be part of a broader discussion of sensation and tissue health.",
+        blog_post_title: "OH-Shot for Genital Arousal Disorder: What to Discuss",
+        blog_post_slug: "oh-shot-for-genital-arousal-disorder-what-to-discuss",
         slug: "genital-arousal-disorder",
         tag: "experimental",
       },
       {
         title: "Chronic Pelvic Pain",
         description:
-          "Chronic pelvic pain has many causes, but the O-Shot® may enter the conversation when tissue irritation, dryness, or localized tenderness are contributing factors.",
-        blog_post_title: "O-Shot and Chronic Pelvic Pain: Care Overview",
-        blog_post_slug: "o-shot-and-chronic-pelvic-pain-care-overview",
+          "Chronic pelvic pain has many causes, but the OH-Shot may enter the conversation when tissue irritation, dryness, or localized tenderness are contributing factors.",
+        blog_post_title: "OH-Shot and Chronic Pelvic Pain: Care Overview",
+        blog_post_slug: "oh-shot-and-chronic-pelvic-pain-care-overview",
         slug: "chronic-pelvic-pain",
         tag: "uncommon",
       },
       {
         title: "Vaginismus",
         description:
-          "Vaginismus usually involves pelvic floor dysfunction and nervous-system guarding, but the O-Shot® may be discussed when tissue discomfort complicates the picture.",
-        blog_post_title: "O-Shot and Vaginismus: Treatment Discussion",
-        blog_post_slug: "o-shot-and-vaginismus-treatment-discussion",
+          "Vaginismus usually involves pelvic floor dysfunction and nervous-system guarding, but the OH-Shot may be discussed when tissue discomfort complicates the picture.",
+        blog_post_title: "OH-Shot and Vaginismus: Treatment Discussion",
+        blog_post_slug: "oh-shot-and-vaginismus-treatment-discussion",
         slug: "vaginismus",
         tag: "uncommon",
       },
       {
         title: "Clitoral Atrophy",
         description:
-          "The O-Shot® may be reviewed when decreased sensitivity appears connected to tissue atrophy, reduced response, or local tissue changes.",
-        blog_post_title: "O-Shot for Clitoral Atrophy: What to Know",
-        blog_post_slug: "o-shot-for-clitoral-atrophy-what-to-know",
+          "The OH-Shot may be reviewed when decreased sensitivity appears connected to tissue atrophy, reduced response, or local tissue changes.",
+        blog_post_title: "OH-Shot for Clitoral Atrophy: What to Know",
+        blog_post_slug: "oh-shot-for-clitoral-atrophy-what-to-know",
         slug: "clitoral-atrophy",
         tag: "uncommon",
       },
       {
         title: "Vulvar Atrophy",
         description:
-          "For vulvar tissue thinning or irritation, the O-Shot® may be discussed as PRP-based support after standard therapies have been reviewed.",
-        blog_post_title: "O-Shot for Vulvar Atrophy: Treatment Overview",
-        blog_post_slug: "o-shot-for-vulvar-atrophy-treatment-overview",
+          "For vulvar tissue thinning or irritation, the OH-Shot may be discussed as PRP-based support after standard therapies have been reviewed.",
+        blog_post_title: "OH-Shot for Vulvar Atrophy: Treatment Overview",
+        blog_post_slug: "oh-shot-for-vulvar-atrophy-treatment-overview",
         slug: "vulvar-atrophy",
         tag: "uncommon",
       },
       {
         title: "Interstitial Cystitis",
         description:
-          "Interstitial cystitis often needs bladder-focused care, but the O-Shot® may be considered in select cases when vulvovaginal tissue symptoms overlap.",
-        blog_post_title: "O-Shot and Interstitial Cystitis: Treatment Overview",
-        blog_post_slug: "o-shot-and-interstitial-cystitis-treatment-overview",
+          "Interstitial cystitis often needs bladder-focused care, but the OH-Shot may be considered in select cases when vulvovaginal tissue symptoms overlap.",
+        blog_post_title: "OH-Shot and Interstitial Cystitis: Treatment Overview",
+        blog_post_slug: "oh-shot-and-interstitial-cystitis-treatment-overview",
         slug: "interstitial-cystitis",
         tag: "experimental",
       },
       {
         title: "Pelvic Floor Dysfunction",
         description:
-          "Pelvic floor dysfunction usually requires targeted therapy, but the O-Shot® may be considered when tissue discomfort or dryness complicates progress.",
-        blog_post_title: "O-Shot and Pelvic Floor Dysfunction: Care Overview",
-        blog_post_slug: "o-shot-and-pelvic-floor-dysfunction-care-overview",
+          "Pelvic floor dysfunction usually requires targeted therapy, but the OH-Shot may be considered when tissue discomfort or dryness complicates progress.",
+        blog_post_title: "OH-Shot and Pelvic Floor Dysfunction: Care Overview",
+        blog_post_slug: "oh-shot-and-pelvic-floor-dysfunction-care-overview",
         slug: "pelvic-floor-dysfunction",
         tag: "uncommon",
       },
       {
         title: "Vulvodynia",
         description:
-          "For persistent vulvar pain, the O-Shot® may be explored for select patients after diagnosis and first-line treatment review.",
-        blog_post_title: "O-Shot for Vulvodynia: Adjunct Care Overview",
-        blog_post_slug: "o-shot-for-vulvodynia-adjunct-care-overview",
+          "For persistent vulvar pain, the OH-Shot may be explored for select patients after diagnosis and first-line treatment review.",
+        blog_post_title: "OH-Shot for Vulvodynia: Adjunct Care Overview",
+        blog_post_slug: "oh-shot-for-vulvodynia-adjunct-care-overview",
         slug: "vulvodynia",
         tag: "uncommon",
       },
       {
         title: "Post-Menopausal Symptoms",
         description:
-          "Patients navigating menopause sometimes ask whether the O-Shot® can support tissue comfort, lubrication, and sexual response alongside standard menopause care.",
-        blog_post_title: "O-Shot for Post-Menopausal Symptoms: What to Know",
-        blog_post_slug: "o-shot-for-post-menopausal-symptoms-what-to-know",
+          "Patients navigating menopause sometimes ask whether the OH-Shot can support tissue comfort, lubrication, and sexual response alongside standard menopause care.",
+        blog_post_title: "OH-Shot for Post-Menopausal Symptoms: What to Know",
+        blog_post_slug: "oh-shot-for-post-menopausal-symptoms-what-to-know",
         slug: "post-menopausal-symptoms",
         tag: "common",
       },
       {
         title: "Scar Tissue",
         description:
-          "For scarring related to childbirth or procedures, the O-Shot® may be reviewed when flexibility, comfort, or sensitivity are the primary concerns.",
-        blog_post_title: "O-Shot for Scar Tissue: Treatment Overview",
-        blog_post_slug: "o-shot-for-scar-tissue-treatment-overview",
+          "For scarring related to childbirth or procedures, the OH-Shot may be reviewed when flexibility, comfort, or sensitivity are the primary concerns.",
+        blog_post_title: "OH-Shot for Scar Tissue: Treatment Overview",
+        blog_post_slug: "oh-shot-for-scar-tissue-treatment-overview",
         slug: "scar-tissue",
         tag: "uncommon",
       },
       {
         title: "Skin Texture & Tone",
         description:
-          "Some patients ask whether the O-Shot® can support localized tissue texture and tone, although outcomes vary and expectations should stay realistic.",
-        blog_post_title: "O-Shot for Skin Texture and Tone: What to Know",
-        blog_post_slug: "o-shot-for-skin-texture-and-tone-what-to-know",
+          "Some patients ask whether the OH-Shot can support localized tissue texture and tone, although outcomes vary and expectations should stay realistic.",
+        blog_post_title: "OH-Shot for Skin Texture and Tone: What to Know",
+        blog_post_slug: "oh-shot-for-skin-texture-and-tone-what-to-know",
         slug: "skin-texture-tone",
         tag: "experimental",
       },
       {
         title: "Vaginal Lubrication",
         description:
-          "When decreased lubrication persists despite moisturizers, hormone review, or lifestyle adjustments, the O-Shot® may be part of the procedural discussion.",
-        blog_post_title: "O-Shot for Vaginal Lubrication Support",
-        blog_post_slug: "o-shot-for-vaginal-lubrication-support",
+          "When decreased lubrication persists despite moisturizers, hormone review, or lifestyle adjustments, the OH-Shot may be part of the procedural discussion.",
+        blog_post_title: "OH-Shot for Vaginal Lubrication Support",
+        blog_post_slug: "oh-shot-for-vaginal-lubrication-support",
         slug: "vaginal-lubrication",
         tag: "common",
       },
       {
         title: "Sexual Sensation",
         description:
-          "The O-Shot® is sometimes discussed for reduced sensation when blood flow, tissue health, or local sensitivity are part of the concern.",
-        blog_post_title: "O-Shot for Sexual Sensation: Treatment Overview",
-        blog_post_slug: "o-shot-for-sexual-sensation-treatment-overview",
+          "The OH-Shot is sometimes discussed for reduced sensation when blood flow, tissue health, or local sensitivity are part of the concern.",
+        blog_post_title: "OH-Shot for Sexual Sensation: Treatment Overview",
+        blog_post_slug: "oh-shot-for-sexual-sensation-treatment-overview",
         slug: "sexual-sensation",
         tag: "common",
       },
     ],
     faqHeadline:
-      "Most O-Shot® questions focus on candidacy, cost, comfort, expected timing, and whether PRP-based intimate wellness fits the symptoms that brought you in.",
+      "Most OH-Shot questions focus on candidacy, cost, comfort, expected timing, and whether PRP-based intimate wellness fits the symptoms that brought you in.",
     faqs: [
       {
-        question: "What is the O-Shot?",
+        question: "What is the OH-Shot?",
         answer:
-          "The O-Shot® is a branded platelet-rich plasma (PRP) procedure used in a treatment plan focused on vulvovaginal tissue health, comfort, sensitivity, sexual wellness, and select bladder leakage concerns.",
+          "The OH-Shot is a branded platelet-rich plasma (PRP) procedure used in a treatment plan focused on vulvovaginal tissue health, comfort, sensitivity, sexual wellness, and select bladder leakage concerns.",
       },
       {
-        question: "Who may be a candidate for the O-Shot?",
+        question: "Who may be a candidate for the OH-Shot?",
         answer:
           "Candidates are usually patients who want a private review of symptoms such as dryness, decreased sensation, painful intimacy, orgasm concerns, or mild stress urinary leakage and want to know whether PRP-based care fits their history and goals.",
       },
       {
-        question: "Can the O-Shot help with urinary incontinence?",
+        question: "Can the OH-Shot help with urinary incontinence?",
         answer:
-          "Some patients ask about the O-Shot® for mild stress leakage, such as leaking with coughing, exercise, or lifting. Consultation should clarify whether symptoms are stress, urge, or mixed incontinence and whether pelvic floor therapy, urology, or another treatment should come first.",
+          "Some patients ask about the OH-Shot for mild stress leakage, such as leaking with coughing, exercise, or lifting. Consultation should clarify whether symptoms are stress, urge, or mixed incontinence and whether pelvic floor therapy, urology, or another treatment should come first.",
       },
       {
-        question: "How much does the O-Shot cost?",
+        question: "How much does the OH-Shot cost?",
         answer:
-          "The O-Shot® is listed at $1,200 at Williamsburg Med Spa. Consultation confirms whether treatment is appropriate before a plan is made.",
+          "The OH-Shot is listed at $1,200 at Williamsburg Med Spa. Consultation confirms whether treatment is appropriate before a plan is made.",
       },
       {
-        question: "Is the O-Shot painful?",
+        question: "Is the OH-Shot painful?",
         answer:
           "Most visits include topical numbing, and patients often describe treatment as manageable. Comfort varies by person and by the areas treated.",
       },
