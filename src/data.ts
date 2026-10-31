@@ -2358,8 +2358,9 @@ export const procedures = [
     slug: "blomdahl-ear-piercing",
     seo: {
       title: "Ear Piercing in Williamsburg, VA | Infant, Kids & Adults | Blomdahl",
+      documentTitle: "Ear Piercing Williamsburg VA | Blomdahl Pediatric NP",
       description:
-        "Ear piercing in Williamsburg, VA for infants, kids, teens, and adults. Blomdahl medical piercing with sterile single-use cassettes, hypoallergenic earrings, and a pediatric nurse practitioner. $45 per ear.",
+        "Sterile, hypoallergenic Blomdahl ear piercing in Williamsburg, VA by a pediatric NP. $45 per ear.",
     },
     description:
       "Our Blomdahl medical ear piercing service uses sterile single-use cassettes and hypoallergenic Medical Plastic or titanium starter earrings to support cleaner healing. Jenny Coleman, MSN, RN, CPNP, PMHS brings pediatric nursing experience to appointments for children, teens, and adults who want careful placement, clear aftercare, and a clinical setting instead of mall-style piercing.",
