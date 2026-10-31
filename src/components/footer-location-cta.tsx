@@ -7,7 +7,7 @@ export default function FooterLocationCta() {
   return (
     <section className="w-full text-left">
       <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Visit The Clinic</p>
-      <h3 className="mt-3 text-2xl/snug md:text-3xl/snug font-light tracking-tight text-base-content">
+      <h3 className="font-display mt-3 text-3xl font-medium leading-tight tracking-tight text-base-content md:text-4xl">
         Williamsburg Med Spa
       </h3>
       <p className="mt-4 max-w-xl text-base md:text-lg leading-relaxed text-base-content/80">{address}</p>

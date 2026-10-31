@@ -10,15 +10,27 @@ interface BlogPostCardProps {
   article: PostMetadata;
   priority?: boolean;
   variant?: "list" | "grid" | "featured";
+  tone?: "default" | "editorial";
 }
 
-export default function BlogPostCard({ article, priority = false, variant = "grid" }: BlogPostCardProps) {
+export default function BlogPostCard({
+  article,
+  priority = false,
+  variant = "grid",
+  tone = "default",
+}: BlogPostCardProps) {
+  const editorial = tone === "editorial";
+
   if (variant === "list") {
     return (
       <article className="group grid grid-cols-[96px_minmax(0,1fr)] gap-4 border-b border-base-300 pb-6 last:border-b-0 last:pb-0">
         <Link
           href={article.href}
-          className="relative aspect-square overflow-hidden rounded-lg border border-base-300 bg-base-200"
+          className={
+            editorial
+              ? "relative aspect-square overflow-hidden border border-base-300 bg-base-200"
+              : "relative aspect-square overflow-hidden rounded-lg border border-base-300 bg-base-200"
+          }
           aria-label={article.title}
         >
           <Image
@@ -32,7 +44,13 @@ export default function BlogPostCard({ article, priority = false, variant = "gri
 
         <div className="min-w-0">
           <DateTag date={article.date} className="px-2.5 py-0.5 text-[11px]" />
-          <h3 className="mt-2 text-base/snug font-semibold tracking-tight text-base-content text-balance">
+          <h3
+            className={
+              editorial
+                ? "font-display mt-2 text-xl font-medium leading-tight text-base-content text-balance"
+                : "mt-2 text-base/snug font-semibold tracking-tight text-base-content text-balance"
+            }
+          >
             <Link
               href={article.href}
               className="rounded-md transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-4 focus-visible:ring-offset-base-100"
@@ -48,16 +66,18 @@ export default function BlogPostCard({ article, priority = false, variant = "gri
     );
   }
 
-  const imageClassName =
-    variant === "featured"
+  const imageClassName = editorial
+    ? "relative block aspect-[4/3] overflow-hidden border border-base-300 bg-base-200"
+    : variant === "featured"
       ? "relative block aspect-[16/10] overflow-hidden rounded-lg border border-base-300 bg-base-200 shadow-sm md:aspect-auto"
       : "relative block aspect-[16/10] overflow-hidden rounded-lg border border-base-300 bg-base-200 shadow-sm";
   const articleClassName =
     variant === "featured"
       ? "group relative isolate md:grid md:grid-cols-[1.05fr_0.95fr] md:items-stretch md:gap-8"
       : "group relative isolate flex h-full flex-col";
-  const titleClassName =
-    variant === "featured"
+  const titleClassName = editorial
+    ? "font-display text-2xl font-medium leading-tight text-base-content text-balance"
+    : variant === "featured"
       ? "text-2xl/snug sm:text-3xl/snug font-semibold tracking-tight text-base-content text-balance"
       : "text-lg/snug font-semibold tracking-tight text-base-content text-balance";
 

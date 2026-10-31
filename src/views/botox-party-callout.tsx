@@ -9,51 +9,48 @@ export default function BotoxPartyCallout() {
   if (!botoxPartyEvent) return null;
 
   return (
-    <section className="mb-14 py-6 md:mb-20 md:py-8 lg:py-10" aria-labelledby="botox-party-callout-heading">
-      <div className="mx-auto max-w-5xl">
-        <article className="group relative isolate flex flex-col gap-8 md:flex-row md:items-center md:justify-between lg:gap-12">
-          <div className="max-w-2xl flex-1">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Botox Party</p>
+    <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" aria-labelledby="botox-party-callout-heading">
+      <article className="grid items-center gap-8 lg:grid-cols-[minmax(14rem,20rem)_minmax(0,1fr)] lg:gap-14">
+        <div className="relative aspect-[4/3] w-full overflow-hidden border border-base-300 bg-base-200">
+          <Image
+            src={botoxPartyEvent.thumbnailImageSrc || botoxPartyEvent.heroImageSrc}
+            alt={botoxPartyEvent.thumbnailImageAlt || botoxPartyEvent.heroImageAlt}
+            fill
+            sizes="(max-width: 1024px) 90vw, 320px"
+            className="object-cover"
+          />
+        </div>
 
-            <h2
-              id="botox-party-callout-heading"
-              className="mt-3 max-w-2xl text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content text-balance"
-            >
-              Host a <span className="font-semibold">Botox party</span> and make your own treatment free.
-            </h2>
+        <div className="max-w-2xl">
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Botox Party</p>
 
-            <p className="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-base-content/80">
-              Bring 5 or more paid Botox guests and the host&apos;s Botox is free. Every additional 5 paid Botox
-              guests unlocks more free products and procedure credits.
-            </p>
+          <h2
+            id="botox-party-callout-heading"
+            className="font-display mt-3 max-w-xl text-3xl font-medium leading-[1.15] tracking-tight text-base-content text-balance md:text-4xl"
+          >
+            Host a Botox party and make your own treatment free.
+          </h2>
 
-            <p className="mt-5 max-w-2xl text-sm md:text-base leading-relaxed text-base-content/70">
-              Tell us the guest count, the planning window, and what else your group may want to discuss. We&apos;ll
-              help you map the event and set up a quick planning call so the party feels organized from the start.
-            </p>
+          <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-base-content/85 md:text-lg">
+            Bring 5 or more paid Botox guests and the host&apos;s Botox is free. Every additional 5 paid Botox
+            guests unlocks more free products and procedure credits.
+          </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild>
-                <Link href={botoxPartyEvent.canonicalPath}>Plan a Botox Party</Link>
-              </Button>
-              <Button asChild variant="secondary">
-                <Link href="/procedures/botox">See Botox Details</Link>
-              </Button>
-            </div>
+          <p className="mt-4 max-w-[62ch] text-sm leading-relaxed text-base-content/80 md:text-base">
+            Tell us the guest count, the planning window, and what else your group may want to discuss. We&apos;ll
+            help you map the event and set up a quick planning call so the party feels organized from the start.
+          </p>
+
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Button asChild className="w-full sm:w-auto">
+              <Link href={botoxPartyEvent.canonicalPath}>Plan a Botox Party</Link>
+            </Button>
+            <Button asChild variant="secondary" className="w-full sm:w-auto">
+              <Link href="/procedures/botox">See Botox Details</Link>
+            </Button>
           </div>
-
-          <div className="relative aspect-square w-full max-w-[18rem] overflow-hidden rounded-2xl bg-base-200 sm:max-w-[20rem] md:w-[17rem] lg:w-[19rem] md:shrink-0">
-            <Image
-              src={botoxPartyEvent.thumbnailImageSrc || botoxPartyEvent.heroImageSrc}
-              alt={botoxPartyEvent.thumbnailImageAlt || botoxPartyEvent.heroImageAlt}
-              fill
-              sizes="(max-width: 640px) 70vw, (max-width: 1024px) 272px, 304px"
-              className="object-cover transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
-          </div>
-        </article>
-      </div>
+        </div>
+      </article>
     </section>
   );
 }

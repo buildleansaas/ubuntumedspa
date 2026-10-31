@@ -6,9 +6,15 @@ interface BlogPostCollectionProps {
   articles: PostMetadata[];
   featuredFirst?: boolean;
   className?: string;
+  tone?: "default" | "editorial";
 }
 
-export default function BlogPostCollection({ articles, featuredFirst = false, className }: BlogPostCollectionProps) {
+export default function BlogPostCollection({
+  articles,
+  featuredFirst = false,
+  className,
+  tone = "default",
+}: BlogPostCollectionProps) {
   const [featuredArticle, ...remainingArticles] = articles;
   const gridArticles = featuredFirst ? remainingArticles : articles;
 
@@ -16,13 +22,13 @@ export default function BlogPostCollection({ articles, featuredFirst = false, cl
     <div className={cn("mt-12", className)}>
       <div className="space-y-6 md:hidden">
         {articles.map((article) => (
-          <BlogPostCard key={article.routeSlug} article={article} variant="list" />
+          <BlogPostCard key={article.routeSlug} article={article} variant="list" tone={tone} />
         ))}
       </div>
 
       <div className="hidden md:block">
         {featuredFirst && featuredArticle && (
-          <BlogPostCard article={featuredArticle} variant="featured" priority />
+          <BlogPostCard article={featuredArticle} variant="featured" priority tone={tone} />
         )}
 
         <div
@@ -33,7 +39,7 @@ export default function BlogPostCollection({ articles, featuredFirst = false, cl
           )}
         >
           {gridArticles.map((article) => (
-            <BlogPostCard key={article.routeSlug} article={article} />
+            <BlogPostCard key={article.routeSlug} article={article} tone={tone} />
           ))}
         </div>
       </div>
