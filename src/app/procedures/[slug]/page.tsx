@@ -770,6 +770,15 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               </AccordionItem>
             ))}
           </Accordion>
+          {procedure.slug === "blomdahl-ear-piercing" ? (
+            <p className="mb-12 max-w-3xl text-base leading-relaxed text-base-content/80">
+              The cassette-versus-gun comparison is written out in the{" "}
+              <Link href="/blog/medical-ear-piercing-vs-mall-piercing" className="link link-primary">
+                medical ear piercing versus mall piercing guide
+              </Link>
+              .
+            </p>
+          ) : null}
           <CtaButtons consultHref={ownerConsultationHref} />
         </div>
 

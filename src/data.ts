@@ -2489,6 +2489,11 @@ export const procedures = [
           "Blomdahl is appointment-based medical ear piercing that uses sterile disposable cassettes and hypoallergenic starter jewelry. Jenny also reviews placement, comfort, and aftercare instead of treating the piercing like a quick retail add-on.",
       },
       {
+        question: "Does Blomdahl use a needle or a piercing gun?",
+        answer:
+          "Blomdahl medical ear piercing uses a sterile single-use cassette. That is different from a mall piercing gun, which is a retail tool, and stores vary in jewelry and protocol. Jenny reviews placement, starter earrings, and aftercare at the Williamsburg appointment.",
+      },
+      {
         question: "What jewelry materials are available?",
         answer:
           "We offer medical plastic and pure titanium options. Both are hypoallergenic options for sensitive skin or nickel-allergy concerns.",

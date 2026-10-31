@@ -7,7 +7,7 @@ import { buildPageMetadata } from "lib/metadata";
 import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near Yorktown, VA | Botox, Fillers, PRP & Piercing",
+  title: "Med Spa Near Yorktown, VA | Botox, Fillers & PRP",
   description:
     "Visit Williamsburg Med Spa from Yorktown for Botox, Xeomin, fillers, PRP therapies, hyperhidrosis care, and Blomdahl medical ear piercing near Williamsburg.",
   canonical: "/locations/yorktown-va",
@@ -32,9 +32,19 @@ const serviceLinks = [
     copy: "For patients comparing wrinkle relaxer options.",
   },
   {
-    label: "Medical ear piercing near Yorktown",
+    label: "Blomdahl ear piercing",
+    href: "/procedures/blomdahl-ear-piercing",
+    copy: "Sterile single-use cassettes and hypoallergenic starter earrings at the Williamsburg clinic.",
+  },
+  {
+    label: "Infant and kids ear piercing",
+    href: "/procedures/blomdahl-ear-piercing/for/children",
+    copy: "For parents planning a baby's or child's first earrings with a pediatric nurse practitioner.",
+  },
+  {
+    label: "Yorktown visit notes",
     href: "/procedures/blomdahl-ear-piercing/near/yorktown-va",
-    copy: "For children and adults who want sterile Blomdahl piercing.",
+    copy: "Driving notes for a Williamsburg piercing appointment. The service details stay on the Blomdahl page.",
   },
 ];
 

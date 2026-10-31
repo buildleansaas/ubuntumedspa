@@ -3,11 +3,12 @@ import DirectionsButton from "components/directions-button";
 import NAP from "components/nap";
 import StructuredData from "components/structured-data";
 import { Button } from "components/ui/button";
+import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 import { buildPageMetadata } from "lib/metadata";
 import Link from "next/link";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near James City County, VA | Fillers, Botox, PRP & Piercing",
+  title: "Med Spa Near James City County, VA | Fillers, Botox & PRP",
   description:
     "Compare consultation-led Botox, Xeomin, fillers, PRP hair restoration, hyperhidrosis care, and Blomdahl ear piercing near James City County, VA.",
   canonical: "/locations/james-city-county-va",
@@ -29,7 +30,9 @@ const serviceLinks = [
   {
     href: "/procedures/filler",
     label: "Dermal fillers",
-    note: "Review lip, cheek, under-eye, smile-line, and facial-balance starting points.",
+    note: LIP_FILLER_ENABLED
+      ? "Review lip, cheek, under-eye, smile-line, and facial-balance starting points."
+      : "Review cheek, under-eye, smile-line, and facial-balance starting points.",
   },
   {
     href: "/procedures/prp-hair-restoration",
@@ -45,6 +48,11 @@ const serviceLinks = [
     href: "/procedures/blomdahl-ear-piercing",
     label: "Blomdahl medical ear piercing",
     note: "Plan a nurse-led piercing visit with sterile single-use cassettes and aftercare guidance.",
+  },
+  {
+    href: "/procedures/blomdahl-ear-piercing/for/children",
+    label: "Infant and kids ear piercing",
+    note: "For parents comparing a pediatric nurse practitioner visit with a retail counter.",
   },
 ];
 

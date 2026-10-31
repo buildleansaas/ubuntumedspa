@@ -17,7 +17,7 @@ import { buildPageMetadata } from "lib/metadata";
 import StructuredData from "components/structured-data";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Williamsburg Med Spa: Botox, Fillers, PRP & Ear Piercing",
+  title: "Medical Spa Williamsburg VA | Botox, Fillers & PRP",
   description:
     "Jenny Coleman, MSN, RN, CPNP, PMHS, CMA-certified OH-Shot provider, offers Botox, Xeomin, fillers, PRP, and Blomdahl ear piercing in Williamsburg, VA.",
   canonical: "/",

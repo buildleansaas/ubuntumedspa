@@ -72,9 +72,9 @@ export const localServiceAreas: LocalServiceArea[] = [
     hasLocationPage: true,
     serviceAreaLabel: "Williamsburg, VA",
     targetQuery: "ear piercing williamsburg va",
-    metaTitle: "Medical Ear Piercing in Williamsburg, VA | Blomdahl",
+    metaTitle: "Williamsburg Clinic Visit for Blomdahl Appointments",
     metaDescription:
-      "Sterile, hypoallergenic Blomdahl ear piercing in Williamsburg, VA for children and adults at Williamsburg Med Spa.",
+      "Blomdahl appointments are at 3900 Powhatan Parkway in Williamsburg. Ear piercing details are on the Blomdahl hub.",
     countyOrContext: "Primary clinic",
     distanceNote: "at our Williamsburg clinic",
     summary: "Our main clinic with full PRP, filler, ear piercing, and aesthetic services.",
