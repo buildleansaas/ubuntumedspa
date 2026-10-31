@@ -99,8 +99,8 @@ export default async function ProductPage({ params: { slug } }: Params) {
           )}
         </div>
 
-        <div className="my-32 text-center max-w-5xl mx-auto" id="benefits">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
+        <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24" id="benefits">
+          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
             <span className="font-bold">{product.name}</span> Benefits
           </h2>
           <h2 className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(product.benefitsHeadline)}</h2>
@@ -119,8 +119,8 @@ export default async function ProductPage({ params: { slug } }: Params) {
           <CtaButtons />
         </div>
 
-        <div className="my-32 text-center max-w-5xl mx-auto" id="faqs">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
+        <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24 max-w-3xl" id="faqs">
+          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
             Frequently Asked Questions about <span className="font-bold">{product.name}</span>
           </h2>
           <h2 className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(product.faqHeadline)}</h2>
@@ -146,9 +146,9 @@ export default async function ProductPage({ params: { slug } }: Params) {
         </div>
 
         {Boolean(articles.length) && (
-          <div className="my-32" id="posts">
+          <div className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="posts">
             <div className="mb-16">
-              <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
+              <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
                 More About <span className="font-semibold">{product.name}</span>
               </h2>
               <p className="text-lg lg:text-xl max-w-5xl mx-auto text-center">{humanizeMedicalCopy(product.blogHeadline)}</p>
@@ -168,13 +168,13 @@ export default async function ProductPage({ params: { slug } }: Params) {
                   </div>
                   <div className="py-4">
                     <div className="flex flex-wrap items-center text-xs gap-2">
-                      <Badge className="bg-purple-500 hover:bg-purple-600">
+                      <Badge variant="outline">
                         {new Date(article.date).toLocaleDateString("en-GB", {
                           dateStyle: "long",
                         })}
                       </Badge>
                       {article.tags.map((tag) => (
-                        <Badge key={tag} className="bg-blue-500 hover:bg-blue-600">
+                        <Badge key={tag} variant="outline">
                           {tag}
                         </Badge>
                       ))}

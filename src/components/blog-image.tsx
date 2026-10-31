@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function BlogImage({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative h-64 w-full overflow-hidden rounded-2xl border border-base-300 bg-base-200 shadow-sm sm:aspect-[2/1] sm:h-auto">
+    <div className="relative h-64 w-full overflow-hidden border border-base-300 bg-base-200 sm:aspect-[2/1] sm:h-auto">
       <Image
         src={src}
         alt={alt}

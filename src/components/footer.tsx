@@ -116,6 +116,14 @@ export default function Footer() {
             <Link className="transition-colors hover:text-base-content hover:underline" href="/sitemap.xml">
               Sitemap
             </Link>
+            <span aria-hidden>·</span>
+            <Link className="transition-colors hover:text-base-content hover:underline" href="/privacy">
+              Privacy
+            </Link>
+            <span aria-hidden>·</span>
+            <Link className="transition-colors hover:text-base-content hover:underline" href="/cookies">
+              Cookies
+            </Link>
           </div>
         </div>
       </div>

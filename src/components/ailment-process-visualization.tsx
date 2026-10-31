@@ -31,7 +31,7 @@ export default function AilmentProcessVisualization({ data }: AilmentProcessVisu
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 inline-flex h-9 min-w-9 items-center justify-center rounded-full bg-primary text-primary-content px-3 text-sm font-semibold shadow-lg">
+                <div className="absolute top-4 left-4 inline-flex h-9 min-w-9 items-center justify-center border border-base-300 bg-base-100 px-3 text-sm font-medium text-base-content">
                   {index + 1}
                 </div>
               </div>

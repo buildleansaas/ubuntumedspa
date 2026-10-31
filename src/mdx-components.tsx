@@ -5,7 +5,7 @@ export function Anchor({ className, ...properties }: JSX.IntrinsicElements["a"])
   return (
     <a
       className={cn(
-        "rounded-md text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:text-primary-focus hover:decoration-primary/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-base-100",
+        "text-base-content underline decoration-base-300 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-base-100",
         className
       )}
       {...properties}
@@ -13,15 +13,23 @@ export function Anchor({ className, ...properties }: JSX.IntrinsicElements["a"])
   );
 }
 
-export function Heading1(_: JSX.IntrinsicElements["h1"]) {
-  return null;
+export function Heading1({ className, ...properties }: JSX.IntrinsicElements["h1"]) {
+  return (
+    <h1
+      className={cn(
+        "text-4xl leading-[1.08] tracking-tight text-balance text-base-content md:text-6xl",
+        className
+      )}
+      {...properties}
+    />
+  );
 }
 
 export function Heading2({ className, ...properties }: JSX.IntrinsicElements["h2"]) {
   return (
     <h2
       className={cn(
-        "mt-14 text-3xl/snug font-semibold tracking-tight text-base-content text-balance sm:text-4xl/snug",
+        "mt-14 border-t border-base-300 pt-8 text-3xl leading-[1.15] tracking-tight text-base-content text-balance md:text-4xl",
         className
       )}
       {...properties}
@@ -32,20 +40,20 @@ export function Heading2({ className, ...properties }: JSX.IntrinsicElements["h2
 export function Heading3({ className, ...properties }: JSX.IntrinsicElements["h3"]) {
   return (
     <h3
-      className={cn("mt-10 text-xl/snug font-semibold text-base-content text-balance sm:text-2xl/snug", className)}
+      className={cn("mt-10 text-2xl leading-snug tracking-tight text-base-content text-balance", className)}
       {...properties}
     />
   );
 }
 
 export function Paragraph({ className, ...properties }: JSX.IntrinsicElements["p"]) {
-  return <p className={cn("my-6 text-base leading-8 text-base-content/80", className)} {...properties} />;
+  return <p className={cn("my-6 max-w-[68ch] text-base leading-8 text-base-content/85", className)} {...properties} />;
 }
 
 export function OrderedList({ className, ...properties }: JSX.IntrinsicElements["ol"]) {
   return (
     <ol
-      className={cn("my-6 list-decimal pl-6 leading-8 text-base-content/80 marker:text-base-content", className)}
+      className={cn("my-6 max-w-[68ch] list-decimal pl-6 leading-8 text-base-content/85 marker:text-base-content", className)}
       {...properties}
     />
   );
@@ -54,21 +62,21 @@ export function OrderedList({ className, ...properties }: JSX.IntrinsicElements[
 export function UnorderedList({ className, ...properties }: JSX.IntrinsicElements["ul"]) {
   return (
     <ul
-      className={cn("my-6 list-disc pl-6 leading-8 text-base-content/80 marker:text-base-content", className)}
+      className={cn("my-6 max-w-[68ch] list-disc pl-6 leading-8 text-base-content/85 marker:text-base-content", className)}
       {...properties}
     />
   );
 }
 
 export function ListItem({ className, ...properties }: JSX.IntrinsicElements["li"]) {
-  return <li className={cn("pl-1 mb-2", className)} {...properties} />;
+  return <li className={cn("mb-2 pl-1", className)} {...properties} />;
 }
 
 export function Pre({ className, ...properties }: JSX.IntrinsicElements["pre"]) {
   return (
     <pre
       className={cn(
-        "my-8 overflow-x-auto rounded-2xl border border-base-300 bg-base-200 p-5 text-sm leading-7 text-base-content",
+        "my-8 overflow-x-auto border border-base-300 bg-base-200 p-5 text-sm leading-7 text-base-content",
         className
       )}
       {...properties}
@@ -81,7 +89,7 @@ export function Code({ className, ...properties }: JSX.IntrinsicElements["code"]
     <code
       className={cn(
         "font-mono text-[0.95em] text-base-content",
-        className ? "" : "rounded-md bg-base-200 px-1.5 py-0.5",
+        className ? "" : "border border-base-300 bg-base-200 px-1.5 py-0.5",
         className
       )}
       {...properties}
@@ -91,14 +99,14 @@ export function Code({ className, ...properties }: JSX.IntrinsicElements["code"]
 
 export function Table({ className, ...properties }: JSX.IntrinsicElements["table"]) {
   return (
-    <div className="my-8 overflow-x-auto rounded-2xl border border-base-300 bg-base-100 shadow-sm">
-      <table className={cn("min-w-full border-collapse text-left text-sm text-base-content/80", className)} {...properties} />
+    <div className="my-8 overflow-x-auto border border-base-300 bg-base-100">
+      <table className={cn("min-w-full border-collapse text-left text-sm text-base-content/85", className)} {...properties} />
     </div>
   );
 }
 
 export function TableHead({ className, ...properties }: JSX.IntrinsicElements["thead"]) {
-  return <thead className={cn("bg-base-200/80", className)} {...properties} />;
+  return <thead className={cn("border-b border-base-300 bg-base-200/80", className)} {...properties} />;
 }
 
 export function TableBody({ className, ...properties }: JSX.IntrinsicElements["tbody"]) {
@@ -110,7 +118,7 @@ export function TableRow({ className, ...properties }: JSX.IntrinsicElements["tr
 }
 
 export function TableHeader({ className, ...properties }: JSX.IntrinsicElements["th"]) {
-  return <th className={cn("px-4 py-3 font-semibold text-base-content", className)} {...properties} />;
+  return <th className={cn("px-4 py-3 font-medium text-base-content", className)} {...properties} />;
 }
 
 export function TableCell({ className, ...properties }: JSX.IntrinsicElements["td"]) {
@@ -121,7 +129,7 @@ export function Blockquote({ className, ...properties }: JSX.IntrinsicElements["
   return (
     <blockquote
       className={cn(
-        "my-8 rounded-r-2xl border-l-4 border-primary/60 bg-base-200/60 px-5 py-4 text-base italic leading-8 text-base-content/75",
+        "my-8 max-w-[68ch] border-l border-base-300 py-1 pl-5 text-lg leading-8 text-base-content/80",
         className
       )}
       {...properties}

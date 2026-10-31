@@ -342,7 +342,7 @@ export default function AffiliatesPage() {
             ))}
           </div>
 
-          <div className="mt-10 rounded-2xl border border-base-300 bg-base-100">
+          <div className="mt-10 border border-base-300 bg-base-100">
             <div className="grid gap-0 lg:grid-cols-2">
               <div className="px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10 lg:border-r lg:border-base-300">
                 <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Do say</p>

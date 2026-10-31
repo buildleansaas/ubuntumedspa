@@ -47,7 +47,7 @@ export default function NewportNewsPage() {
     <div className="max-w-xl md:max-w-6xl mx-auto md:px-8 py-12 md:py-16">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations", "Newport News"]} />
       <StructuredData type="FAQ" faqs={faqs} />
-      <header className="mb-8 md:mb-10 text-center max-w-3xl mx-auto">
+      <header className="mb-10 max-w-3xl text-left md:mb-14">
         <p className="text-sm uppercase tracking-[0.22em] text-primary mb-3">Newport News service area</p>
         <h1 className="text-3xl md:text-5xl font-light">Med Spa Near Newport News, VA</h1>
         <p className="text-base md:text-lg text-base-content/70 mt-3">
@@ -75,7 +75,7 @@ export default function NewportNewsPage() {
             </Link>
           </div>
         </div>
-        <aside className="rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm">
+        <aside className="border border-base-300 bg-base-100 p-5">
           <h2 className="text-xl font-light mb-3">Plan your visit</h2>
           <dl className="space-y-3 text-sm text-base-content/75">
             <div>
@@ -98,7 +98,7 @@ export default function NewportNewsPage() {
         <h2 className="text-2xl md:text-3xl font-light mb-4">Newport News Patients Usually Start Here</h2>
         <div className="grid gap-4 md:grid-cols-2">
           {serviceLinks.map((service) => (
-            <Link key={service.href} href={service.href} className="rounded-2xl border border-base-300 p-5 transition hover:border-primary/50 hover:bg-base-200/40">
+            <Link key={service.href} href={service.href} className="border border-base-300 p-5 transition hover:border-primary/40 hover:bg-base-200/40">
               <span className="font-medium text-base-content">{service.label}</span>
               <p className="mt-2 text-sm text-base-content/70">{service.note}</p>
             </Link>
@@ -148,7 +148,7 @@ export default function NewportNewsPage() {
             <li>Turn onto Powhatan Parkway and look for the clinic entrance near the main lot.</li>
           </ol>
         </div>
-        <div className="rounded-2xl border border-base-300 p-5">
+        <div className="border border-base-300 p-5">
           <h2 className="text-2xl md:text-3xl font-light mb-3">Why Make the Trip?</h2>
           <ul className="space-y-2 text-base-content/80">
             <li>Talk through your goals with Jenny Coleman before choosing a treatment.</li>
@@ -170,7 +170,7 @@ export default function NewportNewsPage() {
         </div>
       </section>
 
-      <section className="mb-10 md:mb-12 rounded-2xl border border-base-300 p-5 md:p-6">
+      <section className="mb-10 md:mb-12 border border-base-300 p-6 md:p-8">
         <h2 className="text-2xl md:text-3xl font-light mb-3">Local Planning Notes</h2>
         <p className="text-base md:text-lg text-base-content/80 mb-4">
           If you are comparing Newport News options, start with the service that matches your question. Injectable visits

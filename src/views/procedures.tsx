@@ -31,10 +31,12 @@ export default function Procedures({
   headingTag = "h2",
   variant = "default",
   featured = null,
+  kicker = "Signature treatments",
 }: {
   headingTag?: HeadingTag;
   variant?: "default" | "editorial";
   featured?: ReactNode;
+  kicker?: string;
 }) {
   const Heading = headingTag;
   const visibleProcedures = sortProcedures(
@@ -45,7 +47,7 @@ export default function Procedures({
     return (
       <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="services" aria-labelledby="home-procedures-heading">
         <div className="max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Signature treatments</p>
+          <p className="eyebrow">{kicker}</p>
           <Heading
             id="home-procedures-heading"
             className="font-display mt-4 text-4xl font-medium leading-[1.12] tracking-tight text-base-content md:text-5xl"
