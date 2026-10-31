@@ -39,6 +39,11 @@ const homeFaqs = [
     answer:
       "Yes. Patients visit from Williamsburg, James City County, Kingsmill, New Town, Yorktown, Newport News, Toano, Norge, Lightfoot, and Ford's Colony.",
   },
+  {
+    question: "Do you offer Hydrafacial in Williamsburg?",
+    answer:
+      "No. Williamsburg Med Spa does not offer Hydrafacial. For glow, texture, and skin quality, ask about PRP Facial.",
+  },
 ];
 
 const localLinks = [
@@ -116,6 +121,18 @@ export default async function Page() {
               <article key={faq.question} className="py-6 md:py-8">
                 <h3 className="font-display text-2xl font-medium leading-tight text-base-content md:text-3xl">{faq.question}</h3>
                 <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-base-content/85">{faq.answer}</p>
+                {faq.question === "Do you offer Hydrafacial in Williamsburg?" ? (
+                  <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-base-content/85">
+                    <Link href="/procedures/prp-facial" className="link link-primary">
+                      PRP Facial
+                    </Link>{" "}
+                    is the in-office option to discuss. The{" "}
+                    <Link href="/blog/hydrafacial-alternatives-in-williamsburg-va" className="link link-primary">
+                      Hydrafacial alternatives guide
+                    </Link>{" "}
+                    explains the difference.
+                  </p>
+                ) : null}
               </article>
             ))}
           </div>

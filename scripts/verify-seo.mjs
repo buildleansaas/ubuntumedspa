@@ -1103,6 +1103,7 @@ const consolidatedRedirects = [
   ["/blog/medical-ear-piercing-in-williamsburg-va-blohmdahl", "/procedures/blomdahl-ear-piercing"],
   ["/procedures/blomdahl-ear-piercing/near/fords-colony-va", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
   ["/locations/toano-va", "/locations/williamsburg-va"],
+  ["/locations/fords-colony-va", "/locations/williamsburg-va"],
   ["/procedures/botox/near/williamsburg-va", "/procedures/botox"],
   ["/procedures/botox/for/crows-feet", "/procedures/botox"],
   ["/procedures/feminine-intimacy-prp-protocols/for/urinary-incontinence", "/procedures/oh-shot"],
@@ -1154,6 +1155,67 @@ const priorityPaths = [
 ];
 for (const path of priorityPaths) {
   if (!sitemapUrls.some((url) => normalizePath(url) === path)) fail(`priority route missing from sitemap: ${path}`);
+}
+
+const botoxPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/botox");
+if (botoxPage) {
+  const botoxSnippet = readSnippet(botoxPage.html);
+  if (botoxSnippet.h1 !== "Botox in Williamsburg, VA") {
+    fail(`Botox H1 changed: ${JSON.stringify(botoxSnippet.h1)}`);
+  }
+  if (!botoxSnippet.title.startsWith("Botox in Williamsburg, VA")) {
+    fail(`Botox title no longer leads with the owner phrase: ${JSON.stringify(botoxSnippet.title)}`);
+  }
+  if (!/Jenny Coleman, MSN, RN, CPNP, PMHS/.test(botoxSnippet.description)) {
+    fail("Botox meta dropped Jenny's credentials");
+  }
+}
+const eventsPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/events");
+if (eventsPage) {
+  const eventsTitle = readSnippet(eventsPage.html).title;
+  if (eventsTitle === "Botox Parties in Williamsburg, VA | Private Med Spa Events") {
+    fail("events title still competes for Botox Williamsburg");
+  }
+  if (!/href=["']\/procedures\/botox["']/.test(eventsPage.html)) fail("events page does not link to the Botox owner");
+}
+const botoxParty = pages.find((page) => normalizePath(page.canonicalUrl) === "/events/botox-party");
+if (botoxParty && readSnippet(botoxParty.html).title.startsWith("Botox Parties in Williamsburg")) {
+  fail("Botox party title still competes for Botox Williamsburg");
+}
+if (botoxParty && !/href=["']\/procedures\/botox["']/.test(botoxParty.html)) {
+  fail("Botox party page does not link to the Botox owner");
+}
+const newportNewsSnippet = readSnippet(newportNews);
+if (newportNewsSnippet.title !== "Med Spa Newport News | Botox at Our Williamsburg Clinic") {
+  fail(`Newport News title is ${JSON.stringify(newportNewsSnippet.title)}`);
+}
+if (!/There is no Newport News street address/.test(newportNews)) {
+  fail("Newport News page does not say there is no Newport News street address");
+}
+if (!/Med spa Newport News/i.test(newportNewsSnippet.description) || !/Botox/.test(newportNewsSnippet.description)) {
+  fail("Newport News meta does not target med spa and Botox");
+}
+if (!/does not offer Hydrafacial/.test(home)) fail("homepage does not disambiguate Hydrafacial");
+if (!/href=["']\/procedures\/prp-facial["']/.test(home)) fail("homepage Hydrafacial note does not link to PRP Facial");
+if (!/href=["']\/blog\/hydrafacial-alternatives-in-williamsburg-va["']/.test(home)) {
+  fail("homepage Hydrafacial note does not link to the alternatives guide");
+}
+const ohShot = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/oh-shot");
+if (!ohShot) fail("OH-Shot owner missing from sitemap");
+if (ohShot && !readSnippet(ohShot.html).title.includes("OH-Shot")) fail("OH-Shot title dropped the OH-Shot name");
+if (ohShot && !/Cellular Medicine Association/.test(ohShot.html)) fail("OH-Shot page dropped CMA credential copy");
+if (sitemapUrls.some((url) => /\/procedures\/o-shot(?:\/|$)/.test(new URL(url).pathname))) {
+  fail("sitemap still contains a legacy o-shot URL");
+}
+const jennyPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/staff/jenny-coleman");
+if (!jennyPage) fail("Jenny Coleman page missing from sitemap");
+if (jennyPage) {
+  const jennyMain = jennyPage.html.match(/<main\b[\s\S]*?<footer\b/i)?.[0] || jennyPage.html;
+  const jennyWords = getVisibleText(jennyMain).split(/\s+/).filter(Boolean);
+  if (jennyWords.length < 180) fail(`Jenny Coleman page has ${jennyWords.length} visible words; minimum is 180`);
+}
+if (sitemapUrls.some((url) => normalizePath(url) === "/locations/fords-colony-va")) {
+  fail("Ford's Colony location URL is still in the sitemap");
 }
 
 if (warnings.length) {

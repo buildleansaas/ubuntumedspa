@@ -4,6 +4,14 @@ Date: 2026-09-29
 Owner URL: `https://www.williamsburgmedspa.com/procedures/filler`
 Parent sequence: James City County owner page, PR #75 (production D7 gate passed 2026-09-28)
 
+## Oct 2026 baselines from issue #118
+
+Recorded so the Oct 2026 roadmap does not start a second filler PR. Implementation stays on #71 Slice 4. No lip filler URLs.
+
+- `dermal fillers williamsburg`: 94 impressions, average position 11.0, 0 clicks
+- `dermal fillers williamsburg va`: 86 impressions, average position 11.1, 0 clicks
+- `dermal fillers newport news`: 88 impressions, average position 9.4, 0 clicks
+
 ## Release state
 
 Draft prepared for independent exact-SHA review only. This slice must not merge until that review passes all checks and the immediately preceding production gate remains clean. PRP Facial remains fact-gated and is untouched by this slice.

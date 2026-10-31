@@ -1609,7 +1609,7 @@ export const procedures = [
     seo: {
       title: "Botox in Williamsburg, VA | Natural-Looking Botox Injections",
       description:
-        "Botox injections in Williamsburg, VA for forehead lines, frown lines, crow's feet, and other targeted wrinkle-softening treatments planned around natural expression.",
+        "Botox in Williamsburg, VA for forehead lines, frown lines, and crow's feet. Book a consult with Jenny Coleman, MSN, RN, CPNP, PMHS.",
     },
     description:
       "Botox Cosmetic is a botulinum toxin type A injectable used to temporarily soften dynamic expression lines in appropriate adult candidates. At Williamsburg Med Spa, Jenny Coleman, MSN, RN, CPNP, PMHS plans Botox around forehead lines, frown lines, crow's feet, and selected lower-face areas with dosing shaped around your facial movement pattern so results look smooth, balanced, and natural.",
