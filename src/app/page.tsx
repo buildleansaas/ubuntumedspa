@@ -89,7 +89,7 @@ export default async function Page() {
         </div>
       </section>
       <Procedures variant="editorial" featured={<OhShotCallout />} />
-      <ProviderCallout variant="editorial" />
+      <ProviderCallout />
       <Products variant="editorial" />
       <LatestPosts />
       <BotoxPartyCallout />

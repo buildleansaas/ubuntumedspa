@@ -81,7 +81,7 @@ export default function LocationsIndexPage() {
     <div className="max-w-xl md:max-w-6xl mx-auto md:px-8 py-12 md:py-16">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations"]} />
       <StructuredData type="FAQ" faqs={locationFaqs} />
-      <header className="mb-8 md:mb-10 text-center">
+      <header className="mb-10 max-w-3xl text-left md:mb-14">
         <h1 className="text-3xl md:text-5xl font-light">Areas We Serve</h1>
         <p className="text-base md:text-lg text-base-content/70 mt-2 max-w-2xl mx-auto">
           Our primary clinic is in Williamsburg, VA. Many patients visit us from nearby communities across James City
@@ -90,7 +90,7 @@ export default function LocationsIndexPage() {
         </p>
       </header>
 
-      <section className="rounded-2xl border border-base-300 bg-base-200 p-6 md:p-8 mb-8 md:mb-10">
+      <section className="border border-base-300 bg-base-200 p-6 md:p-8 mb-8 md:mb-10">
         <h2 className="text-2xl md:text-3xl font-light">Why patients make the trip</h2>
         <p className="text-base md:text-lg text-base-content/80 mt-3 max-w-4xl">
           Williamsburg Med Spa is set up as a destination clinic, not a rushed stop. Patients often come in from nearby
@@ -123,7 +123,7 @@ export default function LocationsIndexPage() {
         </div>
       </section>
 
-      <section className="rounded-2xl border border-base-300 p-6 md:p-8 mb-10 md:mb-12">
+      <section className="border border-base-300 p-6 md:p-8 mb-10 md:mb-12">
         <h2 className="text-2xl md:text-3xl font-light">If you want us to travel to you</h2>
         <p className="text-base md:text-lg text-base-content/80 mt-3 max-w-4xl">
           Mobile Med Spa is available well beyond the communities listed below. If traveling to Williamsburg is not the
@@ -143,9 +143,9 @@ export default function LocationsIndexPage() {
         </div>
       </section>
 
-      <section className="mb-10 md:mb-12 rounded-2xl border border-base-300 bg-base-100 p-6 md:p-8">
+      <section className="mb-10 md:mb-12 border border-base-300 bg-base-100 p-6 md:p-8">
         <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Local med spa searches</p>
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Local med spa searches</p>
           <h2 className="mt-3 text-2xl md:text-3xl font-light">Start with the area closest to your route</h2>
           <p className="mt-3 text-base md:text-lg text-base-content/80">
             If you searched for a med spa near me, these local pages explain the practical route, visit timing, and treatment starting points before you book.
@@ -156,7 +156,7 @@ export default function LocationsIndexPage() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full border border-base-300 bg-base-100 px-3 py-1.5 text-sm text-base-content/75 transition hover:border-primary hover:text-primary"
+              className="border border-base-300 bg-base-100 px-3 py-1.5 text-sm text-base-content/75 transition hover:border-primary hover:text-primary"
             >
               {link.label}
             </Link>

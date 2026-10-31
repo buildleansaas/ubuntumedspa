@@ -17,7 +17,7 @@ import { cn } from "lib/utils";
 const WIDE_FIELD_TYPES = new Set(["textarea", "checkbox"]);
 
 const inputClassName =
-  "mt-2 w-full rounded-xl border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/35 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10";
+  "mt-2 w-full border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/45 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
 
 const getOptionGroups = (field: EventFieldDefinition): EventOptionGroup[] => {
   if (field.optionGroups?.length) return field.optionGroups;
@@ -123,7 +123,7 @@ export default function EventForm({ event }: { event: EventDefinition }) {
                 </div>
 
                 {lockedOptions.length ? (
-                  <div className="rounded-[1.6rem] border border-primary/15 bg-primary/5 p-5 sm:p-6">
+                  <div className="border border-base-300 bg-base-100 p-5 sm:p-6">
                     <p className="text-[11px] uppercase tracking-[0.24em] text-primary/80">Core offer</p>
                     <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                       <div>
@@ -143,7 +143,7 @@ export default function EventForm({ event }: { event: EventDefinition }) {
                   {optionGroups.map((group) => (
                     <div
                       key={group.label}
-                      className="rounded-[1.5rem] border border-base-300/70 bg-base-200/35 p-4 sm:p-5"
+                      className="border border-base-300 bg-base-200/40 p-4 sm:p-5"
                     >
                       <p className="text-[11px] uppercase tracking-[0.22em] text-base-content/55">{group.label}</p>
                       <div className="mt-4 grid gap-3">
@@ -154,7 +154,7 @@ export default function EventForm({ event }: { event: EventDefinition }) {
                             <label
                               key={option}
                               className={cn(
-                                "flex items-start gap-3 rounded-xl border px-4 py-3 text-sm leading-5 transition-colors",
+                                "flex items-start gap-3 border px-4 py-3 text-sm leading-6 transition-colors",
                                 checked
                                   ? "border-primary bg-base-100 text-base-content"
                                   : "border-base-300 bg-base-100/90 text-base-content/80 hover:border-base-content/15 hover:bg-base-100"

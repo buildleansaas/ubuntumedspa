@@ -37,7 +37,7 @@ export default async function CheckoutSuccessPage({
           : "Stripe has not marked this order as paid yet. Refresh shortly or check your email confirmation."}
       </p>
 
-      <div className="rounded-2xl border border-base-300 bg-base-200 p-6 mb-8">
+      <div className="border border-base-300 bg-base-200 p-6 mb-8">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Order Summary</h2>
           <p className="font-semibold">{formatUsd(order.subtotalCents)}</p>
@@ -58,7 +58,7 @@ export default async function CheckoutSuccessPage({
       </div>
 
       {canSchedule && (
-        <div className="rounded-2xl border border-base-300 bg-base-100 p-6">
+        <div className="border border-base-300 bg-base-100 p-6">
           <h2 className="text-2xl font-semibold mb-3">Schedule Your Appointment</h2>
           <p className="text-base-content/70 mb-6">
             Choose one appointment time for this order. If the order contains multiple procedures, the visit will be
@@ -82,14 +82,14 @@ export default async function CheckoutSuccessPage({
       )}
 
       {order.requiresScheduling && !paidProcedure && (
-        <div className="rounded-2xl border border-base-300 bg-base-200 p-6">
+        <div className="border border-base-300 bg-base-200 p-6">
           <h2 className="text-2xl font-semibold mb-3">Scheduling isn’t configured yet</h2>
           <p className="text-base-content/70">Add `NEXT_PUBLIC_CAL_COM_PROCEDURE_LINK` to enable the on-site calendar embed.</p>
         </div>
       )}
 
       {!order.requiresScheduling && (
-        <div className="rounded-2xl border border-base-300 bg-base-200 p-6">
+        <div className="border border-base-300 bg-base-200 p-6">
           <h2 className="text-2xl font-semibold mb-3">Pickup Details</h2>
           <p className="text-base-content/70">
             Your product order has been recorded for pickup. If you need to coordinate timing, contact the office or add

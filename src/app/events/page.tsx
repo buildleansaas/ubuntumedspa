@@ -21,7 +21,7 @@ export default function EventsPage() {
     <div className="max-w-xl md:max-w-7xl mx-auto md:px-8 py-12 md:py-16">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Events"]} />
 
-      <section className="mx-auto max-w-5xl text-center">
+      <section className="mx-auto max-w-3xl text-left">
         <p className="mb-3 text-sm uppercase tracking-[0.18em] text-base-content/60">Botox Parties in Williamsburg</p>
         <h1 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light leading-tight">
           Host the Botox party your friends already keep asking about.
@@ -47,7 +47,7 @@ export default function EventsPage() {
           ["Botox-led gateway", "Keep the event focused on Botox while giving guests a natural way to ask about PRP and other services."],
           ["Planning call first", "Share your guest count, timing, and location idea before anything is confirmed."],
         ].map(([title, description]) => (
-          <div key={title} className="rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm">
+          <div key={title} className="border border-base-300 bg-base-100 p-5">
             <h2 className="text-lg font-medium text-base-content">{title}</h2>
             <p className="mt-2 text-sm leading-6 text-base-content/70">{description}</p>
           </div>
@@ -56,7 +56,7 @@ export default function EventsPage() {
 
       <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
         {events.map((event) => (
-          <article key={event.slug} className="overflow-hidden rounded-[1.75rem] border border-base-300 bg-base-100 shadow-sm">
+          <article key={event.slug} className="overflow-hidden border border-base-300 bg-base-100">
             <div className="relative aspect-[4/3] bg-base-200">
               <Image
                 src={event.thumbnailImageSrc || event.heroImageSrc}

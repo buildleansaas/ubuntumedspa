@@ -78,12 +78,12 @@ export default function AffiliateRegistrationForm({
 
   const shellClassName = cn(
     "w-full",
-    isEmbedded ? "" : "rounded-2xl border border-base-300 bg-base-100 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10"
+    isEmbedded ? "" : "border border-base-300 bg-base-100 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10"
   );
 
   const embeddedAffiliateToolsShellClassName = cn(
     "w-full",
-    isEmbedded && "rounded-2xl border border-base-300 bg-base-100 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10"
+    isEmbedded && "border border-base-300 bg-base-100 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10"
   );
 
   const handleCopy = async (value: string, label: string) => {
@@ -205,7 +205,7 @@ export default function AffiliateRegistrationForm({
           Update your code below any time, and old links you&apos;ve already shared will keep working.
         </p>
 
-        <div className={cn("mt-6", isEmbedded ? "border-t border-base-300 pt-6" : "rounded-2xl border border-base-300 bg-base-100 p-5 sm:p-6")}>
+        <div className={cn("mt-6", isEmbedded ? "border-t border-base-300 pt-6" : "border border-base-300 bg-base-100 p-5 sm:p-6")}>
           <div className="max-w-2xl">
             <p className="text-xs uppercase tracking-[0.18em] text-base-content/55">Edit referral code</p>
             <h4 className="mt-2 text-xl font-light tracking-tight text-base-content sm:text-2xl">
@@ -259,7 +259,7 @@ export default function AffiliateRegistrationForm({
           </div>
         </div>
 
-        <div className={cn("mt-6", isEmbedded ? "border-t border-base-300 pt-6" : "rounded-2xl border border-base-300 bg-base-100 p-5")}>
+        <div className={cn("mt-6", isEmbedded ? "border-t border-base-300 pt-6" : "border border-base-300 bg-base-100 p-5")}>
           <p className="text-xs uppercase tracking-[0.16em] text-base-content/55">Default referral link</p>
           <p className="mt-2 break-all text-sm leading-6 text-base-content/80">{referralUrl}</p>
         </div>

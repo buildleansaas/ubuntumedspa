@@ -15,7 +15,7 @@ export default function Procedures() {
   return (
     <div className="max-w-7xl mx-auto">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Procedures"]} />
-      <ProceduresView headingTag="h1" />
+      <ProceduresView headingTag="h1" variant="editorial" kicker="Treatments" />
       <CtaFooter />
     </div>
   );

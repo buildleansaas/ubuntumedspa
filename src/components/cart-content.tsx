@@ -40,9 +40,9 @@ type Props = {
   onNavigate?: () => void;
 };
 
-const surfaceCardClass = "relative overflow-hidden rounded-2xl border border-base-300 bg-base-100";
+const surfaceCardClass = "relative overflow-hidden border border-base-300 bg-base-100";
 const surfaceAccentClass = "hidden";
-const eyebrowClass = "text-[11px] uppercase tracking-[0.24em] text-base-content/60";
+const eyebrowClass = "eyebrow";
 const softButtonClass = "rounded-md";
 const homeOShotHref = "/#oh-shot-callout";
 const homeOShotHash = "#oh-shot-callout";
@@ -393,16 +393,16 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
   if (isEmpty) {
     if (!isDrawer) {
       return (
-        <div className="mx-auto max-w-7xl px-6 py-16 text-center sm:py-20 md:px-8">
+        <div className="mx-auto max-w-3xl px-6 py-16 text-left sm:py-20 md:px-8">
           <p className={eyebrowClass}>Cart</p>
-          <h1 className="mt-4 text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light tracking-tight text-base-content">
+          <h1 className="mt-4 text-4xl leading-[1.1] tracking-tight text-base-content sm:text-5xl md:text-6xl">
             Your cart is ready when you are.
           </h1>
-          <p className="mt-4 max-w-3xl mx-auto text-lg lg:text-xl leading-relaxed text-base-content/75">
+          <p className="mt-4 max-w-[62ch] text-lg leading-relaxed text-base-content/80 lg:text-xl">
             Add products or procedures from the site and they&apos;ll appear here as a simple review list before
             checkout.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button asChild onClick={onNavigate} className={softButtonClass}>
               <Link href="/products">Browse Products</Link>
             </Button>
@@ -620,12 +620,12 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-14 sm:py-16 md:px-8">
-      <div className="mb-10 text-center sm:mb-14">
+      <div className="mb-10 max-w-3xl text-left sm:mb-14">
         <p className={eyebrowClass}>Checkout</p>
-        <h1 className="mt-4 text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light tracking-tight text-base-content">
+        <h1 className="mt-4 text-4xl leading-[1.1] tracking-tight text-base-content sm:text-5xl md:text-6xl">
           Review your selections before checkout.
         </h1>
-        <p className="mt-4 max-w-3xl mx-auto text-lg lg:text-xl leading-relaxed text-base-content/75">
+        <p className="mt-4 max-w-[62ch] text-lg leading-relaxed text-base-content/80 lg:text-xl">
           Confirm your products and procedures, then add anything else that fits before paying online and choosing
           your next steps.
         </p>

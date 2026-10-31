@@ -60,7 +60,7 @@ const ConsultationForm: React.FC = () => {
   const wideFieldIds = ["name", "interests", "comments", "referral"] as const;
 
   const inputClassName =
-    "mt-2 w-full rounded-xl border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content shadow-sm transition-colors placeholder:text-base-content/35 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10";
+    "mt-2 w-full border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/45 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState({
@@ -231,7 +231,7 @@ const ConsultationForm: React.FC = () => {
 
   return (
     <form
-      className="mx-auto max-w-3xl rounded-[1.75rem] border border-base-300 bg-base-100 px-6 py-6 shadow-sm sm:px-8 sm:py-8 md:px-10 md:py-10"
+      className="mx-auto max-w-3xl border border-base-300 bg-base-100 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10"
       onChangeCapture={trackFirstInteraction}
       onSubmit={onSubmit}
     >

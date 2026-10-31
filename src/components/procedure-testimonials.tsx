@@ -24,7 +24,7 @@ export default function ProcedureTestimonials({ procedureName, items }: Props) {
     <section className="text-center" aria-labelledby="testimonials-heading" id="testimonials">
       <h3
         id="testimonials-heading"
-        className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light"
+        className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium"
       >
         <span className="font-bold">{procedureName}</span> Testimonials
       </h3>

@@ -17,7 +17,7 @@ export default function Products({
     return (
       <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="home-products" aria-labelledby="home-products-heading">
         <div className="max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Between visits</p>
+          <p className="eyebrow">Between visits</p>
           <Heading
             id="home-products-heading"
             className="font-display mt-4 text-4xl font-medium leading-[1.12] tracking-tight text-base-content md:text-5xl"
