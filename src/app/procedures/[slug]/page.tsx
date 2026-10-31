@@ -108,20 +108,23 @@ type Params = { params: { slug: string } };
 
 export async function generateMetadata({ params }: Params) {
   const procedure = procedures.find((med) => med.slug === params.slug);
-  const { title, description } = procedure?.seo ?? {
-    title: "Procedure",
-    description: "",
-  };
-
-  const withLocation = /williamsburg/i.test(title) ? title : `${title} in Williamsburg, VA`;
+  const seo = procedure?.seo;
+  const headingTitle = seo?.title ?? "Procedure";
+  const description = seo?.description ?? "";
+  const documentTitle =
+    seo && "documentTitle" in seo && typeof seo.documentTitle === "string" && seo.documentTitle
+      ? seo.documentTitle
+      : /williamsburg/i.test(headingTitle)
+        ? headingTitle
+        : `${headingTitle} in Williamsburg, VA`;
   const canonical = `/procedures/${params.slug}`;
 
   return {
-    title: withLocation,
+    title: documentTitle,
     description,
     alternates: { canonical },
     openGraph: {
-      title: withLocation,
+      title: documentTitle,
       description,
       url: canonical,
       siteName: "Williamsburg Med Spa",
@@ -130,13 +133,13 @@ export async function generateMetadata({ params }: Params) {
           url: `${canonical}/opengraph-image`,
           width: 1200,
           height: 630,
-          alt: withLocation,
+          alt: documentTitle,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: withLocation,
+      title: documentTitle,
       description,
       images: [`${canonical}/twitter-image`],
     },

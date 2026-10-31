@@ -647,6 +647,67 @@ const homeFillerChip = homeLinks.some(
 if (!homeFillerChip) {
   fail("homepage drops the descriptive Fillers in Williamsburg link to the filler service owner");
 }
+const homeDescriptionTag = (home.match(/<meta\b[^>]*>/gi) || []).find(
+  (tag) => getTagAttributes(tag).name?.toLowerCase() === "description"
+);
+const homeDescription = homeDescriptionTag ? getTagAttributes(homeDescriptionTag).content || "" : "";
+const expectedHomeDescription =
+  "Jenny Coleman, MSN, RN, CPNP, PMHS, CMA-certified OH-Shot provider, offers Botox, Xeomin, fillers, PRP, and Blomdahl ear piercing in Williamsburg, VA.";
+if (homeDescription !== expectedHomeDescription) {
+  fail(`homepage meta description is ${JSON.stringify(homeDescription)}`);
+}
+if (homeDescription.length > 160) fail(`homepage meta description is ${homeDescription.length} characters`);
+if (!/CMA-certified/.test(homeDescription) || !/OH-Shot/.test(homeDescription) || !/Blomdahl ear piercing/.test(homeDescription)) {
+  fail("homepage meta drops Jenny credentials, OH-Shot, or Blomdahl ear piercing");
+}
+if (/lip filler/i.test(homeDescription)) fail("homepage meta includes lip filler language");
+
+const readSnippet = (html) => {
+  const title = getVisibleText(html.match(/<title(?:\s[^>]*)?>([\s\S]*?)<\/title>/i)?.[1] || "");
+  const descriptionTag = (html.match(/<meta\b[^>]*>/gi) || []).find(
+    (tag) => getTagAttributes(tag).name?.toLowerCase() === "description"
+  );
+  const description = descriptionTag ? getTagAttributes(descriptionTag).content || "" : "";
+  const h1 = getVisibleText(html.match(/<h1(?:\s[^>]*)?>([\s\S]*?)<\/h1>/i)?.[1] || "");
+  return { title, description, h1 };
+};
+
+const snippetExpectations = {
+  "/procedures/blomdahl-ear-piercing": {
+    title: "Ear Piercing Williamsburg VA | Blomdahl Pediatric NP",
+    description: "Sterile, hypoallergenic Blomdahl ear piercing in Williamsburg, VA by a pediatric NP. $45 per ear.",
+    h1: "Ear Piercing in Williamsburg, VA",
+  },
+  "/blog/blomdahl-medical-plastic-vs-titanium-earrings": {
+    title: "Blomdahl Earrings Review: Medical Plastic vs Titanium",
+    description:
+      "Blomdahl earrings review: Medical Plastic vs titanium in Williamsburg. Compare starter jewelry, then book the ear piercing hub.",
+  },
+};
+for (const [path, expectation] of Object.entries(snippetExpectations)) {
+  const page = pages.find((candidate) => normalizePath(candidate.canonicalUrl) === path);
+  if (!page) {
+    fail(`snippet page missing from sitemap: ${path}`);
+    continue;
+  }
+  const snippet = readSnippet(page.html);
+  if (snippet.title !== expectation.title) {
+    fail(`${path} title is ${JSON.stringify(snippet.title)}, expected ${JSON.stringify(expectation.title)}`);
+  }
+  if (snippet.description !== expectation.description) {
+    fail(`${path} meta description is ${JSON.stringify(snippet.description)}`);
+  }
+  if (snippet.description.length > 160) fail(`${path} meta description is ${snippet.description.length} characters`);
+  if (expectation.h1 && snippet.h1 !== expectation.h1) {
+    fail(`${path} H1 is ${JSON.stringify(snippet.h1)}, expected ${JSON.stringify(expectation.h1)}`);
+  }
+}
+const reviewPage = pages.find(
+  (candidate) => normalizePath(candidate.canonicalUrl) === "/blog/blomdahl-medical-plastic-vs-titanium-earrings"
+);
+if (reviewPage && !/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(reviewPage.html)) {
+  fail("Blomdahl earrings review does not link to the ear piercing hub");
+}
 
 const newportNews = pages.find((page) => normalizePath(page.canonicalUrl) === "/locations/newport-news-va")?.html || "";
 for (const owner of [

@@ -18,7 +18,7 @@ import StructuredData from "components/structured-data";
 export const metadata: Metadata = buildPageMetadata({
   title: "Williamsburg Med Spa: Botox, Fillers, PRP & Ear Piercing",
   description:
-    "Nurse practitioner led med spa in Williamsburg, VA for Botox, Xeomin, fillers, PRP, OH-Shot care, sweating treatment and medical ear piercing with Jenny Coleman.",
+    "Jenny Coleman, MSN, RN, CPNP, PMHS, CMA-certified OH-Shot provider, offers Botox, Xeomin, fillers, PRP, and Blomdahl ear piercing in Williamsburg, VA.",
   canonical: "/",
 });
 
