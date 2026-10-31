@@ -18,7 +18,7 @@ export default function WilliamsburgLocationPage() {
     <div className="max-w-xl md:max-w-7xl mx-auto md:px-8 py-12 md:py-16">
 
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations", "Williamsburg, VA"]} />
-      <header className="mb-8 md:mb-12 text-center">
+      <header className="mb-10 max-w-3xl text-left md:mb-14">
         <h1 className="text-3xl md:text-5xl font-light">Medical Spa in Williamsburg, VA</h1>
         <p className="text-base md:text-lg text-base-content/70 mt-2">
           Use this page for clinic hours, parking, directions, and nearby neighborhoods served. Patients visit Jenny
@@ -67,7 +67,7 @@ export default function WilliamsburgLocationPage() {
         </p>
       </section>
 
-      <section className="mb-10 md:mb-14 rounded-2xl border border-base-300 p-5 md:p-6">
+      <section className="mb-10 md:mb-14 border border-base-300 p-6 md:p-8">
         <h2 className="text-2xl md:text-3xl font-light mb-2">If You Searched “Med Spa Near Me” in Williamsburg</h2>
         <p className="text-base md:text-lg text-base-content/80 mb-4">
           Start with the specific treatment question, not a generic spa menu. Jenny Coleman sees patients for

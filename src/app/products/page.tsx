@@ -15,7 +15,7 @@ export default function Products() {
   return (
     <div className="max-w-7xl mx-auto">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Products"]} />
-      <ProductsView headingTag="h1" />
+      <ProductsView headingTag="h1" variant="editorial" />
       <CtaFooter />
     </div>
   );

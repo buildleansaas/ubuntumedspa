@@ -12,7 +12,6 @@ import CtaFooter from "components/cta-footer";
 import CatalogPurchasePanel from "components/catalog-purchase-panel";
 import BlogPostCollection from "components/blog-post-collection";
 import StructuredData from "components/structured-data";
-import { twMerge } from "tailwind-merge";
 import CtaButtons from "components/cta-buttons";
 import TrackedPhoneLink from "components/tracked-phone-link";
 import { notFound } from "next/navigation";
@@ -200,7 +199,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <section className="grid items-center gap-10 border-b border-base-300 pb-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)]">
           <div className="text-left">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-primary">Williamsburg med spa procedure</p>
+            <p className="mb-4 text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Williamsburg med spa procedure</p>
             <h1 className="max-w-4xl text-4xl font-light leading-tight tracking-tight text-base-content md:text-6xl">
               {pageHeading}
             </h1>
@@ -222,7 +221,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   <Link
                     key={href}
                     href={href}
-                    className="rounded-full border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
+                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
                   >
                     {label}
                   </Link>
@@ -241,7 +240,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   <Link
                     key={href}
                     href={href}
-                    className="rounded-full border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
+                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
                   >
                     {label}
                   </Link>
@@ -263,7 +262,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   <Link
                     key={href}
                     href={href}
-                    className="rounded-full border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
+                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
                   >
                     {label}
                   </Link>
@@ -319,7 +318,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           </div>
 
           {heroImagePath && (
-            <div className="relative overflow-hidden rounded-[2rem] border border-base-300 bg-base-200 shadow-sm">
+            <div className="relative overflow-hidden border border-base-300 bg-base-200">
               <div className="relative aspect-[4/3]">
                 <Image
                   src={heroImagePath}
@@ -379,7 +378,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         {procedure.slug === "prp-hair-restoration" && (
           <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="prp-hair-fit">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Choose the right next step</p>
+            <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Choose the right next step</p>
             <h2 id="prp-hair-fit" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
               Is PRP a reasonable fit for your hair-loss pattern?
             </h2>
@@ -435,7 +434,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         {procedure.slug === "filler" && (
           <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="filler-fit">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Choose the right next step</p>
+            <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Choose the right next step</p>
             <h2 id="filler-fit" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
               Is dermal filler a reasonable fit for the change you want?
             </h2>
@@ -489,8 +488,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           </section>
         )}
 
-        <section className="mx-auto max-w-5xl pt-10 text-center" id="pricing">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+        <section className="mx-auto max-w-3xl py-16 text-left md:py-20" id="pricing">
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
             {catalogItem ? "Pricing & booking" : "Treatment planning"}
           </p>
           {procedure.slug === "blomdahl-ear-piercing" ? (
@@ -504,7 +503,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   ["$80", "Both ears", "A simple pair price for families booking both ears in one visit."],
                   ["Nurse-led", "Placement + aftercare", "Jenny Coleman, MSN, RN, CPNP, PMHS reviews fit and care."],
                 ].map(([price, label, copy]) => (
-                  <div key={label} className="rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm">
+                  <div key={label} className="border border-base-300 bg-base-100 p-5">
                     <p className="text-3xl font-semibold tracking-tight text-base-content">{price}</p>
                     <h3 className="mt-2 text-base font-semibold text-base-content">{label}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-base-content/70">{copy}</p>
@@ -587,7 +586,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         {procedure.slug === "blomdahl-ear-piercing" && (
           <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="infant-ear-piercing">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Babies & young kids</p>
+            <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Babies & young kids</p>
             <h2 id="infant-ear-piercing" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
               Infant &amp; baby ear piercing with a pediatric nurse practitioner
             </h2>
@@ -617,8 +616,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         {procedure.slug === "blomdahl-ear-piercing" && (
           <section className="mx-auto mt-12 max-w-4xl text-left">
-            <div className="rounded-3xl border border-base-300 bg-base-100 p-6 shadow-sm">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Choose your ear piercing path</p>
+            <div className="border border-base-300 bg-base-100 p-6">
+              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Choose your ear piercing path</p>
               <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">
                 Start with the question your family is actually asking
               </h2>
@@ -637,7 +636,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   <Link
                     key={href}
                     href={href}
-                    className="group rounded-2xl border border-base-300 bg-base-100 px-4 py-4 transition hover:border-primary hover:shadow-sm"
+                    className="group border border-base-300 bg-base-100 px-4 py-4 transition hover:border-primary hover:shadow-sm"
                   >
                     <span className="block text-base font-semibold text-base-content group-hover:text-primary">{label}</span>
                     <span className="mt-1 block text-sm leading-relaxed text-base-content/65">{copy}</span>
@@ -650,8 +649,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         {procedure.slug === "blomdahl-ear-piercing" && (
           <section className="mx-auto mt-8 max-w-4xl text-left">
-            <div className="rounded-3xl border border-base-300 bg-base-100 p-6 shadow-sm">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Nearby pages</p>
+            <div className="border border-base-300 bg-base-100 p-6">
+              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Nearby pages</p>
               <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">Plan around your route</h2>
               <p className="mt-3 text-base leading-relaxed text-base-content/70">
                 Start with the local page closest to your visit for directions, expectations, and family planning notes.
@@ -665,7 +664,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   <Link
                     key={href}
                     href={href}
-                    className="group flex items-center justify-between rounded-2xl border border-base-300 bg-base-100 px-4 py-3 text-sm font-medium text-base-content transition hover:border-primary hover:text-primary"
+                    className="group flex items-center justify-between border border-base-300 bg-base-100 px-4 py-3 text-sm font-medium text-base-content transition hover:border-primary hover:text-primary"
                   >
                     <span>{label}</span>
                     <span aria-hidden="true" className="text-base-content/35 transition group-hover:translate-x-0.5 group-hover:text-primary">
@@ -680,8 +679,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         <div className="text-center">
 
-        <div className="my-32 text-center max-w-5xl mx-auto" id="benefits">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
+        <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24" id="benefits">
+          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
             {procedure.slug === "prp-breast-lift" ? (
               "What this treatment approach involves"
             ) : procedure.slug === "prp-hair-restoration" ? (
@@ -693,7 +692,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           <p className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.benefitsHeadline)}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {procedure.benefits.map(({ emoji, benefit, description }) => (
-              <Card key={benefit} className="text-left bg-primary text-primary-content border-4 border-primary">
+              <Card key={benefit} className="text-left border border-base-300 bg-base-100 text-base-content">
                 <CardHeader>
                   <CardTitle>
                     {emoji} {benefit}
@@ -710,12 +709,12 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
         </div>
 
         {hasAilments && (
-          <div className="my-32 text-center max-w-7xl mx-auto" id="applications">
-            <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
+          <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24" id="applications">
+            <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
               How can{" "}
               {[
                 "oh-shot",
-                "p-shot",
+                "pe-shot",
                 "prp-face-lift",
                 "prp-facial",
                 "prp-breast-lift",
@@ -730,16 +729,11 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   return (
                     <Card
                       key={title}
-                      className={twMerge(
-                        "text-left border-4",
-                        tag === "common" && "bg-primary border-primary text-primary-content",
-                        tag === "uncommon" && "bg-purple-500 border-purple-400 text-white",
-                        tag === "experimental" && "bg-rose-500 border-rose-400 text-white"
-                      )}
+                      className="border border-base-300 bg-base-100 text-left text-base-content"
                     >
                       <CardHeader>
                         <CardTitle className="flex items-center justify-between">
-                          {title} <Badge>{ailmentsTagLabels[tag] ?? "Treatment Area"}</Badge>
+                          {title} <Badge variant="outline">{ailmentsTagLabels[tag] ?? "Treatment Area"}</Badge>
                         </CardTitle>
                       </CardHeader>
                       <CardContent>{humanizeMedicalCopy(description)}</CardContent>
@@ -751,8 +745,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           </div>
         )}
 
-        <div className="my-32 text-center max-w-5xl mx-auto" id="faqs">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
+        <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24 max-w-3xl" id="faqs">
+          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
             Frequently Asked Questions about <span className="font-bold">{procedure.name}</span>
           </h2>
           <p className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.faqHeadline)}</p>
@@ -768,7 +762,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
         </div>
 
         {Boolean(articles.length) && (
-          <section className="my-32 scroll-mt-28" id="posts" aria-labelledby="procedure-posts-heading">
+          <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="posts" aria-labelledby="procedure-posts-heading">
             <div className="mx-auto max-w-6xl px-6 md:px-0">
               <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div className="max-w-3xl">
@@ -790,7 +784,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               <p className="mt-5 max-w-4xl text-base leading-relaxed text-base-content/70 md:text-lg">
                 {humanizeMedicalCopy(procedure.blogHeadline)}
               </p>
-              <BlogPostCollection articles={articles} />
+              <BlogPostCollection articles={articles} tone="editorial" />
             </div>
           </section>
         )}

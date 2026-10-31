@@ -18,7 +18,7 @@ interface TagProps {
 }
 
 const tagBaseClassName =
-  "inline-flex items-center rounded-full border border-base-300 bg-base-100 px-3 py-1 text-xs font-medium tracking-[0.02em] text-base-content/75 transition-colors";
+  "inline-flex items-center border border-base-300 bg-base-100 px-3 py-1 text-xs font-medium tracking-[0.04em] text-base-content/80 transition-colors";
 
 const CategoryTag = ({ tag, className, size = "sm", href }: TagProps) => {
   const sizeClassName = size === "lg" ? "px-4 py-2 text-sm" : "";

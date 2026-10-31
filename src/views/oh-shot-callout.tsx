@@ -7,66 +7,63 @@ import InstantCheckoutButton from "components/instant-checkout-button";
 import { Button } from "components/ui/button";
 import { getCatalogConfigBySlug } from "config/commerce-catalog";
 
-export default function OShotCallout() {
-  const oShot = getCatalogConfigBySlug("oh-shot");
-  if (!oShot) return null;
+export default function OhShotCallout() {
+  const ohShot = getCatalogConfigBySlug("oh-shot");
+  if (!ohShot) return null;
 
   return (
     <section
       id="oh-shot-callout"
-      className="mb-14 scroll-mt-24 py-6 md:mb-20 md:py-8 lg:py-10"
+      className="scroll-mt-28 border border-base-300"
       aria-labelledby="oh-shot-callout-heading"
     >
       <LegacyOhShotHash />
-      <div className="mx-auto max-w-5xl">
-        <article className="group relative isolate flex flex-col gap-8 md:flex-row md:items-center md:justify-between lg:gap-12">
-          <div className="max-w-2xl flex-1">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">
-              Featured Women&apos;s Sexual Wellness Treatment
-            </p>
+      <article className="grid gap-8 p-6 md:p-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(14rem,18rem)] lg:items-center lg:gap-12 lg:p-10">
+        <div className="max-w-2xl">
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
+            Featured Women&apos;s Sexual Wellness Treatment
+          </p>
 
-            <h2
-              id="oh-shot-callout-heading"
-              className="mt-3 max-w-2xl text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content text-balance"
-            >
-              <span className="font-semibold">OH-Shot</span> for comfort, sensation, and intimate confidence.
-            </h2>
+          <h2
+            id="oh-shot-callout-heading"
+            className="font-display mt-3 max-w-xl text-3xl font-medium leading-[1.15] tracking-tight text-base-content text-balance md:text-4xl"
+          >
+            OH-Shot for comfort, sensation, and intimate confidence.
+          </h2>
 
-            <p className="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-base-content/80">
-              A discreet in-office PRP treatment for women who want greater comfort, improved sensitivity, and more
-              confidence with intimacy. If dryness, reduced sensation, mild stress urinary leakage, or
-              intimacy-related discomfort have become part of the conversation, the OH-Shot may be a supportive option
-              to discuss.
-            </p>
+          <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-base-content/85 md:text-lg">
+            A discreet in-office PRP treatment for women who want greater comfort, improved sensitivity, and more
+            confidence with intimacy. If dryness, reduced sensation, mild stress urinary leakage, or
+            intimacy-related discomfort have become part of the conversation, the OH-Shot may be a supportive option
+            to discuss.
+          </p>
 
-            <CmaCredentialStrip className="mt-5 max-w-xl" />
+          <CmaCredentialStrip className="mt-5 max-w-xl" />
 
-            <p className="mt-5 text-sm md:text-base leading-relaxed text-base-content/70">
-              {oShot.displayPrice} treatment. Pay online now, then choose your appointment time after checkout.
-            </p>
+          <p className="mt-5 text-sm leading-relaxed text-base-content/80 md:text-base">
+            {ohShot.displayPrice} treatment. Pay online now, then choose your appointment time after checkout.
+          </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              <InstantCheckoutButton slug={oShot.slug} kind={oShot.kind} quantity={oShot.minQuantity}>
-                Book Now
-              </InstantCheckoutButton>
-              <Button asChild variant="secondary">
-                <Link href="/procedures/oh-shot">Explore OH-Shot Care</Link>
-              </Button>
-            </div>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <InstantCheckoutButton className="w-full sm:w-auto" slug={ohShot.slug} kind={ohShot.kind} quantity={ohShot.minQuantity}>
+              Book Now
+            </InstantCheckoutButton>
+            <Button asChild variant="secondary" className="w-full sm:w-auto">
+              <Link href="/procedures/oh-shot">Explore OH-Shot Care</Link>
+            </Button>
           </div>
+        </div>
 
-          <div className="relative aspect-square w-full max-w-[18rem] overflow-hidden rounded-2xl bg-base-200 sm:max-w-[20rem] md:w-[17rem] lg:w-[19rem] md:shrink-0">
-            <Image
-              src={oShot.imagePath || "/procedure/oh-shot/womens-intimate-wellness-lifestyle.webp"}
-              alt="Woman enjoying a confident, worry-free lifestyle after intimate wellness care planning"
-              fill
-              sizes="(max-width: 640px) 70vw, (max-width: 1024px) 272px, 304px"
-              className="object-cover transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
-          </div>
-        </article>
-      </div>
+        <div className="relative aspect-[4/5] w-full overflow-hidden border border-base-300 bg-base-200 lg:max-w-[18rem] lg:justify-self-end">
+          <Image
+            src={ohShot.imagePath || "/procedure/oh-shot/womens-intimate-wellness-lifestyle.webp"}
+            alt="Woman enjoying a confident, worry-free lifestyle after intimate wellness care planning"
+            fill
+            sizes="(max-width: 1024px) 90vw, 288px"
+            className="object-cover"
+          />
+        </div>
+      </article>
     </section>
   );
 }

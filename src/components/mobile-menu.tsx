@@ -28,7 +28,7 @@ export default function MobileMenu({ items }: MobileMenuProps) {
         <button
           type="button"
           aria-label="Open navigation menu"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-base-300 bg-base-100 text-base-content shadow-sm transition-all duration-150 ease-out hover:border-primary/35 hover:bg-base-200 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2 motion-reduce:transition-none"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-base-300 bg-base-100 text-base-content transition-colors duration-150 ease-out hover:border-primary/40 hover:bg-base-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 motion-reduce:transition-none"
         >
           <Menu className="h-[1.05rem] w-[1.05rem]" />
         </button>
@@ -38,7 +38,7 @@ export default function MobileMenu({ items }: MobileMenuProps) {
         <div className="border-b border-base-300 bg-base-100 px-5 py-5">
           <SheetHeader className="pr-12">
             <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Menu</p>
-            <SheetTitle className="text-xl font-semibold tracking-tight text-base-content">Williamsburg Med Spa</SheetTitle>
+            <SheetTitle className="font-display text-3xl font-medium leading-none tracking-tight text-base-content">Williamsburg Med Spa</SheetTitle>
           </SheetHeader>
         </div>
 
@@ -48,7 +48,7 @@ export default function MobileMenu({ items }: MobileMenuProps) {
               key={item.href}
               href={item.href}
               onClick={() => setIsMenuOpen(false)}
-              className="rounded-full px-4 py-3 text-lg tracking-tight text-base-content transition-colors hover:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2"
+              className="border-b border-base-300 px-4 py-3.5 text-lg text-base-content transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
             >
               {item.label}
             </Link>

@@ -889,10 +889,14 @@ const consolidatedRedirects = [
   ["/procedures/oh-shot/for/urinary-incontinence", "/procedures/oh-shot"],
   ["/blog/o-shot-for-vaginal-dryness-what-to-know", "/blog/oh-shot-for-vaginal-dryness-what-to-know"],
   ["/blog/o-shot-for-urinary-incontinence-williamsburg-va", "/blog/oh-shot-for-urinary-incontinence-williamsburg-va"],
+  ["/procedures/p-shot", "/procedures/pe-shot"],
+  ["/procedures/p-shot/for/erectile-dysfunction", "/procedures/pe-shot"],
+  ["/procedures/male-intimacy-prp-protocols", "/procedures/pe-shot"],
 ];
 const assetRedirects = [
   ["/procedure/o-shot/womens-intimate-wellness-lifestyle.webp", "/procedure/oh-shot/womens-intimate-wellness-lifestyle.webp"],
   ["/blog/o-shot/urinary-incontinence-confidence.png", "/blog/oh-shot/urinary-incontinence-confidence.png"],
+  ["/procedure/pshot-consultation-confidence.webp", "/procedure/pe-shot-consultation-confidence.webp"],
 ];
 for (const [source, destination] of [...consolidatedRedirects, ...assetRedirects]) {
   const response = await fetchLocal(source, { redirect: "manual" });

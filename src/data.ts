@@ -41,7 +41,7 @@ export const FORM_INPUTS = [
     type: "checkbox",
     options: [
       "OH-Shot",
-      "P-Shot",
+      "Pe-Shot",
       "PRP Breast Lift",
       "Hair Restoration",
       "PRP Facial",
@@ -350,25 +350,25 @@ export const procedures = [
     ],
   },
   {
-    name: "P-Shot",
-    slug: "p-shot",
+    name: "Pe-Shot",
+    slug: "pe-shot",
     seo: {
-      title: "P-Shot in Williamsburg, VA",
+      title: "Pe-Shot in Williamsburg, VA",
       description:
-        "P-Shot treatment in Williamsburg, VA using platelet-rich plasma (PRP) to support erections, sensitivity, blood flow, and penile tissue health at Williamsburg Med Spa.",
+        "Pe-Shot treatment in Williamsburg, VA using platelet-rich plasma (PRP) to support erections, sensitivity, blood flow, and penile tissue health at Williamsburg Med Spa.",
     },
     description:
-      "The P-Shot (Priapus Shot) is a platelet-rich plasma (PRP) procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness. Patients usually ask about it for erection quality, sensitivity, blood flow concerns, or post-procedure recovery goals. It should be evaluated as an adjunct option after a medical review, not as a guaranteed fix for every cause of erectile or sexual dysfunction.",
+      "The Pe-Shot is a platelet-rich plasma (PRP) procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness. Patients usually ask about it for erection quality, sensitivity, blood flow concerns, or post-procedure recovery goals. It should be evaluated as an adjunct option after a medical review, not as a guaranteed fix for every cause of erectile or sexual dysfunction.",
     headline: "Regenerative support for erections, sensitivity, and penile tissue health.",
     subline:
-      "The P-Shot uses platelet-rich plasma prepared from your own blood and is considered for select patients who want a non-surgical option as part of a broader sexual health plan.",
-    image: "/procedure/pshot-consultation-confidence.webp",
+      "The Pe-Shot uses platelet-rich plasma prepared from your own blood and is considered for select patients who want a non-surgical option as part of a broader sexual health plan.",
+    image: "/procedure/pe-shot-consultation-confidence.webp",
     price: "$1,900",
     // programmatic SEO copy
     blogHeadline:
-      "Review our P-Shot articles to learn how PRP-based care fits into conversations about erection quality, penile tissue health, recovery expectations, and treatment planning.",
+      "Review our Pe-Shot articles to learn how PRP-based care fits into conversations about erection quality, penile tissue health, recovery expectations, and treatment planning.",
     benefitsHeadline:
-      "The P-Shot is typically discussed as a regenerative adjunct for patients seeking support with blood flow, sensation, erection quality, and penile tissue recovery.",
+      "The Pe-Shot is typically discussed as a regenerative adjunct for patients seeking support with blood flow, sensation, erection quality, and penile tissue recovery.",
     benefits: [
       {
         emoji: "⚡",
@@ -380,13 +380,13 @@ export const procedures = [
         emoji: "💖",
         benefit: "Sensitivity Support",
         description:
-          "Some patients discuss the P-Shot when reduced sensation or tissue responsiveness is part of the overall clinical picture.",
+          "Some patients discuss the Pe-Shot when reduced sensation or tissue responsiveness is part of the overall clinical picture.",
       },
       {
         emoji: "🔄",
         benefit: "Non-Surgical Option",
         description:
-          "Because it uses your own platelet-rich plasma, the P-Shot is often reviewed by patients who want to discuss a procedural option before surgery.",
+          "Because it uses your own platelet-rich plasma, the Pe-Shot is often reviewed by patients who want to discuss a procedural option before surgery.",
       },
       {
         emoji: "🔥",
@@ -396,150 +396,150 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "The P-Shot may be considered for select male sexual health concerns when blood flow, tissue quality, sensitivity, or recovery goals are part of the evaluation. Whether it makes sense depends on diagnosis, prior treatment response, and whether better-established options should come first.",
+      "The Pe-Shot may be considered for select male sexual health concerns when blood flow, tissue quality, sensitivity, or recovery goals are part of the evaluation. Whether it makes sense depends on diagnosis, prior treatment response, and whether better-established options should come first.",
     ailments: [
       {
         title: "Erectile Dysfunction",
         description:
-          "When erection quality is affected by blood flow or tissue response concerns, the P-Shot may be discussed as an adjunct treatment after medical evaluation.",
-        blog_post_title: "P-Shot for Erectile Dysfunction: What to Know",
-        blog_post_slug: "p-shot-for-erectile-dysfunction-what-to-know",
+          "When erection quality is affected by blood flow or tissue response concerns, the Pe-Shot may be discussed as an adjunct treatment after medical evaluation.",
+        blog_post_title: "Pe-Shot for Erectile Dysfunction: What to Know",
+        blog_post_slug: "pe-shot-for-erectile-dysfunction-what-to-know",
         slug: "erectile-dysfunction",
         tag: "common",
       },
       {
         title: "Peyronie's Disease",
         description:
-          "For patients with Peyronie's disease, the P-Shot may come up as a supportive therapy discussion, but deformity and pain often require broader medical management.",
-        blog_post_title: "P-Shot and Peyronie's Disease: Treatment Overview",
-        blog_post_slug: "p-shot-and-peyronies-disease-treatment-overview",
+          "For patients with Peyronie's disease, the Pe-Shot may come up as a supportive therapy discussion, but deformity and pain often require broader medical management.",
+        blog_post_title: "Pe-Shot and Peyronie's Disease: Treatment Overview",
+        blog_post_slug: "pe-shot-and-peyronies-disease-treatment-overview",
         slug: "peyronies-disease",
         tag: "uncommon",
       },
       {
         title: "Reduced Sexual Performance",
         description:
-          "Patients sometimes ask about the P-Shot when reduced performance appears tied to erection quality, sensitivity, or confidence after other causes are reviewed.",
-        blog_post_title: "P-Shot for Reduced Sexual Performance",
-        blog_post_slug: "p-shot-for-reduced-sexual-performance",
+          "Patients sometimes ask about the Pe-Shot when reduced performance appears tied to erection quality, sensitivity, or confidence after other causes are reviewed.",
+        blog_post_title: "Pe-Shot for Reduced Sexual Performance",
+        blog_post_slug: "pe-shot-for-reduced-sexual-performance",
         slug: "reduced-sexual-performance",
         tag: "common",
       },
       {
         title: "Reduced Sensation",
         description:
-          "The P-Shot may be reviewed when decreased sensation or localized tissue response is part of the patient’s complaint.",
-        blog_post_title: "P-Shot for Reduced Sensation: What to Discuss",
-        blog_post_slug: "p-shot-for-reduced-sensation-what-to-discuss",
+          "The Pe-Shot may be reviewed when decreased sensation or localized tissue response is part of the patient’s complaint.",
+        blog_post_title: "Pe-Shot for Reduced Sensation: What to Discuss",
+        blog_post_slug: "pe-shot-for-reduced-sensation-what-to-discuss",
         slug: "reduced-sensation",
         tag: "uncommon",
       },
       {
         title: "Post-Prostatectomy Issues",
         description:
-          "After prostate treatment, the P-Shot may be one topic in a larger recovery discussion that can also include medication, devices, and rehabilitation strategies.",
-        blog_post_title: "P-Shot for Post-Prostatectomy Recovery Questions",
-        blog_post_slug: "p-shot-for-post-prostatectomy-recovery-questions",
+          "After prostate treatment, the Pe-Shot may be one topic in a larger recovery discussion that can also include medication, devices, and rehabilitation strategies.",
+        blog_post_title: "Pe-Shot for Post-Prostatectomy Recovery Questions",
+        blog_post_slug: "pe-shot-for-post-prostatectomy-recovery-questions",
         slug: "post-prostatectomy-issues",
         tag: "experimental",
       },
       {
         title: "Premature Ejaculation",
         description:
-          "Premature ejaculation often has neurologic and behavioral drivers, but the P-Shot may still be discussed in complex sexual health treatment planning.",
-        blog_post_title: "P-Shot and Premature Ejaculation: Treatment Overview",
-        blog_post_slug: "p-shot-and-premature-ejaculation-treatment-overview",
+          "Premature ejaculation often has neurologic and behavioral drivers, but the Pe-Shot may still be discussed in complex sexual health treatment planning.",
+        blog_post_title: "Pe-Shot and Premature Ejaculation: Treatment Overview",
+        blog_post_slug: "pe-shot-and-premature-ejaculation-treatment-overview",
         slug: "premature-ejaculation",
         tag: "common",
       },
       {
         title: "Chronic Penile Pain",
         description:
-          "Persistent penile pain needs a careful diagnosis, but the P-Shot may be reviewed when tissue healing support is relevant to the broader plan.",
-        blog_post_title: "P-Shot for Chronic Penile Pain: What to Discuss",
-        blog_post_slug: "p-shot-for-chronic-penile-pain-what-to-discuss",
+          "Persistent penile pain needs a careful diagnosis, but the Pe-Shot may be reviewed when tissue healing support is relevant to the broader plan.",
+        blog_post_title: "Pe-Shot for Chronic Penile Pain: What to Discuss",
+        blog_post_slug: "pe-shot-for-chronic-penile-pain-what-to-discuss",
         slug: "chronic-penile-pain",
         tag: "uncommon",
       },
       {
         title: "Enhanced Sexual Capabilities",
         description:
-          "Some patients pursue the P-Shot to discuss sensitivity, stamina, or erectile response even when the goal is optimization rather than diagnosis-driven treatment.",
-        blog_post_title: "P-Shot for Sexual Performance Optimization",
-        blog_post_slug: "p-shot-for-sexual-performance-optimization",
+          "Some patients pursue the Pe-Shot to discuss sensitivity, stamina, or erectile response even when the goal is optimization rather than diagnosis-driven treatment.",
+        blog_post_title: "Pe-Shot for Sexual Performance Optimization",
+        blog_post_slug: "pe-shot-for-sexual-performance-optimization",
         slug: "enhanced-sexual-capabilities",
         tag: "common",
       },
       {
         title: "Improved Penile Aesthetics",
         description:
-          "Aesthetic goals should be discussed carefully, and the P-Shot may be one procedural option reviewed for patients with realistic expectations.",
-        blog_post_title: "P-Shot and Penile Aesthetic Goals",
-        blog_post_slug: "p-shot-and-penile-aesthetic-goals",
+          "Aesthetic goals should be discussed carefully, and the Pe-Shot may be one procedural option reviewed for patients with realistic expectations.",
+        blog_post_title: "Pe-Shot and Penile Aesthetic Goals",
+        blog_post_slug: "pe-shot-and-penile-aesthetic-goals",
         slug: "improved-penile-aesthetics",
         tag: "uncommon",
       },
       {
         title: "Penile Tissue Rejuvenation",
         description:
-          "The P-Shot is often framed as a regenerative option for patients concerned about tissue quality, recovery, or age-related changes.",
-        blog_post_title: "P-Shot for Penile Tissue Rejuvenation",
-        blog_post_slug: "p-shot-for-penile-tissue-rejuvenation",
+          "The Pe-Shot is often framed as a regenerative option for patients concerned about tissue quality, recovery, or age-related changes.",
+        blog_post_title: "Pe-Shot for Penile Tissue Rejuvenation",
+        blog_post_slug: "pe-shot-for-penile-tissue-rejuvenation",
         slug: "penile-tissue-rejuvenation",
         tag: "uncommon",
       },
       {
         title: "Improved Orgasmic Function",
         description:
-          "When reduced sensation or climax quality is part of the complaint, the P-Shot may be discussed as one possible adjunct treatment.",
-        blog_post_title: "P-Shot for Orgasmic Function Support",
-        blog_post_slug: "p-shot-for-orgasmic-function-support",
+          "When reduced sensation or climax quality is part of the complaint, the Pe-Shot may be discussed as one possible adjunct treatment.",
+        blog_post_title: "Pe-Shot for Orgasmic Function Support",
+        blog_post_slug: "pe-shot-for-orgasmic-function-support",
         slug: "improved-orgasmic-function",
         tag: "common",
       },
       {
         title: "Testosterone Imbalances",
         description:
-          "The P-Shot does not replace endocrine evaluation, but some patients with hormonal symptoms ask how it might fit into a broader sexual health workup.",
-        blog_post_title: "P-Shot and Testosterone Imbalance Questions",
-        blog_post_slug: "p-shot-and-testosterone-imbalance-questions",
+          "The Pe-Shot does not replace endocrine evaluation, but some patients with hormonal symptoms ask how it might fit into a broader sexual health workup.",
+        blog_post_title: "Pe-Shot and Testosterone Imbalance Questions",
+        blog_post_slug: "pe-shot-and-testosterone-imbalance-questions",
         slug: "testosterone-imbalances",
         tag: "experimental",
       },
       {
         title: "Vasculogenic Sexual Dysfunction",
         description:
-          "The P-Shot is commonly discussed when vascular factors may contribute to erectile difficulty, though diagnosis and cardiovascular risk review remain important.",
-        blog_post_title: "P-Shot for Vasculogenic Sexual Dysfunction",
-        blog_post_slug: "p-shot-for-vasculogenic-sexual-dysfunction",
+          "The Pe-Shot is commonly discussed when vascular factors may contribute to erectile difficulty, though diagnosis and cardiovascular risk review remain important.",
+        blog_post_title: "Pe-Shot for Vasculogenic Sexual Dysfunction",
+        blog_post_slug: "pe-shot-for-vasculogenic-sexual-dysfunction",
         slug: "vasculogenic-sexual-dysfunction",
         tag: "experimental",
       },
       {
         title: "Improved Blood Flow",
         description:
-          "Patients sometimes pursue the P-Shot to discuss whether PRP-based care can support localized circulation and erectile response.",
-        blog_post_title: "P-Shot for Blood Flow Support",
-        blog_post_slug: "p-shot-for-blood-flow-support",
+          "Patients sometimes pursue the Pe-Shot to discuss whether PRP-based care can support localized circulation and erectile response.",
+        blog_post_title: "Pe-Shot for Blood Flow Support",
+        blog_post_slug: "pe-shot-for-blood-flow-support",
         slug: "improved-blood-flow",
         tag: "common",
       },
     ],
     faqHeadline:
-      "Most P-Shot questions focus on candidacy, comfort, expected timing, and how the procedure fits with medication, devices, or other medical therapies.",
+      "Most Pe-Shot questions focus on candidacy, comfort, expected timing, and how the procedure fits with medication, devices, or other medical therapies.",
     faqs: [
       {
-        question: "What is the P-Shot?",
+        question: "What is the Pe-Shot?",
         answer:
-          "The P-Shot (Priapus Shot) is a platelet-rich plasma procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness.",
+          "The Pe-Shot is a platelet-rich plasma procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness.",
       },
       {
-        question: "Who may be a candidate for the P-Shot?",
+        question: "Who may be a candidate for the Pe-Shot?",
         answer:
           "Candidates are usually patients who have already reviewed standard treatment options and want to discuss whether a regenerative, non-surgical procedure fits their diagnosis, symptoms, and goals.",
       },
       {
-        question: "Is the P-Shot painful?",
+        question: "Is the Pe-Shot painful?",
         answer:
           "Most visits use topical numbing or local anesthesia. Patients often describe treatment as manageable, but comfort varies by person and by treatment plan.",
       },

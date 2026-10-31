@@ -121,6 +121,7 @@ export const resolveCart = async (rawItems: CartItemInput[]): Promise<ResolvedCa
   const items: ResolvedCartItem[] = [];
   const legacyStripeRecordSlugs: Record<string, string> = {
     "oh-shot": "o-shot",
+    "pe-shot": "p-shot",
   };
 
   for (const item of deduped.values()) {

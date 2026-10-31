@@ -127,7 +127,7 @@ export default async function AilmentPage({ params }: Params) {
             </ol>
           </nav>
           <div className="max-w-6xl mx-auto mb-8">
-            <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-base-300 bg-base-200">
+            <div className="relative aspect-[16/9] overflow-hidden border border-base-300 bg-base-200">
               <Image
                 src={heroImage}
                 alt={heroImageAlt}
@@ -154,9 +154,9 @@ export default async function AilmentPage({ params }: Params) {
           </p>
         </section>
 
-        <section className="my-32 max-w-5xl mx-auto scroll-mt-24" id="pain">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">{metadata.painHeading}</h2>
-          <div className="rounded-2xl border border-base-300 bg-base-200 p-6 md:p-10 space-y-4">
+        <section className="scroll-mt-28 max-w-3xl border-t border-base-300 py-16 md:py-24" id="pain">
+          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">{metadata.painHeading}</h2>
+          <div className="border border-base-300 bg-base-200 p-6 md:p-10 space-y-4">
             {metadata.painParagraphs.map((paragraph) => (
               <p key={paragraph} className="text-base md:text-lg text-base-content/80 leading-relaxed">
                 {paragraph}
@@ -165,8 +165,8 @@ export default async function AilmentPage({ params }: Params) {
           </div>
         </section>
 
-        <section className="my-32 max-w-6xl mx-auto scroll-mt-24" id="how-it-works">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">{metadata.mechanismHeading}</h2>
+        <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="how-it-works">
+          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">{metadata.mechanismHeading}</h2>
           <div className="max-w-5xl mx-auto text-center">
             <p className="text-base md:text-lg text-base-content/80 leading-relaxed">
               {metadata.mechanismParagraphs.join(" ")}
@@ -177,7 +177,7 @@ export default async function AilmentPage({ params }: Params) {
             <AilmentProcessVisualization data={metadata.processVisualization} />
           ) : (
             <div className="mt-12 max-w-4xl mx-auto">
-              <div className="relative aspect-[16/9] bg-base-200 rounded-2xl overflow-hidden border border-base-300">
+              <div className="relative aspect-[16/9] overflow-hidden border border-base-300 bg-base-200">
                 <Image
                   src={metadata.mechanismImage}
                   alt={metadata.mechanismImageAlt}
@@ -192,13 +192,13 @@ export default async function AilmentPage({ params }: Params) {
           )}
         </section>
 
-        <section className="my-32 max-w-6xl mx-auto scroll-mt-24" id="expectations">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
+        <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="expectations">
+          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
             {metadata.expectationsHeading}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             {metadata.expectationsSteps.map((step, index) => (
-              <Card key={step.title} className="border-4 border-primary bg-primary text-primary-content text-left">
+              <Card key={step.title} className="border border-base-300 bg-base-100 text-left text-base-content">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
                     <span className="inline-flex items-center justify-center h-8 min-w-8 px-2 rounded-full bg-primary-content text-primary text-sm font-semibold">
@@ -214,8 +214,8 @@ export default async function AilmentPage({ params }: Params) {
         </section>
 
         {procedure.slug === "botox" && (
-          <section className="my-32 max-w-5xl mx-auto scroll-mt-24" id="botox-consultation">
-            <div className="rounded-2xl border border-base-300 bg-base-200 p-6 text-center md:p-10">
+          <section className="scroll-mt-28 max-w-3xl border-t border-base-300 py-16 md:py-24" id="botox-consultation">
+            <div className="border border-base-300 bg-base-200 p-6 text-left md:p-10">
               <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Botox consultation</p>
               <h2 className="mt-3 text-2xl md:text-4xl mx-auto leading-tight pb-4 font-light">
                 Plan Botox around the area you actually want to treat
@@ -244,8 +244,8 @@ export default async function AilmentPage({ params }: Params) {
         )}
 
         {procedure.slug === "filler" && (
-          <section className="my-32 max-w-5xl mx-auto scroll-mt-24" id="filler-consultation">
-            <div className="rounded-2xl border border-base-300 bg-base-200 p-6 text-center md:p-10">
+          <section className="scroll-mt-28 max-w-3xl border-t border-base-300 py-16 md:py-24" id="filler-consultation">
+            <div className="border border-base-300 bg-base-200 p-6 text-left md:p-10">
               <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Dermal filler consultation</p>
               <h2 className="mt-3 text-2xl md:text-4xl mx-auto leading-tight pb-4 font-light">
                 Plan filler around anatomy, proportion, and the first area that matters most
@@ -274,8 +274,8 @@ export default async function AilmentPage({ params }: Params) {
         )}
 
         {Boolean(relatedAilments.length) && (
-          <section className="my-32 max-w-7xl mx-auto scroll-mt-24" id="related">
-            <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
+          <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="related">
+            <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
               Explore Other Areas We Treat with <span className="font-bold">{procedure.name}</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
@@ -284,7 +284,7 @@ export default async function AilmentPage({ params }: Params) {
                   <CardHeader>
                     <CardTitle className="flex items-start justify-between gap-2">
                       <span>{relatedAilment.title}</span>
-                      <Badge className="bg-primary text-white hover:bg-primary-focus border-transparent">
+                      <Badge variant="outline">
                         {ailmentTagLabels[relatedAilment.tag] ?? "Treatment Area"}
                       </Badge>
                     </CardTitle>
@@ -302,8 +302,8 @@ export default async function AilmentPage({ params }: Params) {
         )}
 
         {metadata.relatedGuide && (
-          <section className="my-32 max-w-5xl mx-auto scroll-mt-24" id="guide">
-            <div className="rounded-2xl border border-base-300 bg-base-200 p-6 text-center md:p-10">
+          <section className="scroll-mt-28 max-w-3xl border-t border-base-300 py-16 md:py-24" id="guide">
+            <div className="border border-base-300 bg-base-200 p-6 text-left md:p-10">
               <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">{metadata.relatedGuide.eyebrow}</p>
               <h2 className="mt-3 text-2xl md:text-4xl mx-auto leading-tight pb-4 font-light">
                 {metadata.relatedGuide.heading}
@@ -318,8 +318,8 @@ export default async function AilmentPage({ params }: Params) {
           </section>
         )}
 
-        <section className="my-32 max-w-5xl mx-auto scroll-mt-24" id="faqs">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">{metadata.faqHeading}</h2>
+        <section className="scroll-mt-28 max-w-3xl border-t border-base-300 py-16 md:py-24" id="faqs">
+          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">{metadata.faqHeading}</h2>
           <Accordion type="single" collapsible className="text-left mb-12">
             {metadata.faqs.map((faq) => (
               <AccordionItem key={faq.question} value={faq.question}>
@@ -330,8 +330,8 @@ export default async function AilmentPage({ params }: Params) {
           </Accordion>
         </section>
 
-        <section className="my-32 max-w-5xl mx-auto scroll-mt-24" id="provider">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-8 text-center font-light">
+        <section className="scroll-mt-28 max-w-3xl border-t border-base-300 py-16 md:py-24" id="provider">
+          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-8 text-left font-medium">
             About <span className="font-bold">Dr. Jenny</span>
           </h2>
           <ProviderCallout />

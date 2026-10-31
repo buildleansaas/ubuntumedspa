@@ -79,7 +79,7 @@ export default function JamesCityCountyPage() {
 
       <header className="grid gap-8 border-b border-base-300 pb-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:items-end">
         <div>
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-primary">James City County service area</p>
+          <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">James City County service area</p>
           <h1 className="max-w-3xl text-4xl font-light leading-tight sm:text-5xl">Med Spa Near James City County, VA</h1>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-base-content/75">
             Compare consultation-led Botox, Xeomin, dermal fillers, PRP hair restoration, hyperhidrosis care, and Blomdahl
@@ -98,7 +98,7 @@ export default function JamesCityCountyPage() {
         </div>
 
         <aside className="border-y border-base-300 py-5" aria-label="Williamsburg clinic at a glance">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Williamsburg clinic at a glance</p>
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Williamsburg clinic at a glance</p>
           <dl className="mt-4 divide-y divide-base-300 text-sm">
             <div className="grid gap-1 py-3 sm:grid-cols-[6rem_1fr]">
               <dt className="font-medium text-base-content">Address</dt>
@@ -118,7 +118,7 @@ export default function JamesCityCountyPage() {
 
       <section className="border-b border-base-300 py-10" aria-labelledby="jcc-treatment-starting-points">
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Treatment guide</p>
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Treatment guide</p>
           <h2 id="jcc-treatment-starting-points" className="mt-2 text-3xl font-light sm:text-4xl">
             Choose the right treatment starting point
           </h2>
@@ -146,7 +146,7 @@ export default function JamesCityCountyPage() {
 
       <section className="border-b border-base-300 py-10" aria-labelledby="jcc-visit-reasons">
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">What to expect</p>
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">What to expect</p>
           <h2 id="jcc-visit-reasons" className="mt-2 text-3xl font-light sm:text-4xl">
             Consultation-led care close to James City County
           </h2>
@@ -179,7 +179,7 @@ export default function JamesCityCountyPage() {
 
       <section className="border-b border-base-300 py-10" aria-labelledby="jcc-plan-visit">
         <div className="mb-7 max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Plan your visit</p>
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Plan your visit</p>
           <h2 id="jcc-plan-visit" className="mt-2 text-3xl font-light sm:text-4xl">
             Williamsburg clinic details
           </h2>
@@ -201,7 +201,7 @@ export default function JamesCityCountyPage() {
 
       <section className="border-b border-base-300 py-10" aria-labelledby="jcc-faqs">
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Common questions</p>
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Common questions</p>
           <h2 id="jcc-faqs" className="mt-2 text-3xl font-light sm:text-4xl">
             James City County med spa visit FAQs
           </h2>

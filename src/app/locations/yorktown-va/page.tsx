@@ -39,7 +39,7 @@ export default function YorktownPage() {
   return (
     <div className="max-w-xl md:max-w-5xl mx-auto md:px-8 py-12 md:py-16">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations", "Yorktown"]} />
-      <header className="mb-8 md:mb-10 text-center">
+      <header className="mb-10 max-w-3xl text-left md:mb-14">
         <h1 className="text-3xl md:text-5xl font-light">Med Spa Near Yorktown, VA</h1>
         <p className="text-base md:text-lg text-base-content/70 mt-2">
           Consult-led aesthetic, regenerative, and medical ear piercing care for Yorktown patients willing to make a planned Williamsburg visit.
@@ -55,7 +55,7 @@ export default function YorktownPage() {
         </p>
       </section>
 
-      <section className="mt-8 rounded-3xl border border-base-content/10 bg-base-100 p-5 md:p-7">
+      <section className="mt-8 border border-base-300 bg-base-100 p-6 md:p-8">
         <h2 className="text-2xl font-light">Quick read for Yorktown patients</h2>
         <ul className="mt-4 grid gap-3 text-sm text-base-content/75 md:grid-cols-3">
           <li>Best for Yorktown patients who want a quieter Williamsburg clinic visit rather than a high-volume retail setting.</li>
@@ -71,7 +71,7 @@ export default function YorktownPage() {
         </p>
         <div className="mt-4 grid gap-3 md:grid-cols-2">
           {serviceLinks.map((link) => (
-            <Link key={link.label} href={link.href} className="rounded-2xl border border-base-content/10 bg-base-100 p-4 transition hover:border-primary/40 hover:bg-primary/5">
+            <Link key={link.label} href={link.href} className="border border-base-300 bg-base-100 p-4 transition hover:border-primary/40">
               <span className="block text-sm font-semibold text-base-content">{link.label}</span>
               <span className="mt-1 block text-sm text-base-content/65">{link.copy}</span>
             </Link>
@@ -92,7 +92,7 @@ export default function YorktownPage() {
             <li>If you are unsure which treatment fits, book the consultation first rather than guessing from a menu.</li>
           </ul>
         </div>
-        <aside className="rounded-3xl border border-base-content/10 bg-base-100 p-5">
+        <aside className="border border-base-300 bg-base-100 p-5">
           <h2 className="text-xl font-light">Nearby areas this page helps</h2>
           <ul className="mt-3 space-y-2 text-sm text-base-content/70">
             <li>Yorktown</li>
