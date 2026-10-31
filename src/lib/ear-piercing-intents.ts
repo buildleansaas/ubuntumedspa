@@ -51,6 +51,13 @@ export const earPiercingIntentPages: EarPiercingIntentPage[] = [
     showPricing: true,
     sections: [
       {
+        heading: "Pediatric ear piercing in Williamsburg",
+        paragraphs: [
+          "Pediatric ear piercing at Williamsburg Med Spa is the infant, baby, and kids visit with Jenny Coleman, MSN, RN, CPNP, PMHS, a pediatric nurse practitioner.",
+          "Jenny generally pierces babies at 6 months or older, with pediatrician guidance. She reviews health history at the visit and will not pierce if she has any safety concerns.",
+        ],
+      },
+      {
         heading: "What age can babies get their ears pierced?",
         paragraphs: [
           "Jenny generally pierces babies at 6 months or older, with your pediatrician's guidance. She reviews health history at the visit and will not pierce if she has any safety concerns.",
@@ -106,6 +113,11 @@ export const earPiercingIntentPages: EarPiercingIntentPage[] = [
           "Jenny generally pierces babies at 6 months or older, with pediatrician guidance. She reviews health history at the visit and will not pierce if she has any safety concerns.",
       },
       {
+        question: "Do you offer pediatric ear piercing?",
+        answer:
+          "Yes. Pediatric ear piercing is the infant, baby, and kids appointment at the Williamsburg clinic. Jenny Coleman, a pediatric nurse practitioner, generally pierces babies at 6 months or older with pediatrician guidance.",
+      },
+      {
         question: "Does ear piercing hurt for babies?",
         answer:
           "No piercing is completely painless, but the Blomdahl piercing is very quick. Many babies cry briefly from surprise and settle quickly with a parent. A calm setting and a prepared parent help a lot.",
@@ -151,6 +163,26 @@ export const earPiercingIntentPages: EarPiercingIntentPage[] = [
       "Avoid bringing outside jewelry for initial piercing because starter jewelry follows the Blomdahl system.",
       "Ask when it is appropriate to change earrings after healing.",
     ],
+    sections: [
+      {
+        heading: "Hypoallergenic starter earrings",
+        paragraphs: [
+          "Hypoallergenic ear piercing at Williamsburg Med Spa means the starter earrings come from the Blomdahl system: Medical Plastic or Medical Grade Titanium.",
+        ],
+      },
+      {
+        heading: "Nickel-free Medical Plastic",
+        paragraphs: [
+          "Blomdahl describes its Medical Plastic as 0% nickel. Patients with a known allergy should still tell Jenny before the visit.",
+        ],
+      },
+      {
+        heading: "Medical Grade Titanium",
+        paragraphs: [
+          "Medical Grade Titanium is the metal starter option in the same Blomdahl system for patients who want a metal earring rather than Medical Plastic.",
+        ],
+      },
+    ],
     faqs: [
       {
         question: "What does hypoallergenic ear piercing mean?",
@@ -188,6 +220,20 @@ export const earPiercingIntentPages: EarPiercingIntentPage[] = [
       "Do not force jewelry through a closed or irritated hole.",
       "Share any scar, keloid, infection, or jewelry reaction history.",
       "Expect placement review before a new piercing decision is made.",
+    ],
+    sections: [
+      {
+        heading: "Re-piercing at the Williamsburg clinic",
+        paragraphs: [
+          "Ear re-piercing in Williamsburg is an appointment at 3900 Powhatan Parkway. Jenny Coleman, MSN, RN, CPNP, PMHS reviews the closed or irritated area, any scar or keloid history, and whether piercing again is appropriate.",
+        ],
+      },
+      {
+        heading: "Do not reopen a closed hole yourself",
+        paragraphs: [
+          "Do not force jewelry through a closed or irritated hole. That can tear the tissue. Schedule a visit so placement is reviewed first.",
+        ],
+      },
     ],
     faqs: [
       {
