@@ -41,7 +41,7 @@ export default function Footer() {
         <div className="grid gap-10 border-t border-base-300 py-12 md:grid-cols-2 xl:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div className="max-w-xl">
             <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Williamsburg Med Spa</p>
-            <h3 className="mt-3 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content">
+            <h3 className="font-display mt-3 text-4xl font-medium leading-[1.1] tracking-tight text-base-content md:text-5xl">
               Rejuvenate Your Life
             </h3>
             {/* PRP_BREAST_SHARED_COPY_CONTRACT_START */}

@@ -23,16 +23,16 @@ export default function CartTrigger({ mode = "default", className }: CartTrigger
         "focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2",
         isCompact
           ? [
-              "relative inline-flex h-10 w-10 items-center justify-center rounded-full border bg-base-100 text-base-content shadow-sm transition-all duration-150 ease-out motion-reduce:transition-none",
+              "relative inline-flex h-11 w-11 items-center justify-center rounded-full border bg-base-100 text-base-content transition-colors duration-150 ease-out motion-reduce:transition-none",
               isCartOpen
-                ? "border-primary/25 text-primary"
-                : "border-base-300 hover:border-primary/35 hover:bg-base-200",
+                ? "border-primary/40 text-primary"
+                : "border-base-300 hover:border-primary/40 hover:bg-base-200",
             ]
           : [
-              "group inline-flex items-center gap-2 rounded-full border px-5 py-2 text-left text-sm font-semibold tracking-[0.01em] shadow-sm transition-all duration-150 ease-out motion-reduce:transition-none",
+              "group inline-flex items-center gap-2 rounded-full border bg-base-100 px-4 py-2 text-left text-sm font-medium tracking-[0.01em] transition-colors duration-150 ease-out motion-reduce:transition-none",
               isCartOpen
-                ? "border-primary/20 bg-base-100 text-primary"
-                : "border-primary/80 bg-primary text-primary-content hover:border-primary/20 hover:bg-base-100 hover:text-primary",
+                ? "border-primary/40 text-primary"
+                : "border-base-300 text-base-content hover:border-primary/40",
             ],
         className
       )}
@@ -49,10 +49,7 @@ export default function CartTrigger({ mode = "default", className }: CartTrigger
           <span>Cart</span>
           <span
             className={cn(
-              "inline-flex min-w-[1.75rem] items-center justify-center rounded-full px-2 py-0.5 text-xs font-semibold transition-colors duration-150",
-              isCartOpen
-                ? "bg-primary/10 text-primary"
-                : "bg-white/20 text-primary-content group-hover:bg-primary/10 group-hover:text-primary"
+              "inline-flex min-w-[1.75rem] items-center justify-center rounded-full bg-primary px-2 py-0.5 text-xs font-medium text-primary-content"
             )}
           >
             {totalCount}
