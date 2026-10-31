@@ -336,7 +336,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
         {/* PRP_BREAST_OWNER_COPY_CONTRACT_START */}
         {procedure.slug === "prp-breast-lift" && (
           <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="prp-breast-lift-expectations">
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Before you decide</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Before you decide</p>
             <h2 id="prp-breast-lift-expectations" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
               What a PRP Breast Lift can and cannot do
             </h2>

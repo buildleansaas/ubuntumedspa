@@ -13,16 +13,8 @@ export function Anchor({ className, ...properties }: JSX.IntrinsicElements["a"])
   );
 }
 
-export function Heading1({ className, ...properties }: JSX.IntrinsicElements["h1"]) {
-  return (
-    <h1
-      className={cn(
-        "text-4xl leading-[1.08] tracking-tight text-balance text-base-content md:text-6xl",
-        className
-      )}
-      {...properties}
-    />
-  );
+export function Heading1(_: JSX.IntrinsicElements["h1"]) {
+  return null;
 }
 
 export function Heading2({ className, ...properties }: JSX.IntrinsicElements["h2"]) {
