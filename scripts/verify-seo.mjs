@@ -637,6 +637,10 @@ const homeTitle = getVisibleText(home.match(/<title(?:\s[^>]*)?>([\s\S]*?)<\/tit
 if (!homeTitle.includes("Fillers")) {
   fail("homepage title drops the preserved broad Filler visibility");
 }
+if (homeTitle !== "Medical Spa Williamsburg VA | Botox, Fillers & PRP") {
+  fail(`homepage title competes or drifted: ${JSON.stringify(homeTitle)}`);
+}
+if (/ear piercing/i.test(homeTitle)) fail("homepage title still competes for the ear piercing head term");
 const homeLinks = [...home.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)].map((match) => ({
   attributes: getTagAttributes(`<a ${match[1]}>`),
   text: getVisibleText(match[2]),
@@ -741,6 +745,53 @@ if (
   )
 ) {
   fail("children ear piercing page dropped the ear_piercing_children campaign");
+}
+
+const williamsburgPiercingVisit = pages.find(
+  (page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing/near/williamsburg-va"
+);
+if (williamsburgPiercingVisit) {
+  const visitSnippet = readSnippet(williamsburgPiercingVisit.html);
+  if (visitSnippet.title === "Medical Ear Piercing in Williamsburg, VA | Blomdahl") {
+    fail("Williamsburg piercing visit page title still uses the hub head term");
+  }
+  if (visitSnippet.h1 === "Medical Ear Piercing in Williamsburg, VA") {
+    fail("Williamsburg piercing visit page H1 still uses the hub head term");
+  }
+  if (!/3900 Powhatan Parkway/.test(williamsburgPiercingVisit.html)) {
+    fail("Williamsburg piercing visit page does not name the clinic address");
+  }
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(williamsburgPiercingVisit.html)) {
+    fail("Williamsburg piercing visit page does not link to the hub");
+  }
+}
+if (piercingHub && !piercingHub.html.includes("Does Blomdahl use a needle or a piercing gun?")) {
+  fail("Blomdahl hub is missing the cassette versus gun FAQ");
+}
+if (piercingHub && !/href=["']\/blog\/medical-ear-piercing-vs-mall-piercing["']/.test(piercingHub.html)) {
+  fail("Blomdahl hub does not link to the medical versus mall guide");
+}
+for (const path of [
+  "/locations/williamsburg-va",
+  "/locations/yorktown-va",
+  "/locations/newport-news-va",
+  "/locations/james-city-county-va",
+]) {
+  const locationPage = pages.find((page) => normalizePath(page.canonicalUrl) === path);
+  if (!locationPage) {
+    fail(`location page missing from sitemap: ${path}`);
+    continue;
+  }
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(locationPage.html)) {
+    fail(`${path} does not link to the Blomdahl hub`);
+  }
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing\/for\/children["']/.test(locationPage.html)) {
+    fail(`${path} does not link to children's ear piercing`);
+  }
+  const locationTitle = readSnippet(locationPage.html).title;
+  if (/& Piercing/.test(locationTitle) || /Ear Piercing in Williamsburg/i.test(locationTitle)) {
+    fail(`${path} title still competes for the piercing head term: ${locationTitle}`);
+  }
 }
 
 const newportNews = pages.find((page) => normalizePath(page.canonicalUrl) === "/locations/newport-news-va")?.html || "";

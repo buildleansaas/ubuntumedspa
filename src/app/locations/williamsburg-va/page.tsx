@@ -118,7 +118,7 @@ export default function WilliamsburgLocationPage() {
             <Link href="/procedures/blomdahl-ear-piercing">Medical Ear Piercing</Link>
           </Button>
           <Button asChild size="sm" variant="secondary">
-            <Link href="/procedures/blomdahl-ear-piercing/near/williamsburg-va">Ear Piercing Near Williamsburg</Link>
+            <Link href="/procedures/blomdahl-ear-piercing/near/williamsburg-va">Williamsburg piercing visit notes</Link>
           </Button>
           <Button asChild size="sm">
             <Link href="/procedures/hyperhidrosis-treatment">Hyperhidrosis Treatment</Link>
@@ -130,7 +130,7 @@ export default function WilliamsburgLocationPage() {
       </section>
 
       <section className="mb-10 md:mb-14 rounded-xl border border-base-300 p-5 md:p-6">
-        <h2 className="text-2xl md:text-3xl font-light mb-2">Ear Piercing Visits in Williamsburg</h2>
+        <h2 className="text-2xl md:text-3xl font-light mb-2">Piercing visits start on the Blomdahl page</h2>
         <p className="text-base md:text-lg text-base-content/80 mb-4">
           Families who find the clinic while searching for ear piercing in Williamsburg can start with the main Blomdahl
           service page. Jenny Coleman, MSN, RN, CPNP, PMHS uses sterile single-use cassettes and hypoallergenic starter

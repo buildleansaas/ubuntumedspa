@@ -7,7 +7,7 @@ import { buildPageMetadata } from "lib/metadata";
 import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near Newport News, VA | Botox, Fillers, PRP & Piercing",
+  title: "Med Spa Near Newport News, VA | Botox, Fillers & PRP",
   description:
     "Planning a med spa visit from Newport News? Compare Botox, Xeomin, dermal fillers, PRP, hyperhidrosis care, and medical ear piercing at Williamsburg Med Spa.",
   canonical: "/locations/newport-news-va",
@@ -16,8 +16,16 @@ export const metadata: Metadata = buildPageMetadata({
 const serviceLinks = [
   { href: "/procedures/botox", label: "Botox near Newport News", note: "Expression-line consultation with a natural, measured plan." },
   { href: "/procedures/xeomin", label: "Xeomin near Newport News", note: "A neuromodulator option for frown lines and movement-related concerns." },
-  { href: "/procedures/filler", label: "Dermal fillers near Newport News", note: "Lips, cheeks, under-eyes, and balanced facial support." },
-  { href: "/procedures/blomdahl-ear-piercing/near/newport-news-va", label: "Medical ear piercing near Newport News", note: "Sterile Blomdahl piercing for children, teens, and adults." },
+  {
+    href: "/procedures/filler",
+    label: "Dermal fillers near Newport News",
+    note: LIP_FILLER_ENABLED
+      ? "Lips, cheeks, under-eyes, and balanced facial support."
+      : "Cheeks, under-eyes, and balanced facial support.",
+  },
+  { href: "/procedures/blomdahl-ear-piercing", label: "Blomdahl ear piercing", note: "Sterile single-use cassettes and hypoallergenic starter earrings at the Williamsburg clinic." },
+  { href: "/procedures/blomdahl-ear-piercing/for/children", label: "Infant and kids ear piercing", note: "For parents planning a baby's or child's first earrings." },
+  { href: "/procedures/blomdahl-ear-piercing/near/newport-news-va", label: "Newport News visit notes", note: "Driving notes for a Williamsburg piercing appointment." },
 ];
 
 const faqs = [
