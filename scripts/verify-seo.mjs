@@ -709,6 +709,40 @@ if (reviewPage && !/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(revie
   fail("Blomdahl earrings review does not link to the ear piercing hub");
 }
 
+if (!home.includes('id="blomdahl-callout"')) fail("homepage is missing #blomdahl-callout");
+if (!home.includes('id="oh-shot-callout"')) fail("homepage dropped the OH-Shot callout");
+if (!home.includes("Cellular Medicine Association-trained and certified OH-Shot provider.")) {
+  fail("homepage dropped the OH-Shot CMA credential strip");
+}
+const homepagePiercingBooking =
+  "/consult?procedure=blomdahl-ear-piercing&amp;utm_source=website&amp;utm_medium=homepage_callout&amp;utm_campaign=ear_piercing_homepage";
+if (!home.includes(`href="${homepagePiercingBooking}"`)) {
+  fail("homepage Blomdahl callout is missing its booking campaign");
+}
+for (const href of ["/procedures/blomdahl-ear-piercing", "/procedures/blomdahl-ear-piercing/for/children"]) {
+  if (!new RegExp(`href=["']${href}["']`).test(home)) fail(`homepage Blomdahl callout is missing ${href}`);
+}
+const piercingHub = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing");
+const childrenPiercing = pages.find(
+  (page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing/for/children"
+);
+if (
+  piercingHub &&
+  !piercingHub.html.includes(
+    "/consult?procedure=blomdahl-ear-piercing&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=ear_piercing\""
+  )
+) {
+  fail("Blomdahl hub booking path dropped the ear_piercing campaign");
+}
+if (
+  childrenPiercing &&
+  !childrenPiercing.html.includes(
+    "/consult?procedure=blomdahl-ear-piercing&amp;intent=children&amp;utm_source=website&amp;utm_medium=intent_page&amp;utm_campaign=ear_piercing_children"
+  )
+) {
+  fail("children ear piercing page dropped the ear_piercing_children campaign");
+}
+
 const newportNews = pages.find((page) => normalizePath(page.canonicalUrl) === "/locations/newport-news-va")?.html || "";
 for (const owner of [
   "/procedures/botox",

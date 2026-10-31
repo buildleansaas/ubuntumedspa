@@ -21,6 +21,7 @@ import { getPublishedBlogPosts } from "lib/blog";
 import { getCatalogConfigBySlug } from "config/commerce-catalog";
 import { humanizeMedicalCopy } from "lib/humanize";
 import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
+import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
 const ailmentsTagLabels = {
@@ -281,7 +282,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                 <Link
                   href={
                     procedure.slug === "blomdahl-ear-piercing"
-                      ? "/consult?procedure=blomdahl-ear-piercing&utm_source=website&utm_medium=procedure_page&utm_campaign=ear_piercing"
+                      ? EAR_PIERCING_BOOKING.hub
                       : procedure.slug === "microneedling-with-prp"
                         ? "/consult?procedure=microneedling-with-prp&utm_source=website&utm_medium=procedure_page&utm_campaign=microneedling_prp"
                         : procedure.slug === "prp-breast-lift"

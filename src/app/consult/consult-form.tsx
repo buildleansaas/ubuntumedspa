@@ -37,15 +37,22 @@ export interface FormInput {
   options?: string[];
 }
 
+const readParam = (url: URL, key: string) => url.searchParams.get(key)?.trim() || undefined;
+
 const getConsultSourceContext = () => {
   const url = getCurrentBrowserUrl();
   if (!url) return null;
 
-  const procedure = url.searchParams.get("procedure")?.trim();
-  const intent = url.searchParams.get("intent")?.trim();
-  const area = url.searchParams.get("area")?.trim();
+  const procedure = readParam(url, "procedure");
+  const intent = readParam(url, "intent");
+  const area = readParam(url, "area");
+  const utmSource = readParam(url, "utm_source");
+  const utmMedium = readParam(url, "utm_medium");
+  const utmCampaign = readParam(url, "utm_campaign");
 
-  return procedure || intent || area ? { procedure, intent, area } : null;
+  return procedure || intent || area || utmSource || utmMedium || utmCampaign
+    ? { procedure, intent, area, utmSource, utmMedium, utmCampaign }
+    : null;
 };
 
 const ConsultationForm: React.FC = () => {
@@ -205,6 +212,9 @@ const ConsultationForm: React.FC = () => {
           affiliateId: affiliateReferral?.affiliateId,
           affiliateCode: affiliateReferral?.affiliateCode,
           affiliateName: affiliateReferral?.affiliateName,
+          utmSource: sourceContext?.utmSource,
+          utmMedium: sourceContext?.utmMedium,
+          utmCampaign: sourceContext?.utmCampaign,
         }),
         method: "POST",
         headers: { "Content-Type": "application/json" },
