@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import CtaFooter from "components/cta-footer";
 import Jumbotron from "views/jumbotron";
+import BlomdahlCallout from "views/blomdahl-callout";
 import OhShotCallout from "views/oh-shot-callout";
 
 import ProviderCallout from "views/provider-callout";
@@ -88,7 +89,15 @@ export default async function Page() {
           </nav>
         </div>
       </section>
-      <Procedures variant="editorial" featured={<OhShotCallout />} />
+      <Procedures
+        variant="editorial"
+        featured={
+          <div className="grid gap-8">
+            <OhShotCallout />
+            <BlomdahlCallout />
+          </div>
+        }
+      />
       <ProviderCallout />
       <Products variant="editorial" />
       <LatestPosts />

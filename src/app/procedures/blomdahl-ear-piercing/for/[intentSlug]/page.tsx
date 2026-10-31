@@ -12,6 +12,7 @@ import {
   getRelatedAreasForIntent,
   publishedEarPiercingIntentPages,
 } from "lib/ear-piercing-intents";
+import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import { buildPageMetadata } from "lib/metadata";
 
 const ORIGIN = "https://www.williamsburgmedspa.com";
@@ -44,7 +45,10 @@ export default function EarPiercingIntentPage({ params }: Params) {
   if (!page) return notFound();
 
   const canonicalUrl = `${ORIGIN}/procedures/blomdahl-ear-piercing/for/${page.slug}`;
-  const consultHref = `/consult?procedure=blomdahl-ear-piercing&intent=${page.slug}&utm_source=website&utm_medium=intent_page&utm_campaign=ear_piercing_${page.slug}`;
+  const consultHref =
+    page.slug === "children"
+      ? EAR_PIERCING_BOOKING.children
+      : `/consult?procedure=blomdahl-ear-piercing&intent=${page.slug}&utm_source=website&utm_medium=intent_page&utm_campaign=ear_piercing_${page.slug}`;
   const relatedAreas = getRelatedAreasForIntent(page);
 
   return (
