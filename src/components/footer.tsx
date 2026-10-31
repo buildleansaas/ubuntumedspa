@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import FooterLocationCta from "components/footer-location-cta";
+import FooterSocialLinks from "components/footer-social-links";
 
 
 const primaryLinks = [
@@ -58,6 +59,7 @@ export default function Footer() {
               <p>3900 Powhatan Parkway, Williamsburg, VA 23188</p>
               <p>+1 (804) 738-9483</p>
             </div>
+            <FooterSocialLinks />
           </div>
 
           <div>
@@ -113,12 +115,16 @@ export default function Footer() {
               Home
             </Link>
             <span aria-hidden>·</span>
-            <Link className="transition-colors hover:text-base-content hover:underline" href="/sitemap.xml">
+            <Link className="transition-colors hover:text-base-content hover:underline" href="/html-sitemap">
               Sitemap
             </Link>
             <span aria-hidden>·</span>
             <Link className="transition-colors hover:text-base-content hover:underline" href="/privacy">
               Privacy
+            </Link>
+            <span aria-hidden>·</span>
+            <Link className="transition-colors hover:text-base-content hover:underline" href="/terms">
+              Terms
             </Link>
             <span aria-hidden>·</span>
             <Link className="transition-colors hover:text-base-content hover:underline" href="/cookies">

@@ -1,3 +1,4 @@
+import ClinicMapEmbed from "components/clinic-map-embed";
 import DirectionsButton from "components/directions-button";
 import TrackedPhoneLink from "components/tracked-phone-link";
 import { Button } from "components/ui/button";
@@ -14,6 +15,8 @@ export default function FooterLocationCta() {
       <p className="mt-2 text-sm md:text-base leading-relaxed text-base-content/70">
         Hours: Mon–Fri 6–8pm; Sat–Sun 10am–6pm
       </p>
+
+      <ClinicMapEmbed />
 
       <div className="mt-6 flex flex-wrap gap-3">
         <Button asChild variant="secondary">

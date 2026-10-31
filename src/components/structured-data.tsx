@@ -1,3 +1,5 @@
+import { officialProfiles } from "data/official-profiles";
+import { jennyCredentialNames, jennyKnowsAbout } from "lib/jenny-profile";
 
 const SITE_NAME = "Williamsburg Med Spa";
 const DEFAULT_DESCRIPTION = "";
@@ -117,7 +119,7 @@ const DEFAULT_BUSINESS: Required<LocalBusinessProps> = {
     "Mo-Fr 18:00-20:00",
     "Sa-Su 10:00-18:00",
   ],
-  sameAs: [],
+  sameAs: officialProfiles.map((profile) => profile.href),
   url: ORIGIN,
   image: `${ORIGIN}/logo.png`,
   founderName: "Jenny Coleman",
@@ -356,13 +358,25 @@ const getMarkup = ({
       };
     }
     case "Person": {
+      const profileUrls = officialProfiles.map((profile) => profile.href);
       return {
         "@context": "https://schema.org",
         "@type": "Person",
         name: author[0].name,
         url: author[0].url,
         jobTitle: "Aesthetic Nurse Practitioner",
+        honorificSuffix: "MSN, RN, CPNP, PMHS",
         image: `${ORIGIN}/jenny.jpg`,
+        hasCredential: jennyCredentialNames.map((name) => ({
+          "@type": "EducationalOccupationalCredential",
+          name,
+        })),
+        knowsAbout: jennyKnowsAbout.map((topic) => ({
+          "@type": "Thing",
+          name: topic.name,
+          sameAs: [...topic.sameAs],
+        })),
+        ...(profileUrls.length ? { sameAs: profileUrls } : {}),
         affiliation: {
           "@type": "MedicalBusiness",
           name: DEFAULT_BUSINESS.name,
