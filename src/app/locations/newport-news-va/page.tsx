@@ -7,9 +7,9 @@ import { buildPageMetadata } from "lib/metadata";
 import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near Newport News, VA | Botox, Fillers & PRP",
+  title: "Med Spa Newport News | Botox at Our Williamsburg Clinic",
   description:
-    "Planning a med spa visit from Newport News? Compare Botox, Xeomin, dermal fillers, PRP, hyperhidrosis care, and medical ear piercing at Williamsburg Med Spa.",
+    "Med spa Newport News patients drive to our Williamsburg clinic on Powhatan Parkway for Botox, Xeomin, fillers, and PRP.",
   canonical: "/locations/newport-news-va",
 });
 
@@ -58,10 +58,10 @@ export default function NewportNewsPage() {
       <StructuredData type="FAQ" faqs={faqs} />
       <header className="mb-10 max-w-3xl text-left md:mb-14">
         <p className="text-sm uppercase tracking-[0.22em] text-primary mb-3">Newport News service area</p>
-        <h1 className="text-3xl md:text-5xl font-light">Med Spa Near Newport News, VA</h1>
+        <h1 className="text-3xl md:text-5xl font-light">Med Spa Newport News, at Our Williamsburg Clinic</h1>
         <p className="text-base md:text-lg text-base-content/70 mt-3">
-          Visit Williamsburg Med Spa from Newport News for natural-looking injectables, PRP therapies, sweating
-          treatment, and nurse-led medical ear piercing in a calm appointment-based clinic.
+          There is no Newport News street address. Botox, Xeomin, fillers, and PRP visits are at Williamsburg Med Spa,
+          3900 Powhatan Parkway, Williamsburg, VA 23188. Take I-64 west toward Route 199 and New Town.
         </p>
       </header>
 

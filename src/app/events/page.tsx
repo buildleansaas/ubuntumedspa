@@ -8,9 +8,9 @@ import { buildPageMetadata } from "lib/metadata";
 import { getPublishedEvents } from "lib/events";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Botox Parties in Williamsburg, VA | Private Med Spa Events",
+  title: "Private Med Spa Parties in Williamsburg, VA",
   description:
-    "Host a Botox party in Williamsburg, VA with Williamsburg Med Spa. Plan a private injectable event for friends and introduce guests to Botox, PRP, skin, and wellness options.",
+    "Plan a private party with friends at Williamsburg Med Spa. Botox treatment details stay on the Botox page; this page is for the event.",
   canonical: "/events",
 });
 
@@ -22,7 +22,7 @@ export default function EventsPage() {
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Events"]} />
 
       <section className="mx-auto max-w-3xl text-left">
-        <p className="mb-3 text-sm uppercase tracking-[0.18em] text-base-content/60">Botox Parties in Williamsburg</p>
+        <p className="mb-3 text-sm uppercase tracking-[0.18em] text-base-content/60">Private parties</p>
         <h1 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light leading-tight">
           Host the Botox party your friends already keep asking about.
         </h1>
