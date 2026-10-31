@@ -78,7 +78,7 @@ const promotionIdeas = [
   {
     title: "PRP and intimate wellness care",
     description:
-      "OH-Shot, P-Shot, PRP Facial, PRP Face Lift, Hair Restoration, and Joint Restoration work well when someone wants a discreet regenerative option from a clinic that feels calm, respectful, and thoughtful.",
+      "OH-Shot, Pe-Shot, PRP Facial, PRP Face Lift, Hair Restoration, and Joint Restoration work well when someone wants a discreet regenerative option from a clinic that feels calm, respectful, and thoughtful.",
     bestFor: "Private conversations, DMs, and one-to-one referrals where trust matters most.",
     href: "/procedures",
     cta: "Browse PRP treatments",

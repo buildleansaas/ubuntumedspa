@@ -715,7 +715,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               How can{" "}
               {[
                 "oh-shot",
-                "p-shot",
+                "pe-shot",
                 "prp-face-lift",
                 "prp-facial",
                 "prp-breast-lift",

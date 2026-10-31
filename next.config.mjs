@@ -19,7 +19,7 @@ const nextConfig = {
       },
       {
         source: "/procedures/male-intimacy-prp-protocols",
-        destination: "/procedures/p-shot",
+        destination: "/procedures/pe-shot",
         permanent: true,
       },
       {
@@ -115,6 +115,21 @@ const nextConfig = {
       {
         source: "/blog/o-shot/:path*",
         destination: "/blog/oh-shot/:path*",
+        statusCode: 301,
+      },
+      {
+        source: "/procedures/p-shot",
+        destination: "/procedures/pe-shot",
+        statusCode: 301,
+      },
+      {
+        source: "/procedures/p-shot/for/:ailmentSlug",
+        destination: "/procedures/pe-shot",
+        statusCode: 301,
+      },
+      {
+        source: "/procedure/pshot-consultation-confidence.webp",
+        destination: "/procedure/pe-shot-consultation-confidence.webp",
         statusCode: 301,
       },
       {

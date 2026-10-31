@@ -139,7 +139,7 @@ const buildBotoxPartyAddOnOptionGroups = (): EventOptionGroup[] => {
   const injectableSlugs = ["xeomin", "filler", "hyperhidrosis-treatment"];
   const regenerativeSlugs = [
     "oh-shot",
-    "p-shot",
+    "pe-shot",
     "prp-breast-lift",
     "prp-hair-restoration",
     "prp-facial",

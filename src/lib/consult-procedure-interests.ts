@@ -17,7 +17,8 @@ export const PROCEDURE_INTERESTS: Record<string, string[]> = {
   "microneedling-with-prp": ["Microneedling with PRP"],
   "o-shot": ["OH-Shot"],
   "oh-shot": ["OH-Shot"],
-  "p-shot": ["P-Shot"],
+  "p-shot": ["Pe-Shot"],
+  "pe-shot": ["Pe-Shot"],
 };
 
 export const getProcedureInterests = (procedure?: string | null) =>
