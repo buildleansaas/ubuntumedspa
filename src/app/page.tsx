@@ -5,6 +5,7 @@ import Link from "next/link";
 import CtaFooter from "components/cta-footer";
 import Jumbotron from "views/jumbotron";
 import BlomdahlCallout from "views/blomdahl-callout";
+import NamedReviews from "components/named-reviews";
 import OhShotCallout from "views/oh-shot-callout";
 
 import ProviderCallout from "views/provider-callout";
@@ -94,6 +95,7 @@ export default async function Page() {
           </nav>
         </div>
       </section>
+      <NamedReviews heading="Clinic reviews" />
       <Procedures
         variant="editorial"
         featured={

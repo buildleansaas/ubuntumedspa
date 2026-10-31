@@ -15,6 +15,7 @@ import StructuredData from "components/structured-data";
 import CtaButtons from "components/cta-buttons";
 import TrackedPhoneLink from "components/tracked-phone-link";
 import { notFound } from "next/navigation";
+import NamedReviews from "components/named-reviews";
 import ProcedureTestimonials from "components/procedure-testimonials";
 import { getPublishedAilmentsForProcedure } from "lib/ailments/get-ailment-page-data";
 import { getPublishedBlogPosts } from "lib/blog";
@@ -722,6 +723,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               </Card>
             ))}
           </div>
+          <NamedReviews serviceSlug={procedure.slug} heading={`${procedure.name} reviews`} />
           {Boolean(procedure.testimonials?.length) && (
             <ProcedureTestimonials procedureName={procedure.name} items={procedure.testimonials} />
           )}

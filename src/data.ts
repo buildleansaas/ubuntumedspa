@@ -77,6 +77,8 @@ export type ProcedureTestimonial = {
   id: string;
   quote: string;
   attribution?: string;
+  displayName?: string;
+  datePublished?: string;
   imageSrc: string;
 };
 
