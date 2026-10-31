@@ -794,6 +794,82 @@ for (const path of [
   }
 }
 
+const childrenPage = pages.find(
+  (page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing/for/children"
+);
+if (childrenPage && !/pediatric ear piercing/i.test(getVisibleText(childrenPage.html))) {
+  fail("children ear piercing page does not say pediatric ear piercing");
+}
+if (childrenPage && !/6 months/.test(childrenPage.html)) {
+  fail("children ear piercing page dropped the 6-month guidance");
+}
+const sensitivePage = pages.find(
+  (page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing/for/sensitive-ears"
+);
+for (const heading of ["Hypoallergenic starter earrings", "Nickel-free Medical Plastic", "Medical Grade Titanium"]) {
+  if (sensitivePage && !sensitivePage.html.includes(heading)) fail(`sensitive-ears page is missing heading ${heading}`);
+}
+const repiercePage = pages.find(
+  (page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing/for/re-piercing"
+);
+if (repiercePage && !/Do not force jewelry/.test(repiercePage.html)) {
+  fail("re-piercing page dropped the do-not-reopen guidance");
+}
+if (repiercePage && !/3900 Powhatan Parkway/.test(repiercePage.html)) {
+  fail("re-piercing page does not name the Williamsburg clinic");
+}
+const mallBlog = pages.find(
+  (page) => normalizePath(page.canonicalUrl) === "/blog/medical-ear-piercing-vs-mall-piercing"
+);
+if (mallBlog) {
+  const mallSnippet = readSnippet(mallBlog.html);
+  if (mallSnippet.description.length > 160) fail(`mall piercing blog meta is ${mallSnippet.description.length} characters`);
+  if (!/mall gun/i.test(mallSnippet.description) || !/Williamsburg/.test(mallSnippet.description)) {
+    fail("mall piercing blog meta dropped the gun contrast or Williamsburg");
+  }
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(mallBlog.html)) {
+    fail("mall piercing blog does not link to the hub");
+  }
+}
+const aftercareBlog = pages.find(
+  (page) => normalizePath(page.canonicalUrl) === "/blog/ear-piercing-aftercare-williamsburg-va"
+);
+if (aftercareBlog) {
+  const aftercareSnippet = readSnippet(aftercareBlog.html);
+  if (!/Williamsburg/.test(aftercareSnippet.title) || !/Blomdahl/.test(aftercareSnippet.title)) {
+    fail("aftercare title is not localized to Williamsburg and Blomdahl");
+  }
+  if (!/utm_campaign=ear_piercing_aftercare/.test(aftercareBlog.html)) {
+    fail("aftercare post is missing the hub booking link");
+  }
+}
+for (const [path, locationPath, proof] of [
+  ["/procedures/blomdahl-ear-piercing/near/yorktown-va", "/locations/yorktown-va", "Tabb"],
+  ["/procedures/blomdahl-ear-piercing/near/newport-news-va", "/locations/newport-news-va", "Oyster Point"],
+]) {
+  const areaPage = pages.find((page) => normalizePath(page.canonicalUrl) === path);
+  if (!areaPage) {
+    fail(`piercing area page missing from sitemap: ${path}`);
+    continue;
+  }
+  if (!areaPage.html.includes(proof)) fail(`${path} is missing local proof ${proof}`);
+  if (!/3900 Powhatan Parkway/.test(areaPage.html)) fail(`${path} does not name the Williamsburg clinic`);
+  if (!new RegExp(`href=["']${locationPath}["']`).test(areaPage.html)) {
+    fail(`${path} does not link to ${locationPath}`);
+  }
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(areaPage.html)) {
+    fail(`${path} does not link to the hub`);
+  }
+}
+if (
+  pages.some((page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing/near/newport-news-va") &&
+  /Newport News, VA 23/.test(
+    pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing/near/newport-news-va")?.html || ""
+  )
+) {
+  fail("Newport News piercing page invented a Newport News street address");
+}
+
 const newportNews = pages.find((page) => normalizePath(page.canonicalUrl) === "/locations/newport-news-va")?.html || "";
 for (const owner of [
   "/procedures/botox",

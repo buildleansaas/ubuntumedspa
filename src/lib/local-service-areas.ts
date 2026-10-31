@@ -167,7 +167,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     earPiercingAngle: "a professional alternative to mall piercing for Yorktown families",
     parentIntent: true,
     localIntro:
-      "Yorktown families can plan an appointment-based visit to Williamsburg Med Spa for children's first earrings or adult ear piercing.",
+      "Yorktown, Tabb, and Grafton families plan this as a Williamsburg appointment, usually by the Colonial Parkway or I-64, then Route 199 and Powhatan Parkway. The clinic is in Williamsburg, not Yorktown.",
     routeNote:
       "The visit is a planned trip to the Williamsburg clinic, which helps avoid walk-in timing and gives space for aftercare questions.",
     routeOrigin: {
@@ -210,7 +210,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     earPiercingAngle: "a medical-grade ear piercing option for Newport News parents and adults",
     parentIntent: true,
     localIntro:
-      "Newport News families who want a medical-grade alternative to retail piercing can schedule with Williamsburg Med Spa.",
+      "Parents from Oyster Point, Denbigh, Kiln Creek, and City Center usually take I-64 west toward Williamsburg for a Blomdahl appointment. There is no Newport News clinic address.",
     routeNote:
       "The appointment is a planned Williamsburg clinic visit rather than a walk-in retail stop, with time reserved for placement and aftercare.",
     routeOrigin: {

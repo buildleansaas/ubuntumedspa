@@ -110,7 +110,24 @@ export default function EarPiercingAreaPage({ params }: Params) {
             </Link>
             .
           </p>
-        ) : null}
+        ) : (
+          <p className="text-base md:text-lg text-base-content/75 mt-4 max-w-3xl">
+            There is no {area.name} clinic address. The appointment is at Williamsburg Med Spa, 3900 Powhatan Parkway,
+            Williamsburg, VA 23188. Read{" "}
+            {area.hasLocationPage ? (
+              <Link href={`/locations/${area.slug}`} className="link link-primary">
+                med spa visits from {area.name}
+              </Link>
+            ) : (
+              <span>the Williamsburg location page</span>
+            )}{" "}
+            for the drive, and the{" "}
+            <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
+              Blomdahl ear piercing page
+            </Link>{" "}
+            for the service.
+          </p>
+        )}
         <div className="flex flex-wrap justify-center gap-3 mt-6">
           <Button asChild>
             <Link href={consultHref}>Request an Ear Piercing Visit</Link>
