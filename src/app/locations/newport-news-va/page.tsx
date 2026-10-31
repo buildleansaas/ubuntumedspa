@@ -4,6 +4,7 @@ import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
+import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near Newport News, VA | Botox, Fillers, PRP & Piercing",
@@ -128,7 +129,7 @@ export default function NewportNewsPage() {
               <h3 className="text-lg font-medium mb-2">For volume and facial balance</h3>
               <p className="text-base-content/75 mb-2">
                 Start with <Link href="/procedures/filler" className="text-primary hover:underline">dermal filler</Link> if you
-                want to discuss lips, cheeks, under-eyes, contour, or balanced facial support.
+                want to discuss {LIP_FILLER_ENABLED ? "lips, cheeks, under-eyes" : "cheeks, under-eyes"}, contour, or balanced facial support.
               </p>
             </div>
           </div>

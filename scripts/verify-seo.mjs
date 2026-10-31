@@ -765,7 +765,7 @@ const ownerPageExpectations = {
     requiredSchemas: ["FAQPage"],
   },
   "/procedures/filler": {
-    title: "Dermal Fillers in Williamsburg, VA | Lips, Cheeks & Under-Eyes",
+    title: "Dermal Fillers in Williamsburg, VA | Cheeks, Under-Eyes & Contour",
     h1: "Dermal Fillers in Williamsburg, VA",
     required: [
       "Is dermal filler a reasonable fit for the change you want?",

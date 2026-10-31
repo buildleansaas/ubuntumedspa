@@ -42,7 +42,7 @@ export const metadata = {
 
 # Dermal Fillers in Williamsburg, VA
 
-Dermal filler planning is most useful when it starts with the face in front of you, not a product name or a photo from someone else. Lips, cheeks, and under-eyes can all involve filler, but they call for different judgment, different expectations, and different conversations about risk.
+Dermal filler planning is most useful when it starts with the face in front of you, not a product name or a photo from someone else. <IfLipFiller fallback={<>Cheeks and under-eyes can both involve filler, but they call for different judgment, different expectations, and different conversations about risk.</>}>Lips, cheeks, and under-eyes can all involve filler, but they call for different judgment, different expectations, and different conversations about risk.</IfLipFiller>
 
 If you are comparing local options first, the [dermal fillers in Williamsburg, VA](/procedures/filler) page gives the service overview, pricing, and FAQs. This guide focuses on how to think through the three areas patients most often ask about before booking.
 
@@ -50,7 +50,11 @@ If you are comparing local options first, the [dermal fillers in Williamsburg, V
 
 At Williamsburg Med Spa, filler conversations often involve:
 
+<IfLipFiller>
+
 - lip enhancement,
+
+</IfLipFiller>
 - cheek support or contour,
 - under-eye hollowing.
 
@@ -60,13 +64,19 @@ Those goals can overlap, but they should not be treated as interchangeable. A ca
 
 This is often the most useful part of a filler consultation.
 
+<IfLipFiller>
+
 - Lips make sense to discuss first when the main concern is shape, hydration, border definition, or lost fullness.
+
+</IfLipFiller>
 - Cheeks often deserve attention first when the face has started to look flatter or when nearby folds seem to be coming from loss of support rather than from one isolated line.
 - Under-eyes should usually be treated only after careful screening, because not every hollow or shadow is a good filler problem to solve.
 
 The right first area is usually the one creating the biggest imbalance, not the area that sounds most popular online.
 
-If you already know the area you want to discuss, start with the main [dermal filler service page](/procedures/filler). It covers lips, cheeks, under-eyes, and smile lines.
+If you already know the area you want to discuss, start with the main [dermal filler service page](/procedures/filler). <IfLipFiller fallback={<>It covers cheeks, under-eyes, and smile lines.</>}>It covers lips, cheeks, under-eyes, and smile lines.</IfLipFiller>
+
+<IfLipFiller>
 
 ## Lip filler: shape, hydration, and balance
 
@@ -79,6 +89,8 @@ The main planning questions are:
 - How much upper-to-lower lip balance already exists?
 
 A conservative lip plan is easier to build on. Small adjustments leave more room to refine shape than overfilling and then trying to correct the result later.
+
+</IfLipFiller>
 
 ## Cheek filler: support before volume
 
@@ -130,7 +142,7 @@ For neuromodulator planning, compare [Botox in Williamsburg](/procedures/botox) 
 
 ## Next steps in Williamsburg
 
-Dermal fillers can support lips, cheeks, under-eyes, and other facial contour goals, but the plan needs to fit your anatomy and leave room for restraint. The useful work happens in consultation: deciding what should be treated, what should wait, and what should be left alone.
+<IfLipFiller fallback={<>Dermal fillers can support cheeks, under-eyes, and other facial contour goals, but the plan needs to fit your anatomy and leave room for restraint.</>}>Dermal fillers can support lips, cheeks, under-eyes, and other facial contour goals, but the plan needs to fit your anatomy and leave room for restraint.</IfLipFiller> The useful work happens in consultation: deciding what should be treated, what should wait, and what should be left alone.
 
 If you want to review options in Williamsburg, start here:
 

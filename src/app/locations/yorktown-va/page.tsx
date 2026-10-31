@@ -4,6 +4,7 @@ import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
+import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near Yorktown, VA | Botox, Fillers, PRP & Piercing",
@@ -21,7 +22,9 @@ const serviceLinks = [
   {
     label: "Dermal filler treatment planning",
     href: "/procedures/filler",
-    copy: "For lips, cheeks, facial balance, and natural-looking volume support.",
+    copy: LIP_FILLER_ENABLED
+      ? "For lips, cheeks, facial balance, and natural-looking volume support."
+      : "For cheeks, facial balance, and natural-looking volume support.",
   },
   {
     label: "Xeomin treatment planning",

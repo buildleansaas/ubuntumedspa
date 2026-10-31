@@ -1,3 +1,5 @@
+import { LIP_FILLER_ENABLED } from "./config/feature-flags.mjs";
+
 export const DEFAULT_FORM_SUBMISSION =
   process.env.NODE_ENV === "production"
     ? {
@@ -2773,3 +2775,58 @@ export const products = [
     ],
   },
 ];
+
+if (!LIP_FILLER_ENABLED) {
+  const filler = procedures.find((procedure) => procedure.slug === "filler");
+  if (filler) {
+    filler.seo = {
+      ...filler.seo,
+      title: "Dermal Fillers in Williamsburg, VA | Cheeks, Under-Eyes & Contour",
+      description:
+        "Dermal fillers in Williamsburg, VA for cheeks, under-eyes, jawline contour, and natural-looking facial volume restoration with Jenny Coleman, MSN, RN, CPNP, PMHS.",
+    };
+    filler.description =
+      "Dermal fillers are injectable gels commonly used to restore facial volume, soften folds, and refine contour in areas such as cheeks, jawline, and under-eyes. At Williamsburg Med Spa, Jenny Coleman, MSN, RN, CPNP, PMHS plans filler conservatively with clear discussion of longevity, swelling, reversibility, and results that stay proportional to your features.";
+    filler.headline = "Nurse-led dermal fillers in Williamsburg for cheeks, under-eyes, and facial contour.";
+    filler.subline =
+      "Hyaluronic acid filler can restore volume, refine contour, and soften folds with a treatment plan built around proportion, safety screening, and realistic longevity.";
+    filler.blogHeadline =
+      "Researching dermal fillers in Williamsburg? Explore cheeks, under-eyes, how long filler can last, and what consultation should cover before you book.";
+    filler.benefits = filler.benefits.map((benefit) => {
+      if (benefit.benefit === "Volume Restoration") {
+        return {
+          ...benefit,
+          description:
+            "Fillers can restore support in selected areas such as cheeks and under-eyes when volume loss or proportion is part of the concern.",
+        };
+      }
+      if (benefit.benefit === "Contour Enhancement") {
+        return {
+          ...benefit,
+          description:
+            "Fillers can refine facial contours in areas such as cheeks, chin, and jawline with a plan shaped around anatomy and balance.",
+        };
+      }
+      return benefit;
+    });
+    filler.ailmentsHeadline =
+      "Dermal fillers are used for both volume restoration and contour refinement. Treatment planning may focus on cheeks, under-eyes, smile lines, jawline definition, and other targeted areas depending on anatomy and goals.";
+    filler.ailments = filler.ailments.filter((ailment) => ailment.slug !== "lip-augmentation");
+    filler.faqHeadline =
+      "Get practical answers about cheek filler, under-eye filler, cost, consultation planning, longevity, comfort, safety, and reversibility.";
+    filler.faqs = filler.faqs.map((faq) =>
+      faq.question === "What areas can be treated with dermal fillers?"
+        ? {
+            ...faq,
+            answer:
+              "Dermal fillers can enhance cheek contours, reduce the appearance of fine lines and wrinkles, improve the jawline, and correct under-eye hollows.",
+          }
+        : faq
+    );
+  }
+
+  const interests = FORM_INPUTS.find((input) => input.id === "interests");
+  if (interests?.options) {
+    interests.options = interests.options.filter((option) => !/lip filler|lip augmentation/i.test(option));
+  }
+}
