@@ -562,8 +562,9 @@ export const procedures = [
     slug: "prp-breast-lift",
     seo: {
       title: "PRP Breast Lift in Williamsburg, VA",
+      documentTitle: "Breast Lift Williamsburg VA | PRP, Not Surgery",
       description:
-        "Compare the PRP Breast Lift service in Williamsburg, VA with surgical options, review the $1,800 one-visit price, and request current service details.",
+        "Breast lift in Williamsburg, VA: the $1,800 PRP visit is not surgery and does not promise a cosmetic result.",
     },
     description:
       "This Williamsburg decision guide does not document the clinic's current method or promise a cosmetic result. Before choosing a PRP Breast Lift, ask what the service includes, what one $1,800 visit covers, and whether a different cosmetic or surgical option better matches your goal.",
@@ -710,8 +711,9 @@ export const procedures = [
     slug: "prp-hair-restoration",
     seo: {
       title: "PRP Hair Restoration in Williamsburg, VA | Thinning Hair Consult",
+      documentTitle: "Hair Transplant Williamsburg VA | PRP Is Not Surgery",
       description:
-        "Consult-led PRP hair restoration in Williamsburg, VA for thinning hair, shedding, and early density concerns near James City County, Yorktown, and Newport News.",
+        "Female hair transplant or hairline transplant in Williamsburg? PRP does not move follicles. Ask when a specialist fits.",
     },
     description:
       "PRP Hair Restoration at Williamsburg Med Spa is a consult-led, non-surgical option for select men and women noticing thinning hair, shedding, widening part lines, or early pattern changes. Jenny Coleman, MSN, RN, CPNP, PMHS reviews your timeline, scalp concerns, health history, medications, and goals before discussing whether platelet-rich plasma belongs in your plan or whether medical evaluation should come first. Treatment uses PRP prepared from a small sample of your own blood and placed into targeted scalp areas to support existing follicles when they may still be active. PRP is not a hair transplant, does not create new follicles in bald areas, and results vary, so the visit focuses on candidacy, realistic expectations, session planning, maintenance, and when a dermatology or transplant specialist may be more appropriate.",
