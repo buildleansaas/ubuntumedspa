@@ -1225,6 +1225,17 @@ if (sitemapUrls.some((url) => normalizePath(url) === "/locations/fords-colony-va
   fail("Ford's Colony location URL is still in the sitemap");
 }
 
+const reviewsSource = readFileSync(new URL("../src/data/published-reviews.ts", import.meta.url), "utf8");
+const reviewsEmpty = /export const publishedReviews: PublishedReview\[\] = \[\];/.test(reviewsSource);
+if (reviewsEmpty && /Clinic reviews|Blomdahl Ear Piercing reviews/.test(home)) {
+  fail("empty review file still rendered a reviews heading on the homepage");
+}
+if (/AggregateRating/.test(home)) fail("homepage includes an AggregateRating");
+const piercingHubForReviews = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing");
+if (reviewsEmpty && piercingHubForReviews && /Blomdahl Ear Piercing reviews/.test(piercingHubForReviews.html)) {
+  fail("empty review file still rendered reviews on the ear piercing hub");
+}
+
 if (warnings.length) {
   console.warn(`SEO verification warnings (${warnings.length}):`);
   warnings.forEach((message) => console.warn(`- ${message}`));
