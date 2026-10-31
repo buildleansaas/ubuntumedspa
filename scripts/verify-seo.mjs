@@ -1225,6 +1225,80 @@ if (sitemapUrls.some((url) => normalizePath(url) === "/locations/fords-colony-va
   fail("Ford's Colony location URL is still in the sitemap");
 }
 
+for (const path of ["/terms", "/html-sitemap"]) {
+  if (!sitemapUrls.some((url) => normalizePath(url) === path)) fail(`${path} missing from sitemap`);
+}
+const termsPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/terms");
+if (!termsPage) fail("terms page missing from rendered sitemap pages");
+if (termsPage) {
+  const termsText = getVisibleText(termsPage.html);
+  for (const required of [
+    "3900 Powhatan Parkway, Williamsburg, VA 23188",
+    "(804) 738-9483",
+    "not a diagnosis",
+    "does not add a cancellation fee",
+    "OH-Shot",
+    "Pe-Shot",
+  ]) {
+    if (!termsText.includes(required)) fail(`terms page missing ${required}`);
+  }
+  if (/HIPAA certified|binding arbitration|you waive/i.test(termsText)) {
+    fail("terms page includes an unapproved legal claim");
+  }
+}
+const htmlSitemap = pages.find((page) => normalizePath(page.canonicalUrl) === "/html-sitemap");
+if (!htmlSitemap) fail("HTML sitemap missing from rendered pages");
+if (htmlSitemap) {
+  for (const href of [
+    "/procedures/botox",
+    "/procedures/blomdahl-ear-piercing",
+    "/locations/williamsburg-va",
+    "/staff/jenny-coleman",
+    "/privacy",
+    "/terms",
+    "/sitemap.xml",
+  ]) {
+    if (!new RegExp(`href=["']${href}["']`).test(htmlSitemap.html)) fail(`HTML sitemap missing ${href}`);
+  }
+}
+if (!home.includes('loading="lazy"')) fail("clinic map iframe is not lazy-loaded");
+if (!home.includes("Map of Williamsburg Med Spa, 3900 Powhatan Parkway, Williamsburg, VA 23188")) {
+  fail("clinic map iframe is missing an accessible title");
+}
+if (!/Williamsburg%20Med%20Spa/.test(home) || !/3900%20Powhatan%20Parkway/.test(home) || !/output=embed/.test(home)) {
+  fail("clinic map is not keyed to the business name and street address");
+}
+if (!home.includes("(804) 738-9483") && !home.includes("+1 (804) 738-9483")) {
+  fail("footer dropped the clinic phone number");
+}
+if (!/href=["']\/html-sitemap["']/.test(home) || !/href=["']\/terms["']/.test(home)) {
+  fail("footer is missing the HTML sitemap or terms link");
+}
+const personBlocks = [...home.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)]
+  .map((match) => JSON.parse(unescapeHtml(match[1])))
+  .flatMap((schema) => (Array.isArray(schema?.["@graph"]) ? schema["@graph"] : [schema]))
+  .filter((schema) => schema?.["@type"] === "Person" && schema?.name === "Jenny Coleman");
+if (!personBlocks.length) fail("homepage is missing Jenny Coleman Person schema");
+for (const person of personBlocks) {
+  const credentialNames = (person.hasCredential || []).map((credential) => credential.name);
+  if (!credentialNames.includes("Cellular Medicine Association-certified OH-Shot provider")) {
+    fail("Jenny Person schema dropped the CMA OH-Shot credential");
+  }
+  if (!credentialNames.includes("Certified Blomdahl provider")) {
+    fail("Jenny Person schema dropped the Blomdahl credential");
+  }
+  const knows = (person.knowsAbout || []).map((topic) => topic.name);
+  for (const topic of ["Botulinum toxin", "Injectable filler", "Platelet-rich plasma", "Ear piercing", "Hyperhidrosis"]) {
+    if (!knows.includes(topic)) fail(`Jenny Person schema is missing knowsAbout ${topic}`);
+  }
+  if (person.alumniOf) fail("Jenny Person schema invented alumniOf");
+  if (person.memberOf) fail("Jenny Person schema invented memberOf");
+  if (JSON.stringify(person).includes("lip filler")) fail("Jenny Person schema mentions lip filler");
+}
+if (/facebook\.com|instagram\.com|youtube\.com|linkedin\.com|tiktok\.com/i.test(home)) {
+  fail("homepage links a social profile that has not been confirmed");
+}
+
 if (warnings.length) {
   console.warn(`SEO verification warnings (${warnings.length}):`);
   warnings.forEach((message) => console.warn(`- ${message}`));
