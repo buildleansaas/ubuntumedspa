@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
 import * as yup from "yup";
 
 import { createEventRequest, updateEventRequestNotificationStatus } from "lib/event-requests";
 import { buildEventSubmissionSchema, coerceEventSubmission } from "lib/event-form";
+import { getMailConfig, sendMail } from "lib/mailer";
 import {
   buildEventNotificationLines,
   getEventBySlug,
@@ -40,28 +40,12 @@ export async function POST(req: NextRequest, { params }: { params: { slug: strin
       responses,
     });
 
-    const host = process.env.SMTP_HOST || "smtp.gmail.com";
-    const port = Number(process.env.SMTP_PORT || 465);
-    const secure = String(process.env.SMTP_SECURE || "true") !== "false";
-    const user = process.env.SMTP_USER || (process.env.NODE_ENV === "development" ? "" : undefined);
-    const pass = process.env.SMTP_PASS || (process.env.NODE_ENV === "development" ? "" : undefined);
-
-    const transporter = nodemailer.createTransport({
-      port,
-      host,
-      auth: user && pass ? { user, pass } : undefined,
-      secure,
-    });
-
     let notificationStatus: "sent" | "failed" = "sent";
 
     try {
-      await transporter.sendMail({
-        from: "au.witherow@gmail.com",
-        to:
-          process.env.NODE_ENV === "development"
-            ? "au.witherow@gmail.com"
-            : process.env.LEADS_TO_EMAIL || "jennylingcoleman@icloud.com",
+      await sendMail({
+        to: getMailConfig().leadsTo,
+        replyTo: getRequiredString(validated.email),
         subject: `[MED SPA ${event.leadSubjectLabel}] ${getRequiredString(validated.name)}`,
         text: buildEventNotificationLines(event, validated).join("\n"),
       });

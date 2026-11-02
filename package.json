@@ -7,10 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "tsx --test src/lib/analytics.test.ts src/lib/order-notifications.test.ts",
     "test:analytics": "tsx --test src/lib/analytics.test.ts",
+    "test:orders": "tsx --test src/lib/order-notifications.test.ts",
     "verify:seo": "node scripts/verify-seo.mjs",
     "compress:artifacts": "node scripts/compress-artifacts.mjs",
-    "sync:stripe-catalog": "tsx scripts/sync-stripe-catalog.ts"
+    "sync:stripe-catalog": "tsx scripts/sync-stripe-catalog.ts",
+    "resync:orders": "tsx scripts/resync-paid-orders.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "^2.3.0",

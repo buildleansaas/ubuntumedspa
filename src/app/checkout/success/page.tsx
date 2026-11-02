@@ -6,7 +6,7 @@ import ClearCartOnMount from "components/clear-cart-on-mount";
 import { Button } from "components/ui/button";
 import { getCalLinks } from "lib/cal";
 import { formatUsd } from "lib/price";
-import { getOrderByPublicToken } from "lib/orders";
+import { getOrderByPublicToken, syncOrderFromStripeSession } from "lib/orders";
 
 export const dynamic = "force-dynamic";
 
@@ -18,8 +18,19 @@ export default async function CheckoutSuccessPage({
   const orderToken = searchParams.order;
   if (!orderToken) return notFound();
 
-  const order = await getOrderByPublicToken(orderToken);
-  if (!order) return notFound();
+  const storedOrder = await getOrderByPublicToken(orderToken);
+  if (!storedOrder) return notFound();
+
+  // Don't wait on the Stripe webhook: ask Stripe directly so the buyer can book right away.
+  // Only the session stored on the order is used, never one from the URL.
+  let order = storedOrder;
+  if (storedOrder.paymentStatus !== "paid" && storedOrder.stripeSessionId) {
+    try {
+      order = (await syncOrderFromStripeSession(storedOrder.stripeSessionId)) || storedOrder;
+    } catch (error) {
+      console.error("[checkout/success] Stripe sync failed", storedOrder.orderId, error);
+    }
+  }
 
   const { paidProcedure } = getCalLinks();
   const canSchedule = order.paymentStatus === "paid" && order.requiresScheduling && Boolean(paidProcedure);
