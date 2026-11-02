@@ -58,6 +58,26 @@ test("product-only receipts talk about pickup, not booking", () => {
   const email = buildCustomerEmail({ ...order, requiresScheduling: false, customerName: undefined });
 
   assert.match(email.text, /^Hi,/);
-  assert.match(email.text, /pickup/);
-  assert.doesNotMatch(email.text, /appointment/);
+  assert.match(email.text, /we'll contact you to set a pickup time/);
+  assert.doesNotMatch(email.text, /appointment|book/i);
+});
+
+test("mixed procedure + pickup orders get both the booking link and the pickup line", () => {
+  const mixed: OrderRecord = {
+    ...order,
+    items: [...order.items, { ...order.items[0], slug: "aftercare", name: "Aftercare Kit", fulfillment: "pickup" }],
+  };
+
+  assert.match(buildCustomerEmail(mixed).text, /pick your appointment time[\s\S]*set a pickup time/);
+  assert.match(buildOwnerEmail(mixed).text, /Contact them to set a pickup time/);
+});
+
+test("greeting uses the first name even with stray spaces", () => {
+  assert.match(buildCustomerEmail({ ...order, customerName: "  Pat Buyer" }).text, /^Hi Pat,/);
+});
+
+test("owner alert says plainly when the receipt did not go out", () => {
+  assert.match(buildOwnerEmail(order, "failed").text, /receipt email failed to send\. Text or call them/);
+  assert.match(buildOwnerEmail({ ...order, customerEmail: undefined }, "skipped").text, /no email address/);
+  assert.match(buildOwnerEmail(order, "sent").text, /emailed a receipt with a link to book/);
 });

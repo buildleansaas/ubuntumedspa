@@ -6,6 +6,7 @@ import ClearCartOnMount from "components/clear-cart-on-mount";
 import { Button } from "components/ui/button";
 import { getCalLinks } from "lib/cal";
 import { formatUsd } from "lib/price";
+import { sendPaidOrderNotifications } from "lib/order-notifications";
 import { getOrderByPublicToken, syncOrderFromStripeSession } from "lib/orders";
 
 export const dynamic = "force-dynamic";
@@ -13,7 +14,7 @@ export const dynamic = "force-dynamic";
 export default async function CheckoutSuccessPage({
   searchParams,
 }: {
-  searchParams: { order?: string; session_id?: string };
+  searchParams: { order?: string };
 }) {
   const orderToken = searchParams.order;
   if (!orderToken) return notFound();
@@ -29,6 +30,13 @@ export default async function CheckoutSuccessPage({
       order = (await syncOrderFromStripeSession(storedOrder.stripeSessionId)) || storedOrder;
     } catch (error) {
       console.error("[checkout/success] Stripe sync failed", storedOrder.orderId, error);
+    }
+  } else if (storedOrder.paymentStatus === "paid") {
+    // Catches orders paid before email was configured, or whose emails failed. No-op once sent.
+    try {
+      await sendPaidOrderNotifications(storedOrder.orderId);
+    } catch (error) {
+      console.error("[checkout/success] order emails failed", storedOrder.orderId, error);
     }
   }
 
@@ -103,8 +111,7 @@ export default async function CheckoutSuccessPage({
         <div className="rounded-2xl border border-base-300 bg-base-200 p-6">
           <h2 className="text-2xl font-semibold mb-3">Pickup Details</h2>
           <p className="text-base-content/70">
-            Your product order has been recorded for pickup. If you need to coordinate timing, contact the office or add
-            pickup notes during follow-up.
+            Your product order has been recorded for pickup. We&apos;ll contact you to set a pickup time.
           </p>
         </div>
       )}

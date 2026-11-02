@@ -1,10 +1,8 @@
 import { getDb } from "lib/mongodb";
-import { getMailConfig, sendMail } from "lib/mailer";
-import type { OrderRecord } from "lib/orders";
+import { getMailConfig, orderEmailsEnabled, sendMail } from "lib/mailer";
+import type { OrderNotificationStatus, OrderRecord } from "lib/orders";
 import { formatUsd } from "lib/price";
 import { ORIGIN } from "lib/seo";
-
-type NotificationStatus = "sent" | "failed" | "skipped";
 
 const escapeHtml = (value: string) =>
   value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -17,7 +15,23 @@ export const getOrderBookingUrl = (order: Pick<OrderRecord, "publicToken">) =>
 const itemLines = (order: OrderRecord) =>
   order.items.map((item) => `${item.quantity} x ${item.name}: ${formatUsd(item.lineTotalCents)}`);
 
-export const buildOwnerEmail = (order: OrderRecord) => {
+const hasPickupItems = (order: OrderRecord) =>
+  !order.requiresScheduling || order.items.some((item) => item.fulfillment === "pickup");
+
+const PICKUP_LINE_CUSTOMER = "For the products in your order, we'll contact you to set a pickup time.";
+const PICKUP_LINE_OWNER = "This order has products for pickup. Contact them to set a pickup time.";
+
+const receiptLine = (order: OrderRecord, receipt: OrderNotificationStatus) => {
+  if (receipt === "sent") {
+    return order.requiresScheduling
+      ? "They were emailed a receipt with a link to book. If they don't book in a day or two, text or call them."
+      : "They were emailed a receipt.";
+  }
+  if (receipt === "skipped") return "They left no email address, so no receipt was sent. Text or call them.";
+  return "Their receipt email failed to send. Text or call them.";
+};
+
+export const buildOwnerEmail = (order: OrderRecord, receipt: OrderNotificationStatus = "sent") => {
   const name = order.customerName || "(no name given)";
   const phone = order.customerPhone || "";
   const lines = [
@@ -30,14 +44,13 @@ export const buildOwnerEmail = (order: OrderRecord) => {
     ...itemLines(order),
     `Total paid: ${formatUsd(order.subtotalCents)}`,
     ``,
-    order.requiresScheduling
-      ? `They were sent a receipt with a link to book. If they don't book in a day or two, text or call them.`
-      : `This is a product order for pickup. Reach out to arrange pickup.`,
+    receiptLine(order, receipt),
+    hasPickupItems(order) ? PICKUP_LINE_OWNER : "",
     ``,
     `Their booking page: ${getOrderBookingUrl(order)}`,
     `Order ID: ${order.orderId}`,
     order.stripeSessionId ? `Stripe checkout: ${order.stripeSessionId}` : "",
-  ].filter((line, index, all) => line !== "" || all[index - 1] !== "");
+  ].filter((line, index, all) => line !== "" || (index > 0 && all[index - 1] !== ""));
 
   const contactHtml = [
     phone
@@ -57,11 +70,8 @@ export const buildOwnerEmail = (order: OrderRecord) => {
       .map((item) => `<li>${item.quantity} x ${escapeHtml(item.name)}: ${formatUsd(item.lineTotalCents)}</li>`)
       .join("")}</ul>
     <p><strong>Total paid: ${formatUsd(order.subtotalCents)}</strong></p>
-    <p>${
-      order.requiresScheduling
-        ? "They were sent a receipt with a link to book. If they don't book in a day or two, text or call them."
-        : "This is a product order for pickup. Reach out to arrange pickup."
-    }</p>
+    <p>${escapeHtml(receiptLine(order, receipt))}</p>
+    ${hasPickupItems(order) ? `<p>${PICKUP_LINE_OWNER}</p>` : ""}
     <p><a href="${getOrderBookingUrl(order)}">Their booking page</a> · Order ${escapeHtml(order.orderId)}</p>
   `;
 
@@ -73,11 +83,13 @@ export const buildOwnerEmail = (order: OrderRecord) => {
 };
 
 export const buildCustomerEmail = (order: OrderRecord) => {
-  const greeting = order.customerName ? `Hi ${order.customerName.split(" ")[0]},` : "Hi,";
+  const firstName = order.customerName?.trim().split(/\s+/)[0];
+  const greeting = firstName ? `Hi ${firstName},` : "Hi,";
   const bookingUrl = getOrderBookingUrl(order);
-  const nextStep = order.requiresScheduling
-    ? `Next step: pick your appointment time here:\n${bookingUrl}`
-    : `Your order is ready for pickup arrangements. Reply to this email and we'll set a time.`;
+  const nextSteps = [
+    order.requiresScheduling ? `Next step: pick your appointment time here:\n${bookingUrl}` : "",
+    hasPickupItems(order) ? PICKUP_LINE_CUSTOMER : "",
+  ].filter(Boolean);
 
   const text = [
     greeting,
@@ -87,7 +99,7 @@ export const buildCustomerEmail = (order: OrderRecord) => {
     ...itemLines(order),
     `Total paid: ${formatUsd(order.subtotalCents)}`,
     ``,
-    nextStep,
+    ...nextSteps,
     ``,
     `Questions? Just reply to this email.`,
     ``,
@@ -102,11 +114,8 @@ export const buildCustomerEmail = (order: OrderRecord) => {
       .map((item) => `<li>${item.quantity} x ${escapeHtml(item.name)}: ${formatUsd(item.lineTotalCents)}</li>`)
       .join("")}</ul>
     <p><strong>Total paid: ${formatUsd(order.subtotalCents)}</strong></p>
-    ${
-      order.requiresScheduling
-        ? `<p><strong>Next step:</strong> <a href="${bookingUrl}">pick your appointment time</a>.</p>`
-        : `<p>Your order is ready for pickup arrangements. Reply to this email and we'll set a time.</p>`
-    }
+    ${order.requiresScheduling ? `<p><strong>Next step:</strong> <a href="${bookingUrl}">pick your appointment time</a>.</p>` : ""}
+    ${hasPickupItems(order) ? `<p>${PICKUP_LINE_CUSTOMER}</p>` : ""}
     <p>Questions? Just reply to this email.</p>
     <p>Jenny<br>Williamsburg Med Spa</p>
   `;
@@ -114,52 +123,69 @@ export const buildCustomerEmail = (order: OrderRecord) => {
   return { subject: "Your Williamsburg Med Spa receipt", text, html };
 };
 
-const trySend = async (send: () => Promise<void>): Promise<{ status: NotificationStatus; error?: string }> => {
-  try {
-    await send();
-    return { status: "sent" };
-  } catch (error) {
-    return { status: "failed", error: error instanceof Error ? error.message : "Unknown email error" };
-  }
-};
+type ClaimField = "customerReceiptClaimedAt" | "ownerNotificationClaimedAt";
+type StatusField = "customerReceiptStatus" | "ownerNotificationStatus";
 
-// Sends the owner alert and the customer receipt once per paid order. The webhook and the
-// success page can both sync the same order at the same moment, so the order is claimed
-// atomically before anything is sent.
-export const sendPaidOrderNotifications = async (orderId: string) => {
-  if (!getMailConfig().configured) return null;
-
-  const db = await getDb();
-  const orders = db.collection<OrderRecord & { notificationsClaimedAt?: Date }>("orders");
+// Claims one message for one paid order so the webhook and the success page can't both send it.
+// A failed send releases the claim, so the next sync (or page load) tries again.
+const sendOnce = async (
+  orderId: string,
+  claimField: ClaimField,
+  statusField: StatusField,
+  send: (order: OrderRecord) => Promise<void>
+): Promise<{ status: OrderNotificationStatus | "already_handled"; order?: OrderRecord }> => {
+  const orders = (await getDb()).collection<OrderRecord>("orders");
   const claimed = await orders.findOneAndUpdate(
-    { orderId, paymentStatus: "paid", notificationsClaimedAt: { $exists: false } },
-    { $set: { notificationsClaimedAt: new Date() } },
+    { orderId, paymentStatus: "paid", [claimField]: { $exists: false } },
+    { $set: { [claimField]: new Date() } },
     { returnDocument: "after" }
   );
 
-  if (!claimed) return null;
+  if (!claimed) return { status: "already_handled" };
 
-  const owner = buildOwnerEmail(claimed);
-  const ownerResult = await trySend(() =>
-    sendMail({ to: getMailConfig().leadsTo, ...owner, replyTo: claimed.customerEmail || undefined })
+  try {
+    await send(claimed);
+    await orders.updateOne({ orderId }, { $set: { [statusField]: "sent", updatedAt: new Date() } });
+    return { status: "sent", order: claimed };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown email error";
+    console.error(`[order-notifications] ${statusField} failed for order ${orderId}: ${message}`);
+    await orders.updateOne(
+      { orderId },
+      { $set: { [statusField]: "failed", updatedAt: new Date() }, $unset: { [claimField]: "" } }
+    );
+    return { status: "failed", order: claimed };
+  }
+};
+
+// Sends the buyer's receipt, then the owner alert (which says whether the receipt went out).
+// Each is sent at most once; failures are retried on the next sync. Safe to call on every visit.
+export const sendPaidOrderNotifications = async (orderId: string) => {
+  if (!orderEmailsEnabled()) return null;
+
+  const orders = (await getDb()).collection<OrderRecord>("orders");
+  const order = await orders.findOne({ orderId, paymentStatus: "paid" });
+  if (!order) return null;
+
+  let receipt: OrderNotificationStatus | "already_handled" = order.customerReceiptStatus || "already_handled";
+  if (!order.customerEmail) {
+    receipt = "skipped";
+  } else if (!order.customerReceiptClaimedAt) {
+    receipt = (
+      await sendOnce(orderId, "customerReceiptClaimedAt", "customerReceiptStatus", (claimed) =>
+        sendMail({ to: claimed.customerEmail as string, ...buildCustomerEmail(claimed) })
+      )
+    ).status;
+  }
+
+  const receiptForOwner: OrderNotificationStatus = receipt === "already_handled" ? "sent" : receipt;
+  const owner = await sendOnce(orderId, "ownerNotificationClaimedAt", "ownerNotificationStatus", (claimed) =>
+    sendMail({
+      to: getMailConfig().leadsTo,
+      ...buildOwnerEmail(claimed, receiptForOwner),
+      replyTo: claimed.customerEmail || undefined,
+    })
   );
 
-  const customerResult = claimed.customerEmail
-    ? await trySend(() => sendMail({ to: claimed.customerEmail as string, ...buildCustomerEmail(claimed) }))
-    : { status: "skipped" as const };
-
-  await orders.updateOne(
-    { orderId },
-    {
-      $set: {
-        ownerNotificationStatus: ownerResult.status,
-        ownerNotificationError: ownerResult.error,
-        customerReceiptStatus: customerResult.status,
-        customerReceiptError: "error" in customerResult ? customerResult.error : undefined,
-        updatedAt: new Date(),
-      },
-    }
-  );
-
-  return { owner: ownerResult.status, customer: customerResult.status };
+  return { customer: receipt, owner: owner.status };
 };

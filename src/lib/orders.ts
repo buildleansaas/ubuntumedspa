@@ -6,6 +6,8 @@ import { ensureMongoIndexes, getDb } from "lib/mongodb";
 import { sendPaidOrderNotifications } from "lib/order-notifications";
 import { getStripe } from "lib/stripe";
 
+export type OrderNotificationStatus = "sent" | "failed" | "skipped";
+
 export type OrderRecord = {
   orderId: string;
   publicToken: string;
@@ -24,6 +26,10 @@ export type OrderRecord = {
   customerName?: string;
   customerPhone?: string;
   paidAt?: Date;
+  customerReceiptClaimedAt?: Date;
+  customerReceiptStatus?: OrderNotificationStatus;
+  ownerNotificationClaimedAt?: Date;
+  ownerNotificationStatus?: OrderNotificationStatus;
   createdAt: Date;
   updatedAt: Date;
 };

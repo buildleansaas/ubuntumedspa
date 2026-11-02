@@ -12,6 +12,10 @@ const DEFAULT_LEADS_TO_EMAIL = "jennylingcoleman@icloud.com";
 export const getMailConfig = () => {
   const user = process.env.SMTP_USER || "";
   const pass = process.env.SMTP_PASS || "";
+  const leadsTo =
+    process.env.NODE_ENV === "development"
+      ? process.env.DEV_LEADS_TO_EMAIL || "au.witherow@gmail.com"
+      : process.env.LEADS_TO_EMAIL || DEFAULT_LEADS_TO_EMAIL;
 
   return {
     configured: Boolean(user && pass),
@@ -21,13 +25,16 @@ export const getMailConfig = () => {
     user,
     pass,
     from: process.env.SMTP_FROM || (user ? `Williamsburg Med Spa <${user}>` : ""),
-    replyTo: process.env.SMTP_REPLY_TO || user || undefined,
-    leadsTo:
-      process.env.NODE_ENV === "development"
-        ? process.env.DEV_LEADS_TO_EMAIL || "au.witherow@gmail.com"
-        : process.env.LEADS_TO_EMAIL || DEFAULT_LEADS_TO_EMAIL,
+    // Customer replies go where Jenny already reads alerts unless SMTP_REPLY_TO says otherwise.
+    replyTo: process.env.SMTP_REPLY_TO || leadsTo,
+    leadsTo,
   };
 };
+
+// Order emails go to real buyers, so they only send from production unless explicitly enabled.
+export const orderEmailsEnabled = () =>
+  getMailConfig().configured &&
+  (process.env.NODE_ENV === "production" || process.env.ORDER_EMAILS_ENABLED === "true");
 
 const getTransport = () => {
   const config = getMailConfig();
@@ -39,6 +46,10 @@ const getTransport = () => {
       port: config.port,
       secure: config.secure,
       auth: { user: config.user, pass: config.pass },
+      // Sends run inside request handlers; fail fast instead of nodemailer's multi-minute defaults.
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 15_000,
     });
   }
 
