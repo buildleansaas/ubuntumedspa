@@ -34,7 +34,7 @@ export default function BlomdahlCallout() {
           </p>
 
           <p className="mt-5 text-sm leading-relaxed text-base-content/80 md:text-base">
-            {piercing?.displayPrice ?? "$45 per ear, or $80 for both ears"}. Book the visit, then choose a time.
+            {piercing?.displayPrice}. Book the visit, then choose a time.
           </p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

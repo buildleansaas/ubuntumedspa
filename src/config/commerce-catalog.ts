@@ -1,4 +1,11 @@
 import { normalizeIntimacyProcedureSlug } from "lib/intimacy-aliases";
+import {
+  cardCashLabel,
+  cardPriceCents,
+  cardQuantityBreakLineCents,
+  cardQuantityBreakUnitCents,
+  formatUsdShort,
+} from "lib/price";
 
 export type CatalogKind = "product" | "procedure";
 export type PricingMode = "fixed" | "quantity" | "increment_credit";
@@ -10,7 +17,13 @@ export type CatalogItemConfig = {
   name: string;
   shortDescription: string;
   pricingMode: PricingMode;
+  /** Listed cash price per unit (the source of truth). Increment-credit items credit this amount per block. */
+  cashAmountCents: number;
+  /** Cash per-unit price for a quantity, e.g. { 2: 4000 } = $80 cash for both ears. */
+  cashQuantityPriceBreaks?: Record<number, number>;
+  /** Card / online price per unit (what Stripe checkout charges). Derived from cashAmountCents. */
   unitAmountCents: number;
+  /** Card / online per-unit price for a quantity. Derived from cashQuantityPriceBreaks. */
   quantityPriceBreaks?: Record<number, number>;
   currency: "usd";
   displayPrice: string;
@@ -27,16 +40,75 @@ export type CatalogItemConfig = {
   customerNote?: string;
 };
 
-export const COMMERCE_CATALOG: CatalogItemConfig[] = [
+type CatalogItemSource = Omit<CatalogItemConfig, "unitAmountCents" | "quantityPriceBreaks" | "displayPrice"> & {
+  /** Unit wording placed after the card price, e.g. "per syringe". */
+  displayUnit?: string;
+  /** Wording for a quantity price break, e.g. { 2: "for both ears" }. */
+  quantityBreakLabels?: Record<number, string>;
+};
+
+const CREDIT_BLOCK_CASH_CENTS = 25000;
+const creditBlockCash = formatUsdShort(CREDIT_BLOCK_CASH_CENTS);
+const creditBlockCard = formatUsdShort(cardPriceCents(CREDIT_BLOCK_CASH_CENTS));
+
+const deriveCardQuantityPriceBreaks = (cashBreaks: Record<number, number> | undefined) => {
+  if (!cashBreaks) return undefined;
+  return Object.fromEntries(
+    Object.entries(cashBreaks).map(([quantity, cashUnitCents]) => [
+      Number(quantity),
+      cardQuantityBreakUnitCents(cashUnitCents, Number(quantity)),
+    ])
+  ) as Record<number, number>;
+};
+
+const buildDisplayPrice = (source: CatalogItemSource) => {
+  if (source.pricingMode === "increment_credit") {
+    return `${formatUsdShort(source.cashAmountCents)} credit blocks · ${cardCashLabel(source.cashAmountCents)}`;
+  }
+
+  const breaks = Object.entries(source.cashQuantityPriceBreaks ?? {}).map(([quantity, cashUnitCents]) => ({
+    quantity: Number(quantity),
+    cashLineCents: cashUnitCents * Number(quantity),
+    // Exactly what checkout charges for this quantity: per-unit card break x quantity.
+    cardLineCents: cardQuantityBreakLineCents(cashUnitCents, Number(quantity)),
+  }));
+
+  if (breaks.length) {
+    const cardParts = [
+      `${formatUsdShort(cardPriceCents(source.cashAmountCents))}${source.displayUnit ? ` ${source.displayUnit}` : ""}`,
+      ...breaks.map(
+        ({ quantity, cardLineCents }) =>
+          `${formatUsdShort(cardLineCents)} ${source.quantityBreakLabels?.[quantity] ?? `for ${quantity}`}`
+      ),
+    ];
+    const cashParts = [formatUsdShort(source.cashAmountCents), ...breaks.map(({ cashLineCents }) => formatUsdShort(cashLineCents))];
+    return `${cardParts.join(" or ")} card/online · ${cashParts.join(" or ")} cash`;
+  }
+
+  return cardCashLabel(source.cashAmountCents, source.displayUnit);
+};
+
+const toCatalogItem = (source: CatalogItemSource): CatalogItemConfig => {
+  const { displayUnit: _displayUnit, quantityBreakLabels: _quantityBreakLabels, ...config } = source;
+  const quantityPriceBreaks = deriveCardQuantityPriceBreaks(source.cashQuantityPriceBreaks);
+
+  return {
+    ...config,
+    unitAmountCents: cardPriceCents(source.cashAmountCents),
+    ...(quantityPriceBreaks ? { quantityPriceBreaks } : {}),
+    displayPrice: buildDisplayPrice(source),
+  };
+};
+
+const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
   {
     slug: "oh-shot",
     kind: "procedure",
     name: "OH-Shot",
     shortDescription: "Full upfront payment for one treatment visit.",
     pricingMode: "fixed",
-    unitAmountCents: 120000,
+    cashAmountCents: 120000,
     currency: "usd",
-    displayPrice: "$1,200",
     quantityLabel: "treatment",
     minQuantity: 1,
     maxQuantity: 10,
@@ -52,9 +124,8 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     name: "Pe-Shot",
     shortDescription: "Full upfront payment for one treatment visit.",
     pricingMode: "fixed",
-    unitAmountCents: 190000,
+    cashAmountCents: 190000,
     currency: "usd",
-    displayPrice: "$1,900",
     quantityLabel: "treatment",
     minQuantity: 1,
     maxQuantity: 10,
@@ -70,9 +141,8 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     name: "PRP Breast Lift",
     shortDescription: "Full upfront payment for one treatment visit.",
     pricingMode: "fixed",
-    unitAmountCents: 180000,
+    cashAmountCents: 180000,
     currency: "usd",
-    displayPrice: "$1,800",
     quantityLabel: "treatment",
     minQuantity: 1,
     maxQuantity: 1,
@@ -90,9 +160,9 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     name: "PRP Hair Restoration",
     shortDescription: "Charged per treatment session.",
     pricingMode: "fixed",
-    unitAmountCents: 60000,
+    cashAmountCents: 60000,
     currency: "usd",
-    displayPrice: "$600 per treatment",
+    displayUnit: "per treatment",
     quantityLabel: "treatment",
     minQuantity: 1,
     maxQuantity: 1,
@@ -111,9 +181,8 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     name: "PRP Facial",
     shortDescription: "Full upfront payment for one treatment visit.",
     pricingMode: "fixed",
-    unitAmountCents: 60000,
+    cashAmountCents: 60000,
     currency: "usd",
-    displayPrice: "$600",
     quantityLabel: "treatment",
     minQuantity: 1,
     maxQuantity: 10,
@@ -129,9 +198,8 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     name: "PRP Face Lift",
     shortDescription: "Full upfront payment for one treatment visit.",
     pricingMode: "fixed",
-    unitAmountCents: 150000,
+    cashAmountCents: 150000,
     currency: "usd",
-    displayPrice: "$1,500",
     quantityLabel: "treatment",
     minQuantity: 1,
     maxQuantity: 10,
@@ -147,9 +215,8 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     name: "Joint Restoration",
     shortDescription: "Full upfront payment for one treatment visit.",
     pricingMode: "fixed",
-    unitAmountCents: 80000,
+    cashAmountCents: 80000,
     currency: "usd",
-    displayPrice: "$800",
     quantityLabel: "treatment",
     minQuantity: 1,
     maxQuantity: 10,
@@ -163,12 +230,11 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     slug: "botox",
     kind: "procedure",
     name: "Botox",
-    shortDescription: "Prepaid treatment credit sold in $250 blocks.",
+    shortDescription: `Prepaid treatment credit sold in ${creditBlockCash} blocks.`,
     pricingMode: "increment_credit",
-    unitAmountCents: 25000,
+    cashAmountCents: CREDIT_BLOCK_CASH_CENTS,
     currency: "usd",
-    displayPrice: "$250 increments",
-    quantityLabel: "$250 block",
+    quantityLabel: `${creditBlockCash} block`,
     minQuantity: 1,
     maxQuantity: 4,
     requiresScheduling: true,
@@ -177,18 +243,17 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     stripeProductKey: "wms_procedure_botox",
     stripePriceLookupKey: "wms_procedure_botox_block_250_v1",
     customerNote:
-      "Botox is prepaid online in $250 blocks. The amount is applied to your treatment and any unused value remains as account credit.",
+      `Botox is prepaid online in ${creditBlockCash} credit blocks (${creditBlockCard} per block online by card, ${creditBlockCash} cash). Each block adds ${creditBlockCash} of treatment credit, and any unused value remains as account credit.`,
   },
   {
     slug: "xeomin",
     kind: "procedure",
     name: "Xeomin",
-    shortDescription: "Prepaid treatment credit sold in $250 blocks.",
+    shortDescription: `Prepaid treatment credit sold in ${creditBlockCash} blocks.`,
     pricingMode: "increment_credit",
-    unitAmountCents: 25000,
+    cashAmountCents: CREDIT_BLOCK_CASH_CENTS,
     currency: "usd",
-    displayPrice: "$250 increments",
-    quantityLabel: "$250 block",
+    quantityLabel: `${creditBlockCash} block`,
     minQuantity: 1,
     maxQuantity: 4,
     requiresScheduling: true,
@@ -197,7 +262,7 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     stripeProductKey: "wms_procedure_xeomin",
     stripePriceLookupKey: "wms_procedure_xeomin_block_250_v1",
     customerNote:
-      "Xeomin is prepaid online in $250 blocks. The amount is applied to your treatment and any unused value remains as account credit.",
+      `Xeomin is prepaid online in ${creditBlockCash} credit blocks (${creditBlockCard} per block online by card, ${creditBlockCash} cash). Each block adds ${creditBlockCash} of treatment credit, and any unused value remains as account credit.`,
   },
   {
     slug: "filler",
@@ -205,9 +270,9 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     name: "Filler",
     shortDescription: "Charged per syringe.",
     pricingMode: "quantity",
-    unitAmountCents: 70000,
+    cashAmountCents: 70000,
     currency: "usd",
-    displayPrice: "$700 per syringe",
+    displayUnit: "per syringe",
     quantityLabel: "syringe",
     minQuantity: 1,
     maxQuantity: 10,
@@ -223,9 +288,8 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     name: "Hyperhidrosis Treatment",
     shortDescription: "Full upfront payment for one treatment visit.",
     pricingMode: "fixed",
-    unitAmountCents: 100000,
+    cashAmountCents: 100000,
     currency: "usd",
-    displayPrice: "$1,000",
     quantityLabel: "treatment",
     minQuantity: 1,
     maxQuantity: 10,
@@ -241,12 +305,15 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     name: "Blomdahl Ear Piercing",
     shortDescription: "Charged per ear.",
     pricingMode: "quantity",
-    unitAmountCents: 4500,
-    quantityPriceBreaks: {
+    cashAmountCents: 4500,
+    cashQuantityPriceBreaks: {
       2: 4000,
     },
     currency: "usd",
-    displayPrice: "$45 per ear, or $80 for both ears",
+    displayUnit: "per ear",
+    quantityBreakLabels: {
+      2: "for both ears",
+    },
     quantityLabel: "ear",
     minQuantity: 1,
     maxQuantity: 2,
@@ -262,9 +329,8 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     name: "Co2 Lift",
     shortDescription: "Pickup-only medical-grade skincare product.",
     pricingMode: "fixed",
-    unitAmountCents: 10000,
+    cashAmountCents: 10000,
     currency: "usd",
-    displayPrice: "$100",
     quantityLabel: "item",
     minQuantity: 1,
     maxQuantity: 10,
@@ -280,9 +346,8 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     name: "Co2 V Lift for Women",
     shortDescription: "Pickup-only intimate care product.",
     pricingMode: "fixed",
-    unitAmountCents: 50000,
+    cashAmountCents: 50000,
     currency: "usd",
-    displayPrice: "$500",
     quantityLabel: "item",
     minQuantity: 1,
     maxQuantity: 10,
@@ -298,9 +363,8 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
     name: "Definage Clinical Power Trio Pro",
     shortDescription: "Pickup-only medical-grade skincare product.",
     pricingMode: "fixed",
-    unitAmountCents: 37000,
+    cashAmountCents: 37000,
     currency: "usd",
-    displayPrice: "$370",
     quantityLabel: "item",
     minQuantity: 1,
     maxQuantity: 10,
@@ -312,6 +376,8 @@ export const COMMERCE_CATALOG: CatalogItemConfig[] = [
   },
 ];
 
+export const COMMERCE_CATALOG: CatalogItemConfig[] = COMMERCE_CATALOG_SOURCE.map(toCatalogItem);
+
 export const COMMERCE_CATALOG_BY_SLUG = Object.fromEntries(COMMERCE_CATALOG.map((item) => [item.slug, item])) as Record<
   string,
   CatalogItemConfig
@@ -319,3 +385,20 @@ export const COMMERCE_CATALOG_BY_SLUG = Object.fromEntries(COMMERCE_CATALOG.map(
 
 export const getCatalogConfigBySlug = (slug: string) =>
   COMMERCE_CATALOG_BY_SLUG[normalizeIntimacyProcedureSlug(slug)] || null;
+
+/** Formatted ear-piercing prices for copy, derived from the catalog (exactly what checkout charges). */
+export const EAR_PIERCING_PRICES = (() => {
+  const piercing = COMMERCE_CATALOG_BY_SLUG["blomdahl-ear-piercing"];
+  const bothEarsCashUnit = piercing.cashQuantityPriceBreaks?.[2];
+  const bothEarsCardUnit = piercing.quantityPriceBreaks?.[2];
+  if (bothEarsCashUnit === undefined || bothEarsCardUnit === undefined) {
+    throw new Error("Blomdahl ear piercing is missing its two-ear price break.");
+  }
+
+  return {
+    oneEarCard: formatUsdShort(piercing.unitAmountCents),
+    oneEarCash: formatUsdShort(piercing.cashAmountCents),
+    bothEarsCard: formatUsdShort(bothEarsCardUnit * 2),
+    bothEarsCash: formatUsdShort(bothEarsCashUnit * 2),
+  };
+})();

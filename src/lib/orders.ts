@@ -1,6 +1,7 @@
 import { randomUUID } from "crypto";
 
 import { addAccountCredit, type AccountRecord, upsertAccountByEmail } from "lib/accounts";
+import { creditAmountCentsForItem } from "lib/cart-pricing";
 import { type ResolvedCart, resolveCart } from "lib/catalog";
 import { ensureMongoIndexes, getDb } from "lib/mongodb";
 import { sendPaidOrderNotifications } from "lib/order-notifications";
@@ -16,7 +17,10 @@ export type OrderRecord = {
   affiliateCode?: string;
   affiliateName?: string;
   items: ResolvedCart["items"];
+  /** Card / online subtotal charged by Stripe. */
   subtotalCents: number;
+  /** Listed cash subtotal. Missing on orders created before card pricing. */
+  cashSubtotalCents?: number;
   requiresScheduling: boolean;
   paymentStatus: "pending" | "paid" | "expired";
   schedulingStatus: "not_required" | "pending" | "scheduled";
@@ -70,6 +74,7 @@ export const createPendingOrder = async (
     affiliateName: affiliate?.affiliateName,
     items: resolvedCart.items,
     subtotalCents: resolvedCart.subtotalCents,
+    cashSubtotalCents: resolvedCart.cashSubtotalCents,
     requiresScheduling: resolvedCart.requiresScheduling,
     paymentStatus: "pending",
     schedulingStatus: resolvedCart.requiresScheduling ? "pending" : "not_required",
@@ -114,7 +119,8 @@ const ensureCreditEntries = async (order: OrderRecord, account: AccountRecord) =
     if (item.pricingMode !== "increment_credit") continue;
 
     const entryKey = `${order.orderId}:${item.slug}:credit`;
-    const amountCents = item.lineTotalCents;
+    // Credit the cash value of the blocks ($250 each), not the card amount charged.
+    const amountCents = creditAmountCentsForItem(item);
 
     const result = await db.collection<CreditLedgerEntry>("credit_ledger").updateOne(
       { entryKey },

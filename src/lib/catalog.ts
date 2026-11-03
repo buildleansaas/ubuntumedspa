@@ -3,6 +3,7 @@ import {
   type CatalogItemConfig,
   type CatalogKind,
 } from "config/commerce-catalog";
+import { resolveCartItemPricing, resolveSyncedStripePriceId } from "lib/cart-pricing";
 import { normalizeIntimacyProcedureSlug } from "lib/intimacy-aliases";
 import { ensureMongoIndexes, getDb } from "lib/mongodb";
 
@@ -38,8 +39,14 @@ export type CatalogItemRecord = {
 export type ResolvedCartItem = CatalogItemConfig & {
   quantity: number;
   unitLabel: string;
+  /** Card / online unit price charged by Stripe. */
   unitAmountCents: number;
+  /** Card / online line total charged by Stripe. */
   lineTotalCents: number;
+  /** Listed cash unit price. Optional because orders created before card pricing lack it. */
+  cashUnitAmountCents?: number;
+  /** Listed cash line total; increment-credit items credit this amount. Optional for older orders. */
+  cashLineTotalCents?: number;
   usesQuantityPriceBreak?: boolean;
   stripeProductId?: string;
   stripePriceId?: string;
@@ -47,7 +54,10 @@ export type ResolvedCartItem = CatalogItemConfig & {
 
 export type ResolvedCart = {
   items: ResolvedCartItem[];
+  /** Card / online subtotal charged by Stripe. */
   subtotalCents: number;
+  /** Listed cash subtotal (what the same items cost paid in cash at the office). */
+  cashSubtotalCents: number;
   requiresScheduling: boolean;
 };
 
@@ -132,8 +142,7 @@ export const resolveCart = async (rawItems: CartItemInput[]): Promise<ResolvedCa
 
     const quantity = validateQuantity(catalogItem, item.quantity);
 
-    const quantityPriceBreak = catalogItem.quantityPriceBreaks?.[quantity];
-    const unitAmountCents = quantityPriceBreak ?? catalogItem.unitAmountCents;
+    const pricing = resolveCartItemPricing(catalogItem, quantity);
 
     const legacySlug = legacyStripeRecordSlugs[item.slug];
     const stripeRecord = stripeRecords[item.slug] ?? (legacySlug ? stripeRecords[legacySlug] : undefined);
@@ -142,19 +151,20 @@ export const resolveCart = async (rawItems: CartItemInput[]): Promise<ResolvedCa
       ...catalogItem,
       quantity,
       unitLabel: catalogItem.quantityLabel,
-      unitAmountCents,
-      lineTotalCents: quantity * unitAmountCents,
-      usesQuantityPriceBreak: quantityPriceBreak !== undefined,
+      ...pricing,
       stripeProductId: stripeRecord?.stripeProductId,
-      stripePriceId: stripeRecord?.stripePriceId,
+      // Never reuse a synced Stripe price created for an older amount; checkout falls back to price_data.
+      stripePriceId: resolveSyncedStripePriceId(catalogItem, stripeRecord),
     });
   }
 
   const subtotalCents = items.reduce((sum, item) => sum + item.lineTotalCents, 0);
+  const cashSubtotalCents = items.reduce((sum, item) => sum + (item.cashLineTotalCents ?? item.lineTotalCents), 0);
 
   return {
     items,
     subtotalCents,
+    cashSubtotalCents,
     requiresScheduling: items.some((item) => item.requiresScheduling),
   };
 };

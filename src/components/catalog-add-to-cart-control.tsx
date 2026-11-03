@@ -3,7 +3,9 @@
 import { useState } from "react";
 
 import AddToCartButton from "components/add-to-cart-button";
-import { formatUsd } from "lib/price";
+import { getCatalogConfigBySlug } from "config/commerce-catalog";
+import { resolveCartItemPricing } from "lib/cart-pricing";
+import { formatUsd, formatUsdShort } from "lib/price";
 import { cn } from "lib/utils";
 
 type Props = {
@@ -41,6 +43,8 @@ export default function CatalogAddToCartControl({
   const [quantity, setQuantity] = useState(minQuantity);
   const showQuantityInput = maxQuantity > 1 || pricingMode !== "fixed";
   const clampedQuantity = clampQuantity(quantity, minQuantity, maxQuantity);
+  const catalogItem = getCatalogConfigBySlug(slug);
+  const pricing = catalogItem ? resolveCartItemPricing(catalogItem, clampedQuantity) : null;
 
   return (
     <div className={cn("flex flex-wrap items-end gap-3", className)}>
@@ -65,7 +69,9 @@ export default function CatalogAddToCartControl({
         <AddToCartButton slug={slug} kind={kind} quantity={clampedQuantity} />
         {showSubtotal && (
           <p className="text-sm text-base-content/60">
-            Total: <span className="font-semibold">{formatUsd(clampedQuantity * unitAmountCents)}</span>
+            Total:{" "}
+            <span className="font-semibold">{formatUsd(pricing?.lineTotalCents ?? clampedQuantity * unitAmountCents)}</span>
+            {pricing ? <> card/online · {formatUsdShort(pricing.cashLineTotalCents)} cash</> : null}
           </p>
         )}
       </div>

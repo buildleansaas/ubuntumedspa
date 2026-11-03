@@ -468,8 +468,8 @@ if (ownerDataStart === -1 || ownerDataEnd === -1) {
     "PRP_BREAST_SHARED_COPY_CONTRACT_START",
     "PRP_BREAST_SHARED_COPY_CONTRACT_END"
   );
-  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "8c8b0646315f25481ba713a11b50a7bfab2b9a431c003f92f8ab3224b099edbd");
-  assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "e8ca5d52259f9826c065a73009541d81b46d3ad3528ffebfd9887e2d270ca76c");
+  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "067e63cd409c31183e7f828410c13109b5dafdebaaa84502b79b93bdefbcf482");
+  assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "34e180bb63489dabb2f4ec23086266cacdea75b8a2124c8135f6f35d92905c56");
   assertSourceContract("shared footer clinical copy", sharedFooterContractSource, "aa96d5b0cca7dadcc9fb2e42bdf88c90839424fcc8118c2a1c9a956d98fbeec5");
 }
 
@@ -679,7 +679,8 @@ const readSnippet = (html) => {
 const snippetExpectations = {
   "/procedures/blomdahl-ear-piercing": {
     title: "Ear Piercing Williamsburg VA | Blomdahl Pediatric NP",
-    description: "Sterile, hypoallergenic Blomdahl ear piercing in Williamsburg, VA by a pediatric NP. $45 per ear.",
+    description:
+      "Sterile, hypoallergenic Blomdahl ear piercing in Williamsburg, VA by a pediatric NP. $46.66 per ear online by card or $45 cash.",
     h1: "Ear Piercing in Williamsburg, VA",
   },
   "/blog/blomdahl-medical-plastic-vs-titanium-earrings": {
@@ -896,14 +897,14 @@ const ownerPageExpectations = {
   "/procedures/prp-breast-lift": {
     title: "Breast Lift Williamsburg VA | PRP, Not Surgery",
     description:
-      "Breast lift in Williamsburg, VA: the $1,800 PRP visit is not surgery and does not promise a cosmetic result.",
+      "Breast lift in Williamsburg, VA: the PRP visit ($1,854.07 online by card or $1,800 cash) is not surgery and does not promise a cosmetic result.",
     h1: "PRP Breast Lift in Williamsburg, VA",
     required: [
       "What a PRP Breast Lift can and cannot do",
       "does not document the clinic's current method",
       "does not promise a cosmetic result",
       "mastopexy, implants, or fat transfer",
-      "$1,800",
+      "$1,854.07 card/online · $1,800 cash",
       "Full upfront payment for one treatment visit",
       "Book a Private PRP Breast Consultation",
     ],
@@ -945,7 +946,7 @@ const ownerPageExpectations = {
     requiredConsultHref:
       "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift",
     forbiddenHtml: [/id=["']prp-breast-lift-quantity["']/],
-    offer: { name: "PRP Breast Lift", price: "1800", currency: "USD" },
+    offer: { name: "PRP Breast Lift", price: "1854.07", currency: "USD" },
   },
   "/procedures/prp-hair-restoration": {
     title: "Hair Transplant Williamsburg VA | PRP Is Not Surgery",
@@ -960,7 +961,7 @@ const ownerPageExpectations = {
       "Research suggests platelet-rich plasma may improve hair density for some people with pattern hair loss",
       "does not create new follicles in a bald area",
       "Medical evaluation may come first",
-      "$600 per treatment",
+      "$618.23 per treatment card/online · $600 cash",
       "purchase one session and choose one appointment time after checkout",
       "For patients cleared to proceed",
       "Book a PRP Hair Consultation",
@@ -970,7 +971,7 @@ const ownerPageExpectations = {
     requiredConsultHref:
       "/consult?procedure=prp-hair-restoration&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_hair_restoration",
     forbiddenHtml: [/id=["']prp-hair-restoration-quantity["']/],
-    offer: { name: "PRP Hair Restoration", price: "600", currency: "USD" },
+    offer: { name: "PRP Hair Restoration", price: "618.23", currency: "USD" },
   },
   "/locations/james-city-county-va": {
     required: [
@@ -1006,7 +1007,7 @@ const ownerPageExpectations = {
       "A wrinkle relaxer may fit better",
       "Careful screening comes first",
       "Book a Filler Consultation",
-      "$700 per syringe",
+      "$721.22 per syringe card/online · $700 cash",
     ],
     forbidden: [
       "permanent filler results",
@@ -1020,7 +1021,7 @@ const ownerPageExpectations = {
     ],
     requiredHtml: [/href=["']\/consult\?procedure=filler&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=dermal_filler["']/],
     requiredConsultHref: "/consult?procedure=filler&utm_source=website&utm_medium=procedure_page&utm_campaign=dermal_filler",
-    offer: { name: "Filler", price: "700", currency: "USD" },
+    offer: { name: "Filler", price: "721.22", currency: "USD" },
     requiredSchemas: ["FAQPage"],
   },
 };

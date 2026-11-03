@@ -5,7 +5,8 @@ import CalInlineEmbed from "components/cal-inline-embed";
 import ClearCartOnMount from "components/clear-cart-on-mount";
 import { Button } from "components/ui/button";
 import { getCalLinks } from "lib/cal";
-import { formatUsd } from "lib/price";
+import { creditAmountCentsForItem } from "lib/cart-pricing";
+import { formatUsd, formatUsdShort } from "lib/price";
 import { sendPaidOrderNotifications } from "lib/order-notifications";
 import { getOrderByPublicToken, syncOrderFromStripeSession } from "lib/orders";
 
@@ -67,7 +68,10 @@ export default async function CheckoutSuccessPage({
               <div>
                 <p className="font-medium">{item.name}</p>
                 <p className="text-base-content/60">
-                  {item.quantity} x {item.displayPrice}
+                  {item.quantity} x {formatUsd(item.unitAmountCents)}
+                  {item.pricingMode === "increment_credit"
+                    ? ` · ${formatUsdShort(creditAmountCentsForItem(item))} treatment credit`
+                    : null}
                 </p>
               </div>
               <p>{formatUsd(item.lineTotalCents)}</p>

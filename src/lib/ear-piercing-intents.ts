@@ -1,3 +1,4 @@
+import { EAR_PIERCING_PRICES } from "config/commerce-catalog";
 import { publishedEarPiercingAreas } from "lib/local-service-areas";
 
 export type EarPiercingIntentStatus = "published" | "draft";
@@ -33,7 +34,7 @@ export const earPiercingIntentPages: EarPiercingIntentPage[] = [
     title: "Infant & Kids Ear Piercing",
     metaTitle: "Infant & Baby Ear Piercing in Williamsburg, VA | Pediatric NP",
     metaDescription:
-      "Gentle Blomdahl ear piercing for infants, babies, and kids in Williamsburg, VA with pediatric nurse practitioner Jenny Coleman. Sterile, hypoallergenic, $45 per ear.",
+      `Blomdahl ear piercing for infants, babies, and kids in Williamsburg, VA with pediatric NP Jenny Coleman. Sterile, hypoallergenic, ${EAR_PIERCING_PRICES.oneEarCard}/ear by card, ${EAR_PIERCING_PRICES.oneEarCash} cash.`,
     h1: "Infant, Baby & Kids Ear Piercing in Williamsburg, VA",
     audience:
       "For parents planning a baby's or child's first earrings who want a calm, private appointment with a pediatric nurse practitioner instead of a busy retail counter.",
@@ -129,7 +130,7 @@ export const earPiercingIntentPages: EarPiercingIntentPage[] = [
       {
         question: "How much does infant or kids ear piercing cost?",
         answer:
-          "$45 for one ear or $80 for both ears in one visit. That includes the appointment, sterile Blomdahl cassette, hypoallergenic starter earrings, and aftercare support.",
+          `${EAR_PIERCING_PRICES.oneEarCard} for one ear or ${EAR_PIERCING_PRICES.bothEarsCard} for both ears in one visit online by card (${EAR_PIERCING_PRICES.oneEarCash} or ${EAR_PIERCING_PRICES.bothEarsCash} cash). That includes the appointment, sterile Blomdahl cassette, hypoallergenic starter earrings, and aftercare support.`,
       },
       {
         question: "What if my child has sensitive skin or a nickel allergy?",

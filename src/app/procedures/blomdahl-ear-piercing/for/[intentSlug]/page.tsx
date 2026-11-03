@@ -12,6 +12,7 @@ import {
   getRelatedAreasForIntent,
   publishedEarPiercingIntentPages,
 } from "lib/ear-piercing-intents";
+import { EAR_PIERCING_PRICES } from "config/commerce-catalog";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import { buildPageMetadata } from "lib/metadata";
 
@@ -135,7 +136,8 @@ export default function EarPiercingIntentPage({ params }: Params) {
         <section className="mb-10 md:mb-14 rounded-xl border border-base-300 p-5 md:p-6" id="pricing">
           <h2 className="text-2xl md:text-3xl font-light mb-3">Pricing</h2>
           <p className="text-base md:text-lg text-base-content/80">
-            <strong>$45</strong> for one ear or <strong>$80</strong> for both ears in one visit. That includes the appointment, a sterile
+            <strong>{EAR_PIERCING_PRICES.oneEarCard}</strong> for one ear or <strong>{EAR_PIERCING_PRICES.bothEarsCard}</strong> for both
+            ears in one visit online by card ({EAR_PIERCING_PRICES.oneEarCash} or {EAR_PIERCING_PRICES.bothEarsCash} cash). That includes the appointment, a sterile
             single-use Blomdahl cassette, hypoallergenic starter earrings, and aftercare support.
           </p>
           <div className="flex flex-wrap gap-3 mt-4">

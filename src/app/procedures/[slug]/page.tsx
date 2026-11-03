@@ -19,8 +19,9 @@ import NamedReviews from "components/named-reviews";
 import ProcedureTestimonials from "components/procedure-testimonials";
 import { getPublishedAilmentsForProcedure } from "lib/ailments/get-ailment-page-data";
 import { getPublishedBlogPosts } from "lib/blog";
-import { getCatalogConfigBySlug } from "config/commerce-catalog";
+import { EAR_PIERCING_PRICES, getCatalogConfigBySlug } from "config/commerce-catalog";
 import { humanizeMedicalCopy } from "lib/humanize";
+import { cardCashProse, cardPriceSchemaValue } from "lib/price";
 import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 
@@ -200,7 +201,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           name: procedure.name,
           description: procedure.description,
           areaServed: "Williamsburg, VA",
-          price: catalogItem ? String(catalogItem.unitAmountCents / 100) : undefined,
+          // Offer price is the card / online price, which is what checkout charges.
+          price: catalogItem ? cardPriceSchemaValue(catalogItem.cashAmountCents) : undefined,
           priceCurrency: catalogItem ? "USD" : undefined,
         }}
       />
@@ -351,8 +353,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </h2>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
               <p>
-                If you are comparing a breast lift in Williamsburg, VA, start here. The $1,800 PRP visit is not mastopexy, implants, or fat
-                transfer, and this page does not promise a cosmetic result.
+                If you are comparing a breast lift in Williamsburg, VA, start here. The PRP visit ({cardCashProse(catalogItem?.cashAmountCents ?? 180000)}) is not mastopexy,
+                implants, or fat transfer, and this page does not promise a cosmetic result.
               </p>
               <p>
                 This page does not document the clinic&apos;s current method for this service and does not promise a cosmetic result. Before choosing it,
@@ -520,12 +522,23 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               </h2>
               <div className="mx-auto mt-6 grid max-w-4xl gap-4 text-left md:grid-cols-3">
                 {[
-                  ["$45", "One ear", "Starter jewelry and visit details reviewed when scheduling."],
-                  ["$80", "Both ears", "A simple pair price for families booking both ears in one visit."],
-                  ["Nurse-led", "Placement + aftercare", "Jenny Coleman, MSN, RN, CPNP, PMHS reviews fit and care."],
-                ].map(([price, label, copy]) => (
+                  {
+                    price: EAR_PIERCING_PRICES.oneEarCard,
+                    cash: EAR_PIERCING_PRICES.oneEarCash,
+                    label: "One ear",
+                    copy: "Starter jewelry and visit details reviewed when scheduling.",
+                  },
+                  {
+                    price: EAR_PIERCING_PRICES.bothEarsCard,
+                    cash: EAR_PIERCING_PRICES.bothEarsCash,
+                    label: "Both ears",
+                    copy: "A simple pair price for families booking both ears in one visit.",
+                  },
+                  { price: "Nurse-led", cash: null, label: "Placement + aftercare", copy: "Jenny Coleman, MSN, RN, CPNP, PMHS reviews fit and care." },
+                ].map(({ price, cash, label, copy }) => (
                   <div key={label} className="border border-base-300 bg-base-100 p-5">
                     <p className="text-3xl font-semibold tracking-tight text-base-content">{price}</p>
+                    {cash && <p className="mt-1 text-sm text-base-content/70">card/online · {cash} cash</p>}
                     <h3 className="mt-2 text-base font-semibold text-base-content">{label}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-base-content/70">{copy}</p>
                   </div>

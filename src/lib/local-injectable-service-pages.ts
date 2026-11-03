@@ -1,4 +1,10 @@
+import { COMMERCE_CATALOG_BY_SLUG } from "config/commerce-catalog";
 import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
+import { cardCashProse, cardPriceLabel, formatUsdShort } from "lib/price";
+
+const botoxBlockCashCents = COMMERCE_CATALOG_BY_SLUG.botox.cashAmountCents;
+const botoxBlock = formatUsdShort(botoxBlockCashCents);
+const botoxBlockPrices = `${cardPriceLabel(botoxBlockCashCents)} online by card, ${botoxBlock} cash`;
 
 export type LocalInjectableServicePage = {
   procedureSlug: "botox" | "filler" | "xeomin";
@@ -79,7 +85,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       width: 1536,
       height: 1024,
     },
-    heroChips: ["Forehead lines", "Frown lines / 11s", "Crow's feet", "Lip flip consults", "Botox vs Xeomin guidance", "$250 treatment-credit increments"],
+    heroChips: ["Forehead lines", "Frown lines / 11s", "Crow's feet", "Lip flip consults", "Botox vs Xeomin guidance", `${botoxBlock} credit blocks (${cardPriceLabel(botoxBlockCashCents)} card, ${botoxBlock} cash)`],
     fitGuidance: {
       goodFit: [
         "You want to soften frown lines, forehead lines, or crow's feet without losing natural expression.",
@@ -123,7 +129,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     pricing: {
       heading: "Botox pricing at Williamsburg Med Spa",
       body:
-        "Botox is prepaid online in $250 treatment-credit blocks. The credit is applied to your Botox visit, and any unused value remains as account credit. Jenny reviews treatment areas, likely dosing range, and whether Botox or Xeomin is the better fit before confirming the plan.",
+        `Botox is prepaid online in ${botoxBlock} treatment-credit blocks (${botoxBlockPrices}). The credit is applied to your Botox visit, and any unused value remains as account credit. Jenny reviews treatment areas, likely dosing range, and whether Botox or Xeomin is the better fit before confirming the plan.`,
       note: "Final treatment cost depends on treatment areas, dose strategy, product choice, and candidacy.",
     },
     comparison: {
@@ -167,7 +173,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       {
         question: "How much does Botox cost in Williamsburg?",
         answer:
-          "Williamsburg Med Spa lists Botox in $250 treatment-credit increments. The credit is applied to your visit, and Jenny reviews areas, dosing, and whether Botox or Xeomin best fits your goals before confirming the plan.",
+          `Williamsburg Med Spa lists Botox in ${botoxBlock} treatment-credit blocks (${botoxBlockPrices}). The credit is applied to your visit, and Jenny reviews areas, dosing, and whether Botox or Xeomin best fits your goals before confirming the plan.`,
       },
       {
         question: "When should I book Botox before an event?",
@@ -248,7 +254,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       {
         question: "How much do dermal fillers cost in Williamsburg?",
         answer:
-          "Williamsburg Med Spa lists dermal filler at $700 per syringe. Jenny reviews the area, likely product amount, swelling expectations, and maintenance plan before treatment.",
+          `Williamsburg Med Spa lists dermal filler at ${cardCashProse(COMMERCE_CATALOG_BY_SLUG.filler.cashAmountCents, "per syringe")}. Jenny reviews the area, likely product amount, swelling expectations, and maintenance plan before treatment.`,
       },
       {
         question: "Can filler look natural?",

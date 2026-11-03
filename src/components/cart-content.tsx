@@ -10,7 +10,7 @@ import AddToCartButton from "components/add-to-cart-button";
 import { useCart } from "components/cart-provider";
 import { Button } from "components/ui/button";
 import { getCartRecommendations, type CartRecommendation } from "config/cart-recommendations";
-import { formatUsd } from "lib/price";
+import { CARD_CASH_NOTE, formatUsd, formatUsdShort } from "lib/price";
 import { cn } from "lib/utils";
 
 type ResolvedCartItem = {
@@ -32,6 +32,7 @@ type ResolvedCartItem = {
 type ResolvedCartResponse = {
   items: ResolvedCartItem[];
   subtotalCents: number;
+  cashSubtotalCents?: number;
   requiresScheduling: boolean;
 };
 
@@ -175,6 +176,10 @@ function CartSummaryCard({
               </p>
               <p className="pb-1 text-sm text-base-content/55">before taxes</p>
             </div>
+            <p className="mt-2 text-sm leading-5 text-base-content/65">
+              {CARD_CASH_NOTE}
+              {typeof resolved.cashSubtotalCents === "number" ? ` Cash total: ${formatUsdShort(resolved.cashSubtotalCents)}.` : null}
+            </p>
           </div>
         ) : loading ? (
           <div className="animate-pulse space-y-3">
