@@ -18,9 +18,9 @@ import { buildPageMetadata } from "lib/metadata";
 import StructuredData from "components/structured-data";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Medical Spa Williamsburg VA | Botox, Fillers & PRP",
+  title: "Medical Spa Williamsburg VA | Botox, Xeomin & PRP",
   description:
-    "Jenny Coleman, MSN, RN, CPNP, PMHS, CMA-certified OH-Shot provider, offers Botox, Xeomin, fillers, PRP, and Blomdahl ear piercing in Williamsburg, VA.",
+    "Jenny Brady, MSN, RN, CPNP, PMHS, CMA-certified OH-Shot provider, offers Botox, Xeomin, PRP, and Blomdahl ear piercing in Williamsburg, VA.",
   canonical: "/",
 });
 
@@ -28,12 +28,12 @@ const homeFaqs = [
   {
     question: "What medical spa services are available in Williamsburg, VA?",
     answer:
-      "Williamsburg Med Spa offers Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, OH-Shot services, and Blomdahl medical ear piercing in Williamsburg, VA.",
+      "Williamsburg Med Spa offers Botox, Xeomin, PRP treatments, hyperhidrosis care, OH-Shot services, and Blomdahl medical ear piercing in Williamsburg, VA.",
   },
   {
     question: "Who provides treatments at Williamsburg Med Spa?",
     answer:
-      "Treatments are provided by Jenny Coleman, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified OH-Shot provider and certified Blomdahl provider, with a focus on conservative planning, patient education, and natural-looking goals.",
+      "Treatments are provided by Jenny Brady, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified OH-Shot provider and certified Blomdahl provider, with a focus on conservative planning, patient education, and natural-looking goals.",
   },
   {
     question: "Does Williamsburg Med Spa serve nearby areas?",
@@ -49,7 +49,6 @@ const homeFaqs = [
 
 const localLinks = [
   { href: "/procedures/botox", label: "Botox in Williamsburg" },
-  { href: "/procedures/filler", label: "Fillers in Williamsburg" },
   { href: "/procedures/xeomin", label: "Xeomin in Williamsburg" },
   { href: "/locations/williamsburg-va", label: "Hours & directions" },
   { href: "/locations", label: "Areas we serve" },
@@ -71,10 +70,10 @@ export default async function Page() {
             id="home-local-intro-heading"
             className="font-display mt-4 text-3xl font-medium leading-[1.15] tracking-tight text-base-content md:text-4xl"
           >
-            Local care with Jenny Coleman, MSN, RN, CPNP, PMHS for Botox, Xeomin, dermal fillers, PRP, sweating treatment, and medical ear piercing.
+            Local care with Jenny Brady, MSN, RN, CPNP, PMHS for Botox, Xeomin, PRP, sweating treatment, and medical ear piercing.
           </h2>
           <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">
-            Williamsburg Med Spa is a Nurse Practitioner led medical spa in Williamsburg, VA. Jenny Coleman brings
+            Williamsburg Med Spa is a Nurse Practitioner led medical spa in Williamsburg, VA. Jenny Brady brings
             MSN, RN, CPNP, PMHS, Cellular Medicine Association-certified OH-Shot provider training, and
             certified Blomdahl provider training for medical ear piercing, so care starts with medical screening,
             calm education, and treatment planning shaped around realistic goals.

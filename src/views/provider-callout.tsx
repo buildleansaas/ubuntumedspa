@@ -35,8 +35,8 @@ export default function ProviderCallout() {
             >
               Meet Our Aesthetic Nurse Practitioner
             </h2>
-            <p className="mt-4 text-lg text-base-content/85">Jenny Coleman, MSN, RN, CPNP, PMHS</p>
-            <ul className="mt-5 flex flex-wrap gap-2" aria-label="Jenny Coleman credentials and certifications">
+            <p className="mt-4 text-lg text-base-content/85">Jenny Brady, MSN, RN, CPNP, PMHS</p>
+            <ul className="mt-5 flex flex-wrap gap-2" aria-label="Jenny Brady credentials and certifications">
               {CREDENTIALS.map((credential) => (
                 <li key={credential} className="border border-base-300 px-3 py-1 text-sm text-base-content/85">
                   {credential}

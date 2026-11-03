@@ -4,25 +4,17 @@ import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
-import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Newport News | Botox at Our Williamsburg Clinic",
   description:
-    "Med spa Newport News patients drive to our Williamsburg clinic on Powhatan Parkway for Botox, Xeomin, fillers, and PRP.",
+    "Med spa Newport News patients drive to our Williamsburg clinic on Powhatan Parkway for Botox, Xeomin, and PRP.",
   canonical: "/locations/newport-news-va",
 });
 
 const serviceLinks = [
   { href: "/procedures/botox", label: "Botox near Newport News", note: "Expression-line consultation with a natural, measured plan." },
   { href: "/procedures/xeomin", label: "Xeomin near Newport News", note: "A neuromodulator option for frown lines and movement-related concerns." },
-  {
-    href: "/procedures/filler",
-    label: "Dermal fillers near Newport News",
-    note: LIP_FILLER_ENABLED
-      ? "Lips, cheeks, under-eyes, and balanced facial support."
-      : "Cheeks, under-eyes, and balanced facial support.",
-  },
   { href: "/procedures/blomdahl-ear-piercing", label: "Blomdahl ear piercing", note: "Sterile single-use cassettes and hypoallergenic starter earrings at the Williamsburg clinic." },
   { href: "/procedures/blomdahl-ear-piercing/for/children", label: "Infant and kids ear piercing", note: "For parents planning a baby's or child's first earrings." },
   { href: "/procedures/blomdahl-ear-piercing/near/newport-news-va", label: "Newport News visit notes", note: "Driving notes for a Williamsburg piercing appointment." },
@@ -35,9 +27,9 @@ const faqs = [
       "Yes. Newport News patients visit our appointment-based clinic at 3900 Powhatan Parkway in Williamsburg for injectables, PRP therapies, hyperhidrosis treatment, and medical ear piercing.",
   },
   {
-    question: "How do I choose between Botox/Xeomin and dermal filler?",
+    question: "How do I choose between Botox and Xeomin?",
     answer:
-      "Botox and Xeomin address movement-related expression lines, while dermal filler restores or reshapes volume. Your consultation is where you can discuss your goals and choose the most appropriate plan.",
+      "Botox and Xeomin are both neuromodulators for movement-related expression lines. Your consultation is where you can compare onset, dosing, and prior treatment history and choose the most appropriate plan.",
   },
   {
     question: "Where is the appointment located?",
@@ -60,7 +52,7 @@ export default function NewportNewsPage() {
         <p className="text-sm uppercase tracking-[0.22em] text-primary mb-3">Newport News service area</p>
         <h1 className="text-3xl md:text-5xl font-light">Med Spa Newport News, at Our Williamsburg Clinic</h1>
         <p className="text-base md:text-lg text-base-content/70 mt-3">
-          There is no Newport News street address. Botox, Xeomin, fillers, and PRP visits are at Williamsburg Med Spa,
+          There is no Newport News street address. Botox, Xeomin, and PRP visits are at Williamsburg Med Spa,
           3900 Powhatan Parkway, Williamsburg, VA 23188. Take I-64 west toward Route 199 and New Town.
         </p>
       </header>
@@ -73,8 +65,7 @@ export default function NewportNewsPage() {
             Williamsburg location with conservative planning, clear timelines, and careful follow-up.
           </p>
           <p>
-            Common visit goals include softening expression lines with Botox or Xeomin, restoring balance with dermal
-            filler, asking about PRP for joints or skin, treating excessive sweating, and choosing a more clinical ear
+            Common visit goals include softening expression lines with Botox or Xeomin, asking about PRP for joints or skin, treating excessive sweating, and choosing a more clinical ear
             piercing appointment for a child or adult with sensitive ears.
           </p>
           <div className="not-prose mt-5 flex flex-wrap items-center gap-3">
@@ -118,11 +109,11 @@ export default function NewportNewsPage() {
       <section id="compare-treatments" className="mb-10 md:mb-12 border-y border-base-300 py-8 md:py-10 scroll-mt-24">
         <div className="max-w-4xl">
           <p className="text-sm uppercase tracking-[0.18em] text-primary mb-2">Compare your starting point</p>
-          <h2 className="text-2xl md:text-3xl font-light mb-3">Botox, Xeomin, or Dermal Filler?</h2>
+          <h2 className="text-2xl md:text-3xl font-light mb-3">Botox, Xeomin, or PRP?</h2>
           <p className="text-base md:text-lg text-base-content/80 mb-6">
             The right choice depends on what you want to change. Botox and Xeomin address lines caused by repeated muscle
-            movement. Dermal filler supports volume, contour, and facial balance. Your consultation can focus on one option
-            or compare both before you decide.
+            movement. PRP treatments focus on skin quality, texture, and tone. Your consultation can focus on one option or
+            compare both before you decide.
           </p>
           <div className="grid gap-6 md:grid-cols-2">
             <div>
@@ -134,17 +125,14 @@ export default function NewportNewsPage() {
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-medium mb-2">For volume and facial balance</h3>
+              <h3 className="text-lg font-medium mb-2">For skin texture and tone</h3>
               <p className="text-base-content/75 mb-2">
-                Start with <Link href="/procedures/filler" className="text-primary hover:underline">dermal filler</Link> if you
-                want to discuss {LIP_FILLER_ENABLED ? "lips, cheeks, under-eyes" : "cheeks, under-eyes"}, contour, or balanced facial support.
+                Start with the <Link href="/procedures/prp-facial" className="text-primary hover:underline">PRP facial</Link> or{" "}
+                <Link href="/procedures/microneedling-with-prp" className="text-primary hover:underline">microneedling with PRP</Link>{" "}
+                if your concern is dull skin, uneven texture, or fine lines rather than movement.
               </p>
             </div>
           </div>
-          <p className="mt-5 text-sm text-base-content/70">
-            Looking for skin-focused regenerative care instead? Review the{" "}
-            <Link href="/procedures/prp-facial" className="text-primary hover:underline">PRP facial</Link> visit before your consultation.
-          </p>
         </div>
       </section>
 
@@ -160,7 +148,7 @@ export default function NewportNewsPage() {
         <div className="border border-base-300 p-5">
           <h2 className="text-2xl md:text-3xl font-light mb-3">Why Make the Trip?</h2>
           <ul className="space-y-2 text-base-content/80">
-            <li>Talk through your goals with Jenny Coleman before choosing a treatment.</li>
+            <li>Talk through your goals with Jenny Brady before choosing a treatment.</li>
             <li>Receive a conservative plan focused on natural-looking changes.</li>
             <li>Leave with clear expectations, aftercare guidance, and follow-up steps.</li>
           </ul>

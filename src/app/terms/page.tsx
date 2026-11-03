@@ -31,7 +31,7 @@ export default function TermsPage() {
         <p>
           Articles and service pages explain what the clinic offers and what to ask before a visit. They are not a
           diagnosis, a personal treatment plan, or a promise of a result. Care is decided at a consultation. Jenny
-          Coleman, MSN, RN, CPNP, PMHS, can decline or delay a service when it is not a fit.
+          Brady, MSN, RN, CPNP, PMHS, can decline or delay a service when it is not a fit.
         </p>
 
         <h2 className="pt-4 text-3xl tracking-tight text-base-content">Appointments</h2>
@@ -67,7 +67,7 @@ export default function TermsPage() {
         <h2 className="pt-4 text-3xl tracking-tight text-base-content">Service names</h2>
         <p>
           OH-Shot and Pe-Shot are the names used for those PRP services at this clinic. Other pages describe Botox,
-          Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, and Blomdahl ear piercing. A page describes only
+          Xeomin, PRP treatments, hyperhidrosis care, and Blomdahl ear piercing. A page describes only
           the service it is about.
         </p>
 

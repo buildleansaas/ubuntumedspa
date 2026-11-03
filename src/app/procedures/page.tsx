@@ -7,7 +7,7 @@ import { buildPageMetadata } from "lib/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Procedures in Williamsburg, VA | Williamsburg Med Spa",
   description:
-    "Review injectable, PRP, wellness, and specialty procedures at Williamsburg Med Spa, including Botox, Xeomin, fillers, and regenerative care.",
+    "Review injectable, PRP, wellness, and specialty procedures at Williamsburg Med Spa, including Botox, Xeomin, and regenerative PRP care.",
   canonical: "/procedures",
 });
 

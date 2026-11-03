@@ -7,7 +7,6 @@ type HeadingTag = "h1" | "h2";
 
 const PROCEDURE_PRIORITY = [
   "botox",
-  "filler",
   "xeomin",
   "blomdahl-ear-piercing",
   "prp-hair-restoration",
@@ -55,7 +54,7 @@ export default function Procedures({
             Medical Spa Treatments in Williamsburg, VA
           </Heading>
           <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">
-            Compare Botox, Xeomin, dermal fillers, PRP treatments, microneedling with PRP, hyperhidrosis care, and Blomdahl medical ear piercing for babies, children, teens, and adults. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation.
+            Compare Botox, Xeomin, PRP treatments, microneedling with PRP, hyperhidrosis care, and Blomdahl medical ear piercing for babies, children, teens, and adults. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation.
           </p>
         </div>
 
@@ -77,7 +76,7 @@ export default function Procedures({
           Medical Spa Treatments in Williamsburg, VA
         </Heading>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
-          Compare Botox, Xeomin, dermal fillers, PRP treatments, microneedling with PRP, hyperhidrosis care, and Blomdahl medical ear piercing for babies, children, teens, and adults. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation.
+          Compare Botox, Xeomin, PRP treatments, microneedling with PRP, hyperhidrosis care, and Blomdahl medical ear piercing for babies, children, teens, and adults. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation.
         </p>
       </div>
 

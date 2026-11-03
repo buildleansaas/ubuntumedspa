@@ -28,7 +28,7 @@ export default function BlomdahlCallout() {
           </h2>
 
           <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-base-content/85 md:text-lg">
-            Jenny Coleman, MSN, RN, CPNP, PMHS uses sterile single-use Blomdahl cassettes and hypoallergenic Medical
+            Jenny Brady, MSN, RN, CPNP, PMHS uses sterile single-use Blomdahl cassettes and hypoallergenic Medical
             Plastic or Medical Grade Titanium starter earrings. Babies are generally pierced at 6 months or older with
             pediatrician guidance.
           </p>

@@ -2,28 +2,12 @@ import addMDX from "@next/mdx";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
-import { LIP_FILLER_ENABLED } from "./src/config/feature-flags.mjs";
+import { REMOVED_URL_REDIRECTS } from "./src/config/removed-redirects.mjs";
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   async redirects() {
-    const lipFillerRedirects = LIP_FILLER_ENABLED
-      ? []
-      : [
-          {
-            source: "/procedures/filler/for/lip-augmentation",
-            destination: "/procedures/filler",
-            permanent: false,
-          },
-          {
-            source: "/blog/get-your-dream-lips-with-dermal-fillers",
-            destination: "/procedures/filler",
-            permanent: false,
-          },
-        ];
-
     return [
-      ...lipFillerRedirects,
       {
         source: "/:path*",
         has: [{ type: "host", value: "williamsburgmedspa.com" }],
@@ -196,10 +180,8 @@ const nextConfig = {
         ["/locations/kingsmill-va", "/locations/williamsburg-va"],
         ["/locations/fords-colony-va", "/locations/williamsburg-va"],
         ["/procedures/botox/near/williamsburg-va", "/procedures/botox"],
-        ["/procedures/filler/near/williamsburg-va", "/procedures/filler"],
         ["/procedures/xeomin/near/williamsburg-va", "/procedures/xeomin"],
         ["/procedures/botox/for/:ailmentSlug", "/procedures/botox"],
-        ["/procedures/filler/for/:ailmentSlug", "/procedures/filler"],
         ["/procedures/oh-shot/for/:ailmentSlug", "/procedures/oh-shot"],
         ["/procedures/hyperhidrosis-treatment/for/:ailmentSlug", "/procedures/hyperhidrosis-treatment"],
         ["/blog/beginners-guide-to-platelet-rich-plasma-therapy", "/procedures"],
@@ -207,6 +189,8 @@ const nextConfig = {
         ["/blog/hair-loss-got-you-down-discover-prp-your-new-ally-in-hair-restoration", "/procedures/prp-hair-restoration"],
         ["/blog/unleashing-the-power-of-the-prp-facelift-your-non-surgical-key-to-youthful-skin", "/procedures/prp-face-lift"],
       ].map(([source, destination]) => ({ source, destination, permanent: true })),
+      // 2026-11-03 (issue #147): filler is no longer offered and Jenny's surname is now Brady.
+      ...REMOVED_URL_REDIRECTS.map(([source, destination]) => ({ source, destination, permanent: true })),
     ];
   },
   images: {

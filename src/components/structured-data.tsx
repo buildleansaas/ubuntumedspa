@@ -100,8 +100,8 @@ interface StructuredDataProps {
 const author = [
   {
     "@type": "Person",
-    name: "Jenny Coleman",
-    url: `${ORIGIN}/staff/jenny-coleman`,
+    name: "Jenny Brady",
+    url: `${ORIGIN}/staff/jenny-brady`,
   },
 ];
 
@@ -122,8 +122,8 @@ const DEFAULT_BUSINESS: Required<LocalBusinessProps> = {
   sameAs: officialProfiles.map((profile) => profile.href),
   url: ORIGIN,
   image: `${ORIGIN}/logo.png`,
-  founderName: "Jenny Coleman",
-  founderUrl: `${ORIGIN}/staff/jenny-coleman`,
+  founderName: "Jenny Brady",
+  founderUrl: `${ORIGIN}/staff/jenny-brady`,
 };
 
 const getImageUrl = (url: string) => (url.startsWith("http://") || url.startsWith("https://") ? url : `${ORIGIN}${url}`);

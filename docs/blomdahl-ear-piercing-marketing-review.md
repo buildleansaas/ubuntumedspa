@@ -45,7 +45,7 @@ Pass. Each content page returns users to a concrete booking path with procedure-
 
 ### Trust proof
 
-Partial pass. Provider trust is clear: Jenny Coleman, MSN, RN, CPNP, PMHS. Blomdahl trust is clear: sterile single-use cassettes, Medical Plastic, Medical Grade Titanium, hypoallergenic starter jewelry. Next proof layer should add real clinic/product/provider photos and review prompts once available.
+Partial pass. Provider trust is clear: Jenny Brady, MSN, RN, CPNP, PMHS. Blomdahl trust is clear: sterile single-use cassettes, Medical Plastic, Medical Grade Titanium, hypoallergenic starter jewelry. Next proof layer should add real clinic/product/provider photos and review prompts once available.
 
 ### Local relevance
 

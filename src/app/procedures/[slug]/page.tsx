@@ -22,7 +22,6 @@ import { getPublishedBlogPosts } from "lib/blog";
 import { EAR_PIERCING_PRICES, getCatalogConfigBySlug } from "config/commerce-catalog";
 import { humanizeMedicalCopy } from "lib/humanize";
 import { cardCashProse, cardPriceSchemaValue } from "lib/price";
-import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
@@ -34,7 +33,6 @@ const ailmentsTagLabels = {
 const featuredGuideSlugs: Record<string, string> = {
   botox: "botox-vs-xeomin-williamsburg-va",
   xeomin: "botox-vs-xeomin-williamsburg-va",
-  filler: "how-long-do-dermal-fillers-last-in-williamsburg-va",
   "oh-shot": "oh-shot-for-urinary-incontinence-williamsburg-va",
   "prp-hair-restoration": "prp-hair-restoration-vs-hair-transplant-williamsburg-va",
   "blomdahl-ear-piercing": "medical-ear-piercing-vs-mall-piercing",
@@ -51,14 +49,6 @@ const featuredGuideCopy: Record<string, { button: string; heading: string; descr
     heading: "Still deciding between Xeomin and Botox?",
     description: "Review differences in timing, treatment planning, and candidacy before your appointment.",
     linkLabel: "Read the Botox vs Xeomin article",
-  },
-  filler: {
-    button: "Filler Longevity Guide",
-    heading: "Wondering how long dermal fillers last?",
-    description: LIP_FILLER_ENABLED
-      ? "Review how longevity can vary across lips, cheeks, under-eyes, and other treatment areas before you book."
-      : "Review how longevity can vary across cheeks, under-eyes, and other treatment areas before you book.",
-    linkLabel: "Read the dermal filler longevity guide",
   },
   "oh-shot": {
     button: "OH-Shot Bladder Leakage Guide",
@@ -86,16 +76,11 @@ const featuredGuideCopy: Record<string, { button: string; heading: string; descr
 const relatedProcedureLinks: Record<string, Array<{ href: string; label: string }>> = {
   botox: [
     { href: "/procedures/xeomin", label: "Xeomin" },
-    { href: "/procedures/filler", label: "dermal fillers" },
     { href: "/procedures/hyperhidrosis-treatment", label: "sweating treatment" },
   ],
   xeomin: [
     { href: "/procedures/botox", label: "Botox" },
-    { href: "/procedures/filler", label: "dermal fillers" },
-  ],
-  filler: [
-    { href: "/procedures/botox", label: "Botox" },
-    { href: "/procedures/xeomin", label: "Xeomin" },
+    { href: "/procedures/hyperhidrosis-treatment", label: "sweating treatment" },
   ],
   "prp-facial": [
     { href: "/procedures/microneedling-with-prp", label: "microneedling with PRP" },
@@ -170,18 +155,12 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
       ? "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift"
       : procedure.slug === "prp-hair-restoration"
         ? "/consult?procedure=prp-hair-restoration&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_hair_restoration"
-        : procedure.slug === "filler"
-          ? "/consult?procedure=filler&utm_source=website&utm_medium=procedure_page&utm_campaign=dermal_filler"
         : undefined;
   const consultationSupportCopy =
     procedure.slug === "prp-breast-lift"
       ? "This page does not document the clinic's current method or promise a cosmetic result. Ask for the current service details before purchasing the one-visit treatment."
       : procedure.slug === "prp-hair-restoration"
         ? "Start with a hair-loss consultation before paying. Jenny reviews your pattern, timeline, scalp symptoms, health history, medications, and whether PRP, medical evaluation, or a transplant specialist is the more useful next step."
-      : procedure.slug === "filler"
-      ? LIP_FILLER_ENABLED
-        ? "Consultation starts with the area you want to discuss, whether that is lips, cheeks, smile lines, under-eyes, or facial balance, plus your prior injectables, event timing, and whether filler, a wrinkle relaxer, or another option is the better fit."
-        : "Consultation starts with the area you want to discuss, whether that is cheeks, smile lines, under-eyes, or facial balance, plus your prior injectables, event timing, and whether filler, a wrinkle relaxer, or another option is the better fit."
       : procedure.slug === "hyperhidrosis-treatment"
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
       : procedure.slug === "oh-shot"
@@ -292,8 +271,6 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                           ? "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift"
                         : procedure.slug === "prp-hair-restoration"
                           ? "/consult?procedure=prp-hair-restoration&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_hair_restoration"
-                          : procedure.slug === "filler"
-                            ? "/consult?procedure=filler&utm_source=website&utm_medium=procedure_page&utm_campaign=dermal_filler"
                         : "/consult"
                   }
                 >
@@ -305,8 +282,6 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                         ? "Book a Private PRP Breast Consultation"
                         : procedure.slug === "prp-hair-restoration"
                           ? "Book a PRP Hair Consultation"
-                          : procedure.slug === "filler"
-                            ? "Book a Filler Consultation"
                         : "Book a Consultation"}
                 </Link>
               </Button>
@@ -451,66 +426,6 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           </section>
         )}
 
-        {procedure.slug === "filler" && (
-          <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="filler-fit">
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Choose the right next step</p>
-            <h2 id="filler-fit" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
-              Is dermal filler a reasonable fit for the change you want?
-            </h2>
-            <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
-              <p>
-                {LIP_FILLER_ENABLED
-                  ? "Dermal filler restores or reshapes volume in areas such as lips, cheeks, smile lines, and under-eyes. It does not"
-                  : "Dermal filler restores or reshapes volume in areas such as cheeks, smile lines, and under-eyes. It does not"}
-                relax the movement-related expression lines that Botox and Xeomin address, and it is not a substitute for medical
-                evaluation of a new or changing skin concern.
-              </p>
-              <p>
-                Results are not permanent. Longevity varies by filler type, treatment area, metabolism, and movement, so realistic
-                maintenance timing is part of the conversation before treatment.
-              </p>
-            </div>
-
-            <ul className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 md:grid-cols-3">
-              {[
-                ["Filler may belong in the conversation", LIP_FILLER_ENABLED
-                  ? "Volume loss or proportion goals in lips, cheeks, smile lines, marionette lines, or facial contour and balance."
-                  : "Volume loss or proportion goals in cheeks, smile lines, marionette lines, or facial contour and balance."],
-                ["A wrinkle relaxer may fit better", "Movement-related expression lines such as forehead lines, frown lines, or crow's feet, which Botox and Xeomin address instead."],
-                ["Careful screening comes first", "Under-eye hollows, nose reshaping, or temple hollowing, where anatomy and vascular risk matter and filler may not be the right fit."],
-              ].map(([title, copy]) => (
-                <li key={title}>
-                  <h3 className="font-semibold text-base-content">{title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-base-content/70">{copy}</p>
-                </li>
-              ))}
-            </ul>
-
-            <ol className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 sm:grid-cols-2">
-              {[
-                ["01", "Consultation and anatomy review", "Jenny reviews your goals, facial movement, prior injectables, event timing, swelling expectations, and whether filler, Botox/Xeomin, PRP, or skincare better matches the concern."],
-                ["02", "Treatment plan and product choice", "A conservative plan is shaped around proportion and balance, with product choice, likely amount, and expected swelling or bruising reviewed before anything is done."],
-                ["03", "Treatment visit", "Filler is placed by injection in the planned areas once the plan is confirmed with you."],
-                ["04", "Aftercare and maintenance plan", "Leave with guidance for temporary swelling, tenderness, or bruising, what should prompt a call after treatment, and a realistic maintenance timeline."],
-              ].map(([number, title, copy]) => (
-                <li key={number} className="grid grid-cols-[2.5rem_1fr] gap-3">
-                  <span className="text-sm font-semibold tracking-[0.12em] text-primary">{number}</span>
-                  <div>
-                    <h3 className="font-semibold text-base-content">{title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-base-content/70">{copy}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-
-            <p className="mt-8 border-t border-base-300 pt-6 text-sm leading-relaxed text-base-content/70">
-              Dermal filler at Williamsburg Med Spa is <strong className="font-semibold text-base-content">{catalogItem?.displayPrice}</strong>. The
-              number of syringes depends on the areas treated, anatomy, and your goals; the likely amount is reviewed with you during
-              consultation before you pay.
-            </p>
-          </section>
-        )}
-
         <section className="mx-auto max-w-3xl py-16 text-left md:py-20" id="pricing">
           <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
             {catalogItem ? "Pricing & booking" : "Treatment planning"}
@@ -534,7 +449,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                     label: "Both ears",
                     copy: "A simple pair price for families booking both ears in one visit.",
                   },
-                  { price: "Nurse-led", cash: null, label: "Placement + aftercare", copy: "Jenny Coleman, MSN, RN, CPNP, PMHS reviews fit and care." },
+                  { price: "Nurse-led", cash: null, label: "Placement + aftercare", copy: "Jenny Brady, MSN, RN, CPNP, PMHS reviews fit and care." },
                 ].map(({ price, cash, label, copy }) => (
                   <div key={label} className="border border-base-300 bg-base-100 p-5">
                     <p className="text-3xl font-semibold tracking-tight text-base-content">{price}</p>
@@ -592,8 +507,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           </p>
           <p className="mt-4 border-y border-base-300 py-4 text-sm leading-relaxed text-base-content/70">
             Care is provided by{" "}
-            <Link href="/staff/jenny-coleman" className="link link-primary">
-              Jenny Coleman, MSN, RN, CPNP, PMHS
+            <Link href="/staff/jenny-brady" className="link link-primary">
+              Jenny Brady, MSN, RN, CPNP, PMHS
             </Link>{" "}
             at our{" "}
             <Link href="/locations/williamsburg-va" className="link link-primary">
@@ -626,7 +541,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
             </h2>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
               <p>
-                Jenny Coleman is a certified pediatric nurse practitioner (CPNP), so infant and baby ear piercing is a big part of her
+                Jenny Brady is a certified pediatric nurse practitioner (CPNP), so infant and baby ear piercing is a big part of her
                 practice. Babies are generally pierced at 6 months or older with your pediatrician&apos;s guidance, and Jenny will not
                 pierce if she has any safety concerns.
               </p>

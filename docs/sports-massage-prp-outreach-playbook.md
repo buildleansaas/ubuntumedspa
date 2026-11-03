@@ -32,7 +32,7 @@ Subject: Local recovery referral connection in Williamsburg
 
 Hi [Name],
 
-I’m reaching out from Williamsburg Med Spa. Jenny Coleman, MSN, RN, CPNP, PMHS works with patients who are exploring regenerative options like PRP, including active adults dealing with recurring knee, shoulder, tendon, or overuse concerns.
+I’m reaching out from Williamsburg Med Spa. Jenny Brady, MSN, RN, CPNP, PMHS works with patients who are exploring regenerative options like PRP, including active adults dealing with recurring knee, shoulder, tendon, or overuse concerns.
 
 We are not trying to replace massage or bodywork. A lot of people need exactly what you provide: mobility support, recovery work, and hands-on care. We are looking to build a small local network so that when someone is not progressing with one approach alone, they have a thoughtful next place to ask questions.
 
@@ -44,7 +44,7 @@ Williamsburg Med Spa
 
 ## Phone Script
 
-Hi, this is [Name] with Williamsburg Med Spa. We are putting together a small local recovery network with sports massage and bodywork providers. Jenny Coleman offers PRP consultations, and we often see overlap with active adults who have recurring knee, shoulder, tendon, or overuse concerns. We are not calling about referral fees or replacing bodywork. We would like to learn when your clients may need medical education and when our patients may be better served by massage or recovery work. Who would be the best person to talk with?
+Hi, this is [Name] with Williamsburg Med Spa. We are putting together a small local recovery network with sports massage and bodywork providers. Jenny Brady offers PRP consultations, and we often see overlap with active adults who have recurring knee, shoulder, tendon, or overuse concerns. We are not calling about referral fees or replacing bodywork. We would like to learn when your clients may need medical education and when our patients may be better served by massage or recovery work. Who would be the best person to talk with?
 
 ## Follow-Up Offer
 

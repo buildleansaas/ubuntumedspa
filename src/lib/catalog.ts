@@ -127,6 +127,19 @@ export const resolveCart = async (rawItems: CartItemInput[]): Promise<ResolvedCa
     }
   }
 
+  // Validate every item against the catalog before touching the database, so a stale cart (for example one
+  // still holding "filler", removed 2026-11-03) fails fast with a message the cart page can show.
+  const validated = Array.from(deduped.values()).map((item) => {
+    const catalogItem = COMMERCE_CATALOG.find((entry) => entry.slug === item.slug);
+
+    if (!catalogItem) {
+      throw new Error(`"${item.slug}" is no longer available online. Remove it from your cart to continue.`);
+    }
+    if (catalogItem.kind !== item.kind) throw new Error(`Item kind mismatch for ${item.slug}.`);
+
+    return { catalogItem, quantity: validateQuantity(catalogItem, item.quantity) };
+  });
+
   const stripeRecords = await getCatalogRecords();
   const items: ResolvedCartItem[] = [];
   const legacyStripeRecordSlugs: Record<string, string> = {
@@ -134,18 +147,11 @@ export const resolveCart = async (rawItems: CartItemInput[]): Promise<ResolvedCa
     "pe-shot": "p-shot",
   };
 
-  for (const item of deduped.values()) {
-    const catalogItem = COMMERCE_CATALOG.find((entry) => entry.slug === item.slug);
-
-    if (!catalogItem) throw new Error(`Unknown item: ${item.slug}`);
-    if (catalogItem.kind !== item.kind) throw new Error(`Item kind mismatch for ${item.slug}.`);
-
-    const quantity = validateQuantity(catalogItem, item.quantity);
-
+  for (const { catalogItem, quantity } of validated) {
     const pricing = resolveCartItemPricing(catalogItem, quantity);
 
-    const legacySlug = legacyStripeRecordSlugs[item.slug];
-    const stripeRecord = stripeRecords[item.slug] ?? (legacySlug ? stripeRecords[legacySlug] : undefined);
+    const legacySlug = legacyStripeRecordSlugs[catalogItem.slug];
+    const stripeRecord = stripeRecords[catalogItem.slug] ?? (legacySlug ? stripeRecords[legacySlug] : undefined);
 
     items.push({
       ...catalogItem,

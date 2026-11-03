@@ -10,10 +10,6 @@ import { ORIGIN } from "lib/seo";
 
 const GENERIC_TAGS = new Set(["Williamsburg Med Spa", "PRP Therapy"]);
 const TAG_ALIASES: Record<string, string> = {
-  "Dermal Fillers": "Filler",
-  "Lip Filler": "Filler",
-  "Cheek Filler": "Filler",
-  "Under-Eye Filler": "Filler",
   "Ear Piercing": "Blomdahl Ear Piercing",
   "Sensitive Skin": "Blomdahl Ear Piercing",
   "First-Time Piercings": "Blomdahl Ear Piercing",

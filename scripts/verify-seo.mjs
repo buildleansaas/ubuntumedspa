@@ -4,6 +4,8 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { URL } from "node:url";
 
+import { REMOVED_URL_REDIRECT_CHECKS } from "../src/config/removed-redirects.mjs";
+
 const targetArg = process.argv.slice(2).find((argument) => !argument.startsWith("-"));
 const baseUrl = new URL(targetArg || process.env.SEO_BASE_URL || "http://127.0.0.1:3000");
 const canonicalOrigin = "https://www.williamsburgmedspa.com";
@@ -629,15 +631,15 @@ if (![301, 302, 307, 308].includes(affiliateResponse.status)) {
 }
 
 const home = pages.find((page) => normalizePath(page.canonicalUrl) === "/")?.html || "";
-for (const owner of ["/procedures/botox", "/procedures/filler", "/procedures/blomdahl-ear-piercing"]) {
+for (const owner of ["/procedures/botox", "/procedures/xeomin", "/procedures/blomdahl-ear-piercing"]) {
   const pattern = new RegExp(`href=["']${owner.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`);
   if (!pattern.test(home)) fail(`homepage does not directly link to query owner ${owner}`);
 }
 const homeTitle = getVisibleText(home.match(/<title(?:\s[^>]*)?>([\s\S]*?)<\/title>/i)?.[1] || "");
-if (!homeTitle.includes("Fillers")) {
-  fail("homepage title drops the preserved broad Filler visibility");
+if (/filler/i.test(homeTitle)) {
+  fail("homepage title still lists filler, which the clinic no longer offers");
 }
-if (homeTitle !== "Medical Spa Williamsburg VA | Botox, Fillers & PRP") {
+if (homeTitle !== "Medical Spa Williamsburg VA | Botox, Xeomin & PRP") {
   fail(`homepage title competes or drifted: ${JSON.stringify(homeTitle)}`);
 }
 if (/ear piercing/i.test(homeTitle)) fail("homepage title still competes for the ear piercing head term");
@@ -645,18 +647,18 @@ const homeLinks = [...home.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)].map((match
   attributes: getTagAttributes(`<a ${match[1]}>`),
   text: getVisibleText(match[2]),
 }));
-const homeFillerChip = homeLinks.some(
-  (link) => link.attributes.href === "/procedures/filler" && /fillers in williamsburg/i.test(link.text)
+const homeXeominChip = homeLinks.some(
+  (link) => link.attributes.href === "/procedures/xeomin" && /xeomin in williamsburg/i.test(link.text)
 );
-if (!homeFillerChip) {
-  fail("homepage drops the descriptive Fillers in Williamsburg link to the filler service owner");
+if (!homeXeominChip) {
+  fail("homepage drops the descriptive Xeomin in Williamsburg link to the Xeomin service owner");
 }
 const homeDescriptionTag = (home.match(/<meta\b[^>]*>/gi) || []).find(
   (tag) => getTagAttributes(tag).name?.toLowerCase() === "description"
 );
 const homeDescription = homeDescriptionTag ? getTagAttributes(homeDescriptionTag).content || "" : "";
 const expectedHomeDescription =
-  "Jenny Coleman, MSN, RN, CPNP, PMHS, CMA-certified OH-Shot provider, offers Botox, Xeomin, fillers, PRP, and Blomdahl ear piercing in Williamsburg, VA.";
+  "Jenny Brady, MSN, RN, CPNP, PMHS, CMA-certified OH-Shot provider, offers Botox, Xeomin, PRP, and Blomdahl ear piercing in Williamsburg, VA.";
 if (homeDescription !== expectedHomeDescription) {
   fail(`homepage meta description is ${JSON.stringify(homeDescription)}`);
 }
@@ -664,7 +666,7 @@ if (homeDescription.length > 160) fail(`homepage meta description is ${homeDescr
 if (!/CMA-certified/.test(homeDescription) || !/OH-Shot/.test(homeDescription) || !/Blomdahl ear piercing/.test(homeDescription)) {
   fail("homepage meta drops Jenny credentials, OH-Shot, or Blomdahl ear piercing");
 }
-if (/lip filler/i.test(homeDescription)) fail("homepage meta includes lip filler language");
+if (/filler/i.test(homeDescription)) fail("homepage meta includes filler language");
 
 const readSnippet = (html) => {
   const title = getVisibleText(html.match(/<title(?:\s[^>]*)?>([\s\S]*?)<\/title>/i)?.[1] || "");
@@ -874,8 +876,9 @@ if (
 const newportNews = pages.find((page) => normalizePath(page.canonicalUrl) === "/locations/newport-news-va")?.html || "";
 for (const owner of [
   "/procedures/botox",
-  "/procedures/filler",
+  "/procedures/xeomin",
   "/procedures/prp-facial",
+  "/procedures/microneedling-with-prp",
   "/procedures/blomdahl-ear-piercing/near/newport-news-va",
   "/consult",
   "/locations/williamsburg-va",
@@ -886,8 +889,8 @@ for (const owner of [
 if (/Quick read|Popular searches|Easy internal links/.test(newportNews)) {
   fail("Newport News owner exposes operator-facing SEO language");
 }
-if (!newportNews.includes("How do I choose between Botox/Xeomin and dermal filler?")) {
-  fail("Newport News owner is missing the visible Botox/filler decision answer");
+if (!newportNews.includes("How do I choose between Botox and Xeomin?")) {
+  fail("Newport News owner is missing the visible Botox/Xeomin decision answer");
 }
 if (!newportNews.includes('"@type":"FAQPage"')) {
   fail("Newport News owner is missing server-rendered FAQPage schema");
@@ -987,41 +990,10 @@ const ownerPageExpectations = {
       /href=["']\/consult\?utm_source=website&amp;utm_medium=location_page&amp;utm_campaign=james_city_county["']/,
       /href=["']\/procedures\/botox["']/,
       /href=["']\/procedures\/xeomin["']/,
-      /href=["']\/procedures\/filler["']/,
       /href=["']\/procedures\/prp-hair-restoration["']/,
       /href=["']\/procedures\/hyperhidrosis-treatment["']/,
       /href=["']\/procedures\/blomdahl-ear-piercing["']/,
     ],
-    requiredSchemas: ["FAQPage"],
-  },
-  "/procedures/filler": {
-    title: "Dermal Fillers in Williamsburg, VA | Cheeks, Under-Eyes & Contour",
-    h1: "Dermal Fillers in Williamsburg, VA",
-    required: [
-      "Is dermal filler a reasonable fit for the change you want?",
-      "restores or reshapes volume",
-      "does not relax the movement-related expression lines that Botox and Xeomin address",
-      "Results are not permanent",
-      "Longevity varies by filler type, treatment area, metabolism, and movement",
-      "Filler may belong in the conversation",
-      "A wrinkle relaxer may fit better",
-      "Careful screening comes first",
-      "Book a Filler Consultation",
-      "$721.22 per syringe card/online · $700 cash",
-    ],
-    forbidden: [
-      "permanent filler results",
-      "guaranteed results",
-      "no downtime",
-      "completely safe",
-      "erase wrinkles",
-      "owner page",
-      "protected query",
-      "page should answer",
-    ],
-    requiredHtml: [/href=["']\/consult\?procedure=filler&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=dermal_filler["']/],
-    requiredConsultHref: "/consult?procedure=filler&utm_source=website&utm_medium=procedure_page&utm_campaign=dermal_filler",
-    offer: { name: "Filler", price: "721.22", currency: "USD" },
     requiredSchemas: ["FAQPage"],
   },
 };
@@ -1123,6 +1095,8 @@ const consolidatedRedirects = [
   ["/procedures/p-shot", "/procedures/pe-shot"],
   ["/procedures/p-shot/for/erectile-dysfunction", "/procedures/pe-shot"],
   ["/procedures/male-intimacy-prp-protocols", "/procedures/pe-shot"],
+  // Issue #147: removed filler URLs and the old staff slug.
+  ...REMOVED_URL_REDIRECT_CHECKS,
 ];
 const assetRedirects = [
   ["/procedure/o-shot/womens-intimate-wellness-lifestyle.webp", "/procedure/oh-shot/womens-intimate-wellness-lifestyle.webp"],
@@ -1142,10 +1116,26 @@ for (const [, destination] of consolidatedRedirects) {
   }
 }
 
+// Issue #147: dermal filler is no longer offered and the provider is now Jenny Brady.
+const isRemovedPath = (path) =>
+  /^\/procedures\/filler(?:\/|$)/.test(path) || /^\/blog\/[^/]*filler/.test(path) || /^\/staff\/jenny-coleman(?:\/|$)/.test(path);
+for (const url of sitemapUrls) {
+  if (isRemovedPath(normalizePath(url))) fail(`sitemap still lists removed URL ${url}`);
+}
+for (const path of internalPaths) {
+  if (isRemovedPath(path)) fail(`a rendered page still links to removed URL ${path}`);
+}
+for (const page of pages) {
+  if (/"name":"Filler"/.test(page.html)) fail(`${page.canonicalUrl} still renders a Filler Service or Offer schema`);
+  if (/Jenny\s+Coleman/.test(page.html)) {
+    fail(`${page.canonicalUrl} still names Jenny Coleman`);
+  }
+}
+
 const priorityPaths = [
   "/",
   "/procedures/botox",
-  "/procedures/filler",
+  "/procedures/xeomin",
   "/procedures/blomdahl-ear-piercing",
   "/procedures/blomdahl-ear-piercing/for/children",
   "/procedures/blomdahl-ear-piercing/for/sensitive-ears",
@@ -1174,7 +1164,7 @@ if (botoxPage) {
   if (!botoxSnippet.title.startsWith("Botox in Williamsburg, VA")) {
     fail(`Botox title no longer leads with the owner phrase: ${JSON.stringify(botoxSnippet.title)}`);
   }
-  if (!/Jenny Coleman, MSN, RN, CPNP, PMHS/.test(botoxSnippet.description)) {
+  if (!/Jenny Brady, MSN, RN, CPNP, PMHS/.test(botoxSnippet.description)) {
     fail("Botox meta dropped Jenny's credentials");
   }
 }
@@ -1215,12 +1205,12 @@ if (ohShot && !/Cellular Medicine Association/.test(ohShot.html)) fail("OH-Shot 
 if (sitemapUrls.some((url) => /\/procedures\/o-shot(?:\/|$)/.test(new URL(url).pathname))) {
   fail("sitemap still contains a legacy o-shot URL");
 }
-const jennyPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/staff/jenny-coleman");
-if (!jennyPage) fail("Jenny Coleman page missing from sitemap");
+const jennyPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/staff/jenny-brady");
+if (!jennyPage) fail("Jenny Brady page missing from sitemap");
 if (jennyPage) {
   const jennyMain = jennyPage.html.match(/<main\b[\s\S]*?<footer\b/i)?.[0] || jennyPage.html;
   const jennyWords = getVisibleText(jennyMain).split(/\s+/).filter(Boolean);
-  if (jennyWords.length < 180) fail(`Jenny Coleman page has ${jennyWords.length} visible words; minimum is 180`);
+  if (jennyWords.length < 180) fail(`Jenny Brady page has ${jennyWords.length} visible words; minimum is 180`);
 }
 if (sitemapUrls.some((url) => normalizePath(url) === "/locations/fords-colony-va")) {
   fail("Ford's Colony location URL is still in the sitemap");
@@ -1264,7 +1254,7 @@ if (htmlSitemap) {
     "/procedures/botox",
     "/procedures/blomdahl-ear-piercing",
     "/locations/williamsburg-va",
-    "/staff/jenny-coleman",
+    "/staff/jenny-brady",
     "/privacy",
     "/terms",
     "/sitemap.xml",
@@ -1288,8 +1278,8 @@ if (!/href=["']\/html-sitemap["']/.test(home) || !/href=["']\/terms["']/.test(ho
 const personBlocks = [...home.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)]
   .map((match) => JSON.parse(unescapeHtml(match[1])))
   .flatMap((schema) => (Array.isArray(schema?.["@graph"]) ? schema["@graph"] : [schema]))
-  .filter((schema) => schema?.["@type"] === "Person" && schema?.name === "Jenny Coleman");
-if (!personBlocks.length) fail("homepage is missing Jenny Coleman Person schema");
+  .filter((schema) => schema?.["@type"] === "Person" && schema?.name === "Jenny Brady");
+if (!personBlocks.length) fail("homepage is missing Jenny Brady Person schema");
 for (const person of personBlocks) {
   const credentialNames = (person.hasCredential || []).map((credential) => credential.name);
   if (!credentialNames.includes("Cellular Medicine Association-certified OH-Shot provider")) {
@@ -1299,12 +1289,12 @@ for (const person of personBlocks) {
     fail("Jenny Person schema dropped the Blomdahl credential");
   }
   const knows = (person.knowsAbout || []).map((topic) => topic.name);
-  for (const topic of ["Botulinum toxin", "Injectable filler", "Platelet-rich plasma", "Ear piercing", "Hyperhidrosis"]) {
+  for (const topic of ["Botulinum toxin", "Platelet-rich plasma", "Ear piercing", "Hyperhidrosis"]) {
     if (!knows.includes(topic)) fail(`Jenny Person schema is missing knowsAbout ${topic}`);
   }
   if (person.alumniOf) fail("Jenny Person schema invented alumniOf");
   if (person.memberOf) fail("Jenny Person schema invented memberOf");
-  if (JSON.stringify(person).includes("lip filler")) fail("Jenny Person schema mentions lip filler");
+  if (/filler/i.test(JSON.stringify(person))) fail("Jenny Person schema mentions filler");
 }
 if (/facebook\.com|instagram\.com|youtube\.com|linkedin\.com|tiktok\.com/i.test(home)) {
   fail("homepage links a social profile that has not been confirmed");

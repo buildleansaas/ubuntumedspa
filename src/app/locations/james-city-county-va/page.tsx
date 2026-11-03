@@ -3,14 +3,13 @@ import DirectionsButton from "components/directions-button";
 import NAP from "components/nap";
 import StructuredData from "components/structured-data";
 import { Button } from "components/ui/button";
-import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 import { buildPageMetadata } from "lib/metadata";
 import Link from "next/link";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near James City County, VA | Fillers, Botox & PRP",
+  title: "Med Spa Near James City County, VA | Botox, Xeomin & PRP",
   description:
-    "Compare consultation-led Botox, Xeomin, fillers, PRP hair restoration, hyperhidrosis care, and Blomdahl ear piercing near James City County, VA.",
+    "Compare consultation-led Botox, Xeomin, PRP hair restoration, hyperhidrosis care, and Blomdahl ear piercing near James City County, VA.",
   canonical: "/locations/james-city-county-va",
 });
 
@@ -26,13 +25,6 @@ const serviceLinks = [
     href: "/procedures/xeomin",
     label: "Xeomin",
     note: "Compare another consultation-led wrinkle-relaxer option for facial movement concerns.",
-  },
-  {
-    href: "/procedures/filler",
-    label: "Dermal fillers",
-    note: LIP_FILLER_ENABLED
-      ? "Review lip, cheek, under-eye, smile-line, and facial-balance starting points."
-      : "Review cheek, under-eye, smile-line, and facial-balance starting points.",
   },
   {
     href: "/procedures/prp-hair-restoration",
@@ -65,7 +57,7 @@ const faqs = [
   {
     question: "What should I book first if I am not sure which treatment fits?",
     answer:
-      "Book a consultation first. Jenny Coleman reviews your goals, relevant health history, timing, and treatment options before recommending a reasonable next step.",
+      "Book a consultation first. Jenny Brady reviews your goals, relevant health history, timing, and treatment options before recommending a reasonable next step.",
   },
   {
     question: "Does Williamsburg Med Spa serve neighborhoods across James City County?",
@@ -90,12 +82,12 @@ export default function JamesCityCountyPage() {
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">James City County service area</p>
           <h1 className="max-w-3xl text-4xl font-light leading-tight sm:text-5xl">Med Spa Near James City County, VA</h1>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-base-content/75">
-            Compare consultation-led Botox, Xeomin, dermal fillers, PRP hair restoration, hyperhidrosis care, and Blomdahl
-            medical ear piercing at the Williamsburg clinic near New Town.
+            Compare consultation-led Botox, Xeomin, PRP hair restoration, hyperhidrosis care, and Blomdahl medical ear
+            piercing at the Williamsburg clinic near New Town.
           </p>
           <p className="mt-4 max-w-3xl leading-relaxed text-base-content/75">
             Your best first visit depends on what you want to improve. Start with a specific treatment page when you know
-            your concern, or book a consultation when you want Jenny Coleman to help you compare options.
+            your concern, or book a consultation when you want Jenny Brady to help you compare options.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild>

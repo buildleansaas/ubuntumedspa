@@ -1,11 +1,5 @@
-import type { ReactNode } from "react";
 import type { MDXComponents } from "mdx/types";
-import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 import { cn } from "lib/utils";
-
-export function IfLipFiller({ children, fallback = null }: { children: ReactNode; fallback?: ReactNode }) {
-  return <>{LIP_FILLER_ENABLED ? children : fallback}</>;
-}
 
 export function Anchor({ className, ...properties }: JSX.IntrinsicElements["a"]) {
   return (
@@ -154,7 +148,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     th: TableHeader,
     td: TableCell,
     blockquote: Blockquote,
-    IfLipFiller,
     ...components,
   };
 }

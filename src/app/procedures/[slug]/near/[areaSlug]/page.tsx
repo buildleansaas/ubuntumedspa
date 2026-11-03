@@ -63,9 +63,9 @@ export default function LocalInjectableServicePage({ params }: Params) {
 
       <StructuredData
         type="Person"
-        headline="Jenny Coleman, MSN, RN, CPNP, PMHS"
-        description="Jenny Coleman provides consultation-first injectable and regenerative aesthetic care at Williamsburg Med Spa."
-        url="/staff/jenny-coleman"
+        headline="Jenny Brady, MSN, RN, CPNP, PMHS"
+        description="Jenny Brady provides consultation-first injectable and regenerative aesthetic care at Williamsburg Med Spa."
+        url="/staff/jenny-brady"
       />
       <StructuredData
         type="Service"

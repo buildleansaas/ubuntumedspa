@@ -77,7 +77,7 @@ export const localServiceAreas: LocalServiceArea[] = [
       "Blomdahl appointments are at 3900 Powhatan Parkway in Williamsburg. Ear piercing details are on the Blomdahl hub.",
     countyOrContext: "Primary clinic",
     distanceNote: "at our Williamsburg clinic",
-    summary: "Our main clinic with full PRP, filler, ear piercing, and aesthetic services.",
+    summary: "Our main clinic with full PRP, injectable, ear piercing, and aesthetic services.",
     earPiercingAngle: "the most direct option for medical-grade ear piercing in Williamsburg",
     parentIntent: true,
     localIntro:

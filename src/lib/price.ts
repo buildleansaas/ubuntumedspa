@@ -79,4 +79,4 @@ export const cardPriceLabel = (cashCents: number) => formatUsdShort(cardPriceCen
 export const cardPriceSchemaValue = (cashCents: number) => (cardPriceCents(cashCents) / 100).toFixed(2);
 
 export const CARD_CASH_NOTE =
-  "Card prices apply online and to card payments in the office. Paying cash in the office? You pay the cash price.";
+  "Card prices are what you pay online and by card in the office. Paying cash in the office? You pay the cash price.";

@@ -58,7 +58,7 @@ export default async function HtmlSitemapPage() {
     },
     {
       title: "Staff",
-      links: [{ href: "/staff/jenny-coleman", label: "Jenny Coleman, MSN, RN, CPNP, PMHS" }],
+      links: [{ href: "/staff/jenny-brady", label: "Jenny Brady, MSN, RN, CPNP, PMHS" }],
     },
     {
       title: "Appointments and events",
