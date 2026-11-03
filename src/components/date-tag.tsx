@@ -14,7 +14,7 @@ const DateTag = ({ date, className }: TagProps) => {
     <time
       dateTime={Number.isNaN(parsedDate.getTime()) ? date : parsedDate.toISOString()}
       className={twMerge(
-        "inline-flex items-center rounded-full border border-base-300 bg-base-100 px-3 py-1 text-xs font-medium tracking-[0.02em] text-base-content/75",
+        "inline-flex items-center border border-base-300 bg-base-100 px-3 py-1 text-xs font-medium tracking-[0.04em] text-base-content/80",
         className
       )}
     >

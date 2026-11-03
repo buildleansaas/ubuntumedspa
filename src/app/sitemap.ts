@@ -63,6 +63,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `https://www.williamsburgmedspa.com/products/${product.slug}`,
     })),
     {
+      url: "https://www.williamsburgmedspa.com/privacy",
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/terms",
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/cookies",
+    },
+    {
+      url: "https://www.williamsburgmedspa.com/html-sitemap",
+    },
+    {
       url: "https://www.williamsburgmedspa.com/events",
     },
     ...publishedEvents.map((event) => ({

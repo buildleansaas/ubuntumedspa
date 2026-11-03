@@ -37,15 +37,22 @@ export interface FormInput {
   options?: string[];
 }
 
+const readParam = (url: URL, key: string) => url.searchParams.get(key)?.trim() || undefined;
+
 const getConsultSourceContext = () => {
   const url = getCurrentBrowserUrl();
   if (!url) return null;
 
-  const procedure = url.searchParams.get("procedure")?.trim();
-  const intent = url.searchParams.get("intent")?.trim();
-  const area = url.searchParams.get("area")?.trim();
+  const procedure = readParam(url, "procedure");
+  const intent = readParam(url, "intent");
+  const area = readParam(url, "area");
+  const utmSource = readParam(url, "utm_source");
+  const utmMedium = readParam(url, "utm_medium");
+  const utmCampaign = readParam(url, "utm_campaign");
 
-  return procedure || intent || area ? { procedure, intent, area } : null;
+  return procedure || intent || area || utmSource || utmMedium || utmCampaign
+    ? { procedure, intent, area, utmSource, utmMedium, utmCampaign }
+    : null;
 };
 
 const ConsultationForm: React.FC = () => {
@@ -60,7 +67,7 @@ const ConsultationForm: React.FC = () => {
   const wideFieldIds = ["name", "interests", "comments", "referral"] as const;
 
   const inputClassName =
-    "mt-2 w-full rounded-xl border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content shadow-sm transition-colors placeholder:text-base-content/35 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10";
+    "mt-2 w-full border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/45 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState({
@@ -205,6 +212,9 @@ const ConsultationForm: React.FC = () => {
           affiliateId: affiliateReferral?.affiliateId,
           affiliateCode: affiliateReferral?.affiliateCode,
           affiliateName: affiliateReferral?.affiliateName,
+          utmSource: sourceContext?.utmSource,
+          utmMedium: sourceContext?.utmMedium,
+          utmCampaign: sourceContext?.utmCampaign,
         }),
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -231,7 +241,7 @@ const ConsultationForm: React.FC = () => {
 
   return (
     <form
-      className="mx-auto max-w-3xl rounded-[1.75rem] border border-base-300 bg-base-100 px-6 py-6 shadow-sm sm:px-8 sm:py-8 md:px-10 md:py-10"
+      className="mx-auto max-w-3xl border border-base-300 bg-base-100 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10"
       onChangeCapture={trackFirstInteraction}
       onSubmit={onSubmit}
     >
@@ -244,7 +254,9 @@ const ConsultationForm: React.FC = () => {
           <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm leading-6 text-base-content/75">
             <p className="font-medium text-base-content">We carried over the page you came from.</p>
             <p className="mt-1">
-              {sourceContext.procedure ? `Treatment interest: ${sourceContext.procedure.replaceAll("-", " ")}. ` : ""}
+              {sourceContext.procedure
+                ? `Treatment interest: ${(getProcedureInterests(sourceContext.procedure) ?? [sourceContext.procedure.replaceAll("-", " ")]).join(", ")}. `
+                : ""}
               {sourceContext.intent ? `Question/topic: ${sourceContext.intent.replaceAll("-", " ")}. ` : ""}
               {sourceContext.area ? `Nearby area: ${sourceContext.area.replaceAll("-", " ")}.` : ""}
             </p>

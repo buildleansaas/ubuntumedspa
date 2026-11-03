@@ -468,8 +468,8 @@ if (ownerDataStart === -1 || ownerDataEnd === -1) {
     "PRP_BREAST_SHARED_COPY_CONTRACT_START",
     "PRP_BREAST_SHARED_COPY_CONTRACT_END"
   );
-  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "868b1066d529daecd56c05567d6b99f396b3251c63fe9b4e635ce502cf1386f8");
-  assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "300174bac9ca3e131b611f663dfb530332159a8abe8fa1f810267148eeda758c");
+  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "8c8b0646315f25481ba713a11b50a7bfab2b9a431c003f92f8ab3224b099edbd");
+  assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "e8ca5d52259f9826c065a73009541d81b46d3ad3528ffebfd9887e2d270ca76c");
   assertSourceContract("shared footer clinical copy", sharedFooterContractSource, "aa96d5b0cca7dadcc9fb2e42bdf88c90839424fcc8118c2a1c9a956d98fbeec5");
 }
 
@@ -633,6 +633,242 @@ for (const owner of ["/procedures/botox", "/procedures/filler", "/procedures/blo
   const pattern = new RegExp(`href=["']${owner.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`);
   if (!pattern.test(home)) fail(`homepage does not directly link to query owner ${owner}`);
 }
+const homeTitle = getVisibleText(home.match(/<title(?:\s[^>]*)?>([\s\S]*?)<\/title>/i)?.[1] || "");
+if (!homeTitle.includes("Fillers")) {
+  fail("homepage title drops the preserved broad Filler visibility");
+}
+if (homeTitle !== "Medical Spa Williamsburg VA | Botox, Fillers & PRP") {
+  fail(`homepage title competes or drifted: ${JSON.stringify(homeTitle)}`);
+}
+if (/ear piercing/i.test(homeTitle)) fail("homepage title still competes for the ear piercing head term");
+const homeLinks = [...home.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)].map((match) => ({
+  attributes: getTagAttributes(`<a ${match[1]}>`),
+  text: getVisibleText(match[2]),
+}));
+const homeFillerChip = homeLinks.some(
+  (link) => link.attributes.href === "/procedures/filler" && /fillers in williamsburg/i.test(link.text)
+);
+if (!homeFillerChip) {
+  fail("homepage drops the descriptive Fillers in Williamsburg link to the filler service owner");
+}
+const homeDescriptionTag = (home.match(/<meta\b[^>]*>/gi) || []).find(
+  (tag) => getTagAttributes(tag).name?.toLowerCase() === "description"
+);
+const homeDescription = homeDescriptionTag ? getTagAttributes(homeDescriptionTag).content || "" : "";
+const expectedHomeDescription =
+  "Jenny Coleman, MSN, RN, CPNP, PMHS, CMA-certified OH-Shot provider, offers Botox, Xeomin, fillers, PRP, and Blomdahl ear piercing in Williamsburg, VA.";
+if (homeDescription !== expectedHomeDescription) {
+  fail(`homepage meta description is ${JSON.stringify(homeDescription)}`);
+}
+if (homeDescription.length > 160) fail(`homepage meta description is ${homeDescription.length} characters`);
+if (!/CMA-certified/.test(homeDescription) || !/OH-Shot/.test(homeDescription) || !/Blomdahl ear piercing/.test(homeDescription)) {
+  fail("homepage meta drops Jenny credentials, OH-Shot, or Blomdahl ear piercing");
+}
+if (/lip filler/i.test(homeDescription)) fail("homepage meta includes lip filler language");
+
+const readSnippet = (html) => {
+  const title = getVisibleText(html.match(/<title(?:\s[^>]*)?>([\s\S]*?)<\/title>/i)?.[1] || "");
+  const descriptionTag = (html.match(/<meta\b[^>]*>/gi) || []).find(
+    (tag) => getTagAttributes(tag).name?.toLowerCase() === "description"
+  );
+  const description = descriptionTag ? getTagAttributes(descriptionTag).content || "" : "";
+  const h1 = getVisibleText(html.match(/<h1(?:\s[^>]*)?>([\s\S]*?)<\/h1>/i)?.[1] || "");
+  return { title, description, h1 };
+};
+
+const snippetExpectations = {
+  "/procedures/blomdahl-ear-piercing": {
+    title: "Ear Piercing Williamsburg VA | Blomdahl Pediatric NP",
+    description: "Sterile, hypoallergenic Blomdahl ear piercing in Williamsburg, VA by a pediatric NP. $45 per ear.",
+    h1: "Ear Piercing in Williamsburg, VA",
+  },
+  "/blog/blomdahl-medical-plastic-vs-titanium-earrings": {
+    title: "Blomdahl Earrings Review: Medical Plastic vs Titanium",
+    description:
+      "Blomdahl earrings review: Medical Plastic vs titanium in Williamsburg. Compare starter jewelry, then book the ear piercing hub.",
+  },
+};
+for (const [path, expectation] of Object.entries(snippetExpectations)) {
+  const page = pages.find((candidate) => normalizePath(candidate.canonicalUrl) === path);
+  if (!page) {
+    fail(`snippet page missing from sitemap: ${path}`);
+    continue;
+  }
+  const snippet = readSnippet(page.html);
+  if (snippet.title !== expectation.title) {
+    fail(`${path} title is ${JSON.stringify(snippet.title)}, expected ${JSON.stringify(expectation.title)}`);
+  }
+  if (snippet.description !== expectation.description) {
+    fail(`${path} meta description is ${JSON.stringify(snippet.description)}`);
+  }
+  if (snippet.description.length > 160) fail(`${path} meta description is ${snippet.description.length} characters`);
+  if (expectation.h1 && snippet.h1 !== expectation.h1) {
+    fail(`${path} H1 is ${JSON.stringify(snippet.h1)}, expected ${JSON.stringify(expectation.h1)}`);
+  }
+}
+const reviewPage = pages.find(
+  (candidate) => normalizePath(candidate.canonicalUrl) === "/blog/blomdahl-medical-plastic-vs-titanium-earrings"
+);
+if (reviewPage && !/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(reviewPage.html)) {
+  fail("Blomdahl earrings review does not link to the ear piercing hub");
+}
+
+if (!home.includes('id="blomdahl-callout"')) fail("homepage is missing #blomdahl-callout");
+if (!home.includes('id="oh-shot-callout"')) fail("homepage dropped the OH-Shot callout");
+if (!home.includes("Cellular Medicine Association-trained and certified OH-Shot provider.")) {
+  fail("homepage dropped the OH-Shot CMA credential strip");
+}
+const homepagePiercingBooking =
+  "/consult?procedure=blomdahl-ear-piercing&amp;utm_source=website&amp;utm_medium=homepage_callout&amp;utm_campaign=ear_piercing_homepage";
+if (!home.includes(`href="${homepagePiercingBooking}"`)) {
+  fail("homepage Blomdahl callout is missing its booking campaign");
+}
+for (const href of ["/procedures/blomdahl-ear-piercing", "/procedures/blomdahl-ear-piercing/for/children"]) {
+  if (!new RegExp(`href=["']${href}["']`).test(home)) fail(`homepage Blomdahl callout is missing ${href}`);
+}
+const piercingHub = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing");
+const childrenPiercing = pages.find(
+  (page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing/for/children"
+);
+if (
+  piercingHub &&
+  !piercingHub.html.includes(
+    "/consult?procedure=blomdahl-ear-piercing&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=ear_piercing\""
+  )
+) {
+  fail("Blomdahl hub booking path dropped the ear_piercing campaign");
+}
+if (
+  childrenPiercing &&
+  !childrenPiercing.html.includes(
+    "/consult?procedure=blomdahl-ear-piercing&amp;intent=children&amp;utm_source=website&amp;utm_medium=intent_page&amp;utm_campaign=ear_piercing_children"
+  )
+) {
+  fail("children ear piercing page dropped the ear_piercing_children campaign");
+}
+
+const williamsburgPiercingVisit = pages.find(
+  (page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing/near/williamsburg-va"
+);
+if (williamsburgPiercingVisit) {
+  const visitSnippet = readSnippet(williamsburgPiercingVisit.html);
+  if (visitSnippet.title === "Medical Ear Piercing in Williamsburg, VA | Blomdahl") {
+    fail("Williamsburg piercing visit page title still uses the hub head term");
+  }
+  if (visitSnippet.h1 === "Medical Ear Piercing in Williamsburg, VA") {
+    fail("Williamsburg piercing visit page H1 still uses the hub head term");
+  }
+  if (!/3900 Powhatan Parkway/.test(williamsburgPiercingVisit.html)) {
+    fail("Williamsburg piercing visit page does not name the clinic address");
+  }
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(williamsburgPiercingVisit.html)) {
+    fail("Williamsburg piercing visit page does not link to the hub");
+  }
+}
+if (piercingHub && !piercingHub.html.includes("Does Blomdahl use a needle or a piercing gun?")) {
+  fail("Blomdahl hub is missing the cassette versus gun FAQ");
+}
+if (piercingHub && !/href=["']\/blog\/medical-ear-piercing-vs-mall-piercing["']/.test(piercingHub.html)) {
+  fail("Blomdahl hub does not link to the medical versus mall guide");
+}
+for (const path of [
+  "/locations/williamsburg-va",
+  "/locations/yorktown-va",
+  "/locations/newport-news-va",
+  "/locations/james-city-county-va",
+]) {
+  const locationPage = pages.find((page) => normalizePath(page.canonicalUrl) === path);
+  if (!locationPage) {
+    fail(`location page missing from sitemap: ${path}`);
+    continue;
+  }
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(locationPage.html)) {
+    fail(`${path} does not link to the Blomdahl hub`);
+  }
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing\/for\/children["']/.test(locationPage.html)) {
+    fail(`${path} does not link to children's ear piercing`);
+  }
+  const locationTitle = readSnippet(locationPage.html).title;
+  if (/& Piercing/.test(locationTitle) || /Ear Piercing in Williamsburg/i.test(locationTitle)) {
+    fail(`${path} title still competes for the piercing head term: ${locationTitle}`);
+  }
+}
+
+const childrenPage = pages.find(
+  (page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing/for/children"
+);
+if (childrenPage && !/pediatric ear piercing/i.test(getVisibleText(childrenPage.html))) {
+  fail("children ear piercing page does not say pediatric ear piercing");
+}
+if (childrenPage && !/6 months/.test(childrenPage.html)) {
+  fail("children ear piercing page dropped the 6-month guidance");
+}
+const sensitivePage = pages.find(
+  (page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing/for/sensitive-ears"
+);
+for (const heading of ["Hypoallergenic starter earrings", "Nickel-free Medical Plastic", "Medical Grade Titanium"]) {
+  if (sensitivePage && !sensitivePage.html.includes(heading)) fail(`sensitive-ears page is missing heading ${heading}`);
+}
+const repiercePage = pages.find(
+  (page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing/for/re-piercing"
+);
+if (repiercePage && !/Do not force jewelry/.test(repiercePage.html)) {
+  fail("re-piercing page dropped the do-not-reopen guidance");
+}
+if (repiercePage && !/3900 Powhatan Parkway/.test(repiercePage.html)) {
+  fail("re-piercing page does not name the Williamsburg clinic");
+}
+const mallBlog = pages.find(
+  (page) => normalizePath(page.canonicalUrl) === "/blog/medical-ear-piercing-vs-mall-piercing"
+);
+if (mallBlog) {
+  const mallSnippet = readSnippet(mallBlog.html);
+  if (mallSnippet.description.length > 160) fail(`mall piercing blog meta is ${mallSnippet.description.length} characters`);
+  if (!/mall gun/i.test(mallSnippet.description) || !/Williamsburg/.test(mallSnippet.description)) {
+    fail("mall piercing blog meta dropped the gun contrast or Williamsburg");
+  }
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(mallBlog.html)) {
+    fail("mall piercing blog does not link to the hub");
+  }
+}
+const aftercareBlog = pages.find(
+  (page) => normalizePath(page.canonicalUrl) === "/blog/ear-piercing-aftercare-williamsburg-va"
+);
+if (aftercareBlog) {
+  const aftercareSnippet = readSnippet(aftercareBlog.html);
+  if (!/Williamsburg/.test(aftercareSnippet.title) || !/Blomdahl/.test(aftercareSnippet.title)) {
+    fail("aftercare title is not localized to Williamsburg and Blomdahl");
+  }
+  if (!/utm_campaign=ear_piercing_aftercare/.test(aftercareBlog.html)) {
+    fail("aftercare post is missing the hub booking link");
+  }
+}
+for (const [path, locationPath, proof] of [
+  ["/procedures/blomdahl-ear-piercing/near/yorktown-va", "/locations/yorktown-va", "Tabb"],
+  ["/procedures/blomdahl-ear-piercing/near/newport-news-va", "/locations/newport-news-va", "Oyster Point"],
+]) {
+  const areaPage = pages.find((page) => normalizePath(page.canonicalUrl) === path);
+  if (!areaPage) {
+    fail(`piercing area page missing from sitemap: ${path}`);
+    continue;
+  }
+  if (!areaPage.html.includes(proof)) fail(`${path} is missing local proof ${proof}`);
+  if (!/3900 Powhatan Parkway/.test(areaPage.html)) fail(`${path} does not name the Williamsburg clinic`);
+  if (!new RegExp(`href=["']${locationPath}["']`).test(areaPage.html)) {
+    fail(`${path} does not link to ${locationPath}`);
+  }
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(areaPage.html)) {
+    fail(`${path} does not link to the hub`);
+  }
+}
+if (
+  pages.some((page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing/near/newport-news-va") &&
+  /Newport News, VA 23/.test(
+    pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing/near/newport-news-va")?.html || ""
+  )
+) {
+  fail("Newport News piercing page invented a Newport News street address");
+}
 
 const newportNews = pages.find((page) => normalizePath(page.canonicalUrl) === "/locations/newport-news-va")?.html || "";
 for (const owner of [
@@ -658,9 +894,9 @@ if (!newportNews.includes('"@type":"FAQPage"')) {
 
 const ownerPageExpectations = {
   "/procedures/prp-breast-lift": {
-    title: "PRP Breast Lift in Williamsburg, VA",
+    title: "Breast Lift Williamsburg VA | PRP, Not Surgery",
     description:
-      "Compare the PRP Breast Lift service in Williamsburg, VA with surgical options, review the $1,800 one-visit price, and request current service details.",
+      "Breast lift in Williamsburg, VA: the $1,800 PRP visit is not surgery and does not promise a cosmetic result.",
     h1: "PRP Breast Lift in Williamsburg, VA",
     required: [
       "What a PRP Breast Lift can and cannot do",
@@ -712,8 +948,15 @@ const ownerPageExpectations = {
     offer: { name: "PRP Breast Lift", price: "1800", currency: "USD" },
   },
   "/procedures/prp-hair-restoration": {
+    title: "Hair Transplant Williamsburg VA | PRP Is Not Surgery",
+    description:
+      "Female hair transplant or hairline transplant in Williamsburg? PRP does not move follicles. Ask when a specialist fits.",
+    h1: "PRP Hair Restoration in Williamsburg, VA",
     required: [
       "Is PRP a reasonable fit for your hair-loss pattern?",
+      "female hair transplant",
+      "hairline transplant in Williamsburg",
+      "this visit is not that surgery",
       "Research suggests platelet-rich plasma may improve hair density for some people with pattern hair loss",
       "does not create new follicles in a bald area",
       "Medical evaluation may come first",
@@ -748,6 +991,36 @@ const ownerPageExpectations = {
       /href=["']\/procedures\/hyperhidrosis-treatment["']/,
       /href=["']\/procedures\/blomdahl-ear-piercing["']/,
     ],
+    requiredSchemas: ["FAQPage"],
+  },
+  "/procedures/filler": {
+    title: "Dermal Fillers in Williamsburg, VA | Cheeks, Under-Eyes & Contour",
+    h1: "Dermal Fillers in Williamsburg, VA",
+    required: [
+      "Is dermal filler a reasonable fit for the change you want?",
+      "restores or reshapes volume",
+      "does not relax the movement-related expression lines that Botox and Xeomin address",
+      "Results are not permanent",
+      "Longevity varies by filler type, treatment area, metabolism, and movement",
+      "Filler may belong in the conversation",
+      "A wrinkle relaxer may fit better",
+      "Careful screening comes first",
+      "Book a Filler Consultation",
+      "$700 per syringe",
+    ],
+    forbidden: [
+      "permanent filler results",
+      "guaranteed results",
+      "no downtime",
+      "completely safe",
+      "erase wrinkles",
+      "owner page",
+      "protected query",
+      "page should answer",
+    ],
+    requiredHtml: [/href=["']\/consult\?procedure=filler&amp;utm_source=website&amp;utm_medium=procedure_page&amp;utm_campaign=dermal_filler["']/],
+    requiredConsultHref: "/consult?procedure=filler&utm_source=website&utm_medium=procedure_page&utm_campaign=dermal_filler",
+    offer: { name: "Filler", price: "700", currency: "USD" },
     requiredSchemas: ["FAQPage"],
   },
 };
@@ -837,11 +1110,25 @@ const consolidatedRedirects = [
   ["/blog/medical-ear-piercing-in-williamsburg-va-blohmdahl", "/procedures/blomdahl-ear-piercing"],
   ["/procedures/blomdahl-ear-piercing/near/fords-colony-va", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
   ["/locations/toano-va", "/locations/williamsburg-va"],
+  ["/locations/fords-colony-va", "/locations/williamsburg-va"],
   ["/procedures/botox/near/williamsburg-va", "/procedures/botox"],
   ["/procedures/botox/for/crows-feet", "/procedures/botox"],
-  ["/procedures/feminine-intimacy-prp-protocols/for/urinary-incontinence", "/procedures/o-shot"],
+  ["/procedures/feminine-intimacy-prp-protocols/for/urinary-incontinence", "/procedures/oh-shot"],
+  ["/procedures/o-shot", "/procedures/oh-shot"],
+  ["/procedures/o-shot/for/urinary-incontinence", "/procedures/oh-shot"],
+  ["/procedures/oh-shot/for/urinary-incontinence", "/procedures/oh-shot"],
+  ["/blog/o-shot-for-vaginal-dryness-what-to-know", "/blog/oh-shot-for-vaginal-dryness-what-to-know"],
+  ["/blog/o-shot-for-urinary-incontinence-williamsburg-va", "/blog/oh-shot-for-urinary-incontinence-williamsburg-va"],
+  ["/procedures/p-shot", "/procedures/pe-shot"],
+  ["/procedures/p-shot/for/erectile-dysfunction", "/procedures/pe-shot"],
+  ["/procedures/male-intimacy-prp-protocols", "/procedures/pe-shot"],
 ];
-for (const [source, destination] of consolidatedRedirects) {
+const assetRedirects = [
+  ["/procedure/o-shot/womens-intimate-wellness-lifestyle.webp", "/procedure/oh-shot/womens-intimate-wellness-lifestyle.webp"],
+  ["/blog/o-shot/urinary-incontinence-confidence.png", "/blog/oh-shot/urinary-incontinence-confidence.png"],
+  ["/procedure/pshot-consultation-confidence.webp", "/procedure/pe-shot-consultation-confidence.webp"],
+];
+for (const [source, destination] of [...consolidatedRedirects, ...assetRedirects]) {
   const response = await fetchLocal(source, { redirect: "manual" });
   const location = response.headers.get("location");
   if (![301, 308].includes(response.status) || !location || normalizePath(location) !== destination) {
@@ -875,6 +1162,151 @@ const priorityPaths = [
 ];
 for (const path of priorityPaths) {
   if (!sitemapUrls.some((url) => normalizePath(url) === path)) fail(`priority route missing from sitemap: ${path}`);
+}
+
+const botoxPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/botox");
+if (botoxPage) {
+  const botoxSnippet = readSnippet(botoxPage.html);
+  if (botoxSnippet.h1 !== "Botox in Williamsburg, VA") {
+    fail(`Botox H1 changed: ${JSON.stringify(botoxSnippet.h1)}`);
+  }
+  if (!botoxSnippet.title.startsWith("Botox in Williamsburg, VA")) {
+    fail(`Botox title no longer leads with the owner phrase: ${JSON.stringify(botoxSnippet.title)}`);
+  }
+  if (!/Jenny Coleman, MSN, RN, CPNP, PMHS/.test(botoxSnippet.description)) {
+    fail("Botox meta dropped Jenny's credentials");
+  }
+}
+const eventsPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/events");
+if (eventsPage) {
+  const eventsTitle = readSnippet(eventsPage.html).title;
+  if (eventsTitle === "Botox Parties in Williamsburg, VA | Private Med Spa Events") {
+    fail("events title still competes for Botox Williamsburg");
+  }
+  if (!/href=["']\/procedures\/botox["']/.test(eventsPage.html)) fail("events page does not link to the Botox owner");
+}
+const botoxParty = pages.find((page) => normalizePath(page.canonicalUrl) === "/events/botox-party");
+if (botoxParty && readSnippet(botoxParty.html).title.startsWith("Botox Parties in Williamsburg")) {
+  fail("Botox party title still competes for Botox Williamsburg");
+}
+if (botoxParty && !/href=["']\/procedures\/botox["']/.test(botoxParty.html)) {
+  fail("Botox party page does not link to the Botox owner");
+}
+const newportNewsSnippet = readSnippet(newportNews);
+if (newportNewsSnippet.title !== "Med Spa Newport News | Botox at Our Williamsburg Clinic") {
+  fail(`Newport News title is ${JSON.stringify(newportNewsSnippet.title)}`);
+}
+if (!/There is no Newport News street address/.test(newportNews)) {
+  fail("Newport News page does not say there is no Newport News street address");
+}
+if (!/Med spa Newport News/i.test(newportNewsSnippet.description) || !/Botox/.test(newportNewsSnippet.description)) {
+  fail("Newport News meta does not target med spa and Botox");
+}
+if (!/does not offer Hydrafacial/.test(home)) fail("homepage does not disambiguate Hydrafacial");
+if (!/href=["']\/procedures\/prp-facial["']/.test(home)) fail("homepage Hydrafacial note does not link to PRP Facial");
+if (!/href=["']\/blog\/hydrafacial-alternatives-in-williamsburg-va["']/.test(home)) {
+  fail("homepage Hydrafacial note does not link to the alternatives guide");
+}
+const ohShot = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/oh-shot");
+if (!ohShot) fail("OH-Shot owner missing from sitemap");
+if (ohShot && !readSnippet(ohShot.html).title.includes("OH-Shot")) fail("OH-Shot title dropped the OH-Shot name");
+if (ohShot && !/Cellular Medicine Association/.test(ohShot.html)) fail("OH-Shot page dropped CMA credential copy");
+if (sitemapUrls.some((url) => /\/procedures\/o-shot(?:\/|$)/.test(new URL(url).pathname))) {
+  fail("sitemap still contains a legacy o-shot URL");
+}
+const jennyPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/staff/jenny-coleman");
+if (!jennyPage) fail("Jenny Coleman page missing from sitemap");
+if (jennyPage) {
+  const jennyMain = jennyPage.html.match(/<main\b[\s\S]*?<footer\b/i)?.[0] || jennyPage.html;
+  const jennyWords = getVisibleText(jennyMain).split(/\s+/).filter(Boolean);
+  if (jennyWords.length < 180) fail(`Jenny Coleman page has ${jennyWords.length} visible words; minimum is 180`);
+}
+if (sitemapUrls.some((url) => normalizePath(url) === "/locations/fords-colony-va")) {
+  fail("Ford's Colony location URL is still in the sitemap");
+}
+
+const reviewsSource = readFileSync(new URL("../src/data/published-reviews.ts", import.meta.url), "utf8");
+const reviewsEmpty = /export const publishedReviews: PublishedReview\[\] = \[\];/.test(reviewsSource);
+if (reviewsEmpty && /Clinic reviews|Blomdahl Ear Piercing reviews/.test(home)) {
+  fail("empty review file still rendered a reviews heading on the homepage");
+}
+if (/AggregateRating/.test(home)) fail("homepage includes an AggregateRating");
+const piercingHubForReviews = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing");
+if (reviewsEmpty && piercingHubForReviews && /Blomdahl Ear Piercing reviews/.test(piercingHubForReviews.html)) {
+  fail("empty review file still rendered reviews on the ear piercing hub");
+}
+for (const path of ["/terms", "/html-sitemap"]) {
+  if (!sitemapUrls.some((url) => normalizePath(url) === path)) fail(`${path} missing from sitemap`);
+}
+const termsPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/terms");
+if (!termsPage) fail("terms page missing from rendered sitemap pages");
+if (termsPage) {
+  const termsText = getVisibleText(termsPage.html);
+  for (const required of [
+    "3900 Powhatan Parkway, Williamsburg, VA 23188",
+    "(804) 738-9483",
+    "not a diagnosis",
+    "does not add a cancellation fee",
+    "OH-Shot",
+    "Pe-Shot",
+  ]) {
+    if (!termsText.includes(required)) fail(`terms page missing ${required}`);
+  }
+  if (/HIPAA certified|binding arbitration|you waive/i.test(termsText)) {
+    fail("terms page includes an unapproved legal claim");
+  }
+}
+const htmlSitemap = pages.find((page) => normalizePath(page.canonicalUrl) === "/html-sitemap");
+if (!htmlSitemap) fail("HTML sitemap missing from rendered pages");
+if (htmlSitemap) {
+  for (const href of [
+    "/procedures/botox",
+    "/procedures/blomdahl-ear-piercing",
+    "/locations/williamsburg-va",
+    "/staff/jenny-coleman",
+    "/privacy",
+    "/terms",
+    "/sitemap.xml",
+  ]) {
+    if (!new RegExp(`href=["']${href}["']`).test(htmlSitemap.html)) fail(`HTML sitemap missing ${href}`);
+  }
+}
+if (!home.includes('loading="lazy"')) fail("clinic map iframe is not lazy-loaded");
+if (!home.includes("Map of Williamsburg Med Spa, 3900 Powhatan Parkway, Williamsburg, VA 23188")) {
+  fail("clinic map iframe is missing an accessible title");
+}
+if (!/Williamsburg%20Med%20Spa/.test(home) || !/3900%20Powhatan%20Parkway/.test(home) || !/output=embed/.test(home)) {
+  fail("clinic map is not keyed to the business name and street address");
+}
+if (!home.includes("(804) 738-9483") && !home.includes("+1 (804) 738-9483")) {
+  fail("footer dropped the clinic phone number");
+}
+if (!/href=["']\/html-sitemap["']/.test(home) || !/href=["']\/terms["']/.test(home)) {
+  fail("footer is missing the HTML sitemap or terms link");
+}
+const personBlocks = [...home.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)]
+  .map((match) => JSON.parse(unescapeHtml(match[1])))
+  .flatMap((schema) => (Array.isArray(schema?.["@graph"]) ? schema["@graph"] : [schema]))
+  .filter((schema) => schema?.["@type"] === "Person" && schema?.name === "Jenny Coleman");
+if (!personBlocks.length) fail("homepage is missing Jenny Coleman Person schema");
+for (const person of personBlocks) {
+  const credentialNames = (person.hasCredential || []).map((credential) => credential.name);
+  if (!credentialNames.includes("Cellular Medicine Association-certified OH-Shot provider")) {
+    fail("Jenny Person schema dropped the CMA OH-Shot credential");
+  }
+  if (!credentialNames.includes("Certified Blomdahl provider")) {
+    fail("Jenny Person schema dropped the Blomdahl credential");
+  }
+  const knows = (person.knowsAbout || []).map((topic) => topic.name);
+  for (const topic of ["Botulinum toxin", "Injectable filler", "Platelet-rich plasma", "Ear piercing", "Hyperhidrosis"]) {
+    if (!knows.includes(topic)) fail(`Jenny Person schema is missing knowsAbout ${topic}`);
+  }
+  if (person.alumniOf) fail("Jenny Person schema invented alumniOf");
+  if (person.memberOf) fail("Jenny Person schema invented memberOf");
+  if (JSON.stringify(person).includes("lip filler")) fail("Jenny Person schema mentions lip filler");
+}
+if (/facebook\.com|instagram\.com|youtube\.com|linkedin\.com|tiktok\.com/i.test(home)) {
+  fail("homepage links a social profile that has not been confirmed");
 }
 
 if (warnings.length) {

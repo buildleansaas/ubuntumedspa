@@ -13,6 +13,9 @@ export type ConsultSubmissionInput = {
   affiliateId?: string;
   affiliateCode?: string;
   affiliateName?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
 };
 
 export type ConsultRequestRecord = ConsultSubmissionInput & {

@@ -284,19 +284,31 @@ const archiveStaleCatalogRecords = async ({
   activeSlugs: Set<string>;
 }) => {
   const staleRecords = records.filter((record) => !activeSlugs.has(record.slug) && record.active !== false);
+  const activeProductKeys = new Set(COMMERCE_CATALOG.map((item) => item.stripeProductKey));
+  const activePriceLookupKeys = new Set(COMMERCE_CATALOG.map((item) => item.stripePriceLookupKey));
 
   for (const record of staleRecords) {
-    if (record.stripePriceId) {
-      await archivePrice(stripe, record.stripePriceId, `${record.slug} removed from config`);
-    } else if (record.stripeProductId) {
-      await archiveAllProductPrices(stripe, record.stripeProductId, `${record.slug} removed from config`);
+    const stripeObjectsStillUsed =
+      (record.stripeProductKey && activeProductKeys.has(record.stripeProductKey)) ||
+      (record.stripePriceLookupKey && activePriceLookupKeys.has(record.stripePriceLookupKey));
+
+    if (!stripeObjectsStillUsed) {
+      if (record.stripePriceId) {
+        await archivePrice(stripe, record.stripePriceId, `${record.slug} removed from config`);
+      } else if (record.stripeProductId) {
+        await archiveAllProductPrices(stripe, record.stripeProductId, `${record.slug} removed from config`);
+      }
+
+      if (record.stripeProductId) {
+        await archiveProduct(stripe, record.stripeProductId, `${record.slug} removed from config`);
+      }
     }
 
-    if (record.stripeProductId) {
-      await archiveProduct(stripe, record.stripeProductId, `${record.slug} removed from config`);
-    }
-
-    logAction(`archive Mongo catalog record for ${record.slug}`);
+    logAction(
+      stripeObjectsStillUsed
+        ? `retire Mongo catalog record for ${record.slug} without archiving Stripe objects still used by an active catalog item`
+        : `archive Mongo catalog record for ${record.slug}`
+    );
     stats.mongoArchives += 1;
 
     if (!isDryRun) {

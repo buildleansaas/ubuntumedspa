@@ -18,7 +18,7 @@ export default function WilliamsburgLocationPage() {
     <div className="max-w-xl md:max-w-7xl mx-auto md:px-8 py-12 md:py-16">
 
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations", "Williamsburg, VA"]} />
-      <header className="mb-8 md:mb-12 text-center">
+      <header className="mb-10 max-w-3xl text-left md:mb-14">
         <h1 className="text-3xl md:text-5xl font-light">Medical Spa in Williamsburg, VA</h1>
         <p className="text-base md:text-lg text-base-content/70 mt-2">
           Use this page for clinic hours, parking, directions, and nearby neighborhoods served. Patients visit Jenny
@@ -34,7 +34,7 @@ export default function WilliamsburgLocationPage() {
           <Link href="/procedures/filler" className="link link-primary">
             dermal fillers
           </Link>
-          , PRP treatments, hyperhidrosis care, O-Shot services, and{" "}
+          , PRP treatments, hyperhidrosis care, OH-Shot services, and{" "}
           <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
             nurse-led Blomdahl medical ear piercing
           </Link>{" "}
@@ -67,11 +67,11 @@ export default function WilliamsburgLocationPage() {
         </p>
       </section>
 
-      <section className="mb-10 md:mb-14 rounded-2xl border border-base-300 p-5 md:p-6">
+      <section className="mb-10 md:mb-14 border border-base-300 p-6 md:p-8">
         <h2 className="text-2xl md:text-3xl font-light mb-2">If You Searched “Med Spa Near Me” in Williamsburg</h2>
         <p className="text-base md:text-lg text-base-content/80 mb-4">
           Start with the specific treatment question, not a generic spa menu. Jenny Coleman sees patients for
-          consultation-led Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, O-Shot consultations, and
+          consultation-led Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, OH-Shot consultations, and
           nurse-led Blomdahl medical ear piercing at the Williamsburg clinic.
         </p>
         <div className="grid gap-4 md:grid-cols-3 text-sm text-base-content/75">
@@ -112,13 +112,13 @@ export default function WilliamsburgLocationPage() {
             <Link href="/procedures/prp-hair-restoration">PRP Hair Restoration</Link>
           </Button>
           <Button asChild size="sm">
-            <Link href="/procedures/o-shot">O-Shot</Link>
+            <Link href="/procedures/oh-shot">OH-Shot</Link>
           </Button>
           <Button asChild size="sm">
             <Link href="/procedures/blomdahl-ear-piercing">Medical Ear Piercing</Link>
           </Button>
           <Button asChild size="sm" variant="secondary">
-            <Link href="/procedures/blomdahl-ear-piercing/near/williamsburg-va">Ear Piercing Near Williamsburg</Link>
+            <Link href="/procedures/blomdahl-ear-piercing/near/williamsburg-va">Williamsburg piercing visit notes</Link>
           </Button>
           <Button asChild size="sm">
             <Link href="/procedures/hyperhidrosis-treatment">Hyperhidrosis Treatment</Link>
@@ -130,7 +130,7 @@ export default function WilliamsburgLocationPage() {
       </section>
 
       <section className="mb-10 md:mb-14 rounded-xl border border-base-300 p-5 md:p-6">
-        <h2 className="text-2xl md:text-3xl font-light mb-2">Ear Piercing Visits in Williamsburg</h2>
+        <h2 className="text-2xl md:text-3xl font-light mb-2">Piercing visits start on the Blomdahl page</h2>
         <p className="text-base md:text-lg text-base-content/80 mb-4">
           Families who find the clinic while searching for ear piercing in Williamsburg can start with the main Blomdahl
           service page. Jenny Coleman, MSN, RN, CPNP, PMHS uses sterile single-use cassettes and hypoallergenic starter

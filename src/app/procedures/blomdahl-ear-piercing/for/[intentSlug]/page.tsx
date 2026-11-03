@@ -12,6 +12,7 @@ import {
   getRelatedAreasForIntent,
   publishedEarPiercingIntentPages,
 } from "lib/ear-piercing-intents";
+import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import { buildPageMetadata } from "lib/metadata";
 
 const ORIGIN = "https://www.williamsburgmedspa.com";
@@ -44,7 +45,10 @@ export default function EarPiercingIntentPage({ params }: Params) {
   if (!page) return notFound();
 
   const canonicalUrl = `${ORIGIN}/procedures/blomdahl-ear-piercing/for/${page.slug}`;
-  const consultHref = `/consult?procedure=blomdahl-ear-piercing&intent=${page.slug}&utm_source=website&utm_medium=intent_page&utm_campaign=ear_piercing_${page.slug}`;
+  const consultHref =
+    page.slug === "children"
+      ? EAR_PIERCING_BOOKING.children
+      : `/consult?procedure=blomdahl-ear-piercing&intent=${page.slug}&utm_source=website&utm_medium=intent_page&utm_campaign=ear_piercing_${page.slug}`;
   const relatedAreas = getRelatedAreasForIntent(page);
 
   return (
@@ -68,7 +72,7 @@ export default function EarPiercingIntentPage({ params }: Params) {
       />
       <StructuredData type="FAQ" faqs={page.faqs} />
 
-      <header className="text-center mb-10 md:mb-14">
+      <header className="mb-12 max-w-3xl text-left md:mb-16">
         <p className="text-sm uppercase tracking-wide text-base-content/60 mb-3">Certified Blomdahl provider</p>
         <h1 className="text-3xl md:text-5xl font-light leading-tight">{page.h1}</h1>
         <p className="text-base md:text-lg text-base-content/75 mt-4 max-w-3xl mx-auto">{page.audience}</p>

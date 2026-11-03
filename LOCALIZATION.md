@@ -29,8 +29,8 @@ Business
 Priority services (homepage emphasis and internal link focus)
 - Fillers
 - PRP for Joints
-- O-Shot
-- P-Shot
+- OH-Shot
+- Pe-Shot
 - PRP Facial
 - Blohmdahl Ear Piercing
 
@@ -500,8 +500,8 @@ Render on each procedure page with real values.
 Priority anchor ideas (homepage and hub)
 - “Fillers in Williamsburg” → `/procedures/filler`
 - “PRP joint injections in Williamsburg” → `/procedures/joint-restoration`
-- “O-Shot in Williamsburg” → `/procedures/o-shot`
-- “P-Shot in Williamsburg” → `/procedures/p-shot`
+- “OH-Shot in Williamsburg” → `/procedures/oh-shot`
+- “Pe-Shot in Williamsburg” → `/procedures/pe-shot`
 - “PRP facial in Williamsburg” → `/procedures/prp-facial`
 - “Blohmdahl ear piercing in Williamsburg” → `/procedures/blohmdahl-ear-piercing`
 

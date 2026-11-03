@@ -28,7 +28,7 @@ export default function WhatIsPRP() {
   ];
 
   return (
-    <div className="my-32 text-center max-w-5xl mx-auto px-4" id="prp-info">
+    <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24 max-w-3xl px-4" id="prp-info">
       <h2 className="text-2xl md:text-4xl font-bold leading-tight pb-4">What is Platelet Rich Plasma (PRP)?</h2>
       <p className="text-xl lg:text-2xl mb-8 font-light">
         Discover the power of PRP, a therapeutic approach that harnesses your body&apos;s natural growth factors to heal
@@ -36,7 +36,7 @@ export default function WhatIsPRP() {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         {steps.map(({ title, description }) => (
-          <Card key={title} className="text-left bg-primary text-primary-content border-4 border-primary">
+          <Card key={title} className="text-left border border-base-300 bg-base-100 text-base-content">
             <CardHeader>
               <CardTitle>{title}</CardTitle>
             </CardHeader>

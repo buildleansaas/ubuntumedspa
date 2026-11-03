@@ -35,7 +35,7 @@ export default async function ConsultSchedulingPage({ params: { token } }: { par
           }}
         />
       ) : (
-        <div className="rounded-2xl border border-base-300 bg-base-200 p-6">
+        <div className="border border-base-300 bg-base-200 p-6">
           <h2 className="text-2xl font-semibold mb-3">Scheduling isn’t configured yet</h2>
           <p className="text-base-content/70">Add `NEXT_PUBLIC_CAL_COM_CONSULT_LINK` to enable the consult scheduler.</p>
         </div>

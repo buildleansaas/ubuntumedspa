@@ -17,6 +17,9 @@ const schema = yup.object({
   affiliateId: yup.string().optional(),
   affiliateCode: yup.string().optional(),
   affiliateName: yup.string().optional(),
+  utmSource: yup.string().max(120).optional(),
+  utmMedium: yup.string().max(120).optional(),
+  utmCampaign: yup.string().max(120).optional(),
 });
 
 export async function POST(req: NextRequest) {
@@ -32,6 +35,9 @@ export async function POST(req: NextRequest) {
       affiliateId,
       affiliateCode,
       affiliateName,
+      utmSource,
+      utmMedium,
+      utmCampaign,
     } = await schema.validate(body, {
       abortEarly: false,
       stripUnknown: true,
@@ -54,6 +60,9 @@ export async function POST(req: NextRequest) {
       affiliateId: finalAffiliateId,
       affiliateCode: finalAffiliateCode,
       affiliateName: finalAffiliateName,
+      utmSource,
+      utmMedium,
+      utmCampaign,
     });
 
     let notificationStatus: "sent" | "failed" = "sent";
@@ -73,6 +82,9 @@ export async function POST(req: NextRequest) {
           affiliateId: ${finalAffiliateId || "None"}
           affiliateCode: ${finalAffiliateCode || "None"}
           affiliateName: ${finalAffiliateName || "None"}
+          landing campaign: ${utmCampaign || "None"}
+          landing source: ${utmSource || "None"}
+          landing medium: ${utmMedium || "None"}
         `,
       });
 

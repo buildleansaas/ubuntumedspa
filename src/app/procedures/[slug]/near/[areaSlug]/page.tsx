@@ -100,7 +100,7 @@ export default function LocalInjectableServicePage({ params }: Params) {
             </div>
           </div>
           {page.heroImage ? (
-            <div className="overflow-hidden rounded-2xl border border-base-300 bg-base-200 shadow-sm">
+            <div className="overflow-hidden border border-base-300 bg-base-200 shadow-sm">
               <Image
                 src={page.heroImage.src}
                 alt={page.heroImage.alt}

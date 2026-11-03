@@ -1,6 +1,7 @@
 import { readdir, stat } from "node:fs/promises";
 import path from "node:path";
 import { cache } from "react";
+import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 const MARKDOWN_DIR = path.join(process.cwd(), "src", "markdown");
 
@@ -72,12 +73,36 @@ export const getPostData = cache(async (slug: string) => {
   const normalizedDate = toIsoDate(typedMetadata.date) || new Date().toISOString();
   const normalizedDateModified = toIsoDate(typedMetadata.dateModified);
 
+  const tags = Array.isArray(typedMetadata.tags) ? typedMetadata.tags : [];
+  const faqs = Array.isArray(typedMetadata.faqs) ? typedMetadata.faqs : undefined;
+  const hideLipFiller = !LIP_FILLER_ENABLED;
+  const visibleFaqs = hideLipFiller
+    ? faqs
+        ?.filter((faq) => !/lip filler|lip augmentation/i.test(`${faq.question} ${faq.answer}`))
+        .map((faq) =>
+          slug === "dermal-fillers-in-williamsburg-va-lips-cheeks-under-eyes" &&
+          faq.question === "What areas can dermal fillers treat?"
+            ? {
+                ...faq,
+                answer:
+                  "Common filler areas include cheeks, under-eyes, smile lines, marionette lines, jawline, and other zones where volume loss or contour imbalance is part of the concern.",
+              }
+            : faq
+        )
+    : faqs;
   const normalizedMetadata: PostMetadata = {
     ...typedMetadata,
-    title: typedMetadata.title || "Williamsburg Med Spa Blog",
-    description: typedMetadata.description || "Educational content from Williamsburg Med Spa.",
+    title:
+      hideLipFiller && slug === "dermal-fillers-in-williamsburg-va-lips-cheeks-under-eyes"
+        ? "Dermal Fillers in Williamsburg, VA: Cheeks and Under-Eyes"
+        : typedMetadata.title || "Williamsburg Med Spa Blog",
+    description:
+      hideLipFiller && slug === "dermal-fillers-in-williamsburg-va-lips-cheeks-under-eyes"
+        ? "Compare cheek filler and under-eye filler in Williamsburg, VA, including how to choose the first area to treat and what consultation should cover."
+        : typedMetadata.description || "Educational content from Williamsburg Med Spa.",
     image: typedMetadata.image || "/opengraph-image",
-    tags: Array.isArray(typedMetadata.tags) ? typedMetadata.tags : [],
+    tags: hideLipFiller ? tags.filter((tag) => !/lip filler|lip augmentation/i.test(tag)) : tags,
+    faqs: visibleFaqs,
     slug: typedMetadata.slug || slug,
     routeSlug: slug,
     href: `/blog/${slug}`,

@@ -1,3 +1,5 @@
+import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
+
 export type LocalInjectableServicePage = {
   procedureSlug: "botox" | "filler" | "xeomin";
   areaSlug: "williamsburg-va";
@@ -324,6 +326,28 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     ],
   },
 ];
+
+if (!LIP_FILLER_ENABLED) {
+  const fillerPage = localInjectableServicePages.find((page) => page.procedureSlug === "filler");
+  if (fillerPage) {
+    fillerPage.metaTitle = "Dermal Fillers in Williamsburg, VA | Cheeks & Facial Contour";
+    fillerPage.metaDescription =
+      "Dermal fillers in Williamsburg, VA with Jenny Coleman for cheeks, under-eyes, facial balancing, pricing guidance, and natural-looking volume.";
+    fillerPage.whyLocal =
+      "Patients comparing dermal fillers in Williamsburg often want careful guidance on cheeks, under-eyes, folds, facial contour, longevity, and what should or should not be treated.";
+    fillerPage.treatmentPlanning =
+      "Filler planning may include cheek support, nasolabial folds, marionette lines, under-eye conversations, and facial balancing when appropriate.";
+    fillerPage.faqs = fillerPage.faqs.map((faq) =>
+      faq.question === "What areas can filler treat?"
+        ? {
+            ...faq,
+            answer:
+              "Common conversations include cheeks, folds, marionette lines, under-eye support, and contour. Not every area is right for every patient.",
+          }
+        : faq
+    );
+  }
+}
 
 export function getLocalInjectableServicePage(procedureSlug: string, areaSlug: string) {
   return localInjectableServicePages.find((page) => page.procedureSlug === procedureSlug && page.areaSlug === areaSlug);

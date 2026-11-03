@@ -41,7 +41,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
 const sectionEyebrowClass = "text-[11px] uppercase tracking-[0.24em] text-base-content/60";
 const sectionHeadingClass = "mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content text-balance";
 const sectionBodyClass = "mt-4 text-base md:text-lg leading-relaxed text-base-content/80";
-const surfaceCardClass = "rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm";
+const surfaceCardClass = "border border-base-300 bg-base-100 p-5";
 
 export default function EventDetailPage({ params }: PageProps) {
   const event = getEventBySlug(params.slug);
@@ -65,7 +65,7 @@ export default function EventDetailPage({ params }: PageProps) {
       <div className="max-w-xl md:max-w-7xl mx-auto md:px-8 z-10">
         <section className="px-6 py-16 md:px-0 md:py-24 lg:py-28" aria-labelledby={`${event.slug}-hero-heading`}>
           <div className="mx-auto max-w-6xl">
-            <div className="relative overflow-hidden rounded-[2.4rem] bg-base-200/60 shadow-[0_28px_90px_-56px_rgba(0,0,0,0.45)]">
+            <div className="relative overflow-hidden border border-base-300 bg-base-200">
               <div className="relative aspect-[6/5] w-full sm:aspect-[8/5] lg:aspect-[16/7]">
                 <Image
                   src={event.heroImageSrc}
@@ -79,7 +79,7 @@ export default function EventDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            <div className="mx-auto mt-10 max-w-5xl text-center md:mt-12">
+            <div className="mt-10 max-w-3xl text-left md:mt-12">
               <p className={sectionEyebrowClass}>{event.hero.eyebrow}</p>
               <h1
                 id={`${event.slug}-hero-heading`}
@@ -93,7 +93,7 @@ export default function EventDetailPage({ params }: PageProps) {
                 {event.hero.highlights.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-base-300 bg-base-100 px-3.5 py-1.5 text-sm text-base-content/70"
+                    className="border border-base-300 bg-base-100 px-3.5 py-1.5 text-sm text-base-content/70"
                   >
                     {item}
                   </span>
@@ -170,7 +170,7 @@ export default function EventDetailPage({ params }: PageProps) {
                 ) : null}
               </div>
 
-              <div className="relative aspect-square w-full max-w-[18rem] overflow-hidden rounded-2xl bg-base-200 sm:max-w-[20rem] md:w-[17rem] lg:w-[19rem] md:shrink-0">
+              <div className="relative aspect-[4/5] w-full overflow-hidden border border-base-300 bg-base-200 sm:max-w-[20rem] md:w-[17rem] lg:w-[19rem] md:shrink-0">
                 <Image
                   src={thumbnailImageSrc}
                   alt={thumbnailImageAlt}

@@ -1,5 +1,6 @@
 import { procedures } from "data";
 import { cache } from "react";
+import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 type Procedure = (typeof procedures)[number];
 type Ailment = Procedure["ailments"][number];
@@ -69,7 +70,15 @@ export type PublishedAilmentEntry = {
   ailmentSlug: string;
 };
 
-export const isAilmentPagePublished = (metadata?: Pick<AilmentPageMetadata, "published"> | null) => metadata?.published === true;
+export const isAilmentPagePublished = (
+  metadata?: Pick<AilmentPageMetadata, "published" | "procedureSlug" | "ailmentSlug"> | null
+) => {
+  if (!LIP_FILLER_ENABLED && metadata?.procedureSlug === "filler" && metadata?.ailmentSlug === "lip-augmentation") {
+    return false;
+  }
+
+  return metadata?.published === true;
+};
 
 const getAilmentModule = cache(async (procedureSlug: string, ailmentSlug: string): Promise<AilmentPageModule | null> => {
   try {

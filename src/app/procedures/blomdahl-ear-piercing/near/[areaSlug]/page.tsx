@@ -28,7 +28,7 @@ const aftercareTrustNote =
 
 function getAreaHeadline(area: { name: string; serviceAreaLabel: string; parentIntent: boolean }) {
   if (area.name === "Williamsburg") {
-    return "Medical Ear Piercing in Williamsburg, VA";
+    return "Williamsburg appointments for Blomdahl ear piercing";
   }
 
   return area.parentIntent
@@ -94,13 +94,40 @@ export default function EarPiercingAreaPage({ params }: Params) {
       />
       <StructuredData type="FAQ" faqs={area.faqs} />
 
-      <header className="text-center mb-10 md:mb-14">
+      <header className="mb-12 max-w-3xl text-left md:mb-16">
         <p className="text-sm uppercase tracking-wide text-base-content/60 mb-3">{eyebrow}</p>
         <h1 className="text-3xl md:text-5xl font-light leading-tight">{headline}</h1>
         <p className="text-base md:text-lg text-base-content/75 mt-4 max-w-3xl mx-auto">
           {area.localIntro} Williamsburg Med Spa offers Blomdahl sterile ear piercing with hypoallergenic starter jewelry{" "}
           {area.distanceNote} for families and adults who want an appointment-based alternative to retail piercing.
         </p>
+        {area.name === "Williamsburg" ? (
+          <p className="text-base md:text-lg text-base-content/75 mt-4 max-w-3xl">
+            The clinic at 3900 Powhatan Parkway, Williamsburg, VA 23188 is the Williamsburg appointment. Pricing, the
+            piercing visit, and booking are on the{" "}
+            <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
+              Blomdahl ear piercing page
+            </Link>
+            .
+          </p>
+        ) : (
+          <p className="text-base md:text-lg text-base-content/75 mt-4 max-w-3xl">
+            There is no {area.name} clinic address. The appointment is at Williamsburg Med Spa, 3900 Powhatan Parkway,
+            Williamsburg, VA 23188. Read{" "}
+            {area.hasLocationPage ? (
+              <Link href={`/locations/${area.slug}`} className="link link-primary">
+                med spa visits from {area.name}
+              </Link>
+            ) : (
+              <span>the Williamsburg location page</span>
+            )}{" "}
+            for the drive, and the{" "}
+            <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
+              Blomdahl ear piercing page
+            </Link>{" "}
+            for the service.
+          </p>
+        )}
         <div className="flex flex-wrap justify-center gap-3 mt-6">
           <Button asChild>
             <Link href={consultHref}>Request an Ear Piercing Visit</Link>

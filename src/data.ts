@@ -1,3 +1,5 @@
+import { LIP_FILLER_ENABLED } from "./config/feature-flags.mjs";
+
 export const DEFAULT_FORM_SUBMISSION =
   process.env.NODE_ENV === "production"
     ? {
@@ -40,8 +42,8 @@ export const FORM_INPUTS = [
     label: "Interests",
     type: "checkbox",
     options: [
-      "O-Shot",
-      "P-Shot",
+      "OH-Shot",
+      "Pe-Shot",
       "PRP Breast Lift",
       "Hair Restoration",
       "PRP Facial",
@@ -75,265 +77,267 @@ export type ProcedureTestimonial = {
   id: string;
   quote: string;
   attribution?: string;
+  displayName?: string;
+  datePublished?: string;
   imageSrc: string;
 };
 
 export const procedures = [
   {
-    name: "O-Shot",
-    slug: "o-shot",
+    name: "OH-Shot",
+    slug: "oh-shot",
     seo: {
-      title: "O-Shot® in Williamsburg, VA | PRP Intimate Wellness",
+      title: "OH-Shot in Williamsburg, VA | PRP Intimate Wellness",
       description:
-        "O-Shot® in Williamsburg, VA with a CMA-trained provider for PRP intimate wellness, bladder leakage support, dryness, sensitivity, and comfort concerns.",
+        "OH-Shot in Williamsburg, VA with a CMA-trained provider for PRP intimate wellness, bladder leakage support, dryness, sensitivity, and comfort concerns.",
     },
     description:
-      "The O-Shot® is a branded platelet-rich plasma (PRP) procedure developed through the Cellular Medicine Association framework and used for select intimate wellness concerns. At Williamsburg Med Spa, patients usually ask about the O-Shot® for dryness, decreased sensitivity, discomfort with intimacy, orgasm concerns, or mild stress urinary leakage. Jenny Coleman reviews candidacy privately so treatment fits the symptom pattern, medical history, and whether pelvic floor care, hormone review, urology, or another first step should come first.",
-    headline: "CMA-trained O-Shot® care for intimate wellness, sensitivity, comfort, and bladder leakage support.",
+      "The OH-Shot is a branded platelet-rich plasma (PRP) procedure developed through the Cellular Medicine Association framework and used for select intimate wellness concerns. At Williamsburg Med Spa, patients usually ask about the OH-Shot for dryness, decreased sensitivity, discomfort with intimacy, orgasm concerns, or mild stress urinary leakage. Jenny Coleman reviews candidacy privately so treatment fits the symptom pattern, medical history, and whether pelvic floor care, hormone review, urology, or another first step should come first.",
+    headline: "CMA-trained OH-Shot care for intimate wellness, sensitivity, comfort, and bladder leakage support.",
     subline:
-      "The O-Shot® uses PRP prepared from your own blood in a discreet in-office procedure for patients looking for a non-hormonal, regenerative conversation around vulvovaginal tissue health and sexual wellness.",
-    image: "/procedure/o-shot/womens-intimate-wellness-lifestyle.webp",
+      "The OH-Shot uses PRP prepared from your own blood in a discreet in-office procedure for patients looking for a non-hormonal, regenerative conversation around vulvovaginal tissue health and sexual wellness.",
+    image: "/procedure/oh-shot/womens-intimate-wellness-lifestyle.webp",
     price: "$1,200",
     // programmatic SEO copy
     blogHeadline:
-      "Researching the O-Shot® near Williamsburg? Review candidacy, cost factors, urinary leakage support, dryness, sensitivity, and how PRP-based intimate wellness may fit into a private consultation.",
+      "Researching the OH-Shot near Williamsburg? Review candidacy, cost factors, urinary leakage support, dryness, sensitivity, and how PRP-based intimate wellness may fit into a private consultation.",
     benefitsHeadline:
-      "The O-Shot® is a brand-specific PRP protocol discussed with patients who want non-surgical support for tissue quality, comfort, lubrication, sensitivity, and select bladder leakage concerns.",
+      "The OH-Shot is a brand-specific PRP protocol discussed with patients who want non-surgical support for tissue quality, comfort, lubrication, sensitivity, and select bladder leakage concerns.",
     benefits: [
       {
         emoji: "💪",
         benefit: "CMA Protocol Framework",
         description:
-          "Jenny is trained through the Cellular Medicine Association framework behind the branded O-Shot® procedure.",
+          "Jenny is trained through the Cellular Medicine Association framework behind the branded OH-Shot procedure.",
       },
       {
         emoji: "🌊",
         benefit: "Dryness and Comfort Support",
         description:
-          "Some patients ask about the O-Shot® when dryness, irritation, painful intimacy, or reduced tissue resilience are part of the picture.",
+          "Some patients ask about the OH-Shot when dryness, irritation, painful intimacy, or reduced tissue resilience are part of the picture.",
       },
       {
         emoji: "🌡",
         benefit: "Sensitivity and Sexual Wellness",
         description:
-          "The O-Shot® may be discussed when decreased sensation, arousal changes, or orgasm concerns overlap with tissue health goals.",
+          "The OH-Shot may be discussed when decreased sensation, arousal changes, or orgasm concerns overlap with tissue health goals.",
       },
       {
         emoji: "❤️",
         benefit: "Bladder Leakage Conversation",
         description:
-          "For mild stress leakage, Jenny can help determine whether O-Shot® care belongs in the plan or whether pelvic floor or urology care should come first.",
+          "For mild stress leakage, Jenny can help determine whether OH-Shot care belongs in the plan or whether pelvic floor or urology care should come first.",
       },
     ],
     ailmentsHeadline:
-      "Patients often research the O-Shot® when bladder leakage, vaginal dryness, painful intimacy, reduced sensitivity, low libido, or menopausal tissue changes begin affecting daily life. The right plan depends on diagnosis, symptom pattern, prior treatment response, and whether PRP-based care is a reasonable next step.",
+      "Patients often research the OH-Shot when bladder leakage, vaginal dryness, painful intimacy, reduced sensitivity, low libido, or menopausal tissue changes begin affecting daily life. The right plan depends on diagnosis, symptom pattern, prior treatment response, and whether PRP-based care is a reasonable next step.",
     ailments: [
       {
         title: "Vaginal Dryness",
         description:
-          "For patients whose dryness persists despite moisturizers, lubricants, hormone review, or other first-line care, the O-Shot® may be discussed as part of a broader comfort plan.",
-        blog_post_title: "O-Shot for Vaginal Dryness: What to Know",
-        blog_post_slug: "o-shot-for-vaginal-dryness-what-to-know",
+          "For patients whose dryness persists despite moisturizers, lubricants, hormone review, or other first-line care, the OH-Shot may be discussed as part of a broader comfort plan.",
+        blog_post_title: "OH-Shot for Vaginal Dryness: What to Know",
+        blog_post_slug: "oh-shot-for-vaginal-dryness-what-to-know",
         slug: "vaginal-dryness",
         tag: "common",
       },
       {
         title: "Sexual Dysfunction",
         description:
-          "The O-Shot® may be considered when reduced arousal, decreased sensation, orgasm concerns, or intimacy-related discomfort appear tied to tissue health and response.",
-        blog_post_title: "Understanding the O-Shot for Sexual Dysfunction",
-        blog_post_slug: "understanding-o-shot-for-sexual-dysfunction",
+          "The OH-Shot may be considered when reduced arousal, decreased sensation, orgasm concerns, or intimacy-related discomfort appear tied to tissue health and response.",
+        blog_post_title: "Understanding the OH-Shot for Sexual Dysfunction",
+        blog_post_slug: "understanding-oh-shot-for-sexual-dysfunction",
         slug: "sexual-dysfunction",
         tag: "common",
       },
       {
         title: "Low Libido",
         description:
-          "Low libido often has hormonal, relational, medication, and stress-related drivers, but the O-Shot® may be discussed when sensitivity, arousal, or discomfort overlap.",
-        blog_post_title: "O-Shot and Low Libido: Treatment Overview",
-        blog_post_slug: "o-shot-and-low-libido-treatment-overview",
+          "Low libido often has hormonal, relational, medication, and stress-related drivers, but the OH-Shot may be discussed when sensitivity, arousal, or discomfort overlap.",
+        blog_post_title: "OH-Shot and Low Libido: Treatment Overview",
+        blog_post_slug: "oh-shot-and-low-libido-treatment-overview",
         slug: "low-libido",
         tag: "common",
       },
       {
         title: "Dyspareunia",
         description:
-          "When painful intercourse is linked to dryness, tissue fragility, or sensitivity, the O-Shot® may be reviewed after evaluation and first-line options.",
-        blog_post_title: "O-Shot for Dyspareunia: What to Discuss",
-        blog_post_slug: "o-shot-for-dyspareunia-what-to-discuss",
+          "When painful intercourse is linked to dryness, tissue fragility, or sensitivity, the OH-Shot may be reviewed after evaluation and first-line options.",
+        blog_post_title: "OH-Shot for Dyspareunia: What to Discuss",
+        blog_post_slug: "oh-shot-for-dyspareunia-what-to-discuss",
         slug: "dyspareunia",
         tag: "common",
       },
       {
         title: "Urinary Incontinence",
         description:
-          "Some patients ask about the O-Shot® when mild stress leakage, coughing leaks, or exercise-related bladder leakage overlap with tissue thinning or menopausal changes.",
-        blog_post_title: "O-Shot for Urinary Incontinence: Treatment Overview",
-        blog_post_slug: "o-shot-for-urinary-incontinence-treatment-overview",
+          "Some patients ask about the OH-Shot when mild stress leakage, coughing leaks, or exercise-related bladder leakage overlap with tissue thinning or menopausal changes.",
+        blog_post_title: "OH-Shot for Urinary Incontinence: Treatment Overview",
+        blog_post_slug: "oh-shot-for-urinary-incontinence-treatment-overview",
         slug: "urinary-incontinence",
         tag: "common",
       },
       {
         title: "Lichen Sclerosus",
         description:
-          "For confirmed lichen sclerosus under medical management, the O-Shot® may be discussed for tissue comfort and resilience, not as a replacement for standard care.",
-        blog_post_title: "O-Shot and Lichen Sclerosus: Adjunct Care Overview",
-        blog_post_slug: "o-shot-and-lichen-sclerosus-adjunct-care-overview",
+          "For confirmed lichen sclerosus under medical management, the OH-Shot may be discussed for tissue comfort and resilience, not as a replacement for standard care.",
+        blog_post_title: "OH-Shot and Lichen Sclerosus: Adjunct Care Overview",
+        blog_post_slug: "oh-shot-and-lichen-sclerosus-adjunct-care-overview",
         slug: "lichen-sclerosus",
         tag: "uncommon",
       },
       {
         title: "Anorgasmia",
         description:
-          "The O-Shot® may be reviewed for patients reporting reduced sensation or difficulty reaching orgasm when local tissue response is part of the concern.",
-        blog_post_title: "O-Shot for Anorgasmia: Treatment Overview",
-        blog_post_slug: "o-shot-for-anorgasmia-treatment-overview",
+          "The OH-Shot may be reviewed for patients reporting reduced sensation or difficulty reaching orgasm when local tissue response is part of the concern.",
+        blog_post_title: "OH-Shot for Anorgasmia: Treatment Overview",
+        blog_post_slug: "oh-shot-for-anorgasmia-treatment-overview",
         slug: "anorgasmia",
         tag: "common",
       },
       {
         title: "Genital Arousal Disorder",
         description:
-          "Complex arousal concerns often need more than one kind of care, but the O-Shot® may be part of a broader discussion of sensation and tissue health.",
-        blog_post_title: "O-Shot for Genital Arousal Disorder: What to Discuss",
-        blog_post_slug: "o-shot-for-genital-arousal-disorder-what-to-discuss",
+          "Complex arousal concerns often need more than one kind of care, but the OH-Shot may be part of a broader discussion of sensation and tissue health.",
+        blog_post_title: "OH-Shot for Genital Arousal Disorder: What to Discuss",
+        blog_post_slug: "oh-shot-for-genital-arousal-disorder-what-to-discuss",
         slug: "genital-arousal-disorder",
         tag: "experimental",
       },
       {
         title: "Chronic Pelvic Pain",
         description:
-          "Chronic pelvic pain has many causes, but the O-Shot® may enter the conversation when tissue irritation, dryness, or localized tenderness are contributing factors.",
-        blog_post_title: "O-Shot and Chronic Pelvic Pain: Care Overview",
-        blog_post_slug: "o-shot-and-chronic-pelvic-pain-care-overview",
+          "Chronic pelvic pain has many causes, but the OH-Shot may enter the conversation when tissue irritation, dryness, or localized tenderness are contributing factors.",
+        blog_post_title: "OH-Shot and Chronic Pelvic Pain: Care Overview",
+        blog_post_slug: "oh-shot-and-chronic-pelvic-pain-care-overview",
         slug: "chronic-pelvic-pain",
         tag: "uncommon",
       },
       {
         title: "Vaginismus",
         description:
-          "Vaginismus usually involves pelvic floor dysfunction and nervous-system guarding, but the O-Shot® may be discussed when tissue discomfort complicates the picture.",
-        blog_post_title: "O-Shot and Vaginismus: Treatment Discussion",
-        blog_post_slug: "o-shot-and-vaginismus-treatment-discussion",
+          "Vaginismus usually involves pelvic floor dysfunction and nervous-system guarding, but the OH-Shot may be discussed when tissue discomfort complicates the picture.",
+        blog_post_title: "OH-Shot and Vaginismus: Treatment Discussion",
+        blog_post_slug: "oh-shot-and-vaginismus-treatment-discussion",
         slug: "vaginismus",
         tag: "uncommon",
       },
       {
         title: "Clitoral Atrophy",
         description:
-          "The O-Shot® may be reviewed when decreased sensitivity appears connected to tissue atrophy, reduced response, or local tissue changes.",
-        blog_post_title: "O-Shot for Clitoral Atrophy: What to Know",
-        blog_post_slug: "o-shot-for-clitoral-atrophy-what-to-know",
+          "The OH-Shot may be reviewed when decreased sensitivity appears connected to tissue atrophy, reduced response, or local tissue changes.",
+        blog_post_title: "OH-Shot for Clitoral Atrophy: What to Know",
+        blog_post_slug: "oh-shot-for-clitoral-atrophy-what-to-know",
         slug: "clitoral-atrophy",
         tag: "uncommon",
       },
       {
         title: "Vulvar Atrophy",
         description:
-          "For vulvar tissue thinning or irritation, the O-Shot® may be discussed as PRP-based support after standard therapies have been reviewed.",
-        blog_post_title: "O-Shot for Vulvar Atrophy: Treatment Overview",
-        blog_post_slug: "o-shot-for-vulvar-atrophy-treatment-overview",
+          "For vulvar tissue thinning or irritation, the OH-Shot may be discussed as PRP-based support after standard therapies have been reviewed.",
+        blog_post_title: "OH-Shot for Vulvar Atrophy: Treatment Overview",
+        blog_post_slug: "oh-shot-for-vulvar-atrophy-treatment-overview",
         slug: "vulvar-atrophy",
         tag: "uncommon",
       },
       {
         title: "Interstitial Cystitis",
         description:
-          "Interstitial cystitis often needs bladder-focused care, but the O-Shot® may be considered in select cases when vulvovaginal tissue symptoms overlap.",
-        blog_post_title: "O-Shot and Interstitial Cystitis: Treatment Overview",
-        blog_post_slug: "o-shot-and-interstitial-cystitis-treatment-overview",
+          "Interstitial cystitis often needs bladder-focused care, but the OH-Shot may be considered in select cases when vulvovaginal tissue symptoms overlap.",
+        blog_post_title: "OH-Shot and Interstitial Cystitis: Treatment Overview",
+        blog_post_slug: "oh-shot-and-interstitial-cystitis-treatment-overview",
         slug: "interstitial-cystitis",
         tag: "experimental",
       },
       {
         title: "Pelvic Floor Dysfunction",
         description:
-          "Pelvic floor dysfunction usually requires targeted therapy, but the O-Shot® may be considered when tissue discomfort or dryness complicates progress.",
-        blog_post_title: "O-Shot and Pelvic Floor Dysfunction: Care Overview",
-        blog_post_slug: "o-shot-and-pelvic-floor-dysfunction-care-overview",
+          "Pelvic floor dysfunction usually requires targeted therapy, but the OH-Shot may be considered when tissue discomfort or dryness complicates progress.",
+        blog_post_title: "OH-Shot and Pelvic Floor Dysfunction: Care Overview",
+        blog_post_slug: "oh-shot-and-pelvic-floor-dysfunction-care-overview",
         slug: "pelvic-floor-dysfunction",
         tag: "uncommon",
       },
       {
         title: "Vulvodynia",
         description:
-          "For persistent vulvar pain, the O-Shot® may be explored for select patients after diagnosis and first-line treatment review.",
-        blog_post_title: "O-Shot for Vulvodynia: Adjunct Care Overview",
-        blog_post_slug: "o-shot-for-vulvodynia-adjunct-care-overview",
+          "For persistent vulvar pain, the OH-Shot may be explored for select patients after diagnosis and first-line treatment review.",
+        blog_post_title: "OH-Shot for Vulvodynia: Adjunct Care Overview",
+        blog_post_slug: "oh-shot-for-vulvodynia-adjunct-care-overview",
         slug: "vulvodynia",
         tag: "uncommon",
       },
       {
         title: "Post-Menopausal Symptoms",
         description:
-          "Patients navigating menopause sometimes ask whether the O-Shot® can support tissue comfort, lubrication, and sexual response alongside standard menopause care.",
-        blog_post_title: "O-Shot for Post-Menopausal Symptoms: What to Know",
-        blog_post_slug: "o-shot-for-post-menopausal-symptoms-what-to-know",
+          "Patients navigating menopause sometimes ask whether the OH-Shot can support tissue comfort, lubrication, and sexual response alongside standard menopause care.",
+        blog_post_title: "OH-Shot for Post-Menopausal Symptoms: What to Know",
+        blog_post_slug: "oh-shot-for-post-menopausal-symptoms-what-to-know",
         slug: "post-menopausal-symptoms",
         tag: "common",
       },
       {
         title: "Scar Tissue",
         description:
-          "For scarring related to childbirth or procedures, the O-Shot® may be reviewed when flexibility, comfort, or sensitivity are the primary concerns.",
-        blog_post_title: "O-Shot for Scar Tissue: Treatment Overview",
-        blog_post_slug: "o-shot-for-scar-tissue-treatment-overview",
+          "For scarring related to childbirth or procedures, the OH-Shot may be reviewed when flexibility, comfort, or sensitivity are the primary concerns.",
+        blog_post_title: "OH-Shot for Scar Tissue: Treatment Overview",
+        blog_post_slug: "oh-shot-for-scar-tissue-treatment-overview",
         slug: "scar-tissue",
         tag: "uncommon",
       },
       {
         title: "Skin Texture & Tone",
         description:
-          "Some patients ask whether the O-Shot® can support localized tissue texture and tone, although outcomes vary and expectations should stay realistic.",
-        blog_post_title: "O-Shot for Skin Texture and Tone: What to Know",
-        blog_post_slug: "o-shot-for-skin-texture-and-tone-what-to-know",
+          "Some patients ask whether the OH-Shot can support localized tissue texture and tone, although outcomes vary and expectations should stay realistic.",
+        blog_post_title: "OH-Shot for Skin Texture and Tone: What to Know",
+        blog_post_slug: "oh-shot-for-skin-texture-and-tone-what-to-know",
         slug: "skin-texture-tone",
         tag: "experimental",
       },
       {
         title: "Vaginal Lubrication",
         description:
-          "When decreased lubrication persists despite moisturizers, hormone review, or lifestyle adjustments, the O-Shot® may be part of the procedural discussion.",
-        blog_post_title: "O-Shot for Vaginal Lubrication Support",
-        blog_post_slug: "o-shot-for-vaginal-lubrication-support",
+          "When decreased lubrication persists despite moisturizers, hormone review, or lifestyle adjustments, the OH-Shot may be part of the procedural discussion.",
+        blog_post_title: "OH-Shot for Vaginal Lubrication Support",
+        blog_post_slug: "oh-shot-for-vaginal-lubrication-support",
         slug: "vaginal-lubrication",
         tag: "common",
       },
       {
         title: "Sexual Sensation",
         description:
-          "The O-Shot® is sometimes discussed for reduced sensation when blood flow, tissue health, or local sensitivity are part of the concern.",
-        blog_post_title: "O-Shot for Sexual Sensation: Treatment Overview",
-        blog_post_slug: "o-shot-for-sexual-sensation-treatment-overview",
+          "The OH-Shot is sometimes discussed for reduced sensation when blood flow, tissue health, or local sensitivity are part of the concern.",
+        blog_post_title: "OH-Shot for Sexual Sensation: Treatment Overview",
+        blog_post_slug: "oh-shot-for-sexual-sensation-treatment-overview",
         slug: "sexual-sensation",
         tag: "common",
       },
     ],
     faqHeadline:
-      "Most O-Shot® questions focus on candidacy, cost, comfort, expected timing, and whether PRP-based intimate wellness fits the symptoms that brought you in.",
+      "Most OH-Shot questions focus on candidacy, cost, comfort, expected timing, and whether PRP-based intimate wellness fits the symptoms that brought you in.",
     faqs: [
       {
-        question: "What is the O-Shot?",
+        question: "What is the OH-Shot?",
         answer:
-          "The O-Shot® is a branded platelet-rich plasma (PRP) procedure used in a treatment plan focused on vulvovaginal tissue health, comfort, sensitivity, sexual wellness, and select bladder leakage concerns.",
+          "The OH-Shot is a branded platelet-rich plasma (PRP) procedure used in a treatment plan focused on vulvovaginal tissue health, comfort, sensitivity, sexual wellness, and select bladder leakage concerns.",
       },
       {
-        question: "Who may be a candidate for the O-Shot?",
+        question: "Who may be a candidate for the OH-Shot?",
         answer:
           "Candidates are usually patients who want a private review of symptoms such as dryness, decreased sensation, painful intimacy, orgasm concerns, or mild stress urinary leakage and want to know whether PRP-based care fits their history and goals.",
       },
       {
-        question: "Can the O-Shot help with urinary incontinence?",
+        question: "Can the OH-Shot help with urinary incontinence?",
         answer:
-          "Some patients ask about the O-Shot® for mild stress leakage, such as leaking with coughing, exercise, or lifting. Consultation should clarify whether symptoms are stress, urge, or mixed incontinence and whether pelvic floor therapy, urology, or another treatment should come first.",
+          "Some patients ask about the OH-Shot for mild stress leakage, such as leaking with coughing, exercise, or lifting. Consultation should clarify whether symptoms are stress, urge, or mixed incontinence and whether pelvic floor therapy, urology, or another treatment should come first.",
       },
       {
-        question: "How much does the O-Shot cost?",
+        question: "How much does the OH-Shot cost?",
         answer:
-          "The O-Shot® is listed at $1,200 at Williamsburg Med Spa. Consultation confirms whether treatment is appropriate before a plan is made.",
+          "The OH-Shot is listed at $1,200 at Williamsburg Med Spa. Consultation confirms whether treatment is appropriate before a plan is made.",
       },
       {
-        question: "Is the O-Shot painful?",
+        question: "Is the OH-Shot painful?",
         answer:
           "Most visits include topical numbing, and patients often describe treatment as manageable. Comfort varies by person and by the areas treated.",
       },
@@ -350,25 +354,25 @@ export const procedures = [
     ],
   },
   {
-    name: "P-Shot",
-    slug: "p-shot",
+    name: "Pe-Shot",
+    slug: "pe-shot",
     seo: {
-      title: "P-Shot in Williamsburg, VA",
+      title: "Pe-Shot in Williamsburg, VA",
       description:
-        "P-Shot treatment in Williamsburg, VA using platelet-rich plasma (PRP) to support erections, sensitivity, blood flow, and penile tissue health at Williamsburg Med Spa.",
+        "Pe-Shot treatment in Williamsburg, VA using platelet-rich plasma (PRP) to support erections, sensitivity, blood flow, and penile tissue health at Williamsburg Med Spa.",
     },
     description:
-      "The P-Shot (Priapus Shot) is a platelet-rich plasma (PRP) procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness. Patients usually ask about it for erection quality, sensitivity, blood flow concerns, or post-procedure recovery goals. It should be evaluated as an adjunct option after a medical review, not as a guaranteed fix for every cause of erectile or sexual dysfunction.",
+      "The Pe-Shot is a platelet-rich plasma (PRP) procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness. Patients usually ask about it for erection quality, sensitivity, blood flow concerns, or post-procedure recovery goals. It should be evaluated as an adjunct option after a medical review, not as a guaranteed fix for every cause of erectile or sexual dysfunction.",
     headline: "Regenerative support for erections, sensitivity, and penile tissue health.",
     subline:
-      "The P-Shot uses platelet-rich plasma prepared from your own blood and is considered for select patients who want a non-surgical option as part of a broader sexual health plan.",
-    image: "/procedure/pshot-consultation-confidence.webp",
+      "The Pe-Shot uses platelet-rich plasma prepared from your own blood and is considered for select patients who want a non-surgical option as part of a broader sexual health plan.",
+    image: "/procedure/pe-shot-consultation-confidence.webp",
     price: "$1,900",
     // programmatic SEO copy
     blogHeadline:
-      "Review our P-Shot articles to learn how PRP-based care fits into conversations about erection quality, penile tissue health, recovery expectations, and treatment planning.",
+      "Review our Pe-Shot articles to learn how PRP-based care fits into conversations about erection quality, penile tissue health, recovery expectations, and treatment planning.",
     benefitsHeadline:
-      "The P-Shot is typically discussed as a regenerative adjunct for patients seeking support with blood flow, sensation, erection quality, and penile tissue recovery.",
+      "The Pe-Shot is typically discussed as a regenerative adjunct for patients seeking support with blood flow, sensation, erection quality, and penile tissue recovery.",
     benefits: [
       {
         emoji: "⚡",
@@ -380,13 +384,13 @@ export const procedures = [
         emoji: "💖",
         benefit: "Sensitivity Support",
         description:
-          "Some patients discuss the P-Shot when reduced sensation or tissue responsiveness is part of the overall clinical picture.",
+          "Some patients discuss the Pe-Shot when reduced sensation or tissue responsiveness is part of the overall clinical picture.",
       },
       {
         emoji: "🔄",
         benefit: "Non-Surgical Option",
         description:
-          "Because it uses your own platelet-rich plasma, the P-Shot is often reviewed by patients who want to discuss a procedural option before surgery.",
+          "Because it uses your own platelet-rich plasma, the Pe-Shot is often reviewed by patients who want to discuss a procedural option before surgery.",
       },
       {
         emoji: "🔥",
@@ -396,150 +400,150 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "The P-Shot may be considered for select male sexual health concerns when blood flow, tissue quality, sensitivity, or recovery goals are part of the evaluation. Whether it makes sense depends on diagnosis, prior treatment response, and whether better-established options should come first.",
+      "The Pe-Shot may be considered for select male sexual health concerns when blood flow, tissue quality, sensitivity, or recovery goals are part of the evaluation. Whether it makes sense depends on diagnosis, prior treatment response, and whether better-established options should come first.",
     ailments: [
       {
         title: "Erectile Dysfunction",
         description:
-          "When erection quality is affected by blood flow or tissue response concerns, the P-Shot may be discussed as an adjunct treatment after medical evaluation.",
-        blog_post_title: "P-Shot for Erectile Dysfunction: What to Know",
-        blog_post_slug: "p-shot-for-erectile-dysfunction-what-to-know",
+          "When erection quality is affected by blood flow or tissue response concerns, the Pe-Shot may be discussed as an adjunct treatment after medical evaluation.",
+        blog_post_title: "Pe-Shot for Erectile Dysfunction: What to Know",
+        blog_post_slug: "pe-shot-for-erectile-dysfunction-what-to-know",
         slug: "erectile-dysfunction",
         tag: "common",
       },
       {
         title: "Peyronie's Disease",
         description:
-          "For patients with Peyronie's disease, the P-Shot may come up as a supportive therapy discussion, but deformity and pain often require broader medical management.",
-        blog_post_title: "P-Shot and Peyronie's Disease: Treatment Overview",
-        blog_post_slug: "p-shot-and-peyronies-disease-treatment-overview",
+          "For patients with Peyronie's disease, the Pe-Shot may come up as a supportive therapy discussion, but deformity and pain often require broader medical management.",
+        blog_post_title: "Pe-Shot and Peyronie's Disease: Treatment Overview",
+        blog_post_slug: "pe-shot-and-peyronies-disease-treatment-overview",
         slug: "peyronies-disease",
         tag: "uncommon",
       },
       {
         title: "Reduced Sexual Performance",
         description:
-          "Patients sometimes ask about the P-Shot when reduced performance appears tied to erection quality, sensitivity, or confidence after other causes are reviewed.",
-        blog_post_title: "P-Shot for Reduced Sexual Performance",
-        blog_post_slug: "p-shot-for-reduced-sexual-performance",
+          "Patients sometimes ask about the Pe-Shot when reduced performance appears tied to erection quality, sensitivity, or confidence after other causes are reviewed.",
+        blog_post_title: "Pe-Shot for Reduced Sexual Performance",
+        blog_post_slug: "pe-shot-for-reduced-sexual-performance",
         slug: "reduced-sexual-performance",
         tag: "common",
       },
       {
         title: "Reduced Sensation",
         description:
-          "The P-Shot may be reviewed when decreased sensation or localized tissue response is part of the patient’s complaint.",
-        blog_post_title: "P-Shot for Reduced Sensation: What to Discuss",
-        blog_post_slug: "p-shot-for-reduced-sensation-what-to-discuss",
+          "The Pe-Shot may be reviewed when decreased sensation or localized tissue response is part of the patient’s complaint.",
+        blog_post_title: "Pe-Shot for Reduced Sensation: What to Discuss",
+        blog_post_slug: "pe-shot-for-reduced-sensation-what-to-discuss",
         slug: "reduced-sensation",
         tag: "uncommon",
       },
       {
         title: "Post-Prostatectomy Issues",
         description:
-          "After prostate treatment, the P-Shot may be one topic in a larger recovery discussion that can also include medication, devices, and rehabilitation strategies.",
-        blog_post_title: "P-Shot for Post-Prostatectomy Recovery Questions",
-        blog_post_slug: "p-shot-for-post-prostatectomy-recovery-questions",
+          "After prostate treatment, the Pe-Shot may be one topic in a larger recovery discussion that can also include medication, devices, and rehabilitation strategies.",
+        blog_post_title: "Pe-Shot for Post-Prostatectomy Recovery Questions",
+        blog_post_slug: "pe-shot-for-post-prostatectomy-recovery-questions",
         slug: "post-prostatectomy-issues",
         tag: "experimental",
       },
       {
         title: "Premature Ejaculation",
         description:
-          "Premature ejaculation often has neurologic and behavioral drivers, but the P-Shot may still be discussed in complex sexual health treatment planning.",
-        blog_post_title: "P-Shot and Premature Ejaculation: Treatment Overview",
-        blog_post_slug: "p-shot-and-premature-ejaculation-treatment-overview",
+          "Premature ejaculation often has neurologic and behavioral drivers, but the Pe-Shot may still be discussed in complex sexual health treatment planning.",
+        blog_post_title: "Pe-Shot and Premature Ejaculation: Treatment Overview",
+        blog_post_slug: "pe-shot-and-premature-ejaculation-treatment-overview",
         slug: "premature-ejaculation",
         tag: "common",
       },
       {
         title: "Chronic Penile Pain",
         description:
-          "Persistent penile pain needs a careful diagnosis, but the P-Shot may be reviewed when tissue healing support is relevant to the broader plan.",
-        blog_post_title: "P-Shot for Chronic Penile Pain: What to Discuss",
-        blog_post_slug: "p-shot-for-chronic-penile-pain-what-to-discuss",
+          "Persistent penile pain needs a careful diagnosis, but the Pe-Shot may be reviewed when tissue healing support is relevant to the broader plan.",
+        blog_post_title: "Pe-Shot for Chronic Penile Pain: What to Discuss",
+        blog_post_slug: "pe-shot-for-chronic-penile-pain-what-to-discuss",
         slug: "chronic-penile-pain",
         tag: "uncommon",
       },
       {
         title: "Enhanced Sexual Capabilities",
         description:
-          "Some patients pursue the P-Shot to discuss sensitivity, stamina, or erectile response even when the goal is optimization rather than diagnosis-driven treatment.",
-        blog_post_title: "P-Shot for Sexual Performance Optimization",
-        blog_post_slug: "p-shot-for-sexual-performance-optimization",
+          "Some patients pursue the Pe-Shot to discuss sensitivity, stamina, or erectile response even when the goal is optimization rather than diagnosis-driven treatment.",
+        blog_post_title: "Pe-Shot for Sexual Performance Optimization",
+        blog_post_slug: "pe-shot-for-sexual-performance-optimization",
         slug: "enhanced-sexual-capabilities",
         tag: "common",
       },
       {
         title: "Improved Penile Aesthetics",
         description:
-          "Aesthetic goals should be discussed carefully, and the P-Shot may be one procedural option reviewed for patients with realistic expectations.",
-        blog_post_title: "P-Shot and Penile Aesthetic Goals",
-        blog_post_slug: "p-shot-and-penile-aesthetic-goals",
+          "Aesthetic goals should be discussed carefully, and the Pe-Shot may be one procedural option reviewed for patients with realistic expectations.",
+        blog_post_title: "Pe-Shot and Penile Aesthetic Goals",
+        blog_post_slug: "pe-shot-and-penile-aesthetic-goals",
         slug: "improved-penile-aesthetics",
         tag: "uncommon",
       },
       {
         title: "Penile Tissue Rejuvenation",
         description:
-          "The P-Shot is often framed as a regenerative option for patients concerned about tissue quality, recovery, or age-related changes.",
-        blog_post_title: "P-Shot for Penile Tissue Rejuvenation",
-        blog_post_slug: "p-shot-for-penile-tissue-rejuvenation",
+          "The Pe-Shot is often framed as a regenerative option for patients concerned about tissue quality, recovery, or age-related changes.",
+        blog_post_title: "Pe-Shot for Penile Tissue Rejuvenation",
+        blog_post_slug: "pe-shot-for-penile-tissue-rejuvenation",
         slug: "penile-tissue-rejuvenation",
         tag: "uncommon",
       },
       {
         title: "Improved Orgasmic Function",
         description:
-          "When reduced sensation or climax quality is part of the complaint, the P-Shot may be discussed as one possible adjunct treatment.",
-        blog_post_title: "P-Shot for Orgasmic Function Support",
-        blog_post_slug: "p-shot-for-orgasmic-function-support",
+          "When reduced sensation or climax quality is part of the complaint, the Pe-Shot may be discussed as one possible adjunct treatment.",
+        blog_post_title: "Pe-Shot for Orgasmic Function Support",
+        blog_post_slug: "pe-shot-for-orgasmic-function-support",
         slug: "improved-orgasmic-function",
         tag: "common",
       },
       {
         title: "Testosterone Imbalances",
         description:
-          "The P-Shot does not replace endocrine evaluation, but some patients with hormonal symptoms ask how it might fit into a broader sexual health workup.",
-        blog_post_title: "P-Shot and Testosterone Imbalance Questions",
-        blog_post_slug: "p-shot-and-testosterone-imbalance-questions",
+          "The Pe-Shot does not replace endocrine evaluation, but some patients with hormonal symptoms ask how it might fit into a broader sexual health workup.",
+        blog_post_title: "Pe-Shot and Testosterone Imbalance Questions",
+        blog_post_slug: "pe-shot-and-testosterone-imbalance-questions",
         slug: "testosterone-imbalances",
         tag: "experimental",
       },
       {
         title: "Vasculogenic Sexual Dysfunction",
         description:
-          "The P-Shot is commonly discussed when vascular factors may contribute to erectile difficulty, though diagnosis and cardiovascular risk review remain important.",
-        blog_post_title: "P-Shot for Vasculogenic Sexual Dysfunction",
-        blog_post_slug: "p-shot-for-vasculogenic-sexual-dysfunction",
+          "The Pe-Shot is commonly discussed when vascular factors may contribute to erectile difficulty, though diagnosis and cardiovascular risk review remain important.",
+        blog_post_title: "Pe-Shot for Vasculogenic Sexual Dysfunction",
+        blog_post_slug: "pe-shot-for-vasculogenic-sexual-dysfunction",
         slug: "vasculogenic-sexual-dysfunction",
         tag: "experimental",
       },
       {
         title: "Improved Blood Flow",
         description:
-          "Patients sometimes pursue the P-Shot to discuss whether PRP-based care can support localized circulation and erectile response.",
-        blog_post_title: "P-Shot for Blood Flow Support",
-        blog_post_slug: "p-shot-for-blood-flow-support",
+          "Patients sometimes pursue the Pe-Shot to discuss whether PRP-based care can support localized circulation and erectile response.",
+        blog_post_title: "Pe-Shot for Blood Flow Support",
+        blog_post_slug: "pe-shot-for-blood-flow-support",
         slug: "improved-blood-flow",
         tag: "common",
       },
     ],
     faqHeadline:
-      "Most P-Shot questions focus on candidacy, comfort, expected timing, and how the procedure fits with medication, devices, or other medical therapies.",
+      "Most Pe-Shot questions focus on candidacy, comfort, expected timing, and how the procedure fits with medication, devices, or other medical therapies.",
     faqs: [
       {
-        question: "What is the P-Shot?",
+        question: "What is the Pe-Shot?",
         answer:
-          "The P-Shot (Priapus Shot) is a platelet-rich plasma procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness.",
+          "The Pe-Shot is a platelet-rich plasma procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness.",
       },
       {
-        question: "Who may be a candidate for the P-Shot?",
+        question: "Who may be a candidate for the Pe-Shot?",
         answer:
           "Candidates are usually patients who have already reviewed standard treatment options and want to discuss whether a regenerative, non-surgical procedure fits their diagnosis, symptoms, and goals.",
       },
       {
-        question: "Is the P-Shot painful?",
+        question: "Is the Pe-Shot painful?",
         answer:
           "Most visits use topical numbing or local anesthesia. Patients often describe treatment as manageable, but comfort varies by person and by treatment plan.",
       },
@@ -560,8 +564,9 @@ export const procedures = [
     slug: "prp-breast-lift",
     seo: {
       title: "PRP Breast Lift in Williamsburg, VA",
+      documentTitle: "Breast Lift Williamsburg VA | PRP, Not Surgery",
       description:
-        "Compare the PRP Breast Lift service in Williamsburg, VA with surgical options, review the $1,800 one-visit price, and request current service details.",
+        "Breast lift in Williamsburg, VA: the $1,800 PRP visit is not surgery and does not promise a cosmetic result.",
     },
     description:
       "This Williamsburg decision guide does not document the clinic's current method or promise a cosmetic result. Before choosing a PRP Breast Lift, ask what the service includes, what one $1,800 visit covers, and whether a different cosmetic or surgical option better matches your goal.",
@@ -708,8 +713,9 @@ export const procedures = [
     slug: "prp-hair-restoration",
     seo: {
       title: "PRP Hair Restoration in Williamsburg, VA | Thinning Hair Consult",
+      documentTitle: "Hair Transplant Williamsburg VA | PRP Is Not Surgery",
       description:
-        "Consult-led PRP hair restoration in Williamsburg, VA for thinning hair, shedding, and early density concerns near James City County, Yorktown, and Newport News.",
+        "Female hair transplant or hairline transplant in Williamsburg? PRP does not move follicles. Ask when a specialist fits.",
     },
     description:
       "PRP Hair Restoration at Williamsburg Med Spa is a consult-led, non-surgical option for select men and women noticing thinning hair, shedding, widening part lines, or early pattern changes. Jenny Coleman, MSN, RN, CPNP, PMHS reviews your timeline, scalp concerns, health history, medications, and goals before discussing whether platelet-rich plasma belongs in your plan or whether medical evaluation should come first. Treatment uses PRP prepared from a small sample of your own blood and placed into targeted scalp areas to support existing follicles when they may still be active. PRP is not a hair transplant, does not create new follicles in bald areas, and results vary, so the visit focuses on candidacy, realistic expectations, session planning, maintenance, and when a dermatology or transplant specialist may be more appropriate.",
@@ -1607,7 +1613,7 @@ export const procedures = [
     seo: {
       title: "Botox in Williamsburg, VA | Natural-Looking Botox Injections",
       description:
-        "Botox injections in Williamsburg, VA for forehead lines, frown lines, crow's feet, and other targeted wrinkle-softening treatments planned around natural expression.",
+        "Botox in Williamsburg, VA for forehead lines, frown lines, and crow's feet. Book a consult with Jenny Coleman, MSN, RN, CPNP, PMHS.",
     },
     description:
       "Botox Cosmetic is a botulinum toxin type A injectable used to temporarily soften dynamic expression lines in appropriate adult candidates. At Williamsburg Med Spa, Jenny Coleman, MSN, RN, CPNP, PMHS plans Botox around forehead lines, frown lines, crow's feet, and selected lower-face areas with dosing shaped around your facial movement pattern so results look smooth, balanced, and natural.",
@@ -2356,8 +2362,9 @@ export const procedures = [
     slug: "blomdahl-ear-piercing",
     seo: {
       title: "Ear Piercing in Williamsburg, VA | Infant, Kids & Adults | Blomdahl",
+      documentTitle: "Ear Piercing Williamsburg VA | Blomdahl Pediatric NP",
       description:
-        "Ear piercing in Williamsburg, VA for infants, kids, teens, and adults. Blomdahl medical piercing with sterile single-use cassettes, hypoallergenic earrings, and a pediatric nurse practitioner. $45 per ear.",
+        "Sterile, hypoallergenic Blomdahl ear piercing in Williamsburg, VA by a pediatric NP. $45 per ear.",
     },
     description:
       "Our Blomdahl medical ear piercing service uses sterile single-use cassettes and hypoallergenic Medical Plastic or titanium starter earrings to support cleaner healing. Jenny Coleman, MSN, RN, CPNP, PMHS brings pediatric nursing experience to appointments for children, teens, and adults who want careful placement, clear aftercare, and a clinical setting instead of mall-style piercing.",
@@ -2484,6 +2491,11 @@ export const procedures = [
         question: "How is Blomdahl different from mall piercing?",
         answer:
           "Blomdahl is appointment-based medical ear piercing that uses sterile disposable cassettes and hypoallergenic starter jewelry. Jenny also reviews placement, comfort, and aftercare instead of treating the piercing like a quick retail add-on.",
+      },
+      {
+        question: "Does Blomdahl use a needle or a piercing gun?",
+        answer:
+          "Blomdahl medical ear piercing uses a sterile single-use cassette. That is different from a mall piercing gun, which is a retail tool, and stores vary in jewelry and protocol. Jenny reviews placement, starter earrings, and aftercare at the Williamsburg appointment.",
       },
       {
         question: "What jewelry materials are available?",
@@ -2773,3 +2785,58 @@ export const products = [
     ],
   },
 ];
+
+if (!LIP_FILLER_ENABLED) {
+  const filler = procedures.find((procedure) => procedure.slug === "filler");
+  if (filler) {
+    filler.seo = {
+      ...filler.seo,
+      title: "Dermal Fillers in Williamsburg, VA | Cheeks, Under-Eyes & Contour",
+      description:
+        "Dermal fillers in Williamsburg, VA for cheeks, under-eyes, jawline contour, and natural-looking facial volume restoration with Jenny Coleman, MSN, RN, CPNP, PMHS.",
+    };
+    filler.description =
+      "Dermal fillers are injectable gels commonly used to restore facial volume, soften folds, and refine contour in areas such as cheeks, jawline, and under-eyes. At Williamsburg Med Spa, Jenny Coleman, MSN, RN, CPNP, PMHS plans filler conservatively with clear discussion of longevity, swelling, reversibility, and results that stay proportional to your features.";
+    filler.headline = "Nurse-led dermal fillers in Williamsburg for cheeks, under-eyes, and facial contour.";
+    filler.subline =
+      "Hyaluronic acid filler can restore volume, refine contour, and soften folds with a treatment plan built around proportion, safety screening, and realistic longevity.";
+    filler.blogHeadline =
+      "Researching dermal fillers in Williamsburg? Explore cheeks, under-eyes, how long filler can last, and what consultation should cover before you book.";
+    filler.benefits = filler.benefits.map((benefit) => {
+      if (benefit.benefit === "Volume Restoration") {
+        return {
+          ...benefit,
+          description:
+            "Fillers can restore support in selected areas such as cheeks and under-eyes when volume loss or proportion is part of the concern.",
+        };
+      }
+      if (benefit.benefit === "Contour Enhancement") {
+        return {
+          ...benefit,
+          description:
+            "Fillers can refine facial contours in areas such as cheeks, chin, and jawline with a plan shaped around anatomy and balance.",
+        };
+      }
+      return benefit;
+    });
+    filler.ailmentsHeadline =
+      "Dermal fillers are used for both volume restoration and contour refinement. Treatment planning may focus on cheeks, under-eyes, smile lines, jawline definition, and other targeted areas depending on anatomy and goals.";
+    filler.ailments = filler.ailments.filter((ailment) => ailment.slug !== "lip-augmentation");
+    filler.faqHeadline =
+      "Get practical answers about cheek filler, under-eye filler, cost, consultation planning, longevity, comfort, safety, and reversibility.";
+    filler.faqs = filler.faqs.map((faq) =>
+      faq.question === "What areas can be treated with dermal fillers?"
+        ? {
+            ...faq,
+            answer:
+              "Dermal fillers can enhance cheek contours, reduce the appearance of fine lines and wrinkles, improve the jawline, and correct under-eye hollows.",
+          }
+        : faq
+    );
+  }
+
+  const interests = FORM_INPUTS.find((input) => input.id === "interests");
+  if (interests?.options) {
+    interests.options = interests.options.filter((option) => !/lip filler|lip augmentation/i.test(option));
+  }
+}

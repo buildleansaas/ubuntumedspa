@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import FooterLocationCta from "components/footer-location-cta";
+import FooterSocialLinks from "components/footer-social-links";
 
 
 const primaryLinks = [
@@ -16,8 +17,8 @@ const treatmentLinks = [
   { href: "/procedures/botox", label: "Botox" },
   { href: "/procedures/xeomin", label: "Xeomin" },
   { href: "/procedures/filler", label: "Filler" },
-  { href: "/procedures/o-shot", label: "O-Shot" },
-  { href: "/procedures/p-shot", label: "P-Shot" },
+  { href: "/procedures/oh-shot", label: "OH-Shot" },
+  { href: "/procedures/pe-shot", label: "Pe-Shot" },
   { href: "/procedures/blomdahl-ear-piercing", label: "Blomdahl Ear Piercing" },
 ] as const;
 
@@ -41,7 +42,7 @@ export default function Footer() {
         <div className="grid gap-10 border-t border-base-300 py-12 md:grid-cols-2 xl:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div className="max-w-xl">
             <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Williamsburg Med Spa</p>
-            <h3 className="mt-3 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content">
+            <h3 className="font-display mt-3 text-4xl font-medium leading-[1.1] tracking-tight text-base-content md:text-5xl">
               Rejuvenate Your Life
             </h3>
             {/* PRP_BREAST_SHARED_COPY_CONTRACT_START */}
@@ -58,6 +59,23 @@ export default function Footer() {
               <p>3900 Powhatan Parkway, Williamsburg, VA 23188</p>
               <p>+1 (804) 738-9483</p>
             </div>
+            <FooterSocialLinks />
+            {/* Local Biz Legends verified-profile badge (LBL issue 135). The image is a live SVG
+                from LBL; it 404s if the profile stops qualifying. */}
+            <a
+              className="mt-6 inline-block"
+              href="https://www.localbizlegends.com/businesses/williamsburg-med-spa-williamsburg-va"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element -- third-party SVG badge, served and sized by LBL */}
+              <img
+                src="https://www.localbizlegends.com/badge/williamsburg-med-spa-williamsburg-va"
+                alt="Verified on Local Biz Legends"
+                width={269}
+                height={64}
+                loading="lazy"
+                style={{ border: 0, maxWidth: "100%", height: "auto" }}
+              />
+            </a>
           </div>
 
           <div>
@@ -113,8 +131,20 @@ export default function Footer() {
               Home
             </Link>
             <span aria-hidden>·</span>
-            <Link className="transition-colors hover:text-base-content hover:underline" href="/sitemap.xml">
+            <Link className="transition-colors hover:text-base-content hover:underline" href="/html-sitemap">
               Sitemap
+            </Link>
+            <span aria-hidden>·</span>
+            <Link className="transition-colors hover:text-base-content hover:underline" href="/privacy">
+              Privacy
+            </Link>
+            <span aria-hidden>·</span>
+            <Link className="transition-colors hover:text-base-content hover:underline" href="/terms">
+              Terms
+            </Link>
+            <span aria-hidden>·</span>
+            <Link className="transition-colors hover:text-base-content hover:underline" href="/cookies">
+              Cookies
             </Link>
           </div>
         </div>

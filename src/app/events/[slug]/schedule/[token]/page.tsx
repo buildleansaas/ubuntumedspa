@@ -42,7 +42,7 @@ export default async function EventSchedulingPage({
           }}
         />
       ) : (
-        <div className="rounded-2xl border border-base-300 bg-base-200 p-6">
+        <div className="border border-base-300 bg-base-200 p-6">
           <h2 className="text-2xl font-semibold mb-3">{event.schedule.fallbackTitle}</h2>
           <p className="text-base-content/70">{event.schedule.fallbackBody}</p>
         </div>

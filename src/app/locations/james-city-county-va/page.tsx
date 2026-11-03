@@ -3,11 +3,12 @@ import DirectionsButton from "components/directions-button";
 import NAP from "components/nap";
 import StructuredData from "components/structured-data";
 import { Button } from "components/ui/button";
+import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 import { buildPageMetadata } from "lib/metadata";
 import Link from "next/link";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near James City County, VA | Fillers, Botox, PRP & Piercing",
+  title: "Med Spa Near James City County, VA | Fillers, Botox & PRP",
   description:
     "Compare consultation-led Botox, Xeomin, fillers, PRP hair restoration, hyperhidrosis care, and Blomdahl ear piercing near James City County, VA.",
   canonical: "/locations/james-city-county-va",
@@ -29,7 +30,9 @@ const serviceLinks = [
   {
     href: "/procedures/filler",
     label: "Dermal fillers",
-    note: "Review lip, cheek, under-eye, smile-line, and facial-balance starting points.",
+    note: LIP_FILLER_ENABLED
+      ? "Review lip, cheek, under-eye, smile-line, and facial-balance starting points."
+      : "Review cheek, under-eye, smile-line, and facial-balance starting points.",
   },
   {
     href: "/procedures/prp-hair-restoration",
@@ -45,6 +48,11 @@ const serviceLinks = [
     href: "/procedures/blomdahl-ear-piercing",
     label: "Blomdahl medical ear piercing",
     note: "Plan a nurse-led piercing visit with sterile single-use cassettes and aftercare guidance.",
+  },
+  {
+    href: "/procedures/blomdahl-ear-piercing/for/children",
+    label: "Infant and kids ear piercing",
+    note: "For parents comparing a pediatric nurse practitioner visit with a retail counter.",
   },
 ];
 
@@ -79,7 +87,7 @@ export default function JamesCityCountyPage() {
 
       <header className="grid gap-8 border-b border-base-300 pb-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:items-end">
         <div>
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-primary">James City County service area</p>
+          <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">James City County service area</p>
           <h1 className="max-w-3xl text-4xl font-light leading-tight sm:text-5xl">Med Spa Near James City County, VA</h1>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-base-content/75">
             Compare consultation-led Botox, Xeomin, dermal fillers, PRP hair restoration, hyperhidrosis care, and Blomdahl
@@ -98,7 +106,7 @@ export default function JamesCityCountyPage() {
         </div>
 
         <aside className="border-y border-base-300 py-5" aria-label="Williamsburg clinic at a glance">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Williamsburg clinic at a glance</p>
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Williamsburg clinic at a glance</p>
           <dl className="mt-4 divide-y divide-base-300 text-sm">
             <div className="grid gap-1 py-3 sm:grid-cols-[6rem_1fr]">
               <dt className="font-medium text-base-content">Address</dt>
@@ -118,7 +126,7 @@ export default function JamesCityCountyPage() {
 
       <section className="border-b border-base-300 py-10" aria-labelledby="jcc-treatment-starting-points">
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Treatment guide</p>
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Treatment guide</p>
           <h2 id="jcc-treatment-starting-points" className="mt-2 text-3xl font-light sm:text-4xl">
             Choose the right treatment starting point
           </h2>
@@ -146,7 +154,7 @@ export default function JamesCityCountyPage() {
 
       <section className="border-b border-base-300 py-10" aria-labelledby="jcc-visit-reasons">
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">What to expect</p>
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">What to expect</p>
           <h2 id="jcc-visit-reasons" className="mt-2 text-3xl font-light sm:text-4xl">
             Consultation-led care close to James City County
           </h2>
@@ -179,7 +187,7 @@ export default function JamesCityCountyPage() {
 
       <section className="border-b border-base-300 py-10" aria-labelledby="jcc-plan-visit">
         <div className="mb-7 max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Plan your visit</p>
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Plan your visit</p>
           <h2 id="jcc-plan-visit" className="mt-2 text-3xl font-light sm:text-4xl">
             Williamsburg clinic details
           </h2>
@@ -201,7 +209,7 @@ export default function JamesCityCountyPage() {
 
       <section className="border-b border-base-300 py-10" aria-labelledby="jcc-faqs">
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Common questions</p>
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Common questions</p>
           <h2 id="jcc-faqs" className="mt-2 text-3xl font-light sm:text-4xl">
             James City County med spa visit FAQs
           </h2>

@@ -38,7 +38,7 @@ export default function CatalogPurchasePanel({
     <div className="mx-auto mt-8 max-w-4xl border-y border-base-300 py-6 text-left">
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+          <p className="eyebrow">
             {purchaseLabel || (kind === "procedure" ? "Reserve appointment" : "Reserve for pickup")}
           </p>
           <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-2">
@@ -53,7 +53,7 @@ export default function CatalogPurchasePanel({
           {customerNote && <p className="mt-2 max-w-2xl text-sm leading-relaxed text-base-content/70">{customerNote}</p>}
         </div>
 
-        <div className="rounded-2xl border border-base-300 bg-base-100 p-4 shadow-sm">
+        <div className="border border-base-300 bg-base-100 p-4">
           <div className="flex flex-wrap items-center gap-3">
             <CatalogAddToCartControl
               slug={slug}

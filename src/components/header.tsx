@@ -28,10 +28,10 @@ export default function Header() {
             />
           </picture>
           <div className="ml-2 flex min-w-0 flex-col items-start justify-center sm:ml-3">
-            <p className="truncate text-base font-bold tracking-tight text-base-content min-[380px]:text-lg sm:text-xl md:text-2xl">
+            <p className="truncate font-display text-[1.35rem] font-medium leading-none tracking-tight text-base-content min-[380px]:text-[1.55rem] sm:text-[1.75rem]">
               Williamsburg Med Spa
             </p>
-            <p className="mt-0 hidden text-sm font-light text-base-content/75 lg:block">
+            <p className="mt-1 hidden text-[0.7rem] font-medium uppercase tracking-[0.18em] text-base-content/75 lg:block">
               Restorative Wellness & Natural Healing
             </p>
           </div>
@@ -44,7 +44,7 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="mx-2 rounded-md px-1 py-1 text-base-content transition-colors hover:text-base-content/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2"
+              className="mx-2.5 px-0.5 py-1 text-sm tracking-wide text-base-content transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
             >
               {item.label}
             </Link>

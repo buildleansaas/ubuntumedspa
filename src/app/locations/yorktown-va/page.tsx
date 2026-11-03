@@ -4,9 +4,10 @@ import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
+import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near Yorktown, VA | Botox, Fillers, PRP & Piercing",
+  title: "Med Spa Near Yorktown, VA | Botox, Fillers & PRP",
   description:
     "Visit Williamsburg Med Spa from Yorktown for Botox, Xeomin, fillers, PRP therapies, hyperhidrosis care, and Blomdahl medical ear piercing near Williamsburg.",
   canonical: "/locations/yorktown-va",
@@ -21,7 +22,9 @@ const serviceLinks = [
   {
     label: "Dermal filler treatment planning",
     href: "/procedures/filler",
-    copy: "For lips, cheeks, facial balance, and natural-looking volume support.",
+    copy: LIP_FILLER_ENABLED
+      ? "For lips, cheeks, facial balance, and natural-looking volume support."
+      : "For cheeks, facial balance, and natural-looking volume support.",
   },
   {
     label: "Xeomin treatment planning",
@@ -29,9 +32,19 @@ const serviceLinks = [
     copy: "For patients comparing wrinkle relaxer options.",
   },
   {
-    label: "Medical ear piercing near Yorktown",
+    label: "Blomdahl ear piercing",
+    href: "/procedures/blomdahl-ear-piercing",
+    copy: "Sterile single-use cassettes and hypoallergenic starter earrings at the Williamsburg clinic.",
+  },
+  {
+    label: "Infant and kids ear piercing",
+    href: "/procedures/blomdahl-ear-piercing/for/children",
+    copy: "For parents planning a baby's or child's first earrings with a pediatric nurse practitioner.",
+  },
+  {
+    label: "Yorktown visit notes",
     href: "/procedures/blomdahl-ear-piercing/near/yorktown-va",
-    copy: "For children and adults who want sterile Blomdahl piercing.",
+    copy: "Driving notes for a Williamsburg piercing appointment. The service details stay on the Blomdahl page.",
   },
 ];
 
@@ -39,7 +52,7 @@ export default function YorktownPage() {
   return (
     <div className="max-w-xl md:max-w-5xl mx-auto md:px-8 py-12 md:py-16">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations", "Yorktown"]} />
-      <header className="mb-8 md:mb-10 text-center">
+      <header className="mb-10 max-w-3xl text-left md:mb-14">
         <h1 className="text-3xl md:text-5xl font-light">Med Spa Near Yorktown, VA</h1>
         <p className="text-base md:text-lg text-base-content/70 mt-2">
           Consult-led aesthetic, regenerative, and medical ear piercing care for Yorktown patients willing to make a planned Williamsburg visit.
@@ -55,7 +68,7 @@ export default function YorktownPage() {
         </p>
       </section>
 
-      <section className="mt-8 rounded-3xl border border-base-content/10 bg-base-100 p-5 md:p-7">
+      <section className="mt-8 border border-base-300 bg-base-100 p-6 md:p-8">
         <h2 className="text-2xl font-light">Quick read for Yorktown patients</h2>
         <ul className="mt-4 grid gap-3 text-sm text-base-content/75 md:grid-cols-3">
           <li>Best for Yorktown patients who want a quieter Williamsburg clinic visit rather than a high-volume retail setting.</li>
@@ -71,7 +84,7 @@ export default function YorktownPage() {
         </p>
         <div className="mt-4 grid gap-3 md:grid-cols-2">
           {serviceLinks.map((link) => (
-            <Link key={link.label} href={link.href} className="rounded-2xl border border-base-content/10 bg-base-100 p-4 transition hover:border-primary/40 hover:bg-primary/5">
+            <Link key={link.label} href={link.href} className="border border-base-300 bg-base-100 p-4 transition hover:border-primary/40">
               <span className="block text-sm font-semibold text-base-content">{link.label}</span>
               <span className="mt-1 block text-sm text-base-content/65">{link.copy}</span>
             </Link>
@@ -92,7 +105,7 @@ export default function YorktownPage() {
             <li>If you are unsure which treatment fits, book the consultation first rather than guessing from a menu.</li>
           </ul>
         </div>
-        <aside className="rounded-3xl border border-base-content/10 bg-base-100 p-5">
+        <aside className="border border-base-300 bg-base-100 p-5">
           <h2 className="text-xl font-light">Nearby areas this page helps</h2>
           <ul className="mt-3 space-y-2 text-sm text-base-content/70">
             <li>Yorktown</li>

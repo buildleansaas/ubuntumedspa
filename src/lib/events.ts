@@ -138,8 +138,8 @@ const getProcedureNamesBySlug = (slugs: string[]) => {
 const buildBotoxPartyAddOnOptionGroups = (): EventOptionGroup[] => {
   const injectableSlugs = ["xeomin", "filler", "hyperhidrosis-treatment"];
   const regenerativeSlugs = [
-    "o-shot",
-    "p-shot",
+    "oh-shot",
+    "pe-shot",
     "prp-breast-lift",
     "prp-hair-restoration",
     "prp-facial",
@@ -177,7 +177,7 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
   title: "Botox Party",
   published: true,
   canonicalPath: "/events/botox-party",
-  metadataTitle: "Botox Parties in Williamsburg, VA | Host Private Injectable Events",
+  metadataTitle: "Plan a Private Friend Party | Williamsburg Med Spa",
   metadataDescription:
     "Host a Botox party in Williamsburg, VA with Williamsburg Med Spa. Bring paid Botox guests, plan a private injectable event, and introduce friends to PRP, skin, wellness, and product options.",
   heroImageSrc: "/events/botox-party-hero.webp",

@@ -12,15 +12,17 @@ import CtaFooter from "components/cta-footer";
 import CatalogPurchasePanel from "components/catalog-purchase-panel";
 import BlogPostCollection from "components/blog-post-collection";
 import StructuredData from "components/structured-data";
-import { twMerge } from "tailwind-merge";
 import CtaButtons from "components/cta-buttons";
 import TrackedPhoneLink from "components/tracked-phone-link";
 import { notFound } from "next/navigation";
+import NamedReviews from "components/named-reviews";
 import ProcedureTestimonials from "components/procedure-testimonials";
 import { getPublishedAilmentsForProcedure } from "lib/ailments/get-ailment-page-data";
 import { getPublishedBlogPosts } from "lib/blog";
 import { getCatalogConfigBySlug } from "config/commerce-catalog";
 import { humanizeMedicalCopy } from "lib/humanize";
+import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
+import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
 const ailmentsTagLabels = {
@@ -32,7 +34,7 @@ const featuredGuideSlugs: Record<string, string> = {
   botox: "botox-vs-xeomin-williamsburg-va",
   xeomin: "botox-vs-xeomin-williamsburg-va",
   filler: "how-long-do-dermal-fillers-last-in-williamsburg-va",
-  "o-shot": "o-shot-for-urinary-incontinence-williamsburg-va",
+  "oh-shot": "oh-shot-for-urinary-incontinence-williamsburg-va",
   "prp-hair-restoration": "prp-hair-restoration-vs-hair-transplant-williamsburg-va",
   "blomdahl-ear-piercing": "medical-ear-piercing-vs-mall-piercing",
 };
@@ -52,16 +54,17 @@ const featuredGuideCopy: Record<string, { button: string; heading: string; descr
   filler: {
     button: "Filler Longevity Guide",
     heading: "Wondering how long dermal fillers last?",
-    description:
-      "Review how longevity can vary across lips, cheeks, under-eyes, and other treatment areas before you book.",
+    description: LIP_FILLER_ENABLED
+      ? "Review how longevity can vary across lips, cheeks, under-eyes, and other treatment areas before you book."
+      : "Review how longevity can vary across cheeks, under-eyes, and other treatment areas before you book.",
     linkLabel: "Read the dermal filler longevity guide",
   },
-  "o-shot": {
-    button: "O-Shot Bladder Leakage Guide",
-    heading: "Wondering whether the O-Shot can help with bladder leakage?",
+  "oh-shot": {
+    button: "OH-Shot Bladder Leakage Guide",
+    heading: "Wondering whether the OH-Shot can help with bladder leakage?",
     description:
-      "Review how stress leakage, urge leakage, pelvic floor care, and O-Shot candidacy fit into a private consultation.",
-    linkLabel: "Read the O-Shot urinary incontinence guide",
+      "Review how stress leakage, urge leakage, pelvic floor care, and OH-Shot candidacy fit into a private consultation.",
+    linkLabel: "Read the OH-Shot urinary incontinence guide",
   },
   "prp-hair-restoration": {
     button: "PRP vs Hair Transplant",
@@ -107,20 +110,23 @@ type Params = { params: { slug: string } };
 
 export async function generateMetadata({ params }: Params) {
   const procedure = procedures.find((med) => med.slug === params.slug);
-  const { title, description } = procedure?.seo ?? {
-    title: "Procedure",
-    description: "",
-  };
-
-  const withLocation = /williamsburg/i.test(title) ? title : `${title} in Williamsburg, VA`;
+  const seo = procedure?.seo;
+  const headingTitle = seo?.title ?? "Procedure";
+  const description = seo?.description ?? "";
+  const documentTitle =
+    seo && "documentTitle" in seo && typeof seo.documentTitle === "string" && seo.documentTitle
+      ? seo.documentTitle
+      : /williamsburg/i.test(headingTitle)
+        ? headingTitle
+        : `${headingTitle} in Williamsburg, VA`;
   const canonical = `/procedures/${params.slug}`;
 
   return {
-    title: withLocation,
+    title: documentTitle,
     description,
     alternates: { canonical },
     openGraph: {
-      title: withLocation,
+      title: documentTitle,
       description,
       url: canonical,
       siteName: "Williamsburg Med Spa",
@@ -129,13 +135,13 @@ export async function generateMetadata({ params }: Params) {
           url: `${canonical}/opengraph-image`,
           width: 1200,
           height: 630,
-          alt: withLocation,
+          alt: documentTitle,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: withLocation,
+      title: documentTitle,
       description,
       images: [`${canonical}/twitter-image`],
     },
@@ -153,7 +159,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
     .filter(({ tags }) => tags?.includes(procedure.name))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   const hasAilments = Boolean(publishedAilments.length);
-  const showOShotCredential = procedure.slug === "o-shot";
+  const showOShotCredential = procedure.slug === "oh-shot";
   const pageHeading = procedure.seo?.title?.split("|")[0].trim() || `${procedure.name} in Williamsburg, VA`;
   const featuredGuide = articles.find((article) => article.slug === featuredGuideSlugs[procedure.slug]);
   const featuredGuideCta = featuredGuide ? featuredGuideCopy[procedure.slug] : undefined;
@@ -163,16 +169,22 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
       ? "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift"
       : procedure.slug === "prp-hair-restoration"
         ? "/consult?procedure=prp-hair-restoration&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_hair_restoration"
+        : procedure.slug === "filler"
+          ? "/consult?procedure=filler&utm_source=website&utm_medium=procedure_page&utm_campaign=dermal_filler"
         : undefined;
   const consultationSupportCopy =
     procedure.slug === "prp-breast-lift"
       ? "This page does not document the clinic's current method or promise a cosmetic result. Ask for the current service details before purchasing the one-visit treatment."
       : procedure.slug === "prp-hair-restoration"
         ? "Start with a hair-loss consultation before paying. Jenny reviews your pattern, timeline, scalp symptoms, health history, medications, and whether PRP, medical evaluation, or a transplant specialist is the more useful next step."
+      : procedure.slug === "filler"
+      ? LIP_FILLER_ENABLED
+        ? "Consultation starts with the area you want to discuss, whether that is lips, cheeks, smile lines, under-eyes, or facial balance, plus your prior injectables, event timing, and whether filler, a wrinkle relaxer, or another option is the better fit."
+        : "Consultation starts with the area you want to discuss, whether that is cheeks, smile lines, under-eyes, or facial balance, plus your prior injectables, event timing, and whether filler, a wrinkle relaxer, or another option is the better fit."
       : procedure.slug === "hyperhidrosis-treatment"
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
-      : procedure.slug === "o-shot"
-        ? "Consultation covers symptoms, candidacy, treatment areas, expected timing, and whether O-Shot® care fits your intimate wellness or bladder leakage concerns."
+      : procedure.slug === "oh-shot"
+        ? "Consultation covers symptoms, candidacy, treatment areas, expected timing, and whether OH-Shot care fits your intimate wellness or bladder leakage concerns."
       : procedure.slug === "blomdahl-ear-piercing"
         ? "Ear piercing visits cover age or sensitivity questions, Blomdahl starter earring options, placement, aftercare, and whether the appointment is for a child, teen, adult, or re-piercing."
       : procedure.slug === "microneedling-with-prp"
@@ -196,7 +208,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <section className="grid items-center gap-10 border-b border-base-300 pb-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)]">
           <div className="text-left">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-primary">Williamsburg med spa procedure</p>
+            <p className="mb-4 text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Williamsburg med spa procedure</p>
             <h1 className="max-w-4xl text-4xl font-light leading-tight tracking-tight text-base-content md:text-6xl">
               {pageHeading}
             </h1>
@@ -218,7 +230,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   <Link
                     key={href}
                     href={href}
-                    className="rounded-full border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
+                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
                   >
                     {label}
                   </Link>
@@ -237,7 +249,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   <Link
                     key={href}
                     href={href}
-                    className="rounded-full border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
+                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
                   >
                     {label}
                   </Link>
@@ -259,7 +271,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   <Link
                     key={href}
                     href={href}
-                    className="rounded-full border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
+                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
                   >
                     {label}
                   </Link>
@@ -271,13 +283,15 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                 <Link
                   href={
                     procedure.slug === "blomdahl-ear-piercing"
-                      ? "/consult?procedure=blomdahl-ear-piercing&utm_source=website&utm_medium=procedure_page&utm_campaign=ear_piercing"
+                      ? EAR_PIERCING_BOOKING.hub
                       : procedure.slug === "microneedling-with-prp"
                         ? "/consult?procedure=microneedling-with-prp&utm_source=website&utm_medium=procedure_page&utm_campaign=microneedling_prp"
                         : procedure.slug === "prp-breast-lift"
                           ? "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift"
-                          : procedure.slug === "prp-hair-restoration"
-                            ? "/consult?procedure=prp-hair-restoration&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_hair_restoration"
+                        : procedure.slug === "prp-hair-restoration"
+                          ? "/consult?procedure=prp-hair-restoration&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_hair_restoration"
+                          : procedure.slug === "filler"
+                            ? "/consult?procedure=filler&utm_source=website&utm_medium=procedure_page&utm_campaign=dermal_filler"
                         : "/consult"
                   }
                 >
@@ -289,6 +303,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                         ? "Book a Private PRP Breast Consultation"
                         : procedure.slug === "prp-hair-restoration"
                           ? "Book a PRP Hair Consultation"
+                          : procedure.slug === "filler"
+                            ? "Book a Filler Consultation"
                         : "Book a Consultation"}
                 </Link>
               </Button>
@@ -311,7 +327,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           </div>
 
           {heroImagePath && (
-            <div className="relative overflow-hidden rounded-[2rem] border border-base-300 bg-base-200 shadow-sm">
+            <div className="relative overflow-hidden border border-base-300 bg-base-200">
               <div className="relative aspect-[4/3]">
                 <Image
                   src={heroImagePath}
@@ -334,6 +350,10 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               What a PRP Breast Lift can and cannot do
             </h2>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
+              <p>
+                If you are comparing a breast lift in Williamsburg, VA, start here. The $1,800 PRP visit is not mastopexy, implants, or fat
+                transfer, and this page does not promise a cosmetic result.
+              </p>
               <p>
                 This page does not document the clinic&apos;s current method for this service and does not promise a cosmetic result. Before choosing it,
                 ask the clinic to define what the service includes, how it is performed, and what one paid visit covers.
@@ -371,11 +391,15 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         {procedure.slug === "prp-hair-restoration" && (
           <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="prp-hair-fit">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Choose the right next step</p>
+            <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Choose the right next step</p>
             <h2 id="prp-hair-fit" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
               Is PRP a reasonable fit for your hair-loss pattern?
             </h2>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
+              <p>
+                If you searched for a female hair transplant or a hairline transplant in Williamsburg, this visit is not that surgery. PRP does
+                not move follicles. A transplant specialist may be more useful when the goal is to rebuild a hairline.
+              </p>
               <p>
                 Research suggests platelet-rich plasma may improve hair density for some people with pattern hair loss, but response varies and
                 treatment protocols are not standardized. A consultation can review the pattern and whether medical or dermatology evaluation
@@ -425,8 +449,68 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           </section>
         )}
 
-        <section className="mx-auto max-w-5xl pt-10 text-center" id="pricing">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+        {procedure.slug === "filler" && (
+          <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="filler-fit">
+            <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Choose the right next step</p>
+            <h2 id="filler-fit" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
+              Is dermal filler a reasonable fit for the change you want?
+            </h2>
+            <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
+              <p>
+                {LIP_FILLER_ENABLED
+                  ? "Dermal filler restores or reshapes volume in areas such as lips, cheeks, smile lines, and under-eyes. It does not"
+                  : "Dermal filler restores or reshapes volume in areas such as cheeks, smile lines, and under-eyes. It does not"}
+                relax the movement-related expression lines that Botox and Xeomin address, and it is not a substitute for medical
+                evaluation of a new or changing skin concern.
+              </p>
+              <p>
+                Results are not permanent. Longevity varies by filler type, treatment area, metabolism, and movement, so realistic
+                maintenance timing is part of the conversation before treatment.
+              </p>
+            </div>
+
+            <ul className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 md:grid-cols-3">
+              {[
+                ["Filler may belong in the conversation", LIP_FILLER_ENABLED
+                  ? "Volume loss or proportion goals in lips, cheeks, smile lines, marionette lines, or facial contour and balance."
+                  : "Volume loss or proportion goals in cheeks, smile lines, marionette lines, or facial contour and balance."],
+                ["A wrinkle relaxer may fit better", "Movement-related expression lines such as forehead lines, frown lines, or crow's feet, which Botox and Xeomin address instead."],
+                ["Careful screening comes first", "Under-eye hollows, nose reshaping, or temple hollowing, where anatomy and vascular risk matter and filler may not be the right fit."],
+              ].map(([title, copy]) => (
+                <li key={title}>
+                  <h3 className="font-semibold text-base-content">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-base-content/70">{copy}</p>
+                </li>
+              ))}
+            </ul>
+
+            <ol className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 sm:grid-cols-2">
+              {[
+                ["01", "Consultation and anatomy review", "Jenny reviews your goals, facial movement, prior injectables, event timing, swelling expectations, and whether filler, Botox/Xeomin, PRP, or skincare better matches the concern."],
+                ["02", "Treatment plan and product choice", "A conservative plan is shaped around proportion and balance, with product choice, likely amount, and expected swelling or bruising reviewed before anything is done."],
+                ["03", "Treatment visit", "Filler is placed by injection in the planned areas once the plan is confirmed with you."],
+                ["04", "Aftercare and maintenance plan", "Leave with guidance for temporary swelling, tenderness, or bruising, what should prompt a call after treatment, and a realistic maintenance timeline."],
+              ].map(([number, title, copy]) => (
+                <li key={number} className="grid grid-cols-[2.5rem_1fr] gap-3">
+                  <span className="text-sm font-semibold tracking-[0.12em] text-primary">{number}</span>
+                  <div>
+                    <h3 className="font-semibold text-base-content">{title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-base-content/70">{copy}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <p className="mt-8 border-t border-base-300 pt-6 text-sm leading-relaxed text-base-content/70">
+              Dermal filler at Williamsburg Med Spa is <strong className="font-semibold text-base-content">{catalogItem?.displayPrice}</strong>. The
+              number of syringes depends on the areas treated, anatomy, and your goals; the likely amount is reviewed with you during
+              consultation before you pay.
+            </p>
+          </section>
+        )}
+
+        <section className="mx-auto max-w-3xl py-16 text-left md:py-20" id="pricing">
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
             {catalogItem ? "Pricing & booking" : "Treatment planning"}
           </p>
           {procedure.slug === "blomdahl-ear-piercing" ? (
@@ -440,7 +524,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   ["$80", "Both ears", "A simple pair price for families booking both ears in one visit."],
                   ["Nurse-led", "Placement + aftercare", "Jenny Coleman, MSN, RN, CPNP, PMHS reviews fit and care."],
                 ].map(([price, label, copy]) => (
-                  <div key={label} className="rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm">
+                  <div key={label} className="border border-base-300 bg-base-100 p-5">
                     <p className="text-3xl font-semibold tracking-tight text-base-content">{price}</p>
                     <h3 className="mt-2 text-base font-semibold text-base-content">{label}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-base-content/70">{copy}</p>
@@ -523,7 +607,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         {procedure.slug === "blomdahl-ear-piercing" && (
           <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="infant-ear-piercing">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Babies & young kids</p>
+            <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Babies & young kids</p>
             <h2 id="infant-ear-piercing" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
               Infant &amp; baby ear piercing with a pediatric nurse practitioner
             </h2>
@@ -553,8 +637,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         {procedure.slug === "blomdahl-ear-piercing" && (
           <section className="mx-auto mt-12 max-w-4xl text-left">
-            <div className="rounded-3xl border border-base-300 bg-base-100 p-6 shadow-sm">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Choose your ear piercing path</p>
+            <div className="border border-base-300 bg-base-100 p-6">
+              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Choose your ear piercing path</p>
               <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">
                 Start with the question your family is actually asking
               </h2>
@@ -573,7 +657,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   <Link
                     key={href}
                     href={href}
-                    className="group rounded-2xl border border-base-300 bg-base-100 px-4 py-4 transition hover:border-primary hover:shadow-sm"
+                    className="group border border-base-300 bg-base-100 px-4 py-4 transition hover:border-primary hover:shadow-sm"
                   >
                     <span className="block text-base font-semibold text-base-content group-hover:text-primary">{label}</span>
                     <span className="mt-1 block text-sm leading-relaxed text-base-content/65">{copy}</span>
@@ -586,8 +670,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         {procedure.slug === "blomdahl-ear-piercing" && (
           <section className="mx-auto mt-8 max-w-4xl text-left">
-            <div className="rounded-3xl border border-base-300 bg-base-100 p-6 shadow-sm">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Nearby pages</p>
+            <div className="border border-base-300 bg-base-100 p-6">
+              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Nearby pages</p>
               <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">Plan around your route</h2>
               <p className="mt-3 text-base leading-relaxed text-base-content/70">
                 Start with the local page closest to your visit for directions, expectations, and family planning notes.
@@ -601,7 +685,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   <Link
                     key={href}
                     href={href}
-                    className="group flex items-center justify-between rounded-2xl border border-base-300 bg-base-100 px-4 py-3 text-sm font-medium text-base-content transition hover:border-primary hover:text-primary"
+                    className="group flex items-center justify-between border border-base-300 bg-base-100 px-4 py-3 text-sm font-medium text-base-content transition hover:border-primary hover:text-primary"
                   >
                     <span>{label}</span>
                     <span aria-hidden="true" className="text-base-content/35 transition group-hover:translate-x-0.5 group-hover:text-primary">
@@ -616,8 +700,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
 
         <div className="text-center">
 
-        <div className="my-32 text-center max-w-5xl mx-auto" id="benefits">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
+        <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24" id="benefits">
+          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
             {procedure.slug === "prp-breast-lift" ? (
               "What this treatment approach involves"
             ) : procedure.slug === "prp-hair-restoration" ? (
@@ -629,7 +713,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           <p className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.benefitsHeadline)}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {procedure.benefits.map(({ emoji, benefit, description }) => (
-              <Card key={benefit} className="text-left bg-primary text-primary-content border-4 border-primary">
+              <Card key={benefit} className="text-left border border-base-300 bg-base-100 text-base-content">
                 <CardHeader>
                   <CardTitle>
                     {emoji} {benefit}
@@ -639,6 +723,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               </Card>
             ))}
           </div>
+          <NamedReviews serviceSlug={procedure.slug} heading={`${procedure.name} reviews`} />
           {Boolean(procedure.testimonials?.length) && (
             <ProcedureTestimonials procedureName={procedure.name} items={procedure.testimonials} />
           )}
@@ -646,12 +731,12 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
         </div>
 
         {hasAilments && (
-          <div className="my-32 text-center max-w-7xl mx-auto" id="applications">
-            <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
+          <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24" id="applications">
+            <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
               How can{" "}
               {[
-                "o-shot",
-                "p-shot",
+                "oh-shot",
+                "pe-shot",
                 "prp-face-lift",
                 "prp-facial",
                 "prp-breast-lift",
@@ -666,16 +751,11 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
                   return (
                     <Card
                       key={title}
-                      className={twMerge(
-                        "text-left border-4",
-                        tag === "common" && "bg-primary border-primary text-primary-content",
-                        tag === "uncommon" && "bg-purple-500 border-purple-400 text-white",
-                        tag === "experimental" && "bg-rose-500 border-rose-400 text-white"
-                      )}
+                      className="border border-base-300 bg-base-100 text-left text-base-content"
                     >
                       <CardHeader>
                         <CardTitle className="flex items-center justify-between">
-                          {title} <Badge>{ailmentsTagLabels[tag] ?? "Treatment Area"}</Badge>
+                          {title} <Badge variant="outline">{ailmentsTagLabels[tag] ?? "Treatment Area"}</Badge>
                         </CardTitle>
                       </CardHeader>
                       <CardContent>{humanizeMedicalCopy(description)}</CardContent>
@@ -687,8 +767,8 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
           </div>
         )}
 
-        <div className="my-32 text-center max-w-5xl mx-auto" id="faqs">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-center font-light">
+        <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24 max-w-3xl" id="faqs">
+          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
             Frequently Asked Questions about <span className="font-bold">{procedure.name}</span>
           </h2>
           <p className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.faqHeadline)}</p>
@@ -700,11 +780,20 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               </AccordionItem>
             ))}
           </Accordion>
+          {procedure.slug === "blomdahl-ear-piercing" ? (
+            <p className="mb-12 max-w-3xl text-base leading-relaxed text-base-content/80">
+              The cassette-versus-gun comparison is written out in the{" "}
+              <Link href="/blog/medical-ear-piercing-vs-mall-piercing" className="link link-primary">
+                medical ear piercing versus mall piercing guide
+              </Link>
+              .
+            </p>
+          ) : null}
           <CtaButtons consultHref={ownerConsultationHref} />
         </div>
 
         {Boolean(articles.length) && (
-          <section className="my-32 scroll-mt-28" id="posts" aria-labelledby="procedure-posts-heading">
+          <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="posts" aria-labelledby="procedure-posts-heading">
             <div className="mx-auto max-w-6xl px-6 md:px-0">
               <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div className="max-w-3xl">
@@ -726,7 +815,7 @@ export default async function ProcedurePage({ params: { slug } }: { params: { sl
               <p className="mt-5 max-w-4xl text-base leading-relaxed text-base-content/70 md:text-lg">
                 {humanizeMedicalCopy(procedure.blogHeadline)}
               </p>
-              <BlogPostCollection articles={articles} />
+              <BlogPostCollection articles={articles} tone="editorial" />
             </div>
           </section>
         )}

@@ -108,14 +108,13 @@ export default async function ArticlePage({
         />
         {metadata?.faqs && <StructuredData type="FAQ" faqs={metadata.faqs} />}
         <ArticleHeader metadata={metadata} />
-        <BlogCTA />
         <article className="mx-auto mt-12 w-full max-w-3xl">
           <Content />
         </article>
         {metadata?.faqs && metadata.faqs.length > 0 && (
           <section className="mx-auto mt-16 w-full max-w-3xl border-t border-base-300 pt-10" id="faqs">
-            <p className="text-xs uppercase tracking-[0.18em] text-base-content/60">FAQ</p>
-            <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">Frequently asked questions</h2>
+            <p className="eyebrow">FAQ</p>
+            <h2 className="mt-3 text-3xl tracking-tight text-base-content md:text-4xl">Frequently asked questions</h2>
             <div className="mt-6 space-y-6">
               {metadata.faqs.map(({ question, answer }) => (
                 <div key={question}>
@@ -130,8 +129,8 @@ export default async function ArticlePage({
           <div className="mx-auto mt-16 w-full max-w-3xl border-t border-base-300 pt-10">
             {relatedProcedures.length > 0 && (
               <section aria-labelledby="related-treatments-heading">
-                <p className="text-xs uppercase tracking-[0.18em] text-base-content/60">Related Treatments</p>
-                <h2 id="related-treatments-heading" className="mt-3 text-2xl font-light tracking-tight text-base-content">
+                <p className="eyebrow">Related Treatments</p>
+                <h2 id="related-treatments-heading" className="mt-3 text-3xl tracking-tight text-base-content">
                   Keep this research tied to the treatment page.
                 </h2>
                 <p className="mt-3 max-w-2xl text-base leading-relaxed text-base-content/75">
@@ -160,8 +159,8 @@ export default async function ArticlePage({
                 aria-labelledby="keep-reading-heading"
                 className={relatedProcedures.length > 0 ? "mt-10 border-t border-base-300 pt-10" : undefined}
               >
-                <p className="text-xs uppercase tracking-[0.18em] text-base-content/60">Keep Reading</p>
-                <h2 id="keep-reading-heading" className="mt-3 text-2xl font-light tracking-tight text-base-content">
+                <p className="eyebrow">Keep Reading</p>
+                <h2 id="keep-reading-heading" className="mt-3 text-3xl tracking-tight text-base-content">
                   More articles in the same treatment cluster.
                 </h2>
                 <div className="mt-6 space-y-6">

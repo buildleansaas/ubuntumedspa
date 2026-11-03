@@ -4,6 +4,13 @@ Date: 2026-07-21
 Owner URL: `https://www.williamsburgmedspa.com/procedures/prp-hair-restoration`
 Parent sequence: PRP Breast Lift owner page, PR #73
 
+## Oct 2026 baselines from issue #120
+
+Recorded so the Oct 2026 roadmap does not start a second hair PR. Close #120 when this slice's D7 measurement is complete.
+
+- `female hair transplant williamsburg`: 83 impressions, average position 3.3, 0 clicks on the procedure page
+- `hairline transplant williamsburg`: 77 impressions, average position 6.1, 0 clicks
+
 ## Release state
 
 This is the next prepared owner-page slice in the protected Williamsburg sequence. It may be reviewed in draft after the PRP Breast Lift page is production-ready. It must not merge until the Breast page has completed its D7 Search Console measurement and the owner ledger still shows the Hair page is safe to release.

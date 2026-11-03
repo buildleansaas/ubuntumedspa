@@ -2,10 +2,28 @@ import addMDX from "@next/mdx";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
+import { LIP_FILLER_ENABLED } from "./src/config/feature-flags.mjs";
+
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   async redirects() {
+    const lipFillerRedirects = LIP_FILLER_ENABLED
+      ? []
+      : [
+          {
+            source: "/procedures/filler/for/lip-augmentation",
+            destination: "/procedures/filler",
+            permanent: false,
+          },
+          {
+            source: "/blog/get-your-dream-lips-with-dermal-fillers",
+            destination: "/procedures/filler",
+            permanent: false,
+          },
+        ];
+
     return [
+      ...lipFillerRedirects,
       {
         source: "/:path*",
         has: [{ type: "host", value: "williamsburgmedspa.com" }],
@@ -14,78 +32,123 @@ const nextConfig = {
       },
       {
         source: "/procedures/feminine-intimacy-prp-protocols",
-        destination: "/procedures/o-shot",
+        destination: "/procedures/oh-shot",
         permanent: true,
       },
       {
         source: "/procedures/male-intimacy-prp-protocols",
-        destination: "/procedures/p-shot",
+        destination: "/procedures/pe-shot",
         permanent: true,
       },
       {
         source: "/blog/revitalize-sexual-health-female-intimacy-prp-protocols-vaginal-dryness",
-        destination: "/blog/o-shot-for-vaginal-dryness-what-to-know",
+        destination: "/blog/oh-shot-for-vaginal-dryness-what-to-know",
         permanent: true,
       },
       {
         source: "/procedures/feminine-intimacy-prp-protocols/for/vaginal-dryness",
-        destination: "/blog/o-shot-for-vaginal-dryness-what-to-know",
+        destination: "/blog/oh-shot-for-vaginal-dryness-what-to-know",
         permanent: true,
       },
       {
         source: "/procedures/feminine-intimacy-prp-protocols/for/urinary-incontinence",
-        destination: "/procedures/o-shot",
+        destination: "/procedures/oh-shot",
         permanent: true,
       },
       {
         source: "/procedures/feminine-intimacy-prp-protocols/for/dyspareunia",
-        destination: "/procedures/o-shot",
+        destination: "/procedures/oh-shot",
         permanent: true,
       },
       {
         source: "/procedures/feminine-intimacy-prp-protocols/for/low-libido",
-        destination: "/procedures/o-shot",
+        destination: "/procedures/oh-shot",
         permanent: true,
       },
       {
         source: "/procedures/feminine-intimacy-prp-protocols/for/sexual-dysfunction",
-        destination: "/procedures/o-shot",
+        destination: "/procedures/oh-shot",
         permanent: true,
       },
       {
         source: "/procedures/feminine-intimacy-prp-protocols/for/lichen-sclerosus",
-        destination: "/procedures/o-shot",
+        destination: "/procedures/oh-shot",
         permanent: true,
       },
       {
         source: "/procedures/feminine-intimacy-prp-protocols/treating-vaginal-dryness",
-        destination: "/blog/o-shot-for-vaginal-dryness-what-to-know",
+        destination: "/blog/oh-shot-for-vaginal-dryness-what-to-know",
         permanent: true,
       },
       {
         source: "/procedures/feminine-intimacy-prp-protocols/treating-urinary-incontinence",
-        destination: "/procedures/o-shot",
+        destination: "/procedures/oh-shot",
         permanent: true,
       },
       {
         source: "/procedures/feminine-intimacy-prp-protocols/treating-dyspareunia",
-        destination: "/procedures/o-shot",
+        destination: "/procedures/oh-shot",
         permanent: true,
       },
       {
         source: "/procedures/feminine-intimacy-prp-protocols/treating-low-libido",
-        destination: "/procedures/o-shot",
+        destination: "/procedures/oh-shot",
         permanent: true,
       },
       {
         source: "/procedures/feminine-intimacy-prp-protocols/treating-sexual-dysfunction",
-        destination: "/procedures/o-shot",
+        destination: "/procedures/oh-shot",
         permanent: true,
       },
       {
         source: "/procedures/feminine-intimacy-prp-protocols/treating-lichen-sclerosus",
-        destination: "/procedures/o-shot",
+        destination: "/procedures/oh-shot",
         permanent: true,
+      },
+      {
+        source: "/procedures/o-shot",
+        destination: "/procedures/oh-shot",
+        statusCode: 301,
+      },
+      {
+        source: "/procedures/o-shot/for/:ailmentSlug",
+        destination: "/procedures/oh-shot",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/o-shot-for-vaginal-dryness-what-to-know",
+        destination: "/blog/oh-shot-for-vaginal-dryness-what-to-know",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/o-shot-for-urinary-incontinence-williamsburg-va",
+        destination: "/blog/oh-shot-for-urinary-incontinence-williamsburg-va",
+        statusCode: 301,
+      },
+      {
+        source: "/procedure/o-shot/:path*",
+        destination: "/procedure/oh-shot/:path*",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/o-shot/:path*",
+        destination: "/blog/oh-shot/:path*",
+        statusCode: 301,
+      },
+      {
+        source: "/procedures/p-shot",
+        destination: "/procedures/pe-shot",
+        statusCode: 301,
+      },
+      {
+        source: "/procedures/p-shot/for/:ailmentSlug",
+        destination: "/procedures/pe-shot",
+        statusCode: 301,
+      },
+      {
+        source: "/procedure/pshot-consultation-confidence.webp",
+        destination: "/procedure/pe-shot-consultation-confidence.webp",
+        statusCode: 301,
       },
       {
         source: "/affiliates",
@@ -137,7 +200,7 @@ const nextConfig = {
         ["/procedures/xeomin/near/williamsburg-va", "/procedures/xeomin"],
         ["/procedures/botox/for/:ailmentSlug", "/procedures/botox"],
         ["/procedures/filler/for/:ailmentSlug", "/procedures/filler"],
-        ["/procedures/o-shot/for/:ailmentSlug", "/procedures/o-shot"],
+        ["/procedures/oh-shot/for/:ailmentSlug", "/procedures/oh-shot"],
         ["/procedures/hyperhidrosis-treatment/for/:ailmentSlug", "/procedures/hyperhidrosis-treatment"],
         ["/blog/beginners-guide-to-platelet-rich-plasma-therapy", "/procedures"],
         ["/blog/naturally-heal-joint-pain-prp-therapy", "/procedures/joint-restoration"],

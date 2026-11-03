@@ -4,19 +4,28 @@ import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
+import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near Newport News, VA | Botox, Fillers, PRP & Piercing",
+  title: "Med Spa Newport News | Botox at Our Williamsburg Clinic",
   description:
-    "Planning a med spa visit from Newport News? Compare Botox, Xeomin, dermal fillers, PRP, hyperhidrosis care, and medical ear piercing at Williamsburg Med Spa.",
+    "Med spa Newport News patients drive to our Williamsburg clinic on Powhatan Parkway for Botox, Xeomin, fillers, and PRP.",
   canonical: "/locations/newport-news-va",
 });
 
 const serviceLinks = [
   { href: "/procedures/botox", label: "Botox near Newport News", note: "Expression-line consultation with a natural, measured plan." },
   { href: "/procedures/xeomin", label: "Xeomin near Newport News", note: "A neuromodulator option for frown lines and movement-related concerns." },
-  { href: "/procedures/filler", label: "Dermal fillers near Newport News", note: "Lips, cheeks, under-eyes, and balanced facial support." },
-  { href: "/procedures/blomdahl-ear-piercing/near/newport-news-va", label: "Medical ear piercing near Newport News", note: "Sterile Blomdahl piercing for children, teens, and adults." },
+  {
+    href: "/procedures/filler",
+    label: "Dermal fillers near Newport News",
+    note: LIP_FILLER_ENABLED
+      ? "Lips, cheeks, under-eyes, and balanced facial support."
+      : "Cheeks, under-eyes, and balanced facial support.",
+  },
+  { href: "/procedures/blomdahl-ear-piercing", label: "Blomdahl ear piercing", note: "Sterile single-use cassettes and hypoallergenic starter earrings at the Williamsburg clinic." },
+  { href: "/procedures/blomdahl-ear-piercing/for/children", label: "Infant and kids ear piercing", note: "For parents planning a baby's or child's first earrings." },
+  { href: "/procedures/blomdahl-ear-piercing/near/newport-news-va", label: "Newport News visit notes", note: "Driving notes for a Williamsburg piercing appointment." },
 ];
 
 const faqs = [
@@ -47,12 +56,12 @@ export default function NewportNewsPage() {
     <div className="max-w-xl md:max-w-6xl mx-auto md:px-8 py-12 md:py-16">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations", "Newport News"]} />
       <StructuredData type="FAQ" faqs={faqs} />
-      <header className="mb-8 md:mb-10 text-center max-w-3xl mx-auto">
+      <header className="mb-10 max-w-3xl text-left md:mb-14">
         <p className="text-sm uppercase tracking-[0.22em] text-primary mb-3">Newport News service area</p>
-        <h1 className="text-3xl md:text-5xl font-light">Med Spa Near Newport News, VA</h1>
+        <h1 className="text-3xl md:text-5xl font-light">Med Spa Newport News, at Our Williamsburg Clinic</h1>
         <p className="text-base md:text-lg text-base-content/70 mt-3">
-          Visit Williamsburg Med Spa from Newport News for natural-looking injectables, PRP therapies, sweating
-          treatment, and nurse-led medical ear piercing in a calm appointment-based clinic.
+          There is no Newport News street address. Botox, Xeomin, fillers, and PRP visits are at Williamsburg Med Spa,
+          3900 Powhatan Parkway, Williamsburg, VA 23188. Take I-64 west toward Route 199 and New Town.
         </p>
       </header>
 
@@ -75,7 +84,7 @@ export default function NewportNewsPage() {
             </Link>
           </div>
         </div>
-        <aside className="rounded-2xl border border-base-300 bg-base-100 p-5 shadow-sm">
+        <aside className="border border-base-300 bg-base-100 p-5">
           <h2 className="text-xl font-light mb-3">Plan your visit</h2>
           <dl className="space-y-3 text-sm text-base-content/75">
             <div>
@@ -98,7 +107,7 @@ export default function NewportNewsPage() {
         <h2 className="text-2xl md:text-3xl font-light mb-4">Newport News Patients Usually Start Here</h2>
         <div className="grid gap-4 md:grid-cols-2">
           {serviceLinks.map((service) => (
-            <Link key={service.href} href={service.href} className="rounded-2xl border border-base-300 p-5 transition hover:border-primary/50 hover:bg-base-200/40">
+            <Link key={service.href} href={service.href} className="border border-base-300 p-5 transition hover:border-primary/40 hover:bg-base-200/40">
               <span className="font-medium text-base-content">{service.label}</span>
               <p className="mt-2 text-sm text-base-content/70">{service.note}</p>
             </Link>
@@ -128,7 +137,7 @@ export default function NewportNewsPage() {
               <h3 className="text-lg font-medium mb-2">For volume and facial balance</h3>
               <p className="text-base-content/75 mb-2">
                 Start with <Link href="/procedures/filler" className="text-primary hover:underline">dermal filler</Link> if you
-                want to discuss lips, cheeks, under-eyes, contour, or balanced facial support.
+                want to discuss {LIP_FILLER_ENABLED ? "lips, cheeks, under-eyes" : "cheeks, under-eyes"}, contour, or balanced facial support.
               </p>
             </div>
           </div>
@@ -148,7 +157,7 @@ export default function NewportNewsPage() {
             <li>Turn onto Powhatan Parkway and look for the clinic entrance near the main lot.</li>
           </ol>
         </div>
-        <div className="rounded-2xl border border-base-300 p-5">
+        <div className="border border-base-300 p-5">
           <h2 className="text-2xl md:text-3xl font-light mb-3">Why Make the Trip?</h2>
           <ul className="space-y-2 text-base-content/80">
             <li>Talk through your goals with Jenny Coleman before choosing a treatment.</li>
@@ -170,7 +179,7 @@ export default function NewportNewsPage() {
         </div>
       </section>
 
-      <section className="mb-10 md:mb-12 rounded-2xl border border-base-300 p-5 md:p-6">
+      <section className="mb-10 md:mb-12 border border-base-300 p-6 md:p-8">
         <h2 className="text-2xl md:text-3xl font-light mb-3">Local Planning Notes</h2>
         <p className="text-base md:text-lg text-base-content/80 mb-4">
           If you are comparing Newport News options, start with the service that matches your question. Injectable visits

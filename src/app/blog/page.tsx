@@ -18,16 +18,16 @@ export default async function BlogPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 md:px-8">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Blog"]} />
-      <header className="mx-auto max-w-3xl py-12 text-left sm:py-16 md:text-center">
-        <p className="text-xs uppercase tracking-[0.22em] text-base-content/60">Treatment Education</p>
-        <h1 className="mt-4 text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light tracking-tight text-base-content text-balance">
+      <header className="max-w-3xl py-14 text-left md:py-20">
+        <p className="eyebrow">Treatment Education</p>
+        <h1 className="mt-4 text-4xl leading-[1.08] tracking-tight text-balance text-base-content sm:text-5xl md:text-6xl">
           Williamsburg Med Spa Blog
         </h1>
-        <p className="mt-5 text-base leading-relaxed text-base-content/70 md:text-lg">
+        <p className="mt-5 max-w-[62ch] text-base leading-relaxed text-base-content/85 md:text-lg">
           Newest treatment guides, planning notes, and local med spa education from Williamsburg Med Spa.
         </p>
       </header>
-      <BlogPostCollection articles={articles} featuredFirst />
+      <BlogPostCollection articles={articles} featuredFirst tone="editorial" />
       <CtaFooter />
     </div>
   );

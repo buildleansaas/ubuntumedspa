@@ -1,6 +1,6 @@
 import React from "react";
 import Script from "next/script";
-import { Manrope } from "next/font/google";
+import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
 
 import "./globals.css";
 import ClientUtilities from "components/client-utilities";
@@ -16,7 +16,14 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-const editorialSans = Manrope({
+const editorialSerif = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  variable: "--font-editorial-serif",
+  display: "swap",
+});
+
+const editorialSans = Source_Sans_3({
   subsets: ["latin"],
   variable: "--font-editorial-sans",
   display: "swap",
@@ -37,11 +44,8 @@ export const metadata: Metadata = {
     shortcut: ["/favicon.ico?v=2"],
     apple: [{ url: "/apple-touch-icon.png?v=2", sizes: "180x180", type: "image/png" }],
   },
-  colorScheme: "light dark",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f5f5" },
-    { media: "(prefers-color-scheme: dark)", color: "#363d3b" },
-  ],
+  colorScheme: "light",
+  themeColor: "#fbfaf7",
   alternates: { canonical: "/" },
   openGraph: {
     title: DEFAULT_TITLE,
@@ -67,7 +71,7 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <html lang="en" className={`${editorialSans.variable} bg-base-100`}>
+    <html lang="en" data-theme="wms-editorial" className={`${editorialSerif.variable} ${editorialSans.variable} bg-base-100`}>
       <Script strategy="lazyOnload" id="gtag" src="https://www.googletagmanager.com/gtag/js?id=G-FBEPLGSS9L" />
       <Script id="google-analytics" strategy="lazyOnload">
         {`
@@ -84,7 +88,7 @@ export default function Layout({ children }: LayoutProps) {
           <StructuredData type="Organization" />
           <StructuredData type="LocalBusiness" />
           <div className="min-h-screen w-full">
-            <div className="sticky top-0 z-40 w-full border-b border-base-300 bg-base-100 shadow-sm">
+            <div className="sticky top-0 z-40 w-full border-b border-base-300 bg-base-100/95 backdrop-blur-md">
               <div className="mx-auto w-full px-3 sm:px-4 md:max-w-7xl md:px-8">
                 <Header />
               </div>
