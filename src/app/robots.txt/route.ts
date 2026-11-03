@@ -4,6 +4,7 @@ export const dynamic = "force-static";
 const body = `User-Agent: *
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
+Disallow: /gbp
 
 Sitemap: https://www.williamsburgmedspa.com/sitemap.xml
 `;
