@@ -121,7 +121,7 @@ export const buildCustomerEmail = (order: OrderRecord) => {
     ``,
     `Questions? Just reply to this email.`,
     ``,
-    `After your visit, a quick Google review helps other families find us:`,
+    `After your visit, a quick Google review helps others find us:`,
     GOOGLE_REVIEW_URL,
     ``,
     `Jenny`,
@@ -138,7 +138,7 @@ export const buildCustomerEmail = (order: OrderRecord) => {
     ${order.requiresScheduling ? `<p><strong>Next step:</strong> <a href="${bookingUrl}">pick your appointment time</a>.</p>` : ""}
     ${hasPickupItems(order) ? `<p>${PICKUP_LINE_CUSTOMER}</p>` : ""}
     <p>Questions? Just reply to this email.</p>
-    <p>After your visit, a quick <a href="${GOOGLE_REVIEW_URL}">Google review</a> helps other families find us.</p>
+    <p>After your visit, a quick <a href="${GOOGLE_REVIEW_URL}">Google review</a> helps others find us.</p>
     <p>Jenny<br>Williamsburg Med Spa</p>
   `;
 

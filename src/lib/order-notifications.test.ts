@@ -119,4 +119,5 @@ test("receipt asks for a Google review after the visit; the owner alert does not
   assert.ok(receipt.text.includes(GOOGLE_REVIEW_URL));
   assert.ok(receipt.html.includes(`href="${GOOGLE_REVIEW_URL}"`));
   assert.ok(!buildOwnerEmail(order).text.includes(GOOGLE_REVIEW_URL));
+  assert.ok(!buildOwnerEmail(order).html.includes(GOOGLE_REVIEW_URL));
 });
