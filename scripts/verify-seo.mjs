@@ -1130,10 +1130,11 @@ for (const path of internalPaths) {
 for (const page of pages) {
   if (/"name":"Filler"/.test(page.html)) fail(`${page.canonicalUrl} still renders a Filler Service or Offer schema`);
   // The old surname is allowed in exactly one place: a Person JSON-LD "alternateName" (approved by Austin).
-  // It must never appear in visible text, meta tags, or any other schema field.
+  // It must never appear in visible text, meta tags, or any other schema field. Inside scripts the same
+  // field also appears escaped in the React flight payload that carries the JSON-LD, so both forms are allowed.
   const htmlWithoutAllowedAlternateName = page.html.replace(
-    /(<script[^>]+type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi,
-    (_, open, json, close) => `${open}${json.replace(/"alternateName":"Jenny Coleman"/g, "")}${close}`
+    /(<script\b[^>]*>)([\s\S]*?)(<\/script>)/gi,
+    (_, open, body, close) => `${open}${body.replace(/\\*"alternateName\\*":\\*"Jenny Coleman\\*"/g, "")}${close}`
   );
   if (/Jenny\s+Coleman/i.test(htmlWithoutAllowedAlternateName)) {
     fail(`${page.canonicalUrl} still names Jenny Coleman outside the Person alternateName`);
