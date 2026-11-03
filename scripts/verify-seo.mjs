@@ -1129,9 +1129,25 @@ for (const path of internalPaths) {
 }
 for (const page of pages) {
   if (/"name":"Filler"/.test(page.html)) fail(`${page.canonicalUrl} still renders a Filler Service or Offer schema`);
-  if (/Jenny\s+Coleman/.test(page.html)) {
-    fail(`${page.canonicalUrl} still names Jenny Coleman`);
+  // The old surname is allowed in exactly one place: a Person JSON-LD "alternateName" (approved by Austin).
+  // It must never appear in visible text, meta tags, or any other schema field.
+  const htmlWithoutAllowedAlternateName = page.html.replace(
+    /(<script[^>]+type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi,
+    (_, open, json, close) => `${open}${json.replace(/"alternateName":"Jenny Coleman"/g, "")}${close}`
+  );
+  if (/Jenny\s+Coleman/i.test(htmlWithoutAllowedAlternateName)) {
+    fail(`${page.canonicalUrl} still names Jenny Coleman outside the Person alternateName`);
   }
+  if (/Coleman/i.test(getVisibleText(page.html))) fail(`${page.canonicalUrl} shows the old surname in visible text`);
+}
+const staffPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/staff/jenny-brady");
+const staffPersons = [...(staffPage?.html || "").matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)]
+  .map((match) => JSON.parse(unescapeHtml(match[1])))
+  .flatMap((schema) => (Array.isArray(schema?.["@graph"]) ? schema["@graph"] : [schema]))
+  .filter((schema) => schema?.["@type"] === "Person" && schema?.name === "Jenny Brady");
+if (!staffPersons.length) fail("/staff/jenny-brady is missing Jenny Brady Person schema");
+if (!staffPersons.some((person) => person.alternateName === "Jenny Coleman")) {
+  fail('/staff/jenny-brady Person schema is missing alternateName "Jenny Coleman"');
 }
 
 const priorityPaths = [

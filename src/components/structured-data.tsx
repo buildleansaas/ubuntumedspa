@@ -101,6 +101,8 @@ const author = [
   {
     "@type": "Person",
     name: "Jenny Brady",
+    // Former surname, approved by Austin for search data only (issue #147). Never shown in visible copy.
+    alternateName: "Jenny Coleman",
     url: `${ORIGIN}/staff/jenny-brady`,
   },
 ];
@@ -363,6 +365,7 @@ const getMarkup = ({
         "@context": "https://schema.org",
         "@type": "Person",
         name: author[0].name,
+        alternateName: author[0].alternateName,
         url: author[0].url,
         jobTitle: "Aesthetic Nurse Practitioner",
         honorificSuffix: "MSN, RN, CPNP, PMHS",
