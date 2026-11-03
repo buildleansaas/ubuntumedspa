@@ -78,4 +78,5 @@ export const cardPriceLabel = (cashCents: number) => formatUsdShort(cardPriceCen
 /** Card price as a schema.org Offer price string, e.g. "46.66". */
 export const cardPriceSchemaValue = (cashCents: number) => (cardPriceCents(cashCents) / 100).toFixed(2);
 
-export const CARD_CASH_NOTE = "Online prices are card prices. Paying cash in the office? You pay the cash price.";
+export const CARD_CASH_NOTE =
+  "Card prices apply online and to card payments in the office. Paying cash in the office? You pay the cash price.";
