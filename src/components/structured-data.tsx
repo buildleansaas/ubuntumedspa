@@ -1,6 +1,8 @@
 import { officialProfiles } from "data/official-profiles";
 import { jennyCredentialNames, jennyKnowsAbout } from "lib/jenny-profile";
 
+import type { JSX } from "react";
+
 const SITE_NAME = "Williamsburg Med Spa";
 const DEFAULT_DESCRIPTION = "";
 const ORIGIN = "https://www.williamsburgmedspa.com";

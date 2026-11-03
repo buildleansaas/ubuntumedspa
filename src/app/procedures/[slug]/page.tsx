@@ -107,9 +107,10 @@ const relatedProcedureLinks: Record<string, Array<{ href: string; label: string 
   ],
 };
 
-type Params = { params: { slug: string } };
+type Params = { params: Promise<{ slug: string }> };
 
-export async function generateMetadata({ params }: Params) {
+export async function generateMetadata(props: Params) {
+  const params = await props.params;
   const procedure = procedures.find((med) => med.slug === params.slug);
   const seo = procedure?.seo;
   const headingTitle = seo?.title ?? "Procedure";
@@ -150,7 +151,13 @@ export async function generateMetadata({ params }: Params) {
   };
 }
 
-export default async function ProcedurePage({ params: { slug } }: { params: { slug: string } }) {
+export default async function ProcedurePage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const procedure = procedures.find((procedure) => procedure.slug === slug);
   if (!procedure) return notFound();
   const catalogItem = getCatalogConfigBySlug(slug);

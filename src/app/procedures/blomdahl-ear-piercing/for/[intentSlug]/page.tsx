@@ -18,13 +18,14 @@ import { buildPageMetadata } from "lib/metadata";
 
 const ORIGIN = "https://www.williamsburgmedspa.com";
 
-type Params = { params: { intentSlug: string } };
+type Params = { params: Promise<{ intentSlug: string }> };
 
 export function generateStaticParams() {
   return publishedEarPiercingIntentPages.map((page) => ({ intentSlug: page.slug }));
 }
 
-export function generateMetadata({ params }: Params): Metadata {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const params = await props.params;
   const page = getPublishedEarPiercingIntentPage(params.intentSlug);
   if (!page) {
     return buildPageMetadata({
@@ -41,7 +42,8 @@ export function generateMetadata({ params }: Params): Metadata {
   });
 }
 
-export default function EarPiercingIntentPage({ params }: Params) {
+export default async function EarPiercingIntentPage(props: Params) {
+  const params = await props.params;
   const page = getPublishedEarPiercingIntentPage(params.intentSlug);
   if (!page) return notFound();
 

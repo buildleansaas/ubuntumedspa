@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, JSX } from "react";
 import type { MDXComponents } from "mdx/types";
 import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 import { cn } from "lib/utils";

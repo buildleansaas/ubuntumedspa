@@ -13,7 +13,8 @@ import {
 
 const getRequiredString = (value: EventFieldValue) => (typeof value === "string" ? value : "");
 
-export async function POST(req: NextRequest, { params }: { params: { slug: string } }) {
+export async function POST(req: NextRequest, props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const event = getEventBySlug(params.slug);
 
   if (!event) {

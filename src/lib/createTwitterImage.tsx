@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/server";
+import { ImageResponse } from "next/og";
 import { DEFAULT_TITLE } from "lib/seo";
 import { SOCIAL_LOGO_DATA_URI } from "lib/socialLogo";
 
