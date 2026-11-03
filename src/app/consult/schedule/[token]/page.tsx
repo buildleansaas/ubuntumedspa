@@ -6,7 +6,13 @@ import { getConsultRequestByToken } from "lib/consults";
 
 export const dynamic = "force-dynamic";
 
-export default async function ConsultSchedulingPage({ params: { token } }: { params: { token: string } }) {
+export default async function ConsultSchedulingPage(props: { params: Promise<{ token: string }> }) {
+  const params = await props.params;
+
+  const {
+    token
+  } = params;
+
   const consultRequest = await getConsultRequestByToken(token);
   if (!consultRequest) return notFound();
 

@@ -7,11 +7,12 @@ import { buildEventMetadataPayload, getEventBySlug } from "lib/events";
 
 export const dynamic = "force-dynamic";
 
-export default async function EventSchedulingPage({
-  params,
-}: {
-  params: { slug: string; token: string };
-}) {
+export default async function EventSchedulingPage(
+  props: {
+    params: Promise<{ slug: string; token: string }>;
+  }
+) {
+  const params = await props.params;
   const event = getEventBySlug(params.slug);
   if (!event) return notFound();
 

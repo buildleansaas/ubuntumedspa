@@ -40,13 +40,14 @@ function getAreaEyebrow(area: { name: string; serviceAreaLabel: string }) {
   return area.name === "Williamsburg" ? "Williamsburg medical-grade ear piercing" : `${area.serviceAreaLabel} service area`;
 }
 
-type Params = { params: { areaSlug: string } };
+type Params = { params: Promise<{ areaSlug: string }> };
 
 export function generateStaticParams() {
   return publishedEarPiercingAreas.map((area) => ({ areaSlug: area.slug }));
 }
 
-export function generateMetadata({ params }: Params): Metadata {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const params = await props.params;
   const area = getPublishedEarPiercingAreaBySlug(params.areaSlug);
   if (!area || !procedure) {
     return buildPageMetadata({
@@ -63,7 +64,8 @@ export function generateMetadata({ params }: Params): Metadata {
   });
 }
 
-export default function EarPiercingAreaPage({ params }: Params) {
+export default async function EarPiercingAreaPage(props: Params) {
+  const params = await props.params;
   const area = getPublishedEarPiercingAreaBySlug(params.areaSlug);
   if (!area || !procedure) return notFound();
 

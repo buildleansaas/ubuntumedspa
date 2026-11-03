@@ -12,11 +12,12 @@ import { getOrderByPublicToken, syncOrderFromStripeSession } from "lib/orders";
 
 export const dynamic = "force-dynamic";
 
-export default async function CheckoutSuccessPage({
-  searchParams,
-}: {
-  searchParams: { order?: string };
-}) {
+export default async function CheckoutSuccessPage(
+  props: {
+    searchParams: Promise<{ order?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const orderToken = searchParams.order;
   if (!orderToken) return notFound();
 

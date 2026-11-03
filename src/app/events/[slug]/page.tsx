@@ -13,14 +13,15 @@ import { ORIGIN } from "lib/seo";
 import EventForm from "../event-form";
 
 type PageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
   return getPublishedEvents().map((event) => ({ slug: event.slug }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const event = getEventBySlug(params.slug);
 
   if (!event) {
@@ -43,7 +44,8 @@ const sectionHeadingClass = "mt-4 text-3xl/snug md:text-4xl/snug font-light trac
 const sectionBodyClass = "mt-4 text-base md:text-lg leading-relaxed text-base-content/80";
 const surfaceCardClass = "border border-base-300 bg-base-100 p-5";
 
-export default function EventDetailPage({ params }: PageProps) {
+export default async function EventDetailPage(props: PageProps) {
+  const params = await props.params;
   const event = getEventBySlug(params.slug);
   if (!event || !event.published) return notFound();
 

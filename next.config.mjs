@@ -6,6 +6,9 @@ import { LIP_FILLER_ENABLED } from "./src/config/feature-flags.mjs";
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
+  // Next 15 streams metadata into <body> for clients it does not class as HTML-limited bots
+  // (Googlebot included). Keep every title/description/canonical in <head>, as on Next 13.
+  htmlLimitedBots: /.*/,
   async redirects() {
     const lipFillerRedirects = LIP_FILLER_ENABLED
       ? []
