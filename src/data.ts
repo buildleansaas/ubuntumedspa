@@ -1228,25 +1228,25 @@ export const procedures = [
     seo: {
       title: "PRP Face Lift in Williamsburg, VA",
       description:
-        "Non-surgical PRP Face Lift in Williamsburg, VA combining filler, neuromodulators, and PRP to gently lift and refresh facial features.",
+        "Non-surgical PRP Face Lift in Williamsburg, VA: Botox and the PRP Facial in one visit, planned at a consultation first. Results vary.",
     },
     description:
-      "The PRP Facelift is a non-invasive cosmetic procedure that involves the use of Botox, Filler, and the PRP Facial to resculpt the face. Botox temporarily paralyzes the muscles that cause wrinkles, reducing the appearance of fine lines and wrinkles. Filler uses hyaluronic acid to add volume and achieve a fuller, more youthful-looking appearance. The PRP Facial stimulates collagen production and tightens the skin, which helps to fill in wrinkles and achieve smoother-looking skin. Together, these three treatments work synergistically to produce natural-looking and long-lasting results. The PRP Facelift is an ideal solution for those who want to enhance their natural beauty and rejuvenate their skin without the pain or downtime of surgical procedures.",
+      "The PRP Face Lift is a non-surgical visit that combines two treatments: Botox and the PRP Facial. Botox temporarily relaxes the muscles behind movement lines such as frown lines, forehead lines, and crow's feet. The PRP Facial uses platelet-rich plasma from a small sample of your own blood to support skin texture and tone. It is not a surgical face lift, it does not remove or tighten skin the way surgery does, and results vary from person to person. Jenny reviews your goals, health history, and whether this combined visit, one treatment alone, or a referral is the better fit before anything is done.",
     headline: "Redefine Your Beauty: Non-Invasive, Long-Lasting Rejuvenation!",
     subline:
-      "The PRP Facelift combines the use of Botox, Filler, and the PRP Facial to rejuvenate and resculpt the face. This non-invasive procedure stimulates collagen production, fills in wrinkles, and provides a smoother, more youthful-looking skin with long-lasting results.",
+      "The PRP Face Lift pairs Botox for movement lines with the PRP Facial for skin texture and tone in one visit. It is non-surgical, results vary, and it starts with a consultation.",
     image: "/procedure/prp-face-lift-consultation-refresh.webp",
     price: cardCashLabel(150000),
     // programmatic SEO copy
     blogHeadline:
-      "Seeking a holistic approach to facial rejuvenation? Our PRP Facelift blog offers a treasure trove of information on how Botox, Filler, and the PRP Facial work synergistically. Discover expert opinions and success tales.",
+      "Comparing non-surgical facial rejuvenation options? These articles explain how Botox and the PRP Facial differ, what each one can and cannot change, and what to ask at a consultation.",
     benefitsHeadline:
-      "Redefine age on your own terms with the synergy of Botox, Filler, and the PRP Facial. Witness a transformation that smoothens, tightens, and revitalizes, revealing a face that's as youthful in appearance as it is in spirit.",
+      "The PRP Face Lift combines Botox and the PRP Facial so movement lines and skin quality can be addressed in one visit. Results vary, and the plan is set at your consultation.",
     benefits: [
       {
         emoji: "🏆",
-        benefit: "Youthful Contouring",
-        description: "The PRP Face Lift redefines facial contours, providing a more youthful profile and appearance.",
+        benefit: "Two Treatments, One Visit",
+        description: "Botox for movement lines and the PRP Facial for skin quality are planned and done in the same appointment.",
       },
       {
         emoji: "🌟",
@@ -1260,13 +1260,13 @@ export const procedures = [
       },
       {
         emoji: "⌛",
-        benefit: "Long-lasting Effects",
+        benefit: "Consultation First",
         description:
-          "The results can last for over a year, reducing the frequency of treatments compared to other cosmetic procedures.",
+          "Jenny reviews your goals and health history first, and maintenance timing is discussed with you because results vary.",
       },
     ],
     ailmentsHeadline:
-      "Revitalize your facial features and turn back the clock on aging with the PRP Face Lift. This unique treatment offers a non-surgical approach to enhancing your face's natural contours, smoothing wrinkles, and boosting volume. Whether you're struggling with sagging skin, fine lines, or simply want a more youthful appearance, the PRP Face Lift can be customized to your needs. Discover how this procedure addresses a range of common and uncommon facial issues and learn which treatments might be most beneficial for you.",
+      "Revitalize your facial features and turn back the clock on aging with the PRP Face Lift. This non-surgical visit pairs Botox for movement lines with the PRP Facial for skin texture and tone. Whether you're struggling with sagging skin, fine lines, or simply want a more youthful appearance, the PRP Face Lift can be customized to your needs. Discover how this procedure addresses a range of common and uncommon facial issues and learn which treatments might be most beneficial for you.",
     ailments: [
       {
         title: "Sagging Skin",
@@ -1288,7 +1288,7 @@ export const procedures = [
       },
       {
         title: "Volume Loss",
-        description: "Restore facial volume naturally with the PRP Face Lift. No synthetic fillers required.",
+        description: "Discuss facial volume loss and whether a PRP Face Lift, another option, or a referral fits the concern.",
         blog_post_title: "Reclaim Your Facial Volume with a PRP Face Lift",
         blog_post_slug: "reclaim-your-facial-volume-with-a-prp-face-lift",
         slug: "volume-loss",
@@ -1312,7 +1312,7 @@ export const procedures = [
       },
       {
         title: "Sunken Cheeks",
-        description: "Add youthful plumpness to sunken cheeks with the PRP Face Lift.",
+        description: "Discuss sunken cheeks and whether a PRP Face Lift, another option, or a referral fits the concern.",
         blog_post_title: "Add Volume to Sunken Cheeks with a PRP Face Lift",
         blog_post_slug: "add-volume-to-sunken-cheeks-with-a-prp-face-lift",
         slug: "sunken-cheeks",
@@ -1389,7 +1389,7 @@ export const procedures = [
       {
         question: "How is the PRP Face Lift different from a traditional face lift?",
         answer:
-          "Unlike surgical face lifts that remove excess skin, the PRP Face Lift uses injections of PRP and hyaluronic acid fillers to restore volume, improve skin texture, and stimulate collagen production.",
+          "A surgical face lift removes and tightens skin. The PRP Face Lift is non-surgical: it combines Botox for movement lines with the PRP Facial for skin texture and tone. It does not replace surgery, and results vary.",
       },
       {
         question: "Is the procedure painful?",
@@ -1403,7 +1403,7 @@ export const procedures = [
       {
         question: "How long do the results last?",
         answer:
-          "Results can last for 12-18 months, varying from person to person. Touch-up treatments can help maintain the effects.",
+          "Results vary from person to person. Botox effects wear off over time, so maintenance timing for both treatments is discussed at your consultation.",
       },
       {
         question: "Are there any side effects?",

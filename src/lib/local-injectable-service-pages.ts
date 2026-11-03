@@ -117,7 +117,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       },
       {
         title: "Lip flip consults",
-        body: "A small neuromodulator plan may be discussed for selected patients, It relaxes the lip muscle rather than adding volume, and it needs the right anatomy.",
+        body: "A small neuromodulator plan may be discussed for selected patients. It relaxes the lip muscle rather than adding volume, and it needs the right anatomy.",
         href: "/procedures/botox/for/lip-flip",
       },
       {

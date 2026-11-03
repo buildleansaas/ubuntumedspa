@@ -3,9 +3,9 @@
 *Last updated: 2026-05-08*
 
 ## Product Overview
-**One-liner:** Williamsburg Med Spa is a Williamsburg, VA medical spa offering calm, medically grounded aesthetic, regenerative, intimate wellness, and medical ear piercing services with Jenny Coleman, MSN, RN, CPNP, PMHS.
+**One-liner:** Williamsburg Med Spa is a Williamsburg, VA medical spa offering calm, medically grounded aesthetic, regenerative, intimate wellness, and medical ear piercing services with Jenny Brady, MSN, RN, CPNP, PMHS.
 
-**What it does:** The clinic helps local patients compare and plan treatments such as OH-Shot, PRP hair restoration, Pe-Shot, PRP therapies, Botox, Xeomin, dermal fillers, hyperhidrosis treatment, and Blomdahl medical ear piercing. Content should help patients understand candidacy, alternatives, risks, and what to ask before booking.
+**What it does:** The clinic helps local patients compare and plan treatments such as OH-Shot, PRP hair restoration, Pe-Shot, PRP therapies, Botox, Xeomin, hyperhidrosis treatment, and Blomdahl medical ear piercing. Content should help patients understand candidacy, alternatives, risks, and what to ask before booking. The clinic does not offer dermal filler or lip filler (removed 2026-11-03); never present it as a service.
 
 **Product category:** Local medical spa, aesthetic clinic, regenerative PRP clinic, OH-Shot provider, medical ear piercing provider.
 
@@ -29,7 +29,7 @@
 - A woman comparing OH-Shot care for bladder leakage, dryness, sensitivity, or intimacy concerns.
 - A parent looking for medical-grade Blomdahl ear piercing for a child or baby.
 - A patient comparing PRP hair restoration with hair transplant surgery.
-- A patient comparing Botox, Xeomin, fillers, PRP, or hyperhidrosis treatment options near Williamsburg.
+- A patient comparing Botox, Xeomin, PRP, or hyperhidrosis treatment options near Williamsburg.
 
 ## Personas
 | Persona | Cares about | Challenge | Value we promise |
@@ -62,7 +62,7 @@
 
 ## Differentiation
 **Key differentiators:**
-- Jenny Coleman has a long medical background and pediatric/mental health credentials.
+- Jenny Brady has a long medical background and pediatric/mental health credentials.
 - OH-Shot positioning is tied to CMA training and branded protocol context.
 - Blomdahl ear piercing is medical-grade, hypoallergenic, and strong for pediatric/first-piercing trust.
 - Content should be unusually clear about who is and is not a likely fit.
@@ -138,7 +138,7 @@
 **Value themes:**
 | Theme | Proof |
 |-------|-------|
-| Medical trust | Jenny Coleman, MSN, RN, CPNP, PMHS; long medical background. |
+| Medical trust | Jenny Brady, MSN, RN, CPNP, PMHS; long medical background. |
 | OH-Shot authority | CMA/OH-Shot training and branded protocol context. |
 | Pediatric trust | Pediatric-aware Blomdahl medical ear piercing. |
 | Local relevance | Williamsburg clinic serving nearby communities within about 30 miles. |

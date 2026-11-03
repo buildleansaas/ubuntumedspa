@@ -4,16 +4,24 @@
  * next.config.mjs spreads these into redirects(); scripts/verify-seo.mjs checks REMOVED_URL_REDIRECT_CHECKS.
  * Order matters: Next.js uses the first match, so specific paths come before the catch-alls.
  */
+
+/**
+ * The filler blog URLs that existed on main before the removal: the two filler posts, plus the lip filler
+ * post URL main already redirected. Listed one by one so a future post with "filler" in its slug is not
+ * redirected by accident.
+ */
+export const REMOVED_FILLER_BLOG_PATHS = [
+  "/blog/dermal-fillers-in-williamsburg-va-lips-cheeks-under-eyes",
+  "/blog/how-long-do-dermal-fillers-last-in-williamsburg-va",
+  "/blog/get-your-dream-lips-with-dermal-fillers",
+];
+
 export const REMOVED_URL_REDIRECTS = [
   ["/staff/jenny-coleman", "/staff/jenny-brady"],
   ["/procedures/filler/near/:areaSlug", "/locations/williamsburg-va"],
   ["/procedures/filler", "/procedures"],
   ["/procedures/filler/:path*", "/procedures"],
-  ["/blog/dermal-fillers-in-williamsburg-va-lips-cheeks-under-eyes", "/blog"],
-  ["/blog/how-long-do-dermal-fillers-last-in-williamsburg-va", "/blog"],
-  ["/blog/get-your-dream-lips-with-dermal-fillers", "/blog"],
-  // Older filler article slugs listed in the old procedure data, e.g. soften-laugh-lines-with-dermal-fillers.
-  ["/blog/:slug(.*filler.*)", "/blog"],
+  ...REMOVED_FILLER_BLOG_PATHS.map((path) => [path, "/blog"]),
 ];
 
 /** Removed URLs and where each must land, checked by scripts/verify-seo.mjs. */
@@ -25,8 +33,5 @@ export const REMOVED_URL_REDIRECT_CHECKS = [
   ["/procedures/filler/for/cheek-enhancement", "/procedures"],
   ["/procedures/filler/for/tear-troughs", "/procedures"],
   ["/procedures/filler/for/nasolabial-folds", "/procedures"],
-  ["/blog/dermal-fillers-in-williamsburg-va-lips-cheeks-under-eyes", "/blog"],
-  ["/blog/how-long-do-dermal-fillers-last-in-williamsburg-va", "/blog"],
-  ["/blog/get-your-dream-lips-with-dermal-fillers", "/blog"],
-  ["/blog/soften-laugh-lines-with-dermal-fillers", "/blog"],
+  ...REMOVED_FILLER_BLOG_PATHS.map((path) => [path, "/blog"]),
 ];

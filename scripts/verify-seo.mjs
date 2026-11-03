@@ -4,7 +4,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { URL } from "node:url";
 
-import { REMOVED_URL_REDIRECT_CHECKS } from "../src/config/removed-redirects.mjs";
+import { REMOVED_FILLER_BLOG_PATHS, REMOVED_URL_REDIRECT_CHECKS } from "../src/config/removed-redirects.mjs";
 
 const targetArg = process.argv.slice(2).find((argument) => !argument.startsWith("-"));
 const baseUrl = new URL(targetArg || process.env.SEO_BASE_URL || "http://127.0.0.1:3000");
@@ -1118,7 +1118,9 @@ for (const [, destination] of consolidatedRedirects) {
 
 // Issue #147: dermal filler is no longer offered and the provider is now Jenny Brady.
 const isRemovedPath = (path) =>
-  /^\/procedures\/filler(?:\/|$)/.test(path) || /^\/blog\/[^/]*filler/.test(path) || /^\/staff\/jenny-coleman(?:\/|$)/.test(path);
+  /^\/procedures\/filler(?:\/|$)/.test(path) ||
+  REMOVED_FILLER_BLOG_PATHS.includes(path) ||
+  /^\/staff\/jenny-coleman(?:\/|$)/.test(path);
 for (const url of sitemapUrls) {
   if (isRemovedPath(normalizePath(url))) fail(`sitemap still lists removed URL ${url}`);
 }

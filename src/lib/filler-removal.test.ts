@@ -3,7 +3,11 @@ import test from "node:test";
 
 import { getCartRecommendations } from "../config/cart-recommendations";
 import { COMMERCE_CATALOG, getCatalogConfigBySlug } from "../config/commerce-catalog";
-import { REMOVED_URL_REDIRECT_CHECKS, REMOVED_URL_REDIRECTS } from "../config/removed-redirects.mjs";
+import {
+  REMOVED_FILLER_BLOG_PATHS,
+  REMOVED_URL_REDIRECT_CHECKS,
+  REMOVED_URL_REDIRECTS,
+} from "../config/removed-redirects.mjs";
 import { FORM_INPUTS, procedures } from "../data";
 import { normalizeCartItems } from "./cart-items";
 import { resolveCart } from "./catalog";
@@ -62,8 +66,16 @@ test("every removed URL has a permanent redirect to a page that still exists", (
     "/procedures/filler/near/:areaSlug",
     "/blog/dermal-fillers-in-williamsburg-va-lips-cheeks-under-eyes",
     "/blog/how-long-do-dermal-fillers-last-in-williamsburg-va",
+    "/blog/get-your-dream-lips-with-dermal-fillers",
   ]) {
     assert.ok(sources.has(required), `missing redirect for ${required}`);
+  }
+  // Blog redirects are explicit slugs only, so a future post with "filler" in its slug is never caught.
+  for (const source of sources) {
+    if (source.startsWith("/blog/")) {
+      assert.ok(REMOVED_FILLER_BLOG_PATHS.includes(source), `unexpected blog redirect ${source}`);
+      assert.equal(/[:(*]/.test(source), false, `blog redirect must not be a pattern: ${source}`);
+    }
   }
   for (const [, destination] of [...REMOVED_URL_REDIRECTS, ...REMOVED_URL_REDIRECT_CHECKS]) {
     assert.equal(/filler|coleman/i.test(destination), false, `redirect lands on a removed URL: ${destination}`);
