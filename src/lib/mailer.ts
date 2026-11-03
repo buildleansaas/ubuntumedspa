@@ -31,10 +31,11 @@ export const getMailConfig = () => {
   };
 };
 
-// Order emails go to real buyers, so they only send from production unless explicitly enabled.
+// Order emails go to real buyers, so they only send from the production deployment (not previews,
+// local `next start` or scripts) unless ORDER_EMAILS_ENABLED=true.
 export const orderEmailsEnabled = () =>
   getMailConfig().configured &&
-  (process.env.NODE_ENV === "production" || process.env.ORDER_EMAILS_ENABLED === "true");
+  (process.env.VERCEL_ENV === "production" || process.env.ORDER_EMAILS_ENABLED === "true");
 
 const getTransport = () => {
   const config = getMailConfig();

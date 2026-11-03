@@ -29,7 +29,7 @@ export default async function CheckoutSuccessPage({
     try {
       order = (await syncOrderFromStripeSession(storedOrder.stripeSessionId)) || storedOrder;
     } catch (error) {
-      console.error("[checkout/success] Stripe sync failed", storedOrder.orderId, error);
+      console.error("[checkout/success] order sync failed", storedOrder.orderId, error);
     }
   } else if (storedOrder.paymentStatus === "paid") {
     // Catches orders paid before email was configured, or whose emails failed. No-op once sent.
@@ -107,7 +107,7 @@ export default async function CheckoutSuccessPage({
         </div>
       )}
 
-      {!order.requiresScheduling && (
+      {(!order.requiresScheduling || order.items.some((item) => item.fulfillment === "pickup")) && (
         <div className="rounded-2xl border border-base-300 bg-base-200 p-6">
           <h2 className="text-2xl font-semibold mb-3">Pickup Details</h2>
           <p className="text-base-content/70">

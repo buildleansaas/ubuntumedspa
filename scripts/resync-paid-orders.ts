@@ -1,5 +1,6 @@
 import "dotenv/config";
 
+import { orderEmailsEnabled } from "../src/lib/mailer";
 import { getOrderById, syncOrderFromStripeSession } from "../src/lib/orders";
 import { getStripe } from "../src/lib/stripe";
 
@@ -16,6 +17,12 @@ if (!sinceArg || !/^\d{4}-\d{2}-\d{2}$/.test(sinceArg) || Number.isNaN(Date.pars
   process.exit(1);
 }
 
+if (notify && !dryRun && !orderEmailsEnabled()) {
+  console.error("--notify needs SMTP_USER, SMTP_PASS and ORDER_EMAILS_ENABLED=true (scripts never count as production).");
+  process.exit(1);
+}
+
+// --since is UTC midnight, a few hours before Eastern midnight, so the window errs wide.
 const since = Math.floor(Date.parse(sinceArg) / 1000);
 
 const main = async () => {

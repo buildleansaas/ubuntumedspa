@@ -195,7 +195,11 @@ export const syncOrderFromStripeSession = async (sessionId: string, { notify = t
   }
 
   if (freshOrder && notify && paymentStatus === "paid") {
-    await sendPaidOrderNotifications(orderId);
+    try {
+      await sendPaidOrderNotifications(orderId);
+    } catch (error) {
+      console.error("[orders] order emails failed", orderId, error);
+    }
     return getOrderById(orderId);
   }
 

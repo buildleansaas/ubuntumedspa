@@ -21,7 +21,17 @@ const hasPickupItems = (order: OrderRecord) =>
 const PICKUP_LINE_CUSTOMER = "For the products in your order, we'll contact you to set a pickup time.";
 const PICKUP_LINE_OWNER = "This order has products for pickup. Contact them to set a pickup time.";
 
-const receiptLine = (order: OrderRecord, receipt: OrderNotificationStatus) => {
+export type ReceiptOutcome = OrderNotificationStatus | "sending";
+
+const formatPaidDate = (order: OrderRecord) =>
+  order.paidAt
+    ? new Date(order.paidAt).toLocaleString("en-US", { timeZone: "America/New_York", dateStyle: "medium", timeStyle: "short" })
+    : "";
+
+const receiptLine = (order: OrderRecord, receipt: ReceiptOutcome) => {
+  if (receipt === "sending") {
+    return "A receipt is being emailed to them. If they don't book in a day or two, text or call them.";
+  }
   if (receipt === "sent") {
     return order.requiresScheduling
       ? "They were emailed a receipt with a link to book. If they don't book in a day or two, text or call them."
@@ -31,7 +41,7 @@ const receiptLine = (order: OrderRecord, receipt: OrderNotificationStatus) => {
   return "Their receipt email failed to send. Text or call them.";
 };
 
-export const buildOwnerEmail = (order: OrderRecord, receipt: OrderNotificationStatus = "sent") => {
+export const buildOwnerEmail = (order: OrderRecord, receipt: ReceiptOutcome = "sent") => {
   const name = order.customerName || "(no name given)";
   const phone = order.customerPhone || "";
   const lines = [
@@ -43,11 +53,12 @@ export const buildOwnerEmail = (order: OrderRecord, receipt: OrderNotificationSt
     ``,
     ...itemLines(order),
     `Total paid: ${formatUsd(order.subtotalCents)}`,
+    order.paidAt ? `Paid: ${formatPaidDate(order)}` : "",
     ``,
     receiptLine(order, receipt),
     hasPickupItems(order) ? PICKUP_LINE_OWNER : "",
     ``,
-    `Their booking page: ${getOrderBookingUrl(order)}`,
+    `Their order page: ${getOrderBookingUrl(order)}`,
     `Order ID: ${order.orderId}`,
     order.stripeSessionId ? `Stripe checkout: ${order.stripeSessionId}` : "",
   ].filter((line, index, all) => line !== "" || (index > 0 && all[index - 1] !== ""));
@@ -69,10 +80,12 @@ export const buildOwnerEmail = (order: OrderRecord, receipt: OrderNotificationSt
     <ul>${order.items
       .map((item) => `<li>${item.quantity} x ${escapeHtml(item.name)}: ${formatUsd(item.lineTotalCents)}</li>`)
       .join("")}</ul>
-    <p><strong>Total paid: ${formatUsd(order.subtotalCents)}</strong></p>
+    <p><strong>Total paid: ${formatUsd(order.subtotalCents)}</strong>${
+      order.paidAt ? `<br>Paid: ${escapeHtml(formatPaidDate(order))}` : ""
+    }</p>
     <p>${escapeHtml(receiptLine(order, receipt))}</p>
     ${hasPickupItems(order) ? `<p>${PICKUP_LINE_OWNER}</p>` : ""}
-    <p><a href="${getOrderBookingUrl(order)}">Their booking page</a> · Order ${escapeHtml(order.orderId)}</p>
+    <p><a href="${getOrderBookingUrl(order)}">Their order page</a> · Order ${escapeHtml(order.orderId)}</p>
   `;
 
   return {
@@ -126,6 +139,9 @@ export const buildCustomerEmail = (order: OrderRecord) => {
 type ClaimField = "customerReceiptClaimedAt" | "ownerNotificationClaimedAt";
 type StatusField = "customerReceiptStatus" | "ownerNotificationStatus";
 
+// A claim with no "sent" status this old means the function died mid-send; take it over.
+const STALE_CLAIM_MS = 10 * 60 * 1000;
+
 // Claims one message for one paid order so the webhook and the success page can't both send it.
 // A failed send releases the claim, so the next sync (or page load) tries again.
 const sendOnce = async (
@@ -133,20 +149,25 @@ const sendOnce = async (
   claimField: ClaimField,
   statusField: StatusField,
   send: (order: OrderRecord) => Promise<void>
-): Promise<{ status: OrderNotificationStatus | "already_handled"; order?: OrderRecord }> => {
+): Promise<OrderNotificationStatus | "already_handled"> => {
   const orders = (await getDb()).collection<OrderRecord>("orders");
   const claimed = await orders.findOneAndUpdate(
-    { orderId, paymentStatus: "paid", [claimField]: { $exists: false } },
+    {
+      orderId,
+      paymentStatus: "paid",
+      $or: [
+        { [claimField]: { $exists: false } },
+        { [claimField]: { $lt: new Date(Date.now() - STALE_CLAIM_MS) }, [statusField]: { $ne: "sent" } },
+      ],
+    },
     { $set: { [claimField]: new Date() } },
     { returnDocument: "after" }
   );
 
-  if (!claimed) return { status: "already_handled" };
+  if (!claimed) return "already_handled";
 
   try {
     await send(claimed);
-    await orders.updateOne({ orderId }, { $set: { [statusField]: "sent", updatedAt: new Date() } });
-    return { status: "sent", order: claimed };
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown email error";
     console.error(`[order-notifications] ${statusField} failed for order ${orderId}: ${message}`);
@@ -154,8 +175,17 @@ const sendOnce = async (
       { orderId },
       { $set: { [statusField]: "failed", updatedAt: new Date() }, $unset: { [claimField]: "" } }
     );
-    return { status: "failed", order: claimed };
+    return "failed";
   }
+
+  // Outside the try: once the email is out, the claim is never released.
+  await orders.updateOne({ orderId }, { $set: { [statusField]: "sent", updatedAt: new Date() } });
+  return "sent";
+};
+
+const resolveReceiptOutcome = async (orderId: string): Promise<ReceiptOutcome> => {
+  const order = await (await getDb()).collection<OrderRecord>("orders").findOne({ orderId });
+  return order?.customerReceiptStatus || "sending";
 };
 
 // Sends the buyer's receipt, then the owner alert (which says whether the receipt went out).
@@ -166,26 +196,30 @@ export const sendPaidOrderNotifications = async (orderId: string) => {
   const orders = (await getDb()).collection<OrderRecord>("orders");
   const order = await orders.findOne({ orderId, paymentStatus: "paid" });
   if (!order) return null;
-
-  let receipt: OrderNotificationStatus | "already_handled" = order.customerReceiptStatus || "already_handled";
-  if (!order.customerEmail) {
-    receipt = "skipped";
-  } else if (!order.customerReceiptClaimedAt) {
-    receipt = (
-      await sendOnce(orderId, "customerReceiptClaimedAt", "customerReceiptStatus", (claimed) =>
-        sendMail({ to: claimed.customerEmail as string, ...buildCustomerEmail(claimed) })
-      )
-    ).status;
+  if (order.customerReceiptStatus === "sent" && order.ownerNotificationStatus === "sent") {
+    return { customer: "sent" as const, owner: "sent" as const };
   }
 
-  const receiptForOwner: OrderNotificationStatus = receipt === "already_handled" ? "sent" : receipt;
+  let receipt: ReceiptOutcome;
+  if (!order.customerEmail) {
+    receipt = "skipped";
+    if (order.customerReceiptStatus !== "skipped") {
+      await orders.updateOne({ orderId }, { $set: { customerReceiptStatus: "skipped", updatedAt: new Date() } });
+    }
+  } else {
+    const result = await sendOnce(orderId, "customerReceiptClaimedAt", "customerReceiptStatus", (claimed) =>
+      sendMail({ to: claimed.customerEmail as string, ...buildCustomerEmail(claimed) })
+    );
+    receipt = result === "already_handled" ? await resolveReceiptOutcome(orderId) : result;
+  }
+
   const owner = await sendOnce(orderId, "ownerNotificationClaimedAt", "ownerNotificationStatus", (claimed) =>
     sendMail({
       to: getMailConfig().leadsTo,
-      ...buildOwnerEmail(claimed, receiptForOwner),
+      ...buildOwnerEmail(claimed, receipt),
       replyTo: claimed.customerEmail || undefined,
     })
   );
 
-  return { customer: receipt, owner: owner.status };
+  return { customer: receipt, owner };
 };

@@ -81,3 +81,12 @@ test("owner alert says plainly when the receipt did not go out", () => {
   assert.match(buildOwnerEmail({ ...order, customerEmail: undefined }, "skipped").text, /no email address/);
   assert.match(buildOwnerEmail(order, "sent").text, /emailed a receipt with a link to book/);
 });
+
+test("owner alert hedges while the receipt is still sending, and shows the paid date", () => {
+  const email = buildOwnerEmail({ ...order, paidAt: new Date("2026-10-29T21:06:00Z") }, "sending");
+
+  assert.match(email.text, /A receipt is being emailed to them/);
+  assert.doesNotMatch(email.text, /were emailed a receipt/);
+  assert.match(email.text, /Paid: Oct 29, 2026, 5:06\s?PM/);
+  assert.match(email.text, /Their order page: /);
+});

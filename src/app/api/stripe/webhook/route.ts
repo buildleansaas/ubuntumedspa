@@ -31,7 +31,12 @@ export async function POST(request: NextRequest) {
       event.type === "checkout.session.async_payment_succeeded"
     ) {
       const session = event.data.object as Stripe.Checkout.Session;
-      await syncOrderFromStripeSession(session.id);
+      const order = await syncOrderFromStripeSession(session.id);
+
+      // The owner must hear about every paid order: make Stripe redeliver until the alert goes out.
+      if (order?.paymentStatus === "paid" && order.ownerNotificationStatus === "failed") {
+        return NextResponse.json({ error: "Owner notification failed; retry." }, { status: 500 });
+      }
     }
 
     return NextResponse.json({ received: true });
