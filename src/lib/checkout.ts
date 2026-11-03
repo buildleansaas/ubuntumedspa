@@ -1,34 +1,7 @@
-import Stripe from "stripe";
-
-import type { CartItemInput, ResolvedCartItem } from "lib/catalog";
+import type { CartItemInput } from "lib/catalog";
 import { createPendingOrder, markOrderSession } from "lib/orders";
 import { getStripe } from "lib/stripe";
-
-const buildStripeLineItem = (item: ResolvedCartItem): Stripe.Checkout.SessionCreateParams.LineItem => {
-  if (item.stripePriceId && !item.usesQuantityPriceBreak) {
-    return {
-      price: item.stripePriceId,
-      quantity: item.quantity,
-    };
-  }
-
-  return {
-    quantity: item.quantity,
-    price_data: {
-      currency: item.currency,
-      unit_amount: item.unitAmountCents,
-      product_data: {
-        name: item.name,
-        description: item.shortDescription,
-        metadata: {
-          slug: item.slug,
-          kind: item.kind,
-          pricingMode: item.pricingMode,
-        },
-      },
-    },
-  };
-};
+import { buildStripeLineItem } from "lib/stripe-line-item";
 
 export const createCheckoutSession = async ({
   items,

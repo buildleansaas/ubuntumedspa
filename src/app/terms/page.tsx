@@ -45,7 +45,8 @@ export default function TermsPage() {
         <h2 className="pt-4 text-3xl tracking-tight text-base-content">Online payment</h2>
         <p>
           Some visits can be paid through Stripe. The price and what that payment covers are the ones shown on the
-          service page and at checkout. Card details are handled by Stripe, as described in the{" "}
+          service page and at checkout. Pages list a card price and a cash price: online payments and card payments
+          in the office are charged the card price, and the lower cash price applies when you pay cash in the office. Card details are handled by Stripe, as described in the{" "}
           <Link className="link link-primary" href="/privacy">
             Privacy Policy
           </Link>

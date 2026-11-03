@@ -18,6 +18,7 @@ import { getPublishedBlogPosts } from "lib/blog";
 import { buildPageMetadata } from "lib/metadata";
 import { getCatalogConfigBySlug } from "config/commerce-catalog";
 import { humanizeMedicalCopy } from "lib/humanize";
+import { cardPriceSchemaValue } from "lib/price";
 
 type Params = { params: { slug: string } };
 
@@ -65,7 +66,8 @@ export default async function ProductPage({ params: { slug } }: Params) {
           name: product.name,
           description: humanizeMedicalCopy(product.description),
           imageUrls: [product.image],
-          price: catalogItem ? String(catalogItem.unitAmountCents / 100) : undefined,
+          // Offer price is the card / online price, which is what checkout charges.
+          price: catalogItem ? cardPriceSchemaValue(catalogItem.cashAmountCents) : undefined,
           priceCurrency: "USD",
           url: `https://www.williamsburgmedspa.com/products/${product.slug}`,
         }}

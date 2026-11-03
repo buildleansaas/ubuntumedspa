@@ -1,6 +1,7 @@
 import { getDb } from "lib/mongodb";
 import { getMailConfig, orderEmailsEnabled, sendMail } from "lib/mailer";
 import type { OrderNotificationStatus, OrderRecord } from "lib/orders";
+import { creditAmountCentsForItem } from "lib/cart-pricing";
 import { formatUsd } from "lib/price";
 import { ORIGIN } from "lib/seo";
 
@@ -12,8 +13,12 @@ const digitsOnly = (phone: string) => phone.replace(/[^\d+]/g, "");
 export const getOrderBookingUrl = (order: Pick<OrderRecord, "publicToken">) =>
   `${ORIGIN}/checkout/success?order=${order.publicToken}`;
 
-const itemLines = (order: OrderRecord) =>
-  order.items.map((item) => `${item.quantity} x ${item.name}: ${formatUsd(item.lineTotalCents)}`);
+// Botox/Xeomin blocks are paid at the card price but credit the cash value; say both.
+const itemLabel = (item: OrderRecord["items"][number]) =>
+  `${item.quantity} x ${item.name}: ${formatUsd(item.lineTotalCents)}` +
+  (item.pricingMode === "increment_credit" ? ` (adds ${formatUsd(creditAmountCentsForItem(item))} treatment credit)` : "");
+
+const itemLines = (order: OrderRecord) => order.items.map(itemLabel);
 
 const hasPickupItems = (order: OrderRecord) =>
   !order.requiresScheduling || order.items.some((item) => item.fulfillment === "pickup");
@@ -78,7 +83,7 @@ export const buildOwnerEmail = (order: OrderRecord, receipt: ReceiptOutcome = "s
     <p><strong>New paid order on williamsburgmedspa.com</strong></p>
     <p><strong>${escapeHtml(name)}</strong><br>${contactHtml}</p>
     <ul>${order.items
-      .map((item) => `<li>${item.quantity} x ${escapeHtml(item.name)}: ${formatUsd(item.lineTotalCents)}</li>`)
+      .map((item) => `<li>${escapeHtml(itemLabel(item))}</li>`)
       .join("")}</ul>
     <p><strong>Total paid: ${formatUsd(order.subtotalCents)}</strong>${
       order.paidAt ? `<br>Paid: ${escapeHtml(formatPaidDate(order))}` : ""
@@ -124,7 +129,7 @@ export const buildCustomerEmail = (order: OrderRecord) => {
     <p>${escapeHtml(greeting)}</p>
     <p>Thank you for your purchase at Williamsburg Med Spa. Here is your receipt.</p>
     <ul>${order.items
-      .map((item) => `<li>${item.quantity} x ${escapeHtml(item.name)}: ${formatUsd(item.lineTotalCents)}</li>`)
+      .map((item) => `<li>${escapeHtml(itemLabel(item))}</li>`)
       .join("")}</ul>
     <p><strong>Total paid: ${formatUsd(order.subtotalCents)}</strong></p>
     ${order.requiresScheduling ? `<p><strong>Next step:</strong> <a href="${bookingUrl}">pick your appointment time</a>.</p>` : ""}
