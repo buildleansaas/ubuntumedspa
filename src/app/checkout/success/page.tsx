@@ -6,20 +6,39 @@ import ClearCartOnMount from "components/clear-cart-on-mount";
 import { Button } from "components/ui/button";
 import { getCalLinks } from "lib/cal";
 import { formatUsd } from "lib/price";
-import { getOrderByPublicToken } from "lib/orders";
+import { sendPaidOrderNotifications } from "lib/order-notifications";
+import { getOrderByPublicToken, syncOrderFromStripeSession } from "lib/orders";
 
 export const dynamic = "force-dynamic";
 
 export default async function CheckoutSuccessPage({
   searchParams,
 }: {
-  searchParams: { order?: string; session_id?: string };
+  searchParams: { order?: string };
 }) {
   const orderToken = searchParams.order;
   if (!orderToken) return notFound();
 
-  const order = await getOrderByPublicToken(orderToken);
-  if (!order) return notFound();
+  const storedOrder = await getOrderByPublicToken(orderToken);
+  if (!storedOrder) return notFound();
+
+  // Don't wait on the Stripe webhook: ask Stripe directly so the buyer can book right away.
+  // Only the session stored on the order is used, never one from the URL.
+  let order = storedOrder;
+  if (storedOrder.paymentStatus !== "paid" && storedOrder.stripeSessionId) {
+    try {
+      order = (await syncOrderFromStripeSession(storedOrder.stripeSessionId)) || storedOrder;
+    } catch (error) {
+      console.error("[checkout/success] order sync failed", storedOrder.orderId, error);
+    }
+  } else if (storedOrder.paymentStatus === "paid") {
+    // Catches orders paid before email was configured, or whose emails failed. No-op once sent.
+    try {
+      await sendPaidOrderNotifications(storedOrder.orderId);
+    } catch (error) {
+      console.error("[checkout/success] order emails failed", storedOrder.orderId, error);
+    }
+  }
 
   const { paidProcedure } = getCalLinks();
   const canSchedule = order.paymentStatus === "paid" && order.requiresScheduling && Boolean(paidProcedure);
@@ -88,12 +107,11 @@ export default async function CheckoutSuccessPage({
         </div>
       )}
 
-      {!order.requiresScheduling && (
+      {(!order.requiresScheduling || order.items.some((item) => item.fulfillment === "pickup")) && (
         <div className="border border-base-300 bg-base-200 p-6">
           <h2 className="text-2xl font-semibold mb-3">Pickup Details</h2>
           <p className="text-base-content/70">
-            Your product order has been recorded for pickup. If you need to coordinate timing, contact the office or add
-            pickup notes during follow-up.
+            Your product order has been recorded for pickup. We&apos;ll contact you to set a pickup time.
           </p>
         </div>
       )}

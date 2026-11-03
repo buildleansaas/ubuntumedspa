@@ -3,7 +3,10 @@ import { randomUUID } from "crypto";
 import { addAccountCredit, type AccountRecord, upsertAccountByEmail } from "lib/accounts";
 import { type ResolvedCart, resolveCart } from "lib/catalog";
 import { ensureMongoIndexes, getDb } from "lib/mongodb";
+import { sendPaidOrderNotifications } from "lib/order-notifications";
 import { getStripe } from "lib/stripe";
+
+export type OrderNotificationStatus = "sent" | "failed" | "skipped";
 
 export type OrderRecord = {
   orderId: string;
@@ -23,6 +26,10 @@ export type OrderRecord = {
   customerName?: string;
   customerPhone?: string;
   paidAt?: Date;
+  customerReceiptClaimedAt?: Date;
+  customerReceiptStatus?: OrderNotificationStatus;
+  ownerNotificationClaimedAt?: Date;
+  ownerNotificationStatus?: OrderNotificationStatus;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -132,7 +139,7 @@ const ensureCreditEntries = async (order: OrderRecord, account: AccountRecord) =
   }
 };
 
-export const syncOrderFromStripeSession = async (sessionId: string) => {
+export const syncOrderFromStripeSession = async (sessionId: string, { notify = true }: { notify?: boolean } = {}) => {
   const stripe = getStripe();
   const session = await stripe.checkout.sessions.retrieve(sessionId);
   const orderId = session.metadata?.orderId;
@@ -176,7 +183,7 @@ export const syncOrderFromStripeSession = async (sessionId: string) => {
         customerName: name,
         customerPhone: phone,
         paymentStatus,
-        paidAt: paid ? new Date() : order.paidAt,
+        paidAt: order.paidAt || (paid ? new Date() : undefined),
         updatedAt: new Date(),
       },
     }
@@ -185,6 +192,15 @@ export const syncOrderFromStripeSession = async (sessionId: string) => {
   const freshOrder = await getOrderById(orderId);
   if (freshOrder && account && paymentStatus === "paid") {
     await ensureCreditEntries(freshOrder, account);
+  }
+
+  if (freshOrder && notify && paymentStatus === "paid") {
+    try {
+      await sendPaidOrderNotifications(orderId);
+    } catch (error) {
+      console.error("[orders] order emails failed", orderId, error);
+    }
+    return getOrderById(orderId);
   }
 
   return freshOrder;
