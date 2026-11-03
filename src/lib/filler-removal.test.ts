@@ -57,7 +57,7 @@ test("resolveCart rejects filler with a clear message before reaching the databa
   }
 });
 
-test("every removed URL has a permanent redirect to a page that still exists", () => {
+test("every removed URL has an explicit redirect source and a non-filler destination (verify-seo checks status and destination at runtime)", () => {
   const sources = new Set(REMOVED_URL_REDIRECTS.map(([source]) => source));
   for (const required of [
     "/staff/jenny-coleman",

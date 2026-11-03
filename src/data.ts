@@ -1232,14 +1232,14 @@ export const procedures = [
     },
     description:
       "The PRP Face Lift is a non-surgical visit that combines two treatments: Botox and the PRP Facial. Botox temporarily relaxes the muscles behind movement lines such as frown lines, forehead lines, and crow's feet. The PRP Facial uses platelet-rich plasma from a small sample of your own blood to support skin texture and tone. It is not a surgical face lift, it does not remove or tighten skin the way surgery does, and results vary from person to person. Jenny reviews your goals, health history, and whether this combined visit, one treatment alone, or a referral is the better fit before anything is done.",
-    headline: "Redefine Your Beauty: Non-Invasive, Long-Lasting Rejuvenation!",
+    headline: "Botox and the PRP Facial in One Non-Surgical Visit",
     subline:
       "The PRP Face Lift pairs Botox for movement lines with the PRP Facial for skin texture and tone in one visit. It is non-surgical, results vary, and it starts with a consultation.",
     image: "/procedure/prp-face-lift-consultation-refresh.webp",
     price: cardCashLabel(150000),
     // programmatic SEO copy
     blogHeadline:
-      "Comparing non-surgical facial rejuvenation options? These articles explain how Botox and the PRP Facial differ, what each one can and cannot change, and what to ask at a consultation.",
+      "Comparing non-surgical facial rejuvenation options? Read how this non-surgical visit compares with other options, what it can and cannot change, and what to ask at a consultation. Results vary.",
     benefitsHeadline:
       "The PRP Face Lift combines Botox and the PRP Facial so movement lines and skin quality can be addressed in one visit. Results vary, and the plan is set at your consultation.",
     benefits: [
@@ -1271,8 +1271,8 @@ export const procedures = [
       {
         title: "Sagging Skin",
         description:
-          "Lift and firm sagging skin without surgery using the PRP Face Lift. Get natural-looking results that last.",
-        blog_post_title: "Firm and Lift Sagging Skin with a PRP Face Lift",
+          "Discuss sagging skin and whether the PRP Face Lift, another option, or a surgical referral fits the concern. Results vary.",
+        blog_post_title: "Sagging Skin and the PRP Face Lift: What to Expect",
         blog_post_slug: "firm-and-lift-sagging-skin-with-a-prp-face-lift",
         slug: "sagging-skin",
         tag: "common",
@@ -1280,7 +1280,7 @@ export const procedures = [
       {
         title: "Fine Lines and Wrinkles",
         description:
-          "Smooth out facial lines and wrinkles effectively with the PRP Face Lift. Achieve a more youthful appearance.",
+          "Botox for movement lines and the PRP Facial for skin texture, reviewed at a consultation. Results vary.",
         blog_post_title: "Turn Back the Clock on Aging with a PRP Face Lift",
         blog_post_slug: "turn-back-the-clock-on-aging-with-a-prp-face-lift",
         slug: "fine-lines-and-wrinkles",
@@ -1289,7 +1289,7 @@ export const procedures = [
       {
         title: "Volume Loss",
         description: "Discuss facial volume loss and whether a PRP Face Lift, another option, or a referral fits the concern.",
-        blog_post_title: "Reclaim Your Facial Volume with a PRP Face Lift",
+        blog_post_title: "Facial Volume Loss: Is a PRP Face Lift the Right Fit?",
         blog_post_slug: "reclaim-your-facial-volume-with-a-prp-face-lift",
         slug: "volume-loss",
         tag: "common",
@@ -1313,7 +1313,7 @@ export const procedures = [
       {
         title: "Sunken Cheeks",
         description: "Discuss sunken cheeks and whether a PRP Face Lift, another option, or a referral fits the concern.",
-        blog_post_title: "Add Volume to Sunken Cheeks with a PRP Face Lift",
+        blog_post_title: "Sunken Cheeks: Options to Discuss at a Consultation",
         blog_post_slug: "add-volume-to-sunken-cheeks-with-a-prp-face-lift",
         slug: "sunken-cheeks",
         tag: "common",
@@ -1344,7 +1344,7 @@ export const procedures = [
       },
       {
         title: "Smile Lines",
-        description: "Soften smile lines for a youthful and fresh appearance.",
+        description: "Discuss smile lines and which options fit at a consultation.",
         blog_post_title: "Soften Smile Lines with PRP Face Lift",
         blog_post_slug: "soften-smile-lines-with-prp-face-lift",
         slug: "smile-lines",
@@ -1376,7 +1376,7 @@ export const procedures = [
       },
       {
         title: "Nasolabial Folds",
-        description: "Diminish the depth of the nasolabial folds for a fresher appearance.",
+        description: "Discuss nasolabial folds and which options fit at a consultation.",
         blog_post_title: "Diminish Nasolabial Folds with PRP Face Lift",
         blog_post_slug: "diminish-nasolabial-folds-with-prp-face-lift",
         slug: "nasolabial-folds",
