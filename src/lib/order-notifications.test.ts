@@ -3,6 +3,7 @@ import test from "node:test";
 
 import type { OrderRecord } from "./orders";
 import { buildCustomerEmail, buildOwnerEmail } from "./order-notifications";
+import { GOOGLE_REVIEW_URL } from "./seo";
 
 const order: OrderRecord = {
   orderId: "order-123",
@@ -109,4 +110,13 @@ test("Botox credit lines show the card amount paid and the cash-value credit", (
     assert.match(email.text, /2 x Botox: \$515\.56 \(adds \$500(\.00)? treatment credit\)/);
     assert.match(email.html, /adds \$500(\.00)? treatment credit/);
   }
+});
+
+test("receipt asks for a Google review after the visit; the owner alert does not", () => {
+  const receipt = buildCustomerEmail(order);
+
+  assert.match(receipt.text, /After your visit, a quick Google review/);
+  assert.ok(receipt.text.includes(GOOGLE_REVIEW_URL));
+  assert.ok(receipt.html.includes(`href="${GOOGLE_REVIEW_URL}"`));
+  assert.ok(!buildOwnerEmail(order).text.includes(GOOGLE_REVIEW_URL));
 });

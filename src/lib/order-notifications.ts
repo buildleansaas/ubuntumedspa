@@ -3,7 +3,7 @@ import { getMailConfig, orderEmailsEnabled, sendMail } from "lib/mailer";
 import type { OrderNotificationStatus, OrderRecord } from "lib/orders";
 import { creditAmountCentsForItem } from "lib/cart-pricing";
 import { formatUsd } from "lib/price";
-import { ORIGIN } from "lib/seo";
+import { GOOGLE_REVIEW_URL, ORIGIN } from "lib/seo";
 
 const escapeHtml = (value: string) =>
   value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -121,6 +121,9 @@ export const buildCustomerEmail = (order: OrderRecord) => {
     ``,
     `Questions? Just reply to this email.`,
     ``,
+    `After your visit, a quick Google review helps other families find us:`,
+    GOOGLE_REVIEW_URL,
+    ``,
     `Jenny`,
     `Williamsburg Med Spa`,
   ].join("\n");
@@ -135,6 +138,7 @@ export const buildCustomerEmail = (order: OrderRecord) => {
     ${order.requiresScheduling ? `<p><strong>Next step:</strong> <a href="${bookingUrl}">pick your appointment time</a>.</p>` : ""}
     ${hasPickupItems(order) ? `<p>${PICKUP_LINE_CUSTOMER}</p>` : ""}
     <p>Questions? Just reply to this email.</p>
+    <p>After your visit, a quick <a href="${GOOGLE_REVIEW_URL}">Google review</a> helps other families find us.</p>
     <p>Jenny<br>Williamsburg Med Spa</p>
   `;
 

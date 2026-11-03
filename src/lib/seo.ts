@@ -6,3 +6,6 @@ export const ORIGIN =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
     : "https://www.williamsburgmedspa.com";
+
+// Google Business Profile review link, shared in the buyer receipt.
+export const GOOGLE_REVIEW_URL = "https://share.google/wpGGao76JGSplYuAk";
