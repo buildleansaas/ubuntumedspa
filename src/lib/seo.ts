@@ -7,5 +7,5 @@ export const ORIGIN =
     ? "http://localhost:3000"
     : "https://www.williamsburgmedspa.com";
 
-// Google Business Profile review link, shared in the buyer receipt.
-export const GOOGLE_REVIEW_URL = "https://share.google/wpGGao76JGSplYuAk";
+// Opens the Google "write a review" form for the clinic (GBP > Ask for reviews), used in the buyer receipt.
+export const GOOGLE_REVIEW_URL = "https://g.page/r/Cde-gEi21QPUEBM/review";
