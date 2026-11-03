@@ -121,3 +121,8 @@ test("receipt asks for a Google review after the visit; the owner alert does not
   assert.ok(!buildOwnerEmail(order).text.includes(GOOGLE_REVIEW_URL));
   assert.ok(!buildOwnerEmail(order).html.includes(GOOGLE_REVIEW_URL));
 });
+
+test("review link is the clinic's direct Google write-review link", () => {
+  // g.page token decodes to the clinic's Maps CID 0xd403d5b64880bed7 (verified in PR #150).
+  assert.equal(GOOGLE_REVIEW_URL, "https://g.page/r/Cde-gEi21QPUEBM/review");
+});
