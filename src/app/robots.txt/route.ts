@@ -5,6 +5,7 @@ const body = `User-Agent: *
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 Disallow: /gbp
+Disallow: /review
 
 Sitemap: https://www.williamsburgmedspa.com/sitemap.xml
 `;
