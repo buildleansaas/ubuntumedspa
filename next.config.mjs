@@ -194,7 +194,8 @@ const nextConfig = {
         ["/procedures/xeomin/near/williamsburg-va", "/procedures/xeomin"],
         // 2026-11: the retired /procedures/botox/for/* concern pages now live at /procedures/xeomin/for/*.
         // These must stay above the /procedures/botox/for/:ailmentSlug catch-all (first match wins).
-        // XEOMIN_CLUSTER_REDIRECTS in src/lib/xeomin-concerns.ts lists the same pairs; botox-honesty.test.ts checks both.
+        // XEOMIN_CLUSTER_REDIRECTS in src/lib/xeomin-concerns.ts lists the same pairs. xeomin-concerns.test.ts checks each
+        // pair appears here above the catch-all; botox-honesty.test.ts checks the four /procedures/botox/for/* pairs.
         ["/procedures/botox/for/frown-lines", "/procedures/xeomin/for/frown-lines"],
         ["/procedures/botox/for/forehead-lines", "/procedures/xeomin/for/forehead-lines"],
         ["/procedures/botox/for/crows-feet", "/procedures/xeomin/for/crows-feet"],

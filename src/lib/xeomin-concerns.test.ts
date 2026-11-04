@@ -8,13 +8,16 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import { CartProvider } from "../components/cart-provider";
 import { getCatalogConfigBySlug } from "../config/commerce-catalog";
+import { procedures } from "../data";
 import XeominClusterPageView from "../views/xeomin-cluster-page";
 import { findDisallowedBotox } from "./botox-honesty.test";
 import {
   XEOMIN_CLUSTER_REDIRECTS,
   XEOMIN_HUB_ANCHOR,
   XEOMIN_HUB_PATH,
+  XEOMIN_LIP_FLIP_OFF_LABEL,
   XEOMIN_PRODUCT_PATH,
+  XEOMIN_SEEK_HELP,
   XEOMIN_SIDE_EFFECTS,
   xeominClusterPages,
   xeominConcernPages,
@@ -127,6 +130,39 @@ test("copy makes no outcome promises and no before/after claims", () => {
   assert.match(JSON.stringify(xeominCostPage), /any unused value remains as account credit/);
 });
 
+test("lip flip is labeled off-label in the intro and in an FAQ", () => {
+  const lipFlip = xeominConcernPages.find((page) => page.slug === "lip-flip");
+  assert.ok(lipFlip);
+  assert.ok(lipFlip.intro.startsWith(XEOMIN_LIP_FLIP_OFF_LABEL));
+  assert.ok(lipFlip.faqs.some(({ answer }) => /off-label/.test(answer)));
+  for (const page of xeominClusterPages.filter((candidate) => candidate.slug !== "lip-flip")) {
+    assert.doesNotMatch(JSON.stringify(page), /off-label/, page.path);
+  }
+});
+
+test("the cost page keeps only sourced pricing facts and does not copy the hub's cost FAQ", () => {
+  const copy = JSON.stringify(xeominCostPage);
+  assert.doesNotMatch(copy, /not a (?:fixed|set) number of units|different plan from|sold as treatment credit/);
+  assert.match(copy, /Each block adds \$250 of treatment credit/);
+  assert.match(copy, /Your total depends on the areas treated, muscle strength, and your dosing plan/);
+  assert.match(copy, /unused value remains as account credit/);
+  assert.match(copy, /Xeomin and Botox® units are not interchangeable/);
+  const hub = procedures.find((procedure) => procedure.slug === "botox");
+  assert.ok(hub);
+  for (const hubFaq of hub.faqs) {
+    for (const faq of xeominCostPage.faqs) {
+      assert.notEqual(faq.question, hubFaq.question);
+      assert.notEqual(faq.answer, hubFaq.answer);
+    }
+  }
+});
+
+test("the /procedures/xeomin page agrees with the cluster on duration (about 3 to 4 months)", () => {
+  const copy = JSON.stringify(procedures.find((procedure) => procedure.slug === "xeomin"));
+  assert.doesNotMatch(copy, /3 to 6 months|3-6 months/);
+  assert.match(copy, /about 3 to 4 months/);
+});
+
 test("the side-effects line is the one already used on the site", () => {
   assert.ok(read("src/markdown/botox-vs-xeomin-williamsburg-va.mdx").includes(XEOMIN_SIDE_EFFECTS.replace(/^Temporary/, "temporary")));
   assert.ok(read("src/config/gbp-posts.ts").includes(XEOMIN_SIDE_EFFECTS));
@@ -155,6 +191,16 @@ for (const page of xeominClusterPages) {
     assert.ok(text.includes("$250 cash per credit block"), `${page.path} has no cash-first price line`);
     assert.ok(text.indexOf("$250 cash") < text.indexOf("$257.78"), `${page.path} shows the card price first`);
     assert.ok(text.includes(XEOMIN_SIDE_EFFECTS), `${page.path} is missing the side-effects line`);
+    assert.ok(text.includes(XEOMIN_SEEK_HELP), `${page.path} is missing the get-medical-help line`);
+    assert.ok(text.indexOf(XEOMIN_SEEK_HELP) > text.indexOf(XEOMIN_SIDE_EFFECTS), `${page.path} shows the get-medical-help line before the side effects`);
+
+    // No sentence repeats on the page.
+    const sentences = text
+      .split(/(?<=[.?!])\s+/)
+      .map((sentence) => sentence.trim())
+      .filter((sentence) => sentence.length >= 40);
+    const repeated = sentences.filter((sentence, index) => sentences.indexOf(sentence) !== index);
+    assert.deepEqual(repeated, [], `${page.path} repeats sentences`);
     assert.match(html, /href="sms:\+18047389483\?&amp;body=/);
 
     // FAQ schema only for FAQs that are visible on the page.
@@ -175,20 +221,20 @@ for (const page of xeominClusterPages) {
   });
 }
 
-test("the sitemap and HTML sitemap list every cluster page", () => {
+test("sitemap.ts and the HTML sitemap source map every cluster page (source check, not rendered)", () => {
   const sitemap = read("src/app/sitemap.ts");
   assert.match(sitemap, /\.\.\.xeominClusterPages\.map\(\(page\) => \(\{\s*url: `https:\/\/www\.williamsburgmedspa\.com\$\{page\.path\}`/);
   assert.match(read("src/app/html-sitemap/page.tsx"), /\.\.\.xeominClusterPages\.map\(\(page\) => \(\{\s*href: page\.path/);
 });
 
-test("the hub (/procedures/botox) and /procedures/xeomin render the Xeomin by concern block", () => {
+test("the procedure page source adds hero chips and the Xeomin by concern block for botox and xeomin (source check, not rendered)", () => {
   const procedurePage = read("src/app/procedures/[slug]/page.tsx");
   const blocks = procedurePage.match(/\(procedure\.slug === "botox" \|\| procedure\.slug === "xeomin"\) && \([\s\S]*?xeominClusterPages\.map/g) ?? [];
   assert.equal(blocks.length, 2, "expected hero chips and the Xeomin by concern section");
   assert.match(procedurePage, /Xeomin by concern/);
 });
 
-test("old concern URLs redirect to the new pages, ahead of the /procedures/botox/for catch-all", () => {
+test("next.config.mjs lists each old concern URL redirect above the /procedures/botox/for catch-all (source check)", () => {
   const nextConfig = read("next.config.mjs");
   const catchAll = nextConfig.indexOf('["/procedures/botox/for/:ailmentSlug", "/procedures/botox"]');
   assert.ok(catchAll > 0);

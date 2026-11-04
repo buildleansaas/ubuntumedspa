@@ -1147,6 +1147,9 @@ const consolidatedRedirects = [
   ["/procedures/botox/for/frown-lines", "/procedures/xeomin/for/frown-lines"],
   ["/procedures/botox/for/bunny-lines", "/procedures/botox"],
   ["/procedures/xeomin/for/glabellar-lines", "/procedures/xeomin/for/frown-lines"],
+  ["/procedures/botox/for/forehead-lines", "/procedures/xeomin/for/forehead-lines"],
+  ["/procedures/botox/for/lip-flip", "/procedures/xeomin/for/lip-flip"],
+  ["/procedures/xeomin/for/forehead-wrinkles", "/procedures/xeomin/for/forehead-lines"],
   ["/procedures/feminine-intimacy-prp-protocols/for/urinary-incontinence", "/procedures/oh-shot"],
   ["/procedures/o-shot", "/procedures/oh-shot"],
   ["/procedures/o-shot/for/urinary-incontinence", "/procedures/oh-shot"],
@@ -1291,6 +1294,9 @@ for (const path of xeominClusterPaths) {
   if (cashIndex < 0 || cashIndex > text.indexOf("$257.78")) fail(`${path} does not show the $250 cash price before the card price`);
   if (!text.includes("Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites.")) {
     fail(`${path} is missing the side-effects line`);
+  }
+  if (!text.includes("Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment.")) {
+    fail(`${path} is missing the get-medical-help line`);
   }
   const visibleFaqs = (page.html.match(/data-faq-question/g) || []).length;
   const schemaFaqs = extractAll(page.html, /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)

@@ -41,6 +41,13 @@ const { blockCash, blockCard } = XEOMIN_PRICES;
 export const XEOMIN_SIDE_EFFECTS =
   "Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites. Rare but serious risks should be discussed directly with your provider before treatment.";
 
+/** Source: XEOMIN Medication Guide, boxed warning (distant spread of toxin effect). Shown after the side-effects line. */
+export const XEOMIN_SEEK_HELP = "Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment.";
+
+/** Source: XEOMIN Prescribing Information, Indications (the cosmetic indication is upper facial lines only). */
+export const XEOMIN_LIP_FLIP_OFF_LABEL =
+  "A lip flip is an off-label use of Xeomin, which means it is not one of the uses listed on its FDA label. Jenny reviews whether it fits you at your consultation.";
+
 export const XEOMIN_TRADEMARK_NOTE =
   "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand.";
 
@@ -78,7 +85,7 @@ const textJenny = (topic: string) =>
 
 const pricingFaq = (area: string) => ({
   question: `How much does Xeomin for ${area} cost?`,
-  answer: `Xeomin is prepaid in ${blockCash} credit blocks (${blockCash} per block in cash or ${blockCard} online by card). Your total depends on the areas treated, muscle strength, and your dosing plan, and any unused value remains as account credit.`,
+  answer: `Xeomin is prepaid in ${blockCash} credit blocks (${blockCash} per block in cash or ${blockCard} online by card). Jenny reviews treatment areas and likely dosing range before confirming the plan.`,
 });
 
 export const xeominConcernPages: XeominClusterPage[] = [
@@ -105,7 +112,6 @@ export const xeominConcernPages: XeominClusterPage[] = [
         heading: "How Xeomin is used for frown lines",
         paragraphs: [
           "Jenny Brady, MSN, RN, CPNP, PMHS maps the muscles between the brows and plans dosing around your movement pattern. The goal is to soften the repeated pull that makes frown lines look more pronounced.",
-          "Xeomin can reduce the movement that contributes to frown lines. Deeper etched lines may soften gradually or may need a broader plan depending on skin quality and anatomy.",
           "Frown-line treatment may be discussed alone or as part of a balanced upper-face plan with forehead lines or crow's feet, depending on anatomy and goals.",
         ],
       },
@@ -173,7 +179,6 @@ export const xeominConcernPages: XeominClusterPage[] = [
         heading: "Why forehead treatment is planned around your brows",
         paragraphs: [
           "The forehead is connected to brow position, so treatment should not focus only on smoothing lines. A good plan considers how much movement you want to keep, how your brows sit at rest, and whether nearby areas such as frown lines also need attention.",
-          "Forehead treatment can affect brow position if it is not planned carefully. That is why consultation includes brow movement, frown lines, and your desired amount of expression.",
         ],
       },
       {
@@ -312,7 +317,7 @@ export const xeominConcernPages: XeominClusterPage[] = [
     h1: "Xeomin Lip Flip in Williamsburg, VA",
     botoxLine: "Looking for Botox® for a lip flip? We use Xeomin®, and a lip flip starts with a consultation.",
     intro:
-      "A lip flip is a less common area and a consult-led decision. It does not add volume. It uses small, carefully placed Xeomin doses to relax selected upper-lip movement when anatomy and goals are appropriate, which in the right candidate can allow a little more upper-lip show.",
+      `${XEOMIN_LIP_FLIP_OFF_LABEL} A lip flip is a less common area and does not add volume. It uses small, carefully placed Xeomin doses to relax selected upper-lip movement when anatomy and goals are appropriate, which in the right candidate can allow a little more upper-lip show.`,
     areaTag: "uncommon",
     sections: [
       {
@@ -326,7 +331,6 @@ export const xeominConcernPages: XeominClusterPage[] = [
         heading: "Why candidacy matters around the lip",
         paragraphs: [
           "Because this area affects speech, drinking, smiling, and lip control, candidacy matters. Jenny Brady, MSN, RN, CPNP, PMHS reviews your smile pattern, lip anatomy, and whether a lip flip or no treatment is the better match.",
-          "If a lip flip is not the right fit, Jenny will say so and talk through whether another option, or no treatment, better matches the actual goal.",
         ],
       },
     ],
@@ -364,6 +368,11 @@ export const xeominConcernPages: XeominClusterPage[] = [
           "No. A lip flip does not add volume. It uses Xeomin to subtly affect upper-lip movement so the lip may show a little more when you smile.",
       },
       {
+        question: "Is a lip flip an FDA-approved use of Xeomin?",
+        answer:
+          "No. Xeomin's FDA label lists upper facial lines, and a lip flip is not one of them, so it is an off-label use. Jenny decides with you at the consultation whether it fits your anatomy and goal.",
+      },
+      {
         question: "Who is a good candidate for a lip flip?",
         answer:
           "A good candidate usually wants a subtle upper-lip reveal rather than added volume. Jenny reviews anatomy, smile pattern, and functional risks before recommending treatment.",
@@ -388,7 +397,7 @@ export const xeominCostPage: XeominClusterPage = {
   metaDescription: `Xeomin cost in Williamsburg, VA: ${blockCash} cash per credit block (${blockCard} card). Your total depends on areas and dosing. Unused credit stays on your account.`,
   h1: "Xeomin Cost in Williamsburg, VA",
   botoxLine: "Looking for Botox® prices? We use Xeomin®, and units are not interchangeable, so compare full treatment plans.",
-  intro: `At Williamsburg Med Spa, Xeomin is ${blockCash} cash per credit block (${blockCard} online or by card). A block is treatment credit, not a fixed number of units or areas. Your total depends on the areas treated, muscle strength, and your dosing plan.`,
+  intro: `At Williamsburg Med Spa, Xeomin is ${blockCash} cash per credit block (${blockCard} online or by card). Your total depends on the areas treated, muscle strength, and your dosing plan.`,
   areaTag: "common",
   sections: [
     {
@@ -396,21 +405,19 @@ export const xeominCostPage: XeominClusterPage = {
       bullets: [
         `Each block adds ${blockCash} of treatment credit to your account.`,
         `Pay ${blockCash} per block in cash at the office, or ${blockCard} per block online or by card.`,
-        "The credit is applied to your Xeomin visit, and any unused value remains as account credit.",
-        "Jenny reviews treatment areas and likely dosing range before confirming the plan.",
+        "Any unused value remains as account credit.",
       ],
     },
     {
       heading: "What changes your total",
       paragraphs: [
-        "Final treatment cost depends on treatment areas, dose strategy, and candidacy. Treating one area such as frown lines is a different plan from treating frown lines, forehead lines, and crow's feet together.",
-        "Muscle strength and how much movement you want to keep also shape the dose. That is why Xeomin is sold as treatment credit, and Jenny confirms the plan with you at the visit.",
+        "Final treatment cost depends on treatment areas, dose strategy, and candidacy.",
       ],
     },
     {
       heading: "Why per-unit prices don't compare",
       paragraphs: [
-        "Xeomin and Botox® units are not interchangeable, so a unit price quoted for one product does not tell you what a plan with the other will cost. Compare whole treatment plans, not unit prices.",
+        "Xeomin and Botox® units are not interchangeable. Compare whole treatment plans, not unit prices.",
         "If you have had Botox® elsewhere, bring your treatment history. A Xeomin dose is planned for you rather than converted unit for unit.",
       ],
     },
@@ -436,21 +443,17 @@ export const xeominCostPage: XeominClusterPage = {
   ],
   faqs: [
     {
-      question: "How much does Xeomin cost in Williamsburg?",
-      answer: `Williamsburg Med Spa prices Xeomin in ${blockCash} credit blocks (${blockCash} per block in cash or ${blockCard} online by card). Your total depends on the areas treated, muscle strength, and your dosing plan.`,
-    },
-    {
-      question: "What is a Xeomin credit block?",
-      answer: `A credit block is ${blockCash} of treatment credit applied to your Xeomin visit. It is not a set number of units or a set area, and any unused value remains as account credit.`,
+      question: "How do Xeomin credit blocks work?",
+      answer: `Each block adds ${blockCash} of treatment credit, paid as ${blockCash} per block in cash or ${blockCard} online by card. The credit is applied to your Xeomin visit.`,
     },
     {
       question: "What happens to credit I don't use?",
-      answer: "Any unused value remains as account credit.",
+      answer: "It stays on your account as credit.",
     },
     {
       question: "I have had Botox® elsewhere. How do I compare prices?",
       answer:
-        "Compare the full treatment plan, not a unit price. Xeomin and Botox® units are not interchangeable. Ask which areas will be treated, how much movement you will keep, and what the full Xeomin plan costs, and bring your treatment history so Jenny can plan your Xeomin dose.",
+        "Compare the full treatment plan, not a unit price, because Xeomin and Botox® units are not interchangeable. Ask which areas will be treated, how much movement you will keep, and what the full Xeomin plan costs, and bring your treatment history so Jenny can plan your Xeomin dose.",
     },
     {
       question: "Is the price different if I pay by card?",

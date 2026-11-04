@@ -13,6 +13,7 @@ import {
   XEOMIN_PRICES,
   XEOMIN_PRODUCT_ANCHOR,
   XEOMIN_PRODUCT_PATH,
+  XEOMIN_SEEK_HELP,
   XEOMIN_SIDE_EFFECTS,
   XEOMIN_TRADEMARK_NOTE,
   xeominClusterPages,
@@ -141,6 +142,7 @@ export default function XeominClusterPageView({ page }: { page: XeominClusterPag
           Side effects and candidacy
         </h2>
         <p className="mb-3 text-base text-base-content/80 md:text-lg">{XEOMIN_SIDE_EFFECTS}</p>
+        <p className="mb-3 text-base font-medium text-base-content md:text-lg">{XEOMIN_SEEK_HELP}</p>
         <p className="text-base text-base-content/80 md:text-lg">
           Results are temporary and vary by person, area, and dose. Candidacy depends on your health history, medications, pregnancy or
           nursing status, prior injectable history, and the look you want to preserve.
