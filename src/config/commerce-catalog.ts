@@ -41,7 +41,7 @@ export type CatalogItemConfig = {
 };
 
 type CatalogItemSource = Omit<CatalogItemConfig, "unitAmountCents" | "quantityPriceBreaks" | "displayPrice"> & {
-  /** Unit wording placed after the card price, e.g. "per syringe". */
+  /** Unit wording placed after the cash price, e.g. "per treatment". */
   displayUnit?: string;
   /** Wording for a quantity price break, e.g. { 2: "for both ears" }. */
   quantityBreakLabels?: Record<number, string>;
@@ -230,7 +230,7 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
     slug: "botox",
     kind: "procedure",
     name: "Botox",
-    shortDescription: `Each block adds ${creditBlockCash} of treatment credit (card/online price).`,
+    shortDescription: `Each block adds ${creditBlockCash} of treatment credit.`,
     pricingMode: "increment_credit",
     cashAmountCents: CREDIT_BLOCK_CASH_CENTS,
     currency: "usd",
@@ -249,7 +249,7 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
     slug: "xeomin",
     kind: "procedure",
     name: "Xeomin",
-    shortDescription: `Each block adds ${creditBlockCash} of treatment credit (card/online price).`,
+    shortDescription: `Each block adds ${creditBlockCash} of treatment credit.`,
     pricingMode: "increment_credit",
     cashAmountCents: CREDIT_BLOCK_CASH_CENTS,
     currency: "usd",

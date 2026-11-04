@@ -171,7 +171,7 @@ test("a stale synced Stripe price (old amount) is never used; checkout falls bac
   assert.equal(bothEars.price_data?.unit_amount, 4135);
 });
 
-test("display prices show the card price with the cash price, never as a fee", () => {
+test("display prices show the cash price first, then the card price, never as a fee", () => {
   for (const item of COMMERCE_CATALOG) {
     assert.ok(item.displayPrice.includes(formatUsdShort(item.unitAmountCents)), `${item.slug}: ${item.displayPrice}`);
     assert.ok(item.displayPrice.includes(`${formatUsdShort(item.cashAmountCents)}`), `${item.slug}: ${item.displayPrice}`);
@@ -190,7 +190,7 @@ test("display prices show the card price with the cash price, never as a fee", (
   );
 });
 
-test("site copy prices (data.ts) match the catalog's card and cash prices", () => {
+test("site copy prices (data.ts) match the catalog's cash and card prices", () => {
   for (const entry of [...procedures, ...products] as { slug: string; price?: string }[]) {
     const item = getCatalogConfigBySlug(entry.slug);
     if (!item || !entry.price) continue;
