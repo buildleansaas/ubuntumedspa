@@ -17,7 +17,7 @@ const BUTTON_SOURCE = readFileSync(join(ROOT, "src/app/review/review-button.tsx"
 /** Source with comments removed, so the policy notes in comments do not count as copy. */
 const stripComments = (source: string) => source.replace(/\/\*[\s\S]*?\*\//g, "").replace(/(^|[^:])\/\/.*$/gm, "$1");
 
-const BANNED_COPY = /discount|% off|\$\d+ off|gift|free|reward|giveaway|entry|5[- ]star|five[- ]star|only if/i;
+const BANNED_COPY = /discount|% off|\$\d+ off|gift|free|reward|giveaway|entry|5[- ]star|five[- ]star|only if|happy|loved?|great experience|satisf|enjoyed/i;
 
 test("review URLs", () => {
   assert.equal(GOOGLE_REVIEW_URL, "https://g.page/r/Cde-gEi21QPUEBM/review");
