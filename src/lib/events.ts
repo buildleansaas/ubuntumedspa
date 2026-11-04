@@ -282,11 +282,11 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
     eyebrow: "Plan your party",
     heading: "Start with one intake form, then text Jenny to set up your planning call.",
     body:
-      "Share the group size, the date range, the location idea, and anything else the group may want to ask about. Once the form is in, you'll be redirected to schedule a quick planning conversation.",
+      "Share the group size, the date range, the location idea, and anything else the group may want to ask about. Once the form is in, text Jenny to set up a quick planning conversation.",
     disclaimer:
       "Botox is a prescription treatment. Final treatment plans, dosing, candidacy, and timing are confirmed individually after review.",
     submitButtonLabel: "Plan My Botox Party",
-    successMessage: "Party request received. Redirecting to scheduling...",
+    successMessage: "Party request received. Next: text Jenny to set up your planning call.",
     fields: [
       {
         id: "name",

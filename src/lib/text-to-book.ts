@@ -28,13 +28,17 @@ export const TIMES_PROMPT = "Days and times that work for me:";
 export const orderBookingMessage = (order: {
   orderId: string;
   customerName?: string;
-  items: { name: string; quantity: number }[];
-}) =>
-  [
+  items: { name: string; quantity: number; fulfillment?: string }[];
+}) => {
+  // Pickup products are not part of the visit; name only what is being booked (all items if none are bookable).
+  const bookable = order.items.filter((item) => item.fulfillment !== "pickup");
+  const items = bookable.length ? bookable : order.items;
+  return [
     greeting(order.customerName),
-    `I paid online for ${listJoin(order.items.map((item) => (item.quantity > 1 ? `${item.quantity} x ${item.name}` : item.name)))} (order #${shortOrderRef(order.orderId)}) and would like to book my appointment.`,
+    `I paid online for ${listJoin(items.map((item) => (item.quantity > 1 ? `${item.quantity} x ${item.name}` : item.name)))} (order #${shortOrderRef(order.orderId)}) and would like to book my appointment.`,
     TIMES_PROMPT,
   ].join(" ");
+};
 
 export const consultBookingMessage = (request: { name?: string; interests: string[] }) =>
   [

@@ -16,7 +16,7 @@ type TextToBookProps = {
 
 export default function TextToBook({ heading, intro, message, location }: TextToBookProps) {
   const [canShare, setCanShare] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">("idle");
 
   useEffect(() => {
     setCanShare(typeof navigator !== "undefined" && typeof navigator.share === "function");
@@ -25,9 +25,9 @@ export default function TextToBook({ heading, intro, message, location }: TextTo
   const copyMessage = async () => {
     try {
       await navigator.clipboard.writeText(message);
-      setCopied(true);
+      setCopyState("copied");
     } catch {
-      setCopied(false);
+      setCopyState("failed");
     }
   };
 
@@ -61,7 +61,7 @@ export default function TextToBook({ heading, intro, message, location }: TextTo
           </Button>
         ) : (
           <Button type="button" variant="secondary" onClick={copyMessage}>
-            {copied ? "Copied" : "Copy message"}
+            {copyState === "copied" ? "Copied" : copyState === "failed" ? "Select the message below to copy" : "Copy message"}
           </Button>
         )}
       </div>

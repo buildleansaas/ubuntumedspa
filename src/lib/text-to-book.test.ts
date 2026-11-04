@@ -44,3 +44,17 @@ test("messages still read cleanly without a name or interests", () => {
 test("short order ref is the first 8 alphanumerics of the order id, uppercased", () => {
   assert.equal(shortOrderRef("956e105e-20ff-406c-981c-22f133144da3"), "956E105E");
 });
+
+test("pickup-only products are left out of the booking text", () => {
+  assert.equal(
+    orderBookingMessage({
+      orderId: "abc12345-x",
+      customerName: "Pat",
+      items: [
+        { name: "Xeomin", quantity: 1, fulfillment: "appointment" },
+        { name: "Aftercare Kit", quantity: 1, fulfillment: "pickup" },
+      ],
+    }),
+    "Hi Jenny, this is Pat. I paid online for Xeomin (order #ABC12345) and would like to book my appointment. Days and times that work for me:"
+  );
+});
