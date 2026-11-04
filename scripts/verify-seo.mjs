@@ -684,7 +684,7 @@ const snippetExpectations = {
   "/procedures/blomdahl-ear-piercing": {
     title: "Ear Piercing Williamsburg VA | Blomdahl Pediatric NP",
     description:
-      "Sterile, hypoallergenic Blomdahl ear piercing in Williamsburg, VA by a pediatric NP. $46.66 per ear online by card or $45 cash.",
+      "Sterile, hypoallergenic Blomdahl ear piercing in Williamsburg, VA by a pediatric NP. $45 per ear in cash or $46.66 online by card.",
     h1: "Ear Piercing in Williamsburg, VA",
   },
   "/blog/blomdahl-medical-plastic-vs-titanium-earrings": {
@@ -902,14 +902,14 @@ const ownerPageExpectations = {
   "/procedures/prp-breast-lift": {
     title: "Breast Lift Williamsburg VA | PRP, Not Surgery",
     description:
-      "Breast lift in Williamsburg, VA: the PRP visit ($1,854.07 online by card or $1,800 cash) is not surgery and does not promise a cosmetic result.",
+      "Breast lift in Williamsburg, VA: the PRP visit ($1,800 in cash or $1,854.07 online by card) is not surgery and does not promise a cosmetic result.",
     h1: "PRP Breast Lift in Williamsburg, VA",
     required: [
       "What a PRP Breast Lift can and cannot do",
       "does not document the clinic's current method",
       "does not promise a cosmetic result",
       "mastopexy, implants, or fat transfer",
-      "$1,854.07 card/online · $1,800 cash",
+      "$1,800 cash · $1,854.07 card/online",
       "Full upfront payment for one treatment visit",
       "Book a Private PRP Breast Consultation",
     ],
@@ -966,7 +966,7 @@ const ownerPageExpectations = {
       "Research suggests platelet-rich plasma may improve hair density for some people with pattern hair loss",
       "does not create new follicles in a bald area",
       "Medical evaluation may come first",
-      "$618.23 per treatment card/online · $600 cash",
+      "$600 cash · $618.23 card/online per treatment",
       "purchase one session and choose one appointment time after checkout",
       "For patients cleared to proceed",
       "Book a PRP Hair Consultation",

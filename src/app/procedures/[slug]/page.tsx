@@ -21,7 +21,7 @@ import { getPublishedAilmentsForProcedure } from "lib/ailments/get-ailment-page-
 import { getPublishedBlogPosts } from "lib/blog";
 import { EAR_PIERCING_PRICES, getCatalogConfigBySlug } from "config/commerce-catalog";
 import { humanizeMedicalCopy } from "lib/humanize";
-import { cardCashProse, cardPriceSchemaValue } from "lib/price";
+import { cashCardProse, cardPriceSchemaValue } from "lib/price";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
@@ -335,7 +335,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             </h2>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
               <p>
-                If you are comparing a breast lift in Williamsburg, VA, start here. The PRP visit ({cardCashProse(catalogItem?.cashAmountCents ?? 180000)}) is not mastopexy,
+                If you are comparing a breast lift in Williamsburg, VA, start here. The PRP visit ({cashCardProse(catalogItem?.cashAmountCents ?? 180000)}) is not mastopexy,
                 implants, or fat transfer, and this page does not promise a cosmetic result.
               </p>
               <p>
@@ -445,22 +445,22 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               <div className="mx-auto mt-6 grid max-w-4xl gap-4 text-left md:grid-cols-3">
                 {[
                   {
-                    price: EAR_PIERCING_PRICES.oneEarCard,
-                    cash: EAR_PIERCING_PRICES.oneEarCash,
+                    price: EAR_PIERCING_PRICES.oneEarCash,
+                    card: EAR_PIERCING_PRICES.oneEarCard,
                     label: "One ear",
                     copy: "Starter jewelry and visit details reviewed when scheduling.",
                   },
                   {
-                    price: EAR_PIERCING_PRICES.bothEarsCard,
-                    cash: EAR_PIERCING_PRICES.bothEarsCash,
+                    price: EAR_PIERCING_PRICES.bothEarsCash,
+                    card: EAR_PIERCING_PRICES.bothEarsCard,
                     label: "Both ears",
                     copy: "A simple pair price for families booking both ears in one visit.",
                   },
-                  { price: "Nurse-led", cash: null, label: "Placement + aftercare", copy: "Jenny Brady, MSN, RN, CPNP, PMHS reviews fit and care." },
-                ].map(({ price, cash, label, copy }) => (
+                  { price: "Nurse-led", card: null, label: "Placement + aftercare", copy: "Jenny Brady, MSN, RN, CPNP, PMHS reviews fit and care." },
+                ].map(({ price, card, label, copy }) => (
                   <div key={label} className="border border-base-300 bg-base-100 p-5">
                     <p className="text-3xl font-semibold tracking-tight text-base-content">{price}</p>
-                    {cash && <p className="mt-1 text-sm text-base-content/70">card/online · {cash} cash</p>}
+                    {card && <p className="mt-1 text-sm text-base-content/70">cash · {card} card/online</p>}
                     <h3 className="mt-2 text-base font-semibold text-base-content">{label}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-base-content/70">{copy}</p>
                   </div>

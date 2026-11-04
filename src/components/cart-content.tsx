@@ -10,7 +10,7 @@ import AddToCartButton from "components/add-to-cart-button";
 import { useCart } from "components/cart-provider";
 import { Button } from "components/ui/button";
 import { getCartRecommendations, type CartRecommendation } from "config/cart-recommendations";
-import { CARD_CASH_NOTE, formatUsd, formatUsdShort } from "lib/price";
+import { CASH_CARD_NOTE, formatUsd, formatUsdShort } from "lib/price";
 import { cn } from "lib/utils";
 
 type ResolvedCartItem = {
@@ -168,7 +168,7 @@ function CartSummaryCard({
         {resolved ? (
           <div>
             <p className="text-[10px] uppercase tracking-[0.2em] text-base-content/60 sm:text-[11px] sm:tracking-[0.24em]">
-              Total
+              Total online by card
             </p>
             <div className="mt-2 flex items-end gap-3">
               <p className="text-[2rem] font-semibold leading-none tracking-tight text-base-content sm:text-3xl">
@@ -177,7 +177,7 @@ function CartSummaryCard({
               <p className="pb-1 text-sm text-base-content/55">before taxes</p>
             </div>
             <p className="mt-2 text-sm leading-5 text-base-content/65">
-              {CARD_CASH_NOTE}
+              {CASH_CARD_NOTE}
               {typeof resolved.cashSubtotalCents === "number" ? ` Cash total: ${formatUsdShort(resolved.cashSubtotalCents)}.` : null}
             </p>
           </div>

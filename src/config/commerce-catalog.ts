@@ -1,6 +1,6 @@
 import { normalizeIntimacyProcedureSlug } from "lib/intimacy-aliases";
 import {
-  cardCashLabel,
+  cashCardLabel,
   cardPriceCents,
   cardQuantityBreakLineCents,
   cardQuantityBreakUnitCents,
@@ -63,7 +63,7 @@ const deriveCardQuantityPriceBreaks = (cashBreaks: Record<number, number> | unde
 
 const buildDisplayPrice = (source: CatalogItemSource) => {
   if (source.pricingMode === "increment_credit") {
-    return `${formatUsdShort(source.cashAmountCents)} credit blocks · ${cardCashLabel(source.cashAmountCents)}`;
+    return `${formatUsdShort(source.cashAmountCents)} credit blocks · ${cashCardLabel(source.cashAmountCents)}`;
   }
 
   const breaks = Object.entries(source.cashQuantityPriceBreaks ?? {}).map(([quantity, cashUnitCents]) => ({
@@ -74,18 +74,18 @@ const buildDisplayPrice = (source: CatalogItemSource) => {
   }));
 
   if (breaks.length) {
-    const cardParts = [
-      `${formatUsdShort(cardPriceCents(source.cashAmountCents))}${source.displayUnit ? ` ${source.displayUnit}` : ""}`,
+    const cashParts = [
+      `${formatUsdShort(source.cashAmountCents)}${source.displayUnit ? ` ${source.displayUnit}` : ""}`,
       ...breaks.map(
-        ({ quantity, cardLineCents }) =>
-          `${formatUsdShort(cardLineCents)} ${source.quantityBreakLabels?.[quantity] ?? `for ${quantity}`}`
+        ({ quantity, cashLineCents }) =>
+          `${formatUsdShort(cashLineCents)} ${source.quantityBreakLabels?.[quantity] ?? `for ${quantity}`}`
       ),
     ];
-    const cashParts = [formatUsdShort(source.cashAmountCents), ...breaks.map(({ cashLineCents }) => formatUsdShort(cashLineCents))];
-    return `${cardParts.join(" or ")} card/online · ${cashParts.join(" or ")} cash`;
+    const cardParts = [formatUsdShort(cardPriceCents(source.cashAmountCents)), ...breaks.map(({ cardLineCents }) => formatUsdShort(cardLineCents))];
+    return `${cashParts.join(" or ")} cash · ${cardParts.join(" or ")} card/online`;
   }
 
-  return cardCashLabel(source.cashAmountCents, source.displayUnit);
+  return cashCardLabel(source.cashAmountCents, source.displayUnit);
 };
 
 const toCatalogItem = (source: CatalogItemSource): CatalogItemConfig => {
@@ -243,7 +243,7 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
     stripeProductKey: "wms_procedure_botox",
     stripePriceLookupKey: "wms_procedure_botox_block_250_v1",
     customerNote:
-      `Botox is prepaid online in ${creditBlockCash} credit blocks (${creditBlockCard} per block online by card, ${creditBlockCash} cash). Each block adds ${creditBlockCash} of treatment credit, and any unused value remains as account credit.`,
+      `Botox is prepaid online in ${creditBlockCash} credit blocks (${creditBlockCash} per block in cash or ${creditBlockCard} online by card). Each block adds ${creditBlockCash} of treatment credit, and any unused value remains as account credit.`,
   },
   {
     slug: "xeomin",
@@ -262,7 +262,7 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
     stripeProductKey: "wms_procedure_xeomin",
     stripePriceLookupKey: "wms_procedure_xeomin_block_250_v1",
     customerNote:
-      `Xeomin is prepaid online in ${creditBlockCash} credit blocks (${creditBlockCard} per block online by card, ${creditBlockCash} cash). Each block adds ${creditBlockCash} of treatment credit, and any unused value remains as account credit.`,
+      `Xeomin is prepaid online in ${creditBlockCash} credit blocks (${creditBlockCash} per block in cash or ${creditBlockCard} online by card). Each block adds ${creditBlockCash} of treatment credit, and any unused value remains as account credit.`,
   },
   {
     slug: "hyperhidrosis-treatment",

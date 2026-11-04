@@ -64,13 +64,13 @@ export const cardQuantityBreakLineCents = (cashBreakUnitCents: number, quantity:
 export const estimatedStripeFeeCents = (chargeCents: number) =>
   Math.round((chargeCents * STRIPE_PERCENT_FEE_BASIS_POINTS) / BASIS_POINTS) + STRIPE_FIXED_FEE_CENTS;
 
-/** "$46.66 card/online · $45 cash" (optional unit, e.g. "per syringe", goes after the card price). */
-export const cardCashLabel = (cashCents: number, unit?: string) =>
-  `${formatUsdShort(cardPriceCents(cashCents))}${unit ? ` ${unit}` : ""} card/online · ${formatUsdShort(cashCents)} cash`;
+/** "$45 cash · $46.66 card/online" (optional unit, e.g. "per treatment", goes after the card price). Cash leads. */
+export const cashCardLabel = (cashCents: number, unit?: string) =>
+  `${formatUsdShort(cashCents)} cash · ${formatUsdShort(cardPriceCents(cashCents))} card/online${unit ? ` ${unit}` : ""}`;
 
-/** "$257.78 online by card or $250 cash" for prose (optional unit after the card price). */
-export const cardCashProse = (cashCents: number, unit?: string) =>
-  `${formatUsdShort(cardPriceCents(cashCents))}${unit ? ` ${unit}` : ""} online by card or ${formatUsdShort(cashCents)} cash`;
+/** "$45 per ear in cash or $46.66 online by card" for prose (optional unit after the cash price). Cash leads. */
+export const cashCardProse = (cashCents: number, unit?: string) =>
+  `${formatUsdShort(cashCents)}${unit ? ` ${unit}` : ""} in cash or ${formatUsdShort(cardPriceCents(cashCents))} online by card`;
 
 /** Card price only, formatted, e.g. "$46.66". */
 export const cardPriceLabel = (cashCents: number) => formatUsdShort(cardPriceCents(cashCents));
@@ -78,5 +78,5 @@ export const cardPriceLabel = (cashCents: number) => formatUsdShort(cardPriceCen
 /** Card price as a schema.org Offer price string, e.g. "46.66". */
 export const cardPriceSchemaValue = (cashCents: number) => (cardPriceCents(cashCents) / 100).toFixed(2);
 
-export const CARD_CASH_NOTE =
-  "Card prices are what you pay online and by card in the office. Paying cash in the office? You pay the cash price.";
+export const CASH_CARD_NOTE =
+  "Paying cash in the office? You pay the cash price. The card price applies online and to card payments in the office.";
