@@ -1232,8 +1232,8 @@ if (!/25–35 minute drive from Newport News/.test(getVisibleText(newportNews)))
 if (!/There is no Newport News street address/.test(newportNews)) {
   fail("Newport News page does not say there is no Newport News street address");
 }
-if (!/Med spa Newport News/i.test(newportNewsSnippet.description) || !/Botox/.test(newportNewsSnippet.description) || !/25–35 minutes/.test(newportNewsSnippet.description)) {
-  fail("Newport News meta does not target med spa and Botox");
+if (!/Med spa Newport News/i.test(newportNewsSnippet.description) || !/Botox/.test(newportNewsSnippet.description) || !/typically drive 25–35 minutes/.test(newportNewsSnippet.description)) {
+  fail('Newport News meta does not target med spa and Botox, or drops "typically drive 25–35 minutes" (the drive time on /locations)');
 }
 if (!/does not offer Hydrafacial/.test(home)) fail("homepage does not disambiguate Hydrafacial");
 if (!/href=["']\/procedures\/prp-facial["']/.test(home)) fail("homepage Hydrafacial note does not link to PRP Facial");

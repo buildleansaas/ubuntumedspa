@@ -1,5 +1,7 @@
 # James City County owner-page slice
 
+Update 2026-11-04 (PR #155): the clinic uses only Xeomin (no Botox® brand) and no longer offers filler.
+
 Date: 2026-07-21
 Owner URL: `https://www.williamsburgmedspa.com/locations/james-city-county-va`
 Parent sequence: PRP Hair Restoration owner page, PR #74

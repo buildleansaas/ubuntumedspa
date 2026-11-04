@@ -23,38 +23,66 @@ const ROOT = process.cwd();
 
 const B = String.raw`Botox®?`;
 export const ALLOWED_BOTOX_CONTEXTS: RegExp[] = [
-  // The search term.
+  // 1. The search term.
   new RegExp(String.raw`${B}[\s-]+alternatives?\b`, "gi"),
   new RegExp(String.raw`\b(?:looking|searching|searched|search)\s+for\s+${B}`, "gi"),
-  // Saying we do not offer it, and the questions the copy answers "No" to.
-  new RegExp(String.raw`\b(?:not|never|don't|do not|doesn't|does not)\s+(?:currently\s+)?offer(?:s)?\s+(?:Dysport\s+or\s+)?${B}`, "gi"),
-  new RegExp(String.raw`\bnot\s+${B}`, "gi"),
-  new RegExp(String.raw`\bDo(?:es)?\s+(?:you|we|Williamsburg Med Spa)\s+offer\s+${B}`, "gi"),
-  new RegExp(String.raw`${B}\s*\((?:not offered here|which Williamsburg Med Spa does not offer)\)`, "gi"),
-  // Comparisons.
-  new RegExp(String.raw`\b(?:vs\.?|versus|than|compared with|compares with|compare it with|comparing Xeomin with|same as|different from|differ from|differs from|interchangeable with)\s+${B}`, "gi"),
-  new RegExp(String.raw`${B}\s+(?:vs\.?|versus)\s`, "gi"),
-  new RegExp(String.raw`\bsame\s+(?:treatment\s+)?category\s+as\s+${B}`, "gi"),
-  new RegExp(String.raw`\b(?:Both\s+|Are\s+)?(?:${B}\s+and\s+Xeomin®?|Xeomin®?\s+and\s+${B})\s+(?:are|have|as|units\s+are|the\s+same)\b`, "gi"),
-  new RegExp(String.raw`\bIs\s+${B}\s+the\s+same\s+as\b`, "gi"),
-  new RegExp(String.raw`\bhad\s+${B}`, "gi"),
-  new RegExp(String.raw`\bmention\s+${B}`, "gi"),
   new RegExp(String.raw`${B}\s+appears\s+only\s+as\s+the\s+search\s+term`, "gi"),
-  // The trademark notice and the FDA label citation.
+  // 2. A "we do not offer Botox®" statement, and the questions the copy answers "No" to.
+  new RegExp(String.raw`\b(?:not|never|don't|do not|doesn't|does not)\s+(?:currently\s+)?offer(?:s)?\s+(?:Dysport\s+or\s+)?${B}`, "gi"),
+  new RegExp(String.raw`\b(?:uses Xeomin|Xeomin),\s+not\s+${B}`, "gi"),
+  new RegExp(String.raw`\bnot\s+Dysport\s+or\s+${B}`, "gi"),
+  new RegExp(String.raw`\bDo(?:es)?\s+(?:you|we|Williamsburg Med Spa)\s+offer\s+${B}(?![^.!\n"]{0,40}\?\s*Yes)`, "gi"),
+  new RegExp(String.raw`\bno\s+${B}\s+brand\b`, "gi"),
+  new RegExp(String.raw`${B}\s*\((?:not offered here|which Williamsburg Med Spa does not offer)\)`, "gi"),
+  // 3. Comparisons, limited to the forms the copy uses.
+  new RegExp(String.raw`\b(?:vs\.?|versus|compared with|compares with|compare it with|comparing Xeomin with|different from|differ from|differs from|interchangeable with|longer than)\s+${B}`, "gi"),
+  new RegExp(String.raw`${B}\s+(?:vs\.?|versus)\s+Xeomin\s+in\s+Williamsburg\b`, "gi"),
+  new RegExp(String.raw`\b(?:Is\s+Xeomin|not)\s+the\s+same\s+as\s+${B}`, "gi"),
+  new RegExp(String.raw`\bIs\s+${B}\s+the\s+same\s+as\s+Kybella\b`, "gi"),
+  new RegExp(String.raw`\bsame\s+(?:treatment\s+)?category\s+as\s+${B}`, "gi"),
+  new RegExp(
+    String.raw`\b(?:Both\s+|Are\s+)?(?:${B}\s+and\s+Xeomin®?|Xeomin®?\s+and\s+${B})\s+(?:are\s+both\s+(?:botulinum|neuromodulators|medical treatments)|are\s+botulinum|are\s+distinct\s+products|are\s+often\s+compared|are\s+prescription|are\s+wrinkle\s+relaxers|as\s+temporary\s+treatments|have\s+in\s+common|units\s+are\s+not\s+interchangeable|the\s+same\s+thing)\b`,
+    "gi"
+  ),
+  new RegExp(String.raw`\bhad\s+${B}\s+(?:elsewhere|before)\b`, "gi"),
+  new RegExp(String.raw`\bmention\s+${B}`, "gi"),
+  // 4. The trademark notice and the FDA label citation.
   new RegExp(String.raw`${B}\s+is\s+a\s+registered\s+trademark\s+of\s+Allergan`, "gi"),
   /\bBOTOX Cosmetic Prescribing Information\b/g,
+  // Legacy consult-form value mapped to "Xeomin (Botox alternative)" (consult-procedure-interests.ts).
+  /\bBotox: XEOMIN_INTEREST\b/g,
 ];
 
-/** URL slugs, image paths, object keys, and code identifiers are not copy. */
-const stripSlugsAndIdentifiers = (text: string) =>
-  text
-    // Lowercase slugs and paths (/procedures/botox, botox-party, botox-vs-xeomin-..., *.webp) and the "botox" slug literal.
-    .replace(/[\w/.-]*botox[\w.-]*/g, (match) => (/[-/.]/.test(match) ? " " : match))
-    .replace(/(["'`])botox\1|\bbotox(?=\s*:)/g, " ")
-    .replace(/\b[a-z]+Botox[A-Za-z]*\b|\bbotox[A-Z][A-Za-z]*\b|\bBOTOX_[A-Z_]+\b|\bBotox[A-Z][A-Za-z]*\b/g, " ");
+/** Hyphenated slugs and ids that exist in the code. Anything else hyphenated ("botox-injections") is copy. */
+const BOTOX_SLUGS = [
+  "botox-vs-xeomin-williamsburg-va",
+  "botox-party-callout-heading",
+  "botox-party-callout",
+  "botox-party",
+  "botox-consultation",
+];
 
-export const findDisallowedBotox = (label: string, text: string) => {
-  const cleaned = stripSlugsAndIdentifiers(text);
+/** URL paths, file names, known slugs, the quoted "botox" slug, code identifiers, and (in code) `botox:` keys. */
+const stripSlugsAndIdentifiers = (text: string, isCode: boolean) => {
+  let cleaned = text
+    // Paths and URLs (contain "/") and file names (end in an extension).
+    .replace(/[\w.:~%/-]*botox[\w.~%/-]*/gi, (match) =>
+      match.includes("/") || /\.(?:webp|png|jpe?g|avif|svg|pdf|tsx?|mdx?|json)$/i.test(match) ? " " : match
+    )
+    .replace(new RegExp(String.raw`(?<![\w-])(?:${BOTOX_SLUGS.join("|")})(?![\w-])`, "g"), " ")
+    .replace(/(["'`])botox\1/g, " ")
+    .replace(/\b[a-z]+Botox[A-Za-z]*\b|\bbotox[A-Z][A-Za-z]*\b|\bBOTOX_[A-Z_]+\b|\bBotox[A-Z][A-Za-z]*\b/g, " ");
+  // Object keys only: `botox:` at the start of a line (strings such as "Book botox: $250" are still copy).
+  if (isCode) cleaned = cleaned.replace(/^(\s*)botox(?=\s*:)/gm, "$1 ");
+  return cleaned;
+};
+
+/** In Markdown notes, a backticked search query such as `botox williamsburg va` is a quoted search term. */
+const stripQuotedQueries = (text: string) => text.replace(/`[a-z0-9 ]*botox[a-z0-9 ]*`/g, " ");
+
+export const findDisallowedBotox = (label: string, text: string, kind: "copy" | "code" | "notes" = "copy") => {
+  let cleaned = stripSlugsAndIdentifiers(text, kind === "code");
+  if (kind === "notes") cleaned = stripQuotedQueries(cleaned);
   const covered: Array<[number, number]> = [];
   for (const pattern of ALLOWED_BOTOX_CONTEXTS) {
     for (const match of cleaned.matchAll(new RegExp(pattern.source, pattern.flags.includes("g") ? pattern.flags : `${pattern.flags}g`))) {
@@ -77,25 +105,33 @@ const walk = (dir: string, extensions: string[], recursive = true): string[] =>
     return extensions.some((ext) => name.endsWith(ext)) ? [path] : [];
   });
 
-// Blog posts are the top-level src/markdown/*.mdx files (lib/blog.ts). The ailments/botox MDX pages are redirected,
-// but their metadata decides which treatment-area cards show, so they are held to the same rule.
+// Everything under src/ that can hold copy or data (tests excluded: they quote the false claims on purpose), plus
+// agent and repo notes, so a future session cannot reintroduce Botox offer copy from them.
+const isScannedSource = (path: string) => !/\.test\.tsx?$/.test(path) && !path.includes("node_modules");
 const scannedFiles = [
-  ...walk(join(ROOT, "src/markdown"), [".mdx"], false),
-  ...walk(join(ROOT, "src/markdown/ailments/botox"), [".mdx"]),
-  ...walk(join(ROOT, "src/app"), [".tsx", ".ts"]),
-  ...walk(join(ROOT, "src/views"), [".tsx"]),
-  ...walk(join(ROOT, "src/components"), [".tsx"]),
-  join(ROOT, "src/lib/seo.ts"),
-  join(ROOT, "src/lib/events.ts"),
-  join(ROOT, "src/lib/local-injectable-service-pages.ts"),
-  join(ROOT, "src/config/commerce-catalog.ts"),
-  join(ROOT, "src/config/cart-recommendations.ts"),
-  join(ROOT, "src/data.ts"),
-  // Agent and repo notes, so a future session cannot reintroduce Botox offer copy from them.
+  ...walk(join(ROOT, "src"), [".ts", ".tsx", ".mdx", ".md", ".json"]).filter(isScannedSource),
   ...walk(join(ROOT, ".agents"), [".md"]),
   join(ROOT, "LOCALIZATION.md"),
-  join(ROOT, "docs/seo/google-business-profile-plan-2026-10-03.md"),
+  ...walk(join(ROOT, "docs/seo"), [".md"], false),
 ];
+/**
+ * Dated SEO planning notes written while the site still listed Botox and filler. They are records, not instructions:
+ * each must carry the supersede line near the top, and only then is its body skipped. The list is explicit, so a new
+ * note cannot opt out by adding the line.
+ */
+export const SUPERSEDE_LINE =
+  "Update 2026-11-04 (PR #155): the clinic uses only Xeomin (no Botox® brand) and no longer offers filler.";
+const HISTORICAL_NOTES = [
+  "docs/seo/oct-2026-owner-slice-baselines.md",
+  "docs/seo/piercing-consolidation-2026-10.md",
+  "docs/seo/post-deploy-indexing-queue-2026-05-16.md",
+  "docs/seo/williamsburg-10x-growth-plan-2026-07-23.md",
+  "docs/seo/williamsburg-dermal-filler-owner-slice-2026-09-29.md",
+  "docs/seo/williamsburg-james-city-county-owner-slice-2026-07-21.md",
+  "docs/seo/williamsburg-newport-news-growth-slice.md",
+  "docs/seo/williamsburg-protected-query-owner-ledger.md",
+];
+const kindOf = (path: string) => (/\.tsx?$/.test(path) ? "code" : path.startsWith(join(ROOT, "src")) ? "copy" : "notes");
 
 const renderedData = JSON.stringify([
   procedures,
@@ -128,6 +164,20 @@ test("the allowlist rejects offer wording and accepts the honest contexts (the t
     "Medical Spa Williamsburg VA | Botox, Xeomin & PRP",
     "Request a Botox Consultation",
     "Botox in Williamsburg, VA",
+    // Round 2: offers dressed up as comparisons, slug-looking copy, and loose contexts.
+    "Xeomin and Botox as low as $250",
+    "Botox and Xeomin are $250 per block",
+    "Both Botox and Xeomin are offered by Jenny",
+    "Botox and Xeomin have openings this week",
+    "Xeomin and Botox are both available here.",
+    "We carry botox.",
+    "Book botox: $250",
+    "Get botox-injections today",
+    "We offer more than Botox",
+    "Xeomin is the same as Botox.",
+    "Clients who had Botox here love it",
+    "Do we offer Botox? Yes!",
+    "Our Botox vs. Xeomin special",
   ]) {
     assert.ok(findDisallowedBotox("sample", falseClaim).length > 0, `allowlist accepted: ${falseClaim}`);
   }
@@ -136,7 +186,7 @@ test("the allowlist rejects offer wording and accepts the honest contexts (the t
     "Looking for Botox in Williamsburg? We use Xeomin®, a wrinkle relaxer in the same category as Botox®.",
     "Do you offer Botox®? No. We use Xeomin® (incobotulinumtoxinA).",
     "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand.",
-    "Xeomin vs Botox. Botox vs Xeomin. Both Xeomin and Botox® are botulinum toxin type A products. If you have had Botox® elsewhere.",
+    "Xeomin vs Botox. Botox vs Xeomin in Williamsburg, VA. Both Xeomin and Botox® are botulinum toxin type A products. If you have had Botox® elsewhere.",
     'href="/events/botox-party" and /procedures/botox and botox-vs-xeomin-williamsburg-va and "/procedure/botox-closeup.webp"',
   ]) {
     assert.deepEqual(findDisallowedBotox("sample", honest), [], honest);
@@ -150,7 +200,15 @@ test("rendered data mentions Botox only in allowed contexts", () => {
 });
 
 test("served copy, source, and agent notes mention Botox only in allowed contexts", () => {
-  const problems = scannedFiles.flatMap((file) => findDisallowedBotox(relative(ROOT, file), readFileSync(file, "utf8")));
+  for (const note of HISTORICAL_NOTES) {
+    const head = readFileSync(join(ROOT, note), "utf8").split("\n").slice(0, 5).join("\n");
+    assert.ok(head.includes(SUPERSEDE_LINE), `${note} is missing the 2026-11-04 supersede line at the top`);
+  }
+  const problems = scannedFiles
+    .filter((file) => !HISTORICAL_NOTES.includes(relative(ROOT, file)))
+    .flatMap((file) =>
+    findDisallowedBotox(relative(ROOT, file), readFileSync(file, "utf8"), kindOf(file))
+  );
   assert.deepEqual(problems, []);
 });
 

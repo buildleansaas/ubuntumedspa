@@ -12,7 +12,7 @@ const xeominCard = cardPriceLabel(25000);
 export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Newport News | Xeomin, a Botox Alternative",
   description:
-    `Med spa Newport News patients drive 25–35 minutes to our Williamsburg clinic for Xeomin® (a Botox® alternative, ${formatUsdShort(25000)} cash), PRP, and ear piercing.`,
+    `Med spa Newport News patients typically drive 25–35 minutes to our Williamsburg clinic for Xeomin® (a Botox® alternative, ${formatUsdShort(25000)} cash), PRP, and ear piercing.`,
   canonical: "/locations/newport-news-va",
 });
 

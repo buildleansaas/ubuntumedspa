@@ -1,8 +1,8 @@
 import { normalizeIntimacyProcedureNames } from "./intimacy-aliases";
 
 /**
- * The clinic's only wrinkle relaxer is Xeomin. It does not offer Botox brand, so the old "Botox" checkbox
- * became "Xeomin (Botox alternative)". The /procedures/botox page is the Botox-alternative page.
+ * The clinic's only wrinkle relaxer is Xeomin. It does not offer Botox® brand, so the consult checkbox is
+ * "Xeomin (Botox alternative)" and the pre-2026-11 label maps to it. The /procedures/botox page is the Botox-alternative page.
  */
 export const XEOMIN_INTEREST = "Xeomin (Botox alternative)";
 
@@ -35,6 +35,6 @@ export const PROCEDURE_INTERESTS: Record<string, string[]> = {
 export const getProcedureInterests = (procedure?: string | null) =>
   procedure ? PROCEDURE_INTERESTS[procedure.trim()] : undefined;
 
-/** Normalizes submitted consult interests: legacy intimacy names plus the old "Botox"/"Xeomin" labels. */
+/** Normalizes submitted consult interests: legacy intimacy names plus the pre-2026-11 wrinkle-relaxer labels. */
 export const normalizeConsultInterests = (names: string[]) =>
   Array.from(new Set(normalizeIntimacyProcedureNames(names).map((name) => LEGACY_INTEREST_ALIASES[name] ?? name)));

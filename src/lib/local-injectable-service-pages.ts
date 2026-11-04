@@ -1,7 +1,7 @@
 import { COMMERCE_CATALOG_BY_SLUG } from "config/commerce-catalog";
 import { cardPriceLabel, formatUsdShort } from "lib/price";
 
-// The clinic's only wrinkle relaxer is Xeomin; it does not offer Botox® brand. The botox-slug entry below is the
+// The clinic's only wrinkle relaxer is Xeomin; it does not offer Botox® brand. The procedureSlug "botox" entry below is the
 // Botox-alternative page for people searching for Botox (these /near/williamsburg-va URLs redirect to the main pages).
 const xeominBlockCashCents = COMMERCE_CATALOG_BY_SLUG.xeomin.cashAmountCents;
 const xeominBlock = formatUsdShort(xeominBlockCashCents);
@@ -147,7 +147,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     consultationSteps: [
       { title: "Movement review", body: "Jenny reviews your face at rest and with expression so the plan matches how your muscles actually move." },
       { title: "Goal setting", body: "You discuss subtle softening, stronger smoothing, event timing, and how much natural movement you want to keep." },
-      { title: "Prior treatment history", body: "If you have had Botox® or another wrinkle relaxer elsewhere, that history is reviewed before a Xeomin dose is planned." },
+      { title: "Prior treatment history", body: "If you have had Botox® elsewhere (or another wrinkle relaxer), that history is reviewed before a Xeomin dose is planned." },
       { title: "Treatment plan and pricing", body: "Areas, dose strategy, timing, and treatment-credit expectations are explained before treatment." },
       { title: "Aftercare and follow-up expectations", body: "Jenny reviews aftercare, onset timing, and the typical settling window so you know what to watch for." },
     ],

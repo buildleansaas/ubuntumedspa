@@ -145,7 +145,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
 
   const procedure = procedures.find((procedure) => procedure.slug === slug);
   if (!procedure) return notFound();
-  // The /procedures/botox page is the Botox-alternative page: it sells the Xeomin item (the clinic does not offer Botox brand).
+  // The /procedures/botox page is the Botox-alternative page: it sells the Xeomin item (the clinic does not offer Botox® brand).
   const catalogItem = getCatalogConfigBySlug(("catalogSlug" in procedure && procedure.catalogSlug) || slug);
   const heroImagePath = catalogItem?.imagePath;
   const publishedAilments = await getPublishedAilmentsForProcedure(procedure.slug);

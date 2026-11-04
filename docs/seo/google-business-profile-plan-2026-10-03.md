@@ -33,7 +33,7 @@ Williamsburg Med Spa
 
 ### Description
 
-*Updated 2026-11-04: the clinic uses only Xeomin (it does not offer Botox brand) and no longer offers dermal filler, so both are removed below.*
+*Updated 2026-11-04: the clinic uses only Xeomin (it does not offer Botox® brand) and no longer offers dermal filler, so both are removed below.*
 
 > Williamsburg Med Spa is a nurse practitioner-led practice in Williamsburg, VA, run by Jenny Brady, MSN, RN, CPNP, PMHS. We specialize in gentle, sterile Blomdahl medical ear piercing for infants, kids, teens, and adults, using single-use cassettes and hypoallergenic medical plastic or titanium starter earrings. As a pediatric nurse practitioner, Jenny takes time with parents and little ones, from earring placement to aftercare, in a calm, private appointment instead of a busy retail counter. We also offer Xeomin wrinkle relaxer, PRP facials, PRP hair restoration, and other PRP treatments. Proudly serving Williamsburg, James City County, Yorktown, and Newport News. Call or book your appointment online.
 
