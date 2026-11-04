@@ -1,8 +1,15 @@
+import { COMMERCE_CATALOG_BY_SLUG } from "../config/commerce-catalog";
 import { formatUsdShort } from "./price";
 
+const cashPrice = (slug: string) => formatUsdShort(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
+
 // The clinic's only wrinkle relaxer is Xeomin. It does not offer Botox® brand.
-export const DEFAULT_TITLE = "Medical Spa Williamsburg VA | Xeomin (Botox Alternative) & PRP";
-export const DEFAULT_DESCRIPTION = `Nurse-led med spa on Powhatan Pkwy. Xeomin® wrinkle relaxer (a Botox® alternative) from ${formatUsdShort(25000)} cash, PRP, and Blomdahl ear piercing.`;
+// Homepage snippet CTR test started 2026-11-04 (docs/seo/homepage-snippet-ctr-test-2026-11-04.md).
+// Keep the lead words "Medical Spa Williamsburg VA"; prices come from the catalog.
+export const DEFAULT_TITLE = "Medical Spa Williamsburg VA | Nurse-Led, Prices Posted";
+export const DEFAULT_DESCRIPTION = `Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) ${cashPrice(
+  "xeomin"
+)} cash, Blomdahl ear piercing ${cashPrice("blomdahl-ear-piercing")}, B-12 ${cashPrice("b12-injections")}, PRP. See all prices.`;
 
 export const ORIGIN =
   process.env.NODE_ENV === "development"

@@ -54,6 +54,7 @@ const localLinks = [
   { href: "/locations", label: "Areas we serve" },
   { href: "/locations/yorktown-va", label: "Yorktown med spa" },
   { href: "/procedures/blomdahl-ear-piercing", label: "Ear piercing in Williamsburg" },
+  { href: "/prices", label: "Med spa prices" },
 ] as const;
 
 export default async function Page() {
