@@ -97,7 +97,7 @@ Prioritize these differentiators in service, local, and support pages:
 - Hypoallergenic starter jewelry options.
 - Medical Plastic and Medical Grade Titanium options.
 - Blomdahl Medical Plastic described by Blomdahl as 0% nickel.
-- Appointment-based clinic setting with Jenny Coleman, MSN, RN, CPNP, PMHS.
+- Appointment-based clinic setting with Jenny Brady, MSN, RN, CPNP, PMHS.
 - Pediatric-aware care that is useful for children and for any patient who wants a calm, careful appointment.
 
 ## Publishing Rules

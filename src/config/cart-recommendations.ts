@@ -18,11 +18,6 @@ export type CartRecommendation = CatalogItemConfig & {
 const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], RecommendationDefinition[]>> = {
   botox: [
     {
-      slug: "filler",
-      reason: "Often added when someone wants softening from Botox plus shape or volume in another area.",
-      priority: 1,
-    },
-    {
       slug: "co2-lift",
       reason: "A simple pickup add-on for glow and skin support between injectable visits.",
       priority: 2,
@@ -35,11 +30,6 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
   ],
   xeomin: [
     {
-      slug: "filler",
-      reason: "Often explored alongside Xeomin when the goal is smoother movement lines plus a little structural support.",
-      priority: 1,
-    },
-    {
       slug: "co2-lift",
       reason: "A pickup skincare add-on for texture, glow, and at-home support between visits.",
       priority: 2,
@@ -47,23 +37,6 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
     {
       slug: "definage-clinical-power-trio-pro",
       reason: "A stronger home-care option for patients also thinking about tone, firmness, and skin upkeep.",
-      priority: 3,
-    },
-  ],
-  filler: [
-    {
-      slug: "botox",
-      reason: "A common companion treatment when patients want both softening and support rather than volume alone.",
-      priority: 1,
-    },
-    {
-      slug: "co2-lift",
-      reason: "An easy at-home add-on for glow and hydration between filler appointments.",
-      priority: 2,
-    },
-    {
-      slug: "definage-clinical-power-trio-pro",
-      reason: "A medical-grade skincare routine that pairs well with patients focused on overall skin quality.",
       priority: 3,
     },
   ],
@@ -132,11 +105,6 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
       priority: 1,
     },
     {
-      slug: "filler",
-      reason: "Often explored by patients who want to pair skincare with a more structural facial refresh.",
-      priority: 2,
-    },
-    {
       slug: "botox",
       reason: "A common next step when the goal is to soften movement-related lines beyond skincare alone.",
       priority: 3,
@@ -147,11 +115,6 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
       slug: "botox",
       reason: "Often explored when someone wants injectable support alongside a stronger at-home anti-aging routine.",
       priority: 1,
-    },
-    {
-      slug: "filler",
-      reason: "A common follow-up when the goal includes both skin quality and a little more facial support or contour.",
-      priority: 2,
     },
     {
       slug: "prp-facial",
@@ -166,11 +129,6 @@ const CART_RECOMMENDATION_FALLBACKS: RecommendationDefinition[] = [
     slug: "botox",
     reason: "A common next step for patients looking to soften movement-related lines.",
     priority: 1,
-  },
-  {
-    slug: "filler",
-    reason: "Often explored when someone wants shape, balance, or a little more facial support.",
-    priority: 2,
   },
   {
     slug: "prp-facial",

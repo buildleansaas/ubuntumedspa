@@ -34,12 +34,12 @@ export const earPiercingIntentPages: EarPiercingIntentPage[] = [
     title: "Infant & Kids Ear Piercing",
     metaTitle: "Infant & Baby Ear Piercing in Williamsburg, VA | Pediatric NP",
     metaDescription:
-      `Blomdahl ear piercing for infants, babies, and kids in Williamsburg, VA with pediatric NP Jenny Coleman. Sterile, hypoallergenic, ${EAR_PIERCING_PRICES.oneEarCard}/ear by card, ${EAR_PIERCING_PRICES.oneEarCash} cash.`,
+      `Blomdahl ear piercing for infants, babies, and kids in Williamsburg, VA with pediatric NP Jenny Brady. Sterile, hypoallergenic, ${EAR_PIERCING_PRICES.oneEarCard}/ear by card, ${EAR_PIERCING_PRICES.oneEarCash} cash.`,
     h1: "Infant, Baby & Kids Ear Piercing in Williamsburg, VA",
     audience:
       "For parents planning a baby's or child's first earrings who want a calm, private appointment with a pediatric nurse practitioner instead of a busy retail counter.",
     whyJenny:
-      "Jenny Coleman, MSN, RN, CPNP, PMHS is a pediatric nurse practitioner. She is used to working with infants, young children, and nervous parents, explains each step in simple language, and makes sure aftercare is clear before your family leaves.",
+      "Jenny Brady, MSN, RN, CPNP, PMHS is a pediatric nurse practitioner. She is used to working with infants, young children, and nervous parents, explains each step in simple language, and makes sure aftercare is clear before your family leaves.",
     whyBlomdahl:
       "Blomdahl's medical ear piercing system uses sterile, single-use piercing cassettes and hypoallergenic starter earrings in Medical Plastic or Medical Grade Titanium, which helps families worried about nickel or sensitive skin.",
     beforeVisit: [
@@ -54,7 +54,7 @@ export const earPiercingIntentPages: EarPiercingIntentPage[] = [
       {
         heading: "Pediatric ear piercing in Williamsburg",
         paragraphs: [
-          "Pediatric ear piercing at Williamsburg Med Spa is the infant, baby, and kids visit with Jenny Coleman, MSN, RN, CPNP, PMHS, a pediatric nurse practitioner.",
+          "Pediatric ear piercing at Williamsburg Med Spa is the infant, baby, and kids visit with Jenny Brady, MSN, RN, CPNP, PMHS, a pediatric nurse practitioner.",
           "Jenny generally pierces babies at 6 months or older, with pediatrician guidance. She reviews health history at the visit and will not pierce if she has any safety concerns.",
         ],
       },
@@ -116,7 +116,7 @@ export const earPiercingIntentPages: EarPiercingIntentPage[] = [
       {
         question: "Do you offer pediatric ear piercing?",
         answer:
-          "Yes. Pediatric ear piercing is the infant, baby, and kids appointment at the Williamsburg clinic. Jenny Coleman, a pediatric nurse practitioner, generally pierces babies at 6 months or older with pediatrician guidance.",
+          "Yes. Pediatric ear piercing is the infant, baby, and kids appointment at the Williamsburg clinic. Jenny Brady, a pediatric nurse practitioner, generally pierces babies at 6 months or older with pediatrician guidance.",
       },
       {
         question: "Does ear piercing hurt for babies?",
@@ -226,7 +226,7 @@ export const earPiercingIntentPages: EarPiercingIntentPage[] = [
       {
         heading: "Re-piercing at the Williamsburg clinic",
         paragraphs: [
-          "Ear re-piercing in Williamsburg is an appointment at 3900 Powhatan Parkway. Jenny Coleman, MSN, RN, CPNP, PMHS reviews the closed or irritated area, any scar or keloid history, and whether piercing again is appropriate.",
+          "Ear re-piercing in Williamsburg is an appointment at 3900 Powhatan Parkway. Jenny Brady, MSN, RN, CPNP, PMHS reviews the closed or irritated area, any scar or keloid history, and whether piercing again is appropriate.",
         ],
       },
       {

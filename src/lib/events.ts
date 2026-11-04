@@ -136,7 +136,7 @@ const getProcedureNamesBySlug = (slugs: string[]) => {
 };
 
 const buildBotoxPartyAddOnOptionGroups = (): EventOptionGroup[] => {
-  const injectableSlugs = ["xeomin", "filler", "hyperhidrosis-treatment"];
+  const injectableSlugs = ["xeomin", "hyperhidrosis-treatment"];
   const regenerativeSlugs = [
     "oh-shot",
     "pe-shot",

@@ -1,13 +1,12 @@
 import { COMMERCE_CATALOG_BY_SLUG } from "config/commerce-catalog";
-import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
-import { cardCashProse, cardPriceLabel, formatUsdShort } from "lib/price";
+import { cardPriceLabel, formatUsdShort } from "lib/price";
 
 const botoxBlockCashCents = COMMERCE_CATALOG_BY_SLUG.botox.cashAmountCents;
 const botoxBlock = formatUsdShort(botoxBlockCashCents);
 const botoxBlockPrices = `${cardPriceLabel(botoxBlockCashCents)} online by card, ${botoxBlock} cash`;
 
 export type LocalInjectableServicePage = {
-  procedureSlug: "botox" | "filler" | "xeomin";
+  procedureSlug: "botox" | "xeomin";
   areaSlug: "williamsburg-va";
   serviceName: string;
   shortName: string;
@@ -68,7 +67,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     title: "Botox in Williamsburg, VA",
     metaTitle: "Botox in Williamsburg, VA for Forehead Lines, Frown Lines & Crow's Feet",
     metaDescription:
-      "Botox in Williamsburg, VA for forehead lines, frown lines, crow's feet, lip flip consults, pricing guidance, and natural-looking treatment planning with Jenny Coleman.",
+      "Botox in Williamsburg, VA for forehead lines, frown lines, crow's feet, lip flip consults, pricing guidance, and natural-looking treatment planning with Jenny Brady.",
     intro:
       "Conservative Botox treatment planning for frown lines, forehead lines, crow's feet, and natural-looking movement with Williamsburg Med Spa.",
     whyLocal:
@@ -76,12 +75,12 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     treatmentPlanning:
       "Common Botox conversations include frown lines, forehead lines, crow's feet, lip flip consults, brow balance, and selected lower-face concerns when anatomy and goals fit.",
     trustNote:
-      "Jenny Coleman, MSN, RN, CPNP, PMHS reviews your expression, goals, prior injectable history, timing, comfort level, and budget before recommending Botox, Xeomin, or another option.",
+      "Jenny Brady, MSN, RN, CPNP, PMHS reviews your expression, goals, prior injectable history, timing, comfort level, and budget before recommending Botox, Xeomin, or another option.",
     consultNote:
       "During consultation, Jenny reviews your face at rest and with movement, prior injectable history, upcoming events, medication history, and whether Botox or Xeomin is the better fit.",
     heroImage: {
       src: "/procedure/williamsburg-botox-jenny-ai-consultation.webp",
-      alt: "Jenny Coleman reviewing Botox treatment planning at Williamsburg Med Spa",
+      alt: "Jenny Brady reviewing Botox treatment planning at Williamsburg Med Spa",
       width: 1536,
       height: 1024,
     },
@@ -94,7 +93,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
         "You prefer conservative treatment planning before committing to a dose or product.",
       ],
       considerInstead: [
-        "If the concern is volume loss, dermal filler may be part of the conversation instead.",
+        "If the concern is volume loss rather than movement lines, Botox is not the right tool, and Jenny can explain what may fit better.",
         "If the concern is skin texture, Jenny may discuss skincare, PRP, or facial treatments instead of Botox alone.",
         "If you are pregnant, nursing, or have a medical contraindication, treatment may need to wait or change.",
         "If you want a permanent result or a promised outcome, Botox is not that kind of treatment.",
@@ -118,7 +117,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       },
       {
         title: "Lip flip consults",
-        body: "A small neuromodulator plan may be discussed for selected patients, but it is different from lip filler and needs the right anatomy.",
+        body: "A small neuromodulator plan may be discussed for selected patients. It relaxes the lip muscle rather than adding volume, and it needs the right anatomy.",
         href: "/procedures/botox/for/lip-flip",
       },
       {
@@ -158,9 +157,9 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     providerNote: {
       heading: "Nurse-led Botox planning in Williamsburg",
       body:
-        "Botox planning at Williamsburg Med Spa is consultation-first. Jenny Coleman, MSN, RN, CPNP, PMHS focuses on conservative, movement-aware treatment decisions so patients can ask questions before choosing a product or dose plan.",
+        "Botox planning at Williamsburg Med Spa is consultation-first. Jenny Brady, MSN, RN, CPNP, PMHS focuses on conservative, movement-aware treatment decisions so patients can ask questions before choosing a product or dose plan.",
       links: [
-        { href: "/staff/jenny-coleman", label: "Meet Jenny Coleman" },
+        { href: "/staff/jenny-brady", label: "Meet Jenny Brady" },
         { href: "/locations/williamsburg-va", label: "Williamsburg clinic details" },
       ],
     },
@@ -220,66 +219,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       { href: "/procedures/botox", label: "Main Botox service page" },
       { href: "/procedures/xeomin/near/williamsburg-va", label: "Xeomin in Williamsburg" },
       { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Botox vs Xeomin guide" },
-      { href: "/procedures/filler/near/williamsburg-va", label: "Dermal fillers in Williamsburg" },
-      { href: "/staff/jenny-coleman", label: "Meet Jenny Coleman" },
-      { href: "/locations/williamsburg-va", label: "Williamsburg clinic details" },
-    ],
-  },
-  {
-    procedureSlug: "filler",
-    areaSlug: "williamsburg-va",
-    serviceName: "Dermal Fillers",
-    shortName: "Filler",
-    areaName: "Williamsburg, VA",
-    title: "Dermal Fillers in Williamsburg, VA",
-    metaTitle: "Dermal Fillers in Williamsburg, VA | Lips, Cheeks & Facial Contour",
-    metaDescription:
-      "Dermal fillers in Williamsburg, VA with Jenny Coleman for lips, cheeks, under-eyes, facial balancing, pricing guidance, and natural-looking volume.",
-    intro:
-      "Williamsburg Med Spa plans dermal filler visits around facial balance, proportion, safety screening, and natural-looking volume rather than one-size-fits-all enhancement.",
-    whyLocal:
-      "Patients comparing dermal fillers in Williamsburg often want careful guidance on lips, cheeks, under-eyes, folds, facial contour, longevity, and what should or should not be treated.",
-    treatmentPlanning:
-      "Filler planning may include lip enhancement, cheek support, nasolabial folds, marionette lines, under-eye conversations, and facial balancing when appropriate.",
-    trustNote:
-      "Jenny Coleman reviews anatomy, prior filler history, medical considerations, and realistic expectations before recommending product choice or treatment timing.",
-    consultNote:
-      "During consultation, Jenny reviews your goals, facial movement, prior injectables, event timing, swelling expectations, and whether filler, Botox/Xeomin, PRP, or skincare would better match the concern.",
-    faqs: [
-      {
-        question: "How long do dermal fillers usually last?",
-        answer:
-          "Longevity varies by product, treatment area, metabolism, and amount used. Many hyaluronic acid fillers last months to over a year depending on location and plan.",
-      },
-      {
-        question: "How much do dermal fillers cost in Williamsburg?",
-        answer:
-          `Williamsburg Med Spa lists dermal filler at ${cardCashProse(COMMERCE_CATALOG_BY_SLUG.filler.cashAmountCents, "per syringe")}. Jenny reviews the area, likely product amount, swelling expectations, and maintenance plan before treatment.`,
-      },
-      {
-        question: "Can filler look natural?",
-        answer:
-          "Yes. Conservative filler planning focuses on proportion, balance, and subtle support instead of changing the face dramatically.",
-      },
-      {
-        question: "What areas can filler treat?",
-        answer:
-          "Common conversations include lips, cheeks, folds, marionette lines, under-eye support, and contour. Not every area is right for every patient.",
-      },
-      {
-        question: "Is there downtime after filler?",
-        answer:
-          "Swelling, tenderness, and bruising can happen. Jenny reviews expected timing and aftercare before treatment, especially if you have an event coming up.",
-      },
-      {
-        question: "What safety questions should I ask before filler?",
-        answer:
-          "Ask about anatomy, product choice, swelling and bruising, vascular risk, reversibility for hyaluronic acid fillers, and what symptoms should prompt a call after treatment.",
-      },
-    ],
-    relatedLinks: [
-      { href: "/procedures/filler", label: "Main dermal filler service page" },
-      { href: "/procedures/botox/near/williamsburg-va", label: "Botox in Williamsburg" },
+      { href: "/staff/jenny-brady", label: "Meet Jenny Brady" },
       { href: "/locations/williamsburg-va", label: "Williamsburg clinic details" },
     ],
   },
@@ -300,7 +240,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     treatmentPlanning:
       "Xeomin may be considered for frown lines, forehead lines, crow's feet, bunny lines, lip flip conversations, and selected lower-face areas when anatomy and goals fit.",
     trustNote:
-      "Jenny Coleman uses a conservative consultation-first approach so neuromodulator treatment is matched to your expression pattern, comfort level, and natural-looking goals.",
+      "Jenny Brady uses a conservative consultation-first approach so neuromodulator treatment is matched to your expression pattern, comfort level, and natural-looking goals.",
     consultNote:
       "During consultation, Jenny reviews your past response to neuromodulators, desired movement, timeline, medical history, and whether Xeomin or Botox is the better fit.",
     faqs: [
@@ -332,28 +272,6 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     ],
   },
 ];
-
-if (!LIP_FILLER_ENABLED) {
-  const fillerPage = localInjectableServicePages.find((page) => page.procedureSlug === "filler");
-  if (fillerPage) {
-    fillerPage.metaTitle = "Dermal Fillers in Williamsburg, VA | Cheeks & Facial Contour";
-    fillerPage.metaDescription =
-      "Dermal fillers in Williamsburg, VA with Jenny Coleman for cheeks, under-eyes, facial balancing, pricing guidance, and natural-looking volume.";
-    fillerPage.whyLocal =
-      "Patients comparing dermal fillers in Williamsburg often want careful guidance on cheeks, under-eyes, folds, facial contour, longevity, and what should or should not be treated.";
-    fillerPage.treatmentPlanning =
-      "Filler planning may include cheek support, nasolabial folds, marionette lines, under-eye conversations, and facial balancing when appropriate.";
-    fillerPage.faqs = fillerPage.faqs.map((faq) =>
-      faq.question === "What areas can filler treat?"
-        ? {
-            ...faq,
-            answer:
-              "Common conversations include cheeks, folds, marionette lines, under-eye support, and contour. Not every area is right for every patient.",
-          }
-        : faq
-    );
-  }
-}
 
 export function getLocalInjectableServicePage(procedureSlug: string, areaSlug: string) {
   return localInjectableServicePages.find((page) => page.procedureSlug === procedureSlug && page.areaSlug === areaSlug);

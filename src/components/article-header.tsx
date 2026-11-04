@@ -18,8 +18,8 @@ export type Metadata = {
 };
 
 function ArticleHeader({ metadata }: { metadata: Metadata }) {
-  const authorName = metadata.authorName ?? "Jenny Coleman";
-  const reviewedBy = metadata.reviewedBy ?? "Jenny Coleman";
+  const authorName = metadata.authorName ?? "Jenny Brady";
+  const reviewedBy = metadata.reviewedBy ?? "Jenny Brady";
   const reviewedDate = metadata.dateModified ?? metadata.date;
   const reviewedDateObject = new Date(reviewedDate);
   const reviewedLabel = Number.isNaN(reviewedDateObject.getTime())
@@ -45,7 +45,7 @@ function ArticleHeader({ metadata }: { metadata: Metadata }) {
       <div className="mt-8 border-y border-base-300 py-5 text-sm leading-6 text-base-content/80 md:text-base">
         <p>
           Written by{" "}
-          <Link href="/staff/jenny-coleman" className="underline decoration-base-300 underline-offset-4 hover:text-primary">
+          <Link href="/staff/jenny-brady" className="underline decoration-base-300 underline-offset-4 hover:text-primary">
             {authorName}
           </Link>
           {" · "}Medically reviewed by {reviewedBy}

@@ -13,7 +13,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "components/ui/card";
 import { Button } from "components/ui/button";
 import { getAilmentPageData, isAilmentPagePublished } from "lib/ailments/get-ailment-page-data";
 import ProviderCallout from "views/provider-callout";
-import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 const ORIGIN = "https://www.williamsburgmedspa.com";
 
@@ -237,37 +236,6 @@ export default async function AilmentPage(props: Params) {
                 </Button>
                 <Button asChild variant="outline">
                   <Link href="/procedures/xeomin">Compare Xeomin</Link>
-                </Button>
-                <Button asChild variant="outline">
-                  <Link href="/locations/williamsburg-va">Williamsburg Location</Link>
-                </Button>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {procedure.slug === "filler" && (
-          <section className="scroll-mt-28 max-w-3xl border-t border-base-300 py-16 md:py-24" id="filler-consultation">
-            <div className="border border-base-300 bg-base-200 p-6 text-left md:p-10">
-              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Dermal filler consultation</p>
-              <h2 className="mt-3 text-2xl md:text-4xl mx-auto leading-tight pb-4 font-light">
-                Plan filler around anatomy, proportion, and the first area that matters most
-              </h2>
-              <p className="mx-auto max-w-3xl text-base md:text-lg text-base-content/80 leading-relaxed">
-                Jenny reviews facial structure, prior filler history, swelling risk, reversibility, and whether{" "}
-                {LIP_FILLER_ENABLED ? "lips, cheeks, under-eyes, or smile lines" : "cheeks, under-eyes, or smile lines"}{" "}
-                should be addressed first. The goal is a balanced plan that stays
-                proportional to your features.
-              </p>
-              <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <Button asChild>
-                  <Link href="/consult">Book a Consultation</Link>
-                </Button>
-                <Button asChild variant="secondary">
-                  <Link href="/procedures/filler">Filler Details</Link>
-                </Button>
-                <Button asChild variant="outline">
-                  <Link href="/blog/dermal-fillers-in-williamsburg-va-lips-cheeks-under-eyes">Read the Filler Guide</Link>
                 </Button>
                 <Button asChild variant="outline">
                   <Link href="/locations/williamsburg-va">Williamsburg Location</Link>

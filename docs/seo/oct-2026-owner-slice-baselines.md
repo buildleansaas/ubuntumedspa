@@ -36,4 +36,4 @@ The H1 stays `PRP Hair Restoration in Williamsburg, VA`. The title answers the t
 
 ## #121 IndexNow thin copy
 
-`/locations/fords-colony-va` is a permanent redirect to `/locations/williamsburg-va` and is not in the sitemap, so it is not an indexable thin URL. `/staff/jenny-coleman` is the remaining URL and now has at least 180 words of visible copy using facts already published on the site.
+`/locations/fords-colony-va` is a permanent redirect to `/locations/williamsburg-va` and is not in the sitemap, so it is not an indexable thin URL. `/staff/jenny-brady` is the remaining URL and now has at least 180 words of visible copy using facts already published on the site.

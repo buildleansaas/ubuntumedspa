@@ -102,8 +102,10 @@ interface StructuredDataProps {
 const author = [
   {
     "@type": "Person",
-    name: "Jenny Coleman",
-    url: `${ORIGIN}/staff/jenny-coleman`,
+    name: "Jenny Brady",
+    // Former surname, approved by Austin for search data only (issue #147). Never shown in visible copy.
+    alternateName: "Jenny Coleman",
+    url: `${ORIGIN}/staff/jenny-brady`,
   },
 ];
 
@@ -124,8 +126,8 @@ const DEFAULT_BUSINESS: Required<LocalBusinessProps> = {
   sameAs: officialProfiles.map((profile) => profile.href),
   url: ORIGIN,
   image: `${ORIGIN}/logo.png`,
-  founderName: "Jenny Coleman",
-  founderUrl: `${ORIGIN}/staff/jenny-coleman`,
+  founderName: "Jenny Brady",
+  founderUrl: `${ORIGIN}/staff/jenny-brady`,
 };
 
 const getImageUrl = (url: string) => (url.startsWith("http://") || url.startsWith("https://") ? url : `${ORIGIN}${url}`);
@@ -365,6 +367,7 @@ const getMarkup = ({
         "@context": "https://schema.org",
         "@type": "Person",
         name: author[0].name,
+        alternateName: author[0].alternateName,
         url: author[0].url,
         jobTitle: "Aesthetic Nurse Practitioner",
         honorificSuffix: "MSN, RN, CPNP, PMHS",

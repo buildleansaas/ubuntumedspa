@@ -1,9 +1,6 @@
 export const PROCEDURE_INTERESTS: Record<string, string[]> = {
   botox: ["Botox"],
   xeomin: ["Xeomin"],
-  filler: ["Filler"],
-  "dermal-fillers": ["Filler"],
-  "lip-filler": ["Filler"],
   hyperhidrosis: ["Hyperhidrosis Treatment"],
   "hyperhidrosis-treatment": ["Hyperhidrosis Treatment"],
   "blomdahl-ear-piercing": ["Blomdahl Ear Piercing"],

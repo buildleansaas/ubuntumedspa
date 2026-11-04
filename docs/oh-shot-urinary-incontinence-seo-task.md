@@ -223,7 +223,7 @@ Metadata:
 - slug: `oh-shot-for-urinary-incontinence-williamsburg-va`
 - tags: `["OH-Shot", "Urinary Incontinence", "Bladder Leakage", "Sexual Health", "Williamsburg Med Spa", "PRP Therapy"]`
 - image: `/procedure/grapefruit.jpg`
-- authorName/reviewedBy: `Jenny Coleman`
+- authorName/reviewedBy: `Jenny Brady`
 - published: true
 
 Article structure:

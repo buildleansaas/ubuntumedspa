@@ -2,7 +2,7 @@
 
 Date: 2026-10-03
 
-Owner: Jenny Coleman (profile owner), Austin (setup support, measurement)
+Owner: Jenny Brady (profile owner), Austin (setup support, measurement)
 
 ## Why
 
@@ -33,7 +33,7 @@ Williamsburg Med Spa
 
 ### Description (718 of 750 characters)
 
-> Williamsburg Med Spa is a nurse practitioner-led practice in Williamsburg, VA, run by Jenny Coleman, MSN, RN, CPNP, PMHS. We specialize in gentle, sterile Blomdahl medical ear piercing for infants, kids, teens, and adults, using single-use cassettes and hypoallergenic medical plastic or titanium starter earrings. As a pediatric nurse practitioner, Jenny takes time with parents and little ones, from earring placement to aftercare, in a calm, private appointment instead of a busy retail counter. We also offer Botox, Xeomin, dermal filler, PRP facials, PRP hair restoration, and other PRP treatments. Proudly serving Williamsburg, James City County, Yorktown, and Newport News. Call or book your appointment online.
+> Williamsburg Med Spa is a nurse practitioner-led practice in Williamsburg, VA, run by Jenny Brady, MSN, RN, CPNP, PMHS. We specialize in gentle, sterile Blomdahl medical ear piercing for infants, kids, teens, and adults, using single-use cassettes and hypoallergenic medical plastic or titanium starter earrings. As a pediatric nurse practitioner, Jenny takes time with parents and little ones, from earring placement to aftercare, in a calm, private appointment instead of a busy retail counter. We also offer Botox, Xeomin, dermal filler, PRP facials, PRP hair restoration, and other PRP treatments. Proudly serving Williamsburg, James City County, Yorktown, and Newport News. Call or book your appointment online.
 
 ### Services
 

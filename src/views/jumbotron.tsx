@@ -23,7 +23,6 @@ const CREDENTIALS = [
 const FEATURED_LINKS = [
   ["Botox", "/procedures/botox"],
   ["Xeomin", "/procedures/xeomin"],
-  ["Dermal Fillers", "/procedures/filler"],
   ["OH-Shot", "/procedures/oh-shot"],
   ["Blomdahl Ear Piercing", "/procedures/blomdahl-ear-piercing"],
   ["Williamsburg Location", "/locations/williamsburg-va"],
@@ -50,10 +49,10 @@ export default function Jumbotron() {
             Nurse Practitioner Led Medical Spa in Williamsburg, VA
           </h1>
           <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-base-content/90 md:text-xl">
-            A local med spa with Jenny Coleman, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified
+            A local med spa with Jenny Brady, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified
             OH-Shot provider and certified Blomdahl medical ear piercing provider.
           </p>
-          <ul className="mt-6 flex max-w-[68ch] flex-wrap gap-2" aria-label="Jenny Coleman credentials and certifications">
+          <ul className="mt-6 flex max-w-[68ch] flex-wrap gap-2" aria-label="Jenny Brady credentials and certifications">
             {CREDENTIALS.map((credential) => (
               <li key={credential} className="border border-base-300 px-3 py-1 text-sm text-base-content/85">
                 {credential}
@@ -100,7 +99,7 @@ export default function Jumbotron() {
             />
           </div>
           <figcaption className="mt-4 border-t border-base-300 pt-3">
-            <p className="font-display text-2xl font-medium leading-none text-base-content">Jenny Coleman</p>
+            <p className="font-display text-2xl font-medium leading-none text-base-content">Jenny Brady</p>
             <p className="mt-2 text-sm leading-6 text-base-content/80">MSN, RN, CPNP, PMHS</p>
           </figcaption>
         </figure>

@@ -15,7 +15,7 @@ const locations = [
   {
     name: "Williamsburg, VA (Primary Clinic)",
     slug: "williamsburg-va",
-    summary: "Our primary clinic with full PRP, filler, and aesthetic services in one destination visit.",
+    summary: "Our primary clinic with full PRP, injectable, and aesthetic services in one destination visit.",
   },
   {
     name: "James City County",

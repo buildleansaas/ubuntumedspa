@@ -1,4 +1,3 @@
-import { LIP_FILLER_ENABLED } from "./config/feature-flags.mjs";
 import { cardCashLabel, cardCashProse, cardPriceLabel, cardQuantityBreakLineCents, formatUsdShort } from "./lib/price";
 
 // Prices: the cash amount is the source; card / online amounts are derived (see lib/price).
@@ -57,7 +56,6 @@ export const FORM_INPUTS = [
       "Joint Restoration",
       "Botox",
       "Xeomin",
-      "Filler",
       "Hyperhidrosis Treatment",
       "Blomdahl Ear Piercing",
     ],
@@ -97,7 +95,7 @@ export const procedures = [
         "OH-Shot in Williamsburg, VA with a CMA-trained provider for PRP intimate wellness, bladder leakage support, dryness, sensitivity, and comfort concerns.",
     },
     description:
-      "The OH-Shot is a branded platelet-rich plasma (PRP) procedure developed through the Cellular Medicine Association framework and used for select intimate wellness concerns. At Williamsburg Med Spa, patients usually ask about the OH-Shot for dryness, decreased sensitivity, discomfort with intimacy, orgasm concerns, or mild stress urinary leakage. Jenny Coleman reviews candidacy privately so treatment fits the symptom pattern, medical history, and whether pelvic floor care, hormone review, urology, or another first step should come first.",
+      "The OH-Shot is a branded platelet-rich plasma (PRP) procedure developed through the Cellular Medicine Association framework and used for select intimate wellness concerns. At Williamsburg Med Spa, patients usually ask about the OH-Shot for dryness, decreased sensitivity, discomfort with intimacy, orgasm concerns, or mild stress urinary leakage. Jenny Brady reviews candidacy privately so treatment fits the symptom pattern, medical history, and whether pelvic floor care, hormone review, urology, or another first step should come first.",
     headline: "CMA-trained OH-Shot care for intimate wellness, sensitivity, comfort, and bladder leakage support.",
     subline:
       "The OH-Shot uses PRP prepared from your own blood in a discreet in-office procedure for patients looking for a non-hormonal, regenerative conversation around vulvovaginal tissue health and sexual wellness.",
@@ -723,7 +721,7 @@ export const procedures = [
         "Female hair transplant or hairline transplant in Williamsburg? PRP does not move follicles. Ask when a specialist fits.",
     },
     description:
-      "PRP Hair Restoration at Williamsburg Med Spa is a consult-led, non-surgical option for select men and women noticing thinning hair, shedding, widening part lines, or early pattern changes. Jenny Coleman, MSN, RN, CPNP, PMHS reviews your timeline, scalp concerns, health history, medications, and goals before discussing whether platelet-rich plasma belongs in your plan or whether medical evaluation should come first. Treatment uses PRP prepared from a small sample of your own blood and placed into targeted scalp areas to support existing follicles when they may still be active. PRP is not a hair transplant, does not create new follicles in bald areas, and results vary, so the visit focuses on candidacy, realistic expectations, session planning, maintenance, and when a dermatology or transplant specialist may be more appropriate.",
+      "PRP Hair Restoration at Williamsburg Med Spa is a consult-led, non-surgical option for select men and women noticing thinning hair, shedding, widening part lines, or early pattern changes. Jenny Brady, MSN, RN, CPNP, PMHS reviews your timeline, scalp concerns, health history, medications, and goals before discussing whether platelet-rich plasma belongs in your plan or whether medical evaluation should come first. Treatment uses PRP prepared from a small sample of your own blood and placed into targeted scalp areas to support existing follicles when they may still be active. PRP is not a hair transplant, does not create new follicles in bald areas, and results vary, so the visit focuses on candidacy, realistic expectations, session planning, maintenance, and when a dermatology or transplant specialist may be more appropriate.",
     headline: "PRP hair restoration in Williamsburg, VA for thinning hair and density concerns",
     subline:
       "Considering PRP for hair loss near Williamsburg, James City County, Yorktown, or Newport News? Start with a conservative consultation that reviews your pattern, possible causes, and whether non-surgical follicle support is a reasonable next step.",
@@ -1230,25 +1228,25 @@ export const procedures = [
     seo: {
       title: "PRP Face Lift in Williamsburg, VA",
       description:
-        "Non-surgical PRP Face Lift in Williamsburg, VA combining filler, neuromodulators, and PRP to gently lift and refresh facial features.",
+        "Non-surgical PRP Face Lift in Williamsburg, VA: Botox and the PRP Facial in one visit, planned at a consultation first. Results vary.",
     },
     description:
-      "The PRP Facelift is a non-invasive cosmetic procedure that involves the use of Botox, Filler, and the PRP Facial to resculpt the face. Botox temporarily paralyzes the muscles that cause wrinkles, reducing the appearance of fine lines and wrinkles. Filler uses hyaluronic acid to add volume and achieve a fuller, more youthful-looking appearance. The PRP Facial stimulates collagen production and tightens the skin, which helps to fill in wrinkles and achieve smoother-looking skin. Together, these three treatments work synergistically to produce natural-looking and long-lasting results. The PRP Facelift is an ideal solution for those who want to enhance their natural beauty and rejuvenate their skin without the pain or downtime of surgical procedures.",
-    headline: "Redefine Your Beauty: Non-Invasive, Long-Lasting Rejuvenation!",
+      "The PRP Face Lift is a non-surgical visit that combines two treatments: Botox and the PRP Facial. Botox temporarily relaxes the muscles behind movement lines such as frown lines, forehead lines, and crow's feet. The PRP Facial uses platelet-rich plasma from a small sample of your own blood to support skin texture and tone. It is not a surgical face lift, it does not remove or tighten skin the way surgery does, and results vary from person to person. Jenny reviews your goals, health history, and whether this combined visit, one treatment alone, or a referral is the better fit before anything is done.",
+    headline: "Botox and the PRP Facial in One Non-Surgical Visit",
     subline:
-      "The PRP Facelift combines the use of Botox, Filler, and the PRP Facial to rejuvenate and resculpt the face. This non-invasive procedure stimulates collagen production, fills in wrinkles, and provides a smoother, more youthful-looking skin with long-lasting results.",
+      "The PRP Face Lift pairs Botox for movement lines with the PRP Facial for skin texture and tone in one visit. It is non-surgical, results vary, and it starts with a consultation.",
     image: "/procedure/prp-face-lift-consultation-refresh.webp",
     price: cardCashLabel(150000),
     // programmatic SEO copy
     blogHeadline:
-      "Seeking a holistic approach to facial rejuvenation? Our PRP Facelift blog offers a treasure trove of information on how Botox, Filler, and the PRP Facial work synergistically. Discover expert opinions and success tales.",
+      "Comparing non-surgical facial rejuvenation options? Read how this non-surgical visit compares with other options, what it can and cannot change, and what to ask at a consultation. Results vary.",
     benefitsHeadline:
-      "Redefine age on your own terms with the synergy of Botox, Filler, and the PRP Facial. Witness a transformation that smoothens, tightens, and revitalizes, revealing a face that's as youthful in appearance as it is in spirit.",
+      "The PRP Face Lift combines Botox and the PRP Facial so movement lines and skin quality can be addressed in one visit. Results vary, and the plan is set at your consultation.",
     benefits: [
       {
         emoji: "🏆",
-        benefit: "Youthful Contouring",
-        description: "The PRP Face Lift redefines facial contours, providing a more youthful profile and appearance.",
+        benefit: "Two Treatments, One Visit",
+        description: "Botox for movement lines and the PRP Facial for skin quality are planned and done in the same appointment.",
       },
       {
         emoji: "🌟",
@@ -1262,19 +1260,19 @@ export const procedures = [
       },
       {
         emoji: "⌛",
-        benefit: "Long-lasting Effects",
+        benefit: "Consultation First",
         description:
-          "The results can last for over a year, reducing the frequency of treatments compared to other cosmetic procedures.",
+          "Jenny reviews your goals and health history first, and maintenance timing is discussed with you because results vary.",
       },
     ],
     ailmentsHeadline:
-      "Revitalize your facial features and turn back the clock on aging with the PRP Face Lift. This unique treatment offers a non-surgical approach to enhancing your face's natural contours, smoothing wrinkles, and boosting volume. Whether you're struggling with sagging skin, fine lines, or simply want a more youthful appearance, the PRP Face Lift can be customized to your needs. Discover how this procedure addresses a range of common and uncommon facial issues and learn which treatments might be most beneficial for you.",
+      "Revitalize your facial features and turn back the clock on aging with the PRP Face Lift. This non-surgical visit pairs Botox for movement lines with the PRP Facial for skin texture and tone. Whether you're struggling with sagging skin, fine lines, or simply want a more youthful appearance, the PRP Face Lift can be customized to your needs. Discover how this procedure addresses a range of common and uncommon facial issues and learn which treatments might be most beneficial for you.",
     ailments: [
       {
         title: "Sagging Skin",
         description:
-          "Lift and firm sagging skin without surgery using the PRP Face Lift. Get natural-looking results that last.",
-        blog_post_title: "Firm and Lift Sagging Skin with a PRP Face Lift",
+          "Discuss sagging skin and whether the PRP Face Lift, another option, or a surgical referral fits the concern. Results vary.",
+        blog_post_title: "Sagging Skin and the PRP Face Lift: What to Expect",
         blog_post_slug: "firm-and-lift-sagging-skin-with-a-prp-face-lift",
         slug: "sagging-skin",
         tag: "common",
@@ -1282,7 +1280,7 @@ export const procedures = [
       {
         title: "Fine Lines and Wrinkles",
         description:
-          "Smooth out facial lines and wrinkles effectively with the PRP Face Lift. Achieve a more youthful appearance.",
+          "Botox for movement lines and the PRP Facial for skin texture, reviewed at a consultation. Results vary.",
         blog_post_title: "Turn Back the Clock on Aging with a PRP Face Lift",
         blog_post_slug: "turn-back-the-clock-on-aging-with-a-prp-face-lift",
         slug: "fine-lines-and-wrinkles",
@@ -1290,8 +1288,8 @@ export const procedures = [
       },
       {
         title: "Volume Loss",
-        description: "Restore facial volume naturally with the PRP Face Lift. No synthetic fillers required.",
-        blog_post_title: "Reclaim Your Facial Volume with a PRP Face Lift",
+        description: "Discuss facial volume loss and whether a PRP Face Lift, another option, or a referral fits the concern.",
+        blog_post_title: "Facial Volume Loss: Is a PRP Face Lift the Right Fit?",
         blog_post_slug: "reclaim-your-facial-volume-with-a-prp-face-lift",
         slug: "volume-loss",
         tag: "common",
@@ -1314,8 +1312,8 @@ export const procedures = [
       },
       {
         title: "Sunken Cheeks",
-        description: "Add youthful plumpness to sunken cheeks with the PRP Face Lift.",
-        blog_post_title: "Add Volume to Sunken Cheeks with a PRP Face Lift",
+        description: "Discuss sunken cheeks and whether a PRP Face Lift, another option, or a referral fits the concern.",
+        blog_post_title: "Sunken Cheeks: Options to Discuss at a Consultation",
         blog_post_slug: "add-volume-to-sunken-cheeks-with-a-prp-face-lift",
         slug: "sunken-cheeks",
         tag: "common",
@@ -1346,7 +1344,7 @@ export const procedures = [
       },
       {
         title: "Smile Lines",
-        description: "Soften smile lines for a youthful and fresh appearance.",
+        description: "Discuss smile lines and which options fit at a consultation.",
         blog_post_title: "Soften Smile Lines with PRP Face Lift",
         blog_post_slug: "soften-smile-lines-with-prp-face-lift",
         slug: "smile-lines",
@@ -1378,7 +1376,7 @@ export const procedures = [
       },
       {
         title: "Nasolabial Folds",
-        description: "Diminish the depth of the nasolabial folds for a fresher appearance.",
+        description: "Discuss nasolabial folds and which options fit at a consultation.",
         blog_post_title: "Diminish Nasolabial Folds with PRP Face Lift",
         blog_post_slug: "diminish-nasolabial-folds-with-prp-face-lift",
         slug: "nasolabial-folds",
@@ -1391,7 +1389,7 @@ export const procedures = [
       {
         question: "How is the PRP Face Lift different from a traditional face lift?",
         answer:
-          "Unlike surgical face lifts that remove excess skin, the PRP Face Lift uses injections of PRP and hyaluronic acid fillers to restore volume, improve skin texture, and stimulate collagen production.",
+          "A surgical face lift removes and tightens skin. The PRP Face Lift is non-surgical: it combines Botox for movement lines with the PRP Facial for skin texture and tone. It does not replace surgery, and results vary.",
       },
       {
         question: "Is the procedure painful?",
@@ -1405,7 +1403,7 @@ export const procedures = [
       {
         question: "How long do the results last?",
         answer:
-          "Results can last for 12-18 months, varying from person to person. Touch-up treatments can help maintain the effects.",
+          "Results vary from person to person. Botox effects wear off over time, so maintenance timing for both treatments is discussed at your consultation.",
       },
       {
         question: "Are there any side effects?",
@@ -1618,13 +1616,13 @@ export const procedures = [
     seo: {
       title: "Botox in Williamsburg, VA | Natural-Looking Botox Injections",
       description:
-        "Botox in Williamsburg, VA for forehead lines, frown lines, and crow's feet. Book a consult with Jenny Coleman, MSN, RN, CPNP, PMHS.",
+        "Botox in Williamsburg, VA for forehead lines, frown lines, and crow's feet. Book a consult with Jenny Brady, MSN, RN, CPNP, PMHS.",
     },
     description:
-      "Botox Cosmetic is a botulinum toxin type A injectable used to temporarily soften dynamic expression lines in appropriate adult candidates. At Williamsburg Med Spa, Jenny Coleman, MSN, RN, CPNP, PMHS plans Botox around forehead lines, frown lines, crow's feet, and selected lower-face areas with dosing shaped around your facial movement pattern so results look smooth, balanced, and natural.",
+      "Botox Cosmetic is a botulinum toxin type A injectable used to temporarily soften dynamic expression lines in appropriate adult candidates. At Williamsburg Med Spa, Jenny Brady, MSN, RN, CPNP, PMHS plans Botox around forehead lines, frown lines, crow's feet, and selected lower-face areas with dosing shaped around your facial movement pattern so results look smooth, balanced, and natural.",
     headline: "Nurse-led Botox in Williamsburg planned around your natural expression.",
     subline:
-      "Jenny Coleman, MSN, RN, CPNP, PMHS treats common Botox areas such as forehead lines, frown lines, crow's feet, and select lower-face zones with a conservative, movement-aware approach.",
+      "Jenny Brady, MSN, RN, CPNP, PMHS treats common Botox areas such as forehead lines, frown lines, crow's feet, and select lower-face zones with a conservative, movement-aware approach.",
     image: "/procedure/blomdahl-family-ear-piercing-consult-jenny.webp",
     price: `${formatUsdShort(25000)} credit blocks · ${cardCashLabel(25000)}`,
     // programmatic SEO copy
@@ -1969,245 +1967,6 @@ export const procedures = [
     ],
   },
   {
-    name: "Filler",
-    slug: "filler",
-    seo: {
-      title: "Dermal Fillers in Williamsburg, VA | Lips, Cheeks & Under-Eyes",
-      description:
-        "Dermal fillers in Williamsburg, VA for lips, cheeks, under-eyes, jawline contour, and natural-looking facial volume restoration with Jenny Coleman, MSN, RN, CPNP, PMHS.",
-    },
-    description:
-      "Dermal fillers are injectable gels commonly used to restore facial volume, soften folds, enhance lips, and refine contour in areas such as cheeks, jawline, and under-eyes. At Williamsburg Med Spa, Jenny Coleman, MSN, RN, CPNP, PMHS plans filler conservatively with clear discussion of longevity, swelling, reversibility, and results that stay proportional to your features.",
-    headline: "Nurse-led dermal fillers in Williamsburg for lips, cheeks, under-eyes, and facial contour.",
-    subline:
-      "Hyaluronic acid filler can restore volume, refine contour, soften folds, and support lip enhancement with a treatment plan built around proportion, safety screening, and realistic longevity.",
-    image: "/procedure/filler-lips-cheeks-contour-closeup.webp",
-    price: cardCashLabel(70000, "per syringe"),
-    // programmatic SEO copy
-    blogHeadline:
-      "Researching dermal fillers in Williamsburg? Explore lips, cheeks, under-eyes, how long filler can last, and what consultation should cover before you book.",
-    benefitsHeadline:
-      "Dermal fillers can restore support and definition in specific facial zones while keeping outcomes balanced, flexible, and natural-looking.",
-    benefits: [
-      {
-        emoji: "🌟",
-        benefit: "Volume Restoration",
-        description:
-          "Fillers can restore support in selected areas such as cheeks, lips, and under-eyes when volume loss or proportion is part of the concern.",
-      },
-      {
-        emoji: "🌈",
-        benefit: "Contour Enhancement",
-        description:
-          "Fillers can refine facial contours in areas such as cheeks, chin, jawline, and lips with a plan shaped around anatomy and balance.",
-      },
-      {
-        emoji: "⌛",
-        benefit: "Visible Change",
-        description:
-          "Many patients see visible change soon after treatment, with final appearance depending on swelling, product choice, and settling time.",
-      },
-      {
-        emoji: "🕐",
-        benefit: "Maintenance Planning",
-        description:
-          "Longevity varies by filler type, treatment area, metabolism, and goals, so consultation should include a realistic maintenance plan.",
-      },
-    ],
-    ailmentsHeadline:
-      "Dermal fillers are used for both volume restoration and contour refinement. Treatment planning may focus on lips, cheeks, under-eyes, smile lines, jawline definition, and other targeted areas depending on anatomy and goals.",
-    ailments: [
-      {
-        title: "Nasolabial Folds",
-        description:
-          "Review whether smile-line filler, cheek support, or a combined plan makes the most sense for nasolabial folds.",
-        blog_post_title: "Soften Laugh Lines with Dermal Fillers",
-        blog_post_slug: "soften-laugh-lines-with-dermal-fillers",
-        slug: "nasolabial-folds",
-        tag: "common",
-      },
-      {
-        title: "Marionette Lines",
-        description:
-          "Discuss lower-face support, mouth-corner balance, and whether filler is appropriate for marionette lines.",
-        blog_post_title: "Smooth Marionette Lines with Dermal Fillers",
-        blog_post_slug: "smooth-marionette-lines-with-dermal-fillers",
-        slug: "marionette-lines",
-        tag: "common",
-      },
-      {
-        title: "Lip Augmentation",
-        description:
-          "Plan lip filler around shape, hydration, border definition, proportion, and how subtle or noticeable you want the change to be.",
-        blog_post_title: "Plan Lip Filler with Dermal Fillers",
-        blog_post_slug: "get-your-dream-lips-with-dermal-fillers",
-        slug: "lip-augmentation",
-        tag: "common",
-      },
-      {
-        title: "Cheek Enhancement",
-        description:
-          "Review cheek support, contour, and whether midface volume loss is affecting nearby folds or under-eye transitions.",
-        blog_post_title: "Plan Cheek Support with Dermal Fillers",
-        blog_post_slug: "achieve-sculpted-cheeks-with-dermal-fillers",
-        slug: "cheek-enhancement",
-        tag: "common",
-      },
-      {
-        title: "Jawline Contouring",
-        description:
-          "Discuss jawline definition, chin balance, and whether filler can support the lower-face contour you want.",
-        blog_post_title: "Plan Jawline Contouring with Dermal Fillers",
-        blog_post_slug: "get-a-chiseled-jawline-with-dermal-fillers",
-        slug: "jawline-contouring",
-        tag: "uncommon",
-      },
-      {
-        title: "Tear Troughs",
-        description:
-          "Carefully screen under-eye hollows, puffiness, skin quality, and whether filler is the right fit for the tear-trough area.",
-        blog_post_title: "Improve Dark Circles with Dermal Fillers",
-        blog_post_slug: "improve-dark-circles-with-dermal-fillers",
-        slug: "tear-troughs",
-        tag: "uncommon",
-      },
-      {
-        title: "Hand Rejuvenation",
-        description:
-          "Review whether volume support in the hands is appropriate based on skin quality, anatomy, and treatment goals.",
-        blog_post_title: "Hand Volume Support with Dermal Fillers",
-        blog_post_slug: "rejuvenate-your-hands-with-dermal-fillers",
-        slug: "hand-rejuvenation",
-        tag: "uncommon",
-      },
-      {
-        title: "Nose Reshaping",
-        description:
-          "Non-surgical nose filler requires careful screening because anatomy, vascular risk, and expectations matter.",
-        blog_post_title: "Reshape Your Nose with Dermal Fillers",
-        blog_post_slug: "reshape-your-nose-with-dermal-fillers",
-        slug: "nose-reshaping",
-        tag: "uncommon",
-      },
-      {
-        title: "Chin Augmentation",
-        description:
-          "Discuss chin projection, lower-face proportion, and whether filler can support a more balanced profile.",
-        blog_post_title: "Plan Chin Augmentation with Dermal Fillers",
-        blog_post_slug: "get-a-balanced-profile-with-chin-augmentation",
-        slug: "chin-augmentation",
-        tag: "uncommon",
-      },
-      {
-        title: "Temples",
-        description:
-          "Temple filler is anatomy-dependent and should be discussed carefully when hollowing affects facial balance.",
-        blog_post_title: "Temple Hollowing and Dermal Fillers",
-        blog_post_slug: "revive-your-look-by-filling-hollow-temples",
-        slug: "temples",
-        tag: "uncommon",
-      },
-      {
-        title: "Forehead Contouring",
-        description:
-          "Forehead filler is a specialized area that requires careful anatomy review, risk discussion, and conservative planning.",
-        blog_post_title: "Achieving a Balanced Forehead with Filler",
-        blog_post_slug: "achieving-a-balanced-forehead-with-filler",
-        slug: "forehead-contouring",
-        tag: "uncommon",
-      },
-      {
-        title: "Earlobe Repair",
-        description:
-          "Discuss whether filler can support thin, stretched, or volume-depleted earlobes before earrings or re-piercing.",
-        blog_post_title: "Earlobe Support with Dermal Fillers",
-        blog_post_slug: "turn-back-time-on-your-earlobes-with-filler",
-        slug: "earlobe-repair",
-        tag: "uncommon",
-      },
-      {
-        title: "Smoker's Lines",
-        description:
-          "Review whether filler, neuromodulator treatment, skin care, or a combined plan is most appropriate for vertical lip lines.",
-        blog_post_title: "Soften Smoker's Lines with Filler",
-        blog_post_slug: "soften-smokers-lines-with-filler",
-        slug: "smokers-lines",
-        tag: "common",
-      },
-      {
-        title: "Acne Scars",
-        description:
-          "Depressed acne scars need careful evaluation because filler may be only one part of a broader texture plan.",
-        blog_post_title: "Acne Scar Support with Dermal Fillers",
-        blog_post_slug: "fill-in-acne-scars-for-a-flawless-complexion",
-        slug: "acne-scars",
-        tag: "common",
-      },
-      {
-        title: "Crow's Feet",
-        description:
-          "Crow's feet are usually a movement concern, so Jenny may discuss Botox or Xeomin before considering filler.",
-        blog_post_title: "Soften Crow's Feet with Filler",
-        blog_post_slug: "soften-crows-feet-with-filler",
-        slug: "crows-feet",
-        tag: "common",
-      },
-      {
-        title: "Collarbone Contouring",
-        description:
-          "Collarbone contouring is a specialized request that requires careful discussion of expectations, risk, and alternatives.",
-        blog_post_title: "Collarbone Contouring with Filler",
-        blog_post_slug: "collarbone-contouring-with-filler",
-        slug: "collarbone-contouring",
-        tag: "experimental",
-      },
-    ],
-    faqHeadline:
-      "Get practical answers about lip filler, cheek filler, under-eye filler, cost, consultation planning, longevity, comfort, safety, and reversibility.",
-    faqs: [
-      {
-        question: "What areas can be treated with dermal fillers?",
-        answer:
-          "Dermal fillers can be used to plump lips, enhance cheek contours, reduce the appearance of fine lines and wrinkles, improve the jawline, and correct under-eye hollows.",
-      },
-      {
-        question: "How much do dermal fillers cost in Williamsburg?",
-        answer:
-          `Williamsburg Med Spa lists dermal filler at ${cardCashProse(70000, "per syringe")}. The number of syringes depends on the area, anatomy, prior filler history, and whether your goal is subtle hydration, shape refinement, or more visible volume support.`,
-      },
-      {
-        question: "How long do the results last?",
-        answer:
-          "The longevity of filler results varies based on filler type, treatment area, metabolism, and movement. Many hyaluronic acid filler results last from about 6 months to over a year, but Jenny will discuss realistic maintenance timing for your specific plan.",
-      },
-      {
-        question: "What should a filler consultation cover?",
-        answer:
-          "A good filler consultation should cover the area being treated, the amount of change you want, likely swelling and bruising, expected longevity, reversibility, and whether a different area should be prioritized first.",
-      },
-      {
-        question: "Are fillers safe?",
-        answer:
-          "Fillers have real medical risks even when performed carefully, so consultation should include anatomy, product choice, vascular risk, bruising or swelling expectations, and what to do if something does not feel right after treatment.",
-      },
-      {
-        question: "Am I a good candidate for filler?",
-        answer:
-          "Good filler candidates usually want proportionate volume or contour changes and are comfortable with swelling, bruising, maintenance, and risk discussion. Some concerns are better treated with Botox, skin care, biostimulators, or no injectable treatment.",
-      },
-      {
-        question: "Is the procedure painful?",
-        answer:
-          "Most dermal fillers contain a numbing agent, and an external numbing cream can also be applied. Most patients report only a mild pinch or discomfort during the injection.",
-      },
-      {
-        question: "Can filler be reversed?",
-        answer:
-          "Yes, certain types of fillers, like those based on hyaluronic acid, can be dissolved with an enzyme called hyaluronidase if desired or necessary.",
-      },
-    ],
-  },
-  {
     name: "Hyperhidrosis Treatment",
     slug: "hyperhidrosis-treatment",
     seo: {
@@ -2372,10 +2131,10 @@ export const procedures = [
         `Sterile, hypoallergenic Blomdahl ear piercing in Williamsburg, VA by a pediatric NP. ${cardCashProse(4500, "per ear")}.`,
     },
     description:
-      "Our Blomdahl medical ear piercing service uses sterile single-use cassettes and hypoallergenic Medical Plastic or titanium starter earrings to support cleaner healing. Jenny Coleman, MSN, RN, CPNP, PMHS brings pediatric nursing experience to appointments for children, teens, and adults who want careful placement, clear aftercare, and a clinical setting instead of mall-style piercing.",
+      "Our Blomdahl medical ear piercing service uses sterile single-use cassettes and hypoallergenic Medical Plastic or titanium starter earrings to support cleaner healing. Jenny Brady, MSN, RN, CPNP, PMHS brings pediatric nursing experience to appointments for children, teens, and adults who want careful placement, clear aftercare, and a clinical setting instead of mall-style piercing.",
     headline: "Nurse-led Blomdahl ear piercing in Williamsburg for infants, children, teens, and adults.",
     subline:
-      "A sterile, appointment-based piercing visit with Jenny Coleman, hypoallergenic Blomdahl starter jewelry, placement planning, and aftercare for first earrings, re-piercing, and sensitive ears.",
+      "A sterile, appointment-based piercing visit with Jenny Brady, hypoallergenic Blomdahl starter jewelry, placement planning, and aftercare for first earrings, re-piercing, and sensitive ears.",
     image: "/procedure/blomdahl-family-ear-piercing-consult.webp",
     price: `${cardPriceLabel(4500)} per ear or ${earBothCard} for both ears card/online · ${formatUsdShort(4500)} or ${earBothCash} cash`,
     // programmatic SEO copy
@@ -2790,58 +2549,3 @@ export const products = [
     ],
   },
 ];
-
-if (!LIP_FILLER_ENABLED) {
-  const filler = procedures.find((procedure) => procedure.slug === "filler");
-  if (filler) {
-    filler.seo = {
-      ...filler.seo,
-      title: "Dermal Fillers in Williamsburg, VA | Cheeks, Under-Eyes & Contour",
-      description:
-        "Dermal fillers in Williamsburg, VA for cheeks, under-eyes, jawline contour, and natural-looking facial volume restoration with Jenny Coleman, MSN, RN, CPNP, PMHS.",
-    };
-    filler.description =
-      "Dermal fillers are injectable gels commonly used to restore facial volume, soften folds, and refine contour in areas such as cheeks, jawline, and under-eyes. At Williamsburg Med Spa, Jenny Coleman, MSN, RN, CPNP, PMHS plans filler conservatively with clear discussion of longevity, swelling, reversibility, and results that stay proportional to your features.";
-    filler.headline = "Nurse-led dermal fillers in Williamsburg for cheeks, under-eyes, and facial contour.";
-    filler.subline =
-      "Hyaluronic acid filler can restore volume, refine contour, and soften folds with a treatment plan built around proportion, safety screening, and realistic longevity.";
-    filler.blogHeadline =
-      "Researching dermal fillers in Williamsburg? Explore cheeks, under-eyes, how long filler can last, and what consultation should cover before you book.";
-    filler.benefits = filler.benefits.map((benefit) => {
-      if (benefit.benefit === "Volume Restoration") {
-        return {
-          ...benefit,
-          description:
-            "Fillers can restore support in selected areas such as cheeks and under-eyes when volume loss or proportion is part of the concern.",
-        };
-      }
-      if (benefit.benefit === "Contour Enhancement") {
-        return {
-          ...benefit,
-          description:
-            "Fillers can refine facial contours in areas such as cheeks, chin, and jawline with a plan shaped around anatomy and balance.",
-        };
-      }
-      return benefit;
-    });
-    filler.ailmentsHeadline =
-      "Dermal fillers are used for both volume restoration and contour refinement. Treatment planning may focus on cheeks, under-eyes, smile lines, jawline definition, and other targeted areas depending on anatomy and goals.";
-    filler.ailments = filler.ailments.filter((ailment) => ailment.slug !== "lip-augmentation");
-    filler.faqHeadline =
-      "Get practical answers about cheek filler, under-eye filler, cost, consultation planning, longevity, comfort, safety, and reversibility.";
-    filler.faqs = filler.faqs.map((faq) =>
-      faq.question === "What areas can be treated with dermal fillers?"
-        ? {
-            ...faq,
-            answer:
-              "Dermal fillers can enhance cheek contours, reduce the appearance of fine lines and wrinkles, improve the jawline, and correct under-eye hollows.",
-          }
-        : faq
-    );
-  }
-
-  const interests = FORM_INPUTS.find((input) => input.id === "interests");
-  if (interests?.options) {
-    interests.options = interests.options.filter((option) => !/lip filler|lip augmentation/i.test(option));
-  }
-}

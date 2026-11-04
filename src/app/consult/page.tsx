@@ -4,20 +4,16 @@ import Link from "next/link";
 import StructuredData from "components/structured-data";
 import ConsultationForm from "./consult-form";
 import { buildPageMetadata } from "lib/metadata";
-import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Book a Med Spa Consultation in Williamsburg, VA",
   description:
-    "Request a consultation with Williamsburg Med Spa for Botox, Xeomin, fillers, PRP, hyperhidrosis care, or Blomdahl ear piercing in Williamsburg, VA.",
+    "Request a consultation with Williamsburg Med Spa for Botox, Xeomin, PRP, hyperhidrosis care, or Blomdahl ear piercing in Williamsburg, VA.",
   canonical: "/consult",
 });
 
 const consultationPaths = [
   "Botox, Xeomin, and subtle wrinkle-relaxer planning",
-  LIP_FILLER_ENABLED
-    ? "Dermal filler conversations for lips, cheeks, smile lines, or facial balance"
-    : "Dermal filler conversations for cheeks, smile lines, or facial balance",
   "PRP facial, PRP Face Lift, PRP hair restoration, and other regenerative options",
   "Hyperhidrosis care for underarm, palm, foot, or localized sweating patterns",
   "Blomdahl medical ear piercing for children, teens, adults, and re-piercing",
@@ -40,7 +36,7 @@ export default function ConsultationPage() {
             or medical ear piercing with Williamsburg Med Spa.
           </p>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-base-content/65">
-            Jenny Coleman reviews your goals, medical history, candidacy, risk factors, timing, and next steps before
+            Jenny Brady reviews your goals, medical history, candidacy, risk factors, timing, and next steps before
             recommending a treatment plan. If a service is not the right fit, the consultation should make that clear too.
           </p>
 

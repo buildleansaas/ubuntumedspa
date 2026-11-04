@@ -3,14 +3,8 @@
 import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-import { getCatalogConfigBySlug } from "config/commerce-catalog";
+import { type CartItem, clampQuantityForSlug, normalizeCartItems, sanitizeCartQuantity } from "lib/cart-items";
 import { normalizeIntimacyProcedureSlug } from "lib/intimacy-aliases";
-
-type CartItem = {
-  slug: string;
-  kind: "product" | "procedure";
-  quantity: number;
-};
 
 type CartContextValue = {
   items: CartItem[];
@@ -29,55 +23,9 @@ type CartContextValue = {
 const STORAGE_KEY = "wms-cart-v1";
 const CartContext = createContext<CartContextValue | null>(null);
 
-const sanitizeQuantity = (quantity: number) => Math.max(0, Math.floor(Number(quantity) || 0));
 const persistCartItems = (items: CartItem[]) => {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-};
-
-const clampQuantityForSlug = (slug: string, quantity: number) => {
-  const normalizedSlug = normalizeIntimacyProcedureSlug(slug);
-  const safeQuantity = sanitizeQuantity(quantity);
-  if (safeQuantity === 0) return 0;
-
-  const catalogItem = getCatalogConfigBySlug(normalizedSlug);
-  if (!catalogItem) return safeQuantity;
-
-  return Math.min(Math.max(safeQuantity, catalogItem.minQuantity), catalogItem.maxQuantity);
-};
-
-const normalizeCartItems = (rawItems: unknown): CartItem[] => {
-  if (!Array.isArray(rawItems)) return [];
-
-  const deduped = new Map<string, CartItem>();
-
-  for (const rawItem of rawItems) {
-    if (!rawItem || typeof rawItem !== "object") continue;
-
-    const candidate = rawItem as Partial<CartItem>;
-    if (typeof candidate.slug !== "string") continue;
-
-    const normalizedSlug = normalizeIntimacyProcedureSlug(candidate.slug);
-    const catalogItem = getCatalogConfigBySlug(normalizedSlug);
-    if (!catalogItem) continue;
-
-    const quantity = clampQuantityForSlug(normalizedSlug, candidate.quantity ?? 0);
-    if (quantity <= 0) continue;
-
-    const existing = deduped.get(normalizedSlug);
-    if (existing) {
-      existing.quantity = clampQuantityForSlug(normalizedSlug, existing.quantity + quantity);
-      continue;
-    }
-
-    deduped.set(normalizedSlug, {
-      slug: normalizedSlug,
-      kind: catalogItem.kind,
-      quantity,
-    });
-  }
-
-  return Array.from(deduped.values());
 };
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
@@ -111,7 +59,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const value = useMemo<CartContextValue>(
     () => ({
       items,
-      totalCount: items.reduce((sum, item) => sum + sanitizeQuantity(item.quantity), 0),
+      totalCount: items.reduce((sum, item) => sum + sanitizeCartQuantity(item.quantity), 0),
       isCartOpen,
       addItem: (item) => {
         setItems((current) => {

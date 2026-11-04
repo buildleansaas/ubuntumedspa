@@ -4,12 +4,11 @@ import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
-import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near Yorktown, VA | Botox, Fillers & PRP",
+  title: "Med Spa Near Yorktown, VA | Botox, Xeomin & PRP",
   description:
-    "Visit Williamsburg Med Spa from Yorktown for Botox, Xeomin, fillers, PRP therapies, hyperhidrosis care, and Blomdahl medical ear piercing near Williamsburg.",
+    "Visit Williamsburg Med Spa from Yorktown for Botox, Xeomin, PRP therapies, hyperhidrosis care, and Blomdahl medical ear piercing near Williamsburg.",
   canonical: "/locations/yorktown-va",
 });
 
@@ -18,13 +17,6 @@ const serviceLinks = [
     label: "Botox treatment planning",
     href: "/procedures/botox",
     copy: "For expression lines, dosing questions, and a consult-first plan.",
-  },
-  {
-    label: "Dermal filler treatment planning",
-    href: "/procedures/filler",
-    copy: LIP_FILLER_ENABLED
-      ? "For lips, cheeks, facial balance, and natural-looking volume support."
-      : "For cheeks, facial balance, and natural-looking volume support.",
   },
   {
     label: "Xeomin treatment planning",
@@ -72,7 +64,7 @@ export default function YorktownPage() {
         <h2 className="text-2xl font-light">Quick read for Yorktown patients</h2>
         <ul className="mt-4 grid gap-3 text-sm text-base-content/75 md:grid-cols-3">
           <li>Best for Yorktown patients who want a quieter Williamsburg clinic visit rather than a high-volume retail setting.</li>
-          <li>Useful starting point for Botox, Xeomin, dermal filler, PRP, hyperhidrosis, and medical ear piercing questions.</li>
+          <li>Useful starting point for Botox, Xeomin, PRP, hyperhidrosis, and medical ear piercing questions.</li>
           <li>Families planning first earrings can review sterile equipment, hypoallergenic starter jewelry, placement, and aftercare before booking.</li>
         </ul>
       </section>

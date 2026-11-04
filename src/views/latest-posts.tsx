@@ -26,7 +26,7 @@ export default async function LatestPosts() {
         </Link>
       </div>
       <p className="mt-5 max-w-[68ch] text-base leading-relaxed text-base-content/80 md:text-lg">
-        Read straightforward guidance on Botox, Xeomin, dermal fillers, PRP treatments, hyperhidrosis care, and
+        Read straightforward guidance on Botox, Xeomin, PRP treatments, hyperhidrosis care, and
         medical ear piercing from Williamsburg Med Spa. These articles are written to help you compare options,
         understand candidacy, and decide what to ask during consultation.
       </p>

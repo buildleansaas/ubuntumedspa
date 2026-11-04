@@ -7,7 +7,6 @@ import StructuredData from "components/structured-data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "components/ui/accordion";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
-import { LIP_FILLER_ENABLED } from "config/feature-flags.mjs";
 
 import AffiliateRegistrationForm from "./affiliate-registration-form";
 import AffiliateShareScripts from "./affiliate-share-scripts";
@@ -71,10 +70,8 @@ const promotionIdeas = [
   {
     title: "Injectables people already ask about",
     description:
-      "Botox, Xeomin, filler, and hyperhidrosis treatment are strong referral categories because people naturally ask who feels experienced, gentle, and trustworthy with injectables.",
-    bestFor: LIP_FILLER_ENABLED
-      ? "Wrinkles, sweat control, lip filler, and natural-looking refreshes."
-      : "Wrinkles, sweat control, and natural-looking refreshes.",
+      "Botox, Xeomin, and hyperhidrosis treatment are strong referral categories because people naturally ask who feels experienced, gentle, and trustworthy with injectables.",
+    bestFor: "Wrinkles, sweat control, and natural-looking refreshes.",
     href: "/procedures",
     cta: "View procedures",
   },
@@ -259,7 +256,7 @@ export default function AffiliatesPage() {
 
                 <div className="mt-6">
                   <Button asChild variant="secondary">
-                    <Link href="/staff/jenny-coleman">Read Jenny&apos;s staff profile</Link>
+                    <Link href="/staff/jenny-brady">Read Jenny&apos;s staff profile</Link>
                   </Button>
                 </div>
               </div>
@@ -267,7 +264,7 @@ export default function AffiliatesPage() {
               <div className="relative aspect-square w-full max-w-[18rem] overflow-hidden rounded-2xl bg-base-200 sm:max-w-[20rem] md:w-[17rem] lg:w-[19rem] md:shrink-0">
                 <Image
                   src="/jenny.jpg"
-                  alt="Jenny Coleman at Williamsburg Med Spa"
+                  alt="Jenny Brady at Williamsburg Med Spa"
                   fill
                   sizes="(max-width: 640px) 70vw, (max-width: 1024px) 272px, 304px"
                   className="object-cover transition-transform duration-200 group-hover:scale-[1.02]"

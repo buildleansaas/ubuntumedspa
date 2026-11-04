@@ -18,7 +18,7 @@ import { buildPageMetadata } from "lib/metadata";
 const procedure = procedures.find((item) => item.slug === "blomdahl-ear-piercing");
 const ORIGIN = "https://www.williamsburgmedspa.com";
 const providerTrustNote =
-  "Jenny Coleman, MSN, RN, CPNP, PMHS brings pediatric nursing experience to ear piercing visits, which is especially helpful for parents planning a child's first earrings.";
+  "Jenny Brady, MSN, RN, CPNP, PMHS brings pediatric nursing experience to ear piercing visits, which is especially helpful for parents planning a child's first earrings.";
 const blomdahlTrustNote =
   "Blomdahl medical ear piercing uses sterile disposable piercing cassettes and hypoallergenic starter jewelry options, including Medical Plastic and Medical Grade Titanium.";
 const materialTrustNote =

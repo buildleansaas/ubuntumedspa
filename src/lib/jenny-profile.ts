@@ -14,10 +14,6 @@ export const jennyKnowsAbout = [
     sameAs: ["https://en.wikipedia.org/wiki/Botulinum_toxin", "https://www.wikidata.org/wiki/Q208413"],
   },
   {
-    name: "Injectable filler",
-    sameAs: ["https://en.wikipedia.org/wiki/Injectable_filler", "https://www.wikidata.org/wiki/Q17081562"],
-  },
-  {
     name: "Platelet-rich plasma",
     sameAs: ["https://en.wikipedia.org/wiki/Platelet-rich_plasma", "https://www.wikidata.org/wiki/Q613879"],
   },
