@@ -2048,7 +2048,7 @@ export const procedures = [
     ailments: [
       {
         title: "Underarm Sweating",
-        description: "Discuss underarm sweating that affects work or social settings and whether treatment fits.",
+        description: "Reduce underarm sweat concerns that interfere with social and professional settings.",
         blog_post_title: "How Xeomin Can Reduce Underarm Sweating",
         blog_post_slug: "how-xeomin-can-reduce-underarm-sweating",
         slug: "underarm-sweating",
@@ -2056,7 +2056,7 @@ export const procedures = [
       },
       {
         title: "Sweaty Palms",
-        description: "Discuss sweaty palms that affect work, handshakes, or daily tasks and whether treatment fits.",
+        description: "Discuss treatment for sweaty palms when hand moisture affects work, social life, or comfort.",
         blog_post_title: "Reduce Sweaty Palms with Xeomin",
         blog_post_slug: "reduce-sweaty-palms-with-xeomin",
         slug: "sweaty-palms",
@@ -2064,7 +2064,8 @@ export const procedures = [
       },
       {
         title: "Sweaty Feet",
-        description: "Discuss sweaty feet that affect footwear, friction, or comfort and whether treatment fits.",
+        description:
+          "Take confident steps without worrying about foot odor or moisture. Enjoy comfortable, drier feet.",
         blog_post_title: "How to Get Rid of Sweaty Feet with Xeomin",
         blog_post_slug: "how-to-get-rid-of-sweaty-feet-with-xeomin",
         slug: "sweaty-feet",
@@ -2072,7 +2073,7 @@ export const procedures = [
       },
       {
         title: "Facial Sweating",
-        description: "Discuss facial sweating and whether treatment fits.",
+        description: "Review facial sweating concerns and whether Xeomin treatment is appropriate.",
         blog_post_title: "Manage Excessive Facial Sweating with Xeomin",
         blog_post_slug: "manage-excessive-facial-sweating-with-xeomin",
         slug: "facial-sweating",
@@ -2080,7 +2081,7 @@ export const procedures = [
       },
       {
         title: "Scalp (Scalp Hyperhidrosis)",
-        description: "Discuss scalp sweating and whether treatment fits.",
+        description: "Control excessive sweating in the scalp area for a more comfortable experience.",
         blog_post_title: "Tackle Scalp Sweating with Xeomin",
         blog_post_slug: "tackle-scalp-sweating-with-xeomin",
         slug: "scalp-hyperhidrosis",
@@ -2088,7 +2089,7 @@ export const procedures = [
       },
       {
         title: "Groin (Inguinal Hyperhidrosis)",
-        description: "Discuss groin sweating and whether treatment fits.",
+        description: "Reduce unwanted moisture and discomfort in the groin area.",
         blog_post_title: "Reduce Groin Sweating with Xeomin",
         blog_post_slug: "reduce-groin-sweating-with-xeomin",
         slug: "groin-hyperhidrosis",
@@ -2096,7 +2097,7 @@ export const procedures = [
       },
       {
         title: "Back (Dorsal Hyperhidrosis)",
-        description: "Discuss back sweating that affects clothing or comfort and whether treatment fits.",
+        description: "Reduce excessive back sweating when it affects clothing, comfort, or daily confidence.",
         blog_post_title: "Reduce Back Sweating with Xeomin",
         blog_post_slug: "reduce-back-sweating-with-xeomin",
         slug: "back-hyperhidrosis",

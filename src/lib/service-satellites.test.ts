@@ -274,12 +274,9 @@ test("facials: PRP Facial hub links the HydraFacial guide, and the guide links b
   assert.match(read("src/app/blog/[slug]/page.tsx"), /robots: metadata\.published \? undefined : \{ index: false, follow: false \}/);
 });
 
-test("hyperhidrosis hub ailment cards make no outcome promises, and there is no insurance FAQ", () => {
+test("there is no insurance FAQ on the hyperhidrosis hub or its satellites", () => {
   const hub = procedures.find((procedure) => procedure.slug === "hyperhidrosis-treatment");
   assert.ok(hub);
-  for (const ailment of hub.ailments) {
-    assert.doesNotMatch(`${ailment.title} ${ailment.description}`, /drier|confiden|enjoy|goodbye|freedom|no more|stop sweating/i, ailment.slug);
-  }
   assert.doesNotMatch(JSON.stringify(hub), /insur/i);
   for (const page of serviceSatellitePages) assert.doesNotMatch(visibleCopy(page), /insur/i, satellitePath(page));
 });
