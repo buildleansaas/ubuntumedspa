@@ -18,6 +18,14 @@ const nextConfig = {
         statusCode: 308,
       },
       {
+        // The production deployment's vercel.app alias served the whole site (200) and showed up in Google.
+        // Branch previews use other hosts and stay reachable for review (Vercel marks them noindex).
+        source: "/:path*",
+        has: [{ type: "host", value: "ubuntumedspa.vercel.app" }],
+        destination: "https://www.williamsburgmedspa.com/:path*",
+        statusCode: 308,
+      },
+      {
         source: "/procedures/feminine-intimacy-prp-protocols",
         destination: "/procedures/oh-shot",
         permanent: true,
