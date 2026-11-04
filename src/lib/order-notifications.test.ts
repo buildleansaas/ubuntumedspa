@@ -45,14 +45,20 @@ test("owner email names the buyer, their contact links, items and total", () => 
   assert.doesNotMatch(email.html, /<Buyer>/);
 });
 
-test("customer receipt has the total and a booking link when scheduling is needed", () => {
+test("customer receipt has the total and asks the buyer to text or call to book", () => {
   const email = buildCustomerEmail(order);
 
   assert.equal(email.subject, "Your Williamsburg Med Spa receipt");
   assert.match(email.text, /^Hi Pat,/);
   assert.match(email.text, /Total paid: \$80/);
-  assert.match(email.text, /pick your appointment time here:\nhttps?:\/\/[^\s]+\/checkout\/success\?order=token-abc/);
+  assert.match(email.text, /text or call Jenny at \(804\) 738-9483[\s\S]*\nhttps?:\/\/[^\s]+\/checkout\/success\?order=token-abc/);
   assert.match(email.html, /href="[^"]+\/checkout\/success\?order=token-abc"/);
+  assert.match(email.html, /href="tel:\+18047389483"/);
+  const sms = email.html.match(/href="(sms:[^"]+)"/)?.[1].replace(/&amp;/g, "&");
+  assert.ok(sms, "receipt has a Text Jenny sms: link");
+  assert.match(sms, /^sms:\+18047389483\?&body=/);
+  assert.match(decodeURIComponent(sms.split("&body=")[1]), /^Hi Jenny, this is .+ I paid online for .+ \(order #[A-Z0-9]{1,8}\) and would like to book my appointment\. Days and times that work for me:$/);
+  assert.doesNotMatch(email.text + email.html, /cal\.com|calendly|pick your appointment time/i);
 });
 
 test("product-only receipts talk about pickup, not booking", () => {
@@ -69,7 +75,7 @@ test("mixed procedure + pickup orders get both the booking link and the pickup l
     items: [...order.items, { ...order.items[0], slug: "aftercare", name: "Aftercare Kit", fulfillment: "pickup" }],
   };
 
-  assert.match(buildCustomerEmail(mixed).text, /pick your appointment time[\s\S]*set a pickup time/);
+  assert.match(buildCustomerEmail(mixed).text, /text or call Jenny[\s\S]*set a pickup time/);
   assert.match(buildOwnerEmail(mixed).text, /Contact them to set a pickup time/);
 });
 
@@ -80,7 +86,7 @@ test("greeting uses the first name even with stray spaces", () => {
 test("owner alert says plainly when the receipt did not go out", () => {
   assert.match(buildOwnerEmail(order, "failed").text, /receipt email failed to send\. Text or call them/);
   assert.match(buildOwnerEmail({ ...order, customerEmail: undefined }, "skipped").text, /no email address/);
-  assert.match(buildOwnerEmail(order, "sent").text, /emailed a receipt with a link to book/);
+  assert.match(buildOwnerEmail(order, "sent").text, /emailed a receipt asking them to text or call you to book/);
 });
 
 test("owner alert hedges while the receipt is still sending, and shows the paid date", () => {

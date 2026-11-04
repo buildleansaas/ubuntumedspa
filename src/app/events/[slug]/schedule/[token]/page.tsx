@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 
-import CalInlineEmbed from "components/cal-inline-embed";
-import { getCalLinks } from "lib/cal";
+import TextToBook from "components/text-to-book";
 import { getEventRequestByToken } from "lib/event-requests";
-import { buildEventMetadataPayload, getEventBySlug } from "lib/events";
+import { getEventBySlug } from "lib/events";
+import { eventBookingMessage } from "lib/text-to-book";
 
 export const dynamic = "force-dynamic";
 
@@ -19,7 +19,6 @@ export default async function EventSchedulingPage(
   const eventRequest = await getEventRequestByToken(params.token);
   if (!eventRequest || eventRequest.eventSlug !== event.slug) return notFound();
 
-  const { consult } = getCalLinks();
 
   return (
     <div className="max-w-5xl mx-auto py-12">
@@ -27,27 +26,12 @@ export default async function EventSchedulingPage(
       <h1 className="text-4xl font-semibold mb-4">{event.schedule.heading}</h1>
       <p className="text-base-content/70 mb-8">{event.schedule.body}</p>
 
-      {consult ? (
-        <CalInlineEmbed
-          calLink={consult}
-          namespace={`event-${event.slug}-${eventRequest.eventRequestId}`}
-          name={eventRequest.name}
-          email={eventRequest.email}
-          phone={eventRequest.phone}
-          metadata={{
-            accountId: eventRequest.accountId,
-            eventRequestId: eventRequest.eventRequestId,
-            eventSlug: event.slug,
-            source: `event_form:${event.slug}`,
-            ...buildEventMetadataPayload(eventRequest.responses),
-          }}
-        />
-      ) : (
-        <div className="border border-base-300 bg-base-200 p-6">
-          <h2 className="text-2xl font-semibold mb-3">{event.schedule.fallbackTitle}</h2>
-          <p className="text-base-content/70">{event.schedule.fallbackBody}</p>
-        </div>
-      )}
+      <TextToBook
+        heading="Set up your planning call"
+        intro="The Text button opens Messages with your request filled in."
+        message={eventBookingMessage(eventRequest, event.title)}
+        location="event_booking"
+      />
     </div>
   );
 }

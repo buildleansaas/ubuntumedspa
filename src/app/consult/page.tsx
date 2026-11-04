@@ -44,7 +44,7 @@ export default function ConsultationPage() {
             {[
               ["Consult-first", "No one-size-fits-all treatment plan."],
               ["Local", "Serving Williamsburg, JCC, Yorktown, Newport News, and nearby areas."],
-              ["Clear next step", "Submit the form, then choose a scheduling time when prompted."],
+              ["Clear next step", "Submit the form, then text or call Jenny to pick a time."],
               ["Private intake", "Share the concerns you want Jenny to review before the visit."],
             ].map(([title, copy]) => (
               <div key={title} className="border border-base-300 bg-base-100 p-4">

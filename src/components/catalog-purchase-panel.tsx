@@ -48,7 +48,7 @@ export default function CatalogPurchasePanel({
           </div>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-base-content/70">
             {isAppointment
-              ? "Pay online first, then choose one appointment time after checkout."
+              ? "Pay online first, then text or call Jenny to book your appointment."
               : "Products are paid online and held for pickup."}
           </p>
           {customerNote && <p className="mt-2 max-w-2xl text-sm leading-relaxed text-base-content/70">{customerNote}</p>}

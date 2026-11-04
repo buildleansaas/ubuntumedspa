@@ -227,7 +227,7 @@ const ConsultationForm: React.FC = () => {
           ...DEFAULT_FORM_SUBMISSION,
           referral: affiliateReferral?.affiliateName || DEFAULT_FORM_SUBMISSION.referral,
         });
-        toast({ title: "Consult request received. Redirecting to scheduling..." });
+        toast({ title: "Consult request received. Next: text Jenny to pick a time." });
         router.push(body.scheduleUrl);
       } else {
         toast({ title: body.error || "Something went wrong. Please try again later.", variant: "destructive" });
