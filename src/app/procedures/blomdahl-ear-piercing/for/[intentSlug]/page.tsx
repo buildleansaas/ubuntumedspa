@@ -30,7 +30,7 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
   if (!page) {
     return buildPageMetadata({
       title: "Blomdahl Ear Piercing in Williamsburg, VA",
-      description: "Medical Blomdahl ear piercing at Williamsburg Med Spa.",
+      description: "Medical-grade Blomdahl ear piercing at Williamsburg Med Spa.",
       canonical: "/procedures/blomdahl-ear-piercing",
     });
   }

@@ -37,7 +37,7 @@ function getAreaHeadline(area: { name: string; serviceAreaLabel: string; parentI
 }
 
 function getAreaEyebrow(area: { name: string; serviceAreaLabel: string }) {
-  return area.name === "Williamsburg" ? "Williamsburg medical ear piercing" : `${area.serviceAreaLabel} service area`;
+  return area.name === "Williamsburg" ? "Williamsburg medical-grade ear piercing" : `${area.serviceAreaLabel} service area`;
 }
 
 type Params = { params: Promise<{ areaSlug: string }> };
@@ -52,7 +52,7 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
   if (!area || !procedure) {
     return buildPageMetadata({
       title: "Medical Ear Piercing Near Williamsburg, VA",
-      description: "Medical Blomdahl ear piercing near Williamsburg, VA.",
+      description: "Medical-grade Blomdahl ear piercing near Williamsburg, VA.",
       canonical: "/procedures/blomdahl-ear-piercing",
     });
   }

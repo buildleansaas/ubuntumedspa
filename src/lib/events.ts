@@ -222,7 +222,7 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
         eyebrow: "For future care",
         title: "Introduce PRP, skin, wellness, and products naturally",
         description:
-          "Guests who start with wrinkle-relaxer questions can also ask about PRP, skin quality, wellness goals, and skincare products without pressure.",
+          "Guests who start with wrinkle-relaxer questions can also ask about PRP, skin quality, wellness goals, and medical-grade product options without pressure.",
       },
     ],
   },

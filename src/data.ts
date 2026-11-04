@@ -912,50 +912,50 @@ export const procedures = [
     seo: {
       title: "PRP Facial in Williamsburg, VA",
       description:
-        "PRP Facial in Williamsburg, VA: a facial that uses PRP from your own blood, planned at a consultation with Jenny. Results vary.",
+        "Collagen-stimulating PRP Facial in Williamsburg, VA to improve skin texture, tone, and radiance using your body’s own platelets.",
     },
     description:
-      "The PRP Facial is a non-surgical facial that uses platelet-rich plasma (PRP) prepared from your own blood. A small sample of blood is taken and spun in a centrifuge to separate the PRP from the red blood cells. PRP is applied to the skin as part of the facial, and Jenny explains each step at your visit. People often ask about it for skin texture and tone. Any change is gradual, and results vary from person to person. Jenny reviews your skin and health history at the consultation to decide whether the PRP Facial fits you.",
-    headline: "A facial that uses PRP from your own blood",
+      "The PRP Facial treatment is an innovative and non-invasive procedure that uses Platelet-Rich Plasma (PRP) therapy to improve overall skin texture, enhance elasticity, and promote a youthful-looking complexion. During the treatment, a small sample of the patient's blood is taken and spun in a centrifuge to separate the PRP from the red blood cells. This PRP is topically applied after a microdermabrasion procedure which has been enhanced with PRP to stimulate collagen and elastin production. The combination of microdermabrasion and PRP helps to resurface the skin and remove dead skin cells while promoting rejuvenation and repair, leaving the skin plumper and tighter looking with improved clarity. The results of the PRP Facial can be seen as a gradual improvement to skin texture and brightness that can last from any where from 6 months up to 2 years. Overall, the PRP Facial is a safe and effective way to naturally revitalize the skin by tapping into the power of the patient's own blood platelets, and it's suitable for people with different skin types or conditions.",
+    headline: "Radiate Youthful Confidence: Boost Your Skin's Natural Healing Power!",
     subline:
-      "PRP is applied to the skin as part of the facial; Jenny explains each step at your visit. Results vary from person to person.",
+      "The PRP Facial combines microdermabrasion with topical application of PRP, promoting collagen and elastin production to improve your skin. This treatment can leave your skin looking plumper, tighter, and with improved clarity that lasts up to 2 years.",
     image: "/procedure/prp-facial-consultation-glow.webp",
     price: cashCardLabel(60000),
     // programmatic SEO copy
     blogHeadline:
-      "Articles about the PRP Facial: how it works, what to expect, and what to ask before you book.",
+      "Yearn for a youthful skin glow without harsh treatments? Explore our PRP Facial articles and get acquainted with this innovative skin revitalizing method. Learn from expert insights and successful transformations.",
     benefitsHeadline:
-      "The PRP Facial uses PRP prepared from your own blood. Ask Jenny whether it fits your skin goals. Results vary.",
+      "Gift your skin a touch of nature's best rejuvenation technique. The PRP Facial infuses life back into your complexion, reducing signs of aging and revitalizing skin texture. Glow with health, and let your skin showcase its renewed vibrancy.",
     benefits: [
       {
         emoji: "🌟",
-        benefit: "Texture and Tone",
+        benefit: "Revitalized Skin Tone",
         description:
-          "Skin texture and tone are the concerns people most often ask about with the PRP Facial. Results vary from person to person.",
+          "The PRP Facial significantly improves the skin's texture and tone, leading to a more youthful and vibrant appearance.",
       },
       {
         emoji: "🔍",
-        benefit: "Consultation First",
-        description: "Jenny reviews your skin concerns and health history before deciding whether the PRP Facial fits you.",
+        benefit: "Minimized Pores & Scars",
+        description: "Helps in reducing the size of large pores and the appearance of scars, promoting smoother skin.",
       },
       {
         emoji: "🔄",
-        benefit: "Your Own Blood",
-        description: "A small sample of your blood is spun in a centrifuge to separate the PRP used in the facial.",
+        benefit: "Collagen Stimulation",
+        description: "By promoting collagen production, the procedure restores skin elasticity and firmness.",
       },
       {
         emoji: "🌿",
         benefit: "Natural Ingredients",
         description:
-          "The PRP used in the facial is prepared from your own blood.",
+          "Utilizing PRP derived from your own blood, the PRP Facial offers a holistic, natural approach to skin rejuvenation.",
       },
     ],
     ailmentsHeadline:
-      "People ask about the PRP Facial for concerns such as fine lines, acne scars, and uneven skin tone. Read about each concern below, then ask Jenny at a consultation whether the PRP Facial fits yours. Results vary.",
+      "Rejuvenate your complexion and address multiple skin concerns with the PRP Facial. This innovative treatment harnesses the natural healing power of your own blood to revitalize your skin. Whether you're battling fine lines, dealing with stubborn acne scars, or frustrated by uneven skin tone, a PRP Facial could be your ticket to smoother, more radiant skin. Learn how this procedure targets a wide array of issues and discover which of these solutions could be the right fit for your skincare journey.",
     ailments: [
       {
         title: "Fine Lines and Wrinkles",
-        description: "Discuss fine lines and wrinkles and whether a PRP Facial is a reasonable option.",
+        description: "Soften the appearance of fine lines and wrinkles with a PRP Facial consultation plan.",
         blog_post_title: "Soften Fine Lines and Wrinkles with a PRP Facial",
         blog_post_slug: "soften-fine-lines-and-wrinkles-with-a-prp-facial",
         slug: "fine-lines-and-wrinkles",
@@ -964,7 +964,7 @@ export const procedures = [
       {
         title: "Acne Scars",
         description:
-          "Discuss acne scars and whether a PRP Facial is a reasonable option.",
+          "Improve the appearance of acne scars with a PRP Facial plan when candidacy is appropriate.",
         blog_post_title: "Improve Acne Scars with a PRP Facial",
         blog_post_slug: "improve-acne-scars-with-a-prp-facial",
         slug: "acne-scars",
@@ -973,7 +973,7 @@ export const procedures = [
       {
         title: "Hyperpigmentation",
         description:
-          "Discuss hyperpigmentation and whether a PRP Facial is a reasonable option.",
+          "Balance skin color by treating hyperpigmentation with a PRP Facial. Restore your skin's natural beauty.",
         blog_post_title: "Tackle Hyperpigmentation Head-On with a PRP Facial",
         blog_post_slug: "tackle-hyperpigmentation-head-on-with-a-prp-facial",
         slug: "hyperpigmentation",
@@ -990,7 +990,7 @@ export const procedures = [
       },
       {
         title: "Dull Skin",
-        description: "Discuss dull-looking skin and whether a PRP Facial is a reasonable option.",
+        description: "Revitalize and illuminate dull skin with the nourishing benefits of a PRP Facial.",
         blog_post_title: "Wake Up Your Dull Skin with a PRP Facial",
         blog_post_slug: "wake-up-your-dull-skin-with-a-prp-facial",
         slug: "dull-skin",
@@ -998,7 +998,7 @@ export const procedures = [
       },
       {
         title: "Rosacea",
-        description: "Discuss rosacea with Jenny or your doctor, and whether a PRP Facial is a reasonable option.",
+        description: "Manage and reduce rosacea flare-ups with the calming effect of a PRP Facial.",
         blog_post_title: "Control Rosacea Effectively with a PRP Facial",
         blog_post_slug: "control-rosacea-effectively-with-a-prp-facial",
         slug: "rosacea",
@@ -1006,7 +1006,7 @@ export const procedures = [
       },
       {
         title: "Enlarged Pores",
-        description: "Discuss enlarged pores and whether a PRP Facial is a reasonable option.",
+        description: "Improve the look of enlarged pores and skin texture with a PRP Facial plan.",
         blog_post_title: "Minimize the Look of Large Pores with a PRP Facial",
         blog_post_slug: "minimize-the-look-of-large-pores-with-a-prp-facial",
         slug: "enlarged-pores",
@@ -1014,7 +1014,7 @@ export const procedures = [
       },
       {
         title: "Sun Damage",
-        description: "Discuss sun-damaged-looking skin and whether a PRP Facial is a reasonable option.",
+        description: "Support sun-damaged-looking skin with a PRP Facial consultation and realistic treatment plan.",
         blog_post_title: "Repair Sun-Damaged Skin with a PRP Facial",
         blog_post_slug: "repair-sun-damaged-skin-with-a-prp-facial",
         slug: "sun-damage",
@@ -1022,7 +1022,7 @@ export const procedures = [
       },
       {
         title: "Loss of Skin Elasticity",
-        description: "Ask whether the PRP Facial fits concerns about skin elasticity.",
+        description: "Tighten and firm your skin for a more youthful appearance.",
         blog_post_title: "Restore Skin Elasticity with PRP Facial",
         blog_post_slug: "restore-skin-elasticity-with-prp-facial",
         slug: "loss-of-skin-elasticity",
@@ -1030,7 +1030,7 @@ export const procedures = [
       },
       {
         title: "Dark Circles",
-        description: "Discuss under-eye dark circles and whether a PRP Facial is a reasonable option.",
+        description: "Lighten under-eye dark circles for a fresher, more rested look.",
         blog_post_title: "Lighten Dark Circles Under Eyes with PRP Facial",
         blog_post_slug: "lighten-dark-circles-under-eyes-with-prp-facial",
         slug: "dark-circles",
@@ -1038,7 +1038,7 @@ export const procedures = [
       },
       {
         title: "Stretch Marks",
-        description: "Discuss stretch marks and whether a PRP Facial is a reasonable option.",
+        description: "Reduce the appearance of stretch marks for smoother skin.",
         blog_post_title: "Reduce Stretch Marks with PRP Facial",
         blog_post_slug: "reduce-stretch-marks-with-prp-facial",
         slug: "stretch-marks",
@@ -1046,7 +1046,7 @@ export const procedures = [
       },
       {
         title: "Minor Injury Scars",
-        description: "Discuss minor scars from injuries and whether a PRP Facial is a reasonable option.",
+        description: "Improve the look of minor scars from injuries.",
         blog_post_title: "Improve the Look of Injury Scars with PRP Facial",
         blog_post_slug: "improve-the-look-of-injury-scars-with-prp-facial",
         slug: "minor-injury-scars",
@@ -1054,7 +1054,7 @@ export const procedures = [
       },
       {
         title: "Age Spots",
-        description: "Discuss age spots and whether a PRP Facial is a reasonable option.",
+        description: "Fade age spots for a more uniform complexion.",
         blog_post_title: "Fade Age Spots with PRP Facial",
         blog_post_slug: "fade-age-spots-with-prp-facial",
         slug: "age-spots",
@@ -1062,7 +1062,7 @@ export const procedures = [
       },
       {
         title: "Skin Hydration",
-        description: "Discuss dry-feeling skin and whether a PRP Facial is a reasonable option.",
+        description: "Boost skin hydration for a plumper, more radiant look.",
         blog_post_title: "Boost Skin Hydration with PRP Facial",
         blog_post_slug: "boost-skin-hydration-with-prp-facial",
         slug: "skin-hydration",
@@ -1070,32 +1070,32 @@ export const procedures = [
       },
     ],
     faqHeadline:
-      "Common questions about the PRP Facial",
+      "Revitalize your skin with the PRP Facial. Using your body's natural healing factors, this procedure offers rejuvenation like no other.",
     faqs: [
       {
         question: "How does the PRP Facial work?",
         answer:
-          "PRP is prepared from a small sample of your blood and applied to the skin during the facial. Jenny explains each step at your visit. Results vary from person to person.",
+          "The PRP Facial involves micro-needling the skin followed by the application of PRP. The PRP enhances the healing process, leading to reduced fine lines, improved texture, and a youthful glow.",
       },
       {
         question: "Is the procedure painful?",
         answer:
-          "Jenny explains what the facial feels like and how comfort is handled at your visit.",
+          "A numbing cream is applied before the procedure to ensure comfort. Patients might feel a tingling or slight pricking sensation from the micro-needling.",
       },
       {
         question: "How long is the recovery time?",
         answer:
-          "Some redness or swelling afterward is possible. Jenny explains aftercare at your visit, including sun protection.",
+          "Most patients experience mild redness and swelling for 1-3 days post-procedure. It's essential to avoid direct sunlight and wear sunscreen during the healing process.",
       },
       {
         question: "How often should I get a PRP Facial?",
         answer:
-          "There is no set number of sessions. Jenny discusses whether a series makes sense at your consultation.",
+          "For optimal results, it's recommended to undergo 2-3 treatments spaced about a month apart. After that, maintenance treatments can be done annually or as recommended by your practitioner.",
       },
       {
         question: "What sets the PRP Facial apart from other facials?",
         answer:
-          "It uses PRP prepared from your own blood, which a standard facial does not. Results vary from person to person.",
+          "The PRP Facial harnesses the natural healing factors in your PRP, making it a holistic approach to skin rejuvenation that provides longer-lasting results than traditional facials.",
       },
     ],
   },
@@ -1105,7 +1105,7 @@ export const procedures = [
     seo: {
       title: "Microneedling with PRP in Williamsburg, VA",
       description:
-        "Microneedling with PRP in Williamsburg, VA for patients asking about skin texture and acne scars and comparing it with the PRP Facial.",
+        "Microneedling with PRP in Williamsburg, VA for patients comparing collagen-supporting skin rejuvenation, texture care, acne-scar support, and PRP facial options.",
     },
     description:
       "Microneedling with PRP is a consultation-based skin rejuvenation service at Williamsburg Med Spa. The treatment uses controlled microneedling with platelet-rich plasma prepared from your own blood to support the skin's natural repair response. Jenny reviews your skin goals, history, sensitivities, medications, downtime tolerance, and whether microneedling with PRP is a reasonable fit before building a plan.",
@@ -1260,13 +1260,13 @@ export const procedures = [
       },
       {
         emoji: "🌟",
-        benefit: "Skin Texture and Tone",
-        description: "The PRP Facial part of the visit is aimed at skin texture and tone. Results vary.",
+        benefit: "Skin Rejuvenation",
+        description: "This procedure revitalizes the skin, diminishing wrinkles, and fine lines.",
       },
       {
         emoji: "💉",
-        benefit: "Non-Surgical",
-        description: "The PRP Face Lift is non-surgical. It does not replace a surgical face lift.",
+        benefit: "Minimally Invasive",
+        description: "Unlike surgical facelifts, the PRP Face Lift is less invasive with quicker recovery time.",
       },
       {
         emoji: "⌛",
@@ -1276,7 +1276,7 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "The PRP Face Lift is a non-surgical visit that pairs Xeomin for movement lines with the PRP Facial for skin texture and tone. People ask about it for concerns such as fine lines and sagging skin. Read about each concern below, then ask Jenny at a consultation what fits you. Results vary.",
+      "Revitalize your facial features and turn back the clock on aging with the PRP Face Lift. This non-surgical visit pairs Xeomin for movement lines with the PRP Facial for skin texture and tone. Whether you're struggling with sagging skin, fine lines, or simply want a more youthful appearance, the PRP Face Lift can be customized to your needs. Discover how this procedure addresses a range of common and uncommon facial issues and learn which treatments might be most beneficial for you.",
     ailments: [
       {
         title: "Sagging Skin",
@@ -1306,7 +1306,7 @@ export const procedures = [
       },
       {
         title: "Dull Skin",
-        description: "Discuss dull-looking skin and whether the PRP Face Lift, another option, or a referral fits the concern.",
+        description: "Revive dull, lifeless skin and get a radiant glow with the PRP Face Lift.",
         blog_post_title: "Revitalize Dull Skin with a PRP Face Lift",
         blog_post_slug: "revitalize-dull-skin-with-a-prp-face-lift",
         slug: "dull-skin",
@@ -1338,7 +1338,7 @@ export const procedures = [
       },
       {
         title: "Crow's Feet",
-        description: "Discuss the lines around the eyes, often called crow's feet, and which options fit at a consultation.",
+        description: "Reduce the fine lines that appear around the eyes, often called crow's feet.",
         blog_post_title: "Soften Crow's Feet with PRP Face Lift",
         blog_post_slug: "soften-crows-feet-with-prp-face-lift",
         slug: "crows-feet",
@@ -1346,7 +1346,7 @@ export const procedures = [
       },
       {
         title: "Jowls",
-        description: "Discuss jowls and whether the PRP Face Lift, another option, or a surgical referral fits the concern. Results vary.",
+        description: "Support the look of lower-face firmness and jowl softening with a consultation-based plan.",
         blog_post_title: "Lift and Tighten Jowls with PRP Face Lift",
         blog_post_slug: "lift-and-tighten-jowls-with-prp-face-lift",
         slug: "jowls",
@@ -1362,7 +1362,7 @@ export const procedures = [
       },
       {
         title: "Chin Wrinkles",
-        description: "Discuss chin wrinkles and which options fit at a consultation.",
+        description: "Smooth out wrinkles and lines on your chin area.",
         blog_post_title: "Smooth Chin Wrinkles with PRP Face Lift",
         blog_post_slug: "smooth-chin-wrinkles-with-prp-face-lift",
         slug: "chin-wrinkles",
@@ -1370,7 +1370,7 @@ export const procedures = [
       },
       {
         title: "Forehead Lines",
-        description: "Discuss horizontal forehead lines and which options fit at a consultation.",
+        description: "Minimize the appearance of horizontal lines on your forehead.",
         blog_post_title: "Minimize Forehead Lines with PRP Face Lift",
         blog_post_slug: "minimize-forehead-lines-with-prp-face-lift",
         slug: "forehead-lines",
@@ -1378,7 +1378,7 @@ export const procedures = [
       },
       {
         title: "Marionette Lines",
-        description: "Discuss marionette lines (from the corners of the mouth toward the chin) and which options fit at a consultation.",
+        description: "Soften the appearance of lines running from the corners of your mouth down to your chin.",
         blog_post_title: "Soften Marionette Lines with PRP Face Lift",
         blog_post_slug: "soften-marionette-lines-with-prp-face-lift",
         slug: "marionette-lines",
@@ -1394,7 +1394,7 @@ export const procedures = [
       },
     ],
     faqHeadline:
-      "Common questions about the PRP Face Lift",
+      "Redefine and rejuvenate with the PRP Face Lift. This procedure offers natural-looking results without the need for surgery.",
     faqs: [
       {
         question: "How is the PRP Face Lift different from a traditional face lift?",
@@ -1833,7 +1833,7 @@ export const procedures = [
     ailments: [
       {
         title: "Forehead Wrinkles",
-        description: "Xeomin can be used to relax the muscles that cause forehead lines. Results vary.",
+        description: "Smooth out forehead wrinkles with Xeomin for a youthful and fresh look.",
         blog_post_title: "Eliminating Forehead Wrinkles with Xeomin",
         blog_post_slug: "eliminating-forehead-wrinkles-with-xeomin",
         slug: "forehead-wrinkles",
@@ -1937,7 +1937,7 @@ export const procedures = [
       },
       {
         title: "Drooping Nose Tip",
-        description: "Ask whether Xeomin fits a drooping nose tip. Results vary.",
+        description: "Lift a drooping nose tip for a more youthful appearance.",
         blog_post_title: "Lifting a Drooping Nose Tip with Xeomin",
         blog_post_slug: "lifting-a-drooping-nose-tip-with-xeomin",
         slug: "drooping-nose-tip",
@@ -2168,7 +2168,7 @@ export const procedures = [
     benefits: [
       {
         emoji: "🏥",
-        benefit: "Sterile, Single-Use Cassettes",
+        benefit: "Medical-Grade Safety",
         description:
           "Pre-sterilized, single-use cassettes support a clean, controlled visit and reduce cross-contamination risk.",
       },
@@ -2618,63 +2618,65 @@ export const products = [
   {
     name: "Definage Clinical Power Trio Pro",
     slug: "definage-clinical-power-trio-pro",
-    seoTitle: "Definage Clinical Power Trio Pro | Skincare Set in Williamsburg, VA",
-    seoDescription: `Definage Clinical Power Trio Pro: ${cashCardProse(37000)}. A skincare set for pickup in Williamsburg, VA. Ask Jenny if it suits your routine.`,
     description:
-      "Definage Clinical Power Trio Pro is a skincare set you use at home. You pick it up at Williamsburg Med Spa.",
-    headline: "A skincare set you use at home",
+      "Definage Clinical Power Trio Pro is a dermatologist-developed skincare system using bioactive peptides and botanicals to support smoother, firmer-looking skin.",
+    headline: "Clinical-Grade Skincare for Smoother, Firmer-Looking Skin",
     subline:
-      "Definage Clinical Power Trio Pro is skincare, not a medical treatment. Ask Jenny whether it fits your skin and your current routine.",
+      "Integrate cutting-edge science into your skincare. Defy aging, rejuvenate your visage, and reclaim a youthful glow with Definage Clinical Power Trio Pro.",
     image: "/product/defenage-power-pro.jpg",
     imageAlt: "Definage Clinical Power Trio Pro Kit",
     price: cashCardLabel(37000),
     link: "https://buy.stripe.com/aEU4jSf388HG000fZ1",
     // programmatic SEO copy
-    blogHeadline: "Articles and how-tos about Definage Clinical Power Trio Pro.",
-    benefitsHeading: "About Definage Clinical Power Trio Pro",
-    benefitsHeadline: "What to know before you buy Definage Clinical Power Trio Pro",
+    blogHeadline:
+      "Decipher the Science of Age Reversal with Definage Clinical Power Trio Pro: Expert Articles, In-Depth Analysis, and User Reviews.",
+    benefitsHeadline: "Experience Holistic Anti-Aging: Key Benefits of Definage Clinical Power Trio Pro",
     benefits: [
       {
-        emoji: "🧴",
-        benefit: "A skincare set",
-        description: "Definage Clinical Power Trio Pro is a set of skincare products that you use at home.",
-      },
-      {
-        emoji: "📍",
-        benefit: "Pickup in Williamsburg",
-        description: "Order online or in the office, then pick it up at Williamsburg Med Spa.",
-      },
-      {
-        emoji: "💬",
-        benefit: "Ask before you start",
+        emoji: "⏳",
+        benefit: "Cellular Age Reversal",
         description:
-          "Follow the directions on the package, and ask Jenny before you start if you have questions.",
+          "Formulated with bioactive peptides that stimulate collagen production, reversing the aging process at a cellular level.",
+      },
+      {
+        emoji: "💧",
+        benefit: "24/7 Hydration",
+        description:
+          "Enriched with hyaluronic acid, the treatment offers round-the-clock hydration, leaving your skin plump and dewy.",
+      },
+      {
+        emoji: "🛡",
+        benefit: "Environmental Defense",
+        description:
+          "A potent blend of antioxidants neutralizes free radicals, offering robust protection against environmental aggressors.",
+      },
+      {
+        emoji: "🌱",
+        benefit: "Botanical Goodness",
+        description:
+          "Powered by a medley of organic botanical extracts, the treatment is as gentle as it is effective.",
       },
     ],
-    faqHeadline: "Common questions about Definage Clinical Power Trio Pro",
+    faqHeadline: "Navigate Your Path to Youthful Skin: Comprehensive FAQs on Definage Clinical Power Trio Pro",
     faqs: [
       {
-        question: "What is Definage Clinical Power Trio Pro?",
+        question: "Is a patch test mandatory?",
         answer:
-          "It is a skincare set you use at home. It is a cosmetic product, not a medical treatment.",
+          "While our formula is hypoallergenic, a patch test is advised for individuals with sensitive skin or allergies.",
       },
       {
-        question: "How much does it cost?",
-        answer: `Definage Clinical Power Trio Pro is ${cashCardProse(37000)}. You pick it up at Williamsburg Med Spa.`,
-      },
-      {
-        question: "How do I use it?",
+        question: "What's the recommended usage?",
         answer:
-          "Follow the usage instructions included in the package, and ask Jenny before you start if you have questions.",
+          "For optimal results, use Definage Clinical Power Trio Pro as part of your nightly skincare routine. Follow the usage instructions included in the package.",
       },
       {
-        question: "Should I patch test it first?",
-        answer: "If you have sensitive skin or allergies, ask Jenny before you start.",
-      },
-      {
-        question: "What results should I expect?",
+        question: "Compatibility with other treatments?",
         answer:
-          "Results vary from person to person, and no particular result is promised. Talk with Jenny or your doctor about any skin condition or medical concern.",
+          "The trio is compatible with most skincare products, but for a personalized regimen, consult with a certified dermatologist.",
+      },
+      {
+        question: "Ethical Standards?",
+        answer: "Our product is cruelty-free, vegan, and made with sustainably sourced ingredients.",
       },
     ],
   },
