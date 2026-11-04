@@ -5,6 +5,8 @@ import test from "node:test";
 
 import { COMMERCE_CATALOG, EAR_PIERCING_PRICES, getCatalogConfigBySlug } from "../config/commerce-catalog";
 import { procedures, products } from "../data";
+import { earPiercingIntentPages } from "./ear-piercing-intents";
+import { localInjectableServicePages } from "./local-injectable-service-pages";
 import { creditAmountCentsForItem, resolveCartItemPricing, resolveSyncedStripePriceId } from "./cart-pricing";
 import type { ResolvedCartItem } from "./catalog";
 import {
@@ -175,7 +177,7 @@ test("display prices show the cash price first, then the card price, never as a 
   for (const item of COMMERCE_CATALOG) {
     assert.ok(item.displayPrice.includes(formatUsdShort(item.unitAmountCents)), `${item.slug}: ${item.displayPrice}`);
     assert.ok(item.displayPrice.includes(`${formatUsdShort(item.cashAmountCents)}`), `${item.slug}: ${item.displayPrice}`);
-    // After any "$250 credit blocks · " prefix, the label starts with the cash price and ends with the card price.
+    // After any "$250 credit blocks · " prefix, the label starts with the cash price and ends with the words "card/online".
     const label = item.displayPrice.replace(/^\$[\d,]+ credit blocks · /, "");
     assert.ok(label.startsWith(formatUsdShort(item.cashAmountCents)), `${item.slug}: cash price must come first: ${item.displayPrice}`);
     assert.match(label, /cash · .*card\/online$/, item.slug);
@@ -226,30 +228,43 @@ test("literal cash/card price pairs in copy and SEO checks use the computed card
   assert.ok(pairs >= 4, `expected literal price pairs in verify-seo.mjs, found ${pairs}`);
 });
 
-test("templated prose names the cash price before the card price on every line that has both", () => {
-  const files = [
-    "src/app/procedures/[slug]/page.tsx",
-    "src/app/procedures/blomdahl-ear-piercing/for/[intentSlug]/page.tsx",
-    "src/components/catalog-add-to-cart-control.tsx",
-    "src/config/commerce-catalog.ts",
-    "src/data.ts",
-    "src/lib/ear-piercing-intents.ts",
-    "src/lib/local-injectable-service-pages.ts",
-    "src/markdown/planning-holiday-ear-piercing-williamsburg-va.mdx",
-  ];
-  const cashToken = /(?:oneEarCash|bothEarsCash|earBothCash|creditBlockCash|botoxBlock\b|formatUsdShort\(\d+\)|cashLineTotalCents)/;
-  const cardToken = /(?:oneEarCard|bothEarsCard|earBothCard|creditBlockCard|cardPriceLabel\(|lineTotalCents\)\} card)/;
-  let lines = 0;
-  for (const file of files) {
-    readFileSync(join(process.cwd(), file), "utf8")
-      .split("\n")
-      .forEach((line, index) => {
-        const cash = line.search(cashToken);
-        const card = line.search(cardToken);
-        if (cash === -1 || card === -1) return;
-        lines += 1;
-        assert.ok(cash < card, `${file}:${index + 1} lists the card price before the cash price`);
-      });
+test("rendered price copy names each cash price before its card price", () => {
+  // Card amount -> the cash amount it is derived from (single units and quantity-break lines).
+  const cashForCard = new Map<string, string>();
+  for (const item of COMMERCE_CATALOG) {
+    cashForCard.set(formatUsdShort(item.unitAmountCents), formatUsdShort(item.cashAmountCents));
+    for (const [quantity, cashUnitCents] of Object.entries(item.cashQuantityPriceBreaks ?? {})) {
+      cashForCard.set(
+        formatUsdShort(cardQuantityBreakLineCents(cashUnitCents, Number(quantity))),
+        formatUsdShort(cashUnitCents * Number(quantity))
+      );
+    }
   }
-  assert.ok(lines >= 8, `expected at least 8 lines with both prices, found ${lines}`);
+
+  // Rendered strings from the data modules, plus source text of the MDX and JSX that interpolate EAR_PIERCING_PRICES.
+  const fill = (source: string) =>
+    source.replace(/\$?\{EAR_PIERCING_PRICES\.(\w+)\}/g, (_, key: keyof typeof EAR_PIERCING_PRICES) => EAR_PIERCING_PRICES[key]);
+  const texts = [
+    JSON.stringify([procedures, products, earPiercingIntentPages, localInjectableServicePages, COMMERCE_CATALOG]),
+    fill(readFileSync(join(process.cwd(), "src/markdown/planning-holiday-ear-piercing-williamsburg-va.mdx"), "utf8")),
+    fill(readFileSync(join(process.cwd(), "src/app/procedures/blomdahl-ear-piercing/for/[intentSlug]/page.tsx"), "utf8"))
+      .replace(/<[^>]+>/g, "")
+      .replace(/\s+/g, " "),
+  ];
+
+  let checked = 0;
+  for (const text of texts) {
+    // A "$250 credit blocks" / "$250 increments" prefix names the block size, not the cash price of the pair after it.
+    const sentences = text.replace(/\$[\d,]+ (?:treatment-)?(?:credit blocks|increments)/g, "").split(/[.!?](?=\s|"|$)|","/);
+    for (const sentence of sentences) {
+      const amounts = [...sentence.matchAll(/\$\d[\d,]*(?:\.\d{2})?/g)].map((match) => match[0]);
+      amounts.forEach((amount, index) => {
+        const cash = cashForCard.get(amount);
+        if (!cash || cash === amount) return;
+        checked += 1;
+        assert.ok(amounts.slice(0, index).includes(cash), `card price ${amount} comes before its cash price ${cash}: "${sentence.trim()}"`);
+      });
+    }
+  }
+  assert.ok(checked >= 15, `expected at least 15 card prices in rendered copy, found ${checked}`);
 });
