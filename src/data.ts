@@ -2145,7 +2145,7 @@ export const procedures = [
       {
         question: "Does insurance cover hyperhidrosis treatment?",
         answer:
-          "Williamsburg Med Spa is cash-pay. Some insurance plans cover hyperhidrosis treatment with prior authorization, so ask your insurer whether you can submit for reimbursement. We can provide a receipt.",
+          "Some insurance plans cover hyperhidrosis treatment with prior authorization. Ask your insurer what your plan covers and whether you can submit for reimbursement, and ask Jenny any questions at your consultation.",
       },
     ],
   },

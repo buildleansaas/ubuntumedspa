@@ -208,14 +208,15 @@ test("hyperhidrosis pages use the hub's side-effect wording and stay conservativ
   }
 });
 
-test("hyperhidrosis hub has the insurance FAQ: generic, cash-pay, never says the clinic bills insurance", () => {
+test("hyperhidrosis hub has a generic insurance FAQ that makes no billing or payment-policy claim", () => {
   const hub = procedures.find((procedure) => procedure.slug === "hyperhidrosis-treatment");
   assert.ok(hub);
   const faq = hub.faqs.find((item) => item.question === "Does insurance cover hyperhidrosis treatment?");
   assert.ok(faq);
-  assert.match(faq.answer, /^Williamsburg Med Spa is cash-pay\./);
+  assert.match(faq.answer, /^Some insurance plans cover hyperhidrosis treatment with prior authorization\./);
+  assert.doesNotMatch(faq.answer, /cash-pay|we (bill|accept)|receipt/i);
   assert.match(faq.answer, /prior authorization/);
-  assert.match(faq.answer, /ask your insurer/);
+  assert.match(faq.answer, /ask your insurer/i);
   assert.doesNotMatch(faq.answer, /we (?:bill|accept|file|submit)|in-network|covered by most|will be covered/i);
 });
 
