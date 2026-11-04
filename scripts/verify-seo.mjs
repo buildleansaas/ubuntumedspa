@@ -1295,7 +1295,7 @@ for (const path of xeominClusterPaths) {
   if (!text.includes("Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites.")) {
     fail(`${path} is missing the side-effects line`);
   }
-  if (!text.includes("Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment.")) {
+  if (!text.includes("Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment. These problems can happen hours to weeks after an injection.")) {
     fail(`${path} is missing the get-medical-help line`);
   }
   const visibleFaqs = (page.html.match(/data-faq-question/g) || []).length;

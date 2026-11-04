@@ -42,7 +42,8 @@ export const XEOMIN_SIDE_EFFECTS =
   "Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites. Rare but serious risks should be discussed directly with your provider before treatment.";
 
 /** Source: XEOMIN Medication Guide, boxed warning (distant spread of toxin effect). Shown after the side-effects line. */
-export const XEOMIN_SEEK_HELP = "Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment.";
+export const XEOMIN_SEEK_HELP =
+  "Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment. These problems can happen hours to weeks after an injection.";
 
 /** Source: XEOMIN Prescribing Information, Indications (the cosmetic indication is upper facial lines only). */
 export const XEOMIN_LIP_FLIP_OFF_LABEL =
@@ -370,7 +371,7 @@ export const xeominConcernPages: XeominClusterPage[] = [
       {
         question: "Is a lip flip an FDA-approved use of Xeomin?",
         answer:
-          "No. Xeomin's FDA label lists upper facial lines, and a lip flip is not one of them, so it is an off-label use. Jenny decides with you at the consultation whether it fits your anatomy and goal.",
+          "No. Xeomin's cosmetic FDA indication covers upper facial lines (frown lines, forehead lines, and crow's feet), and a lip flip is not one of them, so it is an off-label use. Jenny decides with you at the consultation whether it fits your anatomy and goal.",
       },
       {
         question: "Who is a good candidate for a lip flip?",
