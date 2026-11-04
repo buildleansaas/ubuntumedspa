@@ -41,7 +41,7 @@ export default function OhShotCallout() {
           <CmaCredentialStrip className="mt-5 max-w-xl" />
 
           <p className="mt-5 text-sm leading-relaxed text-base-content/80 md:text-base">
-            One treatment: {ohShot.displayPrice}. Pay online now, then choose your appointment time after checkout.
+            One treatment: {ohShot.displayPrice}. Pay online now, then text or call Jenny to book your appointment.
           </p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

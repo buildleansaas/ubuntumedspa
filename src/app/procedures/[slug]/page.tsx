@@ -427,8 +427,8 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
 
             <p className="mt-8 border-t border-base-300 pt-6 text-sm leading-relaxed text-base-content/70">
               PRP hair restoration is <strong className="font-semibold text-base-content">{catalogItem?.displayPrice}</strong>. Book the consultation
-              first if Jenny has not already reviewed your candidacy. If PRP fits your plan, purchase one session and choose one appointment time
-              after checkout.
+              first if Jenny has not already reviewed your candidacy. If PRP fits your plan, purchase one session, then text or call Jenny
+              to book it.
             </p>
           </section>
         )}

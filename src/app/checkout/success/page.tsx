@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import CalInlineEmbed from "components/cal-inline-embed";
 import ClearCartOnMount from "components/clear-cart-on-mount";
+import TextToBook from "components/text-to-book";
 import { Button } from "components/ui/button";
-import { getCalLinks } from "lib/cal";
 import { creditAmountCentsForItem } from "lib/cart-pricing";
 import { formatUsd, formatUsdShort } from "lib/price";
 import { sendPaidOrderNotifications } from "lib/order-notifications";
 import { getOrderByPublicToken, syncOrderFromStripeSession } from "lib/orders";
+import { orderBookingMessage } from "lib/text-to-book";
 
 export const dynamic = "force-dynamic";
 
@@ -42,8 +42,7 @@ export default async function CheckoutSuccessPage(
     }
   }
 
-  const { paidProcedure } = getCalLinks();
-  const canSchedule = order.paymentStatus === "paid" && order.requiresScheduling && Boolean(paidProcedure);
+  const canSchedule = order.paymentStatus === "paid" && order.requiresScheduling;
 
   return (
     <div className="max-w-5xl mx-auto py-12">
@@ -54,7 +53,7 @@ export default async function CheckoutSuccessPage(
       </h1>
       <p className="text-base-content/70 mb-8">
         {order.paymentStatus === "paid"
-          ? "Your order is recorded. If you purchased a procedure, book your appointment below."
+          ? "Your order is recorded. If you purchased a procedure, text or call Jenny below to book your appointment."
           : "Stripe has not marked this order as paid yet. Refresh shortly or check your email confirmation."}
       </p>
 
@@ -82,34 +81,12 @@ export default async function CheckoutSuccessPage(
       </div>
 
       {canSchedule && (
-        <div className="border border-base-300 bg-base-100 p-6">
-          <h2 className="text-2xl font-semibold mb-3">Schedule Your Appointment</h2>
-          <p className="text-base-content/70 mb-6">
-            Choose one appointment time for this order. If the order contains multiple procedures, the visit will be
-            handled as one combined session.
-          </p>
-          <CalInlineEmbed
-            calLink={paidProcedure}
-            namespace={`paid-order-${order.orderId}`}
-            name={order.customerName}
-            email={order.customerEmail}
-            phone={order.customerPhone}
-            metadata={{
-              orderId: order.orderId,
-              accountId: order.accountId || "",
-              orderToken: order.publicToken,
-              source: "stripe_success",
-              itemSlugs: order.items.map((item) => item.slug).join(","),
-            }}
-          />
-        </div>
-      )}
-
-      {order.requiresScheduling && !paidProcedure && (
-        <div className="border border-base-300 bg-base-200 p-6">
-          <h2 className="text-2xl font-semibold mb-3">Scheduling isn’t configured yet</h2>
-          <p className="text-base-content/70">Add `NEXT_PUBLIC_CAL_COM_PROCEDURE_LINK` to enable the on-site calendar embed.</p>
-        </div>
+        <TextToBook
+          heading="Book your appointment"
+          intro="Text or call Jenny to pick your time. The Text button opens Messages with your order details filled in. If the order has more than one procedure, it is one combined visit."
+          message={orderBookingMessage(order)}
+          location="order_booking"
+        />
       )}
 
       {(!order.requiresScheduling || order.items.some((item) => item.fulfillment === "pickup")) && (
