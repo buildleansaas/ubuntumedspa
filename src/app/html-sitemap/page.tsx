@@ -8,6 +8,7 @@ import { getPublishedEvents } from "lib/events";
 import { publishedEarPiercingAreas } from "lib/local-service-areas";
 import { buildPageMetadata } from "lib/metadata";
 import { serviceSatellitePages, satelliteHubLabel, satellitePath } from "lib/service-satellites";
+import { xeominClusterPages } from "lib/xeomin-concerns";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Sitemap | Williamsburg Med Spa",
@@ -26,6 +27,7 @@ export default async function HtmlSitemapPage() {
       title: "Procedures",
       links: [
         { href: "/procedures", label: "All procedures" },
+        { href: "/prices", label: "Prices" },
         ...publishedProcedures.map((procedure) => ({
           href: `/procedures/${procedure.slug}`,
           label: procedure.name,
@@ -33,6 +35,10 @@ export default async function HtmlSitemapPage() {
         ...publishedEarPiercingIntentPages.map((page) => ({
           href: `/procedures/blomdahl-ear-piercing/for/${page.slug}`,
           label: page.title,
+        })),
+        ...xeominClusterPages.map((page) => ({
+          href: page.path,
+          label: page.h1,
         })),
         ...publishedEarPiercingAreas.map((area) => ({
           href: `/procedures/blomdahl-ear-piercing/near/${area.slug}`,

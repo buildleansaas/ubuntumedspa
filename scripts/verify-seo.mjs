@@ -113,7 +113,7 @@ const sitemapUrls = extractAll(sitemapXml, /<loc>([^<]+)<\/loc>/g).map(unescapeH
 const duplicateSitemapUrls = sitemapUrls.filter((url, index) => sitemapUrls.indexOf(url) !== index);
 if (duplicateSitemapUrls.length) fail(`duplicate sitemap URLs: ${[...new Set(duplicateSitemapUrls)].join(", ")}`);
 
-for (const expected of [`${canonicalOrigin}/events`, `${canonicalOrigin}/events/botox-party`]) {
+for (const expected of [`${canonicalOrigin}/events`, `${canonicalOrigin}/events/botox-party`, `${canonicalOrigin}/prices`]) {
   if (!sitemapUrls.includes(expected)) fail(`sitemap missing ${expected}`);
 }
 if (sitemapUrls.some((url) => normalizePath(url) === "/affiliates")) fail("retired /affiliates route is present in sitemap");
@@ -259,7 +259,7 @@ if (![301, 302, 307, 308].includes(affiliateResponse.status)) {
 }
 
 const home = pages.find((page) => normalizePath(page.canonicalUrl) === "/")?.html || "";
-for (const owner of ["/procedures/botox", "/procedures/xeomin", "/procedures/blomdahl-ear-piercing"]) {
+for (const owner of ["/procedures/botox", "/procedures/xeomin", "/procedures/blomdahl-ear-piercing", "/prices"]) {
   const pattern = new RegExp(`href=["']${owner.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`);
   if (!pattern.test(home)) fail(`homepage does not directly link to query owner ${owner}`);
 }
@@ -267,7 +267,7 @@ const homeTitle = getVisibleText(home.match(/<title(?:\s[^>]*)?>([\s\S]*?)<\/tit
 if (/filler/i.test(homeTitle)) {
   fail("homepage title still lists filler, which the clinic no longer offers");
 }
-if (homeTitle !== "Medical Spa Williamsburg VA | Xeomin (Botox Alternative) & PRP") {
+if (homeTitle !== "Medical Spa Williamsburg VA | Nurse-Led, Prices Posted") {
   fail(`homepage title competes or drifted: ${JSON.stringify(homeTitle)}`);
 }
 if (/ear piercing/i.test(homeTitle)) fail("homepage title still competes for the ear piercing head term");
@@ -286,7 +286,7 @@ const homeDescriptionTag = (home.match(/<meta\b[^>]*>/gi) || []).find(
 );
 const homeDescription = homeDescriptionTag ? getTagAttributes(homeDescriptionTag).content || "" : "";
 const expectedHomeDescription =
-  "Nurse-led med spa on Powhatan Pkwy. Xeomin® wrinkle relaxer (a Botox® alternative) from $250 cash, PRP, and Blomdahl ear piercing.";
+  "Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) from $250 cash, Blomdahl ear piercing $45, B-12 $25, PRP. See all prices.";
 if (homeDescription !== expectedHomeDescription) {
   fail(`homepage meta description is ${JSON.stringify(homeDescription)}`);
 }
@@ -317,6 +317,37 @@ const snippetExpectations = {
     description:
       "Sterile, hypoallergenic Blomdahl ear piercing in Williamsburg, VA by a pediatric NP. $45 per ear in cash or $46.66 online by card.",
     h1: "Ear Piercing in Williamsburg, VA",
+  },
+  // Xeomin hub-and-satellite cluster (src/lib/xeomin-concerns.ts). Cash price first, Botox® only as the search term.
+  "/procedures/xeomin/for/frown-lines": {
+    title: "Xeomin for Frown Lines in Williamsburg, VA | From $250 Cash",
+    description:
+      "Looking for Botox® for frown lines (11s)? We use Xeomin® in Williamsburg, VA. $250 cash per credit block ($257.78 card). Nurse-led, conservative dosing.",
+    h1: "Xeomin for Frown Lines (11s) in Williamsburg, VA",
+  },
+  "/procedures/xeomin/for/forehead-lines": {
+    title: "Xeomin for Forehead Lines in Williamsburg, VA | From $250 Cash",
+    description:
+      "Looking for Botox® for forehead lines? We use Xeomin® in Williamsburg, VA. $250 cash per credit block ($257.78 card). Planned around your brows.",
+    h1: "Xeomin for Forehead Lines in Williamsburg, VA",
+  },
+  "/procedures/xeomin/for/crows-feet": {
+    title: "Xeomin for Crow's Feet in Williamsburg, VA | From $250 Cash",
+    description:
+      "Looking for Botox® for crow's feet? We use Xeomin® in Williamsburg, VA. $250 cash per credit block ($257.78 card). Planned to keep a natural smile.",
+    h1: "Xeomin for Crow's Feet in Williamsburg, VA",
+  },
+  "/procedures/xeomin/for/lip-flip": {
+    title: "Xeomin Lip Flip in Williamsburg, VA | From $250 Cash",
+    description:
+      "Looking for Botox® for a lip flip? We use Xeomin® in Williamsburg, VA. Consult first: it does not add volume. $250 cash per credit block ($257.78 card).",
+    h1: "Xeomin Lip Flip in Williamsburg, VA",
+  },
+  "/procedures/xeomin/cost": {
+    title: "Xeomin Cost in Williamsburg, VA | $250 Cash per Credit Block",
+    description:
+      "Xeomin cost in Williamsburg, VA: $250 cash per credit block ($257.78 card). Your total depends on areas and dosing. Unused credit stays on your account.",
+    h1: "Xeomin Cost in Williamsburg, VA",
   },
   "/blog/blomdahl-medical-plastic-vs-titanium-earrings": {
     title: "Blomdahl Earrings Review: Medical Plastic vs Titanium",
@@ -533,6 +564,29 @@ if (!newportNews.includes('"@type":"FAQPage"')) {
 }
 
 const ownerPageExpectations = {
+  "/prices": {
+    title: "Med Spa Prices in Williamsburg, VA | Cash and Card Prices",
+    description:
+      "Every price posted: Xeomin® from $250 cash per credit block, ear piercing $45, B-12 $25, PRP facial $600. Cash price first, card/online price shown.",
+    h1: "Williamsburg Med Spa Prices",
+    required: [
+      "$250 credit blocks · $250 cash · $257.78 card/online",
+      "$45 per ear or $80 for both ears cash · $46.66 or $82.70 card/online",
+      "$25 per injection cash · $26.06 card/online",
+      "Paying cash in the office? You pay the cash price.",
+      "Why are card prices higher?",
+      "How do I book?",
+    ],
+    forbidden: [],
+    forbiddenText: [/\bfees?\b|surcharge/i],
+    requiredHtml: [
+      /href=["']\/procedures\/xeomin["']/,
+      /href=["']\/procedures\/blomdahl-ear-piercing["']/,
+      /href=["']\/procedures\/b12-injections["']/,
+      /href=["']\/products\/definage-clinical-power-trio-pro["']/,
+    ],
+    requiredSchemas: ["FAQPage", "OfferCatalog", "BreadcrumbList"],
+  },
   "/procedures/b12-injections": {
     title: "Vitamin B-12 Injections in Williamsburg, VA | $25 Cash",
     description:
@@ -681,6 +735,9 @@ for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
   for (const forbidden of expectation.forbidden) {
     if (text.includes(forbidden)) fail(`${path} contains unsupported owner-page copy: ${forbidden}`);
   }
+  for (const forbiddenText of expectation.forbiddenText || []) {
+    if (forbiddenText.test(text)) fail(`${path} contains forbidden owner-page copy: ${forbiddenText}`);
+  }
   for (const requiredHtml of expectation.requiredHtml || []) {
     if (!requiredHtml.test(page.html)) fail(`${path} missing required owner-page HTML: ${requiredHtml}`);
   }
@@ -792,7 +849,13 @@ const consolidatedRedirects = [
   ["/locations/toano-va", "/locations/williamsburg-va"],
   ["/locations/fords-colony-va", "/locations/williamsburg-va"],
   ["/procedures/botox/near/williamsburg-va", "/procedures/botox"],
-  ["/procedures/botox/for/crows-feet", "/procedures/botox"],
+  ["/procedures/botox/for/crows-feet", "/procedures/xeomin/for/crows-feet"],
+  ["/procedures/botox/for/frown-lines", "/procedures/xeomin/for/frown-lines"],
+  ["/procedures/botox/for/bunny-lines", "/procedures/botox"],
+  ["/procedures/xeomin/for/glabellar-lines", "/procedures/xeomin/for/frown-lines"],
+  ["/procedures/botox/for/forehead-lines", "/procedures/xeomin/for/forehead-lines"],
+  ["/procedures/botox/for/lip-flip", "/procedures/xeomin/for/lip-flip"],
+  ["/procedures/xeomin/for/forehead-wrinkles", "/procedures/xeomin/for/forehead-lines"],
   ["/procedures/hyperhidrosis-treatment/for/facial-sweating", "/procedures/hyperhidrosis-treatment"],
   ["/procedures/feminine-intimacy-prp-protocols/for/urinary-incontinence", "/procedures/oh-shot"],
   ["/procedures/o-shot", "/procedures/oh-shot"],
@@ -866,6 +929,11 @@ const priorityPaths = [
   "/procedures/blomdahl-ear-piercing",
   "/procedures/blomdahl-ear-piercing/for/children",
   "/procedures/blomdahl-ear-piercing/for/sensitive-ears",
+  "/procedures/xeomin/for/frown-lines",
+  "/procedures/xeomin/for/forehead-lines",
+  "/procedures/xeomin/for/crows-feet",
+  "/procedures/xeomin/for/lip-flip",
+  "/procedures/xeomin/cost",
   "/procedures/hyperhidrosis-treatment",
   "/procedures/microneedling-with-prp",
   "/procedures/prp-breast-lift",
@@ -903,6 +971,56 @@ if (botoxPage) {
     fail("Botox-alternative page purchase panel is not the Xeomin item");
   }
 }
+// Xeomin cluster: every satellite links to the hub with the descriptive anchor and to the product page; the hub and the
+// product page link to every satellite; FAQ schema matches the visible FAQ list; the cash price shows before the card price.
+const xeominClusterPaths = [
+  "/procedures/xeomin/for/frown-lines",
+  "/procedures/xeomin/for/forehead-lines",
+  "/procedures/xeomin/for/crows-feet",
+  "/procedures/xeomin/for/lip-flip",
+  "/procedures/xeomin/cost",
+];
+const linksTo = (html, href) => new RegExp(`href=["']${href.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`).test(html);
+for (const path of xeominClusterPaths) {
+  const page = pages.find((candidate) => normalizePath(candidate.canonicalUrl) === path);
+  if (!page) {
+    fail(`Xeomin cluster page missing from sitemap: ${path}`);
+    continue;
+  }
+  const anchors = extractAll(page.html, /<a[^>]+href=["']\/procedures\/botox["'][^>]*>([\s\S]*?)<\/a>/gi).map((value) =>
+    getVisibleText(value).trim()
+  );
+  if (!anchors.includes("Botox alternative in Williamsburg")) fail(`${path} does not link to /procedures/botox as "Botox alternative in Williamsburg"`);
+  if (!linksTo(page.html, "/procedures/xeomin")) fail(`${path} does not link to /procedures/xeomin`);
+  for (const sibling of xeominClusterPaths.filter((candidate) => candidate !== path)) {
+    if (!linksTo(page.html, sibling)) fail(`${path} does not link to sibling ${sibling}`);
+  }
+  const text = getVisibleText(page.html);
+  if (!/We use Xeomin®/.test(text)) fail(`${path} is missing the "We use Xeomin®" line`);
+  const cashIndex = text.indexOf("$250 cash");
+  if (cashIndex < 0 || cashIndex > text.indexOf("$257.78")) fail(`${path} does not show the $250 cash price before the card price`);
+  if (!text.includes("Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites.")) {
+    fail(`${path} is missing the side-effects line`);
+  }
+  if (!text.includes("Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment. These problems can happen hours to weeks after an injection.")) {
+    fail(`${path} is missing the get-medical-help line`);
+  }
+  const visibleFaqs = (page.html.match(/data-faq-question/g) || []).length;
+  const schemaFaqs = extractAll(page.html, /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)
+    .map((raw) => JSON.parse(unescapeHtml(raw)))
+    .filter((schema) => schema?.["@type"] === "FAQPage")
+    .flatMap((schema) => schema.mainEntity || []).length;
+  if (!visibleFaqs || visibleFaqs !== schemaFaqs) fail(`${path} has ${visibleFaqs} visible FAQs but ${schemaFaqs} in FAQ schema`);
+}
+for (const owner of ["/procedures/botox", "/procedures/xeomin"]) {
+  const ownerPage = pages.find((candidate) => normalizePath(candidate.canonicalUrl) === owner);
+  if (!ownerPage) continue;
+  if (!ownerPage.html.includes("Xeomin by concern")) fail(`${owner} is missing the Xeomin by concern block`);
+  for (const path of xeominClusterPaths) {
+    if (!linksTo(ownerPage.html, path)) fail(`${owner} does not link to ${path}`);
+  }
+}
+
 const eventsPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/events");
 if (eventsPage) {
   const eventsTitle = readSnippet(eventsPage.html).title;
