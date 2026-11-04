@@ -25,9 +25,7 @@ const PAGE_SOURCE = read("src/app/prices/page.tsx");
 const LIB_SOURCE = read("src/lib/prices-page.ts");
 // tsconfig has jsx: "preserve", so tsx compiles JSX with the classic runtime and needs a global React.
 (globalThis as { React?: typeof React }).React = React;
-// eslint-disable-next-line @typescript-eslint/no-require-imports -- must load after the global above (CJS output).
 const { default: PricesPage, metadata: pricesMetadata } = require("../app/prices/page") as typeof import("../app/prices/page");
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { metadata: homeMetadata } = require("../app/page") as typeof import("../app/page");
 const html = renderToStaticMarkup(createElement(PricesPage));
 const unescape = (value: string) =>
