@@ -3,7 +3,7 @@ import { cardPriceLabel, formatUsdShort } from "lib/price";
 
 const botoxBlockCashCents = COMMERCE_CATALOG_BY_SLUG.botox.cashAmountCents;
 const botoxBlock = formatUsdShort(botoxBlockCashCents);
-const botoxBlockPrices = `${cardPriceLabel(botoxBlockCashCents)} online by card, ${botoxBlock} cash`;
+const botoxBlockPrices = `${botoxBlock} cash, ${cardPriceLabel(botoxBlockCashCents)} online by card`;
 
 export type LocalInjectableServicePage = {
   procedureSlug: "botox" | "xeomin";
@@ -84,7 +84,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       width: 1536,
       height: 1024,
     },
-    heroChips: ["Forehead lines", "Frown lines / 11s", "Crow's feet", "Lip flip consults", "Botox vs Xeomin guidance", `${botoxBlock} credit blocks (${cardPriceLabel(botoxBlockCashCents)} card, ${botoxBlock} cash)`],
+    heroChips: ["Forehead lines", "Frown lines / 11s", "Crow's feet", "Lip flip consults", "Botox vs Xeomin guidance", `${botoxBlock} credit blocks (${botoxBlock} cash, ${cardPriceLabel(botoxBlockCashCents)} card)`],
     fitGuidance: {
       goodFit: [
         "You want to soften frown lines, forehead lines, or crow's feet without losing natural expression.",

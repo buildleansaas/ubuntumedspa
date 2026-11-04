@@ -2,7 +2,7 @@
 
 import CatalogAddToCartControl from "components/catalog-add-to-cart-control";
 import OpenCartButton from "components/open-cart-button";
-import { CARD_CASH_NOTE } from "lib/price";
+import { CASH_CARD_NOTE } from "lib/price";
 
 type Props = {
   slug: string;
@@ -68,7 +68,7 @@ export default function CatalogPurchasePanel({
             />
             <OpenCartButton variant="secondary">View Cart</OpenCartButton>
           </div>
-          <p className="mt-3 max-w-xs text-xs leading-5 text-base-content/60">{CARD_CASH_NOTE}</p>
+          <p className="mt-3 max-w-xs text-xs leading-5 text-base-content/60">{CASH_CARD_NOTE}</p>
         </div>
       </div>
     </div>

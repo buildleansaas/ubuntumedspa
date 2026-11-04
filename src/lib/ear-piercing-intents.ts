@@ -34,7 +34,7 @@ export const earPiercingIntentPages: EarPiercingIntentPage[] = [
     title: "Infant & Kids Ear Piercing",
     metaTitle: "Infant & Baby Ear Piercing in Williamsburg, VA | Pediatric NP",
     metaDescription:
-      `Blomdahl ear piercing for infants, babies, and kids in Williamsburg, VA with pediatric NP Jenny Brady. Sterile, hypoallergenic, ${EAR_PIERCING_PRICES.oneEarCard}/ear by card, ${EAR_PIERCING_PRICES.oneEarCash} cash.`,
+      `Blomdahl ear piercing for infants, babies, and kids in Williamsburg, VA with pediatric NP Jenny Brady. Sterile, hypoallergenic, ${EAR_PIERCING_PRICES.oneEarCash}/ear cash, ${EAR_PIERCING_PRICES.oneEarCard} by card.`,
     h1: "Infant, Baby & Kids Ear Piercing in Williamsburg, VA",
     audience:
       "For parents planning a baby's or child's first earrings who want a calm, private appointment with a pediatric nurse practitioner instead of a busy retail counter.",
@@ -130,7 +130,7 @@ export const earPiercingIntentPages: EarPiercingIntentPage[] = [
       {
         question: "How much does infant or kids ear piercing cost?",
         answer:
-          `${EAR_PIERCING_PRICES.oneEarCard} for one ear or ${EAR_PIERCING_PRICES.bothEarsCard} for both ears in one visit online by card (${EAR_PIERCING_PRICES.oneEarCash} or ${EAR_PIERCING_PRICES.bothEarsCash} cash). That includes the appointment, sterile Blomdahl cassette, hypoallergenic starter earrings, and aftercare support.`,
+          `${EAR_PIERCING_PRICES.oneEarCash} for one ear or ${EAR_PIERCING_PRICES.bothEarsCash} for both ears in one visit in cash (${EAR_PIERCING_PRICES.oneEarCard} or ${EAR_PIERCING_PRICES.bothEarsCard} online by card). That includes the appointment, sterile Blomdahl cassette, hypoallergenic starter earrings, and aftercare support.`,
       },
       {
         question: "What if my child has sensitive skin or a nickel allergy?",

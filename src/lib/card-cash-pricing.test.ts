@@ -5,6 +5,8 @@ import test from "node:test";
 
 import { COMMERCE_CATALOG, EAR_PIERCING_PRICES, getCatalogConfigBySlug } from "../config/commerce-catalog";
 import { procedures, products } from "../data";
+import { earPiercingIntentPages } from "./ear-piercing-intents";
+import { localInjectableServicePages } from "./local-injectable-service-pages";
 import { creditAmountCentsForItem, resolveCartItemPricing, resolveSyncedStripePriceId } from "./cart-pricing";
 import type { ResolvedCartItem } from "./catalog";
 import {
@@ -171,35 +173,38 @@ test("a stale synced Stripe price (old amount) is never used; checkout falls bac
   assert.equal(bothEars.price_data?.unit_amount, 4135);
 });
 
-test("display prices show the card price with the cash price, never as a fee", () => {
+test("display prices show the cash price first, then the card price, never as a fee", () => {
   for (const item of COMMERCE_CATALOG) {
     assert.ok(item.displayPrice.includes(formatUsdShort(item.unitAmountCents)), `${item.slug}: ${item.displayPrice}`);
     assert.ok(item.displayPrice.includes(`${formatUsdShort(item.cashAmountCents)}`), `${item.slug}: ${item.displayPrice}`);
-    assert.match(item.displayPrice, /card\/online · .* cash$/);
+    // After any "$250 credit blocks · " prefix, the label starts with the cash price and ends with the words "card/online".
+    const label = item.displayPrice.replace(/^\$[\d,]+ credit blocks · /, "");
+    assert.ok(label.startsWith(formatUsdShort(item.cashAmountCents)), `${item.slug}: cash price must come first: ${item.displayPrice}`);
+    assert.match(label, /cash · .*card\/online$/, item.slug);
     assert.doesNotMatch(item.displayPrice, /fee|surcharge/i);
   }
 
-  assert.equal(getCatalogConfigBySlug("oh-shot")?.displayPrice, "$1,236.15 card/online · $1,200 cash");
-  assert.equal(getCatalogConfigBySlug("botox")?.displayPrice, "$250 credit blocks · $257.78 card/online · $250 cash");
+  assert.equal(getCatalogConfigBySlug("oh-shot")?.displayPrice, "$1,200 cash · $1,236.15 card/online");
+  assert.equal(getCatalogConfigBySlug("botox")?.displayPrice, "$250 credit blocks · $250 cash · $257.78 card/online");
   assert.equal(
     getCatalogConfigBySlug("blomdahl-ear-piercing")?.displayPrice,
-    "$46.66 per ear or $82.70 for both ears card/online · $45 or $80 cash"
+    "$45 per ear or $80 for both ears cash · $46.66 or $82.70 card/online"
   );
 });
 
-test("site copy prices (data.ts) match the catalog's card and cash prices", () => {
+test("site copy prices (data.ts) match the catalog's cash and card prices", () => {
   for (const entry of [...procedures, ...products] as { slug: string; price?: string }[]) {
     const item = getCatalogConfigBySlug(entry.slug);
     if (!item || !entry.price) continue;
     if (entry.slug === "hyperhidrosis-treatment") {
-      assert.equal(entry.price, `${formatUsdShort(item.unitAmountCents)}+ card/online · ${formatUsdShort(item.cashAmountCents)}+ cash`);
+      assert.equal(entry.price, `${formatUsdShort(item.cashAmountCents)}+ cash · ${formatUsdShort(item.unitAmountCents)}+ card/online`);
       continue;
     }
     assert.equal(entry.price, item.displayPrice, entry.slug);
   }
 });
 
-test("literal card/cash price pairs in copy and SEO checks use the computed card price", () => {
+test("literal cash/card price pairs in copy and SEO checks use the computed card price", () => {
   const files = [
     "scripts/verify-seo.mjs",
     "src/data.ts",
@@ -208,17 +213,58 @@ test("literal card/cash price pairs in copy and SEO checks use the computed card
     "src/markdown/planning-holiday-ear-piercing-williamsburg-va.mdx",
   ];
   const pairPattern =
-    /\$([\d,]+(?:\.\d{2})?)(?: per [a-z]+)? (?:card\/online · |online by card or )\$([\d,]+(?:\.\d{2})?) cash/g;
+    /\$([\d,]+(?:\.\d{2})?)(?: per [a-z]+)? (?:cash · |in cash or )\$([\d,]+(?:\.\d{2})?)(?: card\/online| online by card)/g;
   const toCents = (value: string) => Math.round(Number(value.replace(/,/g, "")) * 100);
   let pairs = 0;
 
   for (const file of files) {
     const source = readFileSync(join(process.cwd(), file), "utf8");
     for (const match of source.matchAll(pairPattern)) {
-      assert.equal(toCents(match[1]), cardPriceCents(toCents(match[2])), `${file}: ${match[0]}`);
+      assert.equal(toCents(match[2]), cardPriceCents(toCents(match[1])), `${file}: ${match[0]}`);
       pairs += 1;
     }
   }
 
   assert.ok(pairs >= 4, `expected literal price pairs in verify-seo.mjs, found ${pairs}`);
+});
+
+test("rendered price copy names each cash price before its card price", () => {
+  // Card amount -> the cash amount it is derived from (single units and quantity-break lines).
+  const cashForCard = new Map<string, string>();
+  for (const item of COMMERCE_CATALOG) {
+    cashForCard.set(formatUsdShort(item.unitAmountCents), formatUsdShort(item.cashAmountCents));
+    for (const [quantity, cashUnitCents] of Object.entries(item.cashQuantityPriceBreaks ?? {})) {
+      cashForCard.set(
+        formatUsdShort(cardQuantityBreakLineCents(cashUnitCents, Number(quantity))),
+        formatUsdShort(cashUnitCents * Number(quantity))
+      );
+    }
+  }
+
+  // Rendered strings from the data modules, plus source text of the MDX and JSX that interpolate EAR_PIERCING_PRICES.
+  const fill = (source: string) =>
+    source.replace(/\$?\{EAR_PIERCING_PRICES\.(\w+)\}/g, (_, key: keyof typeof EAR_PIERCING_PRICES) => EAR_PIERCING_PRICES[key]);
+  const texts = [
+    JSON.stringify([procedures, products, earPiercingIntentPages, localInjectableServicePages, COMMERCE_CATALOG]),
+    fill(readFileSync(join(process.cwd(), "src/markdown/planning-holiday-ear-piercing-williamsburg-va.mdx"), "utf8")),
+    fill(readFileSync(join(process.cwd(), "src/app/procedures/blomdahl-ear-piercing/for/[intentSlug]/page.tsx"), "utf8"))
+      .replace(/<[^>]+>/g, "")
+      .replace(/\s+/g, " "),
+  ];
+
+  let checked = 0;
+  for (const text of texts) {
+    // A "$250 credit blocks" / "$250 increments" prefix names the block size, not the cash price of the pair after it.
+    const sentences = text.replace(/\$[\d,]+ (?:treatment-)?(?:credit blocks|increments)/g, "").split(/[.!?](?=\s|"|$)|","/);
+    for (const sentence of sentences) {
+      const amounts = [...sentence.matchAll(/\$\d[\d,]*(?:\.\d{2})?/g)].map((match) => match[0]);
+      amounts.forEach((amount, index) => {
+        const cash = cashForCard.get(amount);
+        if (!cash || cash === amount) return;
+        checked += 1;
+        assert.ok(amounts.slice(0, index).includes(cash), `card price ${amount} comes before its cash price ${cash}: "${sentence.trim()}"`);
+      });
+    }
+  }
+  assert.ok(checked >= 15, `expected at least 15 card prices in rendered copy, found ${checked}`);
 });

@@ -70,8 +70,14 @@ export default function CatalogAddToCartControl({
         {showSubtotal && (
           <p className="text-sm text-base-content/60">
             Total:{" "}
-            <span className="font-semibold">{formatUsd(pricing?.lineTotalCents ?? clampedQuantity * unitAmountCents)}</span>
-            {pricing ? <> card/online · {formatUsdShort(pricing.cashLineTotalCents)} cash</> : null}
+            {pricing ? (
+              <>
+                <span className="font-semibold">{formatUsdShort(pricing.cashLineTotalCents)}</span> cash ·{" "}
+                {formatUsd(pricing.lineTotalCents)} card/online
+              </>
+            ) : (
+              <span className="font-semibold">{formatUsd(clampedQuantity * unitAmountCents)}</span>
+            )}
           </p>
         )}
       </div>

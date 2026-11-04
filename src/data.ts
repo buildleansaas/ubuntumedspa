@@ -1,4 +1,4 @@
-import { cardCashLabel, cardCashProse, cardPriceLabel, cardQuantityBreakLineCents, formatUsdShort } from "./lib/price";
+import { cashCardLabel, cashCardProse, cardPriceLabel, cardQuantityBreakLineCents, formatUsdShort } from "./lib/price";
 
 // Prices: the cash amount is the source; card / online amounts are derived (see lib/price).
 const earBothCard = formatUsdShort(cardQuantityBreakLineCents(4000, 2));
@@ -100,7 +100,7 @@ export const procedures = [
     subline:
       "The OH-Shot uses PRP prepared from your own blood in a discreet in-office procedure for patients looking for a non-hormonal, regenerative conversation around vulvovaginal tissue health and sexual wellness.",
     image: "/procedure/oh-shot/womens-intimate-wellness-lifestyle.webp",
-    price: cardCashLabel(120000),
+    price: cashCardLabel(120000),
     // programmatic SEO copy
     blogHeadline:
       "Researching the OH-Shot near Williamsburg? Review candidacy, cost factors, urinary leakage support, dryness, sensitivity, and how PRP-based intimate wellness may fit into a private consultation.",
@@ -337,7 +337,7 @@ export const procedures = [
       {
         question: "How much does the OH-Shot cost?",
         answer:
-          `The OH-Shot is listed at ${cardCashProse(120000)} at Williamsburg Med Spa. Consultation confirms whether treatment is appropriate before a plan is made.`,
+          `The OH-Shot is listed at ${cashCardProse(120000)} at Williamsburg Med Spa. Consultation confirms whether treatment is appropriate before a plan is made.`,
       },
       {
         question: "Is the OH-Shot painful?",
@@ -370,7 +370,7 @@ export const procedures = [
     subline:
       "The Pe-Shot uses platelet-rich plasma prepared from your own blood and is considered for select patients who want a non-surgical option as part of a broader sexual health plan.",
     image: "/procedure/pe-shot-consultation-confidence.webp",
-    price: cardCashLabel(190000),
+    price: cashCardLabel(190000),
     // programmatic SEO copy
     blogHeadline:
       "Review our Pe-Shot articles to learn how PRP-based care fits into conversations about erection quality, penile tissue health, recovery expectations, and treatment planning.",
@@ -569,15 +569,15 @@ export const procedures = [
       title: "PRP Breast Lift in Williamsburg, VA",
       documentTitle: "Breast Lift Williamsburg VA | PRP, Not Surgery",
       description:
-        `Breast lift in Williamsburg, VA: the PRP visit (${cardCashProse(180000)}) is not surgery and does not promise a cosmetic result.`,
+        `Breast lift in Williamsburg, VA: the PRP visit (${cashCardProse(180000)}) is not surgery and does not promise a cosmetic result.`,
     },
     description:
-      `This Williamsburg decision guide does not document the clinic's current method or promise a cosmetic result. Before choosing a PRP Breast Lift, ask what the service includes, what one visit (${cardCashProse(180000)}) covers, and whether a different cosmetic or surgical option better matches your goal.`,
+      `This Williamsburg decision guide does not document the clinic's current method or promise a cosmetic result. Before choosing a PRP Breast Lift, ask what the service includes, what one visit (${cashCardProse(180000)}) covers, and whether a different cosmetic or surgical option better matches your goal.`,
     headline: "Considering a PRP Breast Lift? Start with clear expectations",
     subline:
       "The service name does not promise the structural change associated with surgery, implant-like volume, or a fixed result. Ask the clinic for its current service details and purchase terms before you decide.",
     image: "/procedure/prp-breast-lift-consultation-confidence.webp",
-    price: cardCashLabel(180000),
+    price: cashCardLabel(180000),
     // programmatic SEO copy
     blogHeadline:
       "Read practical guidance about PRP breast treatment, purchase questions, alternatives, and what to ask before you book.",
@@ -726,7 +726,7 @@ export const procedures = [
     subline:
       "Considering PRP for hair loss near Williamsburg, James City County, Yorktown, or Newport News? Start with a conservative consultation that reviews your pattern, possible causes, and whether non-surgical follicle support is a reasonable next step.",
     image: "/procedure/hair-restoration/prp-hair-restoration-consultation.webp",
-    price: cardCashLabel(60000, "per treatment"),
+    price: cashCardLabel(60000, "per treatment"),
     // programmatic SEO copy
     blogHeadline:
       "Researching PRP hair restoration, thinning hair treatment, or hair transplant alternatives near Williamsburg? Learn when PRP may fit, when to seek medical evaluation first, and what to ask during consultation.",
@@ -910,7 +910,7 @@ export const procedures = [
     subline:
       "The PRP Facial combines microdermabrasion with topical application of PRP, promoting collagen and elastin production to improve your skin. This treatment can leave your skin looking plumper, tighter, and with improved clarity that lasts up to 2 years.",
     image: "/procedure/prp-facial-consultation-glow.webp",
-    price: cardCashLabel(60000),
+    price: cashCardLabel(60000),
     // programmatic SEO copy
     blogHeadline:
       "Yearn for a youthful skin glow without harsh treatments? Explore our PRP Facial articles and get acquainted with this innovative skin revitalizing method. Learn from expert insights and successful transformations.",
@@ -1103,7 +1103,7 @@ export const procedures = [
     subline:
       "For Williamsburg-area patients comparing PRP facial options, microneedling with PRP can be discussed for uneven texture, acne-scar appearance, fine lines, pores, sun-damaged-looking skin, and overall skin quality. Candidacy and timing depend on your skin, health history, and expectations.",
     image: "/procedure/prp-facial-consultation-glow.webp",
-    price: cardCashLabel(60000),
+    price: cashCardLabel(60000),
     blogHeadline:
       "Compare microneedling with PRP, PRP facial care, and other skin rejuvenation options before your Williamsburg consultation.",
     benefitsHeadline:
@@ -1236,7 +1236,7 @@ export const procedures = [
     subline:
       "The PRP Face Lift pairs Botox for movement lines with the PRP Facial for skin texture and tone in one visit. It is non-surgical, results vary, and it starts with a consultation.",
     image: "/procedure/prp-face-lift-consultation-refresh.webp",
-    price: cardCashLabel(150000),
+    price: cashCardLabel(150000),
     // programmatic SEO copy
     blogHeadline:
       "Comparing non-surgical facial rejuvenation options? Read how this non-surgical visit compares with other options, what it can and cannot change, and what to ask at a consultation. Results vary.",
@@ -1426,7 +1426,7 @@ export const procedures = [
     subline:
       "Joint Restoration uses platelet-rich plasma in a consultation-based plan for select joint concerns. Candidacy depends on the diagnosis, severity, prior treatments, and whether another specialist should be involved.",
     image: "/procedure/prp-joint-restoration-consultation.webp",
-    price: cardCashLabel(80000),
+    price: cashCardLabel(80000),
     // programmatic SEO copy
     blogHeadline:
       "Facing joint issues and comparing options? Explore how PRP may fit into non-surgical joint care and when specialist evaluation should come first.",
@@ -1624,7 +1624,7 @@ export const procedures = [
     subline:
       "Jenny Brady, MSN, RN, CPNP, PMHS treats common Botox areas such as forehead lines, frown lines, crow's feet, and select lower-face zones with a conservative, movement-aware approach.",
     image: "/procedure/blomdahl-family-ear-piercing-consult-jenny.webp",
-    price: `${formatUsdShort(25000)} credit blocks · ${cardCashLabel(25000)}`,
+    price: `${formatUsdShort(25000)} credit blocks · ${cashCardLabel(25000)}`,
     // programmatic SEO copy
     blogHeadline:
       "Researching Botox in Williamsburg? Review timing, common treatment areas, aftercare, and our Botox-vs-Xeomin guide before you book.",
@@ -1726,7 +1726,7 @@ export const procedures = [
       {
         question: "How much does Botox cost in Williamsburg?",
         answer:
-          `Williamsburg Med Spa lists Botox appointments in ${formatUsdShort(25000)} increments (${cardPriceLabel(25000)} per block online by card, ${formatUsdShort(25000)} cash). Your total depends on the areas treated, muscle strength, dosing plan, and whether Botox or Xeomin is the better fit for your goals.`,
+          `Williamsburg Med Spa lists Botox appointments in ${formatUsdShort(25000)} increments (${formatUsdShort(25000)} per block in cash or ${cardPriceLabel(25000)} online by card). Your total depends on the areas treated, muscle strength, dosing plan, and whether Botox or Xeomin is the better fit for your goals.`,
       },
       {
         question: "How soon will I notice Botox results?",
@@ -1774,7 +1774,7 @@ export const procedures = [
     subline:
       "Xeomin can treat forehead lines, frown lines, crow's feet, lip flip concerns, bunny lines, and select lower-face areas with a conservative dosing approach.",
     image: "/procedure/xeomin-brow-expression-closeup.webp",
-    price: `${formatUsdShort(25000)} credit blocks · ${cardCashLabel(25000)}`,
+    price: `${formatUsdShort(25000)} credit blocks · ${cashCardLabel(25000)}`,
     // programmatic SEO copy
     blogHeadline:
       "Researching Xeomin in Williamsburg? Review treatment areas, expected timing, hyperhidrosis use, and our Botox-vs-Xeomin comparison before you book.",
@@ -1980,7 +1980,7 @@ export const procedures = [
     subline:
       "Xeomin can help reduce excessive sweating in targeted areas with a localized, non-surgical treatment plan built around comfort, clothing confidence, handshakes, workouts, professional settings, and day-to-day function.",
     image: "/procedure/hyperhidrosis/hyperhidrosis-confidence-lifestyle.webp",
-    price: `${cardPriceLabel(100000)}+ card/online · ${formatUsdShort(100000)}+ cash`,
+    price: `${formatUsdShort(100000)}+ cash · ${cardPriceLabel(100000)}+ card/online`,
     // programmatic SEO copy
     blogHeadline:
       "Looking for hyperhidrosis treatment in Williamsburg? Start with underarm sweating, sweaty palms, sweaty feet, facial sweating, and how Xeomin can fit a maintenance plan for excessive sweating.",
@@ -2128,7 +2128,7 @@ export const procedures = [
       title: "Ear Piercing in Williamsburg, VA | Infant, Kids & Adults | Blomdahl",
       documentTitle: "Ear Piercing Williamsburg VA | Blomdahl Pediatric NP",
       description:
-        `Sterile, hypoallergenic Blomdahl ear piercing in Williamsburg, VA by a pediatric NP. ${cardCashProse(4500, "per ear")}.`,
+        `Sterile, hypoallergenic Blomdahl ear piercing in Williamsburg, VA by a pediatric NP. ${cashCardProse(4500, "per ear")}.`,
     },
     description:
       "Our Blomdahl medical ear piercing service uses sterile single-use cassettes and hypoallergenic Medical Plastic or titanium starter earrings to support cleaner healing. Jenny Brady, MSN, RN, CPNP, PMHS brings pediatric nursing experience to appointments for children, teens, and adults who want careful placement, clear aftercare, and a clinical setting instead of mall-style piercing.",
@@ -2136,7 +2136,7 @@ export const procedures = [
     subline:
       "A sterile, appointment-based piercing visit with Jenny Brady, hypoallergenic Blomdahl starter jewelry, placement planning, and aftercare for first earrings, re-piercing, and sensitive ears.",
     image: "/procedure/blomdahl-family-ear-piercing-consult.webp",
-    price: `${cardPriceLabel(4500)} per ear or ${earBothCard} for both ears card/online · ${formatUsdShort(4500)} or ${earBothCash} cash`,
+    price: `${formatUsdShort(4500)} per ear or ${earBothCash} for both ears cash · ${cardPriceLabel(4500)} or ${earBothCard} card/online`,
     // programmatic SEO copy
     blogHeadline:
       "Planning ear piercing in Williamsburg? Review our guides on aftercare, starter earring materials, and why Blomdahl differs from mall piercing.",
@@ -2244,7 +2244,7 @@ export const procedures = [
       {
         question: "How much does Blomdahl ear piercing cost?",
         answer:
-          `Williamsburg Med Spa lists Blomdahl ear piercing at ${cardCashProse(4500, "per ear")}, with both ears discounted to ${earBothCard} online by card or ${earBothCash} cash. Final visit details and current Blomdahl starter jewelry options are confirmed when scheduling.`,
+          `Williamsburg Med Spa lists Blomdahl ear piercing at ${cashCardProse(4500, "per ear")}, with both ears discounted to ${earBothCash} in cash or ${earBothCard} online by card. Final visit details and current Blomdahl starter jewelry options are confirmed when scheduling.`,
       },
       {
         question: "Are starter earrings included in the appointment?",
@@ -2296,7 +2296,7 @@ export const products = [
       "Make Co2 Lift your go-to solution for achieving youthful, resilient, and hydrated skin. With its unique carboxytherapy formula, it’s not just skincare; it’s skin transformation.",
     image: "/product/c02-lift-pro.webp",
     imageAlt: "Co2 Lift Carboxytherapy Gel",
-    price: cardCashLabel(10000),
+    price: cashCardLabel(10000),
     link: "https://buy.stripe.com/00g6s0dZ48HGdQQ9AC",
     // programmatic SEO copy
     blogHeadline:
@@ -2361,7 +2361,7 @@ export const products = [
       "Experience Co2 V Lift for Women—a unique, science-backed treatment focused on feminine care for intimate skin rejuvenation. Elevate your self-care routine to the next level.",
     image: "/product/c02-v-lift.webp",
     imageAlt: "Co2 V Lift for Women Intimate Skin Care",
-    price: cardCashLabel(50000),
+    price: cashCardLabel(50000),
     link: "https://buy.stripe.com/3cs8A87AG8HG6oo4gk",
     // programmatic SEO copy
     blogHeadline:
@@ -2493,7 +2493,7 @@ export const products = [
       "Integrate cutting-edge science into your skincare. Defy aging, rejuvenate your visage, and reclaim a youthful glow with Definage Clinical Power Trio Pro.",
     image: "/product/defenage-power-pro.jpg",
     imageAlt: "Definage Clinical Power Trio Pro Kit",
-    price: cardCashLabel(37000),
+    price: cashCardLabel(37000),
     link: "https://buy.stripe.com/aEU4jSf388HG000fZ1",
     // programmatic SEO copy
     blogHeadline:
