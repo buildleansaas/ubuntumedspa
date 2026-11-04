@@ -7,6 +7,7 @@ import { publishedEarPiercingIntentPages } from "lib/ear-piercing-intents";
 import { getPublishedEvents } from "lib/events";
 import { publishedEarPiercingAreas } from "lib/local-service-areas";
 import { buildPageMetadata } from "lib/metadata";
+import { xeominClusterPages } from "lib/xeomin-concerns";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Sitemap | Williamsburg Med Spa",
@@ -32,6 +33,10 @@ export default async function HtmlSitemapPage() {
         ...publishedEarPiercingIntentPages.map((page) => ({
           href: `/procedures/blomdahl-ear-piercing/for/${page.slug}`,
           label: page.title,
+        })),
+        ...xeominClusterPages.map((page) => ({
+          href: page.path,
+          label: page.h1,
         })),
         ...publishedEarPiercingAreas.map((area) => ({
           href: `/procedures/blomdahl-ear-piercing/near/${area.slug}`,

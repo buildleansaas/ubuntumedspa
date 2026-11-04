@@ -12,6 +12,7 @@ import { getProcedureInterests, normalizeConsultInterests, XEOMIN_INTEREST } fro
 import { earPiercingIntentPages } from "./ear-piercing-intents";
 import { EVENTS } from "./events";
 import { localInjectableServicePages } from "./local-injectable-service-pages";
+import { XEOMIN_CLUSTER_REDIRECTS, xeominClusterPages } from "./xeomin-concerns";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "./seo";
 
 // Williamsburg Med Spa uses only Xeomin (incobotulinumtoxinA). It does not offer Botox® brand.
@@ -140,6 +141,7 @@ const renderedData = JSON.stringify([
   localInjectableServicePages,
   EVENTS,
   earPiercingIntentPages,
+  xeominClusterPages,
   FORM_INPUTS,
   DEFAULT_TITLE,
   DEFAULT_DESCRIPTION,
@@ -212,10 +214,21 @@ test("served copy, source, and agent notes mention Botox only in allowed context
   assert.deepEqual(problems, []);
 });
 
-test("every /procedures/botox/for/* and /procedures/botox/near/williamsburg-va URL redirects to /procedures/botox", () => {
+test("/procedures/botox/for/<concern> redirects to the Xeomin concern page; every other /procedures/botox/for/* and /near/williamsburg-va to /procedures/botox", () => {
   const nextConfig = readFileSync(join(ROOT, "next.config.mjs"), "utf8");
   assert.match(nextConfig, /\["\/procedures\/botox\/for\/:ailmentSlug", "\/procedures\/botox"\]/);
   assert.match(nextConfig, /\["\/procedures\/botox\/near\/williamsburg-va", "\/procedures\/botox"\]/);
+  const catchAll = nextConfig.indexOf('["/procedures/botox/for/:ailmentSlug", "/procedures/botox"]');
+  const concernRedirects = XEOMIN_CLUSTER_REDIRECTS.filter(([source]) => source.startsWith("/procedures/botox/for/"));
+  assert.deepEqual(
+    concernRedirects.map(([source]) => source),
+    ["frown-lines", "forehead-lines", "crows-feet", "lip-flip"].map((slug) => `/procedures/botox/for/${slug}`)
+  );
+  for (const [source, destination] of concernRedirects) {
+    assert.match(destination, /^\/procedures\/xeomin\/for\//);
+    const index = nextConfig.indexOf(`["${source}", "${destination}"]`);
+    assert.ok(index > 0 && index < catchAll, `${source} -> ${destination} must be listed above the catch-all`);
+  }
 });
 
 test("/procedures/botox is the honest Botox-alternative page and sells Xeomin", () => {
