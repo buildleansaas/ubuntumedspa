@@ -19,7 +19,7 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
   xeomin: [
     {
       slug: "co2-lift",
-      reason: "A pickup skincare add-on for texture, glow, and at-home support between visits.",
+      reason: "Co2 Lift, a cosmetic carboxytherapy gel you can pick up at the office.",
       priority: 2,
     },
     {
@@ -31,7 +31,7 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
   "prp-facial": [
     {
       slug: "co2-lift",
-      reason: "A natural fit for patients who want to support glow and hydration between PRP facial visits.",
+      reason: "Co2 Lift, a cosmetic carboxytherapy gel you can pick up at the office.",
       priority: 1,
     },
     {
@@ -53,7 +53,7 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
     },
     {
       slug: "co2-lift",
-      reason: "A pickup skincare option for patients focused on glow, hydration, and between-visit support.",
+      reason: "Co2 Lift, a cosmetic carboxytherapy gel you can pick up at the office.",
       priority: 2,
     },
     {
@@ -62,39 +62,22 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
       priority: 3,
     },
   ],
-  "oh-shot": [
-    {
-      slug: "co2-v-lift-for-women",
-      reason: "A related pickup product for patients interested in ongoing intimate-area self-care between visits.",
-      priority: 1,
-    },
-    {
-      slug: "co2-lift",
-      reason: "A simple at-home skin-support product for patients already exploring restorative care.",
-      priority: 2,
-    },
-  ],
   "co2-v-lift-for-women": [
     {
-      slug: "oh-shot",
-      reason: "Often explored when someone wants an in-office conversation in addition to at-home intimate care.",
-      priority: 1,
-    },
-    {
       slug: "co2-lift",
-      reason: "A related pickup product for broader skin-support and glow-focused maintenance.",
+      reason: "Co2 Lift, a cosmetic carboxytherapy gel you can pick up at the office.",
       priority: 2,
     },
   ],
   "co2-lift": [
     {
       slug: "prp-facial",
-      reason: "A natural next step for patients who want to move from at-home support into in-office skin rejuvenation.",
+      reason: "An in-office PRP facial. Book a consult to ask Jenny about it.",
       priority: 1,
     },
     {
       slug: "xeomin",
-      reason: "A common next step when the goal is to soften movement-related lines beyond skincare alone.",
+      reason: "An in-office Xeomin visit. Book a consult to ask Jenny about it.",
       priority: 3,
     },
   ],
@@ -125,7 +108,7 @@ const CART_RECOMMENDATION_FALLBACKS: RecommendationDefinition[] = [
   },
   {
     slug: "co2-lift",
-    reason: "A pickup skincare add-on that supports glow and at-home maintenance between visits.",
+    reason: "Co2 Lift, a cosmetic carboxytherapy gel you can pick up at the office.",
     priority: 4,
   },
 ];

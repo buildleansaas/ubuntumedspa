@@ -5,9 +5,9 @@ import ProductsView from "views/products";
 import { buildPageMetadata } from "lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Medical Grade Skin Products in Williamsburg, VA | Williamsburg Med Spa",
+  title: "Skincare Products in Williamsburg, VA | Williamsburg Med Spa",
   description:
-    "Shop medical-grade skincare and wellness products offered by Williamsburg Med Spa, including curated formulations for skin and intimate care.",
+    "Products available for pickup at Williamsburg Med Spa. Ask Jenny which fits your routine.",
   canonical: "/products",
 });
 

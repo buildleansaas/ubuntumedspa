@@ -2416,7 +2416,7 @@ export const products = [
     seoTitle: "Co2 Lift Carboxytherapy Gel | Williamsburg Med Spa",
     seoDescription: `Co2 Lift carboxytherapy gel: ${cashCardProse(10000)}. Cosmetic skincare for pickup in Williamsburg, VA. Ask Jenny if it suits your skin.`,
     description:
-      "Co2 Lift is a carboxytherapy (CO2) gel for the face. It is a cosmetic skincare product you apply at home, and you pick it up at Williamsburg Med Spa.",
+      "Co2 Lift is a carboxytherapy (CO2) gel. It is a cosmetic skincare product you apply at home, and you pick it up at Williamsburg Med Spa.",
     headline: "A carboxytherapy gel you use at home",
     subline:
       "Co2 Lift is skincare, not a medical treatment. Ask Jenny whether it fits your skin and your current routine.",
@@ -2426,6 +2426,7 @@ export const products = [
     link: "https://buy.stripe.com/00g6s0dZ48HGdQQ9AC",
     // programmatic SEO copy
     blogHeadline: "Articles and how-tos about Co2 Lift carboxytherapy gel.",
+    benefitsHeading: "About Co2 Lift",
     benefitsHeadline: "What to know before you buy Co2 Lift",
     benefits: [
       {
@@ -2448,7 +2449,7 @@ export const products = [
         emoji: "💬",
         benefit: "Ask before you start",
         description:
-          "Ask Jenny whether Co2 Lift fits your skin, especially if your skin is sensitive or you use prescription skincare.",
+          "Follow the directions on the package, and ask Jenny before you start if you have questions.",
       },
     ],
     faqHeadline: "Common questions about Co2 Lift",
@@ -2464,12 +2465,11 @@ export const products = [
       },
       {
         question: "Do I need an appointment to use it?",
-        answer: "No. Co2 Lift is applied at home. Follow the directions on the package.",
+        answer: "No. Co2 Lift is applied at home. Follow the directions on the package, and ask Jenny before you start if you have questions.",
       },
       {
         question: "Can I use it with my other skincare?",
-        answer:
-          "Ask Jenny before adding it to your routine, especially if you use prescription skincare or have sensitive skin. Stop using it and call your doctor if your skin reacts.",
+        answer: "Ask Jenny before you start if you have questions about your routine.",
       },
       {
         question: "What results should I expect?",
@@ -2484,7 +2484,7 @@ export const products = [
     seoTitle: "Co2 V Lift Carboxytherapy Gel for Women | Williamsburg Med Spa",
     seoDescription: `Co2 V Lift for Women: ${cashCardProse(50000)}. A cosmetic carboxytherapy gel, not a laser or surgery. Pickup in Williamsburg, VA.`,
     description:
-      "Co2 V Lift for Women is a carboxytherapy (CO2) gel for the external intimate skin. It is a cosmetic product, not a laser or surgical procedure, and you pick it up at Williamsburg Med Spa.",
+      "Co2 V Lift for Women is a carboxytherapy (CO2) gel. It is a cosmetic product, not a laser or surgical procedure, and you pick it up at Williamsburg Med Spa.",
     headline: "A cosmetic carboxytherapy gel for intimate skin",
     subline:
       "Co2 V Lift for Women is a skincare product, not a medical treatment. Medical concerns about intimate health belong with a clinician.",
@@ -2494,6 +2494,7 @@ export const products = [
     link: "https://buy.stripe.com/3cs8A87AG8HG6oo4gk",
     // programmatic SEO copy
     blogHeadline: "Articles and how-tos about Co2 V Lift for Women.",
+    benefitsHeading: "About Co2 V Lift",
     benefitsHeadline: "What to know before you buy Co2 V Lift for Women",
     benefits: [
       {
@@ -2539,7 +2540,7 @@ export const products = [
       {
         question: "How do I use it?",
         answer:
-          "Follow the directions on the package. Ask Jenny before you start if you are pregnant or breastfeeding, have sensitive skin, or have an infection or irritation. Stop using it and call your doctor if your skin reacts.",
+          "Follow the directions on the package, and ask Jenny before you start if you have questions.",
       },
       {
         question: "What results should I expect?",
