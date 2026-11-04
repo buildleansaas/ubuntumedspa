@@ -14,7 +14,7 @@ const digitsOnly = (phone: string) => phone.replace(/[^\d+]/g, "");
 export const getOrderBookingUrl = (order: Pick<OrderRecord, "publicToken">) =>
   `${ORIGIN}/checkout/success?order=${order.publicToken}`;
 
-// Botox/Xeomin blocks are paid at the card price but credit the cash value; say both.
+// Xeomin credit blocks (and legacy pre-2026-11 "botox" orders) are paid at the card price but credit the cash value; say both.
 const itemLabel = (item: OrderRecord["items"][number]) =>
   `${item.quantity} x ${item.name}: ${formatUsd(item.lineTotalCents)}` +
   (item.pricingMode === "increment_credit" ? ` (adds ${formatUsd(creditAmountCentsForItem(item))} treatment credit)` : "");

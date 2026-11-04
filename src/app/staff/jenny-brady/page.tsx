@@ -57,7 +57,7 @@ export default function JennyBradyPage() {
             </p>
             <p>
               Jenny is a Cellular Medicine Association-certified OH-Shot provider and a certified Blomdahl provider. At
-              the Williamsburg clinic she plans Botox, Xeomin, PRP treatments, hyperhidrosis care, and
+              the Williamsburg clinic she plans Xeomin wrinkle-relaxer treatment, PRP treatments, hyperhidrosis care, and
               Blomdahl medical ear piercing.{" "}
               <Link href="/procedures/oh-shot" className="link link-primary">
                 OH-Shot

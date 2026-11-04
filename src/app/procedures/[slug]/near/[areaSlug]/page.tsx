@@ -45,10 +45,10 @@ export default async function LocalInjectableServicePage(props: Params) {
 
   const canonicalUrl = `${ORIGIN}/procedures/${page.procedureSlug}/near/${page.areaSlug}`;
   const consultHref = `/consult?procedure=${page.procedureSlug}&area=${page.areaSlug}&utm_source=website&utm_medium=local_service_page&utm_campaign=${page.procedureSlug}_${page.areaSlug}`;
-  const primaryCtaLabel = page.procedureSlug === "botox" ? "Request a Botox Consultation" : `Request a ${page.shortName} Consultation`;
+  const primaryCtaLabel = `Request a ${page.shortName} Consultation`;
   const secondaryCta =
     page.procedureSlug === "botox"
-      ? { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Compare Botox vs Xeomin" }
+      ? { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Compare Xeomin vs Botox" }
       : { href: `/procedures/${page.procedureSlug}`, label: `View ${page.shortName} Details` };
 
   return (
@@ -137,7 +137,7 @@ export default async function LocalInjectableServicePage(props: Params) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <Card>
               <CardHeader>
-                <CardTitle className="text-xl">Botox may be a good fit if</CardTitle>
+                <CardTitle className="text-xl">{page.shortName} may be a good fit if</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3 text-sm text-base-content/80">
@@ -172,9 +172,9 @@ export default async function LocalInjectableServicePage(props: Params) {
       {page.treatmentAreas ? (
         <section className="mb-10 md:mb-14 px-4 md:px-0">
           <div className="max-w-3xl mb-5">
-            <h2 className="text-2xl md:text-3xl font-light mb-3">Botox treatment areas patients ask about</h2>
+            <h2 className="text-2xl md:text-3xl font-light mb-3">{page.shortName} treatment areas patients ask about</h2>
             <p className="text-base md:text-lg text-base-content/80">
-              The right Botox plan depends on the area, muscle strength, anatomy, and how much expression you want to keep.
+              The right {page.shortName} plan depends on the area, muscle strength, anatomy, and how much expression you want to keep.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

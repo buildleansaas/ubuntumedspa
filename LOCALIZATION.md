@@ -304,7 +304,7 @@ Profile setup checklist (Edit profile → Business information)
   - Avoid promos, links, or phone numbers; no excessive claims or guarantees.
   - Write in natural language and reflect priority services.
 - Example copy (you can paste this as-is and refine later):
-  “Williamsburg Med Spa provides compassionate, evidence‑based aesthetics and regenerative care in Williamsburg, VA. Led by nurse practitioner Jenny Brady, MSN, RN, CPNP, PMHS, we focus on natural results with Botox, PRP joint injections, feminine and male PRP protocols, PRP facials, and medical ear piercing (Blohmdahl). With more than 26 years in medicine and six years in aesthetics, our patient‑first approach blends safety, comfort, and education to help you look and feel your best.”
+  “Williamsburg Med Spa provides compassionate, evidence‑based aesthetics and regenerative care in Williamsburg, VA. Led by nurse practitioner Jenny Brady, MSN, RN, CPNP, PMHS, we focus on natural results with Xeomin (a Botox alternative), PRP joint injections, feminine and male PRP protocols, PRP facials, and medical ear piercing (Blohmdahl). With more than 26 years in medicine and six years in aesthetics, our patient‑first approach blends safety, comfort, and education to help you look and feel your best.”
 
 Services module (GBP → Services)
 - Create entries that match on‑site naming. Keep 1–2 sentence descriptions, add price range if allowed.

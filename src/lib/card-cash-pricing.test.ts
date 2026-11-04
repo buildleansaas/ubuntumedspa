@@ -105,11 +105,11 @@ test("every catalog item at every allowed quantity nets at least the cash price 
   assert.ok(checked >= COMMERCE_CATALOG.length);
 });
 
-test("increment-credit items (Botox, Xeomin) charge the card price but credit exactly the cash value", () => {
+test("increment-credit items (Xeomin) charge the card price but credit exactly the cash value", () => {
   const creditItems = COMMERCE_CATALOG.filter((item) => item.pricingMode === "increment_credit");
   assert.deepEqual(
     creditItems.map((item) => item.slug).sort(),
-    ["botox", "xeomin"]
+    ["xeomin"]
   );
 
   for (const item of creditItems) {
@@ -129,26 +129,26 @@ test("increment-credit items (Botox, Xeomin) charge the card price but credit ex
 });
 
 test("a stale synced Stripe price (old amount) is never used; checkout falls back to price_data at the card price", () => {
-  const botox = getCatalogConfigBySlug("botox");
-  assert.ok(botox);
+  const xeomin = getCatalogConfigBySlug("xeomin");
+  assert.ok(xeomin);
 
   // Mongo record left over from before card pricing: points at the old $250 Stripe price.
   const staleRecord = { stripePriceId: "price_old_250", unitAmountCents: 25000, currency: "usd" };
-  assert.equal(resolveSyncedStripePriceId(botox, staleRecord), undefined);
-  assert.equal(resolveSyncedStripePriceId(botox, { stripePriceId: "price_unknown_amount" }), undefined);
-  assert.equal(resolveSyncedStripePriceId(botox, { ...staleRecord, unitAmountCents: 25778, currency: "eur" }), undefined);
-  assert.equal(resolveSyncedStripePriceId(botox, null), undefined);
+  assert.equal(resolveSyncedStripePriceId(xeomin, staleRecord), undefined);
+  assert.equal(resolveSyncedStripePriceId(xeomin, { stripePriceId: "price_unknown_amount" }), undefined);
+  assert.equal(resolveSyncedStripePriceId(xeomin, { ...staleRecord, unitAmountCents: 25778, currency: "eur" }), undefined);
+  assert.equal(resolveSyncedStripePriceId(xeomin, null), undefined);
 
   // After `pnpm sync:stripe-catalog` the record carries the card amount and the price ID is reused.
   const syncedRecord = { stripePriceId: "price_new_25778", unitAmountCents: 25778, currency: "usd" };
-  assert.equal(resolveSyncedStripePriceId(botox, syncedRecord), "price_new_25778");
+  assert.equal(resolveSyncedStripePriceId(xeomin, syncedRecord), "price_new_25778");
 
   const resolvedItem = (stripeRecord: typeof staleRecord): ResolvedCartItem => ({
-    ...botox,
+    ...xeomin,
     quantity: 2,
-    unitLabel: botox.quantityLabel,
-    ...resolveCartItemPricing(botox, 2),
-    stripePriceId: resolveSyncedStripePriceId(botox, stripeRecord),
+    unitLabel: xeomin.quantityLabel,
+    ...resolveCartItemPricing(xeomin, 2),
+    stripePriceId: resolveSyncedStripePriceId(xeomin, stripeRecord),
   });
 
   const staleLine = buildStripeLineItem(resolvedItem(staleRecord));
@@ -185,7 +185,7 @@ test("display prices show the cash price first, then the card price, never as a 
   }
 
   assert.equal(getCatalogConfigBySlug("oh-shot")?.displayPrice, "$1,200 cash · $1,236.15 card/online");
-  assert.equal(getCatalogConfigBySlug("botox")?.displayPrice, "$250 credit blocks · $250 cash · $257.78 card/online");
+  assert.equal(getCatalogConfigBySlug("xeomin")?.displayPrice, "$250 credit blocks · $250 cash · $257.78 card/online");
   assert.equal(
     getCatalogConfigBySlug("blomdahl-ear-piercing")?.displayPrice,
     "$45 per ear or $80 for both ears cash · $46.66 or $82.70 card/online"

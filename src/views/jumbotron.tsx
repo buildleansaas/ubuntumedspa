@@ -21,7 +21,7 @@ const CREDENTIALS = [
 ] as const;
 
 const FEATURED_LINKS = [
-  ["Botox", "/procedures/botox"],
+  ["Botox Alternative", "/procedures/botox"],
   ["Xeomin", "/procedures/xeomin"],
   ["OH-Shot", "/procedures/oh-shot"],
   ["Blomdahl Ear Piercing", "/procedures/blomdahl-ear-piercing"],

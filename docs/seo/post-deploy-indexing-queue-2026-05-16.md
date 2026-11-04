@@ -1,5 +1,7 @@
 # Post-Deploy Indexing Queue — Williamsburg Med Spa
 
+Update 2026-11-04 (PR #155): the clinic uses only Xeomin (no Botox® brand) and no longer offers filler.
+
 Data source: public crawlability checks plus prior GSC/Keywords Everywhere report in `docs/gsc-ke-growth-report-2026-05-07.md`.
 
 Use this queue after the merged performance/OSM/local SEO deploy is live on `https://www.williamsburgmedspa.com`.

@@ -38,9 +38,9 @@ test("cart recommendations never suggest filler", () => {
 test("a stale saved cart drops filler and keeps the other items", () => {
   const items = normalizeCartItems([
     { slug: "filler", kind: "procedure", quantity: 2 },
-    { slug: "botox", kind: "procedure", quantity: 1 },
+    { slug: "xeomin", kind: "procedure", quantity: 1 },
   ]);
-  assert.deepEqual(items, [{ slug: "botox", kind: "procedure", quantity: 1 }]);
+  assert.deepEqual(items, [{ slug: "xeomin", kind: "procedure", quantity: 1 }]);
   assert.deepEqual(normalizeCartItems([{ slug: "filler", kind: "procedure", quantity: 1 }]), []);
 });
 

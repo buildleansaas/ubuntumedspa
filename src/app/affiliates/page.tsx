@@ -70,7 +70,7 @@ const promotionIdeas = [
   {
     title: "Injectables people already ask about",
     description:
-      "Botox, Xeomin, and hyperhidrosis treatment are strong referral categories because people naturally ask who feels experienced, gentle, and trustworthy with injectables.",
+      "Xeomin (our wrinkle relaxer) and hyperhidrosis treatment are strong referral categories because people naturally ask who feels experienced, gentle, and trustworthy with injectables.",
     bestFor: "Wrinkles, sweat control, and natural-looking refreshes.",
     href: "/procedures",
     cta: "View procedures",

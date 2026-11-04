@@ -641,7 +641,7 @@ const homeTitle = getVisibleText(home.match(/<title(?:\s[^>]*)?>([\s\S]*?)<\/tit
 if (/filler/i.test(homeTitle)) {
   fail("homepage title still lists filler, which the clinic no longer offers");
 }
-if (homeTitle !== "Medical Spa Williamsburg VA | Botox, Xeomin & PRP") {
+if (homeTitle !== "Medical Spa Williamsburg VA | Xeomin (Botox Alternative) & PRP") {
   fail(`homepage title competes or drifted: ${JSON.stringify(homeTitle)}`);
 }
 if (/ear piercing/i.test(homeTitle)) fail("homepage title still competes for the ear piercing head term");
@@ -660,14 +660,19 @@ const homeDescriptionTag = (home.match(/<meta\b[^>]*>/gi) || []).find(
 );
 const homeDescription = homeDescriptionTag ? getTagAttributes(homeDescriptionTag).content || "" : "";
 const expectedHomeDescription =
-  "Jenny Brady, MSN, RN, CPNP, PMHS, CMA-certified OH-Shot provider, offers Botox, Xeomin, PRP, and Blomdahl ear piercing in Williamsburg, VA.";
+  "Nurse-led med spa on Powhatan Pkwy. Xeomin® wrinkle relaxer (a Botox® alternative) from $250 cash, PRP, and Blomdahl ear piercing.";
 if (homeDescription !== expectedHomeDescription) {
   fail(`homepage meta description is ${JSON.stringify(homeDescription)}`);
 }
 if (homeDescription.length > 160) fail(`homepage meta description is ${homeDescription.length} characters`);
-if (!/CMA-certified/.test(homeDescription) || !/OH-Shot/.test(homeDescription) || !/Blomdahl ear piercing/.test(homeDescription)) {
-  fail("homepage meta drops Jenny credentials, OH-Shot, or Blomdahl ear piercing");
+if (!/Xeomin/.test(homeDescription) || !/Botox® alternative/.test(homeDescription) || !/Blomdahl ear piercing/.test(homeDescription)) {
+  fail("homepage meta drops Xeomin, the Botox-alternative framing, or Blomdahl ear piercing");
 }
+// The clinic uses only Xeomin; Botox may appear only as the searched-for term or a comparison.
+const homeBotoxAlternativeLink = homeLinks.some(
+  (link) => link.attributes.href === "/procedures/botox" && /botox alternative in williamsburg/i.test(link.text)
+);
+if (!homeBotoxAlternativeLink) fail('homepage drops the "Botox alternative in Williamsburg" link');
 if (/filler/i.test(homeDescription)) fail("homepage meta includes filler language");
 
 const readSnippet = (html) => {
@@ -891,8 +896,11 @@ for (const owner of [
 if (/Quick read|Popular searches|Easy internal links/.test(newportNews)) {
   fail("Newport News owner exposes operator-facing SEO language");
 }
-if (!newportNews.includes("How do I choose between Botox and Xeomin?")) {
-  fail("Newport News owner is missing the visible Botox/Xeomin decision answer");
+if (!newportNews.includes("Do you offer Botox for Newport News patients?")) {
+  fail("Newport News owner is missing the visible Botox/Xeomin answer");
+}
+if (!/Botox alternative in Williamsburg/.test(newportNews)) {
+  fail('Newport News owner is missing the "Botox alternative in Williamsburg" link');
 }
 if (!newportNews.includes('"@type":"FAQPage"')) {
   fail("Newport News owner is missing server-rendered FAQPage schema");
@@ -1179,14 +1187,21 @@ for (const path of priorityPaths) {
 const botoxPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/botox");
 if (botoxPage) {
   const botoxSnippet = readSnippet(botoxPage.html);
-  if (botoxSnippet.h1 !== "Botox in Williamsburg, VA") {
-    fail(`Botox H1 changed: ${JSON.stringify(botoxSnippet.h1)}`);
+  if (botoxSnippet.h1 !== "A Botox Alternative in Williamsburg, VA: We Use Xeomin®") {
+    fail(`Botox-alternative H1 changed: ${JSON.stringify(botoxSnippet.h1)}`);
   }
-  if (!botoxSnippet.title.startsWith("Botox in Williamsburg, VA")) {
-    fail(`Botox title no longer leads with the owner phrase: ${JSON.stringify(botoxSnippet.title)}`);
+  if (botoxSnippet.title !== "Botox Alternative in Williamsburg, VA | Xeomin® from $250 Cash") {
+    fail(`Botox-alternative title changed: ${JSON.stringify(botoxSnippet.title)}`);
   }
-  if (!/Jenny Brady, MSN, RN, CPNP, PMHS/.test(botoxSnippet.description)) {
-    fail("Botox meta dropped Jenny's credentials");
+  if (!/We use Xeomin®/.test(botoxSnippet.description) || !/\$250 cash/.test(botoxSnippet.description)) {
+    fail("Botox-alternative meta dropped Xeomin or the cash price");
+  }
+  if (!botoxPage.html.includes("Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand.")) {
+    fail("Botox-alternative page is missing the trademark disclaimer");
+  }
+  // The Botox-alternative page sells the Xeomin item; the "botox" catalog item was removed.
+  if (!/id=["']xeomin-quantity["']/.test(botoxPage.html) || /id=["']botox-quantity["']/.test(botoxPage.html)) {
+    fail("Botox-alternative page purchase panel is not the Xeomin item");
   }
 }
 const eventsPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/events");
@@ -1195,24 +1210,30 @@ if (eventsPage) {
   if (eventsTitle === "Botox Parties in Williamsburg, VA | Private Med Spa Events") {
     fail("events title still competes for Botox Williamsburg");
   }
-  if (!/href=["']\/procedures\/botox["']/.test(eventsPage.html)) fail("events page does not link to the Botox owner");
+  if (!/href=["']\/procedures\/xeomin["']/.test(eventsPage.html)) fail("events page does not link to the Xeomin owner");
 }
 const botoxParty = pages.find((page) => normalizePath(page.canonicalUrl) === "/events/botox-party");
 if (botoxParty && readSnippet(botoxParty.html).title.startsWith("Botox Parties in Williamsburg")) {
   fail("Botox party title still competes for Botox Williamsburg");
 }
-if (botoxParty && !/href=["']\/procedures\/botox["']/.test(botoxParty.html)) {
-  fail("Botox party page does not link to the Botox owner");
+if (botoxParty && !/href=["']\/procedures\/xeomin["']/.test(botoxParty.html)) {
+  fail("wrinkle relaxer party page does not link to the Xeomin owner");
+}
+if (botoxParty && /free Botox|Botox party/i.test(getVisibleText(botoxParty.html))) {
+  fail("wrinkle relaxer party page still offers Botox");
 }
 const newportNewsSnippet = readSnippet(newportNews);
-if (newportNewsSnippet.title !== "Med Spa Newport News | Botox at Our Williamsburg Clinic") {
+if (newportNewsSnippet.title !== "Med Spa Newport News | Xeomin, a Botox Alternative") {
   fail(`Newport News title is ${JSON.stringify(newportNewsSnippet.title)}`);
+}
+if (!/25–35 minute drive from Newport News/.test(getVisibleText(newportNews))) {
+  fail("Newport News wrinkle-relaxer section drive time drifted from the 25–35 minutes on /locations");
 }
 if (!/There is no Newport News street address/.test(newportNews)) {
   fail("Newport News page does not say there is no Newport News street address");
 }
-if (!/Med spa Newport News/i.test(newportNewsSnippet.description) || !/Botox/.test(newportNewsSnippet.description)) {
-  fail("Newport News meta does not target med spa and Botox");
+if (!/Med spa Newport News/i.test(newportNewsSnippet.description) || !/Botox/.test(newportNewsSnippet.description) || !/typically drive 25–35 minutes/.test(newportNewsSnippet.description)) {
+  fail('Newport News meta does not target med spa and Botox, or drops "typically drive 25–35 minutes" (the drive time on /locations)');
 }
 if (!/does not offer Hydrafacial/.test(home)) fail("homepage does not disambiguate Hydrafacial");
 if (!/href=["']\/procedures\/prp-facial["']/.test(home)) fail("homepage Hydrafacial note does not link to PRP Facial");

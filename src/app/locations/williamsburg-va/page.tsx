@@ -9,7 +9,7 @@ import { buildPageMetadata } from "lib/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Medical Spa in Williamsburg, VA | Hours, Directions & Services",
   description:
-    "Visit Williamsburg Med Spa for Botox, Xeomin, PRP treatments, hyperhidrosis care, and Blomdahl medical ear piercing at 3900 Powhatan Parkway.",
+    "Hours and directions for Williamsburg Med Spa, 3900 Powhatan Parkway: Xeomin® (a Botox® alternative), PRP, hyperhidrosis care, and Blomdahl ear piercing.",
   canonical: "/locations/williamsburg-va",
 });
 
@@ -23,14 +23,10 @@ export default function WilliamsburgLocationPage() {
         <p className="text-base md:text-lg text-base-content/70 mt-2">
           Use this page for clinic hours, parking, directions, and nearby neighborhoods served. Patients visit Jenny
           Brady for{" "}
-          <Link href="/procedures/botox" className="link link-primary">
-            Botox
-          </Link>
-          ,{" "}
           <Link href="/procedures/xeomin" className="link link-primary">
             Xeomin
-          </Link>
-          , PRP treatments, hyperhidrosis care, OH-Shot services, and{" "}
+          </Link>{" "}
+          (our wrinkle relaxer and a Botox® alternative), PRP treatments, hyperhidrosis care, OH-Shot services, and{" "}
           <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
             nurse-led Blomdahl medical ear piercing
           </Link>{" "}
@@ -67,13 +63,13 @@ export default function WilliamsburgLocationPage() {
         <h2 className="text-2xl md:text-3xl font-light mb-2">If You Searched “Med Spa Near Me” in Williamsburg</h2>
         <p className="text-base md:text-lg text-base-content/80 mb-4">
           Start with the specific treatment question, not a generic spa menu. Jenny Brady sees patients for
-          consultation-led Botox, Xeomin, PRP treatments, hyperhidrosis care, OH-Shot consultations, and
+          consultation-led Xeomin, PRP treatments, hyperhidrosis care, OH-Shot consultations, and
           nurse-led Blomdahl medical ear piercing at the Williamsburg clinic.
         </p>
         <div className="grid gap-4 md:grid-cols-3 text-sm text-base-content/75">
           <div className="rounded-xl border border-base-300 p-4">
             <h3 className="font-medium text-base-content mb-1">Injectables</h3>
-            <p>Compare Botox and Xeomin by movement lines, dosing, onset, and natural-looking goals.</p>
+            <p>Xeomin is our wrinkle relaxer. If you searched for Botox, compare Xeomin by movement lines, dosing, onset, and natural-looking goals. We do not offer Botox® brand.</p>
           </div>
           <div className="rounded-xl border border-base-300 p-4">
             <h3 className="font-medium text-base-content mb-1">Regenerative care</h3>
@@ -93,7 +89,7 @@ export default function WilliamsburgLocationPage() {
         </p>
         <div className="flex flex-wrap gap-3">
           <Button asChild size="sm">
-            <Link href="/procedures/botox">Botox in Williamsburg</Link>
+            <Link href="/procedures/botox">Botox alternative in Williamsburg</Link>
           </Button>
           <Button asChild size="sm">
             <Link href="/procedures/xeomin">Xeomin in Williamsburg</Link>
@@ -167,10 +163,6 @@ export default function WilliamsburgLocationPage() {
         </p>
         <p className="text-sm md:text-base text-base-content/70 mb-2">
           If you searched for a medical spa near Williamsburg, VA, the most relevant starting points are{" "}
-          <Link href="/procedures/botox" className="link link-primary">
-            Botox
-          </Link>{" "}
-          and{" "}
           <Link href="/procedures/xeomin" className="link link-primary">
             Xeomin
           </Link>

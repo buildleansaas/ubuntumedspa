@@ -129,7 +129,7 @@ export default function EventForm({ event }: { event: EventDefinition }) {
                       <div>
                         <p className="text-lg font-medium text-base-content">{lockedOptions.join(", ")}</p>
                         <p className="mt-2 max-w-2xl text-sm leading-6 text-base-content/70">
-                          The host reward is tied to paid Botox guests, so Botox stays built into the event.
+                          The host reward is tied to paid Xeomin guests, so Xeomin stays built into the event.
                         </p>
                       </div>
                       <span className="inline-flex w-fit rounded-full border border-primary/20 bg-base-100 px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] text-primary">
