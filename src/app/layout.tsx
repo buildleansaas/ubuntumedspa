@@ -9,7 +9,7 @@ import Header from "components/header";
 import Footer from "components/footer";
 import CartDrawerLoader from "components/cart-drawer-loader";
 import { CartProvider } from "components/cart-provider";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, ORIGIN } from "lib/seo";
 
 interface LayoutProps {
@@ -44,8 +44,6 @@ export const metadata: Metadata = {
     shortcut: ["/favicon.ico?v=2"],
     apple: [{ url: "/apple-touch-icon.png?v=2", sizes: "180x180", type: "image/png" }],
   },
-  colorScheme: "light",
-  themeColor: "#fbfaf7",
   alternates: { canonical: "/" },
   openGraph: {
     title: DEFAULT_TITLE,
@@ -67,6 +65,11 @@ export const metadata: Metadata = {
     description: DEFAULT_DESCRIPTION,
     images: ["/twitter-image"],
   },
+};
+
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: "#fbfaf7",
 };
 
 export default function Layout({ children }: LayoutProps) {

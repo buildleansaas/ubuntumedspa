@@ -19,7 +19,8 @@ const TAG_ALIASES: Record<string, string> = {
 const normalizeTag = (tag: string) => TAG_ALIASES[tag] ?? tag;
 const getMeaningfulTags = (tags: string[]) => tags.map(normalizeTag).filter((tag) => !GENERIC_TAGS.has(tag));
 
-export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
+export const generateMetadata = async (props: { params: Promise<{ slug: string }> }) => {
+  const params = await props.params;
   try {
     const { metadata } = await getPostData(params.slug);
     const canonical = `/blog/${params.slug}`;
@@ -56,13 +57,14 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
   }
 };
 
-export default async function ArticlePage({
-  params,
-}: {
-  params: {
-    slug: string;
-  };
-}) {
+export default async function ArticlePage(
+  props: {
+    params: Promise<{
+      slug: string;
+    }>;
+  }
+) {
+  const params = await props.params;
   try {
     const { Content, metadata } = await getPostData(params.slug);
     if (!metadata.published) notFound();

@@ -555,7 +555,9 @@ for (const { canonicalUrl, response, html } of pages) {
   } else {
     const renderedCanonical = unescapeHtml(canonicalMatches[0]);
     const expectedCanonical = `${canonicalOrigin}${expectedPath}`;
-    if (renderedCanonical !== expectedCanonical) {
+    // Next 15 renders the root canonical as the bare origin (no trailing slash); Google treats both as the same URL.
+    const acceptedCanonicals = expectedPath === "/" ? [expectedCanonical, canonicalOrigin] : [expectedCanonical];
+    if (!acceptedCanonicals.includes(renderedCanonical)) {
       fail(`${canonicalUrl} canonical points to ${renderedCanonical}, expected ${expectedCanonical}`);
     }
   }

@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import type { MDXComponents } from "mdx/types";
 import { cn } from "lib/utils";
 

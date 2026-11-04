@@ -20,9 +20,15 @@ import { getCatalogConfigBySlug } from "config/commerce-catalog";
 import { humanizeMedicalCopy } from "lib/humanize";
 import { cardPriceSchemaValue } from "lib/price";
 
-type Params = { params: { slug: string } };
+type Params = { params: Promise<{ slug: string }> };
 
-export async function generateMetadata({ params: { slug } }: Params): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const product = products.find((entry) => entry.slug === slug);
 
   if (!product) {
@@ -41,7 +47,13 @@ export async function generateMetadata({ params: { slug } }: Params): Promise<Me
   });
 }
 
-export default async function ProductPage({ params: { slug } }: Params) {
+export default async function ProductPage(props: Params) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const product = products.find((entry) => entry.slug === slug);
   if (!product) return notFound();
   const catalogItem = getCatalogConfigBySlug(slug);

@@ -17,10 +17,10 @@ import ProviderCallout from "views/provider-callout";
 const ORIGIN = "https://www.williamsburgmedspa.com";
 
 type Params = {
-  params: {
+  params: Promise<{
     slug: string;
     "ailment-slug": string;
-  };
+  }>;
 };
 
 const ailmentTagLabels: Record<string, string> = {
@@ -29,7 +29,8 @@ const ailmentTagLabels: Record<string, string> = {
   experimental: "Ask About Clinical Options",
 };
 
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const params = await props.params;
   const ailmentPage = await getAilmentPageData(params.slug, params["ailment-slug"]);
   if (!ailmentPage) {
     return {
@@ -70,7 +71,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
-export default async function AilmentPage({ params }: Params) {
+export default async function AilmentPage(props: Params) {
+  const params = await props.params;
   const procedureSlug = params.slug;
   const ailmentSlug = params["ailment-slug"];
 

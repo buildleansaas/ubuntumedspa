@@ -6,6 +6,9 @@ import { REMOVED_URL_REDIRECTS } from "./src/config/removed-redirects.mjs";
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
+  // Next 15 streams metadata into <body> for clients it does not class as HTML-limited bots
+  // (Googlebot included). Keep every title/description/canonical in <head>, as on Next 13.
+  htmlLimitedBots: /.*/,
   async redirects() {
     return [
       {

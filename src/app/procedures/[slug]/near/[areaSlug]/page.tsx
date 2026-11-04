@@ -13,13 +13,14 @@ import { getLocalInjectableServicePage, localInjectableServicePages } from "lib/
 
 const ORIGIN = "https://www.williamsburgmedspa.com";
 
-type Params = { params: { slug: string; areaSlug: string } };
+type Params = { params: Promise<{ slug: string; areaSlug: string }> };
 
 export function generateStaticParams() {
   return localInjectableServicePages.map((page) => ({ slug: page.procedureSlug, areaSlug: page.areaSlug }));
 }
 
-export function generateMetadata({ params }: Params): Metadata {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const params = await props.params;
   const page = getLocalInjectableServicePage(params.slug, params.areaSlug);
   if (!page) {
     return buildPageMetadata({
@@ -36,7 +37,8 @@ export function generateMetadata({ params }: Params): Metadata {
   });
 }
 
-export default function LocalInjectableServicePage({ params }: Params) {
+export default async function LocalInjectableServicePage(props: Params) {
+  const params = await props.params;
   const page = getLocalInjectableServicePage(params.slug, params.areaSlug);
   const procedure = procedures.find((item) => item.slug === params.slug);
   if (!page || !procedure) return notFound();
