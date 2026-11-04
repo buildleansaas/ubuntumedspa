@@ -393,7 +393,7 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
   closing: {
     heading: "Make the guest list, then let us help shape the event.",
     subheading:
-      "Five paid Xeomin guests earns the host Xeomin credit for their own treatment. Every additional five adds more free products and procedure credits.",
+      "Five paid Xeomin guests makes the host's own Xeomin treatment free. Every additional five adds more free products and procedure credits.",
     body:
       "Submit the planning form now, then pick a time to talk through the details before the party is locked in.",
     primaryCtaLabel: "Plan My Party",

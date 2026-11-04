@@ -7,7 +7,7 @@ import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Medical Spa in Williamsburg, VA | Xeomin, a Botox Alternative",
+  title: "Medical Spa in Williamsburg, VA | Hours, Directions & Services",
   description:
     "Hours and directions for Williamsburg Med Spa, 3900 Powhatan Parkway: Xeomin® (a Botox® alternative), PRP, hyperhidrosis care, and Blomdahl ear piercing.",
   canonical: "/locations/williamsburg-va",
