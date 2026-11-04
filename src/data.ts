@@ -2349,7 +2349,7 @@ export const procedures = [
         {
           title: "Health history review",
           description:
-            "Before giving an injection, Jenny reviews your health history and medications. Tell her about allergies, including to cobalt or cobalamin, if you have kidney disease or an inherited eye condition called Leber's disease, and if you are pregnant or breastfeeding. Bring recent lab results if you have them.",
+            "Before giving an injection, Jenny reviews your health history and medications. Tell her about allergies, including to cobalt or cobalamin, if you have kidney disease or an inherited eye condition called Leber's disease, and if you are pregnant or breastfeeding. Bring recent lab results if you have them. If Jenny decides a B-12 injection is not right for you, your payment is refunded.",
         },
         {
           title: "The injection",
@@ -2368,7 +2368,7 @@ export const procedures = [
     faqs: [
       {
         question: "How much does a B-12 injection cost?",
-        answer: `Each injection is ${cashCardProse(2500)}. You can pay for up to 4 injections online.`,
+        answer: `Each injection is ${cashCardProse(2500)}. You pay for one injection at a time online.`,
       },
       {
         question: "How often do I need a B-12 injection?",
@@ -2377,7 +2377,7 @@ export const procedures = [
       {
         question: "What are the side effects?",
         answer:
-          "Soreness or redness where the shot was given, mild diarrhea, itching, or a rash can happen. Rarely, a serious allergic reaction can occur: call 911 for trouble breathing or swelling of the face or throat. Tell Jenny about any allergies, including to cobalt or cobalamin, before your injection.",
+          "Soreness or redness where the shot was given, mild diarrhea, itching, or a rash can happen. Call Jenny or your doctor right away for hives, a rash, itching, shortness of breath, a fast heartbeat, muscle weakness, or swelling or pain in one leg. Rarely, a serious allergic reaction can occur: call 911 for trouble breathing or swelling of the face or throat. Tell Jenny about any allergies, including to cobalt or cobalamin, before your injection.",
       },
       {
         question: "Do I need lab work first?",

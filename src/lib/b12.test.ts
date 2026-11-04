@@ -49,3 +49,13 @@ test("B-12 is in the consult interests and maps from ?procedure=b12-injections",
   assert.ok(interests.includes("Vitamin B-12 Injections"));
   assert.deepEqual(getProcedureInterests("b12-injections"), ["Vitamin B-12 Injections"]);
 });
+
+test("B-12 is one injection per order, the copy agrees, and a decline is refunded", () => {
+  const item = getCatalogConfigBySlug("b12-injections");
+  assert.ok(item);
+  assert.equal(item.maxQuantity, 1);
+  const copy = JSON.stringify(procedures.find((p) => p.slug === "b12-injections"));
+  assert.doesNotMatch(copy, /up to \d+ injections/i);
+  assert.match(copy, /your payment is refunded/);
+  assert.match(item.customerNote ?? "", /your payment is refunded/);
+});

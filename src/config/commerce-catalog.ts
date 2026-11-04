@@ -324,7 +324,7 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
     stripeProductKey: "wms_procedure_b12_injections",
     stripePriceLookupKey: "wms_procedure_b12_injections_25_v1",
     customerNote:
-      "After you pay, text or call Jenny at (804) 738-9483 to set up your visit. Jenny reviews your health history and medications before giving an injection.",
+      "After you pay, text or call Jenny at (804) 738-9483 to set up your visit. Jenny reviews your health history and medications before giving an injection. If she decides it is not right for you, your payment is refunded.",
   },
   {
     slug: "co2-lift",
