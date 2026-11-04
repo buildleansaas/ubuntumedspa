@@ -345,7 +345,7 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
     slug: "definage-clinical-power-trio-pro",
     kind: "product",
     name: "Definage Clinical Power Trio Pro",
-    shortDescription: "Pickup-only medical-grade skincare product.",
+    shortDescription: "Skincare set for pickup at the office.",
     pricingMode: "fixed",
     cashAmountCents: 37000,
     currency: "usd",
