@@ -32,7 +32,7 @@ export const ALLOWED_BOTOX_CONTEXTS: RegExp[] = [
   new RegExp(String.raw`\bDo(?:es)?\s+(?:you|we|Williamsburg Med Spa)\s+offer\s+${B}`, "gi"),
   new RegExp(String.raw`${B}\s*\((?:not offered here|which Williamsburg Med Spa does not offer)\)`, "gi"),
   // Comparisons.
-  new RegExp(String.raw`\b(?:vs\.?|versus|or|than|compared with|compares with|compare it with|comparing Xeomin with|same as|different from|differ from|differs from|interchangeable with)\s+${B}`, "gi"),
+  new RegExp(String.raw`\b(?:vs\.?|versus|than|compared with|compares with|compare it with|comparing Xeomin with|same as|different from|differ from|differs from|interchangeable with)\s+${B}`, "gi"),
   new RegExp(String.raw`${B}\s+(?:vs\.?|versus)\s`, "gi"),
   new RegExp(String.raw`\bsame\s+(?:treatment\s+)?category\s+as\s+${B}`, "gi"),
   new RegExp(String.raw`\b(?:Both\s+|Are\s+)?(?:${B}\s+and\s+Xeomin®?|Xeomin®?\s+and\s+${B})\s+(?:are|have|as|units\s+are|the\s+same)\b`, "gi"),
@@ -120,6 +120,7 @@ test("the allowlist rejects offer wording and accepts the honest contexts (the t
     "Botox credit blocks",
     "We carry Botox",
     "free Botox",
+    "Prepay Xeomin or Botox",
     "Jenny Brady, MSN, RN, CPNP, PMHS plans Botox around forehead lines",
     "Most Botox appointments are short",
     "Host a Botox party that introduces friends",
