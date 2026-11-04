@@ -1,7 +1,15 @@
-export type PhoneCtaLocation = "jumbotron" | "site_cta" | "footer_location" | "location_nap" | "service_page";
+export type PhoneCtaLocation =
+  | "jumbotron"
+  | "site_cta"
+  | "footer_location"
+  | "location_nap"
+  | "service_page"
+  | "order_booking"
+  | "consult_booking"
+  | "event_booking";
 
 type ConsultEventName = "consult_start" | "consult_submit_success";
-type AnalyticsEventName = ConsultEventName | "phone_click";
+type AnalyticsEventName = ConsultEventName | "phone_click" | "text_click";
 type ConsultEventParameters = {
   form_id: "consultation";
   page_path: "/consult";
@@ -53,4 +61,8 @@ export function trackConsultSubmitSuccess() {
 
 export function trackPhoneClick(ctaLocation: PhoneCtaLocation) {
   emitEvent("phone_click", { cta_location: ctaLocation });
+}
+
+export function trackTextClick(ctaLocation: PhoneCtaLocation) {
+  emitEvent("text_click", { cta_location: ctaLocation });
 }

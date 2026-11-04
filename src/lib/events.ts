@@ -112,8 +112,6 @@ export type EventDefinition = {
     eyebrow: string;
     heading: string;
     body: string;
-    fallbackTitle: string;
-    fallbackBody: string;
   };
   leadSubjectLabel: string;
 };
@@ -231,7 +229,7 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
     eyebrow: "How it works",
     heading: "Plan the party around Botox, then leave room for the bigger conversation.",
     body:
-      "The process is straightforward: send the basics, schedule the planning call, confirm the Botox-led guest flow, and flag which other services your group may want to ask about.",
+      "The process is straightforward: send the basics, text Jenny to set up the planning call, confirm the Botox-led guest flow, and flag which other services your group may want to ask about.",
     steps: [
       {
         title: "Share the guest list idea",
@@ -241,7 +239,7 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
       {
         title: "Book a planning call",
         description:
-          "After the form, choose a short call so we can review the setup, timing, location idea, and what needs to happen before the event.",
+          "After the form, text Jenny to set up a short call so we can review the setup, timing, location idea, and what needs to happen before the event.",
       },
       {
         title: "Shape the treatment conversation",
@@ -282,7 +280,7 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
   },
   form: {
     eyebrow: "Plan your party",
-    heading: "Start with one intake form, then choose your planning call.",
+    heading: "Start with one intake form, then text Jenny to set up your planning call.",
     body:
       "Share the group size, the date range, the location idea, and anything else the group may want to ask about. Once the form is in, you'll be redirected to schedule a quick planning conversation.",
     disclaimer:
@@ -394,18 +392,16 @@ const BOTOX_PARTY_EVENT: EventDefinition = {
     subheading:
       "Five paid Botox guests gets the host free Botox. Every additional five adds more free products and procedure credits.",
     body:
-      "Submit the planning form now, then pick a time to talk through the details before the party is locked in.",
+      "Submit the planning form now, then text Jenny to set a time to talk through the details before the party is locked in.",
     primaryCtaLabel: "Plan My Party",
     secondaryCtaLabel: "Browse Botox Details",
     secondaryCtaHref: "/procedures/botox",
   },
   schedule: {
     eyebrow: "Botox Party Scheduling",
-    heading: "Choose your planning call time",
+    heading: "Text Jenny to set up your planning call",
     body:
-      "Your party details are recorded. Pick a time that works and we'll use the call to talk through guest count, timing, and the treatment mix you have in mind.",
-    fallbackTitle: "Scheduling isn't configured yet",
-    fallbackBody: "Add NEXT_PUBLIC_CAL_COM_CONSULT_LINK to enable the event planning scheduler.",
+      "Your party details are recorded. Text or call Jenny to set a time, and we'll use the call to talk through guest count, timing, and the treatment mix you have in mind.",
   },
   leadSubjectLabel: "BOTOX PARTY",
 };
@@ -425,7 +421,3 @@ export const buildEventNotificationLines = (
 ) =>
   event.form.fields.map((field) => `${field.label}: ${serializeEventFieldValue(values[field.id])}`);
 
-export const buildEventMetadataPayload = (responses: Record<string, EventFieldValue>) =>
-  Object.fromEntries(
-    Object.entries(responses).map(([key, value]) => [key, serializeEventFieldValue(value)])
-  );

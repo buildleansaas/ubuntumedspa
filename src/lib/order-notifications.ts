@@ -4,6 +4,7 @@ import type { OrderNotificationStatus, OrderRecord } from "lib/orders";
 import { creditAmountCentsForItem } from "lib/cart-pricing";
 import { formatUsd } from "lib/price";
 import { GOOGLE_REVIEW_URL, ORIGIN } from "lib/seo";
+import { BOOKING_PHONE_DISPLAY, bookingSmsHref, bookingTelHref, orderBookingMessage, shortOrderRef } from "lib/text-to-book";
 
 const escapeHtml = (value: string) =>
   value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -39,7 +40,7 @@ const receiptLine = (order: OrderRecord, receipt: ReceiptOutcome) => {
   }
   if (receipt === "sent") {
     return order.requiresScheduling
-      ? "They were emailed a receipt with a link to book. If they don't book in a day or two, text or call them."
+      ? "They were emailed a receipt asking them to text or call you to book. If they don't book in a day or two, text or call them."
       : "They were emailed a receipt.";
   }
   if (receipt === "skipped") return "They left no email address, so no receipt was sent. Text or call them.";
@@ -64,7 +65,7 @@ export const buildOwnerEmail = (order: OrderRecord, receipt: ReceiptOutcome = "s
     hasPickupItems(order) ? PICKUP_LINE_OWNER : "",
     ``,
     `Their order page: ${getOrderBookingUrl(order)}`,
-    `Order ID: ${order.orderId}`,
+    `Order ID: ${order.orderId} (their text will say #${shortOrderRef(order.orderId)})`,
     order.stripeSessionId ? `Stripe checkout: ${order.stripeSessionId}` : "",
   ].filter((line, index, all) => line !== "" || (index > 0 && all[index - 1] !== ""));
 
@@ -90,7 +91,7 @@ export const buildOwnerEmail = (order: OrderRecord, receipt: ReceiptOutcome = "s
     }</p>
     <p>${escapeHtml(receiptLine(order, receipt))}</p>
     ${hasPickupItems(order) ? `<p>${PICKUP_LINE_OWNER}</p>` : ""}
-    <p><a href="${getOrderBookingUrl(order)}">Their order page</a> · Order ${escapeHtml(order.orderId)}</p>
+    <p><a href="${getOrderBookingUrl(order)}">Their order page</a> · Order ${escapeHtml(order.orderId)} (their text will say #${escapeHtml(shortOrderRef(order.orderId))})</p>
   `;
 
   return {
@@ -105,7 +106,9 @@ export const buildCustomerEmail = (order: OrderRecord) => {
   const greeting = firstName ? `Hi ${firstName},` : "Hi,";
   const bookingUrl = getOrderBookingUrl(order);
   const nextSteps = [
-    order.requiresScheduling ? `Next step: pick your appointment time here:\n${bookingUrl}` : "",
+    order.requiresScheduling
+      ? `Next step: text or call Jenny at ${BOOKING_PHONE_DISPLAY} to book your appointment. On your phone, the Text button on your order page opens a message with your order details filled in:\n${bookingUrl}`
+      : "",
     hasPickupItems(order) ? PICKUP_LINE_CUSTOMER : "",
   ].filter(Boolean);
 
@@ -135,7 +138,11 @@ export const buildCustomerEmail = (order: OrderRecord) => {
       .map((item) => `<li>${escapeHtml(itemLabel(item))}</li>`)
       .join("")}</ul>
     <p><strong>Total paid: ${formatUsd(order.subtotalCents)}</strong></p>
-    ${order.requiresScheduling ? `<p><strong>Next step:</strong> <a href="${bookingUrl}">pick your appointment time</a>.</p>` : ""}
+    ${
+      order.requiresScheduling
+        ? `<p><strong>Next step:</strong> <a href="${escapeHtml(bookingSmsHref(orderBookingMessage(order)))}">Text Jenny</a> or call <a href="${bookingTelHref}">${BOOKING_PHONE_DISPLAY}</a> to book your appointment. The text opens with your order details filled in. You can also use the Text button on <a href="${bookingUrl}">your order page</a>.</p>`
+        : ""
+    }
     ${hasPickupItems(order) ? `<p>${PICKUP_LINE_CUSTOMER}</p>` : ""}
     <p>Questions? Just reply to this email.</p>
     <p>After your visit, a quick <a href="${GOOGLE_REVIEW_URL}">Google review</a> helps others find us.</p>
