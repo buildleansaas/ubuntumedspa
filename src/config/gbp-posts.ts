@@ -95,7 +95,7 @@ export const GBP_POSTS: GbpPost[] = [
       `Holiday parties and family photos are coming up in Williamsburg, VA. If you are thinking about Botox® or Xeomin® for forehead lines, frown lines, or crow's feet, timing matters more than the product name.`,
       `Both are botulinum toxin type A treatments used to temporarily soften expression lines in appropriate adult candidates. Change often starts to show within several days, and the fuller visible effect is commonly seen around two weeks. If you have a photo date in mind, tell Jenny at your consultation so the plan fits your calendar.`,
       `At Williamsburg Med Spa, ${JENNY} plans each treatment around your facial movement and how much expression you want to keep. The consultation covers your health history, medications, prior treatment response, and possible side effects. Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites, and rare but serious risks are discussed before treatment.`,
-      `Botox® and Xeomin® are prepaid online in ${botox.cash} credit blocks: ${botox.cash} per block in cash, or ${botox.card} online or by card. Each block adds ${botox.cash} of treatment credit, and any unused value stays on your account. Your total depends on the areas treated and your dosing plan.`,
+      `Botox® and Xeomin® are planned in ${botox.cash} credit blocks: ${botox.cash} per block when you pay cash in the office, or ${botox.card} online or by card. Each block adds ${botox.cash} of treatment credit, and any unused value stays on your account. Your total depends on the areas treated and your dosing plan.`,
       `Tap Book to request a time before the holidays.`
     ),
     cta: "BOOK",
@@ -114,7 +114,7 @@ export const GBP_POSTS: GbpPost[] = [
       `This week is a good moment to say thank you. Thank you to the families who trusted us with a child's first earrings, to the patients who came in with questions and left with a plan, and to everyone in Williamsburg, VA, James City County, Yorktown, and Newport News who has sent a friend our way. A local clinic depends on its neighbors, and we are grateful for ours.`,
       `We hope your table is full this week, whether that means a big family dinner, a quiet meal at home, or a Friendsgiving with the people who feel like family. We hope the drive is easy, the pie is good, and there is time to rest.`,
       `If you are traveling, safe travels. If you are hosting, we hope someone else offers to do the dishes.`,
-      `When you are ready to plan something after the holiday, tap Call and we will help with any questions.`
+      `When you are ready to plan something after the holiday, tap Call now and we will help with any questions.`
     ),
     cta: "CALL",
     url: `${SITE}/`,
@@ -131,7 +131,7 @@ export const GBP_POSTS: GbpPost[] = [
       `${JENNY}, is the nurse practitioner at Williamsburg Med Spa, 3900 Powhatan Parkway. She has 26 years in medicine and six years dedicated to aesthetics. Her background includes a Master of Science in Nursing, registered nursing, certified pediatric nurse practitioner practice, and pediatric mental health. She is also a certified Blomdahl provider.`,
       `That pediatric background shapes how ear piercing visits run. A child's appointment is calm and pediatric-aware, with careful placement and clear aftercare for parents. Jenny generally pierces babies at 6 months or older with pediatrician guidance. She reviews health history at the visit and will not pierce if she has a safety concern.`,
       `Every piercing uses a sterile single-use Blomdahl cassette and hypoallergenic Medical Plastic or Medical Grade Titanium starter earrings. Teens and adults are welcome too, including sensitive ears and re-piercing.`,
-      `Jenny also plans Botox®, Xeomin®, PRP treatments, and hyperhidrosis care at the clinic, starting with a consultation.`,
+      `Jenny also plans wrinkle-relaxing injections, PRP treatments, and hyperhidrosis care at the clinic, starting with a consultation.`,
       `Tap Learn more to read Jenny's full background.`
     ),
     cta: "LEARN_MORE",
@@ -148,7 +148,7 @@ export const GBP_POSTS: GbpPost[] = [
       `A common question before a first piercing in Williamsburg, VA: should the starter earrings be Blomdahl Medical Plastic or Medical Grade Titanium?`,
       `Starter earrings stay in while the piercing begins to heal, so the material matters. Both are hypoallergenic options in the Blomdahl medical ear-piercing system used at Williamsburg Med Spa.`,
       `Medical Plastic is the cleanest choice when nickel is the main concern, because Blomdahl describes it as 0% nickel. It is lightweight and low-profile, and parents often consider it for a child's first earrings or after a past jewelry reaction.`,
-      `Medical Grade Titanium suits patients who prefer a more traditional metal earring, such as teens and adults who already know titanium works for them. If you have a known metal allergy, tell Jenny before choosing.`,
+      `Medical Grade Titanium suits patients who prefer a more traditional metal earring, such as teens and adults who want hypoallergenic starter earrings with a metal look. If you have a known metal allergy, tell Jenny before choosing.`,
       `Initial piercings use Blomdahl starter earrings rather than outside jewelry, so the piercing, the earrings, and the aftercare plan follow the same sterile system, with a single-use cassette for each visit.`,
       `Before you book, ask which starter options are available, how long they should stay in, and when to call if an ear looks irritated.`,
       `Our full comparison walks through both materials. Tap Learn more to read it.`
@@ -188,7 +188,7 @@ export const GBP_POSTS: GbpPost[] = [
       `We hope this season gives you time with the people you love, whether you are home in Williamsburg, VA or traveling to see family. We hope there are a few slow mornings, a good meal or two, and at least one moment where nothing needs to be done.`,
       `To every patient and family who came through our door this year: thank you. Thank you for your questions, your trust, and the kind words you have shared with friends and neighbors. Being part of your milestones, from a child's first earrings to a long-planned appointment of your own, is the part of this work we enjoy the most.`,
       `Whether your holiday is busy and loud or quiet and simple, we hope it brings rest and something to smile about.`,
-      `When you are ready to plan for the new year, tap Call and we will help with any questions. Merry Christmas and happy holidays.`
+      `When you are ready to plan for the new year, tap Call now and we will help with any questions. Merry Christmas and happy holidays.`
     ),
     cta: "CALL",
     url: `${SITE}/`,
@@ -226,8 +226,8 @@ export const GBP_POSTS: GbpPost[] = [
       `If excessive sweating affects your clothing choices, handshakes, workouts, or work days, hyperhidrosis treatment is worth a conversation at Williamsburg Med Spa in Williamsburg, VA.`,
       `Hyperhidrosis treatment uses localized injections to reduce excessive sweating in targeted areas. Underarms, palms, and feet are the most common places patients ask about, and the face, scalp, back, and other localized zones can also be discussed.`,
       `Planning starts with the area that disrupts your day the most, whether that is visible sweat marks, clammy hands, damp shoes, or facial sweating that topical antiperspirants have not controlled well. ${JENNY}, maps the highest-impact area, reviews your candidacy and health history, and plans localized treatment there.`,
-      `The effect builds over days and is temporary, so Jenny also reviews expected timing and when a maintenance visit may make sense for your sweating pattern. Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites, and possible risks are reviewed before treatment.`,
-      `Hyperhidrosis treatment starts at ${hyperhidrosis.cash} in cash, or ${hyperhidrosis.card} online or by card, and your total depends on the areas treated.`,
+      `The effect builds over days and is temporary, so Jenny also reviews expected timing and when a maintenance visit may make sense for your sweating pattern. Temporary injection-site tenderness, bruising, or localized weakness can happen, and Jenny reviews your medical history and risk profile before recommending care.`,
+      `Hyperhidrosis treatment starts at ${hyperhidrosis.cash} in cash, or ${hyperhidrosis.card} online or by card.`,
       `Tap Book to request a hyperhidrosis visit.`
     ),
     cta: "BOOK",
@@ -261,7 +261,7 @@ export const GBP_POSTS: GbpPost[] = [
     subtitle: "Every honest review helps a neighbor decide where to book.",
     body: paragraphs(
       `Thank you to everyone who has taken a minute to leave Williamsburg Med Spa a Google review.`,
-      `When someone in Williamsburg, VA is deciding where to take a child for a first piercing, or who to talk with about Botox®, Xeomin®, or PRP, reviews from other patients are often where they start. Every review you write helps a neighbor make that decision with more information. We read each one, and they mean a great deal to Jenny and to everyone at the clinic.`,
+      `When someone in Williamsburg, VA is deciding where to take a child for a first piercing, or who to talk with about injectables or PRP, reviews from other patients are often where they start. Every review you write helps a neighbor make that decision with more information. We read each one, and they mean a great deal to Jenny and to everyone at the clinic.`,
       `If you have visited us and have not left a review yet, we would be grateful if you did. Share what your visit was like in your own words: what you came in for, how the appointment felt, and anything that would help the next person. Short or long, honest feedback is what makes reviews useful, and it helps us too.`,
       `There is no discount or reward for leaving a review, only our thanks.`,
       `If you have been in, tap Learn more to open our Google review form.`

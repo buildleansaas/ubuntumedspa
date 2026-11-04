@@ -107,7 +107,7 @@ test("the reviews post quotes no reviews and offers no incentive", () => {
   assert.match(post.body, /no discount or reward/i);
 });
 
-test("every URL is on www.williamsburgmedspa.com and maps to an existing route", () => {
+test("every URL maps to an existing route on www.williamsburgmedspa.com, except the reviews post, which opens the Google review form", () => {
   const procedureSlugs = new Set(
     procedures.filter((p) => !("published" in p) || p.published !== false).map((p) => p.slug)
   );
@@ -191,11 +191,40 @@ test("posts use the current provider name, drop filler, and carry no phone numbe
 test("the hyperhidrosis post names no product", () => {
   const post = GBP_POSTS.find((p) => p.slug === "hyperhidrosis-treatment");
   assert.ok(post);
-  assert.doesNotMatch(postText(post), /Botox|Xeomin|Dysport|botulinum/i);
+  assert.doesNotMatch(postText(post), /Botox|Xeomin|Dysport|Jeuveau|Daxxify|botulinum|neurotoxin|neuromodulator|\btoxin/i);
+  assert.match(post.body, /localized weakness/, "uses the hyperhidrosis page's side-effect wording");
 });
 
-test("posts that name Botox® or Xeomin® state the side effects", () => {
-  for (const post of GBP_POSTS.filter((p) => /Botox|Xeomin/.test(p.body) && p.template !== "trust")) {
+test("every post that names Botox® or Xeomin® states the side effects", () => {
+  for (const post of GBP_POSTS.filter((p) => /Botox|Xeomin/.test(postText(p)))) {
     assert.match(post.body, /side effects/i, `${post.slug} has no risk line`);
   }
+});
+
+test("every card price shown is the card price of the cash price shown before it", () => {
+  // Card amount -> the cash amount it is derived from (single units, quantity-break lines, and "From" prices).
+  const cashForCard = new Map<string, string>();
+  for (const item of COMMERCE_CATALOG) {
+    cashForCard.set(formatUsdShort(item.unitAmountCents), formatUsdShort(item.cashAmountCents));
+    for (const [quantity, cashUnitCents] of Object.entries(item.cashQuantityPriceBreaks ?? {})) {
+      cashForCard.set(
+        formatUsdShort(cardQuantityBreakLineCents(cashUnitCents, Number(quantity))),
+        formatUsdShort(cashUnitCents * Number(quantity))
+      );
+    }
+  }
+  let checked = 0;
+  for (const post of GBP_POSTS) {
+    for (const sentence of [post.priceLine ?? "", ...post.body.split(/(?<=[.!?])\s+/)]) {
+      // "$250 credit blocks" names the block size, not the cash side of a pair.
+      const amounts = [...sentence.replace(/\$[\d,]+ credit blocks?/g, "").matchAll(/\$\d[\d,]*(?:\.\d{2})?/g)].map((m) => m[0]);
+      amounts.forEach((amount, index) => {
+        const cash = cashForCard.get(amount);
+        if (!cash || cash === amount) return;
+        checked += 1;
+        assert.ok(amounts.slice(0, index).includes(cash), `${post.slug}: ${amount} (card) needs its cash price ${cash} before it: "${sentence}"`);
+      });
+    }
+  }
+  assert.ok(checked >= 10, `expected at least 10 card prices, found ${checked}`);
 });
