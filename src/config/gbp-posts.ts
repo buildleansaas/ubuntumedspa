@@ -5,7 +5,7 @@ import { GOOGLE_REVIEW_URL } from "lib/seo";
 /**
  * Weekly Google Business Profile posts (one per Monday), previewed at /gbp.
  * Copy rules: facts only from existing site pages, prices only from COMMERCE_CATALOG (cash price first,
- * card/online price second), Botox® and Xeomin® with the ®, no outcome promises, no phone numbers in the
+ * card/online price second), registered product names with the ®, no outcome promises, no phone numbers in the
  * text (the Call button and the image footer carry the number), and no product named for hyperhidrosis.
  * Checked by src/config/gbp-posts.test.ts.
  */
@@ -157,7 +157,7 @@ export const GBP_POSTS: GbpPost[] = [
     url: `${SITE}/blog/blomdahl-medical-plastic-vs-titanium-earrings`,
   },
   {
-    slug: "botox-vs-xeomin",
+    slug: "why-we-use-xeomin",
     publishOn: "2026-12-14",
     type: "update",
     template: "question",
@@ -166,7 +166,7 @@ export const GBP_POSTS: GbpPost[] = [
     body: paragraphs(
       `Many people in Williamsburg, VA search for Botox® first. At Williamsburg Med Spa we use Xeomin®, and we do not offer Botox® brand, so here is how Xeomin® compares with Botox®.`,
       `Both are prescription botulinum toxin type A treatments. In cosmetic care, both temporarily reduce activity in selected muscles, which can soften lines from repeated expression such as frown lines, forehead lines, and crow's feet.`,
-      `They are distinct products. Botox® is onabotulinumtoxinA and Xeomin® is incobotulinumtoxinA. They are manufactured differently and their dose units are not interchangeable, so compare quotes on the full treatment plan, not a unit price.`,
+      `Xeomin® is incobotulinumtoxinA, a distinct product different from Botox® (onabotulinumtoxinA). They are manufactured differently and their dose units are not interchangeable, so compare quotes on the full treatment plan, not a unit price.`,
       `Timing is similar for many patients: change often shows within several days, with a fuller effect around two weeks, and smoothing commonly lasts about 3 to 4 months. Individual response, area, and dosing can change that.`,
       `A natural look is mostly a planning question, not a brand question. It comes from careful muscle mapping, balanced dosing, and a clear talk about how much movement you want to keep.`,
       `Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites. Rare but serious risks should be discussed directly with your provider before treatment. At Williamsburg Med Spa, ${JENNY} reviews your history, prior response, and goals before planning treatment.`,
