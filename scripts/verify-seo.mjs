@@ -899,6 +899,23 @@ if (!newportNews.includes('"@type":"FAQPage"')) {
 }
 
 const ownerPageExpectations = {
+  "/procedures/b12-injections": {
+    title: "Vitamin B-12 Injections in Williamsburg, VA | $25 Cash",
+    description:
+      "Vitamin B-12 injections in Williamsburg, VA: $25 each in cash or $26.06 online by card. Nurse-led by Jenny Brady, who reviews your health history first.",
+    h1: "Vitamin B-12 Injections in Williamsburg, VA",
+    required: [
+      "$25 per injection cash · $26.06 card/online",
+      "B-12 injections are not a weight-loss treatment.",
+      "Jenny sets the schedule based on your history and any lab results.",
+      "including to cobalt or cobalamin",
+      "text or call Jenny",
+    ],
+    forbidden: ["energy boost", "boost your energy", "metabolism", "immunity", "anti-aging", "lose weight", "cyanocobalamin", "methylcobalamin"],
+    requiredConsultHref:
+      "/consult?procedure=b12-injections&utm_source=website&utm_medium=procedure_page&utm_campaign=b12_injections",
+    offer: { name: "Vitamin B-12 Injections", price: "26.06", currency: "USD" },
+  },
   "/procedures/prp-breast-lift": {
     title: "Breast Lift Williamsburg VA | PRP, Not Surgery",
     description:
@@ -1164,6 +1181,7 @@ const priorityPaths = [
   "/procedures/microneedling-with-prp",
   "/procedures/prp-breast-lift",
   "/procedures/prp-hair-restoration",
+  "/procedures/b12-injections",
   "/events",
   "/events/botox-party",
   "/locations/williamsburg-va",

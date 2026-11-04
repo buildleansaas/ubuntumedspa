@@ -162,9 +162,13 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
       ? "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift"
       : procedure.slug === "prp-hair-restoration"
         ? "/consult?procedure=prp-hair-restoration&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_hair_restoration"
-        : undefined;
+        : procedure.slug === "b12-injections"
+          ? "/consult?procedure=b12-injections&utm_source=website&utm_medium=procedure_page&utm_campaign=b12_injections"
+          : undefined;
   const consultationSupportCopy =
-    procedure.slug === "prp-breast-lift"
+    "consultationSupportCopy" in procedure && procedure.consultationSupportCopy
+      ? procedure.consultationSupportCopy
+      : procedure.slug === "prp-breast-lift"
       ? "This page does not document the clinic's current method or promise a cosmetic result. Ask for the current service details before purchasing the one-visit treatment."
       : procedure.slug === "prp-hair-restoration"
         ? "Start with a hair-loss consultation before paying. Jenny reviews your pattern, timeline, scalp symptoms, health history, medications, and whether PRP, medical evaluation, or a transplant specialist is the more useful next step."
@@ -278,7 +282,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                           ? "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift"
                         : procedure.slug === "prp-hair-restoration"
                           ? "/consult?procedure=prp-hair-restoration&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_hair_restoration"
-                        : "/consult"
+                        : ownerConsultationHref ?? "/consult"
                   }
                 >
                   {procedure.slug === "blomdahl-ear-piercing"
@@ -540,6 +544,23 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
           )}
         </section>
 
+        {"whatToExpect" in procedure && procedure.whatToExpect && (
+          <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="what-to-expect">
+            <h2 id="what-to-expect" className="text-3xl font-light tracking-tight text-base-content md:text-4xl">
+              {procedure.whatToExpect.heading}
+            </h2>
+            <ol className="mt-6 grid gap-4 md:grid-cols-2">
+              {procedure.whatToExpect.steps.map(({ title, description }, index) => (
+                <li key={title} className="border border-base-300 bg-base-100 p-5">
+                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/70">Step {index + 1}</p>
+                  <h3 className="mt-2 text-base font-semibold text-base-content">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-base-content/75">{description}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+
         {procedure.slug === "blomdahl-ear-piercing" && (
           <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="infant-ear-piercing">
             <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Babies & young kids</p>
@@ -641,6 +662,8 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               "What this treatment approach involves"
             ) : procedure.slug === "prp-hair-restoration" ? (
               "What PRP hair restoration may support"
+            ) : "benefitsHeading" in procedure && procedure.benefitsHeading ? (
+              procedure.benefitsHeading
             ) : (
               <><span className="font-bold">{procedure.name}</span> Benefits</>
             )}

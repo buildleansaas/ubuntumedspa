@@ -16,6 +16,7 @@ const PROCEDURE_PRIORITY = [
   "pe-shot",
   "joint-restoration",
   "hyperhidrosis-treatment",
+  "b12-injections",
 ];
 
 function sortProcedures<T extends { slug: string }>(items: T[]) {
@@ -54,7 +55,7 @@ export default function Procedures({
             Medical Spa Treatments in Williamsburg, VA
           </Heading>
           <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">
-            Compare Botox, Xeomin, PRP treatments, microneedling with PRP, hyperhidrosis care, and Blomdahl medical ear piercing for babies, children, teens, and adults. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation.
+            Compare Botox, Xeomin, PRP treatments, microneedling with PRP, hyperhidrosis care, vitamin B-12 injections, and Blomdahl medical ear piercing for babies, children, teens, and adults. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation.
           </p>
         </div>
 
@@ -76,7 +77,7 @@ export default function Procedures({
           Medical Spa Treatments in Williamsburg, VA
         </Heading>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
-          Compare Botox, Xeomin, PRP treatments, microneedling with PRP, hyperhidrosis care, and Blomdahl medical ear piercing for babies, children, teens, and adults. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation.
+          Compare Botox, Xeomin, PRP treatments, microneedling with PRP, hyperhidrosis care, vitamin B-12 injections, and Blomdahl medical ear piercing for babies, children, teens, and adults. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation.
         </p>
       </div>
 
