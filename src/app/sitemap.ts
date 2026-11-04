@@ -30,6 +30,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://www.williamsburgmedspa.com/products",
     },
     {
+      url: "https://www.williamsburgmedspa.com/prices",
+    },
+    {
       url: "https://www.williamsburgmedspa.com/staff/jenny-brady",
     },
     {

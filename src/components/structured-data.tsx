@@ -132,7 +132,7 @@ const DEFAULT_BUSINESS: Required<LocalBusinessProps> = {
 
 const getImageUrl = (url: string) => (url.startsWith("http://") || url.startsWith("https://") ? url : `${ORIGIN}${url}`);
 
-const getMarkup = ({
+export const getMarkup = ({
   type = "WebPage",
   url = ORIGIN,
   headline = "Title of a News Article",
@@ -156,6 +156,7 @@ const getMarkup = ({
         url: ORIGIN,
         logo: `${ORIGIN}/logo.png`,
         name: SITE_NAME,
+        ...(officialProfiles.length ? { sameAs: officialProfiles.map((profile) => profile.href) } : {}),
       };
     }
     case "WebPage": {
@@ -362,7 +363,6 @@ const getMarkup = ({
       };
     }
     case "Person": {
-      const profileUrls = officialProfiles.map((profile) => profile.href);
       return {
         "@context": "https://schema.org",
         "@type": "Person",
@@ -381,7 +381,6 @@ const getMarkup = ({
           name: topic.name,
           sameAs: [...topic.sameAs],
         })),
-        ...(profileUrls.length ? { sameAs: profileUrls } : {}),
         affiliation: {
           "@type": "MedicalBusiness",
           name: DEFAULT_BUSINESS.name,
