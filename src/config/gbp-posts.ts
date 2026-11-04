@@ -54,7 +54,7 @@ const pricesFor = (slug: string) => ({
 /** Image price chip: "$45 cash · $46.66 card" (cash first). */
 const chip = (cash: string, card: string, suffix = "") => `${cash} cash · ${card} card${suffix ? ` ${suffix}` : ""}`;
 
-const botox = pricesFor("botox");
+const xeomin = pricesFor("xeomin");
 const prpFacial = pricesFor("prp-facial");
 const hyperhidrosis = pricesFor("hyperhidrosis-treatment");
 const prpHair = pricesFor("prp-hair-restoration");
@@ -83,19 +83,19 @@ export const GBP_POSTS: GbpPost[] = [
     url: `${SITE}/blog/planning-holiday-ear-piercing-williamsburg-va`,
   },
   {
-    slug: "botox-xeomin-before-holiday-photos",
+    slug: "xeomin-before-holiday-photos",
     publishOn: "2026-11-16",
     type: "update",
     template: "spotlight",
-    kicker: "Before holiday photos",
-    title: "Botox® or Xeomin® for the holidays",
+    kicker: "A Botox® alternative",
+    title: "Xeomin® before holiday photos",
     subtitle: "The fuller effect is commonly seen around two weeks, so plan ahead.",
-    priceLine: chip(botox.cash, botox.card, `per ${botox.cash} credit block`),
+    priceLine: chip(xeomin.cash, xeomin.card, `per ${xeomin.cash} credit block`),
     body: paragraphs(
-      `Holiday parties and family photos are coming up in Williamsburg, VA. If you are thinking about Botox® or Xeomin® for forehead lines, frown lines, or crow's feet, timing matters more than the product name.`,
-      `Both are botulinum toxin type A treatments used to temporarily soften expression lines in appropriate adult candidates. Change often starts to show within several days, and the fuller visible effect is commonly seen around two weeks. If you have a photo date in mind, tell Jenny at your consultation so the plan fits your calendar.`,
+      `Holiday parties and family photos are coming up in Williamsburg, VA. If you were searching for Botox® for forehead lines, frown lines, or crow's feet, we use Xeomin®, a wrinkle relaxer in the same treatment category, and timing matters.`,
+      `Xeomin® is a botulinum toxin type A treatment used to temporarily soften expression lines in appropriate adult candidates. Change often starts to show within several days, and the fuller visible effect is commonly seen around two weeks. If you have a photo date in mind, tell Jenny at your consultation so the plan fits your calendar.`,
       `At Williamsburg Med Spa, ${JENNY} plans each treatment around your facial movement and how much expression you want to keep. The consultation covers your health history, medications, prior treatment response, and possible side effects. Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites, and rare but serious risks are discussed before treatment.`,
-      `Botox® and Xeomin® are planned in ${botox.cash} credit blocks: ${botox.cash} per block when you pay cash in the office, or ${botox.card} online or by card. Each block adds ${botox.cash} of treatment credit, and any unused value stays on your account. Your total depends on the areas treated and your dosing plan.`,
+      `Xeomin® is planned in ${xeomin.cash} credit blocks: ${xeomin.cash} per block when you pay cash in the office, or ${xeomin.card} online or by card. Each block adds ${xeomin.cash} of treatment credit, and any unused value stays on your account. Your total depends on the areas treated and your dosing plan.`,
       `Tap Book to request a time before the holidays.`
     ),
     cta: "BOOK",
@@ -161,16 +161,16 @@ export const GBP_POSTS: GbpPost[] = [
     publishOn: "2026-12-14",
     type: "update",
     template: "question",
-    title: "Botox® or Xeomin®: what is the difference?",
-    subtitle: "Same category, different formulations. The plan matters more than the name.",
+    title: "Looking for Botox®? Here is why we use Xeomin®",
+    subtitle: "Same treatment category as Botox®. The plan matters more than the name.",
     body: paragraphs(
-      `One of the most common questions at our Williamsburg, VA clinic: what is the difference between Botox® and Xeomin®?`,
+      `Many people in Williamsburg, VA search for Botox® first. At Williamsburg Med Spa we use Xeomin®, and we do not offer Botox® brand, so here is how Xeomin® compares with Botox®.`,
       `Both are prescription botulinum toxin type A treatments. In cosmetic care, both temporarily reduce activity in selected muscles, which can soften lines from repeated expression such as frown lines, forehead lines, and crow's feet.`,
       `They are distinct products. Botox® is onabotulinumtoxinA and Xeomin® is incobotulinumtoxinA. They are manufactured differently and their dose units are not interchangeable, so compare quotes on the full treatment plan, not a unit price.`,
       `Timing is similar for many patients: change often shows within several days, with a fuller effect around two weeks, and smoothing commonly lasts about 3 to 4 months. Individual response, area, and dosing can change that.`,
       `A natural look is mostly a planning question, not a brand question. It comes from careful muscle mapping, balanced dosing, and a clear talk about how much movement you want to keep.`,
-      `Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites. Rare but serious risks should be discussed directly with your provider before treatment. At Williamsburg Med Spa, ${JENNY} reviews your history, prior response, and goals before recommending either one.`,
-      `Our Botox® vs Xeomin® guide has the details. Tap Learn more to read it.`
+      `Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites. Rare but serious risks should be discussed directly with your provider before treatment. At Williamsburg Med Spa, ${JENNY} reviews your history, prior response, and goals before planning treatment.`,
+      `Our Xeomin® vs Botox® guide has the details. Tap Learn more to read it.`
     ),
     cta: "LEARN_MORE",
     url: `${SITE}/blog/botox-vs-xeomin-williamsburg-va`,
