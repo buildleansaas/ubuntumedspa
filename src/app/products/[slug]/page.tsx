@@ -39,8 +39,8 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
   }
 
   return buildPageMetadata({
-    title: `${product.name} in Williamsburg, VA | Williamsburg Med Spa`,
-    description: humanizeMedicalCopy(product.description),
+    title: ("seoTitle" in product && product.seoTitle) || `${product.name} in Williamsburg, VA | Williamsburg Med Spa`,
+    description: ("seoDescription" in product && product.seoDescription) || humanizeMedicalCopy(product.description),
     canonical: `/products/${product.slug}`,
     image: product.image,
     robots: "published" in product && product.published === false ? { index: false, follow: false } : undefined,
