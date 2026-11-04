@@ -37,7 +37,7 @@ test("B-12 page copy makes no outcome claims and says it is not a weight-loss tr
   const notWeightLoss = "B-12 injections are not a weight-loss treatment.";
   assert.ok(copy.includes(notWeightLoss));
   const withoutAllowedLine = copy.split(notWeightLoss).join("");
-  const banned = /energy|weight loss(?! treatment)|metabolism|boost|immunity|anti-aging|best/i;
+  const banned = /energy|fatigue|tired|feel better|improv|weight loss(?! treatment)|metabolism|boost|immunity|anti-aging|best/i;
   assert.equal(banned.test(withoutAllowedLine), false, `banned wording: ${withoutAllowedLine.match(banned)?.[0]}`);
   assert.equal(/weight[- ]loss/i.test(withoutAllowedLine.replace(/a weight-loss treatment/g, "")), false);
   assert.equal(/cyanocobalamin|methylcobalamin|\bfees?\b|surcharge/i.test(copy), false);

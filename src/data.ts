@@ -2302,7 +2302,7 @@ export const procedures = [
       description: `Vitamin B-12 injections in Williamsburg, VA: ${cashCardProse(2500, "each")}. Nurse-led by Jenny Brady, who reviews your health history first.`,
     },
     description:
-      "Vitamin B-12 (cobalamin) is a vitamin your body needs. A B-12 injection is given into a muscle (an intramuscular injection). Some people use B-12 shots when a clinician has found low B-12, or when there is a reason they may not absorb B-12 well, such as certain medications, digestive conditions, older age, or a vegan diet. Jenny Brady, MSN, RN, CPNP, PMHS reviews your health history and medications before giving an injection. B-12 injections are not a weight-loss treatment.",
+      "Vitamin B-12 (cobalamin) is a vitamin your body needs. A B-12 injection is usually given into a muscle. Some people use B-12 shots when a clinician has found low B-12, when there is a reason they may not absorb B-12 well (certain medications, digestive conditions, or older age), or when they may not get enough from food (a vegan diet). Jenny Brady, MSN, RN, CPNP, PMHS reviews your health history and medications before giving an injection. B-12 injections are not a weight-loss treatment.",
     headline: "Nurse-led vitamin B-12 injections in Williamsburg, given after a review of your health history and medications.",
     subline:
       "A short visit with Jenny Brady at 3900 Powhatan Parkway. Bring any recent lab results from your primary care provider, and tell Jenny about allergies, including to cobalt or cobalamin, and if you are pregnant or breastfeeding.",
@@ -2349,11 +2349,11 @@ export const procedures = [
         {
           title: "Health history review",
           description:
-            "Before giving an injection, Jenny reviews your health history and medications. Tell her about allergies, including to cobalt or cobalamin, and if you are pregnant or breastfeeding. Bring recent lab results if you have them.",
+            "Before giving an injection, Jenny reviews your health history and medications. Tell her about allergies, including to cobalt or cobalamin, if you have kidney disease or an inherited eye condition called Leber's disease, and if you are pregnant or breastfeeding. Bring recent lab results if you have them.",
         },
         {
           title: "The injection",
-          description: "The B-12 injection is given into a muscle.",
+          description: "The B-12 injection is usually given into a muscle.",
         },
         {
           title: "Afterward",
@@ -2377,7 +2377,7 @@ export const procedures = [
       {
         question: "What are the side effects?",
         answer:
-          "Common side effects can include soreness or redness where the shot was given. Tell Jenny about any allergies, including to cobalt or cobalamin, before your injection.",
+          "Soreness or redness where the shot was given, mild diarrhea, itching, or a rash can happen. Rarely, a serious allergic reaction can occur: call 911 for trouble breathing or swelling of the face or throat. Tell Jenny about any allergies, including to cobalt or cobalamin, before your injection.",
       },
       {
         question: "Do I need lab work first?",
@@ -2391,7 +2391,7 @@ export const procedures = [
       {
         question: "Can I get a B-12 injection if I am pregnant or breastfeeding?",
         answer:
-          "Tell Jenny if you are pregnant or breastfeeding. She reviews it with your health history before deciding whether to give an injection.",
+          "Tell Jenny if you are pregnant or breastfeeding. She reviews it with your health history before deciding whether to give an injection. If Jenny decides a B-12 injection is not right for you, your payment is refunded.",
       },
     ],
   },

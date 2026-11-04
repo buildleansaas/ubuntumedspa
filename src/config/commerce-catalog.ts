@@ -315,8 +315,9 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
     currency: "usd",
     displayUnit: "per injection",
     quantityLabel: "injection",
+    // One at a time: Jenny reviews health history before the first injection and sets any schedule after.
     minQuantity: 1,
-    maxQuantity: 4,
+    maxQuantity: 1,
     requiresScheduling: true,
     fulfillment: "appointment",
     imagePath: "/procedure/prp-joint-restoration-consultation.webp",
