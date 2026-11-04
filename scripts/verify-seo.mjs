@@ -472,7 +472,7 @@ if (ownerDataStart === -1 || ownerDataEnd === -1) {
   );
   assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "067e63cd409c31183e7f828410c13109b5dafdebaaa84502b79b93bdefbcf482");
   assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "34e180bb63489dabb2f4ec23086266cacdea75b8a2124c8135f6f35d92905c56");
-  assertSourceContract("shared footer clinical copy", sharedFooterContractSource, "aa96d5b0cca7dadcc9fb2e42bdf88c90839424fcc8118c2a1c9a956d98fbeec5");
+  assertSourceContract("shared footer clinical copy", sharedFooterContractSource, "b336059d6e62a0cdef5f70e1a50c5478e00eb76881ef7a8b5c795070df4dc717");
 }
 
 const robotsResponse = await fetch(new URL("/robots.txt", baseUrl));

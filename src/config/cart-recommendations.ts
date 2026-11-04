@@ -24,7 +24,7 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
     },
     {
       slug: "definage-clinical-power-trio-pro",
-      reason: "A stronger home-care option for patients also thinking about tone, firmness, and skin upkeep.",
+      reason: "Definage Clinical Power Trio Pro, a skincare set you can pick up at the office.",
       priority: 3,
     },
   ],
@@ -36,12 +36,12 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
     },
     {
       slug: "definage-clinical-power-trio-pro",
-      reason: "A stronger home-care option for maintenance when texture, tone, and firmness are part of the goal.",
+      reason: "Definage Clinical Power Trio Pro, a skincare set you can pick up at the office.",
       priority: 2,
     },
     {
       slug: "prp-face-lift",
-      reason: "Sometimes explored next when someone wants a broader facial rejuvenation conversation.",
+      reason: "An in-office PRP Face Lift visit. Book a consult to ask Jenny about it.",
       priority: 3,
     },
   ],
@@ -58,7 +58,7 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
     },
     {
       slug: "definage-clinical-power-trio-pro",
-      reason: "A home-care routine that fits patients thinking about tone, firmness, and ongoing maintenance.",
+      reason: "Definage Clinical Power Trio Pro, a skincare set you can pick up at the office.",
       priority: 3,
     },
   ],
@@ -84,12 +84,12 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
   "definage-clinical-power-trio-pro": [
     {
       slug: "xeomin",
-      reason: "Often explored when someone wants injectable support alongside a stronger at-home anti-aging routine.",
+      reason: "An in-office Xeomin visit. Book a consult to ask Jenny about it.",
       priority: 1,
     },
     {
       slug: "prp-facial",
-      reason: "A natural in-office complement for patients already investing in skin texture and glow.",
+      reason: "An in-office PRP facial. Book a consult to ask Jenny about it.",
       priority: 3,
     },
   ],

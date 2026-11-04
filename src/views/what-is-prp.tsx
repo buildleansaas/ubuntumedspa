@@ -21,9 +21,9 @@ export default function WhatIsPRP() {
         "Initial recovery might involve mild discomfort, which quickly diminishes as your body begins to heal.",
     },
     {
-      title: "Long Term Benefits",
+      title: "After Treatment",
       description:
-        "Enjoy lasting results as PRP helps to naturally rejuvenate and strengthen the treated area, enhancing your body's own healing capabilities.",
+        "Results vary from person to person. Jenny explains what to expect and when to follow up.",
     },
   ];
 
@@ -31,8 +31,7 @@ export default function WhatIsPRP() {
     <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24 max-w-3xl px-4" id="prp-info">
       <h2 className="text-2xl md:text-4xl font-bold leading-tight pb-4">What is Platelet Rich Plasma (PRP)?</h2>
       <p className="text-xl lg:text-2xl mb-8 font-light">
-        Discover the power of PRP, a therapeutic approach that harnesses your body&apos;s natural growth factors to heal
-        and rejuvenate.
+        PRP is platelet-rich plasma, prepared from a small sample of your own blood.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         {steps.map(({ title, description }) => (

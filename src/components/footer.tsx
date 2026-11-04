@@ -42,7 +42,7 @@ export default function Footer() {
           <div className="max-w-xl">
             <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Williamsburg Med Spa</p>
             <h3 className="font-display mt-3 text-4xl font-medium leading-[1.1] tracking-tight text-base-content md:text-5xl">
-              Rejuvenate Your Life
+              Nurse-led care in Williamsburg, VA
             </h3>
             {/* PRP_BREAST_SHARED_COPY_CONTRACT_START */}
             <p className="mt-4 text-base md:text-lg leading-relaxed text-base-content/80">
@@ -50,8 +50,8 @@ export default function Footer() {
               <strong>sexual wellness</strong>, and overall <strong>well-being</strong>.
             </p>
             <p className="mt-3 text-sm md:text-base leading-relaxed text-base-content/70">
-              From intimate wellness and facial rejuvenation to hair and joint-focused care, compare current service
-              details, pricing, and next steps before you book.
+              Services include Xeomin, PRP, Blomdahl ear piercing, and vitamin B-12 injections. Compare service details,
+              pricing, and next steps before you book.
             </p>
             {/* PRP_BREAST_SHARED_COPY_CONTRACT_END */}
             <div className="mt-5 space-y-2 text-sm leading-6 text-base-content/65">
