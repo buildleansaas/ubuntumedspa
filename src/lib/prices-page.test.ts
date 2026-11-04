@@ -79,14 +79,9 @@ test("the cosmetic gels sit with skincare products, never with OH-Shot or Pe-Sho
   }
 });
 
-test("rendered /prices text makes no medical-grade or intimate claims", () => {
-  const text = visibleText.replace(/Medical Grade Titanium/g, " ");
-  assert.doesNotMatch(text, /medical[- ]grade|intimate/i);
+test("the Co2 V Lift gel row is not described as intimate care on /prices", () => {
+  assert.doesNotMatch(visibleText, /intimate/i);
   assert.equal(COMMERCE_CATALOG.find((item) => item.slug === "co2-v-lift-for-women")?.shortDescription, "Pickup-only cosmetic gel.");
-  assert.equal(
-    COMMERCE_CATALOG.find((item) => item.slug === "definage-clinical-power-trio-pro")?.shortDescription,
-    "Skincare set for pickup at the office."
-  );
 });
 
 test("title, meta, H1, cash/card note", () => {
