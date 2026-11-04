@@ -27,7 +27,7 @@
 
 **Use cases:**
 - A woman comparing OH-Shot care for bladder leakage, dryness, sensitivity, or intimacy concerns.
-- A parent looking for medical Blomdahl ear piercing for a child or baby.
+- A parent looking for medical-grade Blomdahl ear piercing for a child or baby.
 - A patient comparing PRP hair restoration with hair transplant surgery.
 - A patient searching for Botox who is looking for a Botox alternative, or comparing Xeomin, PRP, or hyperhidrosis treatment options near Williamsburg.
 
@@ -35,7 +35,7 @@
 | Persona | Cares about | Challenge | Value we promise |
 |---------|-------------|-----------|------------------|
 | Private wellness patient | Privacy, safety, symptom clarity | Embarrassed or unsure whether intimate wellness care is appropriate | Calm consult, candidacy review, realistic options |
-| Parent | Sterility, comfort, pediatric awareness | Wants first ear piercing to feel safe and age-aware | Medical Blomdahl piercing with pediatric sensitivity |
+| Parent | Sterility, comfort, pediatric awareness | Wants first ear piercing to feel safe and age-aware | Medical-grade Blomdahl piercing with pediatric sensitivity |
 | Aesthetic patient | Natural-looking, conservative outcomes | Does not want to look overdone or rushed | Thoughtful planning and realistic timing |
 | Hair restoration patient | Non-surgical options, cost, downtime | Comparing PRP with transplant or doing nothing | Clear comparison and consult-first planning |
 | Referral partner | Trust, professionalism, reciprocity | Needs a safe clinic to recommend | Clear positioning and easy pages to share |
@@ -64,7 +64,7 @@
 **Key differentiators:**
 - Jenny Brady has a long medical background and pediatric/mental health credentials.
 - OH-Shot positioning is tied to CMA training and branded protocol context.
-- Blomdahl ear piercing uses sterile single-use cassettes and hypoallergenic starter earrings, and is strong for pediatric/first-piercing trust.
+- Blomdahl ear piercing is medical-grade, hypoallergenic, and strong for pediatric/first-piercing trust.
 - Content should be unusually clear about who is and is not a likely fit.
 
 **How we do it differently:** Lead with consult quality, candidacy, safety, privacy, and conservative planning instead of dramatic claims.
@@ -108,16 +108,16 @@
 - "Private."
 - "Someone I can trust with this."
 
-**Words to use:** private, consult, candidacy, sterile, hypoallergenic, Blomdahl, OH-Shot, CMA-trained, PRP, bladder leakage, stress leakage, local Williamsburg, pediatric awareness, realistic expectations.
+**Words to use:** private, consult, candidacy, medical-grade, sterile, hypoallergenic, Blomdahl, OH-Shot, CMA-trained, PRP, bladder leakage, stress leakage, local Williamsburg, pediatric awareness, realistic expectations.
 
-**Words to avoid:** cure, guaranteed, FDA-approved, miracle, reverse, eliminate, fix, painless, perfect, revolutionary, life-changing, "feminine intimacy" as the main term, medical-grade, rejuvenate (as a promise), anti-aging, youthful, firm/firmer, collagen boost, optimal results, scientifically/clinically proven. ("Medical Grade Titanium" is Blomdahl's material name and is fine.)
+**Words to avoid:** cure, guaranteed, FDA-approved, miracle, reverse, eliminate, fix, painless, perfect, revolutionary, life-changing, "feminine intimacy" as the main term.
 
 **Glossary:**
 | Term | Meaning |
 |------|---------|
 | OH-Shot | Branded PRP intimate wellness procedure associated with Dr. Charles Runels and CMA training. |
 | PRP | Platelet-rich plasma prepared from a patient's blood. |
-| Blomdahl | Medical ear piercing system with sterile single-use cassettes and hypoallergenic starter earrings, used for children and adults. |
+| Blomdahl | Medical-grade hypoallergenic piercing system used for children and adults. |
 | Stress leakage | Urine leakage with coughing, sneezing, laughing, lifting, or exercise. |
 | Candidacy | Whether a treatment is appropriate after reviewing symptoms, history, risks, and alternatives. |
 

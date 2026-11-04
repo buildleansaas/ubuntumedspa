@@ -29,7 +29,7 @@ export default function EventsPage() {
         <p className="mt-4 text-base md:text-lg text-base-content/70 max-w-3xl mx-auto">
           Williamsburg Med Spa helps hosts turn real friend-group interest into a private, organized Xeomin-led event. We use Xeomin®, a Botox® alternative.
           Guests can start with injectable questions, then learn what else may fit them, including PRP, skin, wellness,
-          and skincare products.
+          and medical-grade product options.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Button asChild>

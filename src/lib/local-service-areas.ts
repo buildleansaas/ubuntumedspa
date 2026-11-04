@@ -52,9 +52,9 @@ const sharedFaqs = (areaName: string): LocalServiceAreaFAQ[] => [
         : `No. Williamsburg Med Spa is located in Williamsburg, VA. This page is for ${areaName} families planning an appointment-based visit to the Williamsburg clinic.`,
   },
   {
-    question: "Why choose medical ear piercing?",
+    question: "Why choose medical-grade ear piercing?",
     answer:
-      "Medical ear piercing focuses on sterile disposable piercing products, hypoallergenic starter jewelry, careful placement, and clear aftercare guidance.",
+      "Medical-grade piercing focuses on sterile disposable piercing products, hypoallergenic starter jewelry, careful placement, and clear aftercare guidance.",
   },
   {
     question: "Can children and adults both schedule ear piercing?",
@@ -78,7 +78,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     countyOrContext: "Primary clinic",
     distanceNote: "at our Williamsburg clinic",
     summary: "Our main clinic with full PRP, injectable, ear piercing, and aesthetic services.",
-    earPiercingAngle: "the most direct option for medical ear piercing in Williamsburg",
+    earPiercingAngle: "the most direct option for medical-grade ear piercing in Williamsburg",
     parentIntent: true,
     localIntro:
       "Williamsburg families can schedule Blomdahl ear piercing at our clinic on Powhatan Parkway, close to New Town and William & Mary.",
@@ -124,7 +124,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     earPiercingAngle: "a nearby clinical setting for children's first ear piercings and sensitive-skin piercing visits",
     parentIntent: true,
     localIntro:
-      "Williamsburg Med Spa is a nearby clinical option for families across James City County who want medical ear piercing.",
+      "Williamsburg Med Spa is a nearby clinical option for families across James City County who want medical-grade ear piercing.",
     routeNote:
       "Families from Toano, Norge, Lightfoot, New Town, and Ford's Colony can plan one appointment at the Williamsburg clinic.",
     routeOrigin: {
@@ -160,7 +160,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     targetQuery: "children's ear piercing near yorktown va",
     metaTitle: "Children's Medical Ear Piercing Near Yorktown | Blomdahl",
     metaDescription:
-      "Medical Blomdahl ear piercing near Yorktown, VA for children and adults at Williamsburg Med Spa.",
+      "Medical-grade Blomdahl ear piercing near Yorktown, VA for children and adults at Williamsburg Med Spa.",
     countyOrContext: "York County",
     distanceNote: "convenient for families coming from Yorktown",
     summary: "Convenient for patients traveling over the river from Yorktown.",
@@ -207,7 +207,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     countyOrContext: "Peninsula",
     distanceNote: "accessible from Newport News via I-64 and local routes",
     summary: "A nearby option for Newport News residents seeking regenerative PRP and aesthetic care.",
-    earPiercingAngle: "a medical ear piercing option for Newport News parents and adults",
+    earPiercingAngle: "a medical-grade ear piercing option for Newport News parents and adults",
     parentIntent: true,
     localIntro:
       "Parents from Oyster Point, Denbigh, Kiln Creek, and City Center usually take I-64 west toward Williamsburg for a Blomdahl appointment. There is no Newport News clinic address.",
@@ -289,7 +289,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     targetQuery: "ear piercing near norge va",
     metaTitle: "Medical Ear Piercing Near Norge, VA | Blomdahl",
     metaDescription:
-      "Medical Blomdahl ear piercing near Norge, VA with hypoallergenic jewelry for children and adults.",
+      "Medical-grade Blomdahl ear piercing near Norge, VA with hypoallergenic jewelry for children and adults.",
     countyOrContext: "Upper James City County",
     distanceNote: "easy access along Richmond Road",
     summary: "Easy access along Richmond Road from Norge.",
@@ -314,7 +314,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     ],
     nearbyNeighborhoods: ["Norge", "Croaker", "Lightfoot", "Richmond Road"],
     whyMedicalSetting:
-      "A medical piercing system is useful for people who care about starter jewelry materials and a clear healing plan.",
+      "A medical-grade system is useful for people who care about starter jewelry materials and a clear healing plan.",
     parentConcern:
       "Sensitive skin and nickel concerns are common reasons Norge families ask about Blomdahl piercing.",
     visitLogistics:
@@ -375,7 +375,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     targetQuery: "ear piercing near new town williamsburg",
     metaTitle: "Medical Ear Piercing Near New Town Williamsburg | Blomdahl",
     metaDescription:
-      "Medical Blomdahl ear piercing near New Town Williamsburg with sterile equipment and hypoallergenic jewelry.",
+      "Medical-grade Blomdahl ear piercing near New Town Williamsburg with sterile equipment and hypoallergenic jewelry.",
     countyOrContext: "Williamsburg",
     distanceNote: "minutes from New Town",
     summary: "A few minutes from New Town's shops and restaurants.",
@@ -425,7 +425,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     earPiercingAngle: "a private, professional piercing appointment near Kingsmill",
     parentIntent: true,
     localIntro:
-      "Kingsmill families can schedule a nearby Williamsburg clinic visit for medical Blomdahl ear piercing.",
+      "Kingsmill families can schedule a nearby Williamsburg clinic visit for medical-grade Blomdahl ear piercing.",
     routeNote:
       "The clinic is close to the Kingsmill community and offers on-site parking for appointment-based visits.",
     routeOrigin: {
@@ -503,11 +503,11 @@ export const localServiceAreas: LocalServiceArea[] = [
     serviceAreaLabel: "Gloucester, VA",
     targetQuery: "medical ear piercing near gloucester va",
     metaTitle: "Medical Ear Piercing Near Gloucester, VA | Blomdahl",
-    metaDescription: "Medical Blomdahl ear piercing near Gloucester, VA.",
+    metaDescription: "Medical-grade Blomdahl ear piercing near Gloucester, VA.",
     countyOrContext: "Middle Peninsula",
     distanceNote: "within a practical drive from Gloucester",
     summary: "Medical ear piercing and aesthetic care for Gloucester families willing to visit Williamsburg.",
-    earPiercingAngle: "a medical piercing option when Gloucester families want sterile, hypoallergenic piercing",
+    earPiercingAngle: "a medical-grade option when Gloucester families want sterile, hypoallergenic piercing",
     parentIntent: true,
     localIntro: "Draft page for future Gloucester demand.",
     routeNote: "Draft page.",
@@ -528,7 +528,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     serviceAreaLabel: "West Point, VA",
     targetQuery: "ear piercing near west point va",
     metaTitle: "Ear Piercing Near West Point, VA | Blomdahl",
-    metaDescription: "Medical Blomdahl ear piercing near West Point, VA.",
+    metaDescription: "Medical-grade Blomdahl ear piercing near West Point, VA.",
     countyOrContext: "King William County area",
     distanceNote: "within the broader Williamsburg service radius",
     summary: "A Williamsburg clinic option for West Point families seeking medical ear piercing.",
@@ -553,7 +553,7 @@ export const localServiceAreas: LocalServiceArea[] = [
     serviceAreaLabel: "Poquoson, VA",
     targetQuery: "medical ear piercing near poquoson va",
     metaTitle: "Medical Ear Piercing Near Poquoson, VA | Blomdahl",
-    metaDescription: "Medical Blomdahl ear piercing near Poquoson, VA.",
+    metaDescription: "Medical-grade Blomdahl ear piercing near Poquoson, VA.",
     countyOrContext: "Lower Peninsula",
     distanceNote: "reachable from Poquoson for appointment-based care",
     summary: "Appointment-based ear piercing and aesthetic care for Poquoson families.",
