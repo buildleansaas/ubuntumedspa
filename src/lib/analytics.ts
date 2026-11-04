@@ -9,7 +9,7 @@ export type PhoneCtaLocation =
   | "event_booking";
 
 type ConsultEventName = "consult_start" | "consult_submit_success";
-type AnalyticsEventName = ConsultEventName | "phone_click" | "text_click";
+type AnalyticsEventName = ConsultEventName | "phone_click" | "text_click" | "review_click";
 type ConsultEventParameters = {
   form_id: "consultation";
   page_path: "/consult";
@@ -17,7 +17,11 @@ type ConsultEventParameters = {
 type PhoneEventParameters = {
   cta_location: PhoneCtaLocation;
 };
-type AnalyticsEventParameters = ConsultEventParameters | PhoneEventParameters;
+export type ReviewCtaLocation = "review_page";
+type ReviewEventParameters = {
+  cta_location: ReviewCtaLocation;
+};
+type AnalyticsEventParameters = ConsultEventParameters | PhoneEventParameters | ReviewEventParameters;
 
 export type AnalyticsEventCall = ["event", AnalyticsEventName, AnalyticsEventParameters];
 type Gtag = (...args: AnalyticsEventCall) => void;
@@ -65,4 +69,8 @@ export function trackPhoneClick(ctaLocation: PhoneCtaLocation) {
 
 export function trackTextClick(ctaLocation: PhoneCtaLocation) {
   emitEvent("text_click", { cta_location: ctaLocation });
+}
+
+export function trackReviewClick(ctaLocation: ReviewCtaLocation) {
+  emitEvent("review_click", { cta_location: ctaLocation });
 }
