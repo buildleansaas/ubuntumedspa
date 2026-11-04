@@ -660,7 +660,7 @@ const homeDescriptionTag = (home.match(/<meta\b[^>]*>/gi) || []).find(
 );
 const homeDescription = homeDescriptionTag ? getTagAttributes(homeDescriptionTag).content || "" : "";
 const expectedHomeDescription =
-  "Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) $250 cash, Blomdahl ear piercing $45, B-12 $25, PRP. See all prices.";
+  "Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) from $250 cash, Blomdahl ear piercing $45, B-12 $25, PRP. See all prices.";
 if (homeDescription !== expectedHomeDescription) {
   fail(`homepage meta description is ${JSON.stringify(homeDescription)}`);
 }
@@ -910,7 +910,7 @@ const ownerPageExpectations = {
   "/prices": {
     title: "Med Spa Prices in Williamsburg, VA | Cash and Card Prices",
     description:
-      "Every price posted: Xeomin® $250 cash per credit block, ear piercing $45, B-12 $25, PRP facial $600. Cash price first, card/online price shown.",
+      "Every price posted: Xeomin® from $250 cash per credit block, ear piercing $45, B-12 $25, PRP facial $600. Cash price first, card/online price shown.",
     h1: "Williamsburg Med Spa Prices",
     required: [
       "$250 credit blocks · $250 cash · $257.78 card/online",
@@ -918,10 +918,10 @@ const ownerPageExpectations = {
       "$25 per injection cash · $26.06 card/online",
       "Paying cash in the office? You pay the cash price.",
       "Why are card prices higher?",
-      "Do you take insurance?",
       "How do I book?",
     ],
-    forbidden: ["surcharge", "card fee", "processing fee", "convenience fee"],
+    forbidden: [],
+    forbiddenText: [/\bfees?\b|surcharge/i],
     requiredHtml: [
       /href=["']\/procedures\/xeomin["']/,
       /href=["']\/procedures\/blomdahl-ear-piercing["']/,
@@ -1077,6 +1077,9 @@ for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
   }
   for (const forbidden of expectation.forbidden) {
     if (text.includes(forbidden)) fail(`${path} contains unsupported owner-page copy: ${forbidden}`);
+  }
+  for (const forbiddenText of expectation.forbiddenText || []) {
+    if (forbiddenText.test(text)) fail(`${path} contains forbidden owner-page copy: ${forbiddenText}`);
   }
   for (const requiredHtml of expectation.requiredHtml || []) {
     if (!requiredHtml.test(page.html)) fail(`${path} missing required owner-page HTML: ${requiredHtml}`);

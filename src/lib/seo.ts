@@ -7,7 +7,7 @@ const cashPrice = (slug: string) => formatUsdShort(COMMERCE_CATALOG_BY_SLUG[slug
 // Homepage snippet CTR test started 2026-11-04 (docs/seo/homepage-snippet-ctr-test-2026-11-04.md).
 // Keep the lead words "Medical Spa Williamsburg VA"; prices come from the catalog.
 export const DEFAULT_TITLE = "Medical Spa Williamsburg VA | Nurse-Led, Prices Posted";
-export const DEFAULT_DESCRIPTION = `Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) ${cashPrice(
+export const DEFAULT_DESCRIPTION = `Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) from ${cashPrice(
   "xeomin"
 )} cash, Blomdahl ear piercing ${cashPrice("blomdahl-ear-piercing")}, B-12 ${cashPrice("b12-injections")}, PRP. See all prices.`;
 

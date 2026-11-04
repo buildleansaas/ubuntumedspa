@@ -14,7 +14,7 @@ Type: title and meta description only. H1, hero, body copy, schema and internal 
 
 A result at position 3 to 4 should earn more than 2.9%. The old snippet led with one service and gave a searcher no reason to pick this clinic over the others. The ledger's rule against a homepage rewrite asked for a reproducible CTR defect first. This is that defect, and the test changes only the reversible title and meta.
 
-Brand queries that also land on the homepage (`williamsburg med spa`, `williamsburg medical spa`, and any other query containing the clinic name) are the guardrail. Pull their 28-day clicks, impressions, CTR and position for the homepage at D0, before the deploy reaches Google, and record them below.
+`williamsburg med spa` (the clinic's name) is the brand guardrail only. It is not part of the category pool and is not used to judge the test. Pull its 28-day homepage clicks, impressions, CTR and position at D0, before the deploy reaches Google, and record them below.
 
 | Brand guardrail (homepage rows) | Window | Clicks | Impressions | CTR | Avg position |
 | --- | --- | --- | --- | --- | --- |
@@ -25,7 +25,7 @@ Brand queries that also land on the homepage (`williamsburg med spa`, `williamsb
 | | Before | After |
 | --- | --- | --- |
 | Title | Medical Spa Williamsburg VA \| Xeomin (Botox Alternative) & PRP | Medical Spa Williamsburg VA \| Nurse-Led, Prices Posted |
-| Meta | Nurse-led med spa on Powhatan Pkwy. Xeomin® wrinkle relaxer (a Botox® alternative) from $250 cash, PRP, and Blomdahl ear piercing. | Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) $250 cash, Blomdahl ear piercing $45, B-12 $25, PRP. See all prices. |
+| Meta | Nurse-led med spa on Powhatan Pkwy. Xeomin® wrinkle relaxer (a Botox® alternative) from $250 cash, PRP, and Blomdahl ear piercing. | Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) from $250 cash, Blomdahl ear piercing $45, B-12 $25, PRP. See all prices. |
 
 - The lead words "Medical Spa Williamsburg VA" stay first.
 - The title names two reasons to click: a nurse practitioner runs the clinic, and prices are posted.
@@ -35,19 +35,29 @@ Brand queries that also land on the homepage (`williamsburg med spa`, `williamsb
 
 ## Checks
 
-Compare each window with the same-length window just before the deploy date. Record the homepage row for `med spa williamsburg va`, the other local-category queries (`medical spa williamsburg`, `med spa williamsburg`, `williamsburg med spa`) and the brand guardrail rows.
+**Category pool.** Judge the test on the homepage rows for these queries, pooled (sum clicks and impressions, impression-weighted position):
+
+- `med spa williamsburg va`
+- `medspa williamsburg va`
+- `med spa williamsburg`
+- `med spa near me`
+
+Single queries are too small to read week to week. Do not judge the test until the pool has at least 200 impressions since the deploy, or 56 days have passed, whichever comes first. Compare against the same-length window just before the deploy. D7 and D14 are monitoring checks, not verdicts.
+
+**Botox-alternative queries.** Per the owner ledger, record `botox williamsburg` and `botox williamsburg va` for both `/` and `/procedures/botox` at every checkpoint, so a shift between the two URLs is visible.
 
 | Check | Date (approx.) | What to record | Result |
 | --- | --- | --- | --- |
-| D0 | deploy day | Live title and meta on `/` (curl, no cache); brand baseline above | |
-| D7 | deploy + 7 days | Google shows the new title (site: query or URL Inspection); early CTR; brand clicks | |
-| D14 | deploy + 14 days | CTR and position vs the prior 14 days; brand clicks | |
-| D28 | deploy + 28 days | Decision: keep, revise, or roll back | |
+| D0 | deploy day | Live title and meta on `/` (curl, no cache); brand guardrail baseline above; pre-deploy category pool | |
+| D7 | deploy + 7 days | Google shows the new title (site: query or URL Inspection); pooled category clicks, impressions, CTR, position; brand guardrail; the two `botox williamsburg` queries on `/` and `/procedures/botox` | |
+| D14 | deploy + 14 days | Pooled category vs prior 14 days; brand guardrail; the two `botox williamsburg` queries on `/` and `/procedures/botox` | |
+| D28 | deploy + 28 days | Pooled category vs prior 28 days; brand guardrail; the two `botox williamsburg` queries on `/` and `/procedures/botox`. Verdict only if the pool has 200+ impressions; otherwise wait | |
+| D56 | deploy + 56 days, if needed | Verdict on the pooled 56-day window: keep, revise, or roll back | |
 
-Success: CTR for `med spa williamsburg va` above 2.9% at D28 with average position no worse than about 4, and brand clicks within the rollback limit.
+Success: pooled category CTR above the pre-deploy pooled CTR (the single-query baseline is 2.9%), with pooled position no worse than about 4, and the brand guardrail within the rollback limit.
 
 ## Rollback rule
 
-If homepage clicks from brand queries drop more than 30% against an equal-length window before the deploy (D14 or D28), revert `DEFAULT_TITLE` to the previous title. Keep the new meta unless it is also implicated. If position for the local cluster drops by more than 2 places while CTR is flat, revert both and record the result here.
+If homepage clicks for the brand guardrail query drop more than 30% against an equal-length window before the deploy (D14 or D28), revert `DEFAULT_TITLE` to the previous title. Keep the new meta unless it is also implicated. If pooled category position drops by more than 2 places while CTR is flat, revert both and record the result here.
 
-Do not change the homepage H1 or body during the 28-day window, so the result reads as a snippet test.
+Do not change the homepage H1 or body until the verdict, so the result reads as a snippet test.

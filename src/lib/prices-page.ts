@@ -15,10 +15,10 @@ export const PRICE_GROUPS = [
     name: "PRP treatments",
     slugs: ["prp-facial", "prp-face-lift", "prp-hair-restoration", "prp-breast-lift", "joint-restoration"],
   },
-  { id: "intimate-wellness", name: "Intimate wellness", slugs: ["oh-shot", "pe-shot", "co2-v-lift-for-women"] },
+  { id: "sexual-wellness", name: "Sexual wellness", slugs: ["oh-shot", "pe-shot"] },
   { id: "ear-piercing", name: "Ear piercing", slugs: ["blomdahl-ear-piercing"] },
   { id: "injections", name: "Injections", slugs: ["b12-injections", "hyperhidrosis-treatment"] },
-  { id: "skincare-products", name: "Skincare products", slugs: ["co2-lift", "definage-clinical-power-trio-pro"] },
+  { id: "skincare-products", name: "Skincare products", slugs: ["co2-lift", "co2-v-lift-for-women", "definage-clinical-power-trio-pro"] },
 ] as const;
 
 export type PriceRow = {
@@ -67,7 +67,7 @@ export const getPriceGroups = (catalog: CatalogItemConfig[] = COMMERCE_CATALOG):
 const cash = (slug: string) => formatUsdShort(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
 
 export const PRICES_TITLE = "Med Spa Prices in Williamsburg, VA | Cash and Card Prices";
-export const PRICES_DESCRIPTION = `Every price posted: Xeomin® ${cash("xeomin")} cash per credit block, ear piercing ${cash(
+export const PRICES_DESCRIPTION = `Every price posted: Xeomin® from ${cash("xeomin")} cash per credit block, ear piercing ${cash(
   "blomdahl-ear-piercing"
 )}, B-12 ${cash("b12-injections")}, PRP facial ${cash("prp-facial")}. Cash price first, card/online price shown.`;
 export const PRICES_H1 = "Williamsburg Med Spa Prices";
@@ -79,13 +79,8 @@ export const PRICES_FAQS = [
       "The cash price is the base price. The card/online price covers card processing, so it is a little higher. If you pay cash in the office, you pay the cash price. Online checkout and card payments in the office are charged the card price.",
   },
   {
-    question: "Do you take insurance?",
-    answer:
-      "Williamsburg Med Spa is self-pay: the prices on this page are what you pay the clinic, in cash or by card. If you plan to ask an insurer, HSA, or FSA about reimbursement, ask Jenny for a receipt when you book.",
-  },
-  {
     question: "How do I book?",
-    answer: `Pay online for the service, then text or call Jenny at ${BOOKING_PHONE_DISPLAY} to pick a time. Not sure which service fits? Request a consultation first and Jenny will follow up.`,
+    answer: `For most services you can pay online, then text or call Jenny at ${BOOKING_PHONE_DISPLAY} to pick a time. Some treatments, such as PRP hair restoration, start with a consultation first.`,
   },
 ];
 

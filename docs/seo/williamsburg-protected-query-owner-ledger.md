@@ -62,7 +62,7 @@ Decision:
 - Do not hand the broad category cluster to `/locations/williamsburg-va`.
 - Do not run a homepage title/H1 rewrite until the PR #68 measurement checkpoints settle and a current localized SERP/snippet check demonstrates a reproducible CTR defect.
 
-Update 2026-11-04 (homepage snippet test): `med spa williamsburg va` showed 313 impressions at position 3.5 with 2.9% CTR over 90 days, which is the CTR defect the rule above asks for. The homepage title and meta changed (H1 and body did not). The homepage stays the category owner. Baseline, checkpoints and the rollback rule are in `homepage-snippet-ctr-test-2026-11-04.md`.
+Update 2026-11-04 (homepage snippet test): `med spa williamsburg va` showed 313 impressions at position 3.5 with 2.9% CTR over 90 days, which is the CTR defect the rule above asks for. The homepage title and meta changed. H1 and body copy did not change; one /prices link was added. The homepage stays the category owner. Baseline, checkpoints and the rollback rule are in `homepage-snippet-ctr-test-2026-11-04.md`.
 
 ### Williamsburg Botox
 

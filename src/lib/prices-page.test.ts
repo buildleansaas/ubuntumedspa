@@ -56,7 +56,9 @@ test("each row links to a published page that exists", () => {
   const procedureSlugs = new Set(
     procedures.filter((procedure) => !("published" in procedure) || procedure.published !== false).map((p) => p.slug)
   );
-  const productSlugs = new Set(products.map((product) => product.slug));
+  const productSlugs = new Set(
+    products.filter((product) => !("published" in product) || product.published !== false).map((p) => p.slug)
+  );
   for (const item of COMMERCE_CATALOG) {
     assert.ok((item.kind === "product" ? productSlugs : procedureSlugs).has(item.slug), `${item.slug} has no page`);
   }
@@ -65,7 +67,27 @@ test("each row links to a published page that exists", () => {
 test("the groups are the ones the page promises", () => {
   assert.deepEqual(
     getPriceGroups().map((group) => group.name),
-    ["Wrinkle relaxer", "PRP treatments", "Intimate wellness", "Ear piercing", "Injections", "Skincare products"]
+    ["Wrinkle relaxer", "PRP treatments", "Sexual wellness", "Ear piercing", "Injections", "Skincare products"]
+  );
+});
+
+test("the cosmetic gels sit with skincare products, never with OH-Shot or Pe-Shot", () => {
+  const groups = getPriceGroups();
+  const groupOf = (slug: string) => groups.find((group) => group.rows.some((row) => row.slug === slug))?.id;
+  assert.equal(groupOf("co2-v-lift-for-women"), "skincare-products");
+  for (const slug of ["co2-v-lift-for-women", "co2-lift"]) {
+    assert.notEqual(groupOf(slug), groupOf("oh-shot"), slug);
+    assert.notEqual(groupOf(slug), groupOf("pe-shot"), slug);
+  }
+});
+
+test("rendered /prices text makes no medical-grade or intimate claims", () => {
+  const text = visibleText.replace(/Medical Grade Titanium/g, " ");
+  assert.doesNotMatch(text, /medical[- ]grade|intimate/i);
+  assert.equal(COMMERCE_CATALOG.find((item) => item.slug === "co2-v-lift-for-women")?.shortDescription, "Pickup-only cosmetic gel.");
+  assert.equal(
+    COMMERCE_CATALOG.find((item) => item.slug === "definage-clinical-power-trio-pro")?.shortDescription,
+    "Skincare set for pickup at the office."
   );
 });
 
@@ -75,7 +97,7 @@ test("title, meta, H1, cash/card note", () => {
   assert.ok(PRICES_DESCRIPTION.length <= 160, `meta is ${PRICES_DESCRIPTION.length}`);
   assert.equal(
     PRICES_DESCRIPTION,
-    `Every price posted: Xeomin® ${cash("xeomin")} cash per credit block, ear piercing ${cash("blomdahl-ear-piercing")}, B-12 ${cash(
+    `Every price posted: Xeomin® from ${cash("xeomin")} cash per credit block, ear piercing ${cash("blomdahl-ear-piercing")}, B-12 ${cash(
       "b12-injections"
     )}, PRP facial ${cash("prp-facial")}. Cash price first, card/online price shown.`
   );
@@ -111,13 +133,17 @@ test("FAQ is visible and in FAQPage schema; booking answer names Jenny's number 
   assert.ok(faqPage);
   assert.deepEqual(
     faqPage.mainEntity.map((entry: { name: string }) => entry.name),
-    ["Why are card prices higher?", "Do you take insurance?", "How do I book?"]
+    ["Why are card prices higher?", "How do I book?"]
   );
   for (const faq of PRICES_FAQS) {
     assert.ok(visibleText.includes(faq.question) && visibleText.includes(faq.answer), faq.question);
   }
-  assert.match(PRICES_FAQS[2].answer, /text or call Jenny at \(804\) 738-9483/);
-  assert.match(PRICES_FAQS[2].answer, /consultation/);
+  assert.equal(
+    PRICES_FAQS[1].answer,
+    "For most services you can pay online, then text or call Jenny at (804) 738-9483 to pick a time. Some treatments, such as PRP hair restoration, start with a consultation first."
+  );
+  assert.equal(PRICES_FAQS.length, 2);
+  assert.doesNotMatch(JSON.stringify(PRICES_FAQS) + unescape(html), /insurance/i);
   assert.match(html, /href="\/consult"/);
   assert.match(PRICES_FAQS[0].answer, /cash price is the base price/i);
   assert.ok(schemas.some((schema) => schema["@type"] === "BreadcrumbList"));
@@ -146,13 +172,13 @@ test("homepage snippet CTR test (2026-11-04): title and meta", () => {
   assert.ok(DEFAULT_TITLE.length <= 60, `title is ${DEFAULT_TITLE.length}`);
   assert.equal(
     DEFAULT_DESCRIPTION,
-    `Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) ${cash("xeomin")} cash, Blomdahl ear piercing ${cash(
+    `Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) from ${cash("xeomin")} cash, Blomdahl ear piercing ${cash(
       "blomdahl-ear-piercing"
     )}, B-12 ${cash("b12-injections")}, PRP. See all prices.`
   );
   assert.equal(
     DEFAULT_DESCRIPTION,
-    "Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) $250 cash, Blomdahl ear piercing $45, B-12 $25, PRP. See all prices."
+    "Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) from $250 cash, Blomdahl ear piercing $45, B-12 $25, PRP. See all prices."
   );
   assert.ok(DEFAULT_DESCRIPTION.length <= 160, `meta is ${DEFAULT_DESCRIPTION.length}`);
   assert.doesNotMatch(DEFAULT_DESCRIPTION + DEFAULT_TITLE, /\bfees?\b|surcharge|filler/i);
