@@ -287,6 +287,27 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
     stripePriceLookupKey: "wms_procedure_blomdahl_ear_piercing_45_v1",
   },
   {
+    slug: "b12-injections",
+    kind: "procedure",
+    name: "Vitamin B-12 Injections",
+    shortDescription: "Charged per injection.",
+    pricingMode: "fixed",
+    cashAmountCents: 2500,
+    currency: "usd",
+    displayUnit: "per injection",
+    quantityLabel: "injection",
+    // One at a time: Jenny reviews health history before the first injection and sets any schedule after.
+    minQuantity: 1,
+    maxQuantity: 1,
+    requiresScheduling: true,
+    fulfillment: "appointment",
+    imagePath: "/procedure/prp-joint-restoration-consultation.webp",
+    stripeProductKey: "wms_procedure_b12_injections",
+    stripePriceLookupKey: "wms_procedure_b12_injections_25_v1",
+    customerNote:
+      "After you pay, text or call Jenny at (804) 738-9483 to set up your visit. Jenny reviews your health history and medications before giving an injection. If she decides it is not right for you, your payment is refunded.",
+  },
+  {
     slug: "co2-lift",
     kind: "product",
     name: "Co2 Lift",

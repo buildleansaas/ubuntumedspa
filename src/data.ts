@@ -57,6 +57,7 @@ export const FORM_INPUTS = [
       "Xeomin (Botox alternative)",
       "Hyperhidrosis Treatment",
       "Blomdahl Ear Piercing",
+      "Vitamin B-12 Injections",
     ],
     helperText: "Select any treatments you would like to discuss so we can prepare.",
   },
@@ -83,6 +84,16 @@ export type ProcedureTestimonial = {
   datePublished?: string;
   imageSrc: string;
 };
+
+/** Ailment card shape, for a procedure that has no ailment pages yet. */
+type EmptyAilmentList = Array<{
+  title: string;
+  description: string;
+  blog_post_title: string;
+  blog_post_slug: string;
+  slug: string;
+  tag: string;
+}>;
 
 export const procedures = [
   {
@@ -2292,6 +2303,107 @@ export const procedures = [
         question: "Can I bring my own jewelry?",
         answer:
           "For initial piercings, we use only Blomdahl jewelry to ensure safety and proper healing. After healing is complete, you can switch to your own jewelry.",
+      },
+    ],
+  },
+  {
+    name: "Vitamin B-12 Injections",
+    slug: "b12-injections",
+    seo: {
+      title: "Vitamin B-12 Injections in Williamsburg, VA | $25 Cash",
+      description: `Vitamin B-12 injections in Williamsburg, VA: ${cashCardProse(2500, "each")}. Nurse-led by Jenny Brady, who reviews your health history first.`,
+    },
+    description:
+      "Vitamin B-12 (cobalamin) is a vitamin your body needs. A B-12 injection is usually given into a muscle. Some people use B-12 shots when a clinician has found low B-12, when there is a reason they may not absorb B-12 well (certain medications, digestive conditions, or older age), or when they may not get enough from food (a vegan diet). Jenny Brady, MSN, RN, CPNP, PMHS reviews your health history and medications before giving an injection. B-12 injections are not a weight-loss treatment.",
+    headline: "Nurse-led vitamin B-12 injections in Williamsburg, given after a review of your health history and medications.",
+    subline:
+      "A short visit with Jenny Brady at 3900 Powhatan Parkway. Bring any recent lab results from your primary care provider, and tell Jenny about allergies, including to cobalt or cobalamin, and if you are pregnant or breastfeeding.",
+    image: "/procedure/prp-joint-restoration-consultation.webp",
+    price: cashCardLabel(2500, "per injection"),
+    consultationSupportCopy:
+      "Jenny reviews your health history, medications, allergies, and any lab results before giving a B-12 injection, then sets the schedule with you.",
+    benefitsHeading: "Why people ask about B-12 injections",
+    // programmatic SEO copy
+    blogHeadline: "Read more about vitamin B-12 injections at Williamsburg Med Spa.",
+    benefitsHeadline:
+      "People usually ask about B-12 shots for one of these reasons. Jenny reviews your history and decides with you whether an injection makes sense.",
+    benefits: [
+      {
+        emoji: "🧪",
+        benefit: "Low B-12 on a Lab Test",
+        description: "A clinician has found low B-12 on a blood test and recommended B-12 replacement.",
+      },
+      {
+        emoji: "💊",
+        benefit: "Medications That Affect B-12",
+        description:
+          "Some medications can make it harder to absorb B-12 from food. Bring your medication list so Jenny can review it.",
+      },
+      {
+        emoji: "🩺",
+        benefit: "Digestive Conditions or Older Age",
+        description: "Certain digestive conditions, and older age, can make it harder to absorb B-12 from food.",
+      },
+      {
+        emoji: "🌱",
+        benefit: "Vegan Diet",
+        description:
+          "B-12 comes mainly from animal foods, so people who eat a vegan diet sometimes ask whether they need B-12.",
+      },
+    ],
+    whatToExpect: {
+      heading: "What to expect",
+      steps: [
+        {
+          title: "Pay, then text or call Jenny",
+          description: `Each injection is ${cashCardProse(2500)}. After you pay online, text or call Jenny at (804) 738-9483 to set up your visit.`,
+        },
+        {
+          title: "Health history review",
+          description:
+            "Before giving an injection, Jenny reviews your health history and medications. Tell her about allergies, including to cobalt or cobalamin, if you have kidney disease or an inherited eye condition called Leber's disease, and if you are pregnant or breastfeeding. Bring recent lab results if you have them. If Jenny decides a B-12 injection is not right for you, your payment is refunded.",
+        },
+        {
+          title: "The injection",
+          description: "The B-12 injection is usually given into a muscle.",
+        },
+        {
+          title: "Afterward",
+          description:
+            "Soreness or redness where the shot was given can happen. If you have trouble breathing or swelling of the face or throat after any injection, call 911.",
+        },
+      ],
+    },
+    ailmentsHeadline: "",
+    ailments: [] as EmptyAilmentList,
+    faqHeadline: "Short answers on price, scheduling, side effects, and lab work.",
+    faqs: [
+      {
+        question: "How much does a B-12 injection cost?",
+        answer: `Each injection is ${cashCardProse(2500)}. You pay for one injection at a time online.`,
+      },
+      {
+        question: "How often do I need a B-12 injection?",
+        answer: "Jenny sets the schedule based on your history and any lab results.",
+      },
+      {
+        question: "What are the side effects?",
+        answer:
+          "Soreness or redness where the shot was given, mild diarrhea, itching, or a rash can happen. Call Jenny or your doctor right away for hives, a rash, itching, shortness of breath, a fast heartbeat, muscle weakness, or swelling or pain in one leg. Rarely, a serious allergic reaction can occur: call 911 for trouble breathing or swelling of the face or throat. Tell Jenny about any allergies, including to cobalt or cobalamin, before your injection.",
+      },
+      {
+        question: "Do I need lab work first?",
+        answer:
+          "A blood test from your primary care provider can show whether your B-12 is low. Bring recent results if you have them, and Jenny will review them with your health history.",
+      },
+      {
+        question: "Are B-12 injections a weight-loss treatment?",
+        answer: "No. B-12 injections are not a weight-loss treatment.",
+      },
+      {
+        question: "Can I get a B-12 injection if I am pregnant or breastfeeding?",
+        answer:
+          "Tell Jenny if you are pregnant or breastfeeding. She reviews it with your health history before deciding whether to give an injection. If Jenny decides a B-12 injection is not right for you, your payment is refunded.",
       },
     ],
   },

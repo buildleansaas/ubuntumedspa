@@ -30,6 +30,8 @@ export const PROCEDURE_INTERESTS: Record<string, string[]> = {
   "oh-shot": ["OH-Shot"],
   "p-shot": ["Pe-Shot"],
   "pe-shot": ["Pe-Shot"],
+  "b12-injections": ["Vitamin B-12 Injections"],
+  b12: ["Vitamin B-12 Injections"],
 };
 
 export const getProcedureInterests = (procedure?: string | null) =>
