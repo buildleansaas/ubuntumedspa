@@ -6,7 +6,7 @@ import test from "node:test";
 import { getMarkup } from "../components/structured-data";
 import { getCartRecommendations } from "../config/cart-recommendations";
 import { COMMERCE_CATALOG } from "../config/commerce-catalog";
-import { products } from "../data";
+import { procedures, products } from "../data";
 import { officialProfiles } from "../data/official-profiles";
 
 const ROOT = process.cwd();
@@ -87,4 +87,57 @@ test("Definage Clinical Power Trio Pro reads as a plain skincare set for pickup"
   );
   assert.match(text, /pick it up at Williamsburg Med Spa/);
   assert.match(text, /ask Jenny/i);
+});
+
+test(".agents notes use medical-grade only inside the words-to-avoid list", () => {
+  const files = readdirSync(join(ROOT, ".agents"))
+    .filter((name) => name.endsWith(".md"))
+    .map((name) => join(ROOT, ".agents", name));
+  assert.ok(files.length > 0);
+  const found = files.flatMap((file) =>
+    readFileSync(file, "utf8")
+      .split("\n")
+      .map((line, index) => ({ line, index }))
+      .filter(({ line }) => /medical[- ]grade/i.test(stripAllowed(line)) && !line.startsWith("**Words to avoid:**"))
+      .map(({ line, index }) => `${relative(ROOT, file)}:${index + 1}: ${line.trim().slice(0, 100)}`)
+  );
+  assert.deepEqual(found, []);
+});
+
+// PRP Facial, PRP Face Lift, and the shared "What is PRP" section must not promise collagen, firmness, youth,
+// restoration, pore changes, or "optimal results". Slugs and unrendered blog_post_title/blog_post_slug values are URL
+// keys and are skipped; "Enlarged Pores" is the name of a concern, not a promise.
+const PRP_STRICT = /collagen|\bfirm|youthful|optimal results|restor|pores/i;
+const SKIP_KEYS = new Set(["slug", "blog_post_slug", "blog_post_title", "image", "imageAlt", "tag"]);
+const stripPrpAllowed = (text: string) => stripAllowed(text).replace(/\benlarged pores\b/gi, " ");
+const visibleCopy = (value: unknown): string[] => {
+  if (typeof value === "string") return [value];
+  if (Array.isArray(value)) return value.flatMap(visibleCopy);
+  if (value && typeof value === "object") {
+    return Object.entries(value).flatMap(([key, child]) => (SKIP_KEYS.has(key) ? [] : visibleCopy(child)));
+  }
+  return [];
+};
+
+test("PRP Facial, PRP Face Lift, and What is PRP copy has no collagen, firmness, youth, or optimal-results claims", () => {
+  const found: string[] = [];
+  for (const slug of ["prp-facial", "prp-face-lift"]) {
+    const procedure = procedures.find((entry) => entry.slug === slug);
+    assert.ok(procedure, `missing procedure ${slug}`);
+    for (const text of visibleCopy(procedure)) {
+      if (PRP_STRICT.test(stripPrpAllowed(text))) found.push(`${slug}: ${text.slice(0, 120)}`);
+    }
+  }
+  const whatIsPrp = readFileSync(join(ROOT, "src/views/what-is-prp.tsx"), "utf8");
+  for (const match of stripPrpAllowed(whatIsPrp).matchAll(new RegExp(PRP_STRICT.source, "gi"))) {
+    found.push(`what-is-prp.tsx: ${match[0]}`);
+  }
+  assert.deepEqual(found, []);
+});
+
+test("PRP Facial copy does not name a skin-prep method", () => {
+  const procedure = procedures.find((entry) => entry.slug === "prp-facial");
+  assert.ok(procedure);
+  const found = visibleCopy(procedure).filter((text) => /micro-?needl|microderm/i.test(text));
+  assert.deepEqual(found, []);
 });

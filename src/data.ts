@@ -912,13 +912,13 @@ export const procedures = [
     seo: {
       title: "PRP Facial in Williamsburg, VA",
       description:
-        "Collagen-stimulating PRP Facial in Williamsburg, VA to improve skin texture, tone, and radiance using your body’s own platelets.",
+        "PRP Facial in Williamsburg, VA: a facial that uses PRP from your own blood, planned at a consultation with Jenny. Results vary.",
     },
     description:
-      "The PRP Facial is a non-surgical facial that uses platelet-rich plasma (PRP) prepared from your own blood. A small sample of blood is taken and spun in a centrifuge to separate the PRP from the red blood cells. The PRP is applied to the skin after a microdermabrasion step that removes dead skin cells from the surface. People often ask about it for skin texture and tone. Any change is gradual, and results vary from person to person. Jenny reviews your skin and health history at the consultation to decide whether the PRP Facial fits you.",
+      "The PRP Facial is a non-surgical facial that uses platelet-rich plasma (PRP) prepared from your own blood. A small sample of blood is taken and spun in a centrifuge to separate the PRP from the red blood cells. PRP is applied to the skin as part of the facial, and Jenny explains each step at your visit. People often ask about it for skin texture and tone. Any change is gradual, and results vary from person to person. Jenny reviews your skin and health history at the consultation to decide whether the PRP Facial fits you.",
     headline: "A facial that uses PRP from your own blood",
     subline:
-      "The PRP Facial combines microdermabrasion with topical application of PRP, promoting collagen and elastin production to improve your skin. This treatment can leave your skin looking plumper, tighter, and with improved clarity that lasts up to 2 years.",
+      "PRP is applied to the skin as part of the facial; Jenny explains each step at your visit. Results vary from person to person.",
     image: "/procedure/prp-facial-consultation-glow.webp",
     price: cashCardLabel(60000),
     // programmatic SEO copy
@@ -935,13 +935,13 @@ export const procedures = [
       },
       {
         emoji: "🔍",
-        benefit: "Minimized Pores & Scars",
-        description: "Helps in reducing the size of large pores and the appearance of scars, promoting smoother skin.",
+        benefit: "Consultation First",
+        description: "Jenny reviews your skin concerns and health history before deciding whether the PRP Facial fits you.",
       },
       {
         emoji: "🔄",
-        benefit: "Collagen Stimulation",
-        description: "By promoting collagen production, the procedure restores skin elasticity and firmness.",
+        benefit: "Your Own Blood",
+        description: "A small sample of your blood is spun in a centrifuge to separate the PRP used in the facial.",
       },
       {
         emoji: "🌿",
@@ -955,7 +955,7 @@ export const procedures = [
     ailments: [
       {
         title: "Fine Lines and Wrinkles",
-        description: "Soften the appearance of fine lines and wrinkles with a PRP Facial consultation plan.",
+        description: "Discuss fine lines and wrinkles and whether a PRP Facial is a reasonable option.",
         blog_post_title: "Soften Fine Lines and Wrinkles with a PRP Facial",
         blog_post_slug: "soften-fine-lines-and-wrinkles-with-a-prp-facial",
         slug: "fine-lines-and-wrinkles",
@@ -964,7 +964,7 @@ export const procedures = [
       {
         title: "Acne Scars",
         description:
-          "Improve the appearance of acne scars with a PRP Facial plan when candidacy is appropriate.",
+          "Discuss acne scars and whether a PRP Facial is a reasonable option.",
         blog_post_title: "Improve Acne Scars with a PRP Facial",
         blog_post_slug: "improve-acne-scars-with-a-prp-facial",
         slug: "acne-scars",
@@ -973,7 +973,7 @@ export const procedures = [
       {
         title: "Hyperpigmentation",
         description:
-          "Balance skin color by treating hyperpigmentation with a PRP Facial. Restore your skin's natural beauty.",
+          "Discuss hyperpigmentation and whether a PRP Facial is a reasonable option.",
         blog_post_title: "Tackle Hyperpigmentation Head-On with a PRP Facial",
         blog_post_slug: "tackle-hyperpigmentation-head-on-with-a-prp-facial",
         slug: "hyperpigmentation",
@@ -990,7 +990,7 @@ export const procedures = [
       },
       {
         title: "Dull Skin",
-        description: "Revitalize and illuminate dull skin with the nourishing benefits of a PRP Facial.",
+        description: "Discuss dull-looking skin and whether a PRP Facial is a reasonable option.",
         blog_post_title: "Wake Up Your Dull Skin with a PRP Facial",
         blog_post_slug: "wake-up-your-dull-skin-with-a-prp-facial",
         slug: "dull-skin",
@@ -998,7 +998,7 @@ export const procedures = [
       },
       {
         title: "Rosacea",
-        description: "Manage and reduce rosacea flare-ups with the calming effect of a PRP Facial.",
+        description: "Discuss rosacea with Jenny or your doctor, and whether a PRP Facial is a reasonable option.",
         blog_post_title: "Control Rosacea Effectively with a PRP Facial",
         blog_post_slug: "control-rosacea-effectively-with-a-prp-facial",
         slug: "rosacea",
@@ -1006,7 +1006,7 @@ export const procedures = [
       },
       {
         title: "Enlarged Pores",
-        description: "Improve the look of enlarged pores and skin texture with a PRP Facial plan.",
+        description: "Discuss enlarged pores and whether a PRP Facial is a reasonable option.",
         blog_post_title: "Minimize the Look of Large Pores with a PRP Facial",
         blog_post_slug: "minimize-the-look-of-large-pores-with-a-prp-facial",
         slug: "enlarged-pores",
@@ -1014,7 +1014,7 @@ export const procedures = [
       },
       {
         title: "Sun Damage",
-        description: "Support sun-damaged-looking skin with a PRP Facial consultation and realistic treatment plan.",
+        description: "Discuss sun-damaged-looking skin and whether a PRP Facial is a reasonable option.",
         blog_post_title: "Repair Sun-Damaged Skin with a PRP Facial",
         blog_post_slug: "repair-sun-damaged-skin-with-a-prp-facial",
         slug: "sun-damage",
@@ -1030,7 +1030,7 @@ export const procedures = [
       },
       {
         title: "Dark Circles",
-        description: "Lighten under-eye dark circles for a fresher, more rested look.",
+        description: "Discuss under-eye dark circles and whether a PRP Facial is a reasonable option.",
         blog_post_title: "Lighten Dark Circles Under Eyes with PRP Facial",
         blog_post_slug: "lighten-dark-circles-under-eyes-with-prp-facial",
         slug: "dark-circles",
@@ -1038,7 +1038,7 @@ export const procedures = [
       },
       {
         title: "Stretch Marks",
-        description: "Reduce the appearance of stretch marks for smoother skin.",
+        description: "Discuss stretch marks and whether a PRP Facial is a reasonable option.",
         blog_post_title: "Reduce Stretch Marks with PRP Facial",
         blog_post_slug: "reduce-stretch-marks-with-prp-facial",
         slug: "stretch-marks",
@@ -1046,7 +1046,7 @@ export const procedures = [
       },
       {
         title: "Minor Injury Scars",
-        description: "Improve the look of minor scars from injuries.",
+        description: "Discuss minor scars from injuries and whether a PRP Facial is a reasonable option.",
         blog_post_title: "Improve the Look of Injury Scars with PRP Facial",
         blog_post_slug: "improve-the-look-of-injury-scars-with-prp-facial",
         slug: "minor-injury-scars",
@@ -1054,7 +1054,7 @@ export const procedures = [
       },
       {
         title: "Age Spots",
-        description: "Fade age spots for a more uniform complexion.",
+        description: "Discuss age spots and whether a PRP Facial is a reasonable option.",
         blog_post_title: "Fade Age Spots with PRP Facial",
         blog_post_slug: "fade-age-spots-with-prp-facial",
         slug: "age-spots",
@@ -1062,7 +1062,7 @@ export const procedures = [
       },
       {
         title: "Skin Hydration",
-        description: "Boost skin hydration for a plumper, more radiant look.",
+        description: "Discuss dry-feeling skin and whether a PRP Facial is a reasonable option.",
         blog_post_title: "Boost Skin Hydration with PRP Facial",
         blog_post_slug: "boost-skin-hydration-with-prp-facial",
         slug: "skin-hydration",
@@ -1080,17 +1080,17 @@ export const procedures = [
       {
         question: "Is the procedure painful?",
         answer:
-          "A numbing cream is applied before the procedure to ensure comfort. Patients might feel a tingling or slight pricking sensation from the micro-needling.",
+          "Jenny explains what the facial feels like and how comfort is handled at your visit.",
       },
       {
         question: "How long is the recovery time?",
         answer:
-          "Most patients experience mild redness and swelling for 1-3 days post-procedure. It's essential to avoid direct sunlight and wear sunscreen during the healing process.",
+          "Some redness or swelling afterward is possible. Jenny explains aftercare at your visit, including sun protection.",
       },
       {
         question: "How often should I get a PRP Facial?",
         answer:
-          "For optimal results, it's recommended to undergo 2-3 treatments spaced about a month apart. After that, maintenance treatments can be done annually or as recommended by your practitioner.",
+          "There is no set number of sessions. Jenny discusses whether a series makes sense at your consultation.",
       },
       {
         question: "What sets the PRP Facial apart from other facials?",
@@ -1265,8 +1265,8 @@ export const procedures = [
       },
       {
         emoji: "💉",
-        benefit: "Minimally Invasive",
-        description: "Unlike surgical facelifts, the PRP Face Lift is less invasive with quicker recovery time.",
+        benefit: "Non-Surgical",
+        description: "The PRP Face Lift is non-surgical. It does not replace a surgical face lift.",
       },
       {
         emoji: "⌛",
@@ -1306,7 +1306,7 @@ export const procedures = [
       },
       {
         title: "Dull Skin",
-        description: "Revive dull, lifeless skin and get a radiant glow with the PRP Face Lift.",
+        description: "Discuss dull-looking skin and whether the PRP Face Lift, another option, or a referral fits the concern.",
         blog_post_title: "Revitalize Dull Skin with a PRP Face Lift",
         blog_post_slug: "revitalize-dull-skin-with-a-prp-face-lift",
         slug: "dull-skin",
@@ -1338,7 +1338,7 @@ export const procedures = [
       },
       {
         title: "Crow's Feet",
-        description: "Reduce the fine lines that appear around the eyes, often called crow's feet.",
+        description: "Discuss the lines around the eyes, often called crow's feet, and which options fit at a consultation.",
         blog_post_title: "Soften Crow's Feet with PRP Face Lift",
         blog_post_slug: "soften-crows-feet-with-prp-face-lift",
         slug: "crows-feet",
@@ -1346,7 +1346,7 @@ export const procedures = [
       },
       {
         title: "Jowls",
-        description: "Support the look of lower-face firmness and jowl softening with a consultation-based plan.",
+        description: "Discuss jowls and whether the PRP Face Lift, another option, or a surgical referral fits the concern. Results vary.",
         blog_post_title: "Lift and Tighten Jowls with PRP Face Lift",
         blog_post_slug: "lift-and-tighten-jowls-with-prp-face-lift",
         slug: "jowls",
@@ -1362,7 +1362,7 @@ export const procedures = [
       },
       {
         title: "Chin Wrinkles",
-        description: "Smooth out wrinkles and lines on your chin area.",
+        description: "Discuss chin wrinkles and which options fit at a consultation.",
         blog_post_title: "Smooth Chin Wrinkles with PRP Face Lift",
         blog_post_slug: "smooth-chin-wrinkles-with-prp-face-lift",
         slug: "chin-wrinkles",
@@ -1370,7 +1370,7 @@ export const procedures = [
       },
       {
         title: "Forehead Lines",
-        description: "Minimize the appearance of horizontal lines on your forehead.",
+        description: "Discuss horizontal forehead lines and which options fit at a consultation.",
         blog_post_title: "Minimize Forehead Lines with PRP Face Lift",
         blog_post_slug: "minimize-forehead-lines-with-prp-face-lift",
         slug: "forehead-lines",
@@ -1378,7 +1378,7 @@ export const procedures = [
       },
       {
         title: "Marionette Lines",
-        description: "Soften the appearance of lines running from the corners of your mouth down to your chin.",
+        description: "Discuss marionette lines (from the corners of the mouth toward the chin) and which options fit at a consultation.",
         blog_post_title: "Soften Marionette Lines with PRP Face Lift",
         blog_post_slug: "soften-marionette-lines-with-prp-face-lift",
         slug: "marionette-lines",

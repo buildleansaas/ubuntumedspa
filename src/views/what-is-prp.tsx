@@ -8,17 +8,17 @@ export default function WhatIsPRP() {
     {
       title: "Preparation",
       description:
-        "Learn about our perfected PRP protocols ensuring the highest quality and safety standards for your treatment.",
+        "Jenny reviews your health history and goals before any PRP treatment.",
     },
     {
       title: "Procedure",
       description:
-        "The PRP process combines preparation, processing, and precise injection, all performed seamlessly for optimal results.",
+        "The PRP process covers preparing the blood sample, separating the PRP, and the treatment itself.",
     },
     {
       title: "Recovery",
       description:
-        "Initial recovery might involve mild discomfort, which quickly diminishes as your body begins to heal.",
+        "Some mild discomfort afterward is possible. Jenny explains aftercare and what to watch for.",
     },
     {
       title: "After Treatment",
