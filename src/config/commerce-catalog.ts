@@ -311,7 +311,7 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
     slug: "co2-lift",
     kind: "product",
     name: "Co2 Lift",
-    shortDescription: "Pickup-only medical-grade skincare product.",
+    shortDescription: "Pickup-only cosmetic skincare gel.",
     pricingMode: "fixed",
     cashAmountCents: 10000,
     currency: "usd",

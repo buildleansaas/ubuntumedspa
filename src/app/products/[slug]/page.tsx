@@ -39,8 +39,8 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
   }
 
   return buildPageMetadata({
-    title: `${product.name} in Williamsburg, VA | Williamsburg Med Spa`,
-    description: humanizeMedicalCopy(product.description),
+    title: ("seoTitle" in product && product.seoTitle) || `${product.name} in Williamsburg, VA | Williamsburg Med Spa`,
+    description: ("seoDescription" in product && product.seoDescription) || humanizeMedicalCopy(product.description),
     canonical: `/products/${product.slug}`,
     image: product.image,
     robots: "published" in product && product.published === false ? { index: false, follow: false } : undefined,
@@ -115,7 +115,13 @@ export default async function ProductPage(props: Params) {
 
         <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24" id="benefits">
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
-            <span className="font-bold">{product.name}</span> Benefits
+            {"benefitsHeading" in product && product.benefitsHeading ? (
+              <span className="font-bold">{product.benefitsHeading}</span>
+            ) : (
+              <>
+                <span className="font-bold">{product.name}</span> Benefits
+              </>
+            )}
           </h2>
           <h2 className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(product.benefitsHeadline)}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">

@@ -2413,131 +2413,139 @@ export const products = [
   {
     name: "Co2 Lift",
     slug: "co2-lift",
+    seoTitle: "Co2 Lift Carboxytherapy Gel | Williamsburg Med Spa",
+    seoDescription: `Co2 Lift carboxytherapy gel: ${cashCardProse(10000)}. Cosmetic skincare for pickup in Williamsburg, VA. Ask Jenny if it suits your skin.`,
     description:
-      "Co2 Lift isn't just another skincare product; it's a scientifically proven carboxytherapy gel designed to elevate your skin's health right from the cellular level. By infusing your skin with carbon dioxide, it stimulates a rush of oxygen and nutrients, effectively combating signs of aging and environmental damage.",
-    headline: "Supercharge Cellular Renewal and Combat Aging with Co2 Lift!",
+      "Co2 Lift is a carboxytherapy (CO2) gel. It is a cosmetic skincare product you apply at home, and you pick it up at Williamsburg Med Spa.",
+    headline: "A carboxytherapy gel you use at home",
     subline:
-      "Make Co2 Lift your go-to solution for achieving youthful, resilient, and hydrated skin. With its unique carboxytherapy formula, it’s not just skincare; it’s skin transformation.",
+      "Co2 Lift is skincare, not a medical treatment. Ask Jenny whether it fits your skin and your current routine.",
     image: "/product/c02-lift-pro.webp",
     imageAlt: "Co2 Lift Carboxytherapy Gel",
     price: cashCardLabel(10000),
     link: "https://buy.stripe.com/00g6s0dZ48HGdQQ9AC",
     // programmatic SEO copy
-    blogHeadline:
-      "Unlock the Secret to Ageless, Flawless Skin with Co2 Lift: Articles, How-tos, and Scientific Insights Await.",
-    benefitsHeadline: "Why Choose Co2 Lift? Immediate and Long-Term Benefits Unveiled",
+    blogHeadline: "Articles and how-tos about Co2 Lift carboxytherapy gel.",
+    benefitsHeading: "About Co2 Lift",
+    benefitsHeadline: "What to know before you buy Co2 Lift",
     benefits: [
       {
-        emoji: "🌟",
-        benefit: "Boosted Oxygenation",
+        emoji: "🧴",
+        benefit: "A carboxytherapy gel",
         description:
-          "Co2 Lift’s carboxytherapy mechanism boosts the oxygenation of your skin cells, delivering an instant natural glow.",
+          "Co2 Lift is a gel that uses carbon dioxide (CO2) on the skin. That approach is called carboxytherapy.",
       },
       {
-        emoji: "💪",
-        benefit: "Enhanced Collagen Production",
-        description:
-          "Experience a noticeable improvement in skin firmness as Co2 Lift stimulates your body’s natural collagen production.",
+        emoji: "🏠",
+        benefit: "Used at home",
+        description: "You apply it yourself at home. No appointment or needles are involved.",
       },
       {
-        emoji: "🌊",
-        benefit: "Deep Hydration",
-        description: "Infused with humectants, Co2 Lift locks in moisture, giving you deeply hydrated, plump skin.",
+        emoji: "📍",
+        benefit: "Pickup in Williamsburg",
+        description: "Order online or in the office, then pick it up at Williamsburg Med Spa.",
       },
       {
-        emoji: "🌱",
-        benefit: "Natural, Non-Invasive",
+        emoji: "💬",
+        benefit: "Ask before you start",
         description:
-          "Co2 Lift offers a non-needle option for patients exploring skin hydration and firmness support.",
+          "Follow the directions on the package, and ask Jenny before you start if you have questions.",
       },
     ],
-    faqHeadline: "Got Questions? Get All the Facts About Co2 Lift",
+    faqHeadline: "Common questions about Co2 Lift",
     faqs: [
       {
-        question: "How does Co2 Lift’s carboxytherapy work?",
+        question: "What is Co2 Lift?",
         answer:
-          "Co2 Lift utilizes a scientific approach known as carboxytherapy. It infuses the skin with CO2, which dilates the blood vessels and enhances the delivery of oxygen and nutrients to the skin cells.",
+          "Co2 Lift is a carboxytherapy gel: a cosmetic skincare product that uses carbon dioxide (CO2) on the skin. It is not a medical treatment and not a laser procedure.",
       },
       {
-        question: "Is it compatible with my existing skincare routine?",
-        answer:
-          "Absolutely. Co2 Lift can be seamlessly integrated into any skincare regimen. It's particularly effective when used alongside moisturizers and anti-aging serums to lock in benefits.",
+        question: "How much does Co2 Lift cost?",
+        answer: `Co2 Lift is ${cashCardProse(10000)}. You pick it up at Williamsburg Med Spa.`,
       },
       {
-        question: "Do I need professional assistance to apply Co2 Lift?",
-        answer:
-          "No, Co2 Lift is designed for hassle-free at-home application, giving you professional skincare results in the comfort of your own home.",
+        question: "Do I need an appointment to use it?",
+        answer: "No. Co2 Lift is applied at home. Follow the directions on the package, and ask Jenny before you start if you have questions.",
       },
       {
-        question: "How often should I use Co2 Lift?",
+        question: "Can I use it with my other skincare?",
+        answer: "Ask Jenny before you start if you have questions about your routine.",
+      },
+      {
+        question: "What results should I expect?",
         answer:
-          "For optimal results, it's recommended to use Co2 Lift once a week. Consistent use enhances its benefits, including improved skin tone, texture, and elasticity.",
+          "Results vary from person to person, and no particular result is promised. Co2 Lift is a cosmetic product, so talk with Jenny or your doctor about any skin condition or medical concern.",
       },
     ],
   },
   {
     name: "Co2 V Lift for Women",
     slug: "co2-v-lift-for-women",
+    seoTitle: "Co2 V Lift Carboxytherapy Gel for Women | Williamsburg Med Spa",
+    seoDescription: `Co2 V Lift for Women: ${cashCardProse(50000)}. A cosmetic carboxytherapy gel, not a laser or surgery. Pickup in Williamsburg, VA.`,
     description:
-      "Introducing Co2 V Lift for Women, a advanced carboxytherapy gel that targets intimate areas to restore youthfulness, firmness, and hydration. Specially formulated for women’s delicate skin, this product offers non-invasive revitalization where you need it most.",
-    headline: "Achieve Intimate Rejuvenation with the Science of Carboxytherapy!",
+      "Co2 V Lift for Women is a carboxytherapy (CO2) gel. It is a cosmetic product, not a laser or surgical procedure, and you pick it up at Williamsburg Med Spa.",
+    headline: "A cosmetic carboxytherapy gel for intimate skin",
     subline:
-      "Experience Co2 V Lift for Women—a unique, science-backed treatment focused on feminine care for intimate skin rejuvenation. Elevate your self-care routine to the next level.",
+      "Co2 V Lift for Women is a skincare product, not a medical treatment. Medical concerns about intimate health belong with a clinician.",
     image: "/product/c02-v-lift.webp",
     imageAlt: "Co2 V Lift for Women Intimate Skin Care",
     price: cashCardLabel(50000),
     link: "https://buy.stripe.com/3cs8A87AG8HG6oo4gk",
     // programmatic SEO copy
-    blogHeadline:
-      "Elevate Intimate Self-Care with Co2 V Lift for Women: Learn the Science, Read Testimonials, and Explore Expert Insights.",
-    benefitsHeadline: "Why Women Everywhere Are Choosing Co2 V Lift",
+    blogHeadline: "Articles and how-tos about Co2 V Lift for Women.",
+    benefitsHeading: "About Co2 V Lift",
+    benefitsHeadline: "What to know before you buy Co2 V Lift for Women",
     benefits: [
       {
-        emoji: "🌹",
-        benefit: "Intimate Focus",
+        emoji: "🧴",
+        benefit: "A carboxytherapy gel",
         description:
-          "Designed for women’s intimate areas, Co2 V Lift targets the unique needs of delicate skin, offering enhanced firmness and hydration.",
+          "Co2 V Lift for Women is a gel that uses carbon dioxide (CO2) on the skin. That approach is called carboxytherapy.",
       },
       {
-        emoji: "👸",
-        benefit: "Restore Feminine Vitality",
+        emoji: "🚫",
+        benefit: "Not a laser or surgery",
         description:
-          "Revitalize and renew intimate skin areas, diminishing the signs of aging and restoring youthful plumpness.",
+          "It is a cosmetic gel product. It is not a laser, an energy-based device, or a surgical procedure.",
       },
       {
-        emoji: "🛡",
-        benefit: "Gentle Yet Effective",
-        description:
-          "Crafted with hypoallergenic ingredients, Co2 V Lift is both effective and gentle, making it ideal for sensitive intimate areas.",
+        emoji: "📍",
+        benefit: "Pickup in Williamsburg",
+        description: "Order online or in the office, then pick it up at Williamsburg Med Spa.",
       },
       {
-        emoji: "⌛",
-        benefit: "Quick and Discreet",
+        emoji: "🩺",
+        benefit: "Medical concerns go to a clinician",
         description:
-          "Each application takes just minutes, allowing for discreet use within a self-care routine.",
+          "Leaking urine, pain, dryness, or changes after childbirth or menopause are medical questions. Talk with your doctor or gynecologist about them.",
       },
     ],
-    faqHeadline: "Your Questions Answered: Get to Know Co2 V Lift for Women",
+    faqHeadline: "Common questions about Co2 V Lift for Women",
     faqs: [
       {
-        question: "How is Co2 V Lift for Women specialized for intimate areas?",
+        question: "What is Co2 V Lift for Women?",
         answer:
-          "Co2 V Lift for Women is specially formulated with a gentler carboxytherapy mechanism and hypoallergenic ingredients to safely target intimate areas, restoring firmness, moisture, and youthful vitality.",
+          "Co2 V Lift for Women is a carboxytherapy gel: a cosmetic product that uses carbon dioxide (CO2) on the skin. It is not a laser procedure, not surgery, and not a medical treatment.",
       },
       {
-        question: "Can I use it alongside other feminine care products?",
-        answer:
-          "Yes, Co2 V Lift for Women is compatible with other feminine care products and can be integrated into your existing intimate care routine for enhanced results.",
+        question: "How much does it cost?",
+        answer: `Co2 V Lift for Women is ${cashCardProse(50000)}. You pick it up at Williamsburg Med Spa.`,
       },
       {
-        question: "Is it clinically tested?",
+        question: "Does it treat bladder leaks, pain, or vaginal dryness?",
         answer:
-          "Yes, Co2 V Lift for Women is clinically tested to ensure its safety and efficacy in intimate skincare.",
+          "No. It is a cosmetic product and is not a treatment for any medical condition. If you have leaking urine, pain, dryness, or other intimate-health symptoms, see your doctor or gynecologist.",
       },
       {
-        question: "How often should I use it?",
+        question: "How do I use it?",
         answer:
-          "For best results, it is recommended to use Co2 V Lift for Women once a week. Regular use maximizes the benefits, leading to sustained firmness, hydration, and youthfulness.",
+          "Follow the directions on the package, and ask Jenny before you start if you have questions.",
+      },
+      {
+        question: "What results should I expect?",
+        answer:
+          "Results vary from person to person, and no particular result is promised.",
       },
     ],
   },

@@ -17,16 +17,15 @@ export default function Products({
     return (
       <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="home-products" aria-labelledby="home-products-heading">
         <div className="max-w-3xl">
-          <p className="eyebrow">Between visits</p>
+          <p className="eyebrow">For pickup</p>
           <Heading
             id="home-products-heading"
             className="font-display mt-4 text-4xl font-medium leading-[1.12] tracking-tight text-base-content md:text-5xl"
           >
-            Medical Grade Beauty Products
+            Skincare Products
           </Heading>
           <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">
-            Williamsburg Med Spa offers curated medical-grade products selected for ingredient quality, tolerability, and
-            practical at-home support between visits.
+            Products available for pickup at Williamsburg Med Spa. Ask Jenny which fits your routine.
           </p>
         </div>
 
@@ -43,11 +42,10 @@ export default function Products({
     <>
       <div className="text-center" id="services">
         <Heading className="text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light mx-auto leading-tight pb-4">
-          Medical Grade Beauty Products
+          Skincare Products
         </Heading>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
-          Williamsburg Med Spa offers curated medical-grade products selected for ingredient quality, tolerability, and
-          practical at-home support between visits.
+          Products available for pickup at Williamsburg Med Spa. Ask Jenny which fits your routine.
         </p>
       </div>
 
