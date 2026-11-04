@@ -102,7 +102,7 @@ const hyperhidrosisPrice = (area: string) => ({
 
 const hyperhidrosisSafety = { heading: "Side effects and safety", body: HYPERHIDROSIS_SIDE_EFFECTS };
 
-/** Palms only: the hub's "localized weakness" in the hands (botulinum toxin prescribing information, Limitations of Use, notes hand-muscle weakness with palmar use). */
+/** Palms only: the hub's "localized weakness" in the hands. Source: onabotulinumtoxinA prescribing information §1.6 Limitations of Use (DailyMed setid 33d066a9-34ff-4a1a-b38b-d10983df3300), hand-muscle weakness with palmar use. */
 export const PALM_WEAKNESS_NOTE =
   "For palm treatment, that localized weakness can be temporary weakness in the hand muscles, so ask Jenny about timing around work that needs a firm grip or fine hand control.";
 
@@ -260,7 +260,7 @@ const hyperhidrosisConcernPages: ServiceSatellitePage[] = [
         answer: "Yes, both palms are commonly treated in the same session when clinically appropriate.",
       },
       { question: "How long does relief last?", answer: HYPERHIDROSIS_RELIEF },
-      { question: "What are the side effects?", answer: HYPERHIDROSIS_SIDE_EFFECTS },
+      { question: "What are the side effects?", answer: `${HYPERHIDROSIS_SIDE_EFFECTS} ${PALM_WEAKNESS_NOTE}` },
       hyperhidrosisSurgeryFaq,
       hyperhidrosisLocalFaq,
     ],
@@ -429,7 +429,7 @@ const NEAR_AREAS: NearArea[] = [
       "Yorktown patients often want a quieter Williamsburg clinic visit rather than a high-volume retail setting.",
     ],
     otherServices:
-      "Yorktown, Tabb, Grafton, and Lower Peninsula patients also use the clinic for Xeomin (our wrinkle relaxer), PRP, hyperhidrosis, and medical ear piercing questions.",
+      "The Yorktown page is also a starting point for Xeomin (our wrinkle relaxer), PRP, hyperhidrosis, and medical ear piercing questions.",
     localNotes: [
       "The visit is a planned trip to the Williamsburg clinic, which helps avoid walk-in timing.",
       "Consult-led care suits Yorktown patients willing to make a planned Williamsburg visit.",

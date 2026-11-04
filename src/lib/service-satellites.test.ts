@@ -206,7 +206,7 @@ test("hyperhidrosis pages use the hub's side-effect wording and stay conservativ
     if (page.slug !== "sweaty-feet") assert.ok(visibleCopy(page).includes("your body can still sweat normally in other areas"), satellitePath(page));
     assert.doesNotMatch(visibleCopy(page), /still sweats normally|keeps sweating/, satellitePath(page));
     assert.doesNotMatch(visibleCopy(page), /one clinic location|confirm the price/i, satellitePath(page));
-    assert.ok(page.faqs.some((faq) => faq.answer === HYPERHIDROSIS_SIDE_EFFECTS), satellitePath(page));
+    assert.ok(page.faqs.some((faq) => faq.answer.startsWith(HYPERHIDROSIS_SIDE_EFFECTS)), satellitePath(page));
     const copy = visibleCopy(page);
     assert.doesNotMatch(copy, /\b(?:cure|cures|permanent|guarantee[ds]?|stop sweating|no more sweat|100%|eliminat)/i, satellitePath(page));
     assert.match(copy, /Hampton Roads/);
