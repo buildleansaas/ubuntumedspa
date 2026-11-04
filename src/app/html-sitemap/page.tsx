@@ -7,6 +7,7 @@ import { publishedEarPiercingIntentPages } from "lib/ear-piercing-intents";
 import { getPublishedEvents } from "lib/events";
 import { publishedEarPiercingAreas } from "lib/local-service-areas";
 import { buildPageMetadata } from "lib/metadata";
+import { serviceSatellitePages, satelliteHubLabel, satellitePath } from "lib/service-satellites";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Sitemap | Williamsburg Med Spa",
@@ -36,6 +37,10 @@ export default async function HtmlSitemapPage() {
         ...publishedEarPiercingAreas.map((area) => ({
           href: `/procedures/blomdahl-ear-piercing/near/${area.slug}`,
           label: `Blomdahl ear piercing near ${area.name}`,
+        })),
+        ...serviceSatellitePages.map((page) => ({
+          href: satellitePath(page),
+          label: page.kind === "concern" ? page.h1 : `${satelliteHubLabel(page.hubSlug)} near ${page.label}`,
         })),
       ],
     },

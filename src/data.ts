@@ -2142,6 +2142,11 @@ export const procedures = [
         answer:
           "Temporary injection-site tenderness, bruising, or localized weakness can happen. Jenny reviews medical history, treatment area, and risk profile before recommending care.",
       },
+      {
+        question: "Does insurance cover hyperhidrosis treatment?",
+        answer:
+          "Williamsburg Med Spa is cash-pay. Some insurance plans cover hyperhidrosis treatment with prior authorization, so ask your insurer whether you can submit for reimbursement. We can provide a receipt.",
+      },
     ],
   },
   {
