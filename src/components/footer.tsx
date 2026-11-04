@@ -7,6 +7,7 @@ import FooterSocialLinks from "components/footer-social-links";
 const primaryLinks = [
   { href: "/consult", label: "Consult" },
   { href: "/procedures", label: "Procedures" },
+  { href: "/prices", label: "Prices" },
   { href: "/products", label: "Products" },
   { href: "/locations", label: "Locations" },
   { href: "/blog", label: "Blog" },

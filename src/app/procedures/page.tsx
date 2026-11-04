@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CtaFooter from "components/cta-footer";
 import StructuredData from "components/structured-data";
 import ProceduresView from "views/procedures";
@@ -16,6 +17,13 @@ export default function Procedures() {
     <div className="max-w-7xl mx-auto">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Procedures"]} />
       <ProceduresView headingTag="h1" variant="editorial" kicker="Treatments" showBotoxAlternativeLink />
+      <p className="border-t border-base-300 py-8 text-base text-base-content/85">
+        Comparing costs?{" "}
+        <Link href="/prices" className="link link-primary">
+          See every price on one page
+        </Link>
+        , cash price first.
+      </p>
       <CtaFooter />
     </div>
   );

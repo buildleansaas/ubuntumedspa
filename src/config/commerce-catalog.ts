@@ -328,7 +328,7 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
     slug: "co2-v-lift-for-women",
     kind: "product",
     name: "Co2 V Lift for Women",
-    shortDescription: "Pickup-only intimate care product.",
+    shortDescription: "Pickup-only cosmetic gel.",
     pricingMode: "fixed",
     cashAmountCents: 50000,
     currency: "usd",

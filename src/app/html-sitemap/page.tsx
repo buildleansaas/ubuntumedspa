@@ -25,6 +25,7 @@ export default async function HtmlSitemapPage() {
       title: "Procedures",
       links: [
         { href: "/procedures", label: "All procedures" },
+        { href: "/prices", label: "Prices" },
         ...publishedProcedures.map((procedure) => ({
           href: `/procedures/${procedure.slug}`,
           label: procedure.name,
