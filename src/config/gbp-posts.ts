@@ -5,7 +5,7 @@ import { GOOGLE_REVIEW_URL } from "lib/seo";
 /**
  * Weekly Google Business Profile posts (one per Monday), previewed at /gbp.
  * Copy rules: facts only from existing site pages, prices only from COMMERCE_CATALOG (cash price first,
- * card/online price second), registered product names with the ®, no outcome promises, no phone numbers in the
+ * card/online price second), the ® on every brand name the test checks, no outcome promises, no phone numbers in the
  * text (the Call button and the image footer carry the number), and no product named for hyperhidrosis.
  * Checked by src/config/gbp-posts.test.ts.
  */
@@ -96,7 +96,7 @@ export const GBP_POSTS: GbpPost[] = [
       `Xeomin® is a botulinum toxin type A treatment used to temporarily soften expression lines in appropriate adult candidates. Change often starts to show within several days, and the fuller visible effect is commonly seen around two weeks. If you have a photo date in mind, tell Jenny at your consultation so the plan fits your calendar.`,
       `At Williamsburg Med Spa, ${JENNY} plans each treatment around your facial movement and how much expression you want to keep. The consultation covers your health history, medications, prior treatment response, and possible side effects. Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites, and rare but serious risks are discussed before treatment.`,
       `Xeomin® is planned in ${xeomin.cash} credit blocks: ${xeomin.cash} per block when you pay cash in the office, or ${xeomin.card} online or by card. Each block adds ${xeomin.cash} of treatment credit, and any unused value stays on your account. Your total depends on the areas treated and your dosing plan.`,
-      `Tap Book to request a time before the holidays.`
+      `Tap Book to see pricing and how to book before the holidays.`
     ),
     cta: "BOOK",
     url: `${SITE}/procedures/botox`,
@@ -161,12 +161,12 @@ export const GBP_POSTS: GbpPost[] = [
     publishOn: "2026-12-14",
     type: "update",
     template: "question",
-    title: "Looking for Botox®? Here is why we use Xeomin®",
+    title: "Looking for Botox®? We use Xeomin®",
     subtitle: "Same treatment category as Botox®. The plan matters more than the name.",
     body: paragraphs(
       `Many people in Williamsburg, VA search for Botox® first. At Williamsburg Med Spa we use Xeomin®, and we do not offer Botox® brand, so here is how Xeomin® compares with Botox®.`,
       `Both are prescription botulinum toxin type A treatments. In cosmetic care, both temporarily reduce activity in selected muscles, which can soften lines from repeated expression such as frown lines, forehead lines, and crow's feet.`,
-      `Xeomin® is incobotulinumtoxinA, a distinct product different from Botox® (onabotulinumtoxinA). They are manufactured differently and their dose units are not interchangeable, so compare quotes on the full treatment plan, not a unit price.`,
+      `Xeomin® (incobotulinumtoxinA) is different from Botox® (onabotulinumtoxinA). They are manufactured differently and their dose units are not interchangeable, so compare quotes on the full treatment plan, not a unit price.`,
       `Timing is similar for many patients: change often shows within several days, with a fuller effect around two weeks, and smoothing commonly lasts about 3 to 4 months. Individual response, area, and dosing can change that.`,
       `A natural look is mostly a planning question, not a brand question. It comes from careful muscle mapping, balanced dosing, and a clear talk about how much movement you want to keep.`,
       `Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites. Rare but serious risks should be discussed directly with your provider before treatment. At Williamsburg Med Spa, ${JENNY} reviews your history, prior response, and goals before planning treatment.`,
