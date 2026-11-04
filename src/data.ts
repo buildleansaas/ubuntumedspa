@@ -1105,7 +1105,7 @@ export const procedures = [
     seo: {
       title: "Microneedling with PRP in Williamsburg, VA",
       description:
-        "Microneedling with PRP in Williamsburg, VA for patients comparing collagen-supporting skin rejuvenation, texture care, acne-scar support, and PRP facial options.",
+        "Microneedling with PRP in Williamsburg, VA for patients asking about skin texture and acne scars and comparing it with the PRP Facial.",
     },
     description:
       "Microneedling with PRP is a consultation-based skin rejuvenation service at Williamsburg Med Spa. The treatment uses controlled microneedling with platelet-rich plasma prepared from your own blood to support the skin's natural repair response. Jenny reviews your skin goals, history, sensitivities, medications, downtime tolerance, and whether microneedling with PRP is a reasonable fit before building a plan.",
@@ -2618,7 +2618,7 @@ export const products = [
   {
     name: "Definage Clinical Power Trio Pro",
     slug: "definage-clinical-power-trio-pro",
-    seoTitle: "Definage Clinical Power Trio Pro Skincare Set | Williamsburg Med Spa",
+    seoTitle: "Definage Clinical Power Trio Pro | Skincare Set in Williamsburg, VA",
     seoDescription: `Definage Clinical Power Trio Pro: ${cashCardProse(37000)}. A skincare set for pickup in Williamsburg, VA. Ask Jenny if it suits your routine.`,
     description:
       "Definage Clinical Power Trio Pro is a skincare set you use at home. You pick it up at Williamsburg Med Spa.",
