@@ -6,22 +6,22 @@ import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near Yorktown, VA | Botox, Xeomin & PRP",
+  title: "Med Spa Near Yorktown, VA | Xeomin, a Botox Alternative",
   description:
-    "Visit Williamsburg Med Spa from Yorktown for Botox, Xeomin, PRP therapies, hyperhidrosis care, and Blomdahl medical ear piercing near Williamsburg.",
+    "Visit Williamsburg Med Spa from Yorktown for Xeomin® (a Botox® alternative), PRP therapies, hyperhidrosis care, and Blomdahl medical ear piercing near Williamsburg.",
   canonical: "/locations/yorktown-va",
 });
 
 const serviceLinks = [
   {
-    label: "Botox treatment planning",
+    label: "Botox alternative in Williamsburg",
     href: "/procedures/botox",
-    copy: "For expression lines, dosing questions, and a consult-first plan.",
+    copy: "Searching for Botox? We use Xeomin®, a wrinkle relaxer in the same category, with a consult-first plan.",
   },
   {
     label: "Xeomin treatment planning",
     href: "/procedures/xeomin",
-    copy: "For patients comparing wrinkle relaxer options.",
+    copy: "For expression lines, dosing questions, and how Xeomin compares with other wrinkle relaxers.",
   },
   {
     label: "Blomdahl ear piercing",
@@ -64,7 +64,7 @@ export default function YorktownPage() {
         <h2 className="text-2xl font-light">Quick read for Yorktown patients</h2>
         <ul className="mt-4 grid gap-3 text-sm text-base-content/75 md:grid-cols-3">
           <li>Best for Yorktown patients who want a quieter Williamsburg clinic visit rather than a high-volume retail setting.</li>
-          <li>Useful starting point for Botox, Xeomin, PRP, hyperhidrosis, and medical ear piercing questions.</li>
+          <li>Useful starting point for Xeomin (our wrinkle relaxer), PRP, hyperhidrosis, and medical ear piercing questions.</li>
           <li>Families planning first earrings can review sterile equipment, hypoallergenic starter jewelry, placement, and aftercare before booking.</li>
         </ul>
       </section>

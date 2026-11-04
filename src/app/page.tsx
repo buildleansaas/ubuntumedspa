@@ -15,12 +15,12 @@ import Products from "views/products";
 import BotoxPartyCallout from "views/botox-party-callout";
 import HomeVisit from "views/home-visit";
 import { buildPageMetadata } from "lib/metadata";
+import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "lib/seo";
 import StructuredData from "components/structured-data";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Medical Spa Williamsburg VA | Botox, Xeomin & PRP",
-  description:
-    "Jenny Brady, MSN, RN, CPNP, PMHS, CMA-certified OH-Shot provider, offers Botox, Xeomin, PRP, and Blomdahl ear piercing in Williamsburg, VA.",
+  title: DEFAULT_TITLE,
+  description: DEFAULT_DESCRIPTION,
   canonical: "/",
 });
 
@@ -28,7 +28,7 @@ const homeFaqs = [
   {
     question: "What medical spa services are available in Williamsburg, VA?",
     answer:
-      "Williamsburg Med Spa offers Botox, Xeomin, PRP treatments, hyperhidrosis care, OH-Shot services, and Blomdahl medical ear piercing in Williamsburg, VA.",
+      "Williamsburg Med Spa offers Xeomin® (our wrinkle relaxer and a Botox® alternative), PRP treatments, hyperhidrosis care, OH-Shot services, and Blomdahl medical ear piercing in Williamsburg, VA. We do not offer Botox® brand.",
   },
   {
     question: "Who provides treatments at Williamsburg Med Spa?",
@@ -48,7 +48,7 @@ const homeFaqs = [
 ];
 
 const localLinks = [
-  { href: "/procedures/botox", label: "Botox in Williamsburg" },
+  { href: "/procedures/botox", label: "Botox alternative in Williamsburg" },
   { href: "/procedures/xeomin", label: "Xeomin in Williamsburg" },
   { href: "/locations/williamsburg-va", label: "Hours & directions" },
   { href: "/locations", label: "Areas we serve" },
@@ -70,7 +70,7 @@ export default async function Page() {
             id="home-local-intro-heading"
             className="font-display mt-4 text-3xl font-medium leading-[1.15] tracking-tight text-base-content md:text-4xl"
           >
-            Local care with Jenny Brady, MSN, RN, CPNP, PMHS for Botox, Xeomin, PRP, sweating treatment, and medical ear piercing.
+            Local care with Jenny Brady, MSN, RN, CPNP, PMHS for Xeomin wrinkle relaxer, PRP, sweating treatment, and medical ear piercing.
           </h2>
           <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">
             Williamsburg Med Spa is a Nurse Practitioner led medical spa in Williamsburg, VA. Jenny Brady brings

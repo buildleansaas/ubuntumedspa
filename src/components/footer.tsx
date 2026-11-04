@@ -14,7 +14,7 @@ const primaryLinks = [
 ] as const;
 
 const treatmentLinks = [
-  { href: "/procedures/botox", label: "Botox" },
+  { href: "/procedures/botox", label: "Botox Alternative" },
   { href: "/procedures/xeomin", label: "Xeomin" },
   { href: "/procedures/oh-shot", label: "OH-Shot" },
   { href: "/procedures/pe-shot", label: "Pe-Shot" },

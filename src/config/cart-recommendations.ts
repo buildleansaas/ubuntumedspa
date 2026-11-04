@@ -16,18 +16,6 @@ export type CartRecommendation = CatalogItemConfig & {
 };
 
 const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], RecommendationDefinition[]>> = {
-  botox: [
-    {
-      slug: "co2-lift",
-      reason: "A simple pickup add-on for glow and skin support between injectable visits.",
-      priority: 2,
-    },
-    {
-      slug: "definage-clinical-power-trio-pro",
-      reason: "A medical-grade routine patients often use to support skin quality after aesthetic treatments.",
-      priority: 3,
-    },
-  ],
   xeomin: [
     {
       slug: "co2-lift",
@@ -105,14 +93,14 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
       priority: 1,
     },
     {
-      slug: "botox",
+      slug: "xeomin",
       reason: "A common next step when the goal is to soften movement-related lines beyond skincare alone.",
       priority: 3,
     },
   ],
   "definage-clinical-power-trio-pro": [
     {
-      slug: "botox",
+      slug: "xeomin",
       reason: "Often explored when someone wants injectable support alongside a stronger at-home anti-aging routine.",
       priority: 1,
     },
@@ -126,7 +114,7 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
 
 const CART_RECOMMENDATION_FALLBACKS: RecommendationDefinition[] = [
   {
-    slug: "botox",
+    slug: "xeomin",
     reason: "A common next step for patients looking to soften movement-related lines.",
     priority: 1,
   },

@@ -4,17 +4,20 @@ import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
+import { cardPriceLabel, formatUsdShort } from "lib/price";
+
+const xeominCash = formatUsdShort(25000);
+const xeominCard = cardPriceLabel(25000);
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Newport News | Botox at Our Williamsburg Clinic",
+  title: `Botox Alternative Near Newport News | Xeomin® ${formatUsdShort(25000)}, Williamsburg`,
   description:
-    "Med spa Newport News patients drive to our Williamsburg clinic on Powhatan Parkway for Botox, Xeomin, and PRP.",
+    `Med spa Newport News patients drive about 25 minutes to our Williamsburg clinic for Xeomin® (a Botox® alternative, ${formatUsdShort(25000)} cash), PRP, and ear piercing.`,
   canonical: "/locations/newport-news-va",
 });
 
 const serviceLinks = [
-  { href: "/procedures/botox", label: "Botox near Newport News", note: "Expression-line consultation with a natural, measured plan." },
-  { href: "/procedures/xeomin", label: "Xeomin near Newport News", note: "A neuromodulator option for frown lines and movement-related concerns." },
+  { href: "/procedures/xeomin", label: "Xeomin near Newport News", note: "Our wrinkle relaxer for frown lines, forehead lines, and crow's feet, with a natural, measured plan." },
   { href: "/procedures/blomdahl-ear-piercing", label: "Blomdahl ear piercing", note: "Sterile single-use cassettes and hypoallergenic starter earrings at the Williamsburg clinic." },
   { href: "/procedures/blomdahl-ear-piercing/for/children", label: "Infant and kids ear piercing", note: "For parents planning a baby's or child's first earrings." },
   { href: "/procedures/blomdahl-ear-piercing/near/newport-news-va", label: "Newport News visit notes", note: "Driving notes for a Williamsburg piercing appointment." },
@@ -27,9 +30,9 @@ const faqs = [
       "Yes. Newport News patients visit our appointment-based clinic at 3900 Powhatan Parkway in Williamsburg for injectables, PRP therapies, hyperhidrosis treatment, and medical ear piercing.",
   },
   {
-    question: "How do I choose between Botox and Xeomin?",
+    question: "Do you offer Botox for Newport News patients?",
     answer:
-      "Botox and Xeomin are both neuromodulators for movement-related expression lines. Your consultation is where you can compare onset, dosing, and prior treatment history and choose the most appropriate plan.",
+      "No. Williamsburg Med Spa uses Xeomin, a wrinkle relaxer in the same category as Botox, and does not offer Botox brand. Units are not interchangeable, so your consultation compares the full Xeomin plan with any prior treatment you have had.",
   },
   {
     question: "Where is the appointment located?",
@@ -52,7 +55,7 @@ export default function NewportNewsPage() {
         <p className="text-sm uppercase tracking-[0.22em] text-primary mb-3">Newport News service area</p>
         <h1 className="text-3xl md:text-5xl font-light">Med Spa Newport News, at Our Williamsburg Clinic</h1>
         <p className="text-base md:text-lg text-base-content/70 mt-3">
-          There is no Newport News street address. Botox, Xeomin, and PRP visits are at Williamsburg Med Spa,
+          There is no Newport News street address. Xeomin, PRP, and ear-piercing visits are at Williamsburg Med Spa,
           3900 Powhatan Parkway, Williamsburg, VA 23188. Take I-64 west toward Route 199 and New Town.
         </p>
       </header>
@@ -65,7 +68,7 @@ export default function NewportNewsPage() {
             Williamsburg location with conservative planning, clear timelines, and careful follow-up.
           </p>
           <p>
-            Common visit goals include softening expression lines with Botox or Xeomin, asking about PRP for joints or skin, treating excessive sweating, and choosing a more clinical ear
+            Common visit goals include softening expression lines with Xeomin, asking about PRP for joints or skin, treating excessive sweating, and choosing a more clinical ear
             piercing appointment for a child or adult with sensitive ears.
           </p>
           <div className="not-prose mt-5 flex flex-wrap items-center gap-3">
@@ -106,22 +109,38 @@ export default function NewportNewsPage() {
         </div>
       </section>
 
+      <section id="wrinkle-relaxer" className="mb-10 md:mb-12 border border-base-300 p-6 md:p-8 scroll-mt-24">
+        <p className="text-sm uppercase tracking-[0.18em] text-primary mb-2">Looking for Botox near Newport News?</p>
+        <h2 className="text-2xl md:text-3xl font-light mb-3">Xeomin®, our wrinkle relaxer, about 25 minutes away</h2>
+        <p className="text-base md:text-lg text-base-content/80 mb-3">
+          Williamsburg Med Spa does not offer Botox® brand. We use Xeomin®, a wrinkle relaxer in the same treatment
+          category, for frown lines, forehead lines, and crow&apos;s feet. It is {xeominCash} cash per credit block
+          ({xeominCard} card/online). The clinic on Powhatan Parkway is about a 25-minute drive from Newport News.
+        </p>
+        <p className="text-base text-base-content/75">
+          Read about our{" "}
+          <Link href="/procedures/botox" className="text-primary hover:underline">
+            Botox alternative in Williamsburg
+          </Link>
+          , including how Xeomin compares and why units are not interchangeable.
+        </p>
+      </section>
+
       <section id="compare-treatments" className="mb-10 md:mb-12 border-y border-base-300 py-8 md:py-10 scroll-mt-24">
         <div className="max-w-4xl">
           <p className="text-sm uppercase tracking-[0.18em] text-primary mb-2">Compare your starting point</p>
-          <h2 className="text-2xl md:text-3xl font-light mb-3">Botox, Xeomin, or PRP?</h2>
+          <h2 className="text-2xl md:text-3xl font-light mb-3">Xeomin or PRP?</h2>
           <p className="text-base md:text-lg text-base-content/80 mb-6">
-            The right choice depends on what you want to change. Botox and Xeomin address lines caused by repeated muscle
-            movement. PRP treatments focus on skin quality, texture, and tone. Your consultation can focus on one option or
+            The right choice depends on what you want to change. Xeomin, our wrinkle relaxer, addresses lines caused by
+            repeated muscle movement. PRP treatments focus on skin quality, texture, and tone. Your consultation can focus on one option or
             compare both before you decide.
           </p>
           <div className="grid gap-6 md:grid-cols-2">
             <div>
               <h3 className="text-lg font-medium mb-2">For movement-related lines</h3>
               <p className="text-base-content/75 mb-2">
-                Start with <Link href="/procedures/botox" className="text-primary hover:underline">Botox</Link> or{" "}
-                <Link href="/procedures/xeomin" className="text-primary hover:underline">Xeomin</Link> if your concern is tied
-                to facial movement, such as frown lines or forehead lines.
+                Start with <Link href="/procedures/xeomin" className="text-primary hover:underline">Xeomin</Link> if your
+                concern is tied to facial movement, such as frown lines or forehead lines.
               </p>
             </div>
             <div>

@@ -92,11 +92,11 @@ test("owner alert hedges while the receipt is still sending, and shows the paid 
   assert.match(email.text, /Their order page: /);
 });
 
-test("Botox credit lines show the card amount paid and the cash-value credit", () => {
-  const botox = {
+test("Xeomin credit lines show the card amount paid and the cash-value credit", () => {
+  const xeomin = {
     ...order.items[0],
-    slug: "botox",
-    name: "Botox",
+    slug: "xeomin",
+    name: "Xeomin",
     pricingMode: "increment_credit",
     quantity: 2,
     unitAmountCents: 25778,
@@ -104,10 +104,10 @@ test("Botox credit lines show the card amount paid and the cash-value credit", (
     cashUnitAmountCents: 25000,
     cashLineTotalCents: 50000,
   } as OrderRecord["items"][number];
-  const credited: OrderRecord = { ...order, items: [botox], subtotalCents: 51556 };
+  const credited: OrderRecord = { ...order, items: [xeomin], subtotalCents: 51556 };
 
   for (const email of [buildCustomerEmail(credited), buildOwnerEmail(credited)]) {
-    assert.match(email.text, /2 x Botox: \$515\.56 \(adds \$500(\.00)? treatment credit\)/);
+    assert.match(email.text, /2 x Xeomin: \$515\.56 \(adds \$500(\.00)? treatment credit\)/);
     assert.match(email.html, /adds \$500(\.00)? treatment credit/);
   }
 });

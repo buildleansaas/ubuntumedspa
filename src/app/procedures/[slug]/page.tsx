@@ -39,16 +39,16 @@ const featuredGuideSlugs: Record<string, string> = {
 };
 const featuredGuideCopy: Record<string, { button: string; heading: string; description: string; linkLabel: string }> = {
   botox: {
-    button: "Botox vs Xeomin Guide",
-    heading: "Still deciding between Botox and Xeomin?",
-    description: "Review differences in timing, treatment planning, and candidacy before your appointment.",
-    linkLabel: "Read the Botox vs Xeomin article",
+    button: "Xeomin vs Botox Guide",
+    heading: "Had Botox® before and wondering how Xeomin compares?",
+    description: "We use Xeomin® only. Review how it compares with Botox® on timing, dosing units, and treatment planning before your appointment.",
+    linkLabel: "Read the Xeomin vs Botox article",
   },
   xeomin: {
-    button: "Botox vs Xeomin Guide",
-    heading: "Still deciding between Xeomin and Botox?",
-    description: "Review differences in timing, treatment planning, and candidacy before your appointment.",
-    linkLabel: "Read the Botox vs Xeomin article",
+    button: "Xeomin vs Botox Guide",
+    heading: "Comparing Xeomin with Botox®?",
+    description: "We use Xeomin® only. Review how it compares with Botox® on timing, dosing units, and treatment planning before your appointment.",
+    linkLabel: "Read the Xeomin vs Botox article",
   },
   "oh-shot": {
     button: "OH-Shot Bladder Leakage Guide",
@@ -79,7 +79,7 @@ const relatedProcedureLinks: Record<string, Array<{ href: string; label: string 
     { href: "/procedures/hyperhidrosis-treatment", label: "sweating treatment" },
   ],
   xeomin: [
-    { href: "/procedures/botox", label: "Botox" },
+    { href: "/procedures/botox", label: "Botox alternative in Williamsburg" },
     { href: "/procedures/hyperhidrosis-treatment", label: "sweating treatment" },
   ],
   "prp-facial": [
@@ -145,15 +145,19 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
 
   const procedure = procedures.find((procedure) => procedure.slug === slug);
   if (!procedure) return notFound();
-  const catalogItem = getCatalogConfigBySlug(slug);
+  // The /procedures/botox page is the Botox-alternative page: it sells the Xeomin item (the clinic does not offer Botox brand).
+  const catalogItem = getCatalogConfigBySlug(("catalogSlug" in procedure && procedure.catalogSlug) || slug);
   const heroImagePath = catalogItem?.imagePath;
   const publishedAilments = await getPublishedAilmentsForProcedure(procedure.slug);
   const articles = (await getPublishedBlogPosts())
-    .filter(({ tags }) => tags?.includes(procedure.name))
+    .filter(({ tags }) => tags?.includes(procedure.slug === "botox" ? "Botox" : procedure.name))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   const hasAilments = Boolean(publishedAilments.length);
   const showOShotCredential = procedure.slug === "oh-shot";
-  const pageHeading = procedure.seo?.title?.split("|")[0].trim() || `${procedure.name} in Williamsburg, VA`;
+  const pageHeading =
+    (procedure.seo && "h1" in procedure.seo ? procedure.seo.h1 : undefined) ||
+    procedure.seo?.title?.split("|")[0].trim() ||
+    `${procedure.name} in Williamsburg, VA`;
   const featuredGuide = articles.find((article) => article.slug === featuredGuideSlugs[procedure.slug]);
   const featuredGuideCta = featuredGuide ? featuredGuideCopy[procedure.slug] : undefined;
   const relatedLinks = relatedProcedureLinks[procedure.slug] ?? [];
@@ -213,7 +217,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                   ["Treatment areas", "#applications"],
                   ["Pricing", "#pricing"],
                   ["FAQs", "#faqs"],
-                  ["Botox vs Xeomin", "/blog/botox-vs-xeomin-williamsburg-va"],
+                  ["Xeomin vs Botox", "/blog/botox-vs-xeomin-williamsburg-va"],
                 ].map(([label, href]) => (
                   <Link
                     key={href}
@@ -498,6 +502,9 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
 
         <section className="mx-auto mt-10 max-w-4xl text-left">
           <p className="text-base leading-relaxed text-base-content/75">{humanizeMedicalCopy(procedure.description)}</p>
+          {"trademarkNote" in procedure && procedure.trademarkNote && (
+            <p className="mt-3 text-xs leading-relaxed text-base-content/60">{procedure.trademarkNote}</p>
+          )}
           {procedure.slug !== "prp-breast-lift" && procedure.slug !== "prp-hair-restoration" && (
             <p className="mt-3 text-sm leading-relaxed text-base-content/65">{consultationSupportCopy}</p>
           )}

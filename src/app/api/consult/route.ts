@@ -3,7 +3,7 @@ import * as yup from "yup";
 
 import { AFFILIATE_REFERRAL_COOKIE, parseAffiliateCodeCookie } from "lib/affiliates";
 import { getAffiliateByCode } from "lib/affiliates.server";
-import { normalizeIntimacyProcedureNames } from "lib/intimacy-aliases";
+import { normalizeConsultInterests } from "lib/consult-procedure-interests";
 import { getMailConfig, sendMail } from "lib/mailer";
 import { createConsultRequest, updateConsultNotificationStatus } from "lib/consults";
 
@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
       abortEarly: false,
       stripUnknown: true,
     });
-    const normalizedInterests = normalizeIntimacyProcedureNames(interests);
+    const normalizedInterests = normalizeConsultInterests(interests);
     const affiliateCodeFromCookie = parseAffiliateCodeCookie(req.cookies.get(AFFILIATE_REFERRAL_COOKIE)?.value);
     const resolvedAffiliate =
       affiliateCode || affiliateCodeFromCookie ? await getAffiliateByCode(affiliateCode || affiliateCodeFromCookie || "") : null;

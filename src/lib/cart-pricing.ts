@@ -5,7 +5,7 @@ import type { CatalogItemConfig } from "config/commerce-catalog";
  *
  * unitAmountCents / lineTotalCents are card / online amounts: what Stripe checkout charges.
  * cashUnitAmountCents / cashLineTotalCents are the listed cash amounts. Increment-credit items
- * (Botox, Xeomin) credit the cash value to the account, not the card amount.
+ * (Xeomin) credit the cash value to the account, not the card amount.
  */
 export type CartItemPricing = {
   unitAmountCents: number;

@@ -22,18 +22,18 @@ export default function BotoxPartyCallout() {
         </div>
 
         <div className="max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Botox Party</p>
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Wrinkle Relaxer Party</p>
 
           <h2
             id="botox-party-callout-heading"
             className="font-display mt-3 max-w-xl text-3xl font-medium leading-[1.15] tracking-tight text-base-content text-balance md:text-4xl"
           >
-            Host a Botox party and make your own treatment free.
+            Host a wrinkle relaxer party and earn Xeomin credit for your own treatment.
           </h2>
 
           <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-base-content/85 md:text-lg">
-            Bring 5 or more paid Botox guests and the host&apos;s Botox is free. Every additional 5 paid Botox
-            guests unlocks more free products and procedure credits.
+            We use Xeomin®, a Botox® alternative. Bring 5 or more paid Xeomin guests and the host earns Xeomin credit
+            for their own treatment. Every additional 5 paid Xeomin guests unlocks more free products and procedure credits.
           </p>
 
           <p className="mt-4 max-w-[62ch] text-sm leading-relaxed text-base-content/80 md:text-base">
@@ -43,10 +43,10 @@ export default function BotoxPartyCallout() {
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button asChild className="w-full sm:w-auto">
-              <Link href={botoxPartyEvent.canonicalPath}>Plan a Botox Party</Link>
+              <Link href={botoxPartyEvent.canonicalPath}>Plan a Wrinkle Relaxer Party</Link>
             </Button>
             <Button asChild variant="secondary" className="w-full sm:w-auto">
-              <Link href="/procedures/botox">See Botox Details</Link>
+              <Link href="/procedures/xeomin">See Xeomin Details</Link>
             </Button>
           </div>
         </div>

@@ -7,9 +7,9 @@ import { buildPageMetadata } from "lib/metadata";
 import Link from "next/link";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near James City County, VA | Botox, Xeomin & PRP",
+  title: "Med Spa Near James City County, VA | Xeomin, a Botox Alternative",
   description:
-    "Compare consultation-led Botox, Xeomin, PRP hair restoration, hyperhidrosis care, and Blomdahl ear piercing near James City County, VA.",
+    "Consultation-led Xeomin® (a Botox® alternative), PRP hair restoration, hyperhidrosis care, and Blomdahl ear piercing near James City County, VA.",
   canonical: "/locations/james-city-county-va",
 });
 
@@ -18,13 +18,13 @@ const neighborhoods = ["Norge", "Toano", "Lightfoot", "Greensprings", "New Town"
 const serviceLinks = [
   {
     href: "/procedures/botox",
-    label: "Botox",
-    note: "Start here for movement-related forehead lines, frown lines, and crow's-feet questions.",
+    label: "Botox alternative in Williamsburg",
+    note: "Searching for Botox? We use Xeomin®, a wrinkle relaxer in the same category, for forehead lines, frown lines, and crow's feet.",
   },
   {
     href: "/procedures/xeomin",
     label: "Xeomin",
-    note: "Compare another consultation-led wrinkle-relaxer option for facial movement concerns.",
+    note: "Our consultation-led wrinkle relaxer for movement-related facial lines.",
   },
   {
     href: "/procedures/prp-hair-restoration",
@@ -82,8 +82,8 @@ export default function JamesCityCountyPage() {
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">James City County service area</p>
           <h1 className="max-w-3xl text-4xl font-light leading-tight sm:text-5xl">Med Spa Near James City County, VA</h1>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-base-content/75">
-            Compare consultation-led Botox, Xeomin, PRP hair restoration, hyperhidrosis care, and Blomdahl medical ear
-            piercing at the Williamsburg clinic near New Town.
+            Compare consultation-led Xeomin (our wrinkle relaxer), PRP hair restoration, hyperhidrosis care, and Blomdahl
+            medical ear piercing at the Williamsburg clinic near New Town.
           </p>
           <p className="mt-4 max-w-3xl leading-relaxed text-base-content/75">
             Your best first visit depends on what you want to improve. Start with a specific treatment page when you know
