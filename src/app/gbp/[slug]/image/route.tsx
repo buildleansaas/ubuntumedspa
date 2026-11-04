@@ -9,8 +9,9 @@ export function generateStaticParams() {
   return GBP_POSTS.map((post) => ({ slug: post.slug }));
 }
 
-export async function GET(_request: Request, { params }: { params: { slug: string } }) {
-  const post = getGbpPost(params.slug);
+export async function GET(_request: Request, { params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getGbpPost(slug);
   if (!post) {
     return new Response("Not found", { status: 404 });
   }

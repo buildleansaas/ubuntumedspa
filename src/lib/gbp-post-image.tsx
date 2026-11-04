@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { ImageResponse } from "next/server";
+import { ImageResponse } from "next/og";
 import type { GbpHoliday, GbpTemplate } from "config/gbp-posts";
 import { SOCIAL_LOGO_DATA_URI } from "lib/socialLogo";
 

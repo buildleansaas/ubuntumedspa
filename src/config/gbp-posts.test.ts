@@ -6,6 +6,7 @@ import test from "node:test";
 import { procedures } from "../data";
 import { publishedEarPiercingIntentPages } from "../lib/ear-piercing-intents";
 import { cardQuantityBreakLineCents, formatUsdShort } from "../lib/price";
+import { GOOGLE_REVIEW_URL } from "../lib/seo";
 import { COMMERCE_CATALOG } from "./commerce-catalog";
 import { GBP_HOLIDAYS, GBP_POSTS, GBP_TEMPLATES } from "./gbp-posts";
 
@@ -17,7 +18,7 @@ const STATIC_PAGES = new Set([
   "/blog",
   "/procedures",
   "/products",
-  "/staff/jenny-coleman",
+  "/staff/jenny-brady",
   "/locations",
   "/locations/williamsburg-va",
   "/events",
@@ -113,6 +114,10 @@ test("every URL is on www.williamsburgmedspa.com and maps to an existing route",
   const intentSlugs = new Set(publishedEarPiercingIntentPages.map((page) => page.slug));
 
   for (const post of GBP_POSTS) {
+    if (post.url === GOOGLE_REVIEW_URL) {
+      assert.equal(post.slug, "thank-you-for-your-reviews", `${post.slug}: only the reviews post links to the review form`);
+      continue;
+    }
     const url = new URL(post.url);
     assert.equal(url.protocol, "https:", post.slug);
     assert.equal(url.host, SITE_HOST, post.slug);
@@ -160,8 +165,37 @@ test("every $ amount equals a price derived from the catalog helpers", () => {
   assert.ok(checked > 0, "at least one price is checked");
 });
 
-test("price chips put the card price first and the cash price second", () => {
+test("price chips put the cash price first and the card price second", () => {
   for (const post of GBP_POSTS.filter((p) => p.priceLine)) {
-    assert.match(post.priceLine ?? "", /^\$[\d,.]+\+? card · \$[\d,.]+\+? cash/, post.slug);
+    assert.match(post.priceLine ?? "", /^\$[\d,.]+\+? cash · \$[\d,.]+\+? card/, post.slug);
+  }
+});
+
+test("body prices name the cash price before the card price", () => {
+  for (const post of GBP_POSTS) {
+    for (const sentence of post.body.split(/(?<=\.)\s+/).filter((part) => /\bcash\b/.test(part) && /\bcard\b/.test(part))) {
+      assert.ok(sentence.indexOf("cash") < sentence.indexOf("card"), `${post.slug}: cash first in "${sentence}"`);
+    }
+  }
+});
+
+test("posts use the current provider name, drop filler, and carry no phone numbers in the text", () => {
+  for (const post of GBP_POSTS) {
+    const text = postText(post);
+    assert.doesNotMatch(text, /Coleman/, `${post.slug} uses the old surname`);
+    assert.doesNotMatch(text, /filler/i, `${post.slug} mentions filler, which is no longer offered`);
+    assert.doesNotMatch(text, /\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}/, `${post.slug} has a phone number in the text`);
+  }
+});
+
+test("the hyperhidrosis post names no product", () => {
+  const post = GBP_POSTS.find((p) => p.slug === "hyperhidrosis-treatment");
+  assert.ok(post);
+  assert.doesNotMatch(postText(post), /Botox|Xeomin|Dysport|botulinum/i);
+});
+
+test("posts that name Botox® or Xeomin® state the side effects", () => {
+  for (const post of GBP_POSTS.filter((p) => /Botox|Xeomin/.test(p.body) && p.template !== "trust")) {
+    assert.match(post.body, /side effects/i, `${post.slug} has no risk line`);
   }
 });
