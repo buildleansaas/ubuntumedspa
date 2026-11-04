@@ -9,7 +9,6 @@ import { CopyButton } from "./copy-button";
 export const metadata: Metadata = {
   title: "Google post preview | Williamsburg Med Spa",
   robots: { index: false, follow: false },
-  alternates: { canonical: "/gbp" },
 };
 
 const CTA_LABELS: Record<GbpCta, string> = {
@@ -73,9 +72,13 @@ export default function GbpPreviewPage() {
                     Button: <strong>{CTA_LABELS[post.cta]}</strong> ({post.cta})
                   </span>
                 </div>
-                <a href={post.url} className="break-all text-sm underline" target="_blank" rel="noreferrer">
-                  {post.url}
-                </a>
+                {post.cta === "CALL" ? (
+                  <p className="text-sm text-base-content/70">No link: Call now dials the profile&apos;s phone number.</p>
+                ) : (
+                  <a href={post.url} className="break-all text-sm underline" target="_blank" rel="noreferrer">
+                    {post.url}
+                  </a>
+                )}
               </div>
             </div>
           </li>
