@@ -8,7 +8,7 @@ import { buildPageMetadata } from "lib/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near Yorktown, VA | Xeomin, a Botox Alternative",
   description:
-    "Visit Williamsburg Med Spa from Yorktown for Xeomin® (a Botox® alternative), PRP therapies, hyperhidrosis care, and Blomdahl medical ear piercing near Williamsburg.",
+    "Visit Williamsburg Med Spa from Yorktown for Xeomin® (a Botox® alternative), PRP therapies, hyperhidrosis care, and Blomdahl medical ear piercing.",
   canonical: "/locations/yorktown-va",
 });
 

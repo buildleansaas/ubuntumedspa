@@ -10,9 +10,9 @@ const xeominCash = formatUsdShort(25000);
 const xeominCard = cardPriceLabel(25000);
 
 export const metadata: Metadata = buildPageMetadata({
-  title: `Botox Alternative Near Newport News | Xeomin® ${formatUsdShort(25000)}, Williamsburg`,
+  title: "Med Spa Newport News | Xeomin, a Botox Alternative",
   description:
-    `Med spa Newport News patients drive about 25 minutes to our Williamsburg clinic for Xeomin® (a Botox® alternative, ${formatUsdShort(25000)} cash), PRP, and ear piercing.`,
+    `Med spa Newport News patients drive 25–35 minutes to our Williamsburg clinic for Xeomin® (a Botox® alternative, ${formatUsdShort(25000)} cash), PRP, and ear piercing.`,
   canonical: "/locations/newport-news-va",
 });
 
@@ -32,7 +32,7 @@ const faqs = [
   {
     question: "Do you offer Botox for Newport News patients?",
     answer:
-      "No. Williamsburg Med Spa uses Xeomin, a wrinkle relaxer in the same category as Botox, and does not offer Botox brand. Units are not interchangeable, so your consultation compares the full Xeomin plan with any prior treatment you have had.",
+      "No. Williamsburg Med Spa uses Xeomin, a wrinkle relaxer in the same category as Botox, and does not offer Botox® brand. Units are not interchangeable, so your consultation compares the full Xeomin plan with any prior treatment you have had.",
   },
   {
     question: "Where is the appointment located?",
@@ -111,11 +111,11 @@ export default function NewportNewsPage() {
 
       <section id="wrinkle-relaxer" className="mb-10 md:mb-12 border border-base-300 p-6 md:p-8 scroll-mt-24">
         <p className="text-sm uppercase tracking-[0.18em] text-primary mb-2">Looking for Botox near Newport News?</p>
-        <h2 className="text-2xl md:text-3xl font-light mb-3">Xeomin®, our wrinkle relaxer, about 25 minutes away</h2>
+        <h2 className="text-2xl md:text-3xl font-light mb-3">Xeomin®, our wrinkle relaxer, 25–35 minutes away</h2>
         <p className="text-base md:text-lg text-base-content/80 mb-3">
           Williamsburg Med Spa does not offer Botox® brand. We use Xeomin®, a wrinkle relaxer in the same treatment
           category, for frown lines, forehead lines, and crow&apos;s feet. It is {xeominCash} cash per credit block
-          ({xeominCard} card/online). The clinic on Powhatan Parkway is about a 25-minute drive from Newport News.
+          ({xeominCard} card/online). The clinic on Powhatan Parkway is typically a 25–35 minute drive from Newport News.
         </p>
         <p className="text-base text-base-content/75">
           Read about our{" "}

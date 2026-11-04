@@ -150,7 +150,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
   const heroImagePath = catalogItem?.imagePath;
   const publishedAilments = await getPublishedAilmentsForProcedure(procedure.slug);
   const articles = (await getPublishedBlogPosts())
-    .filter(({ tags }) => tags?.includes(procedure.slug === "botox" ? "Botox" : procedure.name))
+    .filter(({ tags }) => tags?.includes(procedure.slug === "botox" ? "Botox Alternative" : procedure.name))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   const hasAilments = Boolean(publishedAilments.length);
   const showOShotCredential = procedure.slug === "oh-shot";

@@ -1,8 +1,8 @@
 import { COMMERCE_CATALOG_BY_SLUG } from "config/commerce-catalog";
 import { cardPriceLabel, formatUsdShort } from "lib/price";
 
-// The clinic's only wrinkle relaxer is Xeomin; it does not offer Botox brand. The "botox" entry below is the
-// Botox-alternative page for people searching "Botox" (these /near/williamsburg-va URLs redirect to the main pages).
+// The clinic's only wrinkle relaxer is Xeomin; it does not offer Botox® brand. The botox-slug entry below is the
+// Botox-alternative page for people searching for Botox (these /near/williamsburg-va URLs redirect to the main pages).
 const xeominBlockCashCents = COMMERCE_CATALOG_BY_SLUG.xeomin.cashAmountCents;
 const xeominBlock = formatUsdShort(xeominBlockCashCents);
 const xeominBlockPrices = `${xeominBlock} cash, ${cardPriceLabel(xeominBlockCashCents)} online by card`;
@@ -69,7 +69,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     title: "Botox Alternative in Williamsburg, VA: Xeomin®",
     metaTitle: "Botox Alternative in Williamsburg, VA | Xeomin® for Frown Lines & Crow's Feet",
     metaDescription:
-      `Looking for Botox in Williamsburg, VA? We use Xeomin®, a wrinkle relaxer in the same category, for forehead lines, frown lines, and crow's feet. ${xeominBlock} cash per credit block.`,
+      `Looking for Botox in Williamsburg, VA? We use Xeomin®, a wrinkle relaxer in the same category, for frown lines and crow's feet. ${xeominBlock} cash per credit block.`,
     intro:
       "Williamsburg Med Spa does not offer Botox® brand. Our wrinkle relaxer is Xeomin®, planned conservatively for frown lines, forehead lines, crow's feet, and natural-looking movement.",
     whyLocal:
@@ -79,7 +79,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     trustNote:
       "Jenny Brady, MSN, RN, CPNP, PMHS reviews your expression, goals, prior injectable history, timing, comfort level, and budget before recommending Xeomin or another option.",
     consultNote:
-      "During consultation, Jenny reviews your face at rest and with movement, prior injectable history (including any Botox® elsewhere), upcoming events, and medication history before planning Xeomin.",
+      "During consultation, Jenny reviews your face at rest and with movement, prior injectable history (including whether you have had Botox® elsewhere), upcoming events, and medication history before planning Xeomin.",
     heroImage: {
       src: "/procedure/williamsburg-botox-jenny-ai-consultation.webp",
       alt: "Jenny Brady reviewing Xeomin wrinkle-relaxer planning at Williamsburg Med Spa",
@@ -224,7 +224,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     trustNote:
       "Jenny Brady uses a conservative consultation-first approach so neuromodulator treatment is matched to your expression pattern, comfort level, and natural-looking goals.",
     consultNote:
-      "During consultation, Jenny reviews your past response to neuromodulators, desired movement, timeline, medical history, and how any prior Botox® treatment elsewhere compares.",
+      "During consultation, Jenny reviews your past response to neuromodulators, desired movement, timeline, medical history, and how Xeomin compares with any treatment you have had elsewhere.",
     faqs: [
       {
         question: "Is Xeomin different from Botox®?",

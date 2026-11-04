@@ -1196,7 +1196,7 @@ if (botoxPage) {
   if (!/We use Xeomin®/.test(botoxSnippet.description) || !/\$250 cash/.test(botoxSnippet.description)) {
     fail("Botox-alternative meta dropped Xeomin or the cash price");
   }
-  if (!botoxPage.html.includes("Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand.")) {
+  if (!botoxPage.html.includes("Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand.")) {
     fail("Botox-alternative page is missing the trademark disclaimer");
   }
   // The Botox-alternative page sells the Xeomin item; the "botox" catalog item was removed.
@@ -1223,13 +1223,16 @@ if (botoxParty && /free Botox|Botox party/i.test(getVisibleText(botoxParty.html)
   fail("wrinkle relaxer party page still offers Botox");
 }
 const newportNewsSnippet = readSnippet(newportNews);
-if (newportNewsSnippet.title !== "Botox Alternative Near Newport News | Xeomin® $250, Williamsburg") {
+if (newportNewsSnippet.title !== "Med Spa Newport News | Xeomin, a Botox Alternative") {
   fail(`Newport News title is ${JSON.stringify(newportNewsSnippet.title)}`);
+}
+if (!/25–35 minute drive from Newport News/.test(getVisibleText(newportNews))) {
+  fail("Newport News wrinkle-relaxer section drive time drifted from the 25–35 minutes on /locations");
 }
 if (!/There is no Newport News street address/.test(newportNews)) {
   fail("Newport News page does not say there is no Newport News street address");
 }
-if (!/Med spa Newport News/i.test(newportNewsSnippet.description) || !/Botox/.test(newportNewsSnippet.description)) {
+if (!/Med spa Newport News/i.test(newportNewsSnippet.description) || !/Botox/.test(newportNewsSnippet.description) || !/25–35 minutes/.test(newportNewsSnippet.description)) {
   fail("Newport News meta does not target med spa and Botox");
 }
 if (!/does not offer Hydrafacial/.test(home)) fail("homepage does not disambiguate Hydrafacial");

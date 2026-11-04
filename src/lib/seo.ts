@@ -1,6 +1,6 @@
 import { formatUsdShort } from "./price";
 
-// The clinic's only wrinkle relaxer is Xeomin. It does not offer Botox brand; "Botox" appears only as the searched-for term.
+// The clinic's only wrinkle relaxer is Xeomin. It does not offer Botox® brand.
 export const DEFAULT_TITLE = "Medical Spa Williamsburg VA | Xeomin (Botox Alternative) & PRP";
 export const DEFAULT_DESCRIPTION = `Nurse-led med spa on Powhatan Pkwy. Xeomin® wrinkle relaxer (a Botox® alternative) from ${formatUsdShort(25000)} cash, PRP, and Blomdahl ear piercing.`;
 

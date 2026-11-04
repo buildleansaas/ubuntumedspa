@@ -1609,8 +1609,10 @@ export const procedures = [
     ],
   },
   {
-    // URL /procedures/botox is kept for people searching "Botox". The clinic does not offer Botox brand:
-    // its only wrinkle relaxer is Xeomin, so this is the honest Botox-alternative page and it sells the Xeomin item.
+    // The /procedures/botox URL is kept for people searching for Botox. The clinic does not offer Botox® brand: its only
+    // wrinkle relaxer is Xeomin. The /procedures/botox page is the Botox-alternative page and its purchase panel sells
+    // the Xeomin catalog item (catalogSlug). The /procedures listing card for this entry links to that page and has no
+    // buy button of its own, so the listing never shows two Xeomin buy buttons side by side.
     name: "Botox Alternative (Xeomin)",
     slug: "botox",
     published: true,
@@ -1629,10 +1631,10 @@ export const procedures = [
     image: "/procedure/blomdahl-family-ear-piercing-consult-jenny.webp",
     price: `${formatUsdShort(25000)} credit blocks · ${cashCardLabel(25000)}`,
     trademarkNote:
-      "Botox® is a registered trademark of Allergan Aesthetics, an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand.",
+      "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand.",
     // programmatic SEO copy
     blogHeadline:
-      "Comparing a Botox-style wrinkle relaxer in Williamsburg? Review Xeomin timing, common treatment areas, aftercare, and our Xeomin vs Botox guide before you book.",
+      "Looking for Botox in Williamsburg? Review Xeomin timing, common treatment areas, aftercare, and our Xeomin vs Botox guide before you book.",
     benefitsHeadline:
       "Xeomin is a wrinkle relaxer in the same category as Botox®. It is often used to soften dynamic lines while keeping facial movement balanced and results appropriate to your goals.",
     benefits: [

@@ -172,7 +172,7 @@ const buildWrinkleRelaxerPartyAddOnOptionGroups = (): EventOptionGroup[] => {
   ].filter((group) => group.options.length > 0);
 };
 
-// URL slug "botox-party" is kept for existing links; the event is a Xeomin wrinkle relaxer party (no Botox brand here).
+// URL slug "botox-party" is kept for existing links; the event is a Xeomin wrinkle relaxer party (the clinic does not offer Botox® brand).
 const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
   slug: "botox-party",
   title: "Wrinkle Relaxer Party",
@@ -180,7 +180,7 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
   canonicalPath: "/events/botox-party",
   metadataTitle: "Plan a Private Friend Party | Williamsburg Med Spa",
   metadataDescription:
-    "Host a wrinkle relaxer party in Williamsburg, VA. We use Xeomin®, a Botox® alternative. Bring paid Xeomin guests and introduce friends to PRP, skin, and product options.",
+    "Host a wrinkle relaxer party in Williamsburg, VA. We use Xeomin®, a Botox® alternative. Bring paid Xeomin guests and introduce friends to PRP and skin care.",
   heroImageSrc: "/events/botox-party-hero.webp",
   heroImageAlt: "A stylish group of women laughing together at an intimate outdoor wrinkle relaxer party",
   thumbnailImageSrc: "/events/botox-party-thumb.webp",
@@ -212,7 +212,7 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
       {
         eyebrow: "For curious friends",
         title: "Wrinkle relaxers are the easy first question",
-        description: "Most guests already know the idea of a wrinkle relaxer, often by the Botox® name. Xeomin is the one we use, and it is a natural starting point for a group event.",
+        description: "Most guests already know the idea of a wrinkle relaxer, often after searching for Botox®. Xeomin is the one we use, and it is a natural starting point for a group event.",
       },
       {
         eyebrow: "For the host",

@@ -69,7 +69,7 @@ export default function TermsPage() {
           OH-Shot and Pe-Shot are the names used for those PRP services at this clinic. Other pages describe
           Xeomin, PRP treatments, hyperhidrosis care, and Blomdahl ear piercing. A page describes only
           the service it is about. Our wrinkle relaxer is Xeomin®. Pages that mention Botox® do so only to compare it
-          with Xeomin; Botox® is a registered trademark of Allergan Aesthetics, an AbbVie company, and Williamsburg Med
+          with Xeomin or to help people searching for it find Xeomin; Botox® is a registered trademark of Allergan, Inc., an AbbVie company, and Williamsburg Med
           Spa is not affiliated with Allergan and does not offer Botox® brand.
         </p>
 
