@@ -1,5 +1,7 @@
 # Williamsburg Med Spa protected query-owner ledger
 
+Update 2026-11-04 (PR #155): the clinic uses only Xeomin (no Botox® brand) and no longer offers filler.
+
 Updated: 2026-07-20
 Status: active measurement contract
 Source change: [PR #68](https://github.com/buildleansaas/ubuntumedspa/pull/68)
@@ -81,6 +83,8 @@ Decision:
 - A future transfer to `/procedures/botox` must be a separate, reversible internal-link/intent test.
 - Do not remove Botox language from the homepage to force ownership.
 - Measure both URLs on every checkpoint.
+
+Update 2026-11-04 (PR #155, honesty change): the clinic uses only Xeomin and does not offer Botox® brand. This supersedes the two rules above ("A future transfer to `/procedures/botox` must be a separate, reversible internal-link/intent test" and "Do not remove Botox language from the homepage"). The homepage's Botox offer language was removed because it was false, not as an ownership test, and `/procedures/botox` is now the Botox-alternative (Xeomin) page. Botox offer language must not return to any page; Botox may appear only in four contexts: the search term ("Botox alternative"), a comparison, a "we do not offer Botox®" statement, or the trademark notice. Keep measuring both `/` and `/procedures/botox` for the botox queries on every checkpoint.
 
 ### Williamsburg dermal fillers
 

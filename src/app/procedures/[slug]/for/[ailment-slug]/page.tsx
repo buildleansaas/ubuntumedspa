@@ -218,13 +218,13 @@ export default async function AilmentPage(props: Params) {
         {procedure.slug === "botox" && (
           <section className="scroll-mt-28 max-w-3xl border-t border-base-300 py-16 md:py-24" id="botox-consultation">
             <div className="border border-base-300 bg-base-200 p-6 text-left md:p-10">
-              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Botox consultation</p>
+              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Wrinkle relaxer consultation</p>
               <h2 className="mt-3 text-2xl md:text-4xl mx-auto leading-tight pb-4 font-light">
-                Plan Botox around the area you actually want to treat
+                Plan Xeomin around the area you actually want to treat
               </h2>
               <p className="mx-auto max-w-3xl text-base md:text-lg text-base-content/80 leading-relaxed">
                 Jenny reviews movement, anatomy, prior treatment history, and your desired amount of expression before
-                recommending Botox, Xeomin, or a different plan. The visit is built around the specific area bothering
+                recommending Xeomin (our wrinkle relaxer and a Botox® alternative) or a different plan. The visit is built around the specific area bothering
                 you most, not a one-size-fits-all injection pattern.
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
@@ -232,10 +232,10 @@ export default async function AilmentPage(props: Params) {
                   <Link href="/consult">Book a Consultation</Link>
                 </Button>
                 <Button asChild variant="secondary">
-                  <Link href="/procedures/botox">Botox Details</Link>
+                  <Link href="/procedures/botox">Botox Alternative Details</Link>
                 </Button>
                 <Button asChild variant="outline">
-                  <Link href="/procedures/xeomin">Compare Xeomin</Link>
+                  <Link href="/procedures/xeomin">Xeomin Details</Link>
                 </Button>
                 <Button asChild variant="outline">
                   <Link href="/locations/williamsburg-va">Williamsburg Location</Link>

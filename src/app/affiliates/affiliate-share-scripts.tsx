@@ -15,7 +15,7 @@ const shareScripts = [
     title: "Text message to a friend",
     note: "Best for warm, personal referrals.",
     message: (url: string) =>
-      `Omg if you're thinking about Botox, Xeomin, or PRP, go see Jenny at Williamsburg Med Spa, you'll love her: ${url}`,
+      `Omg if you're thinking about a wrinkle relaxer (she uses Xeomin) or PRP, go see Jenny at Williamsburg Med Spa, you'll love her: ${url}`,
   },
   {
     title: "DM reply when someone asks who you trust",

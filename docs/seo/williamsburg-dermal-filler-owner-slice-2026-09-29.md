@@ -1,5 +1,7 @@
 # Dermal filler owner-transfer slice
 
+Update 2026-11-04 (PR #155): the clinic uses only Xeomin (no Botox® brand) and no longer offers filler.
+
 Date: 2026-09-29
 Owner URL: `https://www.williamsburgmedspa.com/procedures/filler`
 Parent sequence: James City County owner page, PR #75 (production D7 gate passed 2026-09-28)

@@ -5,7 +5,7 @@
 ## Product Overview
 **One-liner:** Williamsburg Med Spa is a Williamsburg, VA medical spa offering calm, medically grounded aesthetic, regenerative, intimate wellness, and medical ear piercing services with Jenny Brady, MSN, RN, CPNP, PMHS.
 
-**What it does:** The clinic helps local patients compare and plan treatments such as OH-Shot, PRP hair restoration, Pe-Shot, PRP therapies, Botox, Xeomin, hyperhidrosis treatment, and Blomdahl medical ear piercing. Content should help patients understand candidacy, alternatives, risks, and what to ask before booking. The clinic does not offer dermal filler or lip filler (removed 2026-11-03); never present it as a service.
+**What it does:** The clinic helps local patients compare and plan treatments such as OH-Shot, PRP hair restoration, Pe-Shot, PRP therapies, Xeomin, hyperhidrosis treatment, and Blomdahl medical ear piercing. Content should help patients understand candidacy, alternatives, risks, and what to ask before booking. The clinic does not offer dermal filler or lip filler (removed 2026-11-03); never present it as a service. The clinic uses only Xeomin; it does not offer Botox® brand (2026-11-04). Botox appears only as the search term ("Botox alternative"), a comparison, a "we do not offer Botox®" statement, or the trademark notice.
 
 **Product category:** Local medical spa, aesthetic clinic, regenerative PRP clinic, OH-Shot provider, medical ear piercing provider.
 
@@ -29,7 +29,7 @@
 - A woman comparing OH-Shot care for bladder leakage, dryness, sensitivity, or intimacy concerns.
 - A parent looking for medical-grade Blomdahl ear piercing for a child or baby.
 - A patient comparing PRP hair restoration with hair transplant surgery.
-- A patient comparing Botox, Xeomin, PRP, or hyperhidrosis treatment options near Williamsburg.
+- A patient searching for Botox who is looking for a Botox alternative, or comparing Xeomin, PRP, or hyperhidrosis treatment options near Williamsburg.
 
 ## Personas
 | Persona | Cares about | Challenge | Value we promise |

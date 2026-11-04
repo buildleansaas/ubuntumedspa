@@ -1,5 +1,7 @@
 # Newport News Growth Slice: Execution and Measurement Plan
 
+Update 2026-11-04 (PR #155): the clinic uses only Xeomin (no Botox® brand) and no longer offers filler.
+
 Date: 2026-07-20
 
 Owner URL: `https://www.williamsburgmedspa.com/locations/newport-news-va`

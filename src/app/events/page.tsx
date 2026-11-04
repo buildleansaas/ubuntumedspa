@@ -10,7 +10,7 @@ import { getPublishedEvents } from "lib/events";
 export const metadata: Metadata = buildPageMetadata({
   title: "Private Med Spa Parties in Williamsburg, VA",
   description:
-    "Plan a private party with friends at Williamsburg Med Spa. Botox treatment details stay on the Botox page; this page is for the event.",
+    "Plan a private wrinkle relaxer party with friends at Williamsburg Med Spa. We use Xeomin®, a Botox® alternative. This page is for the event.",
   canonical: "/events",
 });
 
@@ -24,27 +24,27 @@ export default function EventsPage() {
       <section className="mx-auto max-w-3xl text-left">
         <p className="mb-3 text-sm uppercase tracking-[0.18em] text-base-content/60">Private parties</p>
         <h1 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light leading-tight">
-          Host the Botox party your friends already keep asking about.
+          Host the wrinkle relaxer party your friends already keep asking about.
         </h1>
         <p className="mt-4 text-base md:text-lg text-base-content/70 max-w-3xl mx-auto">
-          Williamsburg Med Spa helps hosts turn real friend-group interest into a private, organized Botox-led event.
+          Williamsburg Med Spa helps hosts turn real friend-group interest into a private, organized Xeomin-led event. We use Xeomin®, a Botox® alternative.
           Guests can start with injectable questions, then learn what else may fit them, including PRP, skin, wellness,
           and medical-grade product options.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Button asChild>
-            <Link href="/events/botox-party">Plan a Botox Party</Link>
+            <Link href="/events/botox-party">Plan a Wrinkle Relaxer Party</Link>
           </Button>
           <Button asChild variant="secondary">
-            <Link href="/procedures/botox">Read About Botox</Link>
+            <Link href="/procedures/xeomin">Read About Xeomin</Link>
           </Button>
         </div>
       </section>
 
-      <section className="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-3" aria-label="Why host a Botox party">
+      <section className="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-3" aria-label="Why host a wrinkle relaxer party">
         {[
           ["Private group format", "Make the first step feel easier for friends who are curious but not ready to book alone."],
-          ["Botox-led gateway", "Keep the event focused on Botox while giving guests a natural way to ask about PRP and other services."],
+          ["Xeomin-led gateway", "Keep the event focused on Xeomin while giving guests a natural way to ask about PRP and other services."],
           ["Planning call first", "Share your guest count, timing, and location idea before anything is confirmed."],
         ].map(([title, description]) => (
           <div key={title} className="border border-base-300 bg-base-100 p-5">
