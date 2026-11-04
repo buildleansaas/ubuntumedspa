@@ -966,7 +966,7 @@ const ownerPageExpectations = {
       "Research suggests platelet-rich plasma may improve hair density for some people with pattern hair loss",
       "does not create new follicles in a bald area",
       "Medical evaluation may come first",
-      "$600 cash · $618.23 card/online per treatment",
+      "$600 per treatment cash · $618.23 card/online",
       "purchase one session and choose one appointment time after checkout",
       "For patients cleared to proceed",
       "Book a PRP Hair Consultation",

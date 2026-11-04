@@ -575,6 +575,7 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
                             <p className="text-[1.3rem] font-semibold leading-none tracking-tight text-base-content sm:text-[1.65rem]">
                               {formatUsd(item.lineTotalCents)}
                             </p>
+                            <p className="mt-1 text-xs text-base-content/55">online by card</p>
                           </div>
                         </div>
                       </div>

@@ -64,9 +64,9 @@ export const cardQuantityBreakLineCents = (cashBreakUnitCents: number, quantity:
 export const estimatedStripeFeeCents = (chargeCents: number) =>
   Math.round((chargeCents * STRIPE_PERCENT_FEE_BASIS_POINTS) / BASIS_POINTS) + STRIPE_FIXED_FEE_CENTS;
 
-/** "$45 cash · $46.66 card/online" (optional unit, e.g. "per treatment", goes after the card price). Cash leads. */
+/** "$45 cash · $46.66 card/online" (optional unit, e.g. "per treatment", goes after the cash price). Cash leads. */
 export const cashCardLabel = (cashCents: number, unit?: string) =>
-  `${formatUsdShort(cashCents)} cash · ${formatUsdShort(cardPriceCents(cashCents))} card/online${unit ? ` ${unit}` : ""}`;
+  `${formatUsdShort(cashCents)}${unit ? ` ${unit}` : ""} cash · ${formatUsdShort(cardPriceCents(cashCents))} card/online`;
 
 /** "$45 per ear in cash or $46.66 online by card" for prose (optional unit after the cash price). Cash leads. */
 export const cashCardProse = (cashCents: number, unit?: string) =>

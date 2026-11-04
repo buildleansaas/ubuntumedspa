@@ -175,11 +175,10 @@ test("display prices show the card price with the cash price, never as a fee", (
   for (const item of COMMERCE_CATALOG) {
     assert.ok(item.displayPrice.includes(formatUsdShort(item.unitAmountCents)), `${item.slug}: ${item.displayPrice}`);
     assert.ok(item.displayPrice.includes(`${formatUsdShort(item.cashAmountCents)}`), `${item.slug}: ${item.displayPrice}`);
-    assert.match(item.displayPrice, /cash · .*card\/online/);
-    assert.ok(
-      item.displayPrice.indexOf(formatUsdShort(item.cashAmountCents)) < item.displayPrice.indexOf(formatUsdShort(item.unitAmountCents)),
-      `${item.slug}: cash price must come first: ${item.displayPrice}`
-    );
+    // After any "$250 credit blocks · " prefix, the label starts with the cash price and ends with the card price.
+    const label = item.displayPrice.replace(/^\$[\d,]+ credit blocks · /, "");
+    assert.ok(label.startsWith(formatUsdShort(item.cashAmountCents)), `${item.slug}: cash price must come first: ${item.displayPrice}`);
+    assert.match(label, /cash · .*card\/online$/, item.slug);
     assert.doesNotMatch(item.displayPrice, /fee|surcharge/i);
   }
 
@@ -225,4 +224,32 @@ test("literal cash/card price pairs in copy and SEO checks use the computed card
   }
 
   assert.ok(pairs >= 4, `expected literal price pairs in verify-seo.mjs, found ${pairs}`);
+});
+
+test("templated prose names the cash price before the card price on every line that has both", () => {
+  const files = [
+    "src/app/procedures/[slug]/page.tsx",
+    "src/app/procedures/blomdahl-ear-piercing/for/[intentSlug]/page.tsx",
+    "src/components/catalog-add-to-cart-control.tsx",
+    "src/config/commerce-catalog.ts",
+    "src/data.ts",
+    "src/lib/ear-piercing-intents.ts",
+    "src/lib/local-injectable-service-pages.ts",
+    "src/markdown/planning-holiday-ear-piercing-williamsburg-va.mdx",
+  ];
+  const cashToken = /(?:oneEarCash|bothEarsCash|earBothCash|creditBlockCash|botoxBlock\b|formatUsdShort\(\d+\)|cashLineTotalCents)/;
+  const cardToken = /(?:oneEarCard|bothEarsCard|earBothCard|creditBlockCard|cardPriceLabel\(|lineTotalCents\)\} card)/;
+  let lines = 0;
+  for (const file of files) {
+    readFileSync(join(process.cwd(), file), "utf8")
+      .split("\n")
+      .forEach((line, index) => {
+        const cash = line.search(cashToken);
+        const card = line.search(cardToken);
+        if (cash === -1 || card === -1) return;
+        lines += 1;
+        assert.ok(cash < card, `${file}:${index + 1} lists the card price before the cash price`);
+      });
+  }
+  assert.ok(lines >= 8, `expected at least 8 lines with both prices, found ${lines}`);
 });
