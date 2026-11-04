@@ -771,10 +771,6 @@ for (const [path, expectedTitle, expectedH1, required] of serviceSatelliteExpect
   const hubPage = pages.find((candidate) => normalizePath(candidate.canonicalUrl) === hub);
   if (hubPage && !new RegExp(`href=["']${path}["']`).test(hubPage.html)) fail(`${hub} does not link to its satellite ${path}`);
 }
-const hyperhidrosisHub = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/hyperhidrosis-treatment");
-if (hyperhidrosisHub && !hyperhidrosisHub.html.includes("Does insurance cover hyperhidrosis treatment?")) {
-  fail("hyperhidrosis hub is missing the insurance and prior authorization FAQ");
-}
 const prpFacialHub = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/prp-facial");
 if (prpFacialHub && !/href=["']\/blog\/hydrafacial-alternatives-in-williamsburg-va["'][^>]*>HydraFacial alternatives in Williamsburg</.test(prpFacialHub.html)) {
   fail("PRP Facial hub does not link to the HydraFacial alternatives guide");

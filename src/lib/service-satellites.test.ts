@@ -12,6 +12,7 @@ import {
   getSatelliteLinks,
   HYPERHIDROSIS_SIDE_EFFECTS,
   hubPath,
+  PALM_WEAKNESS_NOTE,
   PENINSULA_DRIVE_TIME,
   SATELLITE_TEMPLATE_COPY,
   satellitePath,
@@ -199,7 +200,12 @@ test("FAQ schema matches the visible FAQs: one list feeds both, questions are un
 test("hyperhidrosis pages use the hub's side-effect wording and stay conservative", () => {
   assert.match(HYPERHIDROSIS_SIDE_EFFECTS, /^Temporary injection-site tenderness, bruising, or localized weakness can happen\./);
   for (const page of serviceSatellitePages.filter((item) => item.hubSlug === "hyperhidrosis-treatment")) {
-    assert.equal(page.safety?.body, HYPERHIDROSIS_SIDE_EFFECTS, satellitePath(page));
+    assert.ok(page.safety?.body.startsWith(HYPERHIDROSIS_SIDE_EFFECTS), satellitePath(page));
+    // The hand-muscle weakness note is on the palms page only.
+    assert.equal(visibleCopy(page).includes(PALM_WEAKNESS_NOTE), page.slug === "sweaty-palms", satellitePath(page));
+    if (page.slug !== "sweaty-feet") assert.ok(visibleCopy(page).includes("your body can still sweat normally in other areas"), satellitePath(page));
+    assert.doesNotMatch(visibleCopy(page), /still sweats normally|keeps sweating/, satellitePath(page));
+    assert.doesNotMatch(visibleCopy(page), /one clinic location|confirm the price/i, satellitePath(page));
     assert.ok(page.faqs.some((faq) => faq.answer === HYPERHIDROSIS_SIDE_EFFECTS), satellitePath(page));
     const copy = visibleCopy(page);
     assert.doesNotMatch(copy, /\b(?:cure|cures|permanent|guarantee[ds]?|stop sweating|no more sweat|100%|eliminat)/i, satellitePath(page));
@@ -208,24 +214,15 @@ test("hyperhidrosis pages use the hub's side-effect wording and stay conservativ
   }
 });
 
-test("hyperhidrosis hub has a generic insurance FAQ that makes no billing or payment-policy claim", () => {
-  const hub = procedures.find((procedure) => procedure.slug === "hyperhidrosis-treatment");
-  assert.ok(hub);
-  const faq = hub.faqs.find((item) => item.question === "Does insurance cover hyperhidrosis treatment?");
-  assert.ok(faq);
-  assert.match(faq.answer, /^Some insurance plans cover hyperhidrosis treatment with prior authorization\./);
-  assert.doesNotMatch(faq.answer, /cash-pay|we (bill|accept)|receipt/i);
-  assert.match(faq.answer, /prior authorization/);
-  assert.match(faq.answer, /ask your insurer/i);
-  assert.doesNotMatch(faq.answer, /we (?:bill|accept|file|submit)|in-network|covered by most|will be covered/i);
-});
-
 test("near pages use the /locations drive time and never invent a local office", () => {
   assert.match(read("src/app/locations/page.tsx"), /Typically 25–35 minutes/);
   for (const page of serviceSatellitePages.filter((item) => item.kind === "near")) {
     const copy = visibleCopy(page);
     assert.ok(copy.includes(PENINSULA_DRIVE_TIME), satellitePath(page));
-    assert.ok(copy.includes(`There is no ${page.label} office.`), satellitePath(page));
+    assert.ok(
+      copy.includes("There is no Newport News street address.") || copy.includes("The clinic is in Williamsburg, not Yorktown."),
+      satellitePath(page)
+    );
     assert.ok(copy.includes("3900 Powhatan Parkway, Williamsburg, VA 23188"), satellitePath(page));
     assert.doesNotMatch(copy, new RegExp(`${page.label}, VA 23\\d{3}`), `${satellitePath(page)} invented a local address`);
   }
@@ -275,4 +272,40 @@ test("facials: PRP Facial hub links the HydraFacial guide, and the guide links b
   // Published posts are in the sitemap (sitemap.ts maps getPublishedBlogPosts) and indexable (robots only when unpublished).
   assert.match(read("src/app/sitemap.ts"), /\.\.\.articles\.map\(/);
   assert.match(read("src/app/blog/[slug]/page.tsx"), /robots: metadata\.published \? undefined : \{ index: false, follow: false \}/);
+});
+
+test("hyperhidrosis hub ailment cards make no outcome promises, and there is no insurance FAQ", () => {
+  const hub = procedures.find((procedure) => procedure.slug === "hyperhidrosis-treatment");
+  assert.ok(hub);
+  for (const ailment of hub.ailments) {
+    assert.doesNotMatch(`${ailment.title} ${ailment.description}`, /drier|confiden|enjoy|goodbye|freedom|no more|stop sweating/i, ailment.slug);
+  }
+  assert.doesNotMatch(JSON.stringify(hub), /insur/i);
+  for (const page of serviceSatellitePages) assert.doesNotMatch(visibleCopy(page), /insur/i, satellitePath(page));
+});
+
+const sentences = (text: string) =>
+  new Set(
+    text
+      .split(/(?<=[.!?])\s+/)
+      .map((sentence) => sentence.replace(/Newport News|Yorktown|newport-news-va|yorktown-va/g, "AREA").trim())
+      .filter((sentence) => sentence.length > 20)
+  );
+
+test("Newport News and Yorktown pages for each service are substantively distinct (< 60% shared sentences)", () => {
+  for (const hub of ["prp-breast-lift", "prp-face-lift"] as const) {
+    const [first, second] = serviceSatellitePages.filter((page) => page.hubSlug === hub);
+    assert.ok(first && second, hub);
+    const a = sentences(visibleCopy(first));
+    const b = sentences(visibleCopy(second));
+    const shared = [...a].filter((sentence) => b.has(sentence)).length;
+    const ratio = shared / Math.min(a.size, b.size);
+    assert.ok(ratio < 0.6, `${hub}: ${shared}/${Math.min(a.size, b.size)} sentences shared (${(ratio * 100).toFixed(0)}%)`);
+    for (const page of [first, second]) {
+      const other = page === first ? b : a;
+      const own = sentences(visibleCopy(page));
+      const uniqueWords = [...own].filter((sentence) => !other.has(sentence)).join(" ").split(/\s+/).length;
+      assert.ok(uniqueWords >= 150, `${satellitePath(page)} has ${uniqueWords} unique words`);
+    }
+  }
 });

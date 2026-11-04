@@ -44,6 +44,8 @@ export type ServiceSatellitePage = {
   faqs: SatelliteFaq[];
   /** /locations/<area> for near pages. */
   locationHref?: string;
+  /** Other related pages the area's /locations page already points to. */
+  extraLinks?: SatelliteLink[];
   consultHref: string;
   ctaLabel: string;
   /** Prefilled text to Jenny (text-or-call booking). */
@@ -95,19 +97,23 @@ const HYPERHIDROSIS_CAUSES = hubFaqAnswer("hyperhidrosis-treatment", "What cause
 const hyperhidrosisPrice = (area: string) => ({
   heading: `${area} treatment pricing`,
   label: `From ${cashCardLabel(HYPERHIDROSIS_CASH_CENTS)}`,
-  body: `Hyperhidrosis treatment starts at ${cashCardProse(HYPERHIDROSIS_CASH_CENTS)}, paid in full for one treatment visit. Ask Jenny to confirm the price for your treatment plan before you book.`,
+  body: `Hyperhidrosis treatment starts at ${cashCardProse(HYPERHIDROSIS_CASH_CENTS)}, paid in full for one treatment visit.`,
 });
 
 const hyperhidrosisSafety = { heading: "Side effects and safety", body: HYPERHIDROSIS_SIDE_EFFECTS };
 
+/** Palms only: the hub's "localized weakness" in the hands (botulinum toxin prescribing information, Limitations of Use, notes hand-muscle weakness with palmar use). */
+export const PALM_WEAKNESS_NOTE =
+  "For palm treatment, that localized weakness can be temporary weakness in the hand muscles, so ask Jenny about timing around work that needs a firm grip or fine hand control.";
+
 const hyperhidrosisCostFaq = (area: string): SatelliteFaq => ({
   question: `How much does ${area} treatment cost?`,
-  answer: `Hyperhidrosis treatment starts at ${hyperhidrosisCash} in cash, or ${hyperhidrosisCard} online or by card, for one treatment visit. Ask Jenny to confirm the price for your treatment plan.`,
+  answer: `Hyperhidrosis treatment starts at ${hyperhidrosisCash} in cash, or ${hyperhidrosisCard} online or by card, for one treatment visit.`,
 });
 
 const hyperhidrosisLocalFaq: SatelliteFaq = {
   question: "Do you see patients from Newport News, Yorktown, and Hampton Roads?",
-  answer: `Yes. ${SERVICE_AREA_LINE} There is one clinic location.`,
+  answer: `Yes. ${SERVICE_AREA_LINE}`,
 };
 
 const hyperhidrosisSurgeryFaq: SatelliteFaq = {
@@ -146,7 +152,7 @@ const hyperhidrosisConcernPages: ServiceSatellitePage[] = [
         heading: "How treatment works",
         paragraphs: [
           "Xeomin is placed in a mapped treatment pattern across the underarm. It reduces the nerve signal that tells sweat glands in that zone to produce sweat.",
-          "Treatment is localized to the underarm, so your body still sweats normally in other areas.",
+          "Treatment is localized to the underarm, so your body can still sweat normally in other areas.",
           HYPERHIDROSIS_ONSET,
         ],
       },
@@ -178,7 +184,7 @@ const hyperhidrosisConcernPages: ServiceSatellitePage[] = [
       { question: "How long does relief last?", answer: HYPERHIDROSIS_RELIEF },
       {
         question: "Will I still sweat normally?",
-        answer: "Yes. Treatment is localized to the underarm area, so your body still sweats normally in other areas for temperature regulation.",
+        answer: "Treatment is localized to the underarm area, so your body can still sweat normally in other areas for temperature regulation.",
       },
       { question: "What are the side effects?", answer: HYPERHIDROSIS_SIDE_EFFECTS },
       { question: "What causes excessive underarm sweating?", answer: HYPERHIDROSIS_CAUSES },
@@ -216,7 +222,7 @@ const hyperhidrosisConcernPages: ServiceSatellitePage[] = [
         heading: "How treatment works for palmar hyperhidrosis",
         paragraphs: [
           "The treatment map and injection pattern are adapted for palm anatomy and symptoms. Both palms are commonly treated in the same session when clinically appropriate.",
-          "Treatment is localized, so it is aimed at the palms while your body keeps sweating normally elsewhere.",
+          "Treatment is localized to the palms, so your body can still sweat normally in other areas.",
           HYPERHIDROSIS_ONSET,
         ],
       },
@@ -242,7 +248,7 @@ const hyperhidrosisConcernPages: ServiceSatellitePage[] = [
         ],
       },
     ],
-    safety: hyperhidrosisSafety,
+    safety: { ...hyperhidrosisSafety, body: `${HYPERHIDROSIS_SIDE_EFFECTS} ${PALM_WEAKNESS_NOTE}` },
     faqs: [
       hyperhidrosisCostFaq("sweaty palms"),
       {
@@ -342,20 +348,103 @@ const hyperhidrosisConcernPages: ServiceSatellitePage[] = [
 type NearArea = {
   slug: "newport-news-va" | "yorktown-va";
   name: string;
-  /** Route wording from /locations and the area's location page. */
-  route: string;
+  /** Sourced "not here" line: /locations/newport-news-va and the Yorktown area data (lib/local-service-areas.ts). */
+  notLocalLine: string;
+  /** Neighborhood and route intro from lib/local-service-areas.ts. */
+  localIntro: string;
+  /** Turn-by-turn or route wording from the area's /locations page. */
+  routeSteps: string[];
+  /** Timing notes from the area's /locations page and area data. */
+  timingNotes: string[];
+  /** Visit-planning lines from the area's /locations page (safe for the PRP Breast Lift claim rules). */
+  planningNotes: string[];
+  /** Other services the area's /locations page already highlights. */
+  otherServices: string;
+  /** Local angle and visit-planning lines from the area's /locations page and area data. */
+  localNotes: string[];
+  /** Extra links for the PRP Face Lift page, taken from the area's /locations page. */
+  faceLiftLinks: SatelliteLink[];
+  faceLiftLocalNote: string;
+  localFaq: SatelliteFaq;
 };
 
 const NEAR_AREAS: NearArea[] = [
   {
     slug: "newport-news-va",
     name: "Newport News",
-    route: "Many patients take I-64 west toward Route 199 and New Town, then continue to Powhatan Parkway.",
+    notLocalLine: "There is no Newport News street address.",
+    localIntro:
+      "Patients from Oyster Point, Denbigh, Kiln Creek, and City Center usually take I-64 west toward Williamsburg. From northern Newport News, I-64 is often the simplest route before local roads to Powhatan Parkway.",
+    routeSteps: [
+      "Take I-64 west toward Williamsburg.",
+      "Use Route 199 toward Monticello Avenue and New Town.",
+      "Turn onto Powhatan Parkway and look for the clinic entrance near the main lot.",
+    ],
+    timingNotes: [
+      "Oyster Point, Denbigh, Kiln Creek, and City Center patients should account for bridge and commuter timing.",
+      "Plan the appointment around traffic, and give yourself time for questions before heading back to Newport News.",
+    ],
+    planningNotes: [
+      "Book a consultation first, explain the concern you want to discuss, and review the options before making a decision.",
+      "Newport News patients often want a real medical conversation before treatment and a clinic that feels worth the drive.",
+    ],
+    otherServices:
+      "Newport News patients also visit the clinic for Xeomin, PRP therapies, hyperhidrosis treatment, and medical ear piercing.",
+    localNotes: [
+      "The appointment is a planned Williamsburg clinic visit rather than a walk-in stop.",
+      "Talk through your goals with Jenny Brady before choosing a treatment.",
+      "PRP visits depend on the concern, medical history, and whether a specialist evaluation is needed first.",
+      "Your consultation can focus on one option or compare more than one before you decide.",
+      "The Newport News location page has the full driving notes and a directions button for 3900 Powhatan Parkway.",
+    ],
+    faceLiftLinks: [
+      { href: "/procedures/prp-facial", label: "PRP Facial" },
+      { href: "/procedures/microneedling-with-prp", label: "Microneedling with PRP" },
+    ],
+    faceLiftLocalNote:
+      "The Newport News page compares Xeomin and PRP: Xeomin addresses lines caused by repeated muscle movement, while PRP treatments focus on skin quality, texture, and tone. The PRP Face Lift combines both in one visit, and your consultation can also look at the PRP Facial or microneedling with PRP on their own.",
+    localFaq: {
+      question: "Which route do Newport News patients take?",
+      answer:
+        "Take I-64 west toward Williamsburg, then Route 199 toward Monticello Avenue and New Town, and turn onto Powhatan Parkway. The clinic entrance is near the main lot.",
+    },
   },
   {
     slug: "yorktown-va",
     name: "Yorktown",
-    route: "Many patients come by the Colonial Parkway or take I-64 to Route 199 before heading toward Powhatan Parkway.",
+    notLocalLine: "The clinic is in Williamsburg, not Yorktown.",
+    localIntro:
+      "Patients from Yorktown, Tabb, and Grafton plan this as a Williamsburg appointment, usually by the Colonial Parkway or I-64, then Route 199 and Powhatan Parkway.",
+    routeSteps: [
+      "Use the Colonial Parkway or I-64 toward Williamsburg.",
+      "Connect through Route 199 and Monticello Avenue.",
+      "Continue toward Powhatan Parkway.",
+    ],
+    timingNotes: [
+      "From Yorktown, most routes head northwest toward Williamsburg before connecting into the Powhatan Parkway area.",
+      "Patients coming from Tabb or Grafton should allow extra buffer during school and commuter traffic.",
+    ],
+    planningNotes: [
+      "If you are unsure which treatment fits, book the consultation first rather than guessing from a menu.",
+      "Yorktown patients often want a quieter Williamsburg clinic visit rather than a high-volume retail setting.",
+    ],
+    otherServices:
+      "Yorktown, Tabb, Grafton, and Lower Peninsula patients also use the clinic for Xeomin (our wrinkle relaxer), PRP, hyperhidrosis, and medical ear piercing questions.",
+    localNotes: [
+      "The visit is a planned trip to the Williamsburg clinic, which helps avoid walk-in timing.",
+      "Consult-led care suits Yorktown patients willing to make a planned Williamsburg visit.",
+      "Expect a provider-led consultation and a clear discussion of risks before any decision.",
+      "Yorktown patients comparing a calm clinical visit against retail or rushed alternatives can review the options at a consultation first.",
+      "The Yorktown location page lists Tabb, Grafton, and the Lower Peninsula among the nearby areas it covers, with a directions button for 3900 Powhatan Parkway.",
+    ],
+    faceLiftLinks: [{ href: "/procedures/xeomin", label: "Xeomin treatment planning" }],
+    faceLiftLocalNote:
+      "Bring current medications, skin history, and prior injectable history to the visit. If the Xeomin half of the plan is your main question, the Xeomin page covers expression lines, dosing questions, and how Xeomin compares with other wrinkle relaxers.",
+    localFaq: {
+      question: "Which route do Yorktown patients take?",
+      answer:
+        "Many patients use the Colonial Parkway or I-64 toward Williamsburg, then connect through Route 199 and Monticello Avenue toward Powhatan Parkway. Build in a traffic buffer around school, bridge, and commuter times.",
+    },
   },
 ];
 
@@ -364,6 +453,25 @@ export const PENINSULA_DRIVE_TIME = "typically 25–35 minutes";
 
 const BREAST_CASH_CENTS = cashCents("prp-breast-lift");
 const FACE_LIFT_CASH_CENTS = cashCents("prp-face-lift");
+
+const travelSection = (area: NearArea): SatelliteSection => ({
+  heading: `Getting to Williamsburg from ${area.name}`,
+  paragraphs: [
+    `${area.localIntro} The drive is ${PENINSULA_DRIVE_TIME}, depending on your starting point, route, and traffic.`,
+    ...area.timingNotes,
+  ],
+  steps: area.routeSteps.map((step, index) => ({ title: `Step ${index + 1}`, description: step })),
+});
+
+const planningSection = (area: NearArea, extra: string[] = []): SatelliteSection => ({
+  heading: `Planning the visit from ${area.name}`,
+  bullets: [...area.planningNotes, ...area.localNotes, ...extra, area.otherServices],
+});
+
+const whereFaq = (area: NearArea): SatelliteFaq => ({
+  question: `Is the clinic in ${area.name}?`,
+  answer: `No. ${area.notLocalLine} Appointments are at ${CLINIC_ADDRESS}, ${PENINSULA_DRIVE_TIME} by car from ${area.name}.`,
+});
 
 const breastLiftNearPage = (area: NearArea): ServiceSatellitePage => ({
   kind: "near",
@@ -377,7 +485,7 @@ const breastLiftNearPage = (area: NearArea): ServiceSatellitePage => ({
   eyebrow: `${area.name} service area`,
   intro: [
     `If you are comparing a breast lift near ${area.name}, start here. The PRP visit (${cashCardProse(BREAST_CASH_CENTS)}) is not mastopexy, implants, or fat transfer, and this page does not promise a cosmetic result.`,
-    `There is no ${area.name} office. The clinic is Williamsburg Med Spa at ${CLINIC_ADDRESS}, ${PENINSULA_DRIVE_TIME} by car from ${area.name}.`,
+    `${area.notLocalLine} Appointments are at Williamsburg Med Spa, ${CLINIC_ADDRESS}, ${PENINSULA_DRIVE_TIME} by car from ${area.name}.`,
   ],
   price: {
     heading: "One-visit price",
@@ -385,13 +493,8 @@ const breastLiftNearPage = (area: NearArea): ServiceSatellitePage => ({
     body: `Full upfront payment for one treatment visit is ${cashCardProse(BREAST_CASH_CENTS)}. The checkout is for one visit. Contact the clinic before purchasing if you need the current service details or written purchase terms.`,
   },
   sections: [
-    {
-      heading: `Getting to Williamsburg from ${area.name}`,
-      paragraphs: [
-        `The drive from ${area.name} is ${PENINSULA_DRIVE_TIME}, depending on your starting point, route, and traffic. ${area.route}`,
-        "Build in a traffic buffer around school, bridge, and commuter times.",
-      ],
-    },
+    travelSection(area),
+    planningSection(area),
     {
       heading: "Questions to settle before you make the drive",
       steps: [
@@ -404,10 +507,6 @@ const breastLiftNearPage = (area: NearArea): ServiceSatellitePage => ({
           description: "Ask the clinic what happens during the service, what the visit includes, and which written terms govern the purchase.",
         },
         {
-          title: "Ask what is and is not promised",
-          description: "Request a direct explanation of the intended cosmetic goal, the limits of that goal, and whether the clinic promises any result or timeline.",
-        },
-        {
           title: "Compare the alternatives",
           description: "If your goal involves removing skin, repositioning tissue, or adding volume, compare this service with an appropriate surgical consultation before deciding.",
         },
@@ -415,10 +514,8 @@ const breastLiftNearPage = (area: NearArea): ServiceSatellitePage => ({
     },
   ],
   faqs: [
-    {
-      question: `Is there a ${area.name} office?`,
-      answer: `No. There is no ${area.name} street address. Appointments are at ${CLINIC_ADDRESS}, ${PENINSULA_DRIVE_TIME} by car from ${area.name}.`,
-    },
+    whereFaq(area),
+    area.localFaq,
     {
       question: "How much is the PRP Breast Lift?",
       answer: `${cashCardProse(BREAST_CASH_CENTS)} for one treatment visit. The checkout is for one visit.`,
@@ -427,15 +524,6 @@ const breastLiftNearPage = (area: NearArea): ServiceSatellitePage => ({
       question: "Is a PRP Breast Lift the same as surgery?",
       answer:
         "No. The PRP visit is not mastopexy, implants, or fat transfer. Do not treat the service name as a promise of the skin removal, tissue repositioning, or volume change associated with those procedures.",
-    },
-    {
-      question: "Does this page promise a result or timeline?",
-      answer:
-        "No. This page does not promise a cosmetic result, degree of change, response timeline, or duration. Ask the clinic to identify any promise it makes before you purchase.",
-    },
-    {
-      question: `How do I book from ${area.name}?`,
-      answer: "Text or call Jenny at (804) 738-9483, or send a consultation request. Ask for the current service details and written purchase terms before you pay.",
     },
   ],
   locationHref: `/locations/${area.slug}`,
@@ -456,7 +544,7 @@ const faceLiftNearPage = (area: NearArea): ServiceSatellitePage => ({
   eyebrow: `${area.name} service area`,
   intro: [
     `The PRP Face Lift is a non-surgical visit that combines two treatments: Xeomin® for movement lines and the PRP Facial for skin texture and tone. It is not a surgical face lift, and results vary.`,
-    `There is no ${area.name} office. The clinic is Williamsburg Med Spa at ${CLINIC_ADDRESS}, ${PENINSULA_DRIVE_TIME} by car from ${area.name}.`,
+    `${area.notLocalLine} Appointments are at Williamsburg Med Spa, ${CLINIC_ADDRESS}, ${PENINSULA_DRIVE_TIME} by car from ${area.name}.`,
   ],
   price: {
     heading: "One-visit price",
@@ -473,23 +561,16 @@ const faceLiftNearPage = (area: NearArea): ServiceSatellitePage => ({
         "The visit usually takes about an hour, including preparation and the treatment itself.",
       ],
     },
-    {
-      heading: `Getting to Williamsburg from ${area.name}`,
-      paragraphs: [
-        `The drive from ${area.name} is ${PENINSULA_DRIVE_TIME}, depending on your starting point, route, and traffic. ${area.route}`,
-        "Build in a traffic buffer around school, bridge, and commuter times.",
-      ],
-    },
+    travelSection(area),
+    planningSection(area, [area.faceLiftLocalNote]),
   ],
   safety: {
     heading: "Side effects",
     body: hubFaqAnswer("prp-face-lift", "Are there any side effects?"),
   },
   faqs: [
-    {
-      question: `Is there a ${area.name} office?`,
-      answer: `No. There is no ${area.name} street address. Appointments are at ${CLINIC_ADDRESS}, ${PENINSULA_DRIVE_TIME} by car from ${area.name}.`,
-    },
+    whereFaq(area),
+    area.localFaq,
     {
       question: "How much is the PRP Face Lift?",
       answer: `${cashCardProse(FACE_LIFT_CASH_CENTS)} for one treatment visit with both Xeomin and the PRP Facial.`,
@@ -502,12 +583,9 @@ const faceLiftNearPage = (area: NearArea): ServiceSatellitePage => ({
       question: "How long do the results last?",
       answer: hubFaqAnswer("prp-face-lift", "How long do the results last?"),
     },
-    {
-      question: `How do I book from ${area.name}?`,
-      answer: "Text or call Jenny at (804) 738-9483, or send a consultation request. The plan is set at your consultation.",
-    },
   ],
   locationHref: `/locations/${area.slug}`,
+  extraLinks: area.faceLiftLinks,
   consultHref: `/consult?procedure=prp-face-lift&area=${area.slug}&utm_source=website&utm_medium=local_service_page&utm_campaign=prp_face_lift_${area.slug.replace(/-/g, "_")}`,
   ctaLabel: "Book a PRP Face Lift Consultation",
   textMessage: textMessage(`the PRP Face Lift. I'm coming from ${area.name}`),
@@ -537,7 +615,7 @@ export const getSatelliteLinks = (page: ServiceSatellitePage): SatelliteLink[] =
           : `${HUB_LABELS[sibling.hubSlug]} near ${sibling.label}`,
     }));
   const location = page.locationHref ? [{ href: page.locationHref, label: `Med spa near ${page.label}` }] : [];
-  return [hub, ...siblings, ...location];
+  return [hub, ...siblings, ...location, ...(page.extraLinks ?? [])];
 };
 
 /** The link grid a hub page renders for its satellites (null when the hub has none). */
@@ -550,7 +628,7 @@ export const getHubSatelliteGroup = (hubSlug: string) => {
     heading: isConcern ? "Start with the area that bothers you most" : "Coming from the Peninsula?",
     intro: isConcern
       ? "Each page covers how treatment works for that area, what to expect, side effects, and pricing."
-      : `There is one clinic, at ${CLINIC_ADDRESS}. These pages cover the drive (${PENINSULA_DRIVE_TIME}), the one-visit price, and how to book.`,
+      : `Appointments are at ${CLINIC_ADDRESS}. These pages cover the drive (${PENINSULA_DRIVE_TIME}), the one-visit price, and how to book.`,
     links: pages.map((page) => ({
       href: satellitePath(page),
       label: page.kind === "concern" ? page.label : `${HUB_LABELS[page.hubSlug]} near ${page.label}`,
