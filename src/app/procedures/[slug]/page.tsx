@@ -23,6 +23,7 @@ import { EAR_PIERCING_PRICES, getCatalogConfigBySlug } from "config/commerce-cat
 import { humanizeMedicalCopy } from "lib/humanize";
 import { cashCardProse, cardPriceSchemaValue } from "lib/price";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
+import { xeominClusterPages } from "lib/xeomin-concerns";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
 const ailmentsTagLabels = {
@@ -270,6 +271,19 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                     className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
                   >
                     {label}
+                  </Link>
+                ))}
+              </div>
+            )}
+            {(procedure.slug === "botox" || procedure.slug === "xeomin") && (
+              <div className="mt-6 flex flex-wrap gap-2 text-sm">
+                {xeominClusterPages.map((page) => (
+                  <Link
+                    key={page.path}
+                    href={page.path}
+                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
+                  >
+                    {page.label}
                   </Link>
                 ))}
               </div>
@@ -654,6 +668,35 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                     <span aria-hidden="true" className="text-base-content/35 transition group-hover:translate-x-0.5 group-hover:text-primary">
                       →
                     </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {(procedure.slug === "botox" || procedure.slug === "xeomin") && (
+          <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="xeomin-by-concern">
+            <div className="border border-base-300 bg-base-100 p-6">
+              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Treatment areas &amp; cost</p>
+              <h2 id="xeomin-by-concern" className="mt-3 text-2xl font-light tracking-tight text-base-content">
+                Xeomin by concern
+              </h2>
+              <p className="mt-3 text-base leading-relaxed text-base-content/70">
+                Start with the area that bothers you most. Each page covers how Jenny plans Xeomin for that concern, what to expect, and
+                pricing.
+              </p>
+              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {xeominClusterPages.map((page) => (
+                  <Link
+                    key={page.path}
+                    href={page.path}
+                    className="group border border-base-300 bg-base-100 px-4 py-4 transition hover:border-primary hover:shadow-sm"
+                  >
+                    <span className="block text-base font-semibold text-base-content group-hover:text-primary">
+                      {page.h1.replace(/ in Williamsburg, VA$/, "")}
+                    </span>
+                    <span className="mt-1 block text-sm leading-relaxed text-base-content/65">{page.summary}</span>
                   </Link>
                 ))}
               </div>

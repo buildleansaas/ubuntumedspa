@@ -1980,7 +1980,7 @@ export const procedures = [
       {
         question: "How long do the effects of Xeomin last?",
         answer:
-          "The results can last between 3 to 6 months, depending on individual factors. Periodic touch-up treatments are required to maintain results.",
+          "Results vary, but many patients see benefits for about 3 to 4 months, depending on individual factors. Periodic touch-up treatments are required to maintain results.",
       },
       {
         question: "Are there any side effects?",
