@@ -288,7 +288,7 @@ test("facials: PRP Facial hub links the HydraFacial guide, and the guide links b
   assert.match(read("src/app/blog/[slug]/page.tsx"), /robots: metadata\.published \? undefined : \{ index: false, follow: false \}/);
 });
 
-test("insurance: the hyperhidrosis hub answers it once (the clinic does not bill insurance, per Jenny 2026-11-05); satellites stay silent", () => {
+test("insurance: the hyperhidrosis hub answers it once (the clinic does not bill insurance, per Austin 2026-11-05); satellites stay silent", () => {
   const hub = procedures.find((procedure) => procedure.slug === "hyperhidrosis-treatment");
   assert.ok(hub);
   const insuranceFaqs = hub.faqs.filter((faq) => /insur/i.test(faq.question + faq.answer));
@@ -296,7 +296,7 @@ test("insurance: the hyperhidrosis hub answers it once (the clinic does not bill
   assert.equal(insuranceFaqs[0].question, "Do you take insurance for hyperhidrosis treatment?");
   assert.equal(
     insuranceFaqs[0].answer,
-    "No. Williamsburg Med Spa does not bill insurance or file insurance paperwork. Hyperhidrosis treatment is paid directly: $1,000 in cash or $1,030.18 online by card for one treatment visit."
+    "No. Williamsburg Med Spa does not bill insurance or file insurance paperwork. Hyperhidrosis treatment is paid directly and starts at $1,000 in cash or $1,030.18 online by card for one treatment visit."
   );
   // Never implies coverage, prior authorization, or reimbursement paperwork.
   assert.doesNotMatch(insuranceFaqs[0].answer, /cover|prior auth|reimburs|superbill/i);
