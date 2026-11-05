@@ -91,3 +91,13 @@ export const RUNNELS_PHOTO = photo(
 );
 export const RUNNELS_CAPTION =
   "Jenny with Dr. Charles Runnels, founder of the Cellular Medicine Association, in Fairhope, Alabama, during her CMA training.";
+
+/** A patient's own blood after it is spun: the yellow plasma layer sits above the red blood cells. Cropped to the tube. */
+export const PRP_TUBE_PHOTO = photo(
+  "prp-spun-plasma-tube",
+  "A tube of spun blood with a yellow plasma layer above the red blood cells",
+  514,
+  1200
+);
+export const PRP_TUBE_CAPTION =
+  "Your own blood after it is spun: the yellow layer is the plasma used for PRP, separated from the red blood cells below.";

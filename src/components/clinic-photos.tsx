@@ -14,6 +14,8 @@ import {
   RESULTS_CAPTION,
   RUNNELS_CAPTION,
   RUNNELS_PHOTO,
+  PRP_TUBE_CAPTION,
+  PRP_TUBE_PHOTO,
   type ClinicPhoto,
 } from "config/clinic-photos";
 
@@ -174,6 +176,20 @@ export function HomeRealPhotos() {
           </figcaption>
         </figure>
       </div>
+    </section>
+  );
+}
+
+/** The spun-PRP tube, for the PRP service pages. */
+export function PrpTubePhoto() {
+  return (
+    <section className="border-t border-base-300 py-14" aria-label="What PRP looks like" data-clinic-photos="prp-tube">
+      <figure className="max-w-xs">
+        <div className="aspect-[3/7] overflow-hidden rounded-xl border border-base-300">
+          <Photo photo={PRP_TUBE_PHOTO} />
+        </div>
+        <figcaption className="mt-2 text-sm text-base-content/80">{PRP_TUBE_CAPTION}</figcaption>
+      </figure>
     </section>
   );
 }
