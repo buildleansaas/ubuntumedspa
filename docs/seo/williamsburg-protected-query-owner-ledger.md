@@ -136,6 +136,8 @@ Decision:
 
 Protected and intended current owner: `https://www.williamsburgmedspa.com/locations/newport-news-va`
 
+Update 2026-11-05 (PR #167, per the vault plan Williamsburg-Med-Spa-SEO-Plan.md item 1): the Botox/Xeomin queries (`botox newport news`, `botox newport news va`, `xeomin newport news`) move to `https://www.williamsburgmedspa.com/procedures/xeomin/near/newport-news-va`. The location page keeps `med spa newport news` and its "Xeomin near Newport News" link points to the new page. Watch both pages' Botox impressions at D7/D14/D28; if the location page loses them without the new page gaining, revisit.
+
 Exact protected queries:
 
 - `med spa newport news`

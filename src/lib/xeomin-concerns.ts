@@ -7,7 +7,8 @@ import { formatUsdShort } from "lib/price";
  * The clinic's only wrinkle relaxer is Xeomin® (incobotulinumtoxinA). It does not offer Botox® brand.
  * - Hub: /procedures/botox, the honest Botox-alternative page for people searching for Botox in Williamsburg.
  * - Product page: /procedures/xeomin.
- * - Satellites: /procedures/xeomin/for/<concern> and the /procedures/xeomin/cost page.
+ * - Satellites: /procedures/xeomin/for/<concern> and the /procedures/xeomin/cost page; the Newport News and Yorktown
+ *   area pages (/procedures/xeomin/near/<area>) live in lib/service-satellites.ts.
  *
  * Every fact here comes from existing site copy: src/data.ts (the Botox-alternative and Xeomin entries), the Xeomin catalog item,
  * src/lib/local-injectable-service-pages.ts, src/markdown/botox-vs-xeomin-williamsburg-va.mdx, and the retired

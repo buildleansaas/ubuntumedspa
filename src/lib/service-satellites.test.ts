@@ -26,6 +26,7 @@ import {
   XEOMIN_SEEK_HELP,
   XEOMIN_SIDE_EFFECTS,
   XEOMIN_TRADEMARK_NOTE,
+  xeominConcernPages,
 } from "./xeomin-concerns";
 // Plain ES module shared with scripts/verify-seo.mjs.
 import { unsupportedPrpBreastClaimClasses } from "../../scripts/lib/prp-breast-claims.mjs";
@@ -81,7 +82,7 @@ const visibleCopy = (page: (typeof serviceSatellitePages)[number]) =>
     page.textMessage,
   ].join(" ");
 
-test("the seven satellite URLs exist, once each", () => {
+test("every satellite URL exists, once each", () => {
   assert.deepEqual([...serviceSatellitePaths].sort(), [...EXPECTED_PATHS].sort());
   assert.equal(new Set(serviceSatellitePaths).size, serviceSatellitePaths.length);
 });
@@ -287,10 +288,18 @@ test("facials: PRP Facial hub links the HydraFacial guide, and the guide links b
   assert.match(read("src/app/blog/[slug]/page.tsx"), /robots: metadata\.published \? undefined : \{ index: false, follow: false \}/);
 });
 
-test("there is no insurance FAQ on the hyperhidrosis hub or its satellites", () => {
+test("insurance: the hyperhidrosis hub answers it once (the clinic does not bill insurance, per Jenny 2026-11-05); satellites stay silent", () => {
   const hub = procedures.find((procedure) => procedure.slug === "hyperhidrosis-treatment");
   assert.ok(hub);
-  assert.doesNotMatch(JSON.stringify(hub), /insur/i);
+  const insuranceFaqs = hub.faqs.filter((faq) => /insur/i.test(faq.question + faq.answer));
+  assert.equal(insuranceFaqs.length, 1);
+  assert.equal(insuranceFaqs[0].question, "Do you take insurance for hyperhidrosis treatment?");
+  assert.equal(
+    insuranceFaqs[0].answer,
+    "No. Williamsburg Med Spa does not bill insurance or file insurance paperwork. Hyperhidrosis treatment is paid directly: $1,000 in cash or $1,030.18 online by card for one treatment visit."
+  );
+  // Never implies coverage, prior authorization, or reimbursement paperwork.
+  assert.doesNotMatch(insuranceFaqs[0].answer, /cover|prior auth|reimburs|superbill/i);
   for (const page of serviceSatellitePages) assert.doesNotMatch(visibleCopy(page), /insur/i, satellitePath(page));
 });
 
@@ -331,12 +340,29 @@ test("Xeomin near pages: Xeomin only (never Botox® brand), label wording, risks
     assert.ok(copy.includes(XEOMIN_SIDE_EFFECTS) && copy.includes(XEOMIN_SEEK_HELP), path);
     assert.ok(copy.includes(XEOMIN_LIP_FLIP_OFF_LABEL), path);
     assert.equal(page.footnote, XEOMIN_TRADEMARK_NOTE, path);
-    // Every Botox mention carries the ® mark, and nothing offers or promises Botox® itself.
+    // Xeomin is sold in credit blocks: the title says "from", never a flat price.
+    assert.match(page.metaTitle, /, from \$250$/, path);
+    for (const concern of xeominConcernPages) {
+      assert.ok(getSatelliteLinks(page).some((item) => item.href === concern.path), `${path} lacks ${concern.path}`);
+    }
+    // Botox is either marked ® or used as the search term ("Botox alternative", "Botox vs"); nothing offers Botox® itself.
     assert.doesNotMatch(copy + page.metaTitle + page.metaDescription, /Botox(?!®| alternative| vs)/, path);
     assert.doesNotMatch(copy, /\b(?:best|guarantee[ds]?|permanent|cheapest)\b/i, path);
     for (const link of [XEOMIN_HUB_PATH, XEOMIN_COST_PATH, "/procedures/xeomin"]) {
       assert.ok(getSatelliteLinks(page).some((item) => item.href === link), `${path} lacks ${link}`);
     }
+  }
+  // The Yorktown note quotes the last sentence of the /procedures/xeomin FAQ; pin it so an FAQ edit cannot change it silently.
+  const yorktown = pages.find((page) => page.slug === "yorktown-va");
+  assert.ok(
+    yorktown && visibleCopy(yorktown).includes("If you have had Botox® elsewhere, Jenny plans your Xeomin dose from your treatment goals, anatomy, and prior response.")
+  );
+  // The hub grid on /procedures/xeomin and /procedures/botox never calls Xeomin a one-visit price.
+  for (const hub of ["xeomin", "botox"]) {
+    const group = getHubSatelliteGroup(hub);
+    assert.ok(group, hub);
+    assert.doesNotMatch(group.intro, /one-visit/, hub);
+    assert.match(group.intro, /credit-block pricing/, hub);
   }
   assert.match(read("src/views/service-satellite-page.tsx"), /\{page\.footnote && <p[^>]*>\{page\.footnote\}<\/p>\}/);
 });

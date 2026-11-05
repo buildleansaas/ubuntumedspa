@@ -2123,6 +2123,10 @@ export const procedures = [
           "Relief is temporary and varies by person, treatment area, and dose strategy. Many patients plan maintenance after several months once sweating begins returning.",
       },
       {
+        question: "Do you take insurance for hyperhidrosis treatment?",
+        answer: `No. Williamsburg Med Spa does not bill insurance or file insurance paperwork. Hyperhidrosis treatment is paid directly: ${cashCardProse(100000)} for one treatment visit.`,
+      },
+      {
         question: "How soon can I see results?",
         answer:
           "Sweating reduction usually builds over days rather than appearing instantly, with fuller response reviewed after the treatment has had time to settle.",

@@ -14,12 +14,12 @@ import {
 } from "lib/xeomin-concerns";
 
 /**
- * Satellite pages around three service hubs (2026-11 Search Console gaps):
+ * Satellite pages around four service hubs (2026-11 Search Console gaps):
  * - hyperhidrosis concern pages: /procedures/hyperhidrosis-treatment/for/{underarm-sweating,sweaty-palms,sweaty-feet}
  * - PRP Breast Lift and PRP Face Lift area pages: /procedures/{prp-breast-lift,prp-face-lift}/near/{newport-news-va,yorktown-va}
  * - Xeomin area pages for Peninsula searchers: /procedures/xeomin/near/{newport-news-va,yorktown-va}
  *
- * Every fact here comes from existing site copy (src/data.ts, /locations, the hub pages). Prices come from the catalog,
+ * Every fact here comes from existing site copy (src/data.ts, /locations, the hub pages, lib/xeomin-concerns.ts). Prices come from the catalog,
  * cash first. PRP Breast Lift copy reuses the hub's reviewed wording and is scanned by the same unsupported-claim
  * detectors as the hub (scripts/lib/prp-breast-claims.mjs).
  */
@@ -422,7 +422,7 @@ const NEAR_AREAS: NearArea[] = [
     xeominLocalNotes: [
       "Common visit goals for Newport News patients include softening expression lines with Xeomin, asking about PRP for joints or skin, treating excessive sweating, and choosing a more clinical ear piercing appointment.",
       "The right choice depends on what you want to change. Xeomin, our wrinkle relaxer, addresses lines caused by repeated muscle movement, while PRP treatments focus on skin quality, texture, and tone.",
-      "Your consultation can focus on one option or compare both before you decide.",
+      "Williamsburg Med Spa serves Newport News patients from our Williamsburg location with conservative planning, clear timelines, and careful follow-up.",
     ],
     localFaq: {
       question: "Which route do Newport News patients take?",
@@ -465,6 +465,7 @@ const NEAR_AREAS: NearArea[] = [
       "For Yorktown patients, Xeomin starts with a consult-first plan that covers expression lines, dosing questions, and how Xeomin compares with other wrinkle relaxers.",
       `${hubFaqAnswer("xeomin", "How does Xeomin differ from Botox®?").split(". ").slice(-1)[0]}`,
       "Bring current medications, skin history, and prior injectable history to the visit.",
+      "Expect a provider-led consultation, clear discussion of risks and aftercare, and treatment planning based on your goals rather than a one-size-fits-all package.",
     ],
     localFaq: {
       question: "Which route do Yorktown patients take?",
@@ -629,7 +630,7 @@ const xeominNearPage = (area: NearArea): ServiceSatellitePage => ({
   slug: area.slug,
   label: area.name,
   linkDescription: `${area.name} drive time, credit-block pricing, and which lines Xeomin is used for.`,
-  metaTitle: `Xeomin near ${area.name} VA | Botox® Alternative, ${formatUsdShort(XEOMIN_CASH_CENTS)} Cash`,
+  metaTitle: `Xeomin near ${area.name} VA | Botox® Alternative, from ${formatUsdShort(XEOMIN_CASH_CENTS)}`,
   metaDescription: `Looking for Botox® near ${area.name}? We use Xeomin® in Williamsburg. ${formatUsdShort(XEOMIN_CASH_CENTS)} cash per credit block (${cardPriceLabel(XEOMIN_CASH_CENTS)} card). Nurse-led.`,
   h1: `Xeomin near ${area.name}, VA`,
   eyebrow: `${area.name} service area`,
@@ -661,11 +662,12 @@ const xeominNearPage = (area: NearArea): ServiceSatellitePage => ({
   faqs: [
     whereFaq(area),
     area.localFaq,
-    { question: "Do you offer Botox®?", answer: hubFaqAnswer("botox", "Do you offer Botox®?") },
     { question: "How much does Xeomin cost?", answer: hubFaqAnswer("botox", "How much does Xeomin cost in Williamsburg?") },
+    { question: "How long can Xeomin results last?", answer: hubFaqAnswer("botox", "How long can Xeomin results last?") },
   ],
   locationHref: `/locations/${area.slug}`,
   extraLinks: [
+    ...xeominConcernPages.map((concern) => ({ href: concern.path, label: `Xeomin for ${concern.label.toLowerCase()}` })),
     { href: XEOMIN_HUB_PATH, label: "Botox alternative in Williamsburg" },
     { href: XEOMIN_COST_PATH, label: "Xeomin cost in Williamsburg" },
     { href: XEOMIN_COMPARISON_PATH, label: "Botox vs Xeomin in Williamsburg, VA" },
@@ -715,7 +717,7 @@ export const getHubSatelliteGroup = (hubSlug: string) => {
     heading: isConcern ? "Start with the area that bothers you most" : "Coming from the Peninsula?",
     intro: isConcern
       ? "Each page covers how treatment works for that area, what to expect, side effects, and pricing."
-      : `Appointments are at ${CLINIC_ADDRESS}. These pages cover the drive (${PENINSULA_DRIVE_TIME}), the one-visit price, and how to book.`,
+      : `Appointments are at ${CLINIC_ADDRESS}. These pages cover the drive (${PENINSULA_DRIVE_TIME}), ${pages[0].hubSlug === "xeomin" ? "credit-block pricing" : "the one-visit price"}, and how to book.`,
     links: pages.map((page) => ({
       href: satellitePath(page),
       label: page.kind === "concern" ? page.label : `${HUB_LABELS[page.hubSlug]} near ${page.label}`,

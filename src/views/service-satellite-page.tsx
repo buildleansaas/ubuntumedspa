@@ -17,7 +17,7 @@ import {
 
 const ORIGIN = "https://www.williamsburgmedspa.com";
 
-/** Shared layout for the hyperhidrosis concern pages and the PRP area pages (data in lib/service-satellites.ts). */
+/** Shared layout for the hyperhidrosis concern pages and the PRP and Xeomin area pages (data in lib/service-satellites.ts). */
 export default function ServiceSatellitePageView({ page }: { page: ServiceSatellitePage }) {
   const canonicalUrl = `${ORIGIN}${satellitePath(page)}`;
   const hubLabel = satelliteHubLabel(page.hubSlug);
