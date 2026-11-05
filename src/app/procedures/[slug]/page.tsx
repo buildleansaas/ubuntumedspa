@@ -223,7 +223,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                 {XEOMIN_OFF_LABEL_NOTE}
               </p>
             )}
-            {procedure.slug === "hyperhidrosis-treatment" && (
+            {(procedure.slug === "hyperhidrosis-treatment" || procedure.slug === "xeomin") && (
               <p className="mt-3 max-w-3xl text-sm leading-relaxed text-base-content/60" data-off-label-note>
                 {XEOMIN_HYPERHIDROSIS_OFF_LABEL}
               </p>

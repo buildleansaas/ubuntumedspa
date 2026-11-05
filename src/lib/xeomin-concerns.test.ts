@@ -274,7 +274,8 @@ test("#164: the Botox-alternative and Xeomin pages carry the off-label note for 
 
 test("hyperhidrosis (not on Xeomin's label) is called off-label on the hub and every sweating satellite", async () => {
   const route = readFileSync(join(process.cwd(), "src/app/procedures/[slug]/page.tsx"), "utf8");
-  assert.match(route, /procedure\.slug === "hyperhidrosis-treatment" && \(\s*<p[^>]*data-off-label-note>\s*\{XEOMIN_HYPERHIDROSIS_OFF_LABEL\}/);
+  // The Xeomin hub mentions "hyperhidrosis use" in its related guidance, so it carries the sweating note too.
+  assert.match(route, /\(procedure\.slug === "hyperhidrosis-treatment" \|\| procedure\.slug === "xeomin"\) && \(\s*<p[^>]*data-off-label-note>\s*\{XEOMIN_HYPERHIDROSIS_OFF_LABEL\}/);
   const { serviceSatellitePages } = await import("./service-satellites");
   const sweating = serviceSatellitePages.filter((page) => page.hubSlug === "hyperhidrosis-treatment");
   assert.equal(sweating.length, 3);
