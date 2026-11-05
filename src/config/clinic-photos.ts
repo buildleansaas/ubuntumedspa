@@ -81,7 +81,7 @@ export const EAR_PIERCING_PHOTOS = [
     caption: "First earrings: Blomdahl medical studs.",
   },
   {
-    photo: photo("blomdahl-child-flower-stud", "A young girl with a purple hair bow wearing a new Blomdahl flower stud earring", 900, 1200),
+    photo: photo("blomdahl-child-flower-stud", "A young girl with a purple hair bow wearing a new Blomdahl flower stud earring", 770, 1200),
     caption: "A new Blomdahl stud after a child's ear piercing.",
   },
 ] as const;
