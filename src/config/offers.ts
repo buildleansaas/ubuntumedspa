@@ -16,8 +16,9 @@ export type ClinicOffer = {
   summary: string;
   offerCashCents: number;
   regularCashCents: number;
-  /** Last day the offer is honored, YYYY-MM-DD in America/New_York. */
+  /** First day the offer is honored, YYYY-MM-DD in America/New_York. */
   startsOn: string;
+  /** Last day the offer is honored, YYYY-MM-DD in America/New_York. */
   endsOn: string;
   details: string[];
   terms: string;
@@ -63,8 +64,16 @@ export const OFFERS: ClinicOffer[] = [
 ];
 
 /** Today's date (YYYY-MM-DD) in the clinic's time zone. */
-export const clinicToday = (now: Date = new Date()) =>
-  new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).format(now);
+export const clinicToday = (now: Date = new Date()) => {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(now);
+  const part = (type: "year" | "month" | "day") => parts.find((item) => item.type === type)?.value ?? "";
+  return `${part("year")}-${part("month")}-${part("day")}`;
+};
 
 export const isOfferActive = (offer: Pick<ClinicOffer, "startsOn" | "endsOn">, today: string = clinicToday()) =>
   offer.startsOn <= today && today <= offer.endsOn;

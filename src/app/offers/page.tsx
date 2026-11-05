@@ -14,8 +14,8 @@ export const metadata: Metadata = buildPageMetadata({
   canonical: OFFERS_PATH,
 });
 
-// Re-render daily so an offer drops off the day after it ends.
-export const revalidate = 3600;
+// Rendered per request so an offer drops off the moment its end date passes (clinic time).
+export const dynamic = "force-dynamic";
 
 export default function OffersPage() {
   const offers = getActiveOffers();
@@ -62,8 +62,9 @@ export default function OffersPage() {
               </h2>
               <p className="mt-4 text-2xl font-semibold tracking-tight text-base-content" data-offer-price>
                 {formatUsdShort(offer.offerCashCents)} cash · {cardPriceLabel(offer.offerCashCents)} card
-                <span className="ml-3 text-base font-normal text-base-content/60 line-through">
-                  {formatUsdShort(offer.regularCashCents)}
+                <span className="ml-3 text-base font-normal text-base-content/60">
+                  <span className="sr-only">Regular cash price </span>
+                  <s>{formatUsdShort(offer.regularCashCents)}</s>
                 </span>
               </p>
               <p className="mt-4 text-base leading-relaxed text-base-content/85 md:text-lg">{offer.summary}</p>

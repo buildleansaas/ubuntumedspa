@@ -38,6 +38,13 @@ test("sibling offer (Austin 2026-11-05): 2 kids, both ears, $140 cash vs the cat
   assert.match(sibling.details.join(" "), /6 months or older with pediatrician guidance/);
 });
 
+test("clinicToday is the America/New_York calendar date in YYYY-MM-DD", () => {
+  const { clinicToday } = require("./offers") as typeof import("./offers");
+  assert.equal(clinicToday(new Date("2027-01-01T04:59:59Z")), "2026-12-31");
+  assert.equal(clinicToday(new Date("2027-01-01T05:00:00Z")), "2027-01-01");
+  assert.equal(clinicToday(new Date("2026-07-01T03:59:59Z")), "2026-06-30");
+});
+
 test("offers run from startsOn through endsOn (clinic time) and then disappear", () => {
   assert.equal(isOfferActive(sibling, "2026-11-04"), false);
   assert.equal(isOfferActive(sibling, "2026-11-05"), true);
@@ -73,6 +80,7 @@ test("/offers renders one H1, cash before card, the terms, and a text-Jenny CTA"
     const block = html.match(/data-offer-price[^>]*>([\s\S]*?)<\/p>/)?.[1] ?? "";
     assert.ok(block.indexOf("$140 cash") >= 0 && block.indexOf("$140 cash") < block.indexOf("$144.50 card"), block);
     assert.match(html, /data-offer-terms/);
+    assert.match(html, /Regular cash price <\/span><s>\$160<\/s>/);
     assert.match(html, /sms:/);
   } else {
     assert.match(html, /data-no-offers/);
@@ -81,10 +89,14 @@ test("/offers renders one H1, cash before card, the terms, and a text-Jenny CTA"
 
 test("the header shows the highlighted Offers link (desktop and mobile); footer and sitemaps list /offers", () => {
   const header = read("src/components/header.tsx");
-  assert.match(header, /<OffersNavLink \/>/);
-  assert.match(header, /<OffersNavLink variant="compact" \/>/);
+  assert.match(header, /<OffersNavLink initialCount=\{offerCount\} \/>/);
+  assert.match(header, /<OffersNavLink initialCount=\{offerCount\} variant="compact" \/>/);
+  assert.match(header, /const offerCount = getActiveOffers\(\)\.length;/);
   const badge = read("src/components/offers-nav-link.tsx");
-  assert.match(badge, /getActiveOffers\(\)\.length/);
+  // The first client render must match the server HTML (no hydration mismatch): seed from the prop, recount after mount.
+  assert.match(badge, /useState\(initialCount\)/);
+  assert.doesNotMatch(badge, /useState\(\(\) => getActiveOffers/);
+  assert.match(badge, /useEffect\(\(\) => \{\s*setCount\(getActiveOffers\(\)\.length\);/);
   assert.match(badge, /if \(count === 0/);
   assert.match(read("src/components/footer.tsx"), /\{ href: "\/offers", label: "Offers" \}/);
   assert.match(read("src/app/sitemap.ts"), /"https:\/\/www\.williamsburgmedspa\.com\/offers"/);
