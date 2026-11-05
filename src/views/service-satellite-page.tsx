@@ -168,6 +168,7 @@ export default function ServiceSatellitePageView({ page }: { page: ServiceSatell
           </Button>
         </div>
       </section>
+      {page.footnote && <p className="mt-10 text-xs leading-relaxed text-base-content/60">{page.footnote}</p>}
     </main>
   );
 }
