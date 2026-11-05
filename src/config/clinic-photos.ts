@@ -126,3 +126,11 @@ export const CARPAL_TUNNEL_PHOTO = photo(
   1200
 );
 export const CARPAL_TUNNEL_CAPTION = "Jenny injecting a wrist for carpal tunnel.";
+
+export const SUPPLIES_PHOTO = photo(
+  "prp-supplies-laid-out",
+  "Syringes, PRP collection tubes, gauze and a tourniquet laid out on a tray",
+  1200,
+  524
+);
+export const SUPPLIES_CAPTION = "Treatment supplies laid out and ready.";

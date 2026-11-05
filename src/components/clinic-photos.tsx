@@ -17,6 +17,8 @@ import {
   PRP_TUBE_CAPTION,
   PICCIRILLO_CAPTION,
   CARPAL_TUNNEL_CAPTION,
+  SUPPLIES_CAPTION,
+  SUPPLIES_PHOTO,
   CARPAL_TUNNEL_PHOTO,
   PICCIRILLO_PHOTO,
   PRP_TUBE_PHOTO,
@@ -188,12 +190,20 @@ export function HomeRealPhotos() {
 export function PrpTubePhoto() {
   return (
     <section className="border-t border-base-300 py-14" aria-label="What PRP looks like" data-clinic-photos="prp-tube">
-      <figure className="max-w-xs">
-        <div className="aspect-[3/7] overflow-hidden rounded-xl border border-base-300">
-          <Photo photo={PRP_TUBE_PHOTO} />
-        </div>
-        <figcaption className="mt-2 text-sm text-base-content/80">{PRP_TUBE_CAPTION}</figcaption>
-      </figure>
+      <div className="grid items-start gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)]">
+        <figure className="max-w-xs">
+          <div className="aspect-[3/7] overflow-hidden rounded-xl border border-base-300">
+            <Photo photo={PRP_TUBE_PHOTO} />
+          </div>
+          <figcaption className="mt-2 text-sm text-base-content/80">{PRP_TUBE_CAPTION}</figcaption>
+        </figure>
+        <figure>
+          <div className="aspect-[1200/524] overflow-hidden rounded-xl border border-base-300">
+            <Photo photo={SUPPLIES_PHOTO} />
+          </div>
+          <figcaption className="mt-2 text-sm text-base-content/80">{SUPPLIES_CAPTION}</figcaption>
+        </figure>
+      </div>
     </section>
   );
 }
