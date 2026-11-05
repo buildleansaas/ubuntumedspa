@@ -84,6 +84,10 @@ export const EAR_PIERCING_PHOTOS = [
     photo: photo("blomdahl-child-flower-stud", "A young girl with a purple hair bow wearing a new Blomdahl flower stud earring", 770, 1200),
     caption: "A new Blomdahl stud after a child's ear piercing.",
   },
+  {
+    photo: photo("blomdahl-pearl-stud", "A close-up of an ear wearing a Blomdahl pearl stud earring", 800, 800),
+    caption: "A Blomdahl pearl stud after ear piercing.",
+  },
 ] as const;
 export const EAR_PIERCING_PHOTOS_HEADING = "First earrings";
 
@@ -105,3 +109,12 @@ export const PRP_TUBE_PHOTO = photo(
 );
 export const PRP_TUBE_CAPTION =
   "Your own blood after it is spun: the yellow layer is the plasma used for PRP, separated from the red blood cells below.";
+
+/** Jenny with the orthopedic surgeon who trained her in orthopedic uses of PRP (Austin, 2026-11-05). */
+export const PICCIRILLO_PHOTO = photo(
+  "jenny-brady-dr-jeff-piccirillo",
+  "Jenny Brady with Dr. Jeff Piccirillo, an orthopedic surgeon",
+  900,
+  1200
+);
+export const PICCIRILLO_CAPTION = "Jenny with Dr. Jeff Piccirillo, an orthopedic surgeon who trained her in orthopedic uses of PRP.";

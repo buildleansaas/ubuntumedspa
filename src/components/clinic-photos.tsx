@@ -15,6 +15,8 @@ import {
   RUNELS_CAPTION,
   RUNELS_PHOTO,
   PRP_TUBE_CAPTION,
+  PICCIRILLO_CAPTION,
+  PICCIRILLO_PHOTO,
   PRP_TUBE_PHOTO,
   type ClinicPhoto,
 } from "config/clinic-photos";
@@ -107,7 +109,7 @@ export function EarPiercingPhotos() {
       <h2 id="ear-piercing-photos" className="font-display mt-3 text-2xl font-medium tracking-tight text-base-content md:text-4xl">
         {EAR_PIERCING_PHOTOS_HEADING}
       </h2>
-      <div className="mt-8 grid max-w-4xl gap-6 sm:grid-cols-3">
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {EAR_PIERCING_PHOTOS.map(({ photo, caption }) => (
           <figure key={photo.src}>
             <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
@@ -191,5 +193,16 @@ export function PrpTubePhoto() {
         <figcaption className="mt-2 text-sm text-base-content/80">{PRP_TUBE_CAPTION}</figcaption>
       </figure>
     </section>
+  );
+}
+
+export function PiccirilloTraining() {
+  return (
+    <figure className="mt-10 max-w-sm" data-clinic-photos="piccirillo">
+      <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
+        <Photo photo={PICCIRILLO_PHOTO} />
+      </div>
+      <figcaption className="mt-2 text-sm text-base-content/80">{PICCIRILLO_CAPTION}</figcaption>
+    </figure>
   );
 }
