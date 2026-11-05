@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import CartTrigger from "components/cart-trigger";
 import MobileMenu from "components/mobile-menu";
+import OffersNavLink from "components/offers-nav-link";
 
 const NAV_ITEMS = [
   { href: "/locations", label: "Locations" },
@@ -49,11 +50,13 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <OffersNavLink />
         </nav>
         <CartTrigger className="ml-4" />
       </div>
 
       <div className="flex items-center gap-2 lg:hidden">
+        <OffersNavLink variant="compact" />
         <MobileMenu items={NAV_ITEMS} />
         <CartTrigger mode="compact" />
       </div>

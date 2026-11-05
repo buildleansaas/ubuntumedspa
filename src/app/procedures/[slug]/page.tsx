@@ -24,6 +24,7 @@ import { humanizeMedicalCopy } from "lib/humanize";
 import { cashCardProse, cardPriceSchemaValue } from "lib/price";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import { getHubSatelliteGroup } from "lib/service-satellites";
+import { getActiveOffers } from "config/offers";
 import { xeominClusterPages } from "lib/xeomin-concerns";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
@@ -256,6 +257,19 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                 ))}
               </div>
             )}
+            {procedure.slug === "blomdahl-ear-piercing" &&
+              getActiveOffers()
+                .filter((offer) => offer.learnMoreHref === "/procedures/blomdahl-ear-piercing")
+                .map((offer) => (
+                  <Link
+                    key={offer.slug}
+                    href={`/offers#${offer.slug}`}
+                    data-offer-callout={offer.slug}
+                    className="mt-6 inline-flex items-center gap-2 rounded-full border border-primary/50 bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition hover:bg-primary hover:text-primary-content"
+                  >
+                    Offer: {offer.title} →
+                  </Link>
+                ))}
             {procedure.slug === "blomdahl-ear-piercing" && (
               <div className="mt-6 flex flex-wrap gap-2 text-sm">
                 {[
