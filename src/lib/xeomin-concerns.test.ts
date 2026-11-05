@@ -248,7 +248,7 @@ test("next.config.mjs lists each old concern URL redirect above the /procedures/
   assert.equal(XEOMIN_CLUSTER_REDIRECTS.length, 6);
 });
 
-test("#164: the Botox-alternative and Xeomin pages carry the off-label note for every non-label area they mention", () => {
+test("#164: the Botox-alternative and Xeomin pages carry an off-label note for each listed non-label area they mention", () => {
   const route = readFileSync(join(process.cwd(), "src/app/procedures/[slug]/page.tsx"), "utf8");
   assert.match(route, /\(procedure\.slug === "botox" \|\| procedure\.slug === "xeomin"\) && \(\s*<p[^>]*data-off-label-note>\s*\{XEOMIN_OFF_LABEL_NOTE\}/);
   assert.match(XEOMIN_OFF_LABEL_NOTE, /frown lines, forehead lines, and crow's feet/);
@@ -261,6 +261,9 @@ test("#164: the Botox-alternative and Xeomin pages carry the off-label note for 
     [/masseter|bruxism|jaw/i, /masseter/],
     [/lower-face/i, /jaw \(masseter\)/],
   ];
+  // Sweating is covered by its own note, shown on the hyperhidrosis hub and the Xeomin hub.
+  assert.match(JSON.stringify(procedures.find((procedure) => procedure.slug === "xeomin")), /hyperhidrosis/i);
+  assert.match(route, /procedure\.slug === "xeomin"\) && \(\s*<p[^>]*data-off-label-note>\s*\{XEOMIN_HYPERHIDROSIS_OFF_LABEL\}/);
   for (const slug of ["botox", "xeomin"]) {
     const entry = procedures.find((procedure) => procedure.slug === slug);
     assert.ok(entry, slug);
