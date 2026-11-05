@@ -16,6 +16,8 @@ import {
   RUNELS_PHOTO,
   PRP_TUBE_CAPTION,
   PICCIRILLO_CAPTION,
+  CARPAL_TUNNEL_CAPTION,
+  CARPAL_TUNNEL_PHOTO,
   PICCIRILLO_PHOTO,
   PRP_TUBE_PHOTO,
   type ClinicPhoto,
@@ -204,5 +206,20 @@ export function PiccirilloTraining() {
       </div>
       <figcaption className="mt-2 text-sm text-base-content/80">{PICCIRILLO_CAPTION}</figcaption>
     </figure>
+  );
+}
+
+/** PRP joint page: Jenny injecting for carpal tunnel, beside her orthopedic PRP training photo. */
+export function JointPhotos() {
+  return (
+    <div className="grid max-w-3xl gap-6 sm:grid-cols-2" data-clinic-photos="joint">
+      <figure className="mt-10">
+        <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
+          <Photo photo={CARPAL_TUNNEL_PHOTO} />
+        </div>
+        <figcaption className="mt-2 text-sm text-base-content/80">{CARPAL_TUNNEL_CAPTION}</figcaption>
+      </figure>
+      <PiccirilloTraining />
+    </div>
   );
 }

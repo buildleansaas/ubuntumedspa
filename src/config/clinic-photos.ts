@@ -118,3 +118,11 @@ export const PICCIRILLO_PHOTO = photo(
   1200
 );
 export const PICCIRILLO_CAPTION = "Jenny with Dr. Jeff Piccirillo, an orthopedic surgeon who trained her in orthopedic uses of PRP.";
+
+export const CARPAL_TUNNEL_PHOTO = photo(
+  "joint-jenny-injecting-carpal-tunnel",
+  "Jenny Brady in gloves giving an injection at a patient's wrist",
+  837,
+  1200
+);
+export const CARPAL_TUNNEL_CAPTION = "Jenny injecting a wrist for carpal tunnel.";

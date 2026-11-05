@@ -24,7 +24,7 @@ import { humanizeMedicalCopy } from "lib/humanize";
 import { cashCardProse, cardPriceSchemaValue } from "lib/price";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import { getHubSatelliteGroup } from "lib/service-satellites";
-import { CrowsFeetResults, EarPiercingPhotos, HyperhidrosisSteps, PiccirilloTraining, PrpTubePhoto, RunelsTraining } from "components/clinic-photos";
+import { CrowsFeetResults, EarPiercingPhotos, HyperhidrosisSteps, JointPhotos, PrpTubePhoto, RunelsTraining } from "components/clinic-photos";
 import { xeominClusterPages } from "lib/xeomin-concerns";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
@@ -808,8 +808,8 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         {procedure.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos />}
         {["prp-facial", "prp-hair-restoration", "joint-restoration"].includes(procedure.slug) && <PrpTubePhoto />}
         {procedure.slug === "joint-restoration" && (
-          <section className="border-t border-base-300 py-14" aria-label="Jenny's orthopedic PRP training">
-            <PiccirilloTraining />
+          <section className="border-t border-base-300 py-14" aria-label="Jenny's joint treatment and orthopedic PRP training">
+            <JointPhotos />
           </section>
         )}
         {procedure.slug === "oh-shot" && (
