@@ -80,6 +80,10 @@ export const EAR_PIERCING_PHOTOS = [
     photo: photo("blomdahl-baby-first-earrings", "A baby resting on a parent's shoulder wearing new Blomdahl stud earrings", 684, 1200),
     caption: "First earrings: Blomdahl medical studs.",
   },
+  {
+    photo: photo("blomdahl-child-flower-stud", "A young girl with a purple hair bow wearing a new Blomdahl flower stud earring", 900, 1200),
+    caption: "A new Blomdahl stud after a child's ear piercing.",
+  },
 ] as const;
 export const EAR_PIERCING_PHOTOS_HEADING = "First earrings";
 

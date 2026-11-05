@@ -107,7 +107,7 @@ export function EarPiercingPhotos() {
       <h2 id="ear-piercing-photos" className="font-display mt-3 text-2xl font-medium tracking-tight text-base-content md:text-4xl">
         {EAR_PIERCING_PHOTOS_HEADING}
       </h2>
-      <div className="mt-8 grid max-w-3xl gap-6 sm:grid-cols-2">
+      <div className="mt-8 grid max-w-4xl gap-6 sm:grid-cols-3">
         {EAR_PIERCING_PHOTOS.map(({ photo, caption }) => (
           <figure key={photo.src}>
             <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
