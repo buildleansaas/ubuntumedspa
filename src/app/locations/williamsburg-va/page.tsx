@@ -48,6 +48,10 @@ export default function WilliamsburgLocationPage() {
         />
       </section>
 
+      <div className="mb-10 md:mb-14">
+        <TreatmentRoomPhotos />
+      </div>
+
       <section className="mb-10 md:mb-14">
         <h2 className="text-2xl md:text-3xl font-light mb-2">Parking & Directions</h2>
         <p className="text-base md:text-lg text-base-content/80 mb-3">
@@ -181,10 +185,6 @@ export default function WilliamsburgLocationPage() {
           .
         </p>
       </section>
-
-      <div className="mb-10 md:mb-14">
-        <TreatmentRoomPhotos />
-      </div>
 
       <section className="mb-10 md:mb-14">
         <h2 className="text-2xl md:text-3xl font-light mb-2">Ready to Book?</h2>

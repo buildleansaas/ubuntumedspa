@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import StructuredData from "components/structured-data";
 import { buildPageMetadata } from "lib/metadata";
-import { PiccirilloTraining, RunelsTraining, TreatmentRoomPhotos } from "components/clinic-photos";
+import { TrainedBy, TreatmentRoomPhotos } from "components/clinic-photos";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Jenny Brady — Aesthetic Nurse Practitioner | Williamsburg Med Spa",
@@ -49,6 +49,7 @@ export default function JennyBradyPage() {
               </li>
             ))}
           </ul>
+          <TrainedBy />
           <div className="mt-6 max-w-[65ch] space-y-4 text-base leading-relaxed text-base-content/85 md:text-lg">
             <p>
               Jenny Brady, MSN, RN, CPNP, PMHS, is the nurse practitioner at Williamsburg Med Spa, 3900 Powhatan
@@ -84,10 +85,6 @@ export default function JennyBradyPage() {
               </Link>
               .
             </p>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2">
-            <RunelsTraining />
-            <PiccirilloTraining />
           </div>
           <TreatmentRoomPhotos />
         </div>

@@ -97,17 +97,24 @@ test("photos are placed on the right pages", () => {
   assert.match(hub, /\(procedure\.slug === "botox" \|\| procedure\.slug === "xeomin"\) && <CrowsFeetResults \/>/);
   assert.match(hub, /procedure\.slug === "hyperhidrosis-treatment" && <HyperhidrosisSteps \/>/);
   assert.match(hub, /procedure\.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos \/>/);
-  assert.match(hub, /procedure\.slug === "oh-shot" && \([\s\S]{0,300}<RunelsTraining \/>/);
+  assert.match(hub, /procedure\.slug === "oh-shot" && <RunelsTraining \/>/);
   assert.match(read("src/views/xeomin-cluster-page.tsx"), /page\.slug === "crows-feet" && <CrowsFeetResults \/>/);
   assert.match(read("src/views/service-satellite-page.tsx"), /page\.slug === "underarm-sweating" && <HyperhidrosisSteps \/>/);
   assert.match(read("src/app/page.tsx"), /<HomeRealPhotos \/>/);
   assert.match(hub, /procedure\.slug === "joint-restoration" && \([\s\S]{0,300}<JointPhotos \/>/);
   assert.match(read("src/components/clinic-photos.tsx"), /export function JointPhotos[\s\S]*?<PiccirilloTraining \/>/);
-  assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<PiccirilloTraining \/>/);
+  // Austin 2026-11-05: proof of work sits right under the hero, above the first content section.
+  const heroEnd = hub.indexOf("{/* PRP_BREAST_OWNER_COPY_CONTRACT_START */}");
+  for (const component of ["<CrowsFeetResults />", "<HyperhidrosisSteps />", "<EarPiercingPhotos />", "<JointPhotos />", "<PrpTubePhoto />", "<RunelsTraining />"]) {
+    const at = hub.indexOf(component);
+    assert.ok(at > 0 && at < heroEnd, `${component} is not right under the hero`);
+  }
+  const home = read("src/app/page.tsx");
+  assert.ok(home.indexOf("<HomeRealPhotos />") === home.indexOf("<Jumbotron />") + "<Jumbotron />".length + 7, "homepage photos sit right under the hero");
   assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<TreatmentRoomPhotos \/>/);
   // Austin 2026-11-05: the treatment room is at the clinic address, so it also shows on the Williamsburg location page.
   assert.match(read("src/app/locations/williamsburg-va/page.tsx"), /<TreatmentRoomPhotos \/>/);
   assert.match(hub, /\["prp-facial", "prp-hair-restoration", "joint-restoration"\]\.includes\(procedure\.slug\) && <PrpTubePhoto \/>/);
   assert.doesNotMatch(PRP_TUBE_CAPTION + SUPPLIES_CAPTION, /clinic|Williamsburg|home/i);
-  assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<RunelsTraining \/>/);
+  assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<TrainedBy \/>/);
 });

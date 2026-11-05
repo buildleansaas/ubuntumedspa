@@ -352,6 +352,18 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
           )}
         </section>
 
+        {/* Real clinic photos sit right under the hero (Austin, 2026-11-05: proof of work higher on the page). */}
+        {procedure.slug === "oh-shot" && <RunelsTraining />}
+        {(procedure.slug === "botox" || procedure.slug === "xeomin") && <CrowsFeetResults />}
+        {procedure.slug === "hyperhidrosis-treatment" && <HyperhidrosisSteps />}
+        {procedure.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos />}
+        {procedure.slug === "joint-restoration" && (
+          <section className="py-12 md:py-16" aria-label="Jenny's joint treatment and orthopedic PRP training">
+            <JointPhotos />
+          </section>
+        )}
+        {["prp-facial", "prp-hair-restoration", "joint-restoration"].includes(procedure.slug) && <PrpTubePhoto />}
+
         {/* PRP_BREAST_OWNER_COPY_CONTRACT_START */}
         {procedure.slug === "prp-breast-lift" && (
           <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="prp-breast-lift-expectations">
@@ -801,21 +813,6 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             </div>
             <CtaButtons consultHref={ownerConsultationHref} />
           </div>
-        )}
-
-        {(procedure.slug === "botox" || procedure.slug === "xeomin") && <CrowsFeetResults />}
-        {procedure.slug === "hyperhidrosis-treatment" && <HyperhidrosisSteps />}
-        {procedure.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos />}
-        {["prp-facial", "prp-hair-restoration", "joint-restoration"].includes(procedure.slug) && <PrpTubePhoto />}
-        {procedure.slug === "joint-restoration" && (
-          <section className="border-t border-base-300 py-14" aria-label="Jenny's joint treatment and orthopedic PRP training">
-            <JointPhotos />
-          </section>
-        )}
-        {procedure.slug === "oh-shot" && (
-          <section className="border-t border-base-300 py-14" aria-label="Jenny's Cellular Medicine Association training">
-            <RunelsTraining />
-          </section>
         )}
 
         <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24 max-w-3xl" id="faqs">

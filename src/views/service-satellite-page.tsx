@@ -89,6 +89,8 @@ export default function ServiceSatellitePageView({ page }: { page: ServiceSatell
         </div>
       </header>
 
+      {page.hubSlug === "hyperhidrosis-treatment" && page.slug === "underarm-sweating" && <HyperhidrosisSteps />}
+
       <section className="mb-10 md:mb-14 rounded-xl border border-base-300 p-5 md:p-6" id="pricing">
         <p className="text-sm uppercase tracking-wide text-base-content/60 mb-2">{SATELLITE_TEMPLATE_COPY.pricingEyebrow}</p>
         <h2 className="text-2xl md:text-3xl font-light mb-3">{page.price.heading}</h2>
@@ -125,8 +127,6 @@ export default function ServiceSatellitePageView({ page }: { page: ServiceSatell
           )}
         </section>
       ))}
-
-      {page.hubSlug === "hyperhidrosis-treatment" && page.slug === "underarm-sweating" && <HyperhidrosisSteps />}
 
       {page.safety && (
         <section className="mb-10 md:mb-14 rounded-xl border border-base-300 bg-base-200/60 p-5 md:p-6">

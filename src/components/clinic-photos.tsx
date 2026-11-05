@@ -1,5 +1,9 @@
+import Link from "next/link";
+
+import BeforeAfterShowcase from "components/before-after-showcase";
 import {
-  BEFORE_LABEL,
+  CARPAL_TUNNEL_CAPTION,
+  CARPAL_TUNNEL_PHOTO,
   CROWS_FEET_HEADING,
   CROWS_FEET_INTRO,
   CROWS_FEET_PAIRS,
@@ -10,19 +14,17 @@ import {
   HYPERHIDROSIS_STEPS_NOTE,
   JENNY_TREATING_UNDERARM,
   JENNY_TREATING_UNDERARM_CAPTION,
+  PICCIRILLO_CAPTION,
+  PICCIRILLO_PHOTO,
+  PRP_TUBE_CAPTION,
+  PRP_TUBE_PHOTO,
   RESULTS_CAPTION,
   RUNELS_CAPTION,
   RUNELS_PHOTO,
-  PRP_TUBE_CAPTION,
-  PICCIRILLO_CAPTION,
-  CARPAL_TUNNEL_CAPTION,
   SUPPLIES_CAPTION,
   SUPPLIES_PHOTO,
   TREATMENT_ROOM_HEADING,
   TREATMENT_ROOM_PHOTOS,
-  CARPAL_TUNNEL_PHOTO,
-  PICCIRILLO_PHOTO,
-  PRP_TUBE_PHOTO,
   type ClinicPhoto,
 } from "config/clinic-photos";
 
@@ -40,196 +42,177 @@ function Photo({ photo, className = "" }: { photo: ClinicPhoto; className?: stri
   );
 }
 
-/** Before/after pairs for crow's feet. Side by side (the pairs are not framed identically, so no overlay slider). */
-export function CrowsFeetResults({ pairs = CROWS_FEET_PAIRS.length }: { pairs?: number }) {
+/** A photo with its caption laid over the bottom edge. */
+function Tile({ photo, caption, aspect = "aspect-[4/5]", badge }: { photo: ClinicPhoto; caption: string; aspect?: string; badge?: string }) {
   return (
-    <section className="scroll-mt-28 border-t border-base-300 py-14 text-left md:py-20" aria-labelledby="crows-feet-results" data-clinic-photos="crows-feet">
-      <p className="eyebrow">Real patient photos</p>
-      <h2 id="crows-feet-results" className="font-display mt-3 text-2xl font-medium tracking-tight text-base-content md:text-4xl">
-        {CROWS_FEET_HEADING}
+    <figure className={`relative ${aspect} overflow-hidden rounded-2xl bg-base-200`}>
+      <Photo photo={photo} />
+      {badge && (
+        <span className="absolute left-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-full bg-base-100/95 text-xs font-semibold text-base-content shadow-sm">
+          {badge}
+        </span>
+      )}
+      <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent px-4 pb-3 pt-12 text-sm leading-snug text-white">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
+function SectionHeader({ id, eyebrow, heading, intro }: { id: string; eyebrow: string; heading: string; intro?: string }) {
+  return (
+    <div className="max-w-2xl">
+      <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/70">{eyebrow}</p>
+      <h2 id={id} className="font-display mt-3 text-3xl font-medium leading-tight tracking-tight text-base-content md:text-4xl">
+        {heading}
       </h2>
-      <p className="mt-3 max-w-[65ch] text-base text-base-content/80">{CROWS_FEET_INTRO}</p>
-      <div className={`mt-8 grid gap-8 ${pairs > 1 ? "md:grid-cols-2 xl:grid-cols-3" : "max-w-2xl"}`}>
-        {CROWS_FEET_PAIRS.slice(0, pairs).map((pair) => (
-          <figure key={pair.id} className="rounded-2xl border border-base-300 bg-base-100 p-3">
-            <div className="grid grid-cols-2 gap-2">
-              {[
-                [BEFORE_LABEL, pair.before],
-                [pair.afterLabel, pair.after],
-              ].map(([label, image]) => (
-                <div key={label as string} className="relative aspect-[3/4] overflow-hidden rounded-xl">
-                  <Photo photo={image as ClinicPhoto} />
-                  <span className="absolute left-2 top-2 rounded-full bg-base-100/90 px-2.5 py-1 text-xs font-medium text-base-content">
-                    {label as string}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </figure>
-        ))}
+      {intro && <p className="mt-3 text-base leading-relaxed text-base-content/80 md:text-lg">{intro}</p>}
+    </div>
+  );
+}
+
+/** Crow's feet results: copy on the left, one large before/after with a result switcher on the right. */
+export function CrowsFeetResults() {
+  return (
+    <section className="scroll-mt-28 py-12 text-left md:py-16" aria-labelledby="crows-feet-results" data-clinic-photos="crows-feet">
+      <div className="grid items-center gap-8 rounded-3xl bg-base-200/60 p-6 md:p-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12">
+        <div>
+          <SectionHeader id="crows-feet-results" eyebrow="Real patient photos" heading={CROWS_FEET_HEADING} intro={CROWS_FEET_INTRO} />
+          <p className="mt-6 max-w-md text-sm leading-relaxed text-base-content/65" data-results-caption>
+            {RESULTS_CAPTION}
+          </p>
+          <p className="mt-2 text-sm text-base-content/65">{CROWS_FEET_PAIRS.length} results shown.</p>
+        </div>
+        <BeforeAfterShowcase />
       </div>
-      <p className="mt-4 max-w-[65ch] text-sm text-base-content/70" data-results-caption>
-        {RESULTS_CAPTION}
-      </p>
     </section>
   );
 }
 
-/** The three-step underarm strip, plus the photo of Jenny treating. */
+/** The underarm process: equal photos with numbered badges and captions on the image. */
 export function HyperhidrosisSteps() {
   return (
-    <section className="scroll-mt-28 border-t border-base-300 py-14 text-left md:py-20" aria-labelledby="hyperhidrosis-steps" data-clinic-photos="hyperhidrosis">
-      <p className="eyebrow">Real clinic photos</p>
-      <h2 id="hyperhidrosis-steps" className="font-display mt-3 text-2xl font-medium tracking-tight text-base-content md:text-4xl">
-        {HYPERHIDROSIS_STEPS_HEADING}
-      </h2>
-      <ol className="mt-8 grid gap-6 sm:grid-cols-3">
+    <section className="scroll-mt-28 py-12 text-left md:py-16" aria-labelledby="hyperhidrosis-steps" data-clinic-photos="hyperhidrosis">
+      <SectionHeader id="hyperhidrosis-steps" eyebrow="Real clinic photos" heading={HYPERHIDROSIS_STEPS_HEADING} />
+      <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {HYPERHIDROSIS_STEPS.map((step, index) => (
           <li key={step.title}>
-            <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
-              <Photo photo={step.photo} />
-            </div>
-            <p className="mt-3 text-sm font-semibold text-base-content">
-              {index + 1}. {step.title}
-            </p>
-            <p className="mt-1 text-sm text-base-content/80">{step.caption}</p>
+            <Tile photo={step.photo} caption={`${step.title}: ${step.caption}`} badge={String(index + 1)} />
           </li>
         ))}
+        <li>
+          <Tile photo={JENNY_TREATING_UNDERARM} caption={JENNY_TREATING_UNDERARM_CAPTION} />
+        </li>
       </ol>
-      <figure className="mt-8 max-w-sm">
-        <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
-          <Photo photo={JENNY_TREATING_UNDERARM} />
-        </div>
-        <figcaption className="mt-2 text-sm text-base-content/80">{JENNY_TREATING_UNDERARM_CAPTION}</figcaption>
-      </figure>
-      <p className="mt-4 text-sm text-base-content/70">{HYPERHIDROSIS_STEPS_NOTE}</p>
+      <p className="mt-4 text-sm text-base-content/65">{HYPERHIDROSIS_STEPS_NOTE}</p>
     </section>
   );
 }
 
 export function EarPiercingPhotos() {
   return (
-    <section className="scroll-mt-28 border-t border-base-300 py-14 text-left md:py-20" aria-labelledby="ear-piercing-photos" data-clinic-photos="ear-piercing">
-      <p className="eyebrow">Real photos</p>
-      <h2 id="ear-piercing-photos" className="font-display mt-3 text-2xl font-medium tracking-tight text-base-content md:text-4xl">
-        {EAR_PIERCING_PHOTOS_HEADING}
-      </h2>
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <section className="scroll-mt-28 py-12 text-left md:py-16" aria-labelledby="ear-piercing-photos" data-clinic-photos="ear-piercing">
+      <SectionHeader id="ear-piercing-photos" eyebrow="Real photos from Jenny's patients" heading={EAR_PIERCING_PHOTOS_HEADING} />
+      <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
         {EAR_PIERCING_PHOTOS.map(({ photo, caption }) => (
-          <figure key={photo.src}>
-            <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
-              <Photo photo={photo} />
-            </div>
-            <figcaption className="mt-2 text-sm text-base-content/80">{caption}</figcaption>
-          </figure>
+          <Tile key={photo.src} photo={photo} caption={caption} />
         ))}
       </div>
     </section>
   );
 }
 
+const TRAINERS = [
+  { key: "runels", photo: RUNELS_PHOTO, name: "Dr. Charles Runels", caption: RUNELS_CAPTION },
+  { key: "piccirillo", photo: PICCIRILLO_PHOTO, name: "Dr. Jeff Piccirillo", caption: PICCIRILLO_CAPTION },
+] as const;
+type TrainerKey = (typeof TRAINERS)[number]["key"];
+
+/** A slim "Trained by" credential row: round photo, name, one line. */
+export function TrainedBy({ trainers = ["runels", "piccirillo"] }: { trainers?: TrainerKey[] }) {
+  const shown = TRAINERS.filter((trainer) => trainers.includes(trainer.key));
+  return (
+    <section className="py-8 text-left" aria-label="Jenny's training" data-clinic-photos="trained-by">
+      <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/70">Trained by</p>
+      <ul className={`mt-4 grid gap-4 ${shown.length > 1 ? "md:grid-cols-2" : "max-w-xl"}`}>
+        {shown.map((trainer) => (
+          <li key={trainer.key} className="flex items-center gap-4 rounded-2xl border border-base-300 bg-base-100 p-3 pr-5" data-clinic-photos={trainer.key}>
+            <div className="h-20 w-20 shrink-0 overflow-hidden rounded-full">
+              <Photo photo={trainer.photo} className="object-[50%_20%]" />
+            </div>
+            <div>
+              <p className="font-medium text-base-content">{trainer.name}</p>
+              <p className="mt-1 text-sm leading-snug text-base-content/75">{trainer.caption}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/** Single-trainer rows for the OH-Shot and joint pages. */
 export function RunelsTraining() {
-  return (
-    <figure className="mt-10 max-w-sm text-left" data-clinic-photos="runels">
-      <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
-        <Photo photo={RUNELS_PHOTO} />
-      </div>
-      <figcaption className="mt-2 text-sm text-base-content/80">{RUNELS_CAPTION}</figcaption>
-    </figure>
-  );
-}
-
-/** Homepage strip: one crow's feet pair and the triplets photo, each linking to its service. */
-export function HomeRealPhotos() {
-  const pair = CROWS_FEET_PAIRS[0];
-  const triplets = EAR_PIERCING_PHOTOS[0];
-  return (
-    <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-labelledby="home-real-photos" data-clinic-photos="home">
-      <p className="eyebrow">Real photos from Jenny&apos;s patients</p>
-      <h2 id="home-real-photos" className="font-display mt-3 text-3xl font-medium tracking-tight text-base-content md:text-4xl">
-        Real patients, real results
-      </h2>
-      <div className="mt-8 grid gap-8 lg:grid-cols-[2fr_1fr]">
-        <figure>
-          <div className="grid grid-cols-2 gap-2">
-            {[
-              [BEFORE_LABEL, pair.before],
-              [pair.afterLabel, pair.after],
-            ].map(([label, image]) => (
-              <div key={label as string} className="relative aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
-                <Photo photo={image as ClinicPhoto} />
-                <span className="absolute left-2 top-2 rounded-full bg-base-100/90 px-2.5 py-1 text-xs font-medium text-base-content">
-                  {label as string}
-                </span>
-              </div>
-            ))}
-          </div>
-          <figcaption className="mt-2 text-sm text-base-content/80">
-            Xeomin for crow&apos;s feet. {RESULTS_CAPTION}{" "}
-            <a href="/procedures/xeomin" className="link link-primary">
-              Xeomin details
-            </a>
-          </figcaption>
-        </figure>
-        <figure>
-          <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
-            <Photo photo={triplets.photo} />
-          </div>
-          <figcaption className="mt-2 text-sm text-base-content/80">
-            {triplets.caption}{" "}
-            <a href="/procedures/blomdahl-ear-piercing" className="link link-primary">
-              Ear piercing details
-            </a>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-  );
-}
-
-/** The spun-PRP tube, for the PRP service pages. */
-export function PrpTubePhoto() {
-  return (
-    <section className="border-t border-base-300 py-14 text-left" aria-label="What PRP looks like" data-clinic-photos="prp-tube">
-      <div className="grid items-start gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)]">
-        <figure className="max-w-xs">
-          <div className="aspect-[3/7] overflow-hidden rounded-xl border border-base-300">
-            <Photo photo={PRP_TUBE_PHOTO} />
-          </div>
-          <figcaption className="mt-2 text-sm text-base-content/80">{PRP_TUBE_CAPTION}</figcaption>
-        </figure>
-        <figure>
-          <div className="aspect-[1200/524] overflow-hidden rounded-xl border border-base-300">
-            <Photo photo={SUPPLIES_PHOTO} />
-          </div>
-          <figcaption className="mt-2 text-sm text-base-content/80">{SUPPLIES_CAPTION}</figcaption>
-        </figure>
-      </div>
-    </section>
-  );
+  return <TrainedBy trainers={["runels"]} />;
 }
 
 export function PiccirilloTraining() {
+  return <TrainedBy trainers={["piccirillo"]} />;
+}
+
+/** Homepage: the before/after showcase and the triplets, right under the hero. */
+export function HomeRealPhotos() {
+  const triplets = EAR_PIERCING_PHOTOS[0];
   return (
-    <figure className="mt-10 max-w-sm text-left" data-clinic-photos="piccirillo">
-      <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
-        <Photo photo={PICCIRILLO_PHOTO} />
+    <section className="scroll-mt-28 py-12 md:py-16" aria-labelledby="home-real-photos" data-clinic-photos="home">
+      <div className="grid items-start gap-8 rounded-3xl bg-base-200/60 p-6 md:p-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-12">
+        <div>
+          <SectionHeader
+            id="home-real-photos"
+            eyebrow="Real photos from Jenny's patients"
+            heading="Real patients, real results"
+            intro="Xeomin for crow's feet, before and after."
+          />
+          <div className="mt-6">
+            <BeforeAfterShowcase />
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-base-content/65">
+            {RESULTS_CAPTION}{" "}
+            <Link href="/procedures/xeomin" className="link link-primary">
+              Xeomin details
+            </Link>
+          </p>
+        </div>
+        <div className="lg:pt-24">
+          <Tile photo={triplets.photo} caption={triplets.caption} />
+          <p className="mt-3 text-sm">
+            <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
+              Ear piercing details
+            </Link>
+          </p>
+        </div>
       </div>
-      <figcaption className="mt-2 text-sm text-base-content/80">{PICCIRILLO_CAPTION}</figcaption>
-    </figure>
+    </section>
   );
 }
 
-/** PRP joint page: Jenny injecting for carpal tunnel, beside her orthopedic PRP training photo. */
+/** PRP pages: the spun tube and the supplies, same height. */
+export function PrpTubePhoto() {
+  return (
+    <section className="py-12 text-left md:py-16" aria-label="What PRP looks like" data-clinic-photos="prp-tube">
+      <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)]">
+        <Tile photo={PRP_TUBE_PHOTO} caption={PRP_TUBE_CAPTION} aspect="aspect-[4/5] sm:aspect-auto sm:h-80" />
+        <Tile photo={SUPPLIES_PHOTO} caption={SUPPLIES_CAPTION} aspect="aspect-[4/3] sm:aspect-auto sm:h-80" />
+      </div>
+    </section>
+  );
+}
+
+/** PRP joint page: Jenny injecting for carpal tunnel, with her orthopedic PRP trainer. */
 export function JointPhotos() {
   return (
-    <div className="grid max-w-3xl gap-6 text-left sm:grid-cols-2" data-clinic-photos="joint">
-      <figure className="mt-10">
-        <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
-          <Photo photo={CARPAL_TUNNEL_PHOTO} />
-        </div>
-        <figcaption className="mt-2 text-sm text-base-content/80">{CARPAL_TUNNEL_CAPTION}</figcaption>
-      </figure>
+    <div className="grid gap-6 text-left lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-center" data-clinic-photos="joint">
+      <Tile photo={CARPAL_TUNNEL_PHOTO} caption={CARPAL_TUNNEL_CAPTION} />
       <PiccirilloTraining />
     </div>
   );
@@ -237,15 +220,13 @@ export function JointPhotos() {
 
 export function TreatmentRoomPhotos() {
   return (
-    <section className="mt-12 text-left" aria-labelledby="treatment-room" data-clinic-photos="treatment-room">
-      <h2 id="treatment-room" className="font-display text-2xl font-medium tracking-tight text-base-content md:text-3xl">
-        {TREATMENT_ROOM_HEADING}
-      </h2>
-      <div className="mt-6 grid max-w-3xl gap-6 sm:grid-cols-2">
+    <section className="py-8 text-left" aria-labelledby="treatment-room" data-clinic-photos="treatment-room">
+      <SectionHeader id="treatment-room" eyebrow="Real photos" heading={TREATMENT_ROOM_HEADING} />
+      <div className="mt-6 grid grid-cols-2 gap-4">
         {TREATMENT_ROOM_PHOTOS.map((image) => (
-          <div key={image.src} className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
+          <figure key={image.src} className="aspect-[4/5] overflow-hidden rounded-2xl bg-base-200">
             <Photo photo={image} />
-          </div>
+          </figure>
         ))}
       </div>
     </section>
