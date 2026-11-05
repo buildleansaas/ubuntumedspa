@@ -1,3 +1,4 @@
+import { XEOMIN_HYPERHIDROSIS_OFF_LABEL } from "lib/xeomin-concerns";
 import { COMMERCE_CATALOG_BY_SLUG } from "config/commerce-catalog";
 import { procedures } from "data";
 import { cardPriceLabel, cashCardLabel, cashCardProse, formatUsdShort } from "lib/price";
@@ -100,7 +101,7 @@ const hyperhidrosisPrice = (area: string) => ({
   body: `Hyperhidrosis treatment starts at ${cashCardProse(HYPERHIDROSIS_CASH_CENTS)}, paid in full for one treatment visit.`,
 });
 
-const hyperhidrosisSafety = { heading: "Side effects and safety", body: HYPERHIDROSIS_SIDE_EFFECTS };
+const hyperhidrosisSafety = { heading: "Side effects and safety", body: `${HYPERHIDROSIS_SIDE_EFFECTS} ${XEOMIN_HYPERHIDROSIS_OFF_LABEL}` };
 
 /** Palms only: the hub's "localized weakness" in the hands. Source: onabotulinumtoxinA prescribing information §1.6 Limitations of Use (DailyMed setid 33d066a9-34ff-4a1a-b38b-d10983df3300), hand-muscle weakness with palmar use. */
 export const PALM_WEAKNESS_NOTE =
@@ -248,7 +249,7 @@ const hyperhidrosisConcernPages: ServiceSatellitePage[] = [
         ],
       },
     ],
-    safety: { ...hyperhidrosisSafety, body: `${HYPERHIDROSIS_SIDE_EFFECTS} ${PALM_WEAKNESS_NOTE}` },
+    safety: { ...hyperhidrosisSafety, body: `${HYPERHIDROSIS_SIDE_EFFECTS} ${PALM_WEAKNESS_NOTE} ${XEOMIN_HYPERHIDROSIS_OFF_LABEL}` },
     faqs: [
       hyperhidrosisCostFaq("sweaty palms"),
       {

@@ -12,6 +12,7 @@ import { procedures } from "../data";
 import XeominClusterPageView from "../views/xeomin-cluster-page";
 import { findDisallowedBotox } from "./botox-honesty.test";
 import {
+  XEOMIN_HYPERHIDROSIS_OFF_LABEL,
   XEOMIN_OFF_LABEL_NOTE,
   XEOMIN_CLUSTER_REDIRECTS,
   XEOMIN_HUB_ANCHOR,
@@ -269,4 +270,13 @@ test("#164: the Botox-alternative and Xeomin pages carry the off-label note for 
     }
   }
   assert.doesNotMatch(XEOMIN_OFF_LABEL_NOTE, /Botox/);
+});
+
+test("hyperhidrosis (not on Xeomin's label) is called off-label on the hub and every sweating satellite", async () => {
+  const route = readFileSync(join(process.cwd(), "src/app/procedures/[slug]/page.tsx"), "utf8");
+  assert.match(route, /procedure\.slug === "hyperhidrosis-treatment" && \(\s*<p[^>]*data-off-label-note>\s*\{XEOMIN_HYPERHIDROSIS_OFF_LABEL\}/);
+  const { serviceSatellitePages } = await import("./service-satellites");
+  const sweating = serviceSatellitePages.filter((page) => page.hubSlug === "hyperhidrosis-treatment");
+  assert.equal(sweating.length, 3);
+  for (const page of sweating) assert.ok(page.safety?.body.includes(XEOMIN_HYPERHIDROSIS_OFF_LABEL), page.slug);
 });

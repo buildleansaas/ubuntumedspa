@@ -57,6 +57,10 @@ export const XEOMIN_LIP_FLIP_OFF_LABEL =
 export const XEOMIN_OFF_LABEL_NOTE =
   "Xeomin's cosmetic FDA label covers frown lines, forehead lines, and crow's feet. Other areas, such as the lip flip, bunny lines, gummy smile, chin dimpling, neck bands, and the jaw (masseter), are off-label uses, which means they are not among the uses listed on its FDA label. Jenny reviews whether they fit you at your consultation.";
 
+/** Same source: hyperhidrosis is not among Xeomin's indications. */
+export const XEOMIN_HYPERHIDROSIS_OFF_LABEL =
+  "Treating excessive sweating is an off-label use of Xeomin, which means it is not one of the uses listed on its FDA label. Jenny reviews whether it fits you at your consultation.";
+
 export const XEOMIN_TRADEMARK_NOTE =
   "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand.";
 
