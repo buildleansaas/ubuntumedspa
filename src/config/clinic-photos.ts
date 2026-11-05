@@ -23,25 +23,34 @@ const photo = (name: string, alt: string, width: number, height: number): Clinic
 });
 
 export const RESULTS_CAPTION =
-  "Same patient, photos not retouched. Lighting, expression, and camera distance differ between the before and after photos. Results vary.";
+  "Each pair is the same patient, photos not retouched. Lighting, expression, and camera distance can differ between before and after photos. Results vary.";
 
 export const CROWS_FEET_PAIRS = [
   {
     id: "crows-feet-right",
     before: photo("xeomin-crows-feet-right-before", "Crow's feet lines beside the right eye while smiling, before Xeomin", 900, 1200),
     after: photo("xeomin-crows-feet-right-after", "The same patient's right eye while smiling, a few days after Xeomin", 900, 1200),
+    afterLabel: "A few days after",
   },
   {
     id: "crows-feet-left",
     before: photo("xeomin-crows-feet-left-before", "Crow's feet lines beside the left eye while smiling, before Xeomin", 900, 1200),
     after: photo("xeomin-crows-feet-left-after", "The same patient's left eye while smiling, a few days after Xeomin", 900, 1200),
+    afterLabel: "A few days after",
+  },
+  {
+    // A second patient (Austin, 2026-11-05). Only the right-eye smile has a matching after; her other befores (raised brows,
+    // scrunch, left eye) have no after with the same expression, so they are not shown. Timing not stated, so the label is "After".
+    id: "crows-feet-patient2-right",
+    before: photo("xeomin-crows-feet-patient2-before", "A second patient's crow's feet beside the right eye while smiling, before Xeomin", 900, 1200),
+    after: photo("xeomin-crows-feet-patient2-after", "The same second patient's right eye while smiling, after Xeomin", 900, 1200),
+    afterLabel: "After",
   },
 ] as const;
 
 export const CROWS_FEET_HEADING = "Real results: crow's feet";
-export const CROWS_FEET_INTRO = "Before and a few days after Xeomin for crow's feet, from a Williamsburg Med Spa patient.";
+export const CROWS_FEET_INTRO = "Before and after Xeomin for crow's feet, from two Williamsburg Med Spa patients.";
 export const BEFORE_LABEL = "Before";
-export const AFTER_LABEL = "A few days after";
 
 export const HYPERHIDROSIS_STEPS = [
   {
@@ -135,7 +144,7 @@ export const SUPPLIES_PHOTO = photo(
 );
 export const SUPPLIES_CAPTION = "Treatment supplies laid out and ready.";
 
-/** Jenny's treatment room (Austin: her home office). Captions name no address. */
+/** Jenny's treatment room at the clinic address, 3900 Powhatan Parkway (Austin, 2026-11-05). */
 export const TREATMENT_ROOM_PHOTOS = [
   photo("treatment-room-chair-window", "A treatment chair with a red towel beside a bright window, with orchids in the foreground", 900, 1200),
   photo("treatment-room-chair-centrifuge", "A treatment chair with a red towel next to a desk holding a PRP centrifuge", 684, 1200),

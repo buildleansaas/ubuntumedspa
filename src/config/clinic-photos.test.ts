@@ -62,8 +62,9 @@ test("every clinic photo exists in public/, is a small webp, and has alt text", 
 });
 
 test("results captions are honest: same patient, not retouched, lighting noted, results vary; no outcome promises", () => {
-  assert.match(RESULTS_CAPTION, /Same patient, photos not retouched\./);
-  assert.match(RESULTS_CAPTION, /Lighting, expression, and camera distance differ/);
+  assert.match(RESULTS_CAPTION, /Each pair is the same patient, photos not retouched\./);
+  assert.match(RESULTS_CAPTION, /Lighting, expression, and camera distance can differ/);
+  assert.deepEqual(CROWS_FEET_PAIRS.map((pair) => pair.afterLabel), ["A few days after", "A few days after", "After"]);
   assert.match(RESULTS_CAPTION, /Results vary\.$/);
   assert.match(HYPERHIDROSIS_STEPS_NOTE, /Results vary\./);
   const copy = read("src/config/clinic-photos.ts") + read("src/components/clinic-photos.tsx");
@@ -104,6 +105,8 @@ test("photos are placed on the right pages", () => {
   assert.match(read("src/components/clinic-photos.tsx"), /export function JointPhotos[\s\S]*?<PiccirilloTraining \/>/);
   assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<PiccirilloTraining \/>/);
   assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<TreatmentRoomPhotos \/>/);
+  // Austin 2026-11-05: the treatment room is at the clinic address, so it also shows on the Williamsburg location page.
+  assert.match(read("src/app/locations/williamsburg-va/page.tsx"), /<TreatmentRoomPhotos \/>/);
   assert.match(hub, /\["prp-facial", "prp-hair-restoration", "joint-restoration"\]\.includes\(procedure\.slug\) && <PrpTubePhoto \/>/);
   assert.doesNotMatch(PRP_TUBE_CAPTION + SUPPLIES_CAPTION, /clinic|Williamsburg|home/i);
   assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<RunelsTraining \/>/);

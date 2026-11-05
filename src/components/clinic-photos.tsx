@@ -1,5 +1,4 @@
 import {
-  AFTER_LABEL,
   BEFORE_LABEL,
   CROWS_FEET_HEADING,
   CROWS_FEET_INTRO,
@@ -42,7 +41,7 @@ function Photo({ photo, className = "" }: { photo: ClinicPhoto; className?: stri
 }
 
 /** Before/after pairs for crow's feet. Side by side (the pairs are not framed identically, so no overlay slider). */
-export function CrowsFeetResults({ pairs = 2 }: { pairs?: 1 | 2 }) {
+export function CrowsFeetResults({ pairs = CROWS_FEET_PAIRS.length }: { pairs?: number }) {
   return (
     <section className="scroll-mt-28 border-t border-base-300 py-14 md:py-20" aria-labelledby="crows-feet-results" data-clinic-photos="crows-feet">
       <p className="eyebrow">Real patient photos</p>
@@ -50,13 +49,13 @@ export function CrowsFeetResults({ pairs = 2 }: { pairs?: 1 | 2 }) {
         {CROWS_FEET_HEADING}
       </h2>
       <p className="mt-3 max-w-[65ch] text-base text-base-content/80">{CROWS_FEET_INTRO}</p>
-      <div className={`mt-8 grid gap-8 ${pairs === 2 ? "lg:grid-cols-2" : "max-w-2xl"}`}>
+      <div className={`mt-8 grid gap-8 ${pairs > 1 ? "md:grid-cols-2 xl:grid-cols-3" : "max-w-2xl"}`}>
         {CROWS_FEET_PAIRS.slice(0, pairs).map((pair) => (
           <figure key={pair.id} className="rounded-2xl border border-base-300 bg-base-100 p-3">
             <div className="grid grid-cols-2 gap-2">
               {[
                 [BEFORE_LABEL, pair.before],
-                [AFTER_LABEL, pair.after],
+                [pair.afterLabel, pair.after],
               ].map(([label, image]) => (
                 <div key={label as string} className="relative aspect-[3/4] overflow-hidden rounded-xl">
                   <Photo photo={image as ClinicPhoto} />
@@ -155,7 +154,7 @@ export function HomeRealPhotos() {
           <div className="grid grid-cols-2 gap-2">
             {[
               [BEFORE_LABEL, pair.before],
-              [AFTER_LABEL, pair.after],
+              [pair.afterLabel, pair.after],
             ].map(([label, image]) => (
               <div key={label as string} className="relative aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
                 <Photo photo={image as ClinicPhoto} />
