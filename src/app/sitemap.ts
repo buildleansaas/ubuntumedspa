@@ -7,6 +7,10 @@ import { publishedEarPiercingIntentPages } from "lib/ear-piercing-intents";
 import { publishedEarPiercingAreas } from "lib/local-service-areas";
 import { serviceSatellitePaths } from "lib/service-satellites";
 import { xeominClusterPages } from "lib/xeomin-concerns";
+import { getActiveOffers } from "config/offers";
+
+// Re-generated daily so /offers leaves the sitemap after its last offer ends.
+export const revalidate = 86400;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getPublishedBlogPosts();
@@ -33,9 +37,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: "https://www.williamsburgmedspa.com/prices",
     },
-    {
+    ...(getActiveOffers().length ? [{
       url: "https://www.williamsburgmedspa.com/offers",
-    },
+    }] : []),
     {
       url: "https://www.williamsburgmedspa.com/staff/jenny-brady",
     },

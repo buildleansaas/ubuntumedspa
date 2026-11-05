@@ -8,11 +8,11 @@ import { buildPageMetadata } from "lib/metadata";
 import { CASH_CARD_NOTE, cardPriceLabel, formatUsdShort } from "lib/price";
 
 // Offers come from config/offers.ts; prices are computed there. Never type a dollar amount in this file.
-export const metadata: Metadata = buildPageMetadata({
-  title: OFFERS_TITLE,
-  description: OFFERS_DESCRIPTION,
-  canonical: OFFERS_PATH,
-});
+export function generateMetadata(): Metadata {
+  const metadata = buildPageMetadata({ title: OFFERS_TITLE, description: OFFERS_DESCRIPTION, canonical: OFFERS_PATH });
+  // With nothing running the page is a thin placeholder: keep it out of search until the next offer.
+  return getActiveOffers().length ? metadata : { ...metadata, robots: { index: false, follow: true } };
+}
 
 // Rendered per request so an offer drops off the moment its end date passes (clinic time).
 export const dynamic = "force-dynamic";
