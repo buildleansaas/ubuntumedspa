@@ -17,6 +17,7 @@ import HomeVisit from "views/home-visit";
 import { buildPageMetadata } from "lib/metadata";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "lib/seo";
 import StructuredData from "components/structured-data";
+import { HomeRealPhotos } from "components/clinic-photos";
 
 export const metadata: Metadata = buildPageMetadata({
   title: DEFAULT_TITLE,
@@ -96,6 +97,7 @@ export default async function Page() {
         </div>
       </section>
       <NamedReviews heading="Clinic reviews" />
+      <HomeRealPhotos />
       <Procedures
         variant="editorial"
         featured={

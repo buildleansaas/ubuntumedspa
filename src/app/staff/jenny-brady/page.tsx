@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import StructuredData from "components/structured-data";
 import { buildPageMetadata } from "lib/metadata";
+import { RunnelsTraining } from "components/clinic-photos";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Jenny Brady — Aesthetic Nurse Practitioner | Williamsburg Med Spa",
@@ -84,6 +85,7 @@ export default function JennyBradyPage() {
               .
             </p>
           </div>
+          <RunnelsTraining />
         </div>
       </div>
     </div>

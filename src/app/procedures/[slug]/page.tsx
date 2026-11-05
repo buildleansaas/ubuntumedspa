@@ -24,6 +24,7 @@ import { humanizeMedicalCopy } from "lib/humanize";
 import { cashCardProse, cardPriceSchemaValue } from "lib/price";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import { getHubSatelliteGroup } from "lib/service-satellites";
+import { CrowsFeetResults, EarPiercingPhotos, HyperhidrosisSteps, RunnelsTraining } from "components/clinic-photos";
 import { xeominClusterPages } from "lib/xeomin-concerns";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
@@ -800,6 +801,15 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             </div>
             <CtaButtons consultHref={ownerConsultationHref} />
           </div>
+        )}
+
+        {(procedure.slug === "botox" || procedure.slug === "xeomin") && <CrowsFeetResults />}
+        {procedure.slug === "hyperhidrosis-treatment" && <HyperhidrosisSteps />}
+        {procedure.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos />}
+        {procedure.slug === "oh-shot" && (
+          <section className="border-t border-base-300 py-14" aria-label="Jenny's Cellular Medicine Association training">
+            <RunnelsTraining />
+          </section>
         )}
 
         <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24 max-w-3xl" id="faqs">

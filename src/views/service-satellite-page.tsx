@@ -14,6 +14,7 @@ import {
   satellitePath,
   type ServiceSatellitePage,
 } from "lib/service-satellites";
+import { HyperhidrosisSteps } from "components/clinic-photos";
 
 const ORIGIN = "https://www.williamsburgmedspa.com";
 
@@ -124,6 +125,8 @@ export default function ServiceSatellitePageView({ page }: { page: ServiceSatell
           )}
         </section>
       ))}
+
+      {page.hubSlug === "hyperhidrosis-treatment" && page.slug === "underarm-sweating" && <HyperhidrosisSteps />}
 
       {page.safety && (
         <section className="mb-10 md:mb-14 rounded-xl border border-base-300 bg-base-200/60 p-5 md:p-6">
