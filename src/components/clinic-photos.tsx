@@ -12,8 +12,8 @@ import {
   JENNY_TREATING_UNDERARM,
   JENNY_TREATING_UNDERARM_CAPTION,
   RESULTS_CAPTION,
-  RUNNELS_CAPTION,
-  RUNNELS_PHOTO,
+  RUNELS_CAPTION,
+  RUNELS_PHOTO,
   PRP_TUBE_CAPTION,
   PRP_TUBE_PHOTO,
   type ClinicPhoto,
@@ -121,13 +121,13 @@ export function EarPiercingPhotos() {
   );
 }
 
-export function RunnelsTraining() {
+export function RunelsTraining() {
   return (
-    <figure className="mt-10 max-w-sm" data-clinic-photos="runnels">
+    <figure className="mt-10 max-w-sm" data-clinic-photos="runels">
       <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
-        <Photo photo={RUNNELS_PHOTO} />
+        <Photo photo={RUNELS_PHOTO} />
       </div>
-      <figcaption className="mt-2 text-sm text-base-content/80">{RUNNELS_CAPTION}</figcaption>
+      <figcaption className="mt-2 text-sm text-base-content/80">{RUNELS_CAPTION}</figcaption>
     </figure>
   );
 }
@@ -138,7 +138,7 @@ export function HomeRealPhotos() {
   const triplets = EAR_PIERCING_PHOTOS[0];
   return (
     <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-labelledby="home-real-photos" data-clinic-photos="home">
-      <p className="eyebrow">Real photos from our clinic</p>
+      <p className="eyebrow">Real photos from Jenny&apos;s patients</p>
       <h2 id="home-real-photos" className="font-display mt-3 text-3xl font-medium tracking-tight text-base-content md:text-4xl">
         Real patients, real results
       </h2>

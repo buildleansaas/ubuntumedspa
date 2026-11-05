@@ -10,8 +10,8 @@ import {
   HYPERHIDROSIS_STEPS_NOTE,
   JENNY_TREATING_UNDERARM,
   RESULTS_CAPTION,
-  RUNNELS_CAPTION,
-  RUNNELS_PHOTO,
+  RUNELS_CAPTION,
+  RUNELS_PHOTO,
   PRP_TUBE_CAPTION,
   PRP_TUBE_PHOTO,
 } from "./clinic-photos";
@@ -23,7 +23,7 @@ const allPhotos = [
   ...HYPERHIDROSIS_STEPS.map((step) => step.photo),
   JENNY_TREATING_UNDERARM,
   ...EAR_PIERCING_PHOTOS.map((item) => item.photo),
-  RUNNELS_PHOTO,
+  RUNELS_PHOTO,
   PRP_TUBE_PHOTO,
 ];
 
@@ -41,7 +41,7 @@ test("every clinic photo exists in public/, is a small webp, and has alt text", 
 
 test("results captions are honest: same patient, not retouched, lighting noted, results vary; no outcome promises", () => {
   assert.match(RESULTS_CAPTION, /Same patient, photos not retouched\./);
-  assert.match(RESULTS_CAPTION, /Lighting differs/);
+  assert.match(RESULTS_CAPTION, /Lighting, expression, and camera distance differ/);
   assert.match(RESULTS_CAPTION, /Results vary\.$/);
   assert.match(HYPERHIDROSIS_STEPS_NOTE, /Results vary\./);
   const copy = read("src/config/clinic-photos.ts") + read("src/components/clinic-photos.tsx");
@@ -50,12 +50,19 @@ test("results captions are honest: same patient, not retouched, lighting noted, 
   assert.doesNotMatch(HYPERHIDROSIS_STEPS.map((step) => step.title + step.caption).join(" "), /before|after/i);
 });
 
-test("Dr. Runnels caption states only the confirmed facts (Fairhope, CMA training)", () => {
+test("Dr. Runels caption states only the confirmed facts (Fairhope, CMA training)", () => {
   assert.equal(
-    RUNNELS_CAPTION,
-    "Jenny with Dr. Charles Runnels, founder of the Cellular Medicine Association, in Fairhope, Alabama, during her CMA training."
+    RUNELS_CAPTION,
+    "Jenny with Dr. Charles Runels in Fairhope, Alabama, during her Cellular Medicine Association training."
   );
-  assert.doesNotMatch(RUNNELS_CAPTION, /endorse|recommend|partner/i);
+  assert.doesNotMatch(RUNELS_CAPTION, /endorse|recommend|partner|founder/i);
+  // His name is spelled Runels (cellularmedicineassociation.org; the site's OH-Shot article).
+  const all = read("src/config/clinic-photos.ts") + read("src/components/clinic-photos.tsx");
+  assert.doesNotMatch(all, /Runnels/);
+});
+
+test("no photo copy claims the photos were taken at the clinic (several were not)", () => {
+  assert.doesNotMatch(read("src/components/clinic-photos.tsx"), /from our clinic|in our clinic|at the clinic/i);
 });
 
 test("ear piercing captions never name a location (the photos were taken at home)", () => {
@@ -73,5 +80,5 @@ test("photos are placed on the right pages", () => {
   assert.match(read("src/app/page.tsx"), /<HomeRealPhotos \/>/);
   assert.match(hub, /\["prp-facial", "prp-hair-restoration", "joint-restoration"\]\.includes\(procedure\.slug\) && <PrpTubePhoto \/>/);
   assert.doesNotMatch(PRP_TUBE_CAPTION, /clinic|Williamsburg/i);
-  assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<RunnelsTraining \/>/);
+  assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<RunelsTraining \/>/);
 });
