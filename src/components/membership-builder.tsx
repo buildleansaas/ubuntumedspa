@@ -199,11 +199,12 @@ export default function MembershipBuilder() {
             How often do you want lines softened?
           </h2>
           <p className="mt-3 text-base text-base-content/75">Xeomin usually lasts about 3 to 4 months. Results vary.</p>
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {([
               [1, "Once a year", "A refresh before a big event"],
               [2, "Twice a year", "Spring and fall"],
               [3, "Three times a year", "About every 4 months, the usual rhythm"],
+              [4, "Four times a year", "Every 3 months, the most often Xeomin is given"],
             ] as const).map(([frequency, label, detail]) => (
               <button
                 key={frequency}
@@ -262,7 +263,7 @@ export default function MembershipBuilder() {
                     ))}
                   </div>
                   <div className="inline-flex rounded-full border border-base-300 p-1 text-sm sm:ml-3">
-                    {([1, 2, 3] as const).map((frequency) => (
+                    {([1, 2, 3, 4] as const).map((frequency) => (
                       <button
                         key={frequency}
                         type="button"

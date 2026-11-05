@@ -12,7 +12,8 @@ const cash = (slug: string) => {
 };
 
 export type XeominLevel = "none" | "standard" | "plus";
-export type XeominFrequency = 1 | 2 | 3;
+/** Visits a year. 4 = every 3 months, the label minimum interval (XEOMIN PI: retreat no more often than every 3 months). */
+export type XeominFrequency = 1 | 2 | 3 | 4;
 export type AddOnSlug = "joints" | "aesthetic" | "pleasure" | "couples";
 
 /** One Xeomin credit block per visit (standard) or two (Plus). */
