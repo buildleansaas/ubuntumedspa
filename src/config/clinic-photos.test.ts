@@ -18,6 +18,7 @@ import {
   CARPAL_TUNNEL_PHOTO,
   SUPPLIES_PHOTO,
   SUPPLIES_CAPTION,
+  TREATMENT_ROOM_PHOTOS,
 } from "./clinic-photos";
 
 const ROOT = process.cwd();
@@ -45,6 +46,7 @@ const allPhotos = [
   PICCIRILLO_PHOTO,
   CARPAL_TUNNEL_PHOTO,
   SUPPLIES_PHOTO,
+  ...TREATMENT_ROOM_PHOTOS,
 ];
 
 test("every clinic photo exists in public/, is a small webp, and has alt text", () => {
@@ -101,6 +103,7 @@ test("photos are placed on the right pages", () => {
   assert.match(hub, /procedure\.slug === "joint-restoration" && \([\s\S]{0,300}<JointPhotos \/>/);
   assert.match(read("src/components/clinic-photos.tsx"), /export function JointPhotos[\s\S]*?<PiccirilloTraining \/>/);
   assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<PiccirilloTraining \/>/);
+  assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<TreatmentRoomPhotos \/>/);
   assert.match(hub, /\["prp-facial", "prp-hair-restoration", "joint-restoration"\]\.includes\(procedure\.slug\) && <PrpTubePhoto \/>/);
   assert.doesNotMatch(PRP_TUBE_CAPTION + SUPPLIES_CAPTION, /clinic|Williamsburg|home/i);
   assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<RunelsTraining \/>/);

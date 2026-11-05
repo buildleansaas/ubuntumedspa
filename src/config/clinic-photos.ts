@@ -134,3 +134,10 @@ export const SUPPLIES_PHOTO = photo(
   524
 );
 export const SUPPLIES_CAPTION = "Treatment supplies laid out and ready.";
+
+/** Jenny's treatment room (Austin: her home office). Captions name no address. */
+export const TREATMENT_ROOM_PHOTOS = [
+  photo("treatment-room-chair-window", "A treatment chair with a red towel beside a bright window, with orchids in the foreground", 900, 1200),
+  photo("treatment-room-chair-centrifuge", "A treatment chair with a red towel next to a desk holding a PRP centrifuge", 684, 1200),
+] as const;
+export const TREATMENT_ROOM_HEADING = "Jenny's treatment room";

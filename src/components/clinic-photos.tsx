@@ -19,6 +19,8 @@ import {
   CARPAL_TUNNEL_CAPTION,
   SUPPLIES_CAPTION,
   SUPPLIES_PHOTO,
+  TREATMENT_ROOM_HEADING,
+  TREATMENT_ROOM_PHOTOS,
   CARPAL_TUNNEL_PHOTO,
   PICCIRILLO_PHOTO,
   PRP_TUBE_PHOTO,
@@ -231,5 +233,22 @@ export function JointPhotos() {
       </figure>
       <PiccirilloTraining />
     </div>
+  );
+}
+
+export function TreatmentRoomPhotos() {
+  return (
+    <section className="mt-12" aria-labelledby="treatment-room" data-clinic-photos="treatment-room">
+      <h2 id="treatment-room" className="font-display text-2xl font-medium tracking-tight text-base-content md:text-3xl">
+        {TREATMENT_ROOM_HEADING}
+      </h2>
+      <div className="mt-6 grid max-w-3xl gap-6 sm:grid-cols-2">
+        {TREATMENT_ROOM_PHOTOS.map((image) => (
+          <div key={image.src} className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
+            <Photo photo={image} />
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
