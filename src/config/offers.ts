@@ -4,7 +4,7 @@ import { TIMES_PROMPT } from "lib/text-to-book";
 
 /**
  * Clinic offers (Austin, 2026-11-05). Every offer here is real and honored at the clinic: online checkout always charges the
- * regular catalog price, so each offer says it is applied at the visit. Prices are cash first; the card price comes from the
+ * regular catalog price, so each offer is booked by text or call (Austin, 2026-11-05: online purchases stay at the regular price). Prices are cash first; the card price comes from the
  * same formula as checkout (lib/price cardPriceCents). An offer disappears from /offers and the header on the day after `endsOn`.
  *
  * Financing is NOT an offer: the clinic has no financing provider. Do not add one here until a provider is live.
@@ -56,7 +56,7 @@ export const OFFERS: ClinicOffer[] = [
       SIBLING_OFFER_CASH_CENTS
     )} cash or ${cardPriceLabel(
       SIBLING_OFFER_CASH_CENTS
-    )} by card, applied at the clinic; online checkout shows regular prices. Not combined with other offers. Ends December 31, 2026.`,
+    )} by card. Book by text or call to get the sibling price; online purchases are at the regular price. Not combined with other offers. Ends December 31, 2026.`,
     learnMoreHref: "/procedures/blomdahl-ear-piercing",
     learnMoreLabel: "Blomdahl ear piercing details",
     textMessage: `Hi Jenny. I'd like to book the sibling ear piercing offer for two kids. ${TIMES_PROMPT}`,
@@ -83,5 +83,5 @@ export const getActiveOffers = (today: string = clinicToday()) => OFFERS.filter(
 export const OFFERS_PATH = "/offers";
 export const OFFERS_TITLE = "Med Spa Offers in Williamsburg, VA | Current Deals";
 export const OFFERS_DESCRIPTION =
-  "Current offers at Williamsburg Med Spa, with the cash price first and the card price shown. Every offer is applied at your visit.";
+  "Current offers at Williamsburg Med Spa, with the cash price first and the card price shown. Book by text or call to get an offer price.";
 export const OFFERS_H1 = "Current Offers";

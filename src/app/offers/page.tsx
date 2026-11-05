@@ -35,7 +35,7 @@ export default function OffersPage() {
         {OFFERS_H1}
       </h1>
       <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">
-        Every offer is applied at your visit. Online checkout always shows the regular price.
+        Book by text or call to get an offer price. Online purchases are at the regular price.
       </p>
       <p className="mt-3 max-w-[65ch] text-sm leading-relaxed text-base-content/75">{CASH_CARD_NOTE}</p>
 
@@ -79,7 +79,7 @@ export default function OffersPage() {
               <div className="mt-6">
                 <TextToBook
                   heading="Text or call Jenny to book"
-                  intro="Text Jenny with the days and times that work for you, or call. Mention the offer and it is applied at your visit."
+                  intro="Text Jenny with the days and times that work for you, or call, and mention the offer."
                   message={offer.textMessage}
                   location="service_page"
                 />

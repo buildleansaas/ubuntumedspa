@@ -28,7 +28,8 @@ test("sibling offer (Austin 2026-11-05): 2 kids, both ears, $140 cash vs the cat
   assert.equal(cardPriceCents(14000), 14450);
   assert.equal(sibling.title, "Sibling Ear Piercing: 2 Kids, Both Ears, $140");
   assert.ok(sibling.title.length <= 58, "Google offer titles are capped at 58 characters");
-  assert.match(sibling.terms, /\$140 cash or \$144\.50 by card, applied at the clinic; online checkout shows regular prices\./);
+  // Austin 2026-11-05: the offer is booked by text or call; online purchases stay at the regular price (no refunds of the difference).
+  assert.match(sibling.terms, /\$140 cash or \$144\.50 by card\. Book by text or call to get the sibling price; online purchases are at the regular price\./);
   assert.match(sibling.terms, /Ends December 31, 2026\.$/);
   assert.equal(sibling.endsOn, "2026-12-31");
   // Facts the site already states about ear piercing (src/data.ts).
