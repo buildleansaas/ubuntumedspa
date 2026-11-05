@@ -17,6 +17,19 @@ import {
 } from "./clinic-photos";
 
 const ROOT = process.cwd();
+
+/** Reads a WebP's pixel size from its header (VP8X, VP8 lossy, or VP8L lossless). */
+const webpSize = (file: string): [number, number] => {
+  const b = readFileSync(file);
+  const chunk = b.toString("ascii", 12, 16);
+  if (chunk === "VP8X") return [1 + b.readUIntLE(24, 3), 1 + b.readUIntLE(27, 3)];
+  if (chunk === "VP8 ") return [b.readUInt16LE(26) & 0x3fff, b.readUInt16LE(28) & 0x3fff];
+  if (chunk === "VP8L") {
+    const bits = b.readUInt32LE(21);
+    return [(bits & 0x3fff) + 1, ((bits >> 14) & 0x3fff) + 1];
+  }
+  throw new Error(`${file}: unknown WebP chunk ${chunk}`);
+};
 const read = (path: string) => readFileSync(join(ROOT, path), "utf8");
 const allPhotos = [
   ...CROWS_FEET_PAIRS.flatMap((pair) => [pair.before, pair.after]),
@@ -34,7 +47,7 @@ test("every clinic photo exists in public/, is a small webp, and has alt text", 
     assert.match(photo.src, /^\/clinic\/[a-z0-9-]+\.webp$/);
     assert.ok(statSync(file).size < 200 * 1024, `${photo.src} is over 200 KB`);
     assert.ok(photo.alt.length > 20, photo.src);
-    assert.ok(photo.width > 0 && photo.height > 0);
+    assert.deepEqual(webpSize(file), [photo.width, photo.height], `${photo.src} declared size does not match the file`);
   }
   assert.equal(new Set(allPhotos.map((photo) => photo.src)).size, allPhotos.length);
 });
@@ -74,7 +87,7 @@ test("photos are placed on the right pages", () => {
   assert.match(hub, /\(procedure\.slug === "botox" \|\| procedure\.slug === "xeomin"\) && <CrowsFeetResults \/>/);
   assert.match(hub, /procedure\.slug === "hyperhidrosis-treatment" && <HyperhidrosisSteps \/>/);
   assert.match(hub, /procedure\.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos \/>/);
-  assert.match(hub, /procedure\.slug === "oh-shot" && \(/);
+  assert.match(hub, /procedure\.slug === "oh-shot" && \([\s\S]{0,300}<RunelsTraining \/>/);
   assert.match(read("src/views/xeomin-cluster-page.tsx"), /page\.slug === "crows-feet" && <CrowsFeetResults \/>/);
   assert.match(read("src/views/service-satellite-page.tsx"), /page\.slug === "underarm-sweating" && <HyperhidrosisSteps \/>/);
   assert.match(read("src/app/page.tsx"), /<HomeRealPhotos \/>/);
