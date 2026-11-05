@@ -136,7 +136,7 @@ Decision:
 
 Protected and intended current owner: `https://www.williamsburgmedspa.com/locations/newport-news-va`
 
-Update 2026-11-05 (PR #167, per the vault plan Williamsburg-Med-Spa-SEO-Plan.md item 1): the Botox/Xeomin queries (`botox newport news`, `botox newport news va`, `xeomin newport news`) move to `https://www.williamsburgmedspa.com/procedures/xeomin/near/newport-news-va`. The location page keeps `med spa newport news` and its "Xeomin near Newport News" link points to the new page. Watch both pages' Botox impressions at D7/D14/D28; if the location page loses them without the new page gaining, revisit.
+Update 2026-11-05 (PR #167, per the vault plan Williamsburg-Med-Spa-SEO-Plan.md item 1): the Botox/Xeomin queries (`botox newport news`, `botox newport news va`, `xeomin newport news`) move to `https://www.williamsburgmedspa.com/procedures/xeomin/near/newport-news-va`. The location page keeps `med spa newport news` and its "Xeomin near Newport News" link points to the new page. Watch both pages' Botox impressions at D7/D14/D28 (baseline above: 82 and 20 impressions, positions 13.66 and 17.05); if the location page loses them without the new page gaining, point the link back and revisit.
 
 Exact protected queries:
 
@@ -154,11 +154,12 @@ Current 28-day evidence:
 - `dermal fillers newport news`: 25 impressions, 0 clicks, position 10.08
 - `dermal fillers newport news va`: 20 impressions, 0 clicks, position 11.15
 
-Decision:
+Decision (superseded 2026-11-05 for the Botox/Xeomin queries, see the update above):
 
-- Protect the location page as the observed owner during the PR #68 hold.
-- Near-service child URLs may remain useful destinations, but do not force a transfer while the location page is already in striking distance.
+- ~~Protect the location page as the observed owner during the PR #68 hold.~~ Still true for `med spa newport news` and the filler queries.
+- ~~Near-service child URLs may remain useful destinations, but do not force a transfer while the location page is already in striking distance.~~ The Botox queries sat at 13.66 and 17.05 (not page one), so the 2026-11-04 SEO plan, approved by Austin, gives them a dedicated Xeomin page. The location page links to it.
 - Newport News is the strongest candidate for a future surgical growth slice after the checkpoint gate.
+- Yorktown has no protected Botox queries; `/procedures/xeomin/near/yorktown-va` is a new page with no prior owner.
 
 ## Canonical and indexation truth set
 

@@ -2124,7 +2124,7 @@ export const procedures = [
       },
       {
         question: "Do you take insurance for hyperhidrosis treatment?",
-        answer: `No. Williamsburg Med Spa does not bill insurance or file insurance paperwork. Hyperhidrosis treatment is paid directly and starts at ${cashCardProse(100000)} for one treatment visit.`,
+        answer: `No. Williamsburg Med Spa does not bill insurance or provide insurance claim paperwork. Hyperhidrosis treatment is paid directly and starts at ${cashCardProse(100000)} for one treatment visit.`,
       },
       {
         question: "How soon can I see results?",
