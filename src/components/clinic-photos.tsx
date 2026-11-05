@@ -43,7 +43,7 @@ function Photo({ photo, className = "" }: { photo: ClinicPhoto; className?: stri
 /** Before/after pairs for crow's feet. Side by side (the pairs are not framed identically, so no overlay slider). */
 export function CrowsFeetResults({ pairs = CROWS_FEET_PAIRS.length }: { pairs?: number }) {
   return (
-    <section className="scroll-mt-28 border-t border-base-300 py-14 md:py-20" aria-labelledby="crows-feet-results" data-clinic-photos="crows-feet">
+    <section className="scroll-mt-28 border-t border-base-300 py-14 text-left md:py-20" aria-labelledby="crows-feet-results" data-clinic-photos="crows-feet">
       <p className="eyebrow">Real patient photos</p>
       <h2 id="crows-feet-results" className="font-display mt-3 text-2xl font-medium tracking-tight text-base-content md:text-4xl">
         {CROWS_FEET_HEADING}
@@ -78,7 +78,7 @@ export function CrowsFeetResults({ pairs = CROWS_FEET_PAIRS.length }: { pairs?: 
 /** The three-step underarm strip, plus the photo of Jenny treating. */
 export function HyperhidrosisSteps() {
   return (
-    <section className="scroll-mt-28 border-t border-base-300 py-14 md:py-20" aria-labelledby="hyperhidrosis-steps" data-clinic-photos="hyperhidrosis">
+    <section className="scroll-mt-28 border-t border-base-300 py-14 text-left md:py-20" aria-labelledby="hyperhidrosis-steps" data-clinic-photos="hyperhidrosis">
       <p className="eyebrow">Real clinic photos</p>
       <h2 id="hyperhidrosis-steps" className="font-display mt-3 text-2xl font-medium tracking-tight text-base-content md:text-4xl">
         {HYPERHIDROSIS_STEPS_HEADING}
@@ -109,7 +109,7 @@ export function HyperhidrosisSteps() {
 
 export function EarPiercingPhotos() {
   return (
-    <section className="scroll-mt-28 border-t border-base-300 py-14 md:py-20" aria-labelledby="ear-piercing-photos" data-clinic-photos="ear-piercing">
+    <section className="scroll-mt-28 border-t border-base-300 py-14 text-left md:py-20" aria-labelledby="ear-piercing-photos" data-clinic-photos="ear-piercing">
       <p className="eyebrow">Real photos</p>
       <h2 id="ear-piercing-photos" className="font-display mt-3 text-2xl font-medium tracking-tight text-base-content md:text-4xl">
         {EAR_PIERCING_PHOTOS_HEADING}
@@ -130,7 +130,7 @@ export function EarPiercingPhotos() {
 
 export function RunelsTraining() {
   return (
-    <figure className="mt-10 max-w-sm" data-clinic-photos="runels">
+    <figure className="mt-10 max-w-sm text-left" data-clinic-photos="runels">
       <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
         <Photo photo={RUNELS_PHOTO} />
       </div>
@@ -190,7 +190,7 @@ export function HomeRealPhotos() {
 /** The spun-PRP tube, for the PRP service pages. */
 export function PrpTubePhoto() {
   return (
-    <section className="border-t border-base-300 py-14" aria-label="What PRP looks like" data-clinic-photos="prp-tube">
+    <section className="border-t border-base-300 py-14 text-left" aria-label="What PRP looks like" data-clinic-photos="prp-tube">
       <div className="grid items-start gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)]">
         <figure className="max-w-xs">
           <div className="aspect-[3/7] overflow-hidden rounded-xl border border-base-300">
@@ -211,7 +211,7 @@ export function PrpTubePhoto() {
 
 export function PiccirilloTraining() {
   return (
-    <figure className="mt-10 max-w-sm" data-clinic-photos="piccirillo">
+    <figure className="mt-10 max-w-sm text-left" data-clinic-photos="piccirillo">
       <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
         <Photo photo={PICCIRILLO_PHOTO} />
       </div>
@@ -223,7 +223,7 @@ export function PiccirilloTraining() {
 /** PRP joint page: Jenny injecting for carpal tunnel, beside her orthopedic PRP training photo. */
 export function JointPhotos() {
   return (
-    <div className="grid max-w-3xl gap-6 sm:grid-cols-2" data-clinic-photos="joint">
+    <div className="grid max-w-3xl gap-6 text-left sm:grid-cols-2" data-clinic-photos="joint">
       <figure className="mt-10">
         <div className="aspect-[3/4] overflow-hidden rounded-xl border border-base-300">
           <Photo photo={CARPAL_TUNNEL_PHOTO} />
@@ -237,7 +237,7 @@ export function JointPhotos() {
 
 export function TreatmentRoomPhotos() {
   return (
-    <section className="mt-12" aria-labelledby="treatment-room" data-clinic-photos="treatment-room">
+    <section className="mt-12 text-left" aria-labelledby="treatment-room" data-clinic-photos="treatment-room">
       <h2 id="treatment-room" className="font-display text-2xl font-medium tracking-tight text-base-content md:text-3xl">
         {TREATMENT_ROOM_HEADING}
       </h2>
