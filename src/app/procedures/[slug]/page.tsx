@@ -23,6 +23,7 @@ import { EAR_PIERCING_PRICES, getCatalogConfigBySlug } from "config/commerce-cat
 import { humanizeMedicalCopy } from "lib/humanize";
 import { cashCardProse, cardPriceSchemaValue } from "lib/price";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
+import { getHubSatelliteGroup } from "lib/service-satellites";
 import { xeominClusterPages } from "lib/xeomin-concerns";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
@@ -86,6 +87,7 @@ const relatedProcedureLinks: Record<string, Array<{ href: string; label: string 
   "prp-facial": [
     { href: "/procedures/microneedling-with-prp", label: "microneedling with PRP" },
     { href: "/procedures/prp-face-lift", label: "PRP Face Lift" },
+    { href: "/blog/hydrafacial-alternatives-in-williamsburg-va", label: "HydraFacial alternatives in Williamsburg" },
   ],
   "microneedling-with-prp": [
     { href: "/procedures/prp-facial", label: "PRP Facial" },
@@ -162,6 +164,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
   const featuredGuide = articles.find((article) => article.slug === featuredGuideSlugs[procedure.slug]);
   const featuredGuideCta = featuredGuide ? featuredGuideCopy[procedure.slug] : undefined;
   const relatedLinks = relatedProcedureLinks[procedure.slug] ?? [];
+  const satelliteGroup = getHubSatelliteGroup(procedure.slug);
   const ownerConsultationHref =
     procedure.slug === "prp-breast-lift"
       ? "/consult?procedure=prp-breast-lift&utm_source=website&utm_medium=procedure_page&utm_campaign=prp_breast_lift"
@@ -564,6 +567,30 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             </p>
           )}
         </section>
+
+        {satelliteGroup && (
+          <section className="mx-auto mt-8 max-w-4xl text-left" aria-labelledby="satellite-pages">
+            <div className="border border-base-300 bg-base-100 p-6">
+              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">{satelliteGroup.eyebrow}</p>
+              <h2 id="satellite-pages" className="mt-3 text-2xl font-light tracking-tight text-base-content">
+                {satelliteGroup.heading}
+              </h2>
+              <p className="mt-3 text-base leading-relaxed text-base-content/70">{satelliteGroup.intro}</p>
+              <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {satelliteGroup.links.map(({ href, label, description }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="group border border-base-300 bg-base-100 px-4 py-4 transition hover:border-primary hover:shadow-sm"
+                  >
+                    <span className="block text-base font-semibold text-base-content group-hover:text-primary">{label}</span>
+                    <span className="mt-1 block text-sm leading-relaxed text-base-content/65">{description}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {"whatToExpect" in procedure && procedure.whatToExpect && (
           <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="what-to-expect">

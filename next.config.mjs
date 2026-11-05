@@ -204,7 +204,12 @@ const nextConfig = {
         ["/procedures/xeomin/for/forehead-wrinkles", "/procedures/xeomin/for/forehead-lines"],
         ["/procedures/botox/for/:ailmentSlug", "/procedures/botox"],
         ["/procedures/oh-shot/for/:ailmentSlug", "/procedures/oh-shot"],
-        ["/procedures/hyperhidrosis-treatment/for/:ailmentSlug", "/procedures/hyperhidrosis-treatment"],
+        // 2026-11: underarm, palms, and feet are live satellite pages again (lib/service-satellites.ts); the other
+        // hyperhidrosis /for/ slugs still fold into the hub.
+        [
+          "/procedures/hyperhidrosis-treatment/for/:ailmentSlug((?!(?:underarm-sweating|sweaty-palms|sweaty-feet)(?:/|$))[^/]+)",
+          "/procedures/hyperhidrosis-treatment",
+        ],
         ["/blog/beginners-guide-to-platelet-rich-plasma-therapy", "/procedures"],
         ["/blog/naturally-heal-joint-pain-prp-therapy", "/procedures/joint-restoration"],
         ["/blog/hair-loss-got-you-down-discover-prp-your-new-ally-in-hair-restoration", "/procedures/prp-hair-restoration"],

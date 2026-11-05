@@ -5,6 +5,7 @@ import { getPublishedBlogPosts } from "lib/blog";
 import { getPublishedEvents } from "lib/events";
 import { publishedEarPiercingIntentPages } from "lib/ear-piercing-intents";
 import { publishedEarPiercingAreas } from "lib/local-service-areas";
+import { serviceSatellitePaths } from "lib/service-satellites";
 import { xeominClusterPages } from "lib/xeomin-concerns";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -62,6 +63,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...publishedEarPiercingIntentPages.map((page) => ({
       url: `https://www.williamsburgmedspa.com/procedures/blomdahl-ear-piercing/for/${page.slug}`,
+    })),
+    ...serviceSatellitePaths.map((path) => ({
+      url: `https://www.williamsburgmedspa.com${path}`,
     })),
     ...xeominClusterPages.map((page) => ({
       url: `https://www.williamsburgmedspa.com${page.path}`,
