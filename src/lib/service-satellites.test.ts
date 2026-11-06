@@ -19,6 +19,15 @@ import {
   serviceSatellitePages,
   serviceSatellitePaths,
 } from "./service-satellites";
+import {
+  XEOMIN_COST_PATH,
+  XEOMIN_HUB_PATH,
+  XEOMIN_LIP_FLIP_OFF_LABEL,
+  XEOMIN_SEEK_HELP,
+  XEOMIN_SIDE_EFFECTS,
+  XEOMIN_TRADEMARK_NOTE,
+  xeominConcernPages,
+} from "./xeomin-concerns";
 // Plain ES module shared with scripts/verify-seo.mjs.
 import { unsupportedPrpBreastClaimClasses } from "../../scripts/lib/prp-breast-claims.mjs";
 
@@ -33,12 +42,15 @@ const EXPECTED_PATHS = [
   "/procedures/prp-breast-lift/near/yorktown-va",
   "/procedures/prp-face-lift/near/newport-news-va",
   "/procedures/prp-face-lift/near/yorktown-va",
+  "/procedures/xeomin/near/newport-news-va",
+  "/procedures/xeomin/near/yorktown-va",
 ];
 
 const CASH = {
   "hyperhidrosis-treatment": { cash: formatUsdShort(100000), card: cardPriceLabel(100000) },
   "prp-breast-lift": { cash: formatUsdShort(180000), card: cardPriceLabel(180000) },
   "prp-face-lift": { cash: formatUsdShort(150000), card: cardPriceLabel(150000) },
+  xeomin: { cash: formatUsdShort(25000), card: cardPriceLabel(25000) },
 } as const;
 
 /** Every string a satellite page renders from its data, joined the way rendered HTML text runs together. */
@@ -70,7 +82,7 @@ const visibleCopy = (page: (typeof serviceSatellitePages)[number]) =>
     page.textMessage,
   ].join(" ");
 
-test("the seven satellite URLs exist, once each", () => {
+test("every satellite URL exists, once each", () => {
   assert.deepEqual([...serviceSatellitePaths].sort(), [...EXPECTED_PATHS].sort());
   assert.equal(new Set(serviceSatellitePaths).size, serviceSatellitePaths.length);
 });
@@ -90,7 +102,7 @@ test("titles are at most 60 characters and metas at most 160, all unique and loc
     assert.equal(new Set(values).size, values.length, `duplicate ${field}`);
   }
   // Satellites must not take the hubs' titles.
-  for (const hub of ["hyperhidrosis-treatment", "prp-breast-lift", "prp-face-lift"]) {
+  for (const hub of ["hyperhidrosis-treatment", "prp-breast-lift", "prp-face-lift", "xeomin", "botox"]) {
     const hubTitle = procedures.find((procedure) => procedure.slug === hub)?.seo.title;
     assert.ok(hubTitle);
     assert.equal(serviceSatellitePages.some((page) => page.metaTitle === hubTitle), false, hub);
@@ -138,13 +150,14 @@ test("each satellite links to its hub and its siblings; near pages link to their
 });
 
 test("each hub links to all of its satellites", () => {
-  for (const hub of ["hyperhidrosis-treatment", "prp-breast-lift", "prp-face-lift"]) {
+  for (const hub of ["hyperhidrosis-treatment", "prp-breast-lift", "prp-face-lift", "xeomin"]) {
     const group = getHubSatelliteGroup(hub);
     assert.ok(group, hub);
     const expected = serviceSatellitePages.filter((page) => page.hubSlug === hub).map(satellitePath);
     assert.deepEqual(group.links.map((link) => link.href).sort(), expected.sort(), hub);
   }
-  assert.equal(getHubSatelliteGroup("xeomin"), null);
+  // The Botox-alternative page links the Xeomin area pages too.
+  assert.deepEqual(getHubSatelliteGroup("botox")?.links, getHubSatelliteGroup("xeomin")?.links);
   const hubRoute = read("src/app/procedures/[slug]/page.tsx");
   assert.match(hubRoute, /getHubSatelliteGroup\(procedure\.slug\)/);
   assert.match(hubRoute, /satelliteGroup\.links\.map/);
@@ -158,6 +171,7 @@ test("the sitemaps list every satellite, and the routes serve exactly those slug
     ["src/app/procedures/hyperhidrosis-treatment/for/[concernSlug]/page.tsx", "hyperhidrosis-treatment"],
     ["src/app/procedures/prp-breast-lift/near/[areaSlug]/page.tsx", "prp-breast-lift"],
     ["src/app/procedures/prp-face-lift/near/[areaSlug]/page.tsx", "prp-face-lift"],
+    ["src/app/procedures/xeomin/near/[areaSlug]/page.tsx", "xeomin"],
   ]) {
     const source = read(route);
     assert.match(source, new RegExp(`getSatellitesForHub\\("${hub}"\\)`), route);
@@ -274,10 +288,18 @@ test("facials: PRP Facial hub links the HydraFacial guide, and the guide links b
   assert.match(read("src/app/blog/[slug]/page.tsx"), /robots: metadata\.published \? undefined : \{ index: false, follow: false \}/);
 });
 
-test("there is no insurance FAQ on the hyperhidrosis hub or its satellites", () => {
+test("insurance: the hyperhidrosis hub answers it once (the clinic does not bill insurance, per Austin 2026-11-05); satellites stay silent", () => {
   const hub = procedures.find((procedure) => procedure.slug === "hyperhidrosis-treatment");
   assert.ok(hub);
-  assert.doesNotMatch(JSON.stringify(hub), /insur/i);
+  const insuranceFaqs = hub.faqs.filter((faq) => /insur/i.test(faq.question + faq.answer));
+  assert.equal(insuranceFaqs.length, 1);
+  assert.equal(insuranceFaqs[0].question, "Do you take insurance for hyperhidrosis treatment?");
+  assert.equal(
+    insuranceFaqs[0].answer,
+    "No. Williamsburg Med Spa does not bill insurance or provide insurance claim paperwork. Hyperhidrosis treatment is paid directly and starts at $1,000 in cash or $1,030.18 online by card for one treatment visit."
+  );
+  // Never implies coverage, prior authorization, or reimbursement paperwork.
+  assert.doesNotMatch(insuranceFaqs[0].answer, /cover|prior auth|reimburs|superbill/i);
   for (const page of serviceSatellitePages) assert.doesNotMatch(visibleCopy(page), /insur/i, satellitePath(page));
 });
 
@@ -290,7 +312,7 @@ const sentences = (text: string) =>
   );
 
 test("Newport News and Yorktown pages for each service are substantively distinct (< 60% shared sentences)", () => {
-  for (const hub of ["prp-breast-lift", "prp-face-lift"] as const) {
+  for (const hub of ["prp-breast-lift", "prp-face-lift", "xeomin"] as const) {
     const [first, second] = serviceSatellitePages.filter((page) => page.hubSlug === hub);
     assert.ok(first && second, hub);
     const a = sentences(visibleCopy(first));
@@ -305,4 +327,42 @@ test("Newport News and Yorktown pages for each service are substantively distinc
       assert.ok(uniqueWords >= 150, `${satellitePath(page)} has ${uniqueWords} unique words`);
     }
   }
+});
+
+test("Xeomin near pages: Xeomin only (never Botox® brand), label wording, risks, off-label lip flip, trademark note", () => {
+  const pages = serviceSatellitePages.filter((item) => item.hubSlug === "xeomin");
+  assert.deepEqual(pages.map((page) => page.slug).sort(), ["newport-news-va", "yorktown-va"]);
+  for (const page of pages) {
+    const copy = visibleCopy(page);
+    const path = satellitePath(page);
+    assert.match(copy, /does not offer Botox® brand/, path);
+    assert.match(copy, /Units are not interchangeable/, path);
+    assert.ok(copy.includes(XEOMIN_SIDE_EFFECTS) && copy.includes(XEOMIN_SEEK_HELP), path);
+    assert.ok(copy.includes(XEOMIN_LIP_FLIP_OFF_LABEL), path);
+    assert.equal(page.footnote, XEOMIN_TRADEMARK_NOTE, path);
+    // Xeomin is sold in credit blocks: the title says "from", never a flat price.
+    assert.match(page.metaTitle, /, from \$250$/, path);
+    for (const concern of xeominConcernPages) {
+      assert.ok(getSatelliteLinks(page).some((item) => item.href === concern.path), `${path} lacks ${concern.path}`);
+    }
+    // Botox is either marked ® or used as the search term ("Botox alternative", "Botox vs"); nothing offers Botox® itself.
+    assert.doesNotMatch(copy + page.metaTitle + page.metaDescription, /Botox(?!®| alternative| vs)/, path);
+    assert.doesNotMatch(copy, /\b(?:best|guarantee[ds]?|permanent|cheapest)\b/i, path);
+    for (const link of [XEOMIN_HUB_PATH, XEOMIN_COST_PATH, "/procedures/xeomin"]) {
+      assert.ok(getSatelliteLinks(page).some((item) => item.href === link), `${path} lacks ${link}`);
+    }
+  }
+  // The Yorktown note quotes the last sentence of the /procedures/xeomin FAQ; pin it so an FAQ edit cannot change it silently.
+  const yorktown = pages.find((page) => page.slug === "yorktown-va");
+  assert.ok(
+    yorktown && visibleCopy(yorktown).includes("If you have had Botox® elsewhere, Jenny plans your Xeomin dose from your treatment goals, anatomy, and prior response.")
+  );
+  // The hub grid on /procedures/xeomin and /procedures/botox never calls Xeomin a one-visit price.
+  for (const hub of ["xeomin", "botox"]) {
+    const group = getHubSatelliteGroup(hub);
+    assert.ok(group, hub);
+    assert.doesNotMatch(group.intro, /one-visit/, hub);
+    assert.match(group.intro, /credit-block pricing/, hub);
+  }
+  assert.match(read("src/views/service-satellite-page.tsx"), /\{page\.footnote && <p[^>]*>\{page\.footnote\}<\/p>\}/);
 });

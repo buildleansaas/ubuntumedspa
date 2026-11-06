@@ -2,6 +2,8 @@ import Link from "next/link";
 
 import CartTrigger from "components/cart-trigger";
 import MobileMenu from "components/mobile-menu";
+import OffersNavLink from "components/offers-nav-link";
+import { getActiveOffers } from "config/offers";
 
 const NAV_ITEMS = [
   { href: "/locations", label: "Locations" },
@@ -13,6 +15,7 @@ const NAV_ITEMS = [
 ] as const;
 
 export default function Header() {
+  const offerCount = getActiveOffers().length;
   return (
     <header className="flex w-full items-center justify-between gap-3 py-3.5 sm:gap-4 lg:py-5">
       <Link href="/" className="min-w-0 flex-1">
@@ -49,11 +52,13 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <OffersNavLink initialCount={offerCount} />
         </nav>
         <CartTrigger className="ml-4" />
       </div>
 
       <div className="flex items-center gap-2 lg:hidden">
+        <OffersNavLink initialCount={offerCount} variant="compact" />
         <MobileMenu items={NAV_ITEMS} />
         <CartTrigger mode="compact" />
       </div>
