@@ -7,7 +7,8 @@ import { formatUsdShort } from "lib/price";
  * The clinic's only wrinkle relaxer is Xeomin® (incobotulinumtoxinA). It does not offer Botox® brand.
  * - Hub: /procedures/botox, the honest Botox-alternative page for people searching for Botox in Williamsburg.
  * - Product page: /procedures/xeomin.
- * - Satellites: /procedures/xeomin/for/<concern> and the /procedures/xeomin/cost page.
+ * - Satellites: /procedures/xeomin/for/<concern> and the /procedures/xeomin/cost page; the Newport News and Yorktown
+ *   area pages (/procedures/xeomin/near/<area>) live in lib/service-satellites.ts.
  *
  * Every fact here comes from existing site copy: src/data.ts (the Botox-alternative and Xeomin entries), the Xeomin catalog item,
  * src/lib/local-injectable-service-pages.ts, src/markdown/botox-vs-xeomin-williamsburg-va.mdx, and the retired
@@ -48,6 +49,18 @@ export const XEOMIN_SEEK_HELP =
 /** Source: XEOMIN Prescribing Information, Indications (the cosmetic indication is upper facial lines only). */
 export const XEOMIN_LIP_FLIP_OFF_LABEL =
   "A lip flip is an off-label use of Xeomin, which means it is not one of the uses listed on its FDA label. Jenny reviews whether it fits you at your consultation.";
+
+/**
+ * Source: XEOMIN Prescribing Information 1.5 (DailyMed setid ccdc3aae-6e2d-4cd0-a51c-8375bfee9458): the cosmetic indication is
+ * upper facial lines only (glabellar, forehead, lateral canthal). Shown under the hero on /procedures/botox and /procedures/xeomin,
+ * which list other areas (#164).
+ */
+export const XEOMIN_OFF_LABEL_NOTE =
+  "Xeomin's cosmetic FDA label covers frown lines, forehead lines, and crow's feet. Other areas, such as the lip flip, bunny lines, gummy smile, chin dimpling, neck bands, and the jaw (masseter), are off-label uses, which means they are not among the uses listed on its FDA label. Jenny reviews whether they fit you at your consultation.";
+
+/** Same source: hyperhidrosis is not among Xeomin's indications. */
+export const XEOMIN_HYPERHIDROSIS_OFF_LABEL =
+  "Treating excessive sweating is an off-label use of Xeomin, which means it is not one of the uses listed on its FDA label. Jenny reviews whether it fits you at your consultation.";
 
 export const XEOMIN_TRADEMARK_NOTE =
   "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand.";

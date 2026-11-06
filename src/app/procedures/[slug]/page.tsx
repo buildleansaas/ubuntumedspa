@@ -25,7 +25,7 @@ import { cashCardProse, cardPriceSchemaValue } from "lib/price";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import { getHubSatelliteGroup } from "lib/service-satellites";
 import { getActiveOffers } from "config/offers";
-import { xeominClusterPages } from "lib/xeomin-concerns";
+import { XEOMIN_HYPERHIDROSIS_OFF_LABEL, XEOMIN_OFF_LABEL_NOTE, xeominClusterPages } from "lib/xeomin-concerns";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
 const ailmentsTagLabels = {
@@ -219,6 +219,16 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-base-content/70 md:text-lg">
               {humanizeMedicalCopy(procedure.subline)}
             </p>
+            {(procedure.slug === "botox" || procedure.slug === "xeomin") && (
+              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-base-content/60" data-off-label-note>
+                {XEOMIN_OFF_LABEL_NOTE}
+              </p>
+            )}
+            {(procedure.slug === "hyperhidrosis-treatment" || procedure.slug === "xeomin") && (
+              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-base-content/60" data-off-label-note>
+                {XEOMIN_HYPERHIDROSIS_OFF_LABEL}
+              </p>
+            )}
             {showOShotCredential && <CmaCredentialStrip className="mt-6 max-w-3xl" />}
             {procedure.slug === "hyperhidrosis-treatment" && (
               <div className="mt-6 flex flex-wrap gap-2 text-sm">
