@@ -12,6 +12,8 @@ import { procedures } from "../data";
 import XeominClusterPageView from "../views/xeomin-cluster-page";
 import { findDisallowedBotox } from "./botox-honesty.test";
 import {
+  XEOMIN_HYPERHIDROSIS_OFF_LABEL,
+  XEOMIN_OFF_LABEL_NOTE,
   XEOMIN_CLUSTER_REDIRECTS,
   XEOMIN_HUB_ANCHOR,
   XEOMIN_HUB_PATH,
@@ -244,4 +246,41 @@ test("next.config.mjs lists each old concern URL redirect above the /procedures/
     assert.ok(index < catchAll, `${source} must sit above the catch-all`);
   }
   assert.equal(XEOMIN_CLUSTER_REDIRECTS.length, 6);
+});
+
+test("#164: the Botox-alternative and Xeomin pages carry an off-label note for each listed non-label area they mention", () => {
+  const route = readFileSync(join(process.cwd(), "src/app/procedures/[slug]/page.tsx"), "utf8");
+  assert.match(route, /\(procedure\.slug === "botox" \|\| procedure\.slug === "xeomin"\) && \(\s*<p[^>]*data-off-label-note>\s*\{XEOMIN_OFF_LABEL_NOTE\}/);
+  assert.match(XEOMIN_OFF_LABEL_NOTE, /frown lines, forehead lines, and crow's feet/);
+  const offLabel: Array<[RegExp, RegExp]> = [
+    [/lip[- ]flip/i, /lip flip/],
+    [/bunny lines/i, /bunny lines/],
+    [/gummy smile/i, /gummy smile/],
+    [/chin dimpling/i, /chin dimpling/],
+    [/neck bands?|platysm/i, /neck bands/],
+    [/masseter|bruxism|jaw/i, /masseter/],
+    [/lower-face/i, /jaw \(masseter\)/],
+  ];
+  // Sweating is covered by its own note, shown on the hyperhidrosis hub and the Xeomin hub.
+  assert.match(JSON.stringify(procedures.find((procedure) => procedure.slug === "xeomin")), /hyperhidrosis/i);
+  assert.match(route, /procedure\.slug === "xeomin"\) && \(\s*<p[^>]*data-off-label-note>\s*\{XEOMIN_HYPERHIDROSIS_OFF_LABEL\}/);
+  for (const slug of ["botox", "xeomin"]) {
+    const entry = procedures.find((procedure) => procedure.slug === slug);
+    assert.ok(entry, slug);
+    const rendered = JSON.stringify(entry);
+    for (const [mention, covered] of offLabel) {
+      if (mention.test(rendered)) assert.match(XEOMIN_OFF_LABEL_NOTE, covered, `${slug} mentions ${mention} but the note does not cover it`);
+    }
+  }
+  assert.doesNotMatch(XEOMIN_OFF_LABEL_NOTE, /Botox/);
+});
+
+test("hyperhidrosis (not on Xeomin's label) is called off-label on the hub and every sweating satellite", async () => {
+  const route = readFileSync(join(process.cwd(), "src/app/procedures/[slug]/page.tsx"), "utf8");
+  // The Xeomin hub mentions "hyperhidrosis use" in its related guidance, so it carries the sweating note too.
+  assert.match(route, /\(procedure\.slug === "hyperhidrosis-treatment" \|\| procedure\.slug === "xeomin"\) && \(\s*<p[^>]*data-off-label-note>\s*\{XEOMIN_HYPERHIDROSIS_OFF_LABEL\}/);
+  const { serviceSatellitePages } = await import("./service-satellites");
+  const sweating = serviceSatellitePages.filter((page) => page.hubSlug === "hyperhidrosis-treatment");
+  assert.equal(sweating.length, 3);
+  for (const page of sweating) assert.ok(page.safety?.body.includes(XEOMIN_HYPERHIDROSIS_OFF_LABEL), page.slug);
 });
