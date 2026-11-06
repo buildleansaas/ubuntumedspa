@@ -787,8 +787,8 @@ for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
   }
 }
 
-// 2026-11 service satellites (src/lib/service-satellites.ts): hyperhidrosis concern pages and PRP Breast Lift / PRP Face Lift
-// area pages. Each is in the sitemap, links to its hub (and area pages to their /locations page), renders FAQPage schema,
+// 2026-11 service satellites (src/lib/service-satellites.ts): hyperhidrosis concern pages and PRP Breast Lift / PRP Face Lift /
+// Xeomin area pages. Each is in the sitemap, links to its hub (and area pages to their /locations page), renders FAQPage schema,
 // and is linked from its hub. The PRP Breast Lift area pages pass the same claim detectors as the hub.
 const hyperhidrosisSideEffects = "Temporary injection-site tenderness, bruising, or localized weakness can happen.";
 const serviceSatelliteExpectations = [
@@ -799,6 +799,18 @@ const serviceSatelliteExpectations = [
   ["/procedures/prp-breast-lift/near/yorktown-va", "PRP Breast Lift Yorktown VA | Not Surgery, $1,800 Cash", "PRP Breast Lift near Yorktown, VA", ["is not mastopexy, implants, or fat transfer", "does not promise a cosmetic result", "typically 25–35 minutes", "$1,800 cash · $1,854.07 card/online"]],
   ["/procedures/prp-face-lift/near/newport-news-va", "PRP Face Lift Newport News VA | $1,500 Cash, Non-Surgical", "PRP Face Lift near Newport News, VA", ["not a surgical face lift", "typically 25–35 minutes", "$1,500 cash · $1,545.11 card/online"]],
   ["/procedures/prp-face-lift/near/yorktown-va", "PRP Face Lift Yorktown VA | $1,500 Cash, Non-Surgical", "PRP Face Lift near Yorktown, VA", ["not a surgical face lift", "typically 25–35 minutes", "$1,500 cash · $1,545.11 card/online"]],
+  ...["Newport News", "Yorktown"].map((area) => [
+    `/procedures/xeomin/near/${area.toLowerCase().replace(" ", "-")}-va`,
+    `Xeomin near ${area} VA | Botox® Alternative, from $250`,
+    `Xeomin near ${area}, VA`,
+    [
+      "does not offer Botox® brand",
+      "typically 25–35 minutes",
+      "$250 per credit block cash · $257.78 card/online",
+      "Get medical help right away if you have trouble swallowing, speaking, or breathing",
+      "Botox® is a registered trademark of Allergan",
+    ],
+  ]),
 ];
 for (const [path, expectedTitle, expectedH1, required] of serviceSatelliteExpectations) {
   const page = pages.find((candidate) => normalizePath(candidate.canonicalUrl) === path);
