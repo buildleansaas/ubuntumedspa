@@ -12,7 +12,8 @@ import { formatUsdShort } from "lib/price";
  *
  * Every fact here comes from existing site copy: src/data.ts (the Botox-alternative and Xeomin entries), the Xeomin catalog item,
  * src/lib/local-injectable-service-pages.ts, src/markdown/botox-vs-xeomin-williamsburg-va.mdx, and the retired
- * src/markdown/ailments/botox/*.mdx pages (already rewritten to Xeomin). No outcome promises, no before/after.
+ * src/markdown/ailments/botox/*.mdx pages (already rewritten to Xeomin). No outcome promises and no before/after claims in this copy;
+ * the only before/after content is the consented, captioned crow's feet photos in config/clinic-photos.ts.
  */
 
 export const XEOMIN_HUB_PATH = "/procedures/botox";

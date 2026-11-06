@@ -17,6 +17,7 @@ import HomeVisit from "views/home-visit";
 import { buildPageMetadata } from "lib/metadata";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "lib/seo";
 import StructuredData from "components/structured-data";
+import { HomeRealPhotos } from "components/clinic-photos";
 
 export const metadata: Metadata = buildPageMetadata({
   title: DEFAULT_TITLE,
@@ -62,6 +63,7 @@ export default async function Page() {
     <div className="w-full">
       <StructuredData type="FAQ" faqs={homeFaqs} />
       <Jumbotron />
+      <HomeRealPhotos />
       <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-labelledby="home-local-intro-heading">
         <div className="max-w-3xl">
           <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">

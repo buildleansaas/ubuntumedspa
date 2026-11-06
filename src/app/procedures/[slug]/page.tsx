@@ -24,6 +24,7 @@ import { humanizeMedicalCopy } from "lib/humanize";
 import { cashCardProse, cardPriceSchemaValue } from "lib/price";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import { getHubSatelliteGroup } from "lib/service-satellites";
+import { CrowsFeetResults, EarPiercingPhotos, HyperhidrosisSteps, JointPhotos, PrpTubePhoto, RunelsTraining } from "components/clinic-photos";
 import { getActiveOffers } from "config/offers";
 import { XEOMIN_HYPERHIDROSIS_OFF_LABEL, XEOMIN_OFF_LABEL_NOTE, xeominClusterPages } from "lib/xeomin-concerns";
 
@@ -374,6 +375,18 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             </div>
           )}
         </section>
+
+        {/* Real clinic photos sit right under the hero (Austin, 2026-11-05: proof of work higher on the page). */}
+        {procedure.slug === "oh-shot" && <RunelsTraining />}
+        {(procedure.slug === "botox" || procedure.slug === "xeomin") && <CrowsFeetResults />}
+        {procedure.slug === "hyperhidrosis-treatment" && <HyperhidrosisSteps />}
+        {procedure.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos />}
+        {procedure.slug === "joint-restoration" && (
+          <section className="py-12 md:py-16" aria-label="Jenny's joint treatment and orthopedic PRP training">
+            <JointPhotos />
+          </section>
+        )}
+        {["prp-facial", "prp-hair-restoration", "joint-restoration"].includes(procedure.slug) && <PrpTubePhoto />}
 
         {/* PRP_BREAST_OWNER_COPY_CONTRACT_START */}
         {procedure.slug === "prp-breast-lift" && (
