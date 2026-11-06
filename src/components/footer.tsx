@@ -8,6 +8,7 @@ const primaryLinks = [
   { href: "/consult", label: "Consult" },
   { href: "/procedures", label: "Procedures" },
   { href: "/prices", label: "Prices" },
+  { href: "/offers", label: "Offers" },
   { href: "/products", label: "Products" },
   { href: "/locations", label: "Locations" },
   { href: "/blog", label: "Blog" },
