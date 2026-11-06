@@ -3,18 +3,29 @@ import { COMMERCE_CATALOG_BY_SLUG } from "config/commerce-catalog";
 import { procedures } from "data";
 import { cardPriceLabel, cashCardLabel, cashCardProse, formatUsdShort } from "lib/price";
 import { TIMES_PROMPT } from "lib/text-to-book";
+import {
+  XEOMIN_COMPARISON_PATH,
+  XEOMIN_COST_PATH,
+  XEOMIN_HUB_PATH,
+  XEOMIN_LIP_FLIP_OFF_LABEL,
+  XEOMIN_SEEK_HELP,
+  XEOMIN_SIDE_EFFECTS,
+  XEOMIN_TRADEMARK_NOTE,
+  xeominConcernPages,
+} from "lib/xeomin-concerns";
 
 /**
- * Satellite pages around three service hubs (2026-11 Search Console gaps):
+ * Satellite pages around four service hubs (2026-11 Search Console gaps):
  * - hyperhidrosis concern pages: /procedures/hyperhidrosis-treatment/for/{underarm-sweating,sweaty-palms,sweaty-feet}
  * - PRP Breast Lift and PRP Face Lift area pages: /procedures/{prp-breast-lift,prp-face-lift}/near/{newport-news-va,yorktown-va}
+ * - Xeomin area pages for Peninsula searchers: /procedures/xeomin/near/{newport-news-va,yorktown-va}
  *
- * Every fact here comes from existing site copy (src/data.ts, /locations, the hub pages). Prices come from the catalog,
+ * Every fact here comes from existing site copy (src/data.ts, /locations, the hub pages, lib/xeomin-concerns.ts). Prices come from the catalog,
  * cash first. PRP Breast Lift copy reuses the hub's reviewed wording and is scanned by the same unsupported-claim
  * detectors as the hub (scripts/lib/prp-breast-claims.mjs).
  */
 
-export type SatelliteHubSlug = "hyperhidrosis-treatment" | "prp-breast-lift" | "prp-face-lift";
+export type SatelliteHubSlug = "hyperhidrosis-treatment" | "prp-breast-lift" | "prp-face-lift" | "xeomin";
 export type SatelliteFaq = { question: string; answer: string };
 export type SatelliteSection = {
   heading: string;
@@ -51,12 +62,15 @@ export type ServiceSatellitePage = {
   ctaLabel: string;
   /** Prefilled text to Jenny (text-or-call booking). */
   textMessage: string;
+  /** Small print at the end of the page (the Xeomin pages' trademark note). */
+  footnote?: string;
 };
 
 const HUB_LABELS: Record<SatelliteHubSlug, string> = {
   "hyperhidrosis-treatment": "Hyperhidrosis Treatment",
   "prp-breast-lift": "PRP Breast Lift",
   "prp-face-lift": "PRP Face Lift",
+  xeomin: "Xeomin",
 };
 
 export const hubPath = (hubSlug: SatelliteHubSlug) => `/procedures/${hubSlug}`;
@@ -69,7 +83,7 @@ const cashCents = (slug: SatelliteHubSlug) => {
   return item.cashAmountCents;
 };
 
-const hubFaqAnswer = (hubSlug: SatelliteHubSlug, question: string) => {
+const hubFaqAnswer = (hubSlug: SatelliteHubSlug | "botox", question: string) => {
   const answer = procedures.find((procedure) => procedure.slug === hubSlug)?.faqs.find((faq) => faq.question === question)?.answer;
   if (!answer) throw new Error(`${hubSlug} hub is missing the FAQ "${question}"`);
   return answer;
@@ -366,6 +380,8 @@ type NearArea = {
   /** Extra links for the PRP Face Lift page, taken from the area's /locations page. */
   faceLiftLinks: SatelliteLink[];
   faceLiftLocalNote: string;
+  /** Xeomin wording from the area's /locations page and the Xeomin hub FAQ. */
+  xeominLocalNotes: string[];
   localFaq: SatelliteFaq;
 };
 
@@ -404,6 +420,11 @@ const NEAR_AREAS: NearArea[] = [
     ],
     faceLiftLocalNote:
       "The Newport News page compares Xeomin and PRP: Xeomin addresses lines caused by repeated muscle movement, while PRP treatments focus on skin quality, texture, and tone. The PRP Face Lift combines both in one visit, and your consultation can also look at the PRP Facial or microneedling with PRP on their own.",
+    xeominLocalNotes: [
+      "Common visit goals for Newport News patients include softening expression lines with Xeomin, asking about PRP for joints or skin, treating excessive sweating, and choosing a more clinical ear piercing appointment.",
+      "The right choice depends on what you want to change. Xeomin, our wrinkle relaxer, addresses lines caused by repeated muscle movement, while PRP treatments focus on skin quality, texture, and tone.",
+      "Williamsburg Med Spa serves Newport News patients from our Williamsburg location with conservative planning, clear timelines, and careful follow-up.",
+    ],
     localFaq: {
       question: "Which route do Newport News patients take?",
       answer:
@@ -441,6 +462,12 @@ const NEAR_AREAS: NearArea[] = [
     faceLiftLinks: [{ href: "/procedures/xeomin", label: "Xeomin treatment planning" }],
     faceLiftLocalNote:
       "Bring current medications, skin history, and prior injectable history to the visit. If the Xeomin half of the plan is your main question, the Xeomin page covers expression lines, dosing questions, and how Xeomin compares with other wrinkle relaxers.",
+    xeominLocalNotes: [
+      "For Yorktown patients, Xeomin starts with a consult-first plan that covers expression lines, dosing questions, and how Xeomin compares with other wrinkle relaxers.",
+      `${hubFaqAnswer("xeomin", "How does Xeomin differ from Botox®?").split(". ").slice(-1)[0]}`,
+      "Bring current medications, skin history, and prior injectable history to the visit.",
+      "Expect a provider-led consultation, clear discussion of risks and aftercare, and treatment planning based on your goals rather than a one-size-fits-all package.",
+    ],
     localFaq: {
       question: "Which route do Yorktown patients take?",
       answer:
@@ -592,10 +619,71 @@ const faceLiftNearPage = (area: NearArea): ServiceSatellitePage => ({
   textMessage: textMessage(`the PRP Face Lift. I'm coming from ${area.name}`),
 });
 
+// ---------------------------------------------------------------------------------------------------------------
+// Xeomin area pages. Copy comes from the /procedures/botox and /procedures/xeomin FAQs and lib/xeomin-concerns.ts.
+// ---------------------------------------------------------------------------------------------------------------
+
+const XEOMIN_CASH_CENTS = cashCents("xeomin");
+
+const xeominNearPage = (area: NearArea): ServiceSatellitePage => ({
+  kind: "near",
+  hubSlug: "xeomin",
+  slug: area.slug,
+  label: area.name,
+  linkDescription: `${area.name} drive time, credit-block pricing, and which lines Xeomin is used for.`,
+  metaTitle: `Xeomin near ${area.name} VA | Botox® Alternative, from ${formatUsdShort(XEOMIN_CASH_CENTS)}`,
+  metaDescription: `Looking for Botox® near ${area.name}? We use Xeomin® in Williamsburg. ${formatUsdShort(XEOMIN_CASH_CENTS)} cash per credit block (${cardPriceLabel(XEOMIN_CASH_CENTS)} card). Nurse-led.`,
+  h1: `Xeomin near ${area.name}, VA`,
+  eyebrow: `${area.name} service area`,
+  intro: [
+    `Looking for Botox® near ${area.name}? ${hubFaqAnswer("botox", "Do you offer Botox®?").replace(/^No\. /, "Williamsburg Med Spa does not offer Botox® brand. ")}`,
+    `${area.notLocalLine} Appointments are at Williamsburg Med Spa, ${CLINIC_ADDRESS}, ${PENINSULA_DRIVE_TIME} by car from ${area.name}.`,
+  ],
+  price: {
+    heading: "Credit-block pricing",
+    label: cashCardLabel(XEOMIN_CASH_CENTS, "per credit block"),
+    body: `Xeomin is prepaid in credit blocks of ${cashCardProse(XEOMIN_CASH_CENTS)}. Your total depends on the areas treated, muscle strength, and your dosing plan, and Jenny reviews treatment areas and likely dosing range before confirming the plan.`,
+  },
+  sections: [
+    {
+      heading: "What Xeomin is used for",
+      paragraphs: [
+        hubFaqAnswer("botox", "What is Xeomin commonly used for?"),
+        `Each area has its own page: ${xeominConcernPages.map((concern) => concern.label.toLowerCase()).join(", ")}. ${XEOMIN_LIP_FLIP_OFF_LABEL}`,
+      ],
+    },
+    { heading: `Xeomin for ${area.name} patients`, paragraphs: area.xeominLocalNotes },
+    travelSection(area),
+    planningSection(area),
+  ],
+  safety: {
+    heading: "Side effects",
+    body: `${XEOMIN_SIDE_EFFECTS} ${XEOMIN_SEEK_HELP}`,
+  },
+  faqs: [
+    whereFaq(area),
+    area.localFaq,
+    { question: "How much does Xeomin cost?", answer: hubFaqAnswer("botox", "How much does Xeomin cost in Williamsburg?") },
+    { question: "How long can Xeomin results last?", answer: hubFaqAnswer("botox", "How long can Xeomin results last?") },
+  ],
+  locationHref: `/locations/${area.slug}`,
+  extraLinks: [
+    ...xeominConcernPages.map((concern) => ({ href: concern.path, label: `Xeomin for ${concern.label.toLowerCase()}` })),
+    { href: XEOMIN_HUB_PATH, label: "Botox alternative in Williamsburg" },
+    { href: XEOMIN_COST_PATH, label: "Xeomin cost in Williamsburg" },
+    { href: XEOMIN_COMPARISON_PATH, label: "Botox vs Xeomin in Williamsburg, VA" },
+  ],
+  consultHref: `/consult?procedure=xeomin&area=${area.slug}&utm_source=website&utm_medium=local_service_page&utm_campaign=xeomin_${area.slug.replace(/-/g, "_")}`,
+  ctaLabel: "Book a Xeomin Consultation",
+  textMessage: textMessage(`Xeomin. I'm coming from ${area.name}`),
+  footnote: XEOMIN_TRADEMARK_NOTE,
+});
+
 export const serviceSatellitePages: ServiceSatellitePage[] = [
   ...hyperhidrosisConcernPages,
   ...NEAR_AREAS.map(breastLiftNearPage),
   ...NEAR_AREAS.map(faceLiftNearPage),
+  ...NEAR_AREAS.map(xeominNearPage),
 ];
 
 export const getServiceSatellitePage = (hubSlug: SatelliteHubSlug, kind: ServiceSatellitePage["kind"], slug: string) =>
@@ -621,7 +709,8 @@ export const getSatelliteLinks = (page: ServiceSatellitePage): SatelliteLink[] =
 
 /** The link grid a hub page renders for its satellites (null when the hub has none). */
 export const getHubSatelliteGroup = (hubSlug: string) => {
-  const pages = getSatellitesForHub(hubSlug);
+  // /procedures/botox is the Botox-alternative page for Xeomin, so it links the Xeomin area pages too.
+  const pages = getSatellitesForHub(hubSlug === "botox" ? "xeomin" : hubSlug);
   if (!pages.length) return null;
   const isConcern = pages[0].kind === "concern";
   return {
@@ -629,7 +718,7 @@ export const getHubSatelliteGroup = (hubSlug: string) => {
     heading: isConcern ? "Start with the area that bothers you most" : "Coming from the Peninsula?",
     intro: isConcern
       ? "Each page covers how treatment works for that area, what to expect, side effects, and pricing."
-      : `Appointments are at ${CLINIC_ADDRESS}. These pages cover the drive (${PENINSULA_DRIVE_TIME}), the one-visit price, and how to book.`,
+      : `Appointments are at ${CLINIC_ADDRESS}. These pages cover the drive (${PENINSULA_DRIVE_TIME}), ${pages[0].hubSlug === "xeomin" ? "credit-block pricing" : "the one-visit price"}, and how to book.`,
     links: pages.map((page) => ({
       href: satellitePath(page),
       label: page.kind === "concern" ? page.label : `${HUB_LABELS[page.hubSlug]} near ${page.label}`,

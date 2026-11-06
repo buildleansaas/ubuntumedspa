@@ -17,7 +17,7 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 const serviceLinks = [
-  { href: "/procedures/xeomin", label: "Xeomin near Newport News", note: "Our wrinkle relaxer for frown lines, forehead lines, and crow's feet, with a natural, measured plan." },
+  { href: "/procedures/xeomin/near/newport-news-va", label: "Xeomin near Newport News", note: "Our wrinkle relaxer for frown lines, forehead lines, and crow's feet, with a natural, measured plan." },
   { href: "/procedures/blomdahl-ear-piercing", label: "Blomdahl ear piercing", note: "Sterile single-use cassettes and hypoallergenic starter earrings at the Williamsburg clinic." },
   { href: "/procedures/blomdahl-ear-piercing/for/children", label: "Infant and kids ear piercing", note: "For parents planning a baby's or child's first earrings." },
   { href: "/procedures/blomdahl-ear-piercing/near/newport-news-va", label: "Newport News visit notes", note: "Driving notes for a Williamsburg piercing appointment." },
