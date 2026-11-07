@@ -5,7 +5,6 @@ import { Button } from "components/ui/button";
 import useCopyToClipBoard from "hooks/use-copy-to-clipboard";
 import { trackPhoneClick } from "lib/analytics";
 import Link from "next/link";
-
 function isMobileUserAgent() {
   if (typeof window === "undefined") return false;
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
@@ -28,7 +27,9 @@ const FEATURED_LINKS = [
   ["Williamsburg Location", "/locations/williamsburg-va"],
 ] as const;
 
-export default function Jumbotron() {
+// Answers the Botox-alternative search in the first screen (ScaleSleek f_vh33afabed). The clinic uses only Xeomin.
+// Prices come from the server page as props, so the catalog stays out of this client chunk.
+export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: string; xeominCard: string }) {
   const { handleCopy } = useCopyToClipBoard();
 
   const handleAction = () => {
@@ -48,7 +49,15 @@ export default function Jumbotron() {
           >
             Nurse Practitioner Led Medical Spa in Williamsburg, VA
           </h1>
-          <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-base-content/90 md:text-xl">
+          <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-base-content md:text-xl">
+            Looking for Botox in Williamsburg, VA? We use{" "}
+            <Link href="/procedures/xeomin" className="font-medium text-primary hover:underline">
+              Xeomin®
+            </Link>
+            , a wrinkle relaxer in the same category as Botox®, for frown lines, forehead lines, and crow&apos;s feet.
+            From {xeominCash} cash ({xeominCard} by card or online).
+          </p>
+          <p className="mt-4 max-w-[62ch] text-lg leading-relaxed text-base-content/90 md:text-xl">
             A local med spa with Jenny Brady, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified
             OH-Shot provider and certified Blomdahl medical ear piercing provider.
           </p>

@@ -14,15 +14,21 @@ import LatestPosts from "views/latest-posts";
 import Products from "views/products";
 import BotoxPartyCallout from "views/botox-party-callout";
 import HomeVisit from "views/home-visit";
+import SearchAnswers, { getSearchAnswers } from "views/search-answers";
 import { buildPageMetadata } from "lib/metadata";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "lib/seo";
 import StructuredData from "components/structured-data";
+import { COMMERCE_CATALOG_BY_SLUG } from "config/commerce-catalog";
+import { cardPriceLabel, formatUsdShort } from "lib/price";
 
 export const metadata: Metadata = buildPageMetadata({
   title: DEFAULT_TITLE,
   description: DEFAULT_DESCRIPTION,
   canonical: "/",
 });
+
+const XEOMIN_CASH = formatUsdShort(COMMERCE_CATALOG_BY_SLUG.xeomin.cashAmountCents);
+const XEOMIN_CARD = cardPriceLabel(COMMERCE_CATALOG_BY_SLUG.xeomin.cashAmountCents);
 
 const homeFaqs = [
   {
@@ -40,11 +46,6 @@ const homeFaqs = [
     answer:
       "Yes. Patients visit from Williamsburg, James City County, Kingsmill, New Town, Yorktown, Newport News, Toano, Norge, Lightfoot, and Ford's Colony.",
   },
-  {
-    question: "Do you offer Hydrafacial in Williamsburg?",
-    answer:
-      "No. Williamsburg Med Spa does not offer Hydrafacial. For glow, texture, and skin quality, ask about PRP Facial.",
-  },
 ];
 
 const localLinks = [
@@ -60,8 +61,8 @@ const localLinks = [
 export default async function Page() {
   return (
     <div className="w-full">
-      <StructuredData type="FAQ" faqs={homeFaqs} />
-      <Jumbotron />
+      <StructuredData type="FAQ" faqs={[...getSearchAnswers(XEOMIN_CASH, XEOMIN_CARD), ...homeFaqs]} />
+      <Jumbotron xeominCash={XEOMIN_CASH} xeominCard={XEOMIN_CARD} />
       <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-labelledby="home-local-intro-heading">
         <div className="max-w-3xl">
           <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
@@ -95,6 +96,7 @@ export default async function Page() {
           </nav>
         </div>
       </section>
+      <SearchAnswers xeominCash={XEOMIN_CASH} xeominCard={XEOMIN_CARD} />
       <NamedReviews heading="Clinic reviews" />
       <Procedures
         variant="editorial"
@@ -123,18 +125,6 @@ export default async function Page() {
               <article key={faq.question} className="py-6 md:py-8">
                 <h3 className="font-display text-2xl font-medium leading-tight text-base-content md:text-3xl">{faq.question}</h3>
                 <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-base-content/85">{faq.answer}</p>
-                {faq.question === "Do you offer Hydrafacial in Williamsburg?" ? (
-                  <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-base-content/85">
-                    <Link href="/procedures/prp-facial" className="link link-primary">
-                      PRP Facial
-                    </Link>{" "}
-                    is the in-office option to discuss. The{" "}
-                    <Link href="/blog/hydrafacial-alternatives-in-williamsburg-va" className="link link-primary">
-                      Hydrafacial alternatives guide
-                    </Link>{" "}
-                    explains the difference.
-                  </p>
-                ) : null}
               </article>
             ))}
           </div>
