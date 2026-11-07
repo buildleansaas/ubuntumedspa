@@ -5,6 +5,7 @@ import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
+import HomeOwnerLink from "components/home-owner-link";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Medical Spa in Williamsburg, VA | Hours, Directions & Services",
@@ -225,6 +226,7 @@ export default function WilliamsburgLocationPage() {
           },
         ]}
       />
+      <HomeOwnerLink className="mt-8" />
     </div>
   );
 }

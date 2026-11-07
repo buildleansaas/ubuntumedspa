@@ -5,6 +5,7 @@ import StructuredData from "components/structured-data";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 import Link from "next/link";
+import HomeOwnerLink from "components/home-owner-link";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near James City County, VA | Xeomin, a Botox Alternative",
@@ -234,6 +235,7 @@ export default function JamesCityCountyPage() {
           </Button>
         </div>
       </section>
+      <HomeOwnerLink className="pb-10 text-center" />
     </div>
   );
 }

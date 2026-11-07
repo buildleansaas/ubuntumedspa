@@ -4,6 +4,7 @@ import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
+import HomeOwnerLink from "components/home-owner-link";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near Yorktown, VA | Xeomin, a Botox Alternative",
@@ -113,6 +114,7 @@ export default function YorktownPage() {
         <Button asChild size="sm" variant="secondary"><Link href="/locations/williamsburg-va">Williamsburg Location Details</Link></Button>
         <DirectionsButton size="sm" address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2729739} longitude={-76.7635887} />
       </div>
+      <HomeOwnerLink className="mt-6" />
     </div>
   );
 }

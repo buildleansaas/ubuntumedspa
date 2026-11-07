@@ -4,6 +4,7 @@ import CtaFooter from "components/cta-footer";
 import StructuredData from "components/structured-data";
 import ProceduresView from "views/procedures";
 import { buildPageMetadata } from "lib/metadata";
+import HomeOwnerLink from "components/home-owner-link";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Procedures in Williamsburg, VA | Williamsburg Med Spa",
@@ -24,6 +25,7 @@ export default function Procedures() {
         </Link>
         , cash price first.
       </p>
+      <HomeOwnerLink className="mt-10" />
       <CtaFooter />
     </div>
   );
