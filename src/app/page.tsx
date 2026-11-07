@@ -14,6 +14,7 @@ import LatestPosts from "views/latest-posts";
 import Products from "views/products";
 import BotoxPartyCallout from "views/botox-party-callout";
 import HomeVisit from "views/home-visit";
+import SearchAnswers, { getSearchAnswers } from "views/search-answers";
 import { buildPageMetadata } from "lib/metadata";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "lib/seo";
 import StructuredData from "components/structured-data";
@@ -47,43 +48,6 @@ const homeFaqs = [
   },
 ];
 
-// Searches the homepage shows up for, each answered under its own H2 (ScaleSleek f_vh33afabed, 2026-11-06).
-// The clinic uses only Xeomin, and does not offer Hydrafacial or dermal fillers: each answer says so plainly.
-const searchAnswers = [
-  {
-    id: "home-botox-alternative",
-    heading: "A Botox alternative in Williamsburg, VA: we use Xeomin®",
-    question: "Do you offer Botox® in Williamsburg?",
-    answer: `No. We use Xeomin®, a wrinkle relaxer in the same category as Botox®, for frown lines, forehead lines, and crow's feet. Xeomin starts at ${XEOMIN_CASH} cash (${XEOMIN_CARD} by card or online), and Jenny Brady, MSN, RN, CPNP, PMHS plans every treatment.`,
-    links: [
-      { href: "/procedures/xeomin", label: "Xeomin in Williamsburg" },
-      { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Xeomin vs. Botox®" },
-    ],
-  },
-  {
-    id: "home-hydrafacial",
-    heading: "Hydrafacial in Williamsburg, VA",
-    question: "Do you offer Hydrafacial in Williamsburg?",
-    answer:
-      "No. Williamsburg Med Spa does not offer Hydrafacial. For a facial in Williamsburg, VA aimed at glow, texture, and skin quality, ask about PRP Facial.",
-    links: [
-      { href: "/procedures/prp-facial", label: "PRP Facial" },
-      { href: "/blog/hydrafacial-alternatives-in-williamsburg-va", label: "Hydrafacial alternatives guide" },
-    ],
-  },
-  {
-    id: "home-dermal-fillers",
-    heading: "Dermal fillers in Williamsburg, VA",
-    question: "Do you offer dermal fillers in Williamsburg?",
-    answer:
-      "No. Williamsburg Med Spa does not offer dermal fillers, including lip filler. For lines that show when you frown, raise your brows, or squint, ask about Xeomin. For skin texture and glow, ask about PRP Facial.",
-    links: [
-      { href: "/procedures/xeomin", label: "Xeomin" },
-      { href: "/procedures/prp-facial", label: "PRP Facial" },
-    ],
-  },
-];
-
 const localLinks = [
   { href: "/procedures/botox", label: "Botox alternative in Williamsburg" },
   { href: "/procedures/xeomin", label: "Xeomin in Williamsburg" },
@@ -97,8 +61,8 @@ const localLinks = [
 export default async function Page() {
   return (
     <div className="w-full">
-      <StructuredData type="FAQ" faqs={[...searchAnswers, ...homeFaqs]} />
-      <Jumbotron />
+      <StructuredData type="FAQ" faqs={[...getSearchAnswers(XEOMIN_CASH, XEOMIN_CARD), ...homeFaqs]} />
+      <Jumbotron xeominCash={XEOMIN_CASH} xeominCard={XEOMIN_CARD} />
       <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-labelledby="home-local-intro-heading">
         <div className="max-w-3xl">
           <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
@@ -132,27 +96,7 @@ export default async function Page() {
           </nav>
         </div>
       </section>
-      <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-label="Botox alternative, Hydrafacial, and dermal fillers in Williamsburg">
-        <div className="grid max-w-3xl gap-10">
-          {searchAnswers.map((item) => (
-            <article key={item.id} aria-labelledby={item.id}>
-              <h2 id={item.id} className="font-display text-3xl font-medium leading-[1.15] tracking-tight text-base-content md:text-4xl">
-                {item.heading}
-              </h2>
-              <p className="mt-4 max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">{item.answer}</p>
-              <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
-                {item.links.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="link link-primary text-sm">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
+      <SearchAnswers xeominCash={XEOMIN_CASH} xeominCard={XEOMIN_CARD} />
       <NamedReviews heading="Clinic reviews" />
       <Procedures
         variant="editorial"

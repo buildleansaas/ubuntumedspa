@@ -4,16 +4,18 @@ Started: 2026-11-04 (ships with the `/prices` page, branch `feat/prices-and-home
 Page: `https://www.williamsburgmedspa.com/` (protected owner of the local medical-spa cluster, see `williamsburg-protected-query-owner-ledger.md`)
 Type: title and meta description only. H1, hero, body copy, schema and internal links to service owners are unchanged, apart from one new homepage link to `/prices`.
 
-## Restart 2026-11-06 (ScaleSleek f_vh33afabed)
+## Ended early 2026-11-06 (ScaleSleek f_vh33afabed)
 
-The homepage is Google's pick for `botox williamsburg` (71 impressions, position 16.0) and `botox williamsburg va` (60 impressions, position 8.7), 2026-10-06 to 2026-11-02. To answer those searches, the title and meta changed again two days into this test, so the clock restarts on the 2026-11-06 deploy. The lead words "Medical Spa Williamsburg VA" still come first, so the category pool below is unchanged.
+This title-only test was abandoned on 2026-11-06, two days in, with no verdict. The homepage is Google's pick for `botox williamsburg` (71 impressions, position 16.0) and `botox williamsburg va` (60 impressions, position 8.7), 2026-10-06 to 2026-11-02, and the 2026-11-06 PR changes the title, meta, hero, body, FAQ schema and inbound links in one deploy to answer them. That is a multi-variable change, not a snippet test: a CTR shift after it can't be attributed to the title alone. The new title also moves back toward the Xeomin/Botox-alternative wording of the pre-test title (which had the 2.9% baseline), with the lead words "Medical Spa Williamsburg VA" kept first.
+
+What to watch instead, from the 2026-11-06 deploy: the category pool below (the main query) must not lose position or CTR, and `botox williamsburg` / `botox williamsburg va` on `/` should gain clicks. ScaleSleek measures the fix at day 14 and day 28. If the category pool drops (position worse than about 4, or CTR below 2.9%), roll the title back to `Medical Spa Williamsburg VA | Nurse-Led, Prices Posted` and keep the body changes.
 
 | | Before (2026-11-04) | After (2026-11-06) |
 | --- | --- | --- |
 | Title | Medical Spa Williamsburg VA \| Nurse-Led, Prices Posted | Medical Spa Williamsburg VA \| Xeomin, a Botox Alternative |
 | Meta | Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) from $250 cash, Blomdahl ear piercing $45, B-12 $25, PRP. See all prices. | Looking for Botox in Williamsburg, VA? Our nurse practitioner-led med spa uses Xeomin®, a Botox® alternative, from $250 cash. Ear piercing $45. See prices. |
 
-The same PR also added a Botox-alternative answer under the H1, H2 answers for the Botox alternative, Hydrafacial and dermal fillers, and links to / from /events, /locations/williamsburg-va and /locations/yorktown-va. Judge the category pool from 2026-11-06.
+The same PR also added a Botox-alternative answer under the H1, H2 answers for the Botox alternative, Hydrafacial and dermal fillers, and links to / from /events, /locations/williamsburg-va and /locations/yorktown-va.
 
 ## Why
 
