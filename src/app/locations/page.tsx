@@ -3,6 +3,7 @@ import Link from "next/link";
 import StructuredData from "components/structured-data";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
+import HomeOwnerLink from "components/home-owner-link";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Locations Near Williamsburg, VA | Williamsburg Med Spa",
@@ -186,6 +187,7 @@ export default function LocationsIndexPage() {
         ))}
       </div>
       </section>
+      <HomeOwnerLink className="mt-8" />
     </div>
   );
 }

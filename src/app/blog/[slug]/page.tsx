@@ -7,6 +7,7 @@ import BlogCTA from "components/cta-footer";
 import { getPostData } from "./getPostData";
 import { getPublishedBlogPosts } from "lib/blog";
 import { ORIGIN } from "lib/seo";
+import HomeOwnerLink, { HOME_OWNER_LINK_POSTS } from "components/home-owner-link";
 
 const GENERIC_TAGS = new Set(["Williamsburg Med Spa", "PRP Therapy"]);
 const TAG_ALIASES: Record<string, string> = {
@@ -177,6 +178,7 @@ export default async function ArticlePage(
             )}
           </div>
         )}
+        {HOME_OWNER_LINK_POSTS.has(params.slug) && <HomeOwnerLink className="mx-auto mb-12 mt-10 max-w-3xl" />}
         <BlogCTA />
       </div>
     );

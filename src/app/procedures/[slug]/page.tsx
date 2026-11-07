@@ -26,6 +26,7 @@ import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import { getHubSatelliteGroup } from "lib/service-satellites";
 import { getActiveOffers } from "config/offers";
 import { XEOMIN_HYPERHIDROSIS_OFF_LABEL, XEOMIN_OFF_LABEL_NOTE, xeominClusterPages } from "lib/xeomin-concerns";
+import HomeOwnerLink, { HOME_OWNER_LINK_PROCEDURES } from "components/home-owner-link";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
 const ailmentsTagLabels = {
@@ -887,6 +888,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             </Button>
           </div>
         )}
+        {HOME_OWNER_LINK_PROCEDURES.has(procedure.slug) && <HomeOwnerLink className="mx-auto mb-12 mt-10 max-w-3xl text-center" />}
         <CtaFooter consultHref={ownerConsultationHref} />
       </div>
       </div>

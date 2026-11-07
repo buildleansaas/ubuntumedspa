@@ -4,6 +4,7 @@ import Link from "next/link";
 import StructuredData from "components/structured-data";
 import ConsultationForm from "./consult-form";
 import { buildPageMetadata } from "lib/metadata";
+import HomeOwnerLink from "components/home-owner-link";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Book a Med Spa Consultation in Williamsburg, VA",
@@ -108,6 +109,7 @@ export default function ConsultationPage() {
           <p className="mt-5 text-sm leading-6 text-base-content/65">
             Want to compare service pages first? Start with <Link href="/procedures" className="font-medium text-primary hover:underline">all procedures</Link> or the <Link href="/locations/williamsburg-va" className="font-medium text-primary hover:underline">Williamsburg location guide</Link>.
           </p>
+          <HomeOwnerLink className="mt-3" />
         </aside>
       </section>
 
