@@ -4,7 +4,7 @@ import { formatUsdShort } from "./price";
 const cashPrice = (slug: string) => formatUsdShort(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
 
 // The clinic's only wrinkle relaxer is Xeomin. It does not offer Botox® brand.
-// Homepage snippet CTR test started 2026-11-04, restarted 2026-11-06 with the Botox-alternative wording
+// Homepage snippet CTR test started 2026-11-04 and ended early 2026-11-06 for the Botox-alternative wording
 // (ScaleSleek f_vh33afabed; docs/seo/homepage-snippet-ctr-test-2026-11-04.md).
 // Keep the lead words "Medical Spa Williamsburg VA"; prices come from the catalog.
 export const DEFAULT_TITLE = "Medical Spa Williamsburg VA | Xeomin, a Botox Alternative";

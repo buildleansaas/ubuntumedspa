@@ -159,7 +159,7 @@ test("OfferCatalog JSON-LD lists every catalog item at its card price (what chec
   }
 });
 
-test("homepage snippet CTR test (2026-11-04, restarted 2026-11-06 for f_vh33afabed): title and meta", () => {
+test("homepage title and meta (f_vh33afabed, 2026-11-06; the 2026-11-04 CTR test ended early)", () => {
   assert.equal(DEFAULT_TITLE, "Medical Spa Williamsburg VA | Xeomin, a Botox Alternative");
   assert.ok(DEFAULT_TITLE.startsWith("Medical Spa Williamsburg VA"));
   assert.ok(DEFAULT_TITLE.length <= 60, `title is ${DEFAULT_TITLE.length}`);
