@@ -22,3 +22,19 @@ export default function HomeOwnerLink({ className = "" }: { className?: string }
     </p>
   );
 }
+
+// The homepage is also Google's pick for the Botox-alternative searches (ScaleSleek f_vh33afabed, 2026-11-06). The clinic uses
+// only Xeomin, so the link text is the honest Botox alternative wording.
+export const HOME_ALTERNATIVE_ANCHOR = "Botox alternative in Williamsburg, VA";
+
+export function HomeXeominLink({ className = "" }: { className?: string }) {
+  return (
+    <p className={`text-sm leading-6 text-base-content/70 ${className}`}>
+      For a{" "}
+      <Link href="/" className="font-medium text-primary hover:underline">
+        {HOME_ALTERNATIVE_ANCHOR}
+      </Link>
+      , we use Xeomin®.
+    </p>
+  );
+}

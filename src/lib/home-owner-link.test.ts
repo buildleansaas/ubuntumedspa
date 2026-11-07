@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import {
+  HOME_ALTERNATIVE_ANCHOR,
   HOME_OWNER_ANCHOR,
   HOME_OWNER_LINK_POSTS,
   HOME_OWNER_LINK_PROCEDURES,
@@ -46,4 +47,30 @@ test("competing procedure and blog pages render the home owner link", () => {
   }
   assert.match(readFileSync("src/app/procedures/[slug]/page.tsx", "utf8"), /HOME_OWNER_LINK_PROCEDURES\.has\(procedure\.slug\) && <HomeOwnerLink/);
   assert.match(readFileSync("src/app/blog/[slug]/page.tsx", "utf8"), /HOME_OWNER_LINK_POSTS\.has\(params\.slug\) && <HomeOwnerLink/);
+});
+
+// ScaleSleek finding f_vh33afabed: the homepage answers "botox williamsburg", "hydrafacial williamsburg va" and
+// "dermal fillers williamsburg" under their own H2s, answers the Botox search in the hero, and three pages that
+// also showed for "botox williamsburg" link to / with the search's words.
+test("homepage answers the Botox, Hydrafacial and dermal filler searches", () => {
+  const home = readFileSync("src/app/page.tsx", "utf8");
+  assert.match(home, /heading: "A Botox alternative in Williamsburg, VA: we use Xeomin®"/);
+  assert.match(home, /heading: "Hydrafacial in Williamsburg, VA"/);
+  assert.match(home, /heading: "Dermal fillers in Williamsburg, VA"/);
+  assert.match(home, /<h2 id=\{item\.id\}/);
+  assert.match(home, /does not offer Hydrafacial/);
+  assert.match(home, /does not offer dermal fillers/);
+  const hero = readFileSync("src/views/jumbotron.tsx", "utf8");
+  const h1End = hero.indexOf("</h1>");
+  const answer = hero.indexOf("Looking for Botox in Williamsburg, VA? We use");
+  const background = hero.indexOf("A local med spa with Jenny Brady");
+  assert.ok(h1End > 0 && answer > h1End && answer < background, "the Botox answer sits right under the H1, before the background");
+  assert.equal(hero.match(/<h1\b/g)?.length, 1);
+});
+
+test("three competing pages link to / for the Botox search", () => {
+  assert.equal(HOME_ALTERNATIVE_ANCHOR, "Botox alternative in Williamsburg, VA");
+  for (const page of ["events", "locations/williamsburg-va", "locations/yorktown-va"]) {
+    assert.match(readFileSync(`src/app/${page}/page.tsx`, "utf8"), /<HomeXeominLink\b/, `/${page} is missing the Botox link to /`);
+  }
 });

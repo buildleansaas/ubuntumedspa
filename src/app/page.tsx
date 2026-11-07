@@ -17,12 +17,17 @@ import HomeVisit from "views/home-visit";
 import { buildPageMetadata } from "lib/metadata";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "lib/seo";
 import StructuredData from "components/structured-data";
+import { COMMERCE_CATALOG_BY_SLUG } from "config/commerce-catalog";
+import { cardPriceLabel, formatUsdShort } from "lib/price";
 
 export const metadata: Metadata = buildPageMetadata({
   title: DEFAULT_TITLE,
   description: DEFAULT_DESCRIPTION,
   canonical: "/",
 });
+
+const XEOMIN_CASH = formatUsdShort(COMMERCE_CATALOG_BY_SLUG.xeomin.cashAmountCents);
+const XEOMIN_CARD = cardPriceLabel(COMMERCE_CATALOG_BY_SLUG.xeomin.cashAmountCents);
 
 const homeFaqs = [
   {
@@ -40,10 +45,42 @@ const homeFaqs = [
     answer:
       "Yes. Patients visit from Williamsburg, James City County, Kingsmill, New Town, Yorktown, Newport News, Toano, Norge, Lightfoot, and Ford's Colony.",
   },
+];
+
+// Searches the homepage shows up for, each answered under its own H2 (ScaleSleek f_vh33afabed, 2026-11-06).
+// The clinic uses only Xeomin, and does not offer Hydrafacial or dermal fillers: each answer says so plainly.
+const searchAnswers = [
   {
+    id: "home-botox-alternative",
+    heading: "A Botox alternative in Williamsburg, VA: we use Xeomin®",
+    question: "Do you offer Botox® in Williamsburg?",
+    answer: `No. We use Xeomin®, a wrinkle relaxer in the same category as Botox®, for frown lines, forehead lines, and crow's feet. Xeomin starts at ${XEOMIN_CASH} cash (${XEOMIN_CARD} by card or online), and Jenny Brady, MSN, RN, CPNP, PMHS plans every treatment.`,
+    links: [
+      { href: "/procedures/xeomin", label: "Xeomin in Williamsburg" },
+      { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Xeomin vs. Botox®" },
+    ],
+  },
+  {
+    id: "home-hydrafacial",
+    heading: "Hydrafacial in Williamsburg, VA",
     question: "Do you offer Hydrafacial in Williamsburg?",
     answer:
-      "No. Williamsburg Med Spa does not offer Hydrafacial. For glow, texture, and skin quality, ask about PRP Facial.",
+      "No. Williamsburg Med Spa does not offer Hydrafacial. For a facial in Williamsburg, VA aimed at glow, texture, and skin quality, ask about PRP Facial.",
+    links: [
+      { href: "/procedures/prp-facial", label: "PRP Facial" },
+      { href: "/blog/hydrafacial-alternatives-in-williamsburg-va", label: "Hydrafacial alternatives guide" },
+    ],
+  },
+  {
+    id: "home-dermal-fillers",
+    heading: "Dermal fillers in Williamsburg, VA",
+    question: "Do you offer dermal fillers in Williamsburg?",
+    answer:
+      "No. Williamsburg Med Spa does not offer dermal fillers, including lip filler. For lines that show when you frown, raise your brows, or squint, ask about Xeomin. For skin texture and glow, ask about PRP Facial.",
+    links: [
+      { href: "/procedures/xeomin", label: "Xeomin" },
+      { href: "/procedures/prp-facial", label: "PRP Facial" },
+    ],
   },
 ];
 
@@ -60,7 +97,7 @@ const localLinks = [
 export default async function Page() {
   return (
     <div className="w-full">
-      <StructuredData type="FAQ" faqs={homeFaqs} />
+      <StructuredData type="FAQ" faqs={[...searchAnswers, ...homeFaqs]} />
       <Jumbotron />
       <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-labelledby="home-local-intro-heading">
         <div className="max-w-3xl">
@@ -95,6 +132,27 @@ export default async function Page() {
           </nav>
         </div>
       </section>
+      <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-label="Botox alternative, Hydrafacial, and dermal fillers in Williamsburg">
+        <div className="grid max-w-3xl gap-10">
+          {searchAnswers.map((item) => (
+            <article key={item.id} aria-labelledby={item.id}>
+              <h2 id={item.id} className="font-display text-3xl font-medium leading-[1.15] tracking-tight text-base-content md:text-4xl">
+                {item.heading}
+              </h2>
+              <p className="mt-4 max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">{item.answer}</p>
+              <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+                {item.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="link link-primary text-sm">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
       <NamedReviews heading="Clinic reviews" />
       <Procedures
         variant="editorial"
@@ -123,18 +181,6 @@ export default async function Page() {
               <article key={faq.question} className="py-6 md:py-8">
                 <h3 className="font-display text-2xl font-medium leading-tight text-base-content md:text-3xl">{faq.question}</h3>
                 <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-base-content/85">{faq.answer}</p>
-                {faq.question === "Do you offer Hydrafacial in Williamsburg?" ? (
-                  <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-base-content/85">
-                    <Link href="/procedures/prp-facial" className="link link-primary">
-                      PRP Facial
-                    </Link>{" "}
-                    is the in-office option to discuss. The{" "}
-                    <Link href="/blog/hydrafacial-alternatives-in-williamsburg-va" className="link link-primary">
-                      Hydrafacial alternatives guide
-                    </Link>{" "}
-                    explains the difference.
-                  </p>
-                ) : null}
               </article>
             ))}
           </div>

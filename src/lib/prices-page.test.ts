@@ -159,25 +159,25 @@ test("OfferCatalog JSON-LD lists every catalog item at its card price (what chec
   }
 });
 
-test("homepage snippet CTR test (2026-11-04): title and meta", () => {
-  assert.equal(DEFAULT_TITLE, "Medical Spa Williamsburg VA | Nurse-Led, Prices Posted");
+test("homepage snippet CTR test (2026-11-04, restarted 2026-11-06 for f_vh33afabed): title and meta", () => {
+  assert.equal(DEFAULT_TITLE, "Medical Spa Williamsburg VA | Xeomin, a Botox Alternative");
   assert.ok(DEFAULT_TITLE.startsWith("Medical Spa Williamsburg VA"));
   assert.ok(DEFAULT_TITLE.length <= 60, `title is ${DEFAULT_TITLE.length}`);
   assert.equal(
     DEFAULT_DESCRIPTION,
-    `Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) from ${cash("xeomin")} cash, Blomdahl ear piercing ${cash(
-      "blomdahl-ear-piercing"
-    )}, B-12 ${cash("b12-injections")}, PRP. See all prices.`
+    `Looking for Botox in Williamsburg, VA? Our nurse practitioner-led med spa uses Xeomin®, a Botox® alternative, from ${cash(
+      "xeomin"
+    )} cash. Ear piercing ${cash("blomdahl-ear-piercing")}. See prices.`
   );
   assert.equal(
     DEFAULT_DESCRIPTION,
-    "Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) from $250 cash, Blomdahl ear piercing $45, B-12 $25, PRP. See all prices."
+    "Looking for Botox in Williamsburg, VA? Our nurse practitioner-led med spa uses Xeomin®, a Botox® alternative, from $250 cash. Ear piercing $45. See prices."
   );
-  assert.ok(DEFAULT_DESCRIPTION.length <= 160, `meta is ${DEFAULT_DESCRIPTION.length}`);
+  assert.ok(DEFAULT_DESCRIPTION.length >= 120 && DEFAULT_DESCRIPTION.length <= 155, `meta is ${DEFAULT_DESCRIPTION.length}`);
   assert.doesNotMatch(DEFAULT_DESCRIPTION + DEFAULT_TITLE, /\bfees?\b|surcharge|filler/i);
   assert.equal(homeMetadata.title, DEFAULT_TITLE);
   assert.equal(homeMetadata.description, DEFAULT_DESCRIPTION);
-  // The meta says "See all prices": the homepage links /prices.
+  // The meta says "See prices": the homepage links /prices.
   assert.match(read("src/app/page.tsx"), /href: "\/prices"/);
 });
 
