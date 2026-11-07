@@ -888,7 +888,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             </Button>
           </div>
         )}
-        {HOME_OWNER_LINK_PROCEDURES.has(procedure.slug) && <HomeOwnerLink className="mx-auto mt-10 max-w-3xl text-center" />}
+        {HOME_OWNER_LINK_PROCEDURES.has(procedure.slug) && <HomeOwnerLink className="mx-auto mb-12 mt-10 max-w-3xl text-center" />}
         <CtaFooter consultHref={ownerConsultationHref} />
       </div>
       </div>

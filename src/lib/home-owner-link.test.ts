@@ -44,4 +44,6 @@ test("competing procedure and blog pages render the home owner link", () => {
   for (const slug of HOME_OWNER_LINK_POSTS) {
     readFileSync(`src/markdown/${slug}.mdx`, "utf8");
   }
+  assert.match(readFileSync("src/app/procedures/[slug]/page.tsx", "utf8"), /HOME_OWNER_LINK_PROCEDURES\.has\(procedure\.slug\) && <HomeOwnerLink/);
+  assert.match(readFileSync("src/app/blog/[slug]/page.tsx", "utf8"), /HOME_OWNER_LINK_POSTS\.has\(params\.slug\) && <HomeOwnerLink/);
 });

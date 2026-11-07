@@ -14,7 +14,7 @@ export const HOME_OWNER_LINK_POSTS = new Set([
 export default function HomeOwnerLink({ className = "" }: { className?: string }) {
   return (
     <p className={`text-sm leading-6 text-base-content/70 ${className}`}>
-      Every treatment, price, and way to book is on our{" "}
+      Our treatments, team, and booking options are all on our{" "}
       <Link href="/" className="font-medium text-primary hover:underline">
         {HOME_OWNER_ANCHOR}
       </Link>{" "}

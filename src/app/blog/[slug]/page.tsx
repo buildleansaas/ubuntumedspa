@@ -178,7 +178,7 @@ export default async function ArticlePage(
             )}
           </div>
         )}
-        {HOME_OWNER_LINK_POSTS.has(params.slug) && <HomeOwnerLink className="mx-auto mt-10 max-w-3xl" />}
+        {HOME_OWNER_LINK_POSTS.has(params.slug) && <HomeOwnerLink className="mx-auto mb-12 mt-10 max-w-3xl" />}
         <BlogCTA />
       </div>
     );
