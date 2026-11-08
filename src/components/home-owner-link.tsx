@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { XEOMIN_HUB_PATH } from "lib/xeomin-concerns";
+
 // The homepage owns "med spa williamsburg va" (ScaleSleek finding f_majveah6ld, 2026-11-06).
 // Pages that also showed up for that search link back to / with the exact words as the link text.
 export const HOME_OWNER_ANCHOR = "med spa williamsburg va";
@@ -26,15 +28,14 @@ export default function HomeOwnerLink({ className = "" }: { className?: string }
 // /procedures/botox owns the Botox-alternative searches (owner ledger, 2026-11-08). Google barely knows that page,
 // so pages that showed for the Botox-alternative searches link to it. The clinic uses only Xeomin, so the link text is the
 // honest Botox alternative wording.
-export const XEOMIN_HUB_HREF = "/procedures/botox";
-export const XEOMIN_HUB_ANCHOR = "Botox alternative in Williamsburg, VA";
+export const XEOMIN_OWNER_LINK_ANCHOR = "Botox alternative in Williamsburg, VA";
 
 export function XeominHubLink({ className = "" }: { className?: string }) {
   return (
     <p className={`text-sm leading-6 text-base-content/70 ${className}`}>
       For a{" "}
-      <Link href={XEOMIN_HUB_HREF} className="font-medium text-primary hover:underline">
-        {XEOMIN_HUB_ANCHOR}
+      <Link href={XEOMIN_HUB_PATH} className="font-medium text-primary hover:underline">
+        {XEOMIN_OWNER_LINK_ANCHOR}
       </Link>
       , we use Xeomin®.
     </p>
