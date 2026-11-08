@@ -6,7 +6,7 @@ import StructuredData from "components/structured-data";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 import { getPublishedEvents } from "lib/events";
-import HomeOwnerLink, { HomeXeominLink } from "components/home-owner-link";
+import HomeOwnerLink, { XeominHubLink } from "components/home-owner-link";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Private Med Spa Parties in Williamsburg, VA",
@@ -95,7 +95,7 @@ export default function EventsPage() {
         ))}
       </div>
       <HomeOwnerLink className="mt-10" />
-      <HomeXeominLink className="mt-2" />
+      <XeominHubLink className="mt-2" />
     </div>
   );
 }

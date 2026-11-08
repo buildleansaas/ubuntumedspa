@@ -6,11 +6,12 @@ import React, { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import {
-  HOME_ALTERNATIVE_ANCHOR,
   HOME_OWNER_ANCHOR,
   HOME_OWNER_LINK_POSTS,
   HOME_OWNER_LINK_PROCEDURES,
+  XEOMIN_OWNER_LINK_ANCHOR,
 } from "../components/home-owner-link";
+import { XEOMIN_HUB_PATH } from "./xeomin-concerns";
 
 // ScaleSleek finding f_majveah6ld: pages that split "med spa williamsburg va" link to / with those words.
 const STATIC_PAGES = [
@@ -53,8 +54,8 @@ test("competing procedure and blog pages render the home owner link", () => {
 });
 
 // ScaleSleek finding f_vh33afabed: the homepage answers "botox williamsburg", "hydrafacial williamsburg va" and
-// "dermal fillers williamsburg" under their own H2s, answers the Botox search in the hero, and three pages that
-// also showed for "botox williamsburg" link to / with the search's words. Checked on rendered HTML.
+// "dermal fillers williamsburg" under their own H2s and answers the Botox search in the hero. Since 2026-11-08 the
+// Botox-alternative links (three pages and the homepage H2 answer) go to /procedures/botox, the owner. Checked on rendered HTML.
 (globalThis as { React?: typeof React }).React = React;
 const { default: SearchAnswers, getSearchAnswers } = require("../views/search-answers") as typeof import("../views/search-answers");
 const { default: Jumbotron } = require("../views/jumbotron") as typeof import("../views/jumbotron");
@@ -94,9 +95,13 @@ test("the hero answers the Botox search right under the one H1, before the backg
   assert.doesNotMatch(readFileSync("src/views/jumbotron.tsx", "utf8"), /commerce-catalog/);
 });
 
-test("three competing pages link to / for the Botox search", () => {
-  assert.equal(HOME_ALTERNATIVE_ANCHOR, "Botox alternative in Williamsburg, VA");
+test("three pages that showed for the Botox search link to /procedures/botox, the owner", () => {
+  assert.equal(XEOMIN_OWNER_LINK_ANCHOR, "Botox alternative in Williamsburg, VA");
+  assert.match(readFileSync("src/components/home-owner-link.tsx", "utf8"), /<Link href=\{XEOMIN_HUB_PATH\}/);
+  assert.equal(XEOMIN_HUB_PATH, "/procedures/botox");
   for (const page of ["events", "locations/williamsburg-va", "locations/yorktown-va"]) {
-    assert.match(readFileSync(`src/app/${page}/page.tsx`, "utf8"), /<HomeXeominLink\b/, `/${page} is missing the Botox link to /`);
+    assert.match(readFileSync(`src/app/${page}/page.tsx`, "utf8"), /<XeominHubLink\b/, `/${page} is missing the link to /procedures/botox`);
   }
+  const html = renderToStaticMarkup(createElement(SearchAnswers, { xeominCash: "$250", xeominCard: "$257.78" }));
+  assert.match(html, /<a[^>]*href="\/procedures\/botox"[^>]*>Botox alternative in Williamsburg, VA<\/a>/);
 });

@@ -19,6 +19,7 @@ export const getSearchAnswers = (xeominCash: string, xeominCard: string): Search
     question: "Do you offer Botox® in Williamsburg?",
     answer: `No. We use Xeomin®, a wrinkle relaxer in the same category as Botox®, for frown lines, forehead lines, and crow's feet. Xeomin starts at ${xeominCash} cash (${xeominCard} by card or online), and Jenny Brady, MSN, RN, CPNP, PMHS plans every treatment.`,
     links: [
+      { href: "/procedures/botox", label: "Botox alternative in Williamsburg, VA" },
       { href: "/procedures/xeomin", label: "Xeomin in Williamsburg" },
       { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Xeomin vs. Botox®" },
     ],
