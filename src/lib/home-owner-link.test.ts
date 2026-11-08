@@ -6,7 +6,8 @@ import React, { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import {
-  HOME_ALTERNATIVE_ANCHOR,
+  XEOMIN_HUB_ANCHOR,
+  XEOMIN_HUB_HREF,
   HOME_OWNER_ANCHOR,
   HOME_OWNER_LINK_POSTS,
   HOME_OWNER_LINK_PROCEDURES,
@@ -94,9 +95,12 @@ test("the hero answers the Botox search right under the one H1, before the backg
   assert.doesNotMatch(readFileSync("src/views/jumbotron.tsx", "utf8"), /commerce-catalog/);
 });
 
-test("three competing pages link to / for the Botox search", () => {
-  assert.equal(HOME_ALTERNATIVE_ANCHOR, "Botox alternative in Williamsburg, VA");
+test("three pages that showed for the Botox search link to /procedures/botox, the owner", () => {
+  assert.equal(XEOMIN_HUB_ANCHOR, "Botox alternative in Williamsburg, VA");
+  assert.equal(XEOMIN_HUB_HREF, "/procedures/botox");
   for (const page of ["events", "locations/williamsburg-va", "locations/yorktown-va"]) {
-    assert.match(readFileSync(`src/app/${page}/page.tsx`, "utf8"), /<HomeXeominLink\b/, `/${page} is missing the Botox link to /`);
+    assert.match(readFileSync(`src/app/${page}/page.tsx`, "utf8"), /<XeominHubLink\b/, `/${page} is missing the link to /procedures/botox`);
   }
+  const html = renderToStaticMarkup(createElement(SearchAnswers, { xeominCash: "$250", xeominCard: "$257.78" }));
+  assert.match(html, /<a[^>]*href="\/procedures\/botox"[^>]*>Botox alternative in Williamsburg, VA<\/a>/);
 });
