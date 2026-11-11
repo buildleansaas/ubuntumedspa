@@ -24,7 +24,7 @@ import { humanizeMedicalCopy } from "lib/humanize";
 import { cashCardProse, cardPriceSchemaValue } from "lib/price";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import { getHubSatelliteGroup } from "lib/service-satellites";
-import { getActiveOffers } from "config/offers";
+import { activeOfferMetaDescription, getActiveOffers } from "config/offers";
 import { XEOMIN_HYPERHIDROSIS_OFF_LABEL, XEOMIN_OFF_LABEL_NOTE, xeominClusterPages } from "lib/xeomin-concerns";
 import HomeOwnerLink, { HOME_OWNER_LINK_PROCEDURES } from "components/home-owner-link";
 
@@ -104,7 +104,7 @@ export async function generateMetadata(props: Params) {
   const procedure = procedures.find((med) => med.slug === params.slug);
   const seo = procedure?.seo;
   const headingTitle = seo?.title ?? "Procedure";
-  const description = seo?.description ?? "";
+  const description = activeOfferMetaDescription(`/procedures/${params.slug}`) ?? seo?.description ?? "";
   const documentTitle =
     seo && "documentTitle" in seo && typeof seo.documentTitle === "string" && seo.documentTitle
       ? seo.documentTitle

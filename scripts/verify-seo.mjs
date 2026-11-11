@@ -317,6 +317,13 @@ const snippetExpectations = {
     description:
       "Sterile, hypoallergenic Blomdahl ear piercing in Williamsburg, VA by a pediatric NP. $45 per ear in cash or $46.66 online by card.",
     h1: "Ear Piercing in Williamsburg, VA",
+    // config/offers.ts metaDescription replaces the description while the sibling offer runs (through 2026-12-31, clinic time).
+    offer: {
+      startsOn: "2026-11-05",
+      endsOn: "2026-12-31",
+      description:
+        "Holiday sibling offer through Dec 31: 2 kids, both ears, $140 cash ($144.50 card). Sterile Blomdahl ear piercing in Williamsburg, VA by a pediatric NP.",
+    },
   },
   // Xeomin hub-and-satellite cluster (src/lib/xeomin-concerns.ts). Cash price first, Botox® only as the search term.
   "/procedures/xeomin/for/frown-lines": {
@@ -352,7 +359,7 @@ const snippetExpectations = {
   "/blog/blomdahl-medical-plastic-vs-titanium-earrings": {
     title: "Blomdahl Earrings Review: Medical Plastic vs Titanium",
     description:
-      "Blomdahl earrings review: Medical Plastic vs titanium in Williamsburg. Compare starter jewelry, then book the ear piercing hub.",
+      "Blomdahl earrings review: Medical Plastic, which Blomdahl calls 0% nickel, for very sensitive ears, or titanium for a metal look. See which fits.",
   },
 };
 for (const [path, expectation] of Object.entries(snippetExpectations)) {
@@ -365,7 +372,18 @@ for (const [path, expectation] of Object.entries(snippetExpectations)) {
   if (snippet.title !== expectation.title) {
     fail(`${path} title is ${JSON.stringify(snippet.title)}, expected ${JSON.stringify(expectation.title)}`);
   }
-  if (snippet.description !== expectation.description) {
+  const clinicDayParts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+  const clinicPart = (type) => clinicDayParts.find((part) => part.type === type)?.value ?? "";
+  const clinicDay = `${clinicPart("year")}-${clinicPart("month")}-${clinicPart("day")}`;
+  const offerRunning = expectation.offer && expectation.offer.startsOn <= clinicDay && clinicDay <= expectation.offer.endsOn;
+  // The procedure page renders per request, so the day after the offer ends it is back to its own description.
+  const allowed = offerRunning ? [expectation.offer.description] : [expectation.description];
+  if (!allowed.includes(snippet.description)) {
     fail(`${path} meta description is ${JSON.stringify(snippet.description)}`);
   }
   if (snippet.description.length > 160) fail(`${path} meta description is ${snippet.description.length} characters`);
