@@ -102,8 +102,14 @@ export const unsupportedPrpBreastClaimClasses = [
           ) {
             return false;
           }
+          // "applies" in the sense of "is relevant to" is not a delivery method: "The card price applies online" (the
+          // shared pricing note) and "the risks that apply to how it performs the service" (the risk FAQ).
+          const withoutPricingUse = segment.replace(
+            /\b(?:prices?|risks?)\s+(?:that\s+)?(?:\([^)]{0,40}\)\s+)?appl(?:y|ies|ied)\b/gi,
+            " "
+          );
           return /\b(?:inject(?:s|ed|ing|ion|ions|able)?|needles?|cannulas?|syringes?|needle[- ]based|microneedl(?:e|es|ed|ing)|administer(?:s|ed|ing)?|deliver(?:s|ed|ing)?|carr(?:y|ies|ied|ying)|reach(?:es|ed|ing)?|appl(?:y|ies|ied|ying)|introduc(?:e|es|ed|ing)|insert(?:s|ed|ing)?|plac(?:e|es|ed|ing)|deposit(?:s|ed|ing)?|venipuncture)\b/i.test(
-            segment
+            withoutPricingUse
           );
         });
       },
@@ -134,6 +140,8 @@ export const unsupportedPrpBreastClaimClasses = [
       "A cannula carries the preparation beneath breast tissue.",
       "The method is unknown and our clinician injects the preparation into the breast.",
       "The product reaches the breast through a cannula.",
+      "The card price is listed and the clinician applies PRP to the breast.",
+      "Risks are listed and the clinician applies PRP to the breast.",
     ],
     allowedFixtures: [
       "Ask the clinic whether and how this service is delivered.",
@@ -142,6 +150,8 @@ export const unsupportedPrpBreastClaimClasses = [
       "Whether a needle is used remains an open question.",
       "Is the preparation injected or applied topically?",
       "How, if at all, is this service administered?",
+      "The card price applies online and to card payments in the office.",
+      "Ask the clinic for the risks that apply to how it currently performs the service before you purchase.",
     ],
   },
   {

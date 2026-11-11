@@ -96,8 +96,10 @@ if (ownerDataStart === -1 || ownerDataEnd === -1) {
     "PRP_BREAST_SHARED_COPY_CONTRACT_START",
     "PRP_BREAST_SHARED_COPY_CONTRACT_END"
   );
-  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "067e63cd409c31183e7f828410c13109b5dafdebaaa84502b79b93bdefbcf482");
-  assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "34e180bb63489dabb2f4ec23086266cacdea75b8a2124c8135f6f35d92905c56");
+  // Hashes re-reviewed 2026-11-11 (#177): the only change since the last review was #152 putting the cash price
+  // before the card price (cashCardProse/cashCardLabel). The clinical wording is unchanged.
+  assertSourceContract("PRP Breast Lift owner data", ownerDataSource, "10da07aaec04ff084e3aa12ce6ab3ac0956692dad6985e35e89bfee7a115356b");
+  assertSourceContract("PRP Breast Lift route copy", routeOwnerSource, "87e272227f8670746c51cb50940d9a4356cb63636eae5dcc3e8d2cf41cb12d19");
   assertSourceContract("shared footer clinical copy", sharedFooterContractSource, "aa96d5b0cca7dadcc9fb2e42bdf88c90839424fcc8118c2a1c9a956d98fbeec5");
 }
 
@@ -118,10 +120,28 @@ for (const expected of [`${canonicalOrigin}/events`, `${canonicalOrigin}/events/
 }
 if (sitemapUrls.some((url) => normalizePath(url) === "/affiliates")) fail("retired /affiliates route is present in sitemap");
 
+// Every row carries a real lastmod: blog posts from frontmatter, every other page from the git-derived
+// src/config/content-dates.json. A build-time date (new Date() on every row) would not match that file.
+const committedContentDates = JSON.parse(readFileSync(new URL("../src/config/content-dates.json", import.meta.url), "utf8"));
 for (const block of extractAll(sitemapXml, /<url>([\s\S]*?)<\/url>/g)) {
   const loc = unescapeHtml(block.match(/<loc>([^<]+)<\/loc>/)?.[1] || "");
-  if (/<lastmod>/.test(block) && !new URL(loc).pathname.startsWith("/blog/")) {
-    fail(`non-article sitemap row has synthetic lastmod: ${loc}`);
+  const lastmod = block.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1];
+  const path = normalizePath(loc);
+  if (!lastmod) {
+    fail(`sitemap row has no lastmod: ${loc}`);
+    continue;
+  }
+  const lastmodTime = Date.parse(lastmod);
+  if (Number.isNaN(lastmodTime)) {
+    fail(`sitemap row has an unreadable lastmod ${lastmod}: ${loc}`);
+    continue;
+  }
+  if (lastmodTime > Date.now() + 86400000) fail(`sitemap row has a future lastmod ${lastmod}: ${loc}`);
+  if (path.startsWith("/blog/") || path === "/blog") continue;
+  if (!committedContentDates[path]) {
+    fail(`${path} has no entry in src/config/content-dates.json (run pnpm content-dates)`);
+  } else if (lastmod.slice(0, 10) !== committedContentDates[path]) {
+    fail(`${path} lastmod ${lastmod} does not match its content date ${committedContentDates[path]}`);
   }
 }
 
@@ -690,7 +710,8 @@ const ownerPageExpectations = {
       "does not create new follicles in a bald area",
       "Medical evaluation may come first",
       "$600 per treatment cash · $618.23 card/online",
-      "purchase one session and choose one appointment time after checkout",
+      // #153 replaced the Cal.com "choose one appointment time after checkout" step with text-or-call booking.
+      "purchase one session, then text or call Jenny",
       "For patients cleared to proceed",
       "Book a PRP Hair Consultation",
     ],
@@ -1010,6 +1031,38 @@ const xeominClusterPaths = [
   "/procedures/xeomin/for/lip-flip",
   "/procedures/xeomin/cost",
 ];
+// Visible FAQ = <div data-faq-question="true"><dt>question</dt><dd>answer</dd></div> in the rendered HTML. Only real tags
+// count: the React flight payload inside <script> repeats the same props and must not double the count.
+const visibleFaqEntries = (html) =>
+  [...html.matchAll(/<div data-faq-question="true"[^>]*>\s*<dt[^>]*>([\s\S]*?)<\/dt>\s*<dd[^>]*>([\s\S]*?)<\/dd>/g)].map((match) => ({
+    question: getVisibleText(match[1]).trim(),
+    answer: getVisibleText(match[2]).trim(),
+  }));
+const faqSchemaEntries = (html) =>
+  extractAll(html, /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)
+    .map((raw) => JSON.parse(unescapeHtml(raw)))
+    .flatMap((schema) => (Array.isArray(schema?.["@graph"]) ? schema["@graph"] : [schema]))
+    .filter((schema) => schema?.["@type"] === "FAQPage")
+    .flatMap((schema) => schema.mainEntity || [])
+    .map((entry) => ({
+      question: String(entry?.name ?? "").trim(),
+      answer: String(entry?.acceptedAnswer?.text ?? "").replace(/\s+/g, " ").trim(),
+    }));
+const assertVisibleFaqsMatchSchema = (path, html) => {
+  const visible = visibleFaqEntries(html);
+  const schema = faqSchemaEntries(html);
+  if (!visible.length || visible.length !== schema.length) {
+    fail(`${path} has ${visible.length} visible FAQs but ${schema.length} in FAQ schema`);
+    return;
+  }
+  visible.forEach((entry, index) => {
+    if (entry.question !== schema[index].question) {
+      fail(`${path} FAQ ${index + 1} question differs from schema: ${JSON.stringify(entry.question)} vs ${JSON.stringify(schema[index].question)}`);
+    } else if (entry.answer !== schema[index].answer) {
+      fail(`${path} FAQ ${JSON.stringify(entry.question)} answer differs from schema`);
+    }
+  });
+};
 const linksTo = (html, href) => new RegExp(`href=["']${href.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`).test(html);
 for (const path of xeominClusterPaths) {
   const page = pages.find((candidate) => normalizePath(candidate.canonicalUrl) === path);
@@ -1035,12 +1088,7 @@ for (const path of xeominClusterPaths) {
   if (!text.includes("Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment. These problems can happen hours to weeks after an injection.")) {
     fail(`${path} is missing the get-medical-help line`);
   }
-  const visibleFaqs = (page.html.match(/data-faq-question/g) || []).length;
-  const schemaFaqs = extractAll(page.html, /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)
-    .map((raw) => JSON.parse(unescapeHtml(raw)))
-    .filter((schema) => schema?.["@type"] === "FAQPage")
-    .flatMap((schema) => schema.mainEntity || []).length;
-  if (!visibleFaqs || visibleFaqs !== schemaFaqs) fail(`${path} has ${visibleFaqs} visible FAQs but ${schemaFaqs} in FAQ schema`);
+  assertVisibleFaqsMatchSchema(path, page.html);
 }
 for (const owner of ["/procedures/botox", "/procedures/xeomin"]) {
   const ownerPage = pages.find((candidate) => normalizePath(candidate.canonicalUrl) === owner);
@@ -1050,6 +1098,10 @@ for (const owner of ["/procedures/botox", "/procedures/xeomin"]) {
     if (!linksTo(ownerPage.html, path)) fail(`${owner} does not link to ${path}`);
   }
 }
+
+const locationsHub = pages.find((page) => normalizePath(page.canonicalUrl) === "/locations");
+if (!locationsHub) fail("/locations missing from sitemap");
+if (locationsHub) assertVisibleFaqsMatchSchema("/locations", locationsHub.html);
 
 const eventsPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/events");
 if (eventsPage) {
@@ -1185,7 +1237,13 @@ for (const person of personBlocks) {
   if (person.memberOf) fail("Jenny Person schema invented memberOf");
   if (/filler/i.test(JSON.stringify(person))) fail("Jenny Person schema mentions filler");
 }
-if (/facebook\.com|instagram\.com|youtube\.com|linkedin\.com|tiktok\.com/i.test(home)) {
+// Confirmed profiles live in src/data/official-profiles.ts (Facebook: confirmed by Austin 2026-11-04, linked from the
+// Google Business Profile). Any other social URL on the homepage is unconfirmed.
+const officialProfileHrefs = [
+  ...readFileSync(new URL("../src/data/official-profiles.ts", import.meta.url), "utf8").matchAll(/href:\s*"([^"]+)"/g),
+].map((match) => match[1]);
+const homeWithoutConfirmedProfiles = officialProfileHrefs.reduce((html, href) => html.split(href).join(" "), home);
+if (/facebook\.com|instagram\.com|youtube\.com|linkedin\.com|tiktok\.com/i.test(homeWithoutConfirmedProfiles)) {
   fail("homepage links a social profile that has not been confirmed");
 }
 

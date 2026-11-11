@@ -187,6 +187,21 @@ export default function LocationsIndexPage() {
         ))}
       </div>
       </section>
+
+      {/* The same locationFaqs array feeds the FAQPage schema above, so the visible answers and the schema stay identical. */}
+      <section className="mt-10 max-w-3xl md:mt-12" aria-labelledby="location-faqs">
+        <h2 id="location-faqs" className="mb-4 text-2xl md:text-3xl font-light">
+          Questions
+        </h2>
+        <dl className="space-y-5">
+          {locationFaqs.map(({ question, answer }) => (
+            <div key={question} data-faq-question>
+              <dt className="font-semibold text-base-content">{question}</dt>
+              <dd className="mt-1 text-base text-base-content/80">{answer}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
       <HomeOwnerLink className="mt-8" />
     </div>
   );

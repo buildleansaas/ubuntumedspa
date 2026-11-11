@@ -44,10 +44,13 @@ const AccordionContent = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
+  // forceMount keeps every answer in the server HTML, so the FAQ text on the page matches the FAQPage schema that
+  // carries the same answers. Radix does not hide force-mounted content, so data-[state=closed]:hidden does.
   <AccordionPrimitive.Content
     ref={ref}
+    forceMount
     className={cn(
-      "overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+      "overflow-hidden text-sm transition-all data-[state=closed]:hidden data-[state=open]:animate-accordion-down",
       className
     )}
     {...props}
