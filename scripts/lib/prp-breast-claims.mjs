@@ -105,7 +105,7 @@ export const unsupportedPrpBreastClaimClasses = [
           // "applies" in the sense of "is relevant to" is not a delivery method: "The card price applies online" (the
           // shared pricing note) and "the risks that apply to how it performs the service" (the risk FAQ).
           const withoutPricingUse = segment.replace(
-            /\b(?:prices?|risks?)\s+(?:that\s+)?(?:\([^)]{0,40}\)\s+)?appl(?:y|ies|ied)\b/gi,
+            /(?<![-\w])(?:prices?\s+(?:\([^)]{0,40}\)\s+)?|risks?\s+(?:that\s+)?)appl(?:y|ies)\b(?=\s+(?:to|online|when|in|for|at)\b)/gi,
             " "
           );
           return /\b(?:inject(?:s|ed|ing|ion|ions|able)?|needles?|cannulas?|syringes?|needle[- ]based|microneedl(?:e|es|ed|ing)|administer(?:s|ed|ing)?|deliver(?:s|ed|ing)?|carr(?:y|ies|ied|ying)|reach(?:es|ed|ing)?|appl(?:y|ies|ied|ying)|introduc(?:e|es|ed|ing)|insert(?:s|ed|ing)?|plac(?:e|es|ed|ing)|deposit(?:s|ed|ing)?|venipuncture)\b/i.test(
@@ -117,6 +117,9 @@ export const unsupportedPrpBreastClaimClasses = [
     fixtures: [
       "Ask the clinic to confirm the injection method used for this service.",
       "The treatment is delivered via injection.",
+      "A low-risk (PRP) applied directly to breast tissue.",
+      "Low-risk (topical) applied to the breast.",
+      "Minimal-risk applied PRP.",
       "This procedure involves injections.",
       "Confirm the needle-based technique used for this service.",
       "The preparation is placed into breast tissue with a fine needle.",
