@@ -23,5 +23,6 @@ export async function GET(_request: Request, { params }: { params: Promise<{ slu
     title: post.title,
     subtitle: post.subtitle,
     priceLine: post.priceLine,
+    art: post.art,
   });
 }
