@@ -164,8 +164,8 @@ test("each hub links to all of its satellites", () => {
 });
 
 test("the sitemaps list every satellite, and the routes serve exactly those slugs", () => {
-  const sitemap = read("src/app/sitemap.ts");
-  assert.match(sitemap, /\.\.\.serviceSatellitePaths\.map\(\(path\) => \(\{\s*url: `https:\/\/www\.williamsburgmedspa\.com\$\{path\}`/);
+  const sitemap = read("src/lib/sitemap-pages.ts");
+  assert.match(sitemap, /\.\.\.serviceSatellitePaths,/);
   assert.match(read("src/app/html-sitemap/page.tsx"), /serviceSatellitePages\.map/);
   for (const [route, hub] of [
     ["src/app/procedures/hyperhidrosis-treatment/for/[concernSlug]/page.tsx", "hyperhidrosis-treatment"],

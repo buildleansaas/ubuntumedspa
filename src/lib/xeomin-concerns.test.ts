@@ -224,8 +224,8 @@ for (const page of xeominClusterPages) {
 }
 
 test("sitemap.ts and the HTML sitemap source map every cluster page (source check, not rendered)", () => {
-  const sitemap = read("src/app/sitemap.ts");
-  assert.match(sitemap, /\.\.\.xeominClusterPages\.map\(\(page\) => \(\{\s*url: `https:\/\/www\.williamsburgmedspa\.com\$\{page\.path\}`/);
+  const sitemap = read("src/lib/sitemap-pages.ts");
+  assert.match(sitemap, /\.\.\.xeominClusterPages\.map\(\(page\) => page\.path\)/);
   assert.match(read("src/app/html-sitemap/page.tsx"), /\.\.\.xeominClusterPages\.map\(\(page\) => \(\{\s*href: page\.path/);
 });
 

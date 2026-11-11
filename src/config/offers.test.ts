@@ -100,7 +100,8 @@ test("the header shows the highlighted Offers link (desktop and mobile); footer 
   assert.match(badge, /useEffect\(\(\) => \{\s*setCount\(getActiveOffers\(\)\.length\);/);
   assert.match(badge, /if \(count === 0/);
   assert.match(read("src/components/footer.tsx"), /\{ href: "\/offers", label: "Offers" \}/);
-  assert.match(read("src/app/sitemap.ts"), /\.\.\.\(getActiveOffers\(\)\.length \? \[\{\s*url: "https:\/\/www\.williamsburgmedspa\.com\/offers",?\s*\}\] : \[\]\)/);
+  assert.match(read("src/lib/sitemap-pages.ts"), /includeOffers = getActiveOffers\(\)\.length > 0/);
+  assert.match(read("src/lib/sitemap-pages.ts"), /\.\.\.\(includeOffers \? \["\/offers"\] : \[\]\)/);
   assert.match(read("src/app/offers/page.tsx"), /getActiveOffers\(\)\.length \? metadata : \{ \.\.\.metadata, robots: \{ index: false, follow: true \} \}/);
   assert.match(read("src/app/html-sitemap/page.tsx"), /\{ href: "\/offers", label: "Offers" \}/);
   assert.match(read("src/app/procedures/[slug]/page.tsx"), /data-offer-callout=\{offer\.slug\}/);
