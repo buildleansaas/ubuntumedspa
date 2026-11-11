@@ -84,6 +84,7 @@ const ART: Record<GbpArt, string> = {
     `<path d="M96 246 Q220 206 344 246 L330 280 Q220 300 110 280 Z" fill="#c98a4b"/>` +
     `<path d="M150 214 q20 -16 40 0 M200 196 q20 -16 40 0 M250 214 q20 -16 40 0" stroke="#f3dcb4" stroke-width="7" fill="none" stroke-linecap="round"/>` +
     `<ellipse cx="220" cy="168" rx="28" ry="16" fill="${WHITE}"/>` +
+    [0, 1, 2, 3, 4, 5, 6].map((i) => `<circle cx="${118 + i * 34}" cy="${250 - Math.round(Math.sin((i / 6) * Math.PI) * 8)}" r="13" fill="#e9b872"/>`).join("") +
     `<path transform="translate(118 132) rotate(-30)" d="M0 -26 C18 -14 18 14 0 26 C-18 14 -18 -14 0 -26 Z" fill="#d9822b"/>` +
     `<path transform="translate(330 128) rotate(28)" d="M0 -22 C15 -12 15 12 0 22 C-15 12 -15 -12 0 -22 Z" fill="${GOLD}"/>` +
     `<path transform="translate(340 326) rotate(-18)" d="M0 -18 C12 -10 12 10 0 18 C-12 10 -12 -10 0 -18 Z" fill="#b5532f"/>` +
@@ -129,8 +130,8 @@ const ART: Record<GbpArt, string> = {
 
   droplet:
     plate +
-    `<circle cx="220" cy="234" r="128" fill="${BLUSH}" opacity="0.7"/>` +
-    `<path d="M220 92 C266 160 304 206 304 254 a84 84 0 0 1 -168 0 C136 206 174 160 220 92 Z" fill="${PINK}"/>` +
+    `<circle cx="220" cy="234" r="128" fill="#f7ead2"/>` +
+    `<path d="M220 92 C266 160 304 206 304 254 a84 84 0 0 1 -168 0 C136 206 174 160 220 92 Z" fill="#e9b872"/>` +
     `<path d="M178 250 a42 42 0 0 0 30 46" stroke="${WHITE}" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.8"/>` +
     sparkle(108, 140, 22) +
     sparkle(338, 136, 18) +

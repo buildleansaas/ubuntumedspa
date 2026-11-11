@@ -229,7 +229,7 @@ function PriceChip({ text, center = false, compact = false }: { text: string; ce
         borderRadius: 999,
         padding: compact ? "14px 26px" : "16px 32px",
         fontSize: compact ? 28 : 34,
-        whiteSpace: "nowrap",
+        whiteSpace: compact ? "nowrap" : "normal",
         lineHeight: 1,
         letterSpacing: "-0.01em",
       }}

@@ -243,6 +243,12 @@ test("every non-trust post has a drawing, and drawings carry no words or prices"
     assert.match(svg, /^<svg [^>]*viewBox="0 0 440 440"/, `${art}: square 440 drawing`);
     assert.doesNotMatch(svg, /<text|<image|\$|href=/, `${art}: shapes only (prices stay in the catalog chip; no text, images or links)`);
   }
+  for (const post of GBP_POSTS) {
+    // The chip stays on one line next to a drawing, so it must fit the narrower text column.
+    if (post.art && post.priceLine && post.template !== "holiday") {
+      assert.ok(post.priceLine.length <= 50, `${post.slug}: price chip "${post.priceLine}" is too long to sit beside the drawing`);
+    }
+  }
   const route = readFileSync(join(process.cwd(), "src", "app", "gbp", "[slug]", "image", "route.tsx"), "utf8");
   assert.match(route, /art: post\.art/, "the image route passes the post's drawing");
 });
