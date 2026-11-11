@@ -6,6 +6,7 @@ import test from "node:test";
 import { procedures } from "../data";
 import { publishedEarPiercingIntentPages } from "../lib/ear-piercing-intents";
 import { cardQuantityBreakLineCents, formatUsdShort } from "../lib/price";
+import { GBP_ARTS, gbpArtSvg } from "../lib/gbp-art";
 import { GOOGLE_REVIEW_URL } from "../lib/seo";
 import { COMMERCE_CATALOG } from "./commerce-catalog";
 import { GBP_HOLIDAYS, GBP_POSTS, GBP_TEMPLATES } from "./gbp-posts";
@@ -227,4 +228,21 @@ test("every card price shown is the card price of the cash price shown before it
     }
   }
   assert.ok(checked >= 10, `expected at least 10 card prices, found ${checked}`);
+});
+
+test("every non-trust post has a drawing, and drawings carry no words or prices", () => {
+  for (const post of GBP_POSTS) {
+    if (post.template === "trust") {
+      assert.equal(post.art, undefined, `${post.slug}: trust posts show Jenny's photo, not a drawing`);
+    } else {
+      assert.ok(post.art && GBP_ARTS.includes(post.art), `${post.slug}: needs a drawing from lib/gbp-art`);
+    }
+  }
+  for (const art of GBP_ARTS) {
+    const svg = gbpArtSvg(art);
+    assert.match(svg, /^<svg [^>]*viewBox="0 0 440 440"/, `${art}: square 440 drawing`);
+    assert.doesNotMatch(svg, /<text|<image|\$|href=/, `${art}: shapes only (prices stay in the catalog chip; no text, images or links)`);
+  }
+  const route = readFileSync(join(process.cwd(), "src", "app", "gbp", "[slug]", "image", "route.tsx"), "utf8");
+  assert.match(route, /art: post\.art/, "the image route passes the post's drawing");
 });

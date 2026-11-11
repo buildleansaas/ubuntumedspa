@@ -1,7 +1,9 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
+import type { ReactNode } from "react";
 import type { GbpHoliday, GbpTemplate } from "config/gbp-posts";
+import { gbpArtDataUri, type GbpArt } from "lib/gbp-art";
 import { SOCIAL_LOGO_DATA_URI } from "lib/socialLogo";
 
 /**
@@ -21,6 +23,8 @@ export type GbpPostImageOptions = {
   holiday?: GbpHoliday;
   /** Optional override for the small line above the title. */
   kicker?: string;
+  /** Spot illustration: right of the text on spotlight and question posts, above the title on holiday posts. */
+  art?: GbpArt;
 };
 
 const BG = "#f3f5f6";
@@ -213,7 +217,7 @@ function Kicker({ text, color = ACCENT, center = false }: { text: string; color?
   );
 }
 
-function PriceChip({ text, center = false }: { text: string; center?: boolean }) {
+function PriceChip({ text, center = false, compact = false }: { text: string; center?: boolean; compact?: boolean }) {
   return (
     <div
       style={{
@@ -223,8 +227,9 @@ function PriceChip({ text, center = false }: { text: string; center?: boolean })
         border: `2px solid ${ACCENT}`,
         color: INK,
         borderRadius: 999,
-        padding: "16px 32px",
-        fontSize: 34,
+        padding: compact ? "14px 26px" : "16px 32px",
+        fontSize: compact ? 28 : 34,
+        whiteSpace: "nowrap",
         lineHeight: 1,
         letterSpacing: "-0.01em",
       }}
@@ -274,10 +279,26 @@ function Footer() {
   );
 }
 
+function Art({ art, size }: { art: GbpArt; size: number }) {
+  return <img src={gbpArtDataUri(art)} alt="" width={size} height={size} style={{ width: size, height: size, flexShrink: 0 }} />;
+}
+
+/** Text column on the left, the drawing on the right; without art the text keeps the full width. */
+function WithArt({ art, children }: { art?: GbpArt; children: ReactNode }) {
+  if (!art) return <>{children}</>;
+  return (
+    <div style={{ display: "flex", alignItems: "center", flexGrow: 1, paddingRight: 64 }}>
+      <div style={{ display: "flex", alignSelf: "stretch", flex: 1, minWidth: 0 }}>{children}</div>
+      <Art art={art} size={360} />
+    </div>
+  );
+}
+
 /* ---------- templates ---------- */
 
-function Spotlight({ title, subtitle, priceLine, kicker }: GbpPostImageOptions) {
+function Spotlight({ title, subtitle, priceLine, kicker, art }: GbpPostImageOptions) {
   return (
+    <WithArt art={art}>
     <div
       style={{
         display: "flex",
@@ -292,8 +313,8 @@ function Spotlight({ title, subtitle, priceLine, kicker }: GbpPostImageOptions) 
       <div
         style={{
           display: "flex",
-          maxWidth: 1040,
-          fontSize: titleSize(title, [104, 88, 72]),
+          maxWidth: art ? 680 : 1040,
+          fontSize: art ? titleSize(title, [88, 76, 64]) : titleSize(title, [104, 88, 72]),
           lineHeight: 1.03,
           letterSpacing: "-0.055em",
           color: INK,
@@ -301,16 +322,20 @@ function Spotlight({ title, subtitle, priceLine, kicker }: GbpPostImageOptions) 
       >
         {title}
       </div>
-      <div style={{ display: "flex", maxWidth: 940, fontSize: 38, lineHeight: 1.3, color: MUTED, letterSpacing: "-0.015em" }}>
+      <div
+        style={{ display: "flex", maxWidth: art ? 660 : 940, fontSize: art ? 34 : 38, lineHeight: 1.3, color: MUTED, letterSpacing: "-0.015em" }}
+      >
         {subtitle}
       </div>
-      {priceLine ? <PriceChip text={priceLine} /> : null}
+      {priceLine ? <PriceChip text={priceLine} compact={Boolean(art)} /> : null}
     </div>
+    </WithArt>
   );
 }
 
-function Question({ title, subtitle, kicker }: GbpPostImageOptions) {
+function Question({ title, subtitle, kicker, art }: GbpPostImageOptions) {
   return (
+    <WithArt art={art}>
     <div
       style={{
         display: "flex",
@@ -327,8 +352,8 @@ function Question({ title, subtitle, kicker }: GbpPostImageOptions) {
         <div
           style={{
             display: "flex",
-            maxWidth: 900,
-            fontSize: titleSize(title, [88, 76, 64]),
+            maxWidth: art ? 600 : 900,
+            fontSize: art ? titleSize(title, [76, 64, 54]) : titleSize(title, [88, 76, 64]),
             lineHeight: 1.08,
             letterSpacing: "-0.05em",
             color: INK,
@@ -340,9 +365,9 @@ function Question({ title, subtitle, kicker }: GbpPostImageOptions) {
       <div
         style={{
           display: "flex",
-          maxWidth: 940,
+          maxWidth: art ? 680 : 940,
           paddingLeft: 96,
-          fontSize: 36,
+          fontSize: art ? 32 : 36,
           lineHeight: 1.3,
           color: MUTED,
           letterSpacing: "-0.015em",
@@ -351,6 +376,7 @@ function Question({ title, subtitle, kicker }: GbpPostImageOptions) {
         {subtitle}
       </div>
     </div>
+    </WithArt>
   );
 }
 
@@ -385,7 +411,7 @@ function Trust({ title, subtitle, kicker }: GbpPostImageOptions) {
   );
 }
 
-function Holiday({ title, subtitle, priceLine, holiday = "christmas", kicker }: GbpPostImageOptions) {
+function Holiday({ title, subtitle, priceLine, holiday = "christmas", kicker, art }: GbpPostImageOptions) {
   const accent = HOLIDAY_ACCENTS[holiday];
   return (
     <div
@@ -396,16 +422,17 @@ function Holiday({ title, subtitle, priceLine, holiday = "christmas", kicker }: 
         justifyContent: "center",
         flexGrow: 1,
         padding: "0 190px",
-        gap: 30,
+        gap: art ? 22 : 30,
         textAlign: "center",
       }}
     >
+      {art ? <Art art={art} size={170} /> : null}
       <Kicker text={kicker ?? DEFAULT_KICKERS.holiday} color={accent} center />
       <div
         style={{
           display: "flex",
           justifyContent: "center",
-          fontSize: titleSize(title, [100, 84, 68]),
+          fontSize: art ? titleSize(title, [88, 74, 60]) : titleSize(title, [100, 84, 68]),
           lineHeight: 1.04,
           letterSpacing: "-0.055em",
           color: INK,
