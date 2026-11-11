@@ -1,4 +1,6 @@
 import { EAR_PIERCING_PRICES } from "config/commerce-catalog";
+import { getActiveOffers } from "config/offers";
+import OfferCallout from "components/offer-callout";
 
 export const metadata = {
   title: "Planning Holiday Ear Piercing in Williamsburg, VA",
@@ -36,6 +38,8 @@ Winter gatherings are a common time for families to ask about a first ear pierci
 
 [Blomdahl ear piercing in Williamsburg](/procedures/blomdahl-ear-piercing) is an appointment at Williamsburg Med Spa, 3900 Powhatan Parkway, Williamsburg, VA 23188. Jenny Brady, MSN, RN, CPNP, PMHS, uses a sterile single-use cassette and hypoallergenic Medical Plastic or Medical Grade Titanium starter earrings. The visit is {EAR_PIERCING_PRICES.oneEarCash} for one ear or {EAR_PIERCING_PRICES.bothEarsCash} for both ears in cash ({EAR_PIERCING_PRICES.oneEarCard} or {EAR_PIERCING_PRICES.bothEarsCard} online by card).
 
+<OfferCallout slug="sibling-ear-piercing" campaign="holiday_sibling_offer" initialActive={getActiveOffers().some((offer) => offer.slug === "sibling-ear-piercing")} />
+
 ## Who the visit is for
 
 The same rules apply in November and December as the rest of the year. [Infant and kids ear piercing](/procedures/blomdahl-ear-piercing/for/children) is for parents planning a baby's or child's first earrings. Jenny generally pierces babies at 6 months or older, with pediatrician guidance, and she will not pierce if she has a safety concern.
@@ -50,4 +54,4 @@ Published hours are Mon–Fri 6–8pm and Sat–Sun 10am–6pm. Call (804) 738-9
 
 ## What this page does not change
 
-A holiday does not change the piercing system, the price, or the age guidance. It is only a reason to plan the date with aftercare in mind. Service details stay on the [Blomdahl ear piercing page](/procedures/blomdahl-ear-piercing).
+A holiday does not change the piercing system, the regular price, or the age guidance. It is only a reason to plan the date with aftercare in mind. Service details stay on the [Blomdahl ear piercing page](/procedures/blomdahl-ear-piercing).

@@ -105,3 +105,45 @@ test("the header shows the highlighted Offers link (desktop and mobile); footer 
   assert.match(read("src/app/html-sitemap/page.tsx"), /\{ href: "\/offers", label: "Offers" \}/);
   assert.match(read("src/app/procedures/[slug]/page.tsx"), /data-offer-callout=\{offer\.slug\}/);
 });
+
+test("the holiday piercing post shows the sibling offer only while it runs, from config, with a tagged /offers link", () => {
+  const { default: OfferCallout, offerEndsLabel, offerCalloutHref } =
+    require("../components/offer-callout") as typeof import("../components/offer-callout");
+  assert.equal(offerEndsLabel("2026-12-31"), "December 31, 2026");
+  assert.equal(
+    offerCalloutHref(sibling, "holiday_sibling_offer"),
+    "/offers?utm_source=website&utm_medium=blog&utm_campaign=holiday_sibling_offer#sibling-ear-piercing"
+  );
+  const render = (initialActive: boolean) =>
+    unescape(
+      renderToStaticMarkup(
+        createElement(OfferCallout, { slug: "sibling-ear-piercing", campaign: "holiday_sibling_offer", initialActive })
+      )
+    );
+  const html = render(true);
+  assert.match(html, /Sibling Ear Piercing: 2 Kids, Both Ears, \$140, through December 31, 2026\./);
+  assert.match(html, /\$140 cash instead of \$160/);
+  assert.match(html, /By card it is \$144\.50\./);
+  assert.match(html, /href="\/offers\?utm_source=website&utm_medium=blog&utm_campaign=holiday_sibling_offer#sibling-ear-piercing"/);
+  assert.equal(render(false), "", "an inactive offer renders nothing");
+  assert.equal(
+    renderToStaticMarkup(createElement(OfferCallout, { slug: "no-such-offer", campaign: "x", initialActive: true })),
+    ""
+  );
+  // Seeded from the server render, re-checked after mount (same pattern as the header badge).
+  const callout = read("src/components/offer-callout.tsx");
+  assert.match(callout, /useState\(initialActive\)/);
+  assert.match(callout, /setActive\(offer \? isOfferActive\(offer\) : false\)/);
+  assert.doesNotMatch(callout, /\$\d/, "no hand-typed dollar amounts");
+
+  const post = read("src/markdown/planning-holiday-ear-piercing-williamsburg-va.mdx");
+  assert.match(
+    post,
+    /<OfferCallout slug="sibling-ear-piercing" campaign="holiday_sibling_offer" initialActive=\{getActiveOffers\(\)\.some\(\(offer\) => offer\.slug === "sibling-ear-piercing"\)\} \/>/
+  );
+  // The offer stays out of the post's FAQ (and so its FAQPage JSON-LD), which outlives the offer.
+  const faqs = post.slice(post.indexOf("faqs:"), post.indexOf("};"));
+  assert.doesNotMatch(faqs, /sibling|offer|140/i);
+  // Existing copy is kept apart from "the regular price", so the line stays true next to the offer.
+  assert.match(post, /A holiday does not change the piercing system, the regular price, or the age guidance\./);
+});
