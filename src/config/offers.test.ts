@@ -7,7 +7,7 @@ import React, { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { COMMERCE_CATALOG_BY_SLUG } from "./commerce-catalog";
-import { OFFERS, OFFERS_TITLE, OFFERS_DESCRIPTION, getActiveOffers, isOfferActive } from "./offers";
+import { OFFERS, OFFERS_TITLE, OFFERS_DESCRIPTION, activeOfferMetaDescription, getActiveOffers, isOfferActive } from "./offers";
 import { cardPriceCents } from "../lib/price";
 
 const ROOT = process.cwd();
@@ -146,4 +146,25 @@ test("the holiday piercing post shows the sibling offer only while it runs, from
   assert.doesNotMatch(faqs, /sibling|offer|140/i);
   // Existing copy is kept apart from "the regular price", so the line stays true next to the offer.
   assert.match(post, /A holiday does not change the piercing system, the regular price, or the age guidance\./);
+});
+
+test("an offer's search snippet shows only while it runs, on the page it points to", () => {
+  const sibling = OFFERS.find((offer) => offer.slug === "sibling-ear-piercing");
+  assert.ok(sibling?.metaDescription);
+  const hub = sibling.learnMoreHref;
+  assert.equal(activeOfferMetaDescription(hub, sibling.startsOn), sibling.metaDescription);
+  assert.equal(activeOfferMetaDescription(hub, sibling.endsOn), sibling.metaDescription);
+  assert.equal(activeOfferMetaDescription(hub, "2027-01-01"), undefined, "gone the day after it ends");
+  assert.equal(activeOfferMetaDescription("/procedures/xeomin", sibling.startsOn), undefined, "only on its own page");
+  for (const offer of OFFERS.filter((item) => item.metaDescription)) {
+    const text = offer.metaDescription ?? "";
+    assert.ok(text.length <= 160, `${offer.slug}: snippet is ${text.length} characters`);
+    const cash = text.indexOf(" cash");
+    const card = text.indexOf(" card");
+    assert.ok(cash > 0 && card > cash, `${offer.slug}: cash price before card price`);
+    assert.doesNotMatch(text, /botox/i);
+  }
+  const verifier = readFileSync(join(process.cwd(), "scripts", "verify-seo.mjs"), "utf8");
+  assert.ok(verifier.includes(sibling.metaDescription), "verify:seo expects the same snippet text");
+  assert.ok(verifier.includes(`endsOn: "${sibling.endsOn}"`), "verify:seo uses the same end date");
 });
