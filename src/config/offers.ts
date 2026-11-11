@@ -27,8 +27,8 @@ export type ClinicOffer = {
   /** Prefilled text to Jenny; the patient adds days and times. */
   textMessage: string;
   /**
-   * Search snippet for the `learnMoreHref` page while the offer runs (offer first, cash then card, 160 characters max). The page
-   * goes back to its own description after `endsOn` (static pages: on the next deploy).
+   * Search snippet for the `learnMoreHref` page while the offer runs (offer first, cash then card, 160 characters max). The
+   * procedure page renders per request, so it goes back to its own description the day after `endsOn`.
    */
   metaDescription?: string;
 };
@@ -41,6 +41,11 @@ if (!piercing || bothEarsCashPerEar === undefined) {
 /** Two kids, both ears each, at the regular both-ears cash price. */
 const SIBLING_REGULAR_CASH_CENTS = bothEarsCashPerEar * 2 * 2;
 const SIBLING_OFFER_CASH_CENTS = 14000;
+const SIBLING_ENDS_ON = "2026-12-31";
+
+/** "2026-12-31" → "Dec 31" (a calendar day, so formatted in UTC). */
+const shortDateLabel = (day: string) =>
+  new Intl.DateTimeFormat("en-US", { timeZone: "UTC", month: "short", day: "numeric" }).format(new Date(`${day}T00:00:00Z`));
 
 export const OFFERS: ClinicOffer[] = [
   {
@@ -52,7 +57,7 @@ export const OFFERS: ClinicOffer[] = [
     offerCashCents: SIBLING_OFFER_CASH_CENTS,
     regularCashCents: SIBLING_REGULAR_CASH_CENTS,
     startsOn: "2026-11-05",
-    endsOn: "2026-12-31",
+    endsOn: SIBLING_ENDS_ON,
     details: [
       "Piercing is done by Jenny Brady, a pediatric nurse practitioner, with sterile single-use cassettes and medical plastic or titanium starter earrings.",
       "Babies are generally pierced at 6 months or older with pediatrician guidance.",
@@ -65,7 +70,7 @@ export const OFFERS: ClinicOffer[] = [
     learnMoreHref: "/procedures/blomdahl-ear-piercing",
     learnMoreLabel: "Blomdahl ear piercing details",
     textMessage: `Hi Jenny. I'd like to book the sibling ear piercing offer for two kids. ${TIMES_PROMPT}`,
-    metaDescription: `Holiday sibling offer through Dec 31: 2 kids, both ears, ${formatUsdShort(
+    metaDescription: `Holiday sibling offer through ${shortDateLabel(SIBLING_ENDS_ON)}: 2 kids, both ears, ${formatUsdShort(
       SIBLING_OFFER_CASH_CENTS
     )} cash (${cardPriceLabel(SIBLING_OFFER_CASH_CENTS)} card). Sterile Blomdahl ear piercing in Williamsburg, VA by a pediatric NP.`,
   },

@@ -359,7 +359,7 @@ const snippetExpectations = {
   "/blog/blomdahl-medical-plastic-vs-titanium-earrings": {
     title: "Blomdahl Earrings Review: Medical Plastic vs Titanium",
     description:
-      "Blomdahl earrings review from a pediatric NP: Medical Plastic is 0% nickel for very sensitive ears; titanium suits a metal look. See which fits.",
+      "Blomdahl earrings review: Medical Plastic, which Blomdahl calls 0% nickel, for very sensitive ears, or titanium for a metal look. See which fits.",
   },
 };
 for (const [path, expectation] of Object.entries(snippetExpectations)) {
@@ -372,9 +372,16 @@ for (const [path, expectation] of Object.entries(snippetExpectations)) {
   if (snippet.title !== expectation.title) {
     fail(`${path} title is ${JSON.stringify(snippet.title)}, expected ${JSON.stringify(expectation.title)}`);
   }
-  const clinicDay = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date());
+  const clinicDayParts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+  const clinicPart = (type) => clinicDayParts.find((part) => part.type === type)?.value ?? "";
+  const clinicDay = `${clinicPart("year")}-${clinicPart("month")}-${clinicPart("day")}`;
   const offerRunning = expectation.offer && expectation.offer.startsOn <= clinicDay && clinicDay <= expectation.offer.endsOn;
-  // After the offer ends this fails until the page is redeployed with its own description again (the Jan 1 redeploy on #175).
+  // The procedure page renders per request, so the day after the offer ends it is back to its own description.
   const allowed = offerRunning ? [expectation.offer.description] : [expectation.description];
   if (!allowed.includes(snippet.description)) {
     fail(`${path} meta description is ${JSON.stringify(snippet.description)}`);

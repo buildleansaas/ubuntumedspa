@@ -167,4 +167,9 @@ test("an offer's search snippet shows only while it runs, on the page it points 
   const verifier = readFileSync(join(process.cwd(), "scripts", "verify-seo.mjs"), "utf8");
   assert.ok(verifier.includes(sibling.metaDescription), "verify:seo expects the same snippet text");
   assert.ok(verifier.includes(`endsOn: "${sibling.endsOn}"`), "verify:seo uses the same end date");
+  assert.ok(verifier.includes(`startsOn: "${sibling.startsOn}"`), "verify:seo uses the same start date");
+  const endsLabel = new Intl.DateTimeFormat("en-US", { timeZone: "UTC", month: "short", day: "numeric" }).format(
+    new Date(`${sibling.endsOn}T00:00:00Z`)
+  );
+  assert.ok(sibling.metaDescription.includes(`through ${endsLabel}:`), "the snippet's end date is the offer's endsOn");
 });
