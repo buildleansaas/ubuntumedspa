@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import CtaButtons from "components/cta-buttons";
 import StructuredData from "components/structured-data";
 import { buildPageMetadata } from "lib/metadata";
 import { CASH_CARD_NOTE } from "lib/price";
@@ -105,6 +106,9 @@ export default function PricesPage() {
           </Link>
           .
         </p>
+        <div className="mt-6">
+          <CtaButtons align="start" />
+        </div>
       </section>
     </div>
   );

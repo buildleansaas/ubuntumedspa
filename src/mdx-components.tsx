@@ -92,7 +92,7 @@ export function Code({ className, ...properties }: JSX.IntrinsicElements["code"]
 
 export function Table({ className, ...properties }: JSX.IntrinsicElements["table"]) {
   return (
-    <div className="my-8 overflow-x-auto border border-base-300 bg-base-100">
+    <div className="my-8 max-w-full overflow-x-auto rounded-xl border border-base-300 bg-base-100">
       <table className={cn("min-w-full border-collapse text-left text-sm text-base-content/85", className)} {...properties} />
     </div>
   );

@@ -123,7 +123,7 @@ export default function EventForm({ event }: { event: EventDefinition }) {
                 </div>
 
                 {lockedOptions.length ? (
-                  <div className="border border-base-300 bg-base-100 p-5 sm:p-6">
+                  <div className="rounded-xl border border-base-300 bg-base-100 p-5 sm:p-6">
                     <p className="text-[11px] uppercase tracking-[0.24em] text-primary/80">Core offer</p>
                     <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                       <div>
@@ -143,7 +143,7 @@ export default function EventForm({ event }: { event: EventDefinition }) {
                   {optionGroups.map((group) => (
                     <div
                       key={group.label}
-                      className="border border-base-300 bg-base-200/40 p-4 sm:p-5"
+                      className="rounded-xl border border-base-300 bg-base-200/40 p-4 sm:p-5"
                     >
                       <p className="text-[11px] uppercase tracking-[0.22em] text-base-content/55">{group.label}</p>
                       <div className="mt-4 grid gap-3">

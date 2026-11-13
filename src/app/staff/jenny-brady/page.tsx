@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import CtaButtons from "components/cta-buttons";
 import StructuredData from "components/structured-data";
 import { buildPageMetadata } from "lib/metadata";
 import { TrainedBy, TreatmentRoomPhotos } from "components/clinic-photos";
@@ -84,6 +85,9 @@ export default function JennyBradyPage() {
               </Link>
               .
             </p>
+          </div>
+          <div className="mt-8">
+            <CtaButtons align="start" />
           </div>
           <TreatmentRoomPhotos />
         </div>

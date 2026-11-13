@@ -95,7 +95,7 @@ export default async function EventDetailPage(props: PageProps) {
                 {event.hero.highlights.map((item) => (
                   <span
                     key={item}
-                    className="border border-base-300 bg-base-100 px-3.5 py-1.5 text-sm text-base-content/70"
+                    className="rounded-xl border border-base-300 bg-base-100 px-3.5 py-1.5 text-sm text-base-content/70"
                   >
                     {item}
                   </span>

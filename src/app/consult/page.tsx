@@ -47,7 +47,7 @@ export default function ConsultationPage() {
               ["Clear next step", "Submit the form, then text or call Jenny to pick a time."],
               ["Private intake", "Share the concerns you want Jenny to review before the visit."],
             ].map(([title, copy]) => (
-              <div key={title} className="border border-base-300 bg-base-100 p-4">
+              <div key={title} className="rounded-xl border border-base-300 bg-base-100 p-4">
                 <p className="font-semibold text-base-content">{title}</p>
                 <p className="mt-1 text-sm leading-6 text-base-content/65">{copy}</p>
               </div>
@@ -70,7 +70,7 @@ export default function ConsultationPage() {
         </div>
         <div className="grid gap-3">
           {consultationPaths.map((path) => (
-            <div key={path} className="flex gap-3 border border-base-300 bg-base-100 p-4">
+            <div key={path} className="flex gap-3 rounded-xl border border-base-300 bg-base-100 p-4">
               <span className="mt-3 h-px w-6 shrink-0 bg-base-300" />
               <p className="text-base leading-7 text-base-content/75">{path}</p>
             </div>
@@ -87,7 +87,7 @@ export default function ConsultationPage() {
               ["2", "Add context", "Mention goals, timing, prior treatment, sensitivities, or what you are unsure about."],
               ["3", "Schedule", "After submission, you will be routed toward scheduling or follow-up next steps."],
             ].map(([step, title, copy]) => (
-              <div key={step} className="border border-base-300 bg-base-100 p-5">
+              <div key={step} className="rounded-xl border border-base-300 bg-base-100 p-5">
                 <p className="text-sm font-semibold text-primary">Step {step}</p>
                 <h3 className="mt-2 text-lg font-semibold text-base-content">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-base-content/65">{copy}</p>
@@ -95,7 +95,7 @@ export default function ConsultationPage() {
             ))}
           </div>
         </div>
-        <aside className="border border-base-300 bg-base-100 p-5">
+        <aside className="rounded-xl border border-base-300 bg-base-100 p-5">
           <p className="font-semibold text-base-content">Nearby patients commonly visit from:</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {nearbyAreas.map((area) => (

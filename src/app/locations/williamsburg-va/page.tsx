@@ -94,28 +94,28 @@ export default function WilliamsburgLocationPage() {
           Review the services Williamsburg patients most often ask about before scheduling with Jenny.
         </p>
         <div className="flex flex-wrap gap-3">
-          <Button asChild size="sm">
+          <Button asChild size="sm" variant="secondary">
             <Link href="/procedures/botox">Botox alternative in Williamsburg</Link>
           </Button>
-          <Button asChild size="sm">
+          <Button asChild size="sm" variant="secondary">
             <Link href="/procedures/xeomin">Xeomin in Williamsburg</Link>
           </Button>
-          <Button asChild size="sm">
+          <Button asChild size="sm" variant="secondary">
             <Link href="/procedures/prp-facial">PRP Facial</Link>
           </Button>
-          <Button asChild size="sm">
+          <Button asChild size="sm" variant="secondary">
             <Link href="/procedures/prp-hair-restoration">PRP Hair Restoration</Link>
           </Button>
-          <Button asChild size="sm">
+          <Button asChild size="sm" variant="secondary">
             <Link href="/procedures/oh-shot">OH-Shot</Link>
           </Button>
-          <Button asChild size="sm">
+          <Button asChild size="sm" variant="secondary">
             <Link href="/procedures/blomdahl-ear-piercing">Medical Ear Piercing</Link>
           </Button>
           <Button asChild size="sm" variant="secondary">
             <Link href="/procedures/blomdahl-ear-piercing/near/williamsburg-va">Williamsburg piercing visit notes</Link>
           </Button>
-          <Button asChild size="sm">
+          <Button asChild size="sm" variant="secondary">
             <Link href="/procedures/hyperhidrosis-treatment">Hyperhidrosis Treatment</Link>
           </Button>
           <Button asChild size="sm">
@@ -197,7 +197,7 @@ export default function WilliamsburgLocationPage() {
           <Button asChild>
             <Link href="/consult">Book a Consultation</Link>
           </Button>
-          <DirectionsButton address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2729739} longitude={-76.7635887} />
+          <DirectionsButton address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2729739} longitude={-76.7635887} variant="secondary" />
         </div>
       </section>
 

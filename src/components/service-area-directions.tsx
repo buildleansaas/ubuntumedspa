@@ -46,6 +46,9 @@ export default function ServiceAreaDirections({ area, consultHref }: ServiceArea
           </ul>
           <div className="mt-5 flex flex-wrap gap-3">
             <Button asChild>
+              <a href={consultHref}>Request Visit</a>
+            </Button>
+            <Button asChild variant="secondary">
               <a href={osmHref} target="_blank" rel="noopener noreferrer">
                 Open OSM Directions
               </a>
@@ -54,9 +57,6 @@ export default function ServiceAreaDirections({ area, consultHref }: ServiceArea
               <a href={googleHref} target="_blank" rel="noopener noreferrer">
                 Open Google Directions
               </a>
-            </Button>
-            <Button asChild variant="outline">
-              <a href={consultHref}>Request Visit</a>
             </Button>
           </div>
         </div>

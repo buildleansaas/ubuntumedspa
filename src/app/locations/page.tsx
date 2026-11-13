@@ -84,14 +84,14 @@ export default function LocationsIndexPage() {
       <StructuredData type="FAQ" faqs={locationFaqs} />
       <header className="mb-10 max-w-3xl text-left md:mb-14">
         <h1 className="text-3xl md:text-5xl font-light">Areas We Serve</h1>
-        <p className="text-base md:text-lg text-base-content/70 mt-2 max-w-2xl mx-auto">
+        <p className="text-base md:text-lg text-base-content/70 mt-3 max-w-2xl">
           Our primary clinic is in Williamsburg, VA. Many patients visit us from nearby communities across James City
           County, the Peninsula, and surrounding neighborhoods because the trip feels worth it for thoughtful care,
           natural-looking results, and a visit planned around them.
         </p>
       </header>
 
-      <section className="border border-base-300 bg-base-200 p-6 md:p-8 mb-8 md:mb-10">
+      <section className="mb-8 rounded-2xl border border-base-300 bg-base-200 p-6 md:mb-10 md:p-8">
         <h2 className="text-2xl md:text-3xl font-light">Why patients make the trip</h2>
         <p className="text-base md:text-lg text-base-content/80 mt-3 max-w-4xl">
           Williamsburg Med Spa is set up as a destination clinic, not a rushed stop. Patients often come in from nearby
@@ -124,7 +124,7 @@ export default function LocationsIndexPage() {
         </div>
       </section>
 
-      <section className="border border-base-300 p-6 md:p-8 mb-10 md:mb-12">
+      <section className="mb-10 rounded-2xl border border-base-300 p-6 md:mb-12 md:p-8">
         <h2 className="text-2xl md:text-3xl font-light">If you want us to travel to you</h2>
         <p className="text-base md:text-lg text-base-content/80 mt-3 max-w-4xl">
           Mobile Med Spa is available well beyond the communities listed below. If traveling to Williamsburg is not the

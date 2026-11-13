@@ -56,7 +56,7 @@ export default async function CheckoutSuccessPage(
           : "Stripe has not marked this order as paid yet. Refresh shortly or check your email confirmation."}
       </p>
 
-      <div className="border border-base-300 bg-base-200 p-6 mb-8">
+      <div className="rounded-xl border border-base-300 bg-base-200 p-6 mb-8">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Order Summary</h2>
           <p className="font-semibold">{formatUsd(order.subtotalCents)}</p>
@@ -89,7 +89,7 @@ export default async function CheckoutSuccessPage(
       )}
 
       {(!order.requiresScheduling || order.items.some((item) => item.fulfillment === "pickup")) && (
-        <div className="border border-base-300 bg-base-200 p-6">
+        <div className="rounded-xl border border-base-300 bg-base-200 p-6">
           <h2 className="text-2xl font-semibold mb-3">Pickup Details</h2>
           <p className="text-base-content/70">
             Your product order has been recorded for pickup. We&apos;ll contact you to set a pickup time.

@@ -78,7 +78,7 @@ export default function NewportNewsPage() {
             </Link>
           </div>
         </div>
-        <aside className="border border-base-300 bg-base-100 p-5">
+        <aside className="rounded-xl border border-base-300 bg-base-100 p-5">
           <h2 className="text-xl font-light mb-3">Plan your visit</h2>
           <dl className="space-y-3 text-sm text-base-content/75">
             <div>

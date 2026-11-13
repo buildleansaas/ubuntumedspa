@@ -87,7 +87,7 @@ export default async function ArticlePage(
       .map(({ article }) => article);
 
     return (
-      <div className="mx-auto max-w-5xl text-left text-base text-base-content">
+      <div className="mx-auto w-full max-w-5xl text-left text-base text-base-content">
         <StructuredData
           type="Breadcrumb"
           breadcrumbItems={[

@@ -164,7 +164,7 @@ export default function ServiceSatellitePageView({ page }: { page: ServiceSatell
           location="service_page"
         />
         <div className="mt-4">
-          <Button asChild variant="secondary">
+          <Button asChild>
             <Link href={page.consultHref}>{page.ctaLabel}</Link>
           </Button>
         </div>

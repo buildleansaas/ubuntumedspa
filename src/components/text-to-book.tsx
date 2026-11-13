@@ -40,7 +40,7 @@ export default function TextToBook({ heading, intro, message, location }: TextTo
   };
 
   return (
-    <div className="border border-base-300 bg-base-100 p-6">
+    <div className="rounded-xl border border-base-300 bg-base-100 p-6">
       <h2 className="text-2xl font-semibold mb-3">{heading}</h2>
       <p className="text-base-content/70 mb-5">{intro}</p>
 

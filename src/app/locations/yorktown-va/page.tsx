@@ -77,7 +77,7 @@ export default function YorktownPage() {
         </p>
         <div className="mt-4 grid gap-3 md:grid-cols-2">
           {serviceLinks.map((link) => (
-            <Link key={link.label} href={link.href} className="border border-base-300 bg-base-100 p-4 transition hover:border-primary/40">
+            <Link key={link.label} href={link.href} className="rounded-xl border border-base-300 bg-base-100 p-4 transition hover:border-primary/40">
               <span className="block text-sm font-semibold text-base-content">{link.label}</span>
               <span className="mt-1 block text-sm text-base-content/65">{link.copy}</span>
             </Link>
@@ -98,7 +98,7 @@ export default function YorktownPage() {
             <li>If you are unsure which treatment fits, book the consultation first rather than guessing from a menu.</li>
           </ul>
         </div>
-        <aside className="border border-base-300 bg-base-100 p-5">
+        <aside className="rounded-xl border border-base-300 bg-base-100 p-5">
           <h2 className="text-xl font-light">Nearby areas this page helps</h2>
           <ul className="mt-3 space-y-2 text-sm text-base-content/70">
             <li>Yorktown</li>

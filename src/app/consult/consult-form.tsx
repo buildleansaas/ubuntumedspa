@@ -67,7 +67,7 @@ const ConsultationForm: React.FC = () => {
   const wideFieldIds = ["name", "interests", "comments", "referral"] as const;
 
   const inputClassName =
-    "mt-2 w-full border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/45 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
+    "mt-2 w-full rounded-lg border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/45 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState({
@@ -241,7 +241,7 @@ const ConsultationForm: React.FC = () => {
 
   return (
     <form
-      className="mx-auto max-w-3xl border border-base-300 bg-base-100 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10"
+      className="mx-auto max-w-3xl rounded-2xl border border-base-300 bg-base-100 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10"
       onChangeCapture={trackFirstInteraction}
       onSubmit={onSubmit}
     >
@@ -386,7 +386,7 @@ const ConsultationForm: React.FC = () => {
 
       <div className="mt-8 flex flex-col gap-4 border-t border-base-300 pt-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-base-content/60">Most consultation requests receive a response within 2 business days.</p>
-        <Button type="submit" disabled={loading} className="w-full sm:w-auto">
+        <Button type="submit" disabled={loading} className="w-full shrink-0 whitespace-nowrap sm:w-auto">
           {loading ? (
             <>
               <Loader className="mr-2 size-4 animate-spin" /> Sending...
