@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import CtaFooter from "components/cta-footer";
+import { Button } from "components/ui/button";
 import NamedReviews from "components/named-reviews";
 import StructuredData from "components/structured-data";
 import { HomeRealPhotos } from "components/clinic-photos";
@@ -107,25 +108,10 @@ const PRICE_ROWS = [
   { name: "OH-Shot", href: "/procedures/oh-shot", cash: cash("oh-shot"), card: card("oh-shot"), note: "per treatment" },
 ];
 
-// TODO(Jenny sign-off): the three first-visit steps below are new copy and await Jenny's review before launch.
-const FIRST_VISIT_STEPS = [
-  { title: "Book, then text Jenny", body: "Book the visit, then text or call Jenny to pick a time." },
-  {
-    title: "A conversation first",
-    body: "Jenny goes over your health history and what you'd like to change before anything is planned.",
-  },
-  {
-    title: "Treatment and follow-up",
-    body: "If it's a good fit, treatment follows, and Jenny explains aftercare before you leave.",
-  },
-];
-
 const sectionHeading = "font-display text-3xl leading-tight tracking-tight text-base-content md:text-[2.6rem]";
-const textLink =
-  "rounded-sm text-[0.95rem] text-secondary underline decoration-secondary/30 underline-offset-[6px] transition-colors hover:decoration-secondary";
 
-// Tidewater homepage: main's sections and visual elements in the Tidewater palette and type (one filled button per
-// screen), plus the treatment chooser, first-visit steps and price list.
+// Tidewater homepage: main's sections and visual elements in the Tidewater palette and type (clear buttons per
+// screen), plus the treatment chooser and price list. Every section ends with a clear booking button.
 export default async function Page() {
   return (
     <div className="w-full">
@@ -167,6 +153,14 @@ export default async function Page() {
               ))}
             </ul>
           </nav>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Button asChild size="lg" className="w-full sm:w-auto">
+              <Link href="/consult">Book a visit</Link>
+            </Button>
+            <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+              <Link href="/staff/jenny-brady">About Jenny</Link>
+            </Button>
+          </div>
         </div>
         <figure className="mx-auto w-full max-w-sm lg:max-w-none">
           <Image
@@ -181,24 +175,6 @@ export default async function Page() {
         </figure>
         </div>
       </section>
-      {/* Your first visit */}
-      <section className="w-full border-t border-base-300 py-16 md:py-24" aria-labelledby="home-first-visit-heading">
-        <h2 id="home-first-visit-heading" className={sectionHeading}>
-          Your first visit
-        </h2>
-        <ol className="mt-10 grid gap-10 md:grid-cols-3 md:gap-12">
-          {FIRST_VISIT_STEPS.map((step, index) => (
-            <li key={step.title} className="border-t border-base-300 pt-6">
-              <span className="font-display text-2xl text-accent" aria-hidden="true">
-                {index + 1}
-              </span>
-              <h3 className="font-display mt-3 text-xl leading-snug text-base-content md:text-[1.4rem]">{step.title}</h3>
-              <p className="mt-3 max-w-[40ch] text-base leading-relaxed text-base-content/75">{step.body}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
       <NamedReviews heading="Clinic reviews" />
       <Procedures
         variant="editorial"
@@ -239,11 +215,14 @@ export default async function Page() {
                 </li>
               ))}
             </ul>
-            <p className="mt-7">
-              <Link href="/prices" className={textLink}>
-                All prices
-              </Link>
-            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button asChild size="lg" className="w-full sm:w-auto">
+                <Link href="/consult">Book a visit</Link>
+              </Button>
+              <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+                <Link href="/prices">All prices</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

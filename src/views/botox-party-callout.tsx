@@ -42,7 +42,7 @@ export default function BotoxPartyCallout() {
           </p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button asChild variant="outline" className="w-full sm:w-auto">
+            <Button asChild className="w-full sm:w-auto">
               <Link href={botoxPartyEvent.canonicalPath}>Plan a Wrinkle Relaxer Party</Link>
             </Button>
             <Button asChild variant="secondary" className="w-full sm:w-auto">

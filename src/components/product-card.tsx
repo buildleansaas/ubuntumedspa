@@ -63,17 +63,16 @@ export const ProductCard = ({ name, image, headline, subline, slug, tone = "defa
         )}
         <p className={editorial ? "mt-2 text-sm leading-6 text-base-content/65" : "text-sm"}>{humanizeMedicalCopy(subline)}</p>
       </div>
-      <div className={editorial ? "mt-4 flex flex-wrap items-center gap-2" : "flex flex-wrap items-end gap-2"}>
+      <div className={editorial ? "mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap" : "flex flex-wrap items-end gap-2"}>
         {catalogItem && (
           <AddToCartButton
             slug={catalogItem.slug}
             kind={catalogItem.kind}
             quantity={catalogItem.minQuantity}
-            variant={editorial ? "outline" : undefined}
-            size={editorial ? "sm" : undefined}
+            className={editorial ? "w-full sm:w-auto" : undefined}
           />
         )}
-        <Button asChild variant={editorial ? "ghost" : "secondary"} size={editorial ? "sm" : undefined} className={editorial ? "px-2 text-secondary hover:bg-transparent hover:underline" : undefined}>
+        <Button asChild variant="secondary" className={editorial ? "w-full sm:w-auto" : undefined}>
           <Link href={`/products/${slug}`}>
             Learn More<span className="sr-only"> about {humanizeMedicalCopy(headline)}</span>
           </Link>

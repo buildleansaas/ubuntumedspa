@@ -94,30 +94,20 @@ export const ProcedureCard = ({ product, tone = "default" }: Props) => {
           {humanizeMedicalCopy(product.subline)}
         </p>
       </div>
-      <div className={editorial ? "mt-4 flex flex-wrap items-center gap-x-5 gap-y-2" : "flex flex-wrap items-end gap-2"}>
+      <div className={editorial ? "mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap" : "flex flex-wrap items-end gap-2"}>
         {catalogItem && (
           <AddToCartButton
             slug={catalogItem.slug}
             kind={catalogItem.kind}
             quantity={catalogItem.minQuantity}
-            variant={editorial ? "outline" : undefined}
-            size={editorial ? "sm" : undefined}
+            className={editorial ? "w-full sm:w-auto" : undefined}
           />
         )}
-        {editorial ? (
-          <Link
-            href={`/procedures/${product.slug}`}
-            className="rounded-sm text-sm text-secondary underline decoration-secondary/30 underline-offset-[6px] transition-colors hover:decoration-secondary"
-          >
+        <Button asChild variant="secondary" className={editorial ? "w-full sm:w-auto" : undefined}>
+          <Link href={`/procedures/${product.slug}`}>
             Learn More<span className="sr-only"> about {humanizeMedicalCopy(product.headline)}</span>
           </Link>
-        ) : (
-          <Button asChild variant="secondary">
-            <Link href={`/procedures/${product.slug}`}>
-              Learn More<span className="sr-only"> about {humanizeMedicalCopy(product.headline)}</span>
-            </Link>
-          </Button>
-        )}
+        </Button>
       </div>
     </article>
   );

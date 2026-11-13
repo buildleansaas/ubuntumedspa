@@ -34,7 +34,7 @@ export default function HomeVisit() {
             Norge, Lightfoot, and Ford&apos;s Colony.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
+            <Button asChild size="lg" className="w-full sm:w-auto">
               <TrackedPhoneLink href={PHONE_HREF} location="location_nap">
                 +1 (804) 738-9483
               </TrackedPhoneLink>

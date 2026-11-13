@@ -54,7 +54,7 @@ export default function Header() {
         </nav>
         <Link
           href={BOOK_HREF}
-          className="ml-4 inline-flex h-10 items-center rounded-full bg-primary px-5 text-sm font-medium text-primary-content transition-colors hover:bg-primary/90"
+          className="ml-4 inline-flex h-10 items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-content shadow-sm transition-colors hover:bg-primary/85"
         >
           Book a visit
         </Link>

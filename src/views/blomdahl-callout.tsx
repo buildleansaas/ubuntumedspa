@@ -39,7 +39,7 @@ export default function BlomdahlCallout() {
           </p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button asChild variant="outline" className="w-full sm:w-auto">
+            <Button asChild className="w-full sm:w-auto">
               <Link href={EAR_PIERCING_BOOKING.homepageCallout}>Book ear piercing</Link>
             </Button>
             <Button asChild variant="secondary" className="w-full sm:w-auto">
@@ -52,7 +52,7 @@ export default function BlomdahlCallout() {
         </div>
 
         {/* Every released ear piercing photo, as a carousel (Austin, round 3). */}
-        <EarPiercingCarousel className="mt-10" />
+        <EarPiercingCarousel className="mt-10" bookHref={EAR_PIERCING_BOOKING.homepageCallout} />
       </article>
     </section>
   );

@@ -29,7 +29,7 @@ const FEATURED_LINKS = [
 
 // Answers the Botox-alternative search in the first screen (ScaleSleek f_vh33afabed). The clinic uses only Xeomin.
 // Prices come from the server page as props, so the catalog stays out of this client chunk.
-// Tidewater: main's words, credential chips and links in the new palette; one filled button.
+// Tidewater: main's words, credential chips, links and buttons in the new palette.
 export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: string; xeominCard: string }) {
   const { handleCopy } = useCopyToClipBoard();
 
@@ -73,20 +73,14 @@ export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: stri
             Compare treatment options, check Williamsburg clinic details, or request a consultation for conservative planning,
             clear education, and natural-looking goals.
           </p>
-          <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4">
-            <Link
-              href="/consult"
-              className="inline-flex h-12 items-center rounded-full bg-primary px-7 text-[0.95rem] font-medium text-primary-content transition-colors hover:bg-primary/90"
-            >
-              Book a visit
-            </Link>
-            <Link
-              href="/prices"
-              className="rounded-sm text-[0.95rem] text-secondary underline decoration-secondary/30 underline-offset-[6px] transition-colors hover:decoration-secondary"
-            >
-              See prices
-            </Link>
-            <Button variant="secondary" size="lg" onClick={handleAction}>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Button asChild size="lg" className="w-full sm:w-auto">
+              <Link href="/consult">Book a Williamsburg Consultation</Link>
+            </Button>
+            <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+              <Link href="/prices">See prices</Link>
+            </Button>
+            <Button variant="secondary" size="lg" className="w-full sm:w-auto" onClick={handleAction}>
               +1 (804) 738-9483
             </Button>
           </div>

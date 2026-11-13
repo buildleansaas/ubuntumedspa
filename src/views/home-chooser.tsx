@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { Button } from "components/ui/button";
+
 export type ChooserTile = {
   question: string;
   treatment: string;
@@ -36,14 +38,14 @@ export default function HomeChooser({ tiles }: { tiles: ChooserTile[] }) {
           </li>
         ))}
       </ul>
-      <p className="mt-8">
-        <Link
-          href="/procedures"
-          className="rounded-sm text-[0.95rem] text-secondary underline decoration-secondary/30 underline-offset-[6px] hover:decoration-secondary"
-        >
-          All treatments
-        </Link>
-      </p>
+      <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <Button asChild size="lg" className="w-full sm:w-auto">
+          <Link href="/consult">Book a visit</Link>
+        </Button>
+        <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+          <Link href="/procedures">All treatments</Link>
+        </Button>
+      </div>
     </section>
   );
 }

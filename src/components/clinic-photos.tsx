@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import BeforeAfterShowcase from "components/before-after-showcase";
 import Carousel from "components/carousel";
+import { Button } from "components/ui/button";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import {
   CARPAL_TUNNEL_CAPTION,
@@ -154,11 +155,15 @@ export const EAR_PIERCING_SLIDES = EAR_PIERCING_PHOTOS.map((item, index) => ({
  */
 export function EarPiercingCarousel({
   exclude,
-  link = { href: "/procedures/blomdahl-ear-piercing", label: "Ear piercing details" },
+  bookHref = EAR_PIERCING_BOOKING.hub,
+  showDetails = true,
   className = "",
 }: {
   exclude?: string;
-  link?: { href: string; label: string };
+  /** An existing ear piercing booking link (EAR_PIERCING_BOOKING.*). */
+  bookHref?: string;
+  /** Adds an "Ear piercing details" button; off on the ear piercing page itself. */
+  showDetails?: boolean;
   className?: string;
 }) {
   const slides = EAR_PIERCING_SLIDES.filter(({ photo }) => photo.src !== exclude);
@@ -167,9 +172,9 @@ export function EarPiercingCarousel({
       {slides.map((slide) => (
         <figure
           key={slide.photo.src}
-          className="grid h-full overflow-hidden rounded-2xl bg-base-200 md:aspect-[2/1] md:grid-cols-[58%_1fr]"
+          className="grid h-full overflow-hidden rounded-2xl bg-base-200 lg:aspect-[2/1] lg:grid-cols-[58%_1fr]"
         >
-          <div className="aspect-[4/3] overflow-hidden md:aspect-auto md:h-full">
+          <div className="aspect-[4/3] overflow-hidden lg:aspect-auto lg:h-full">
             <img
               src={slide.photo.src}
               alt={slide.photo.alt}
@@ -181,17 +186,19 @@ export function EarPiercingCarousel({
               style={{ objectPosition: slide.focus }}
             />
           </div>
-          <figcaption className="flex flex-col justify-center p-6 md:p-10">
-            <p className="font-display text-2xl leading-snug text-base-content md:text-[1.75rem]">{slide.caption}</p>
+          <figcaption className="flex flex-col justify-center p-6 lg:p-10">
+            <p className="font-display text-2xl leading-snug text-base-content lg:text-[1.75rem]">{slide.caption}</p>
             <p className="mt-3 text-base leading-relaxed text-base-content/70">{slide.line}</p>
-            <p className="mt-5">
-              <Link
-                href={link.href}
-                className="rounded-sm text-[0.95rem] text-secondary underline decoration-secondary/30 underline-offset-[6px] transition-colors hover:decoration-secondary"
-              >
-                {link.label}
-              </Link>
-            </p>
+            <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
+              <Button asChild className="w-full sm:w-auto">
+                <Link href={bookHref}>Book ear piercing</Link>
+              </Button>
+              {showDetails && (
+                <Button asChild variant="secondary" className="w-full sm:w-auto">
+                  <Link href="/procedures/blomdahl-ear-piercing">Ear piercing details</Link>
+                </Button>
+              )}
+            </div>
           </figcaption>
         </figure>
       ))}
@@ -204,7 +211,7 @@ export function EarPiercingPhotos({ exclude }: { exclude?: string }) {
   return (
     <section className="scroll-mt-28 py-12 text-left md:py-16" aria-labelledby="ear-piercing-photos" data-clinic-photos="ear-piercing">
       <SectionHeader id="ear-piercing-photos" eyebrow="Real photos from Jenny's patients" heading={EAR_PIERCING_PHOTOS_HEADING} showEyebrow />
-      <EarPiercingCarousel exclude={exclude} link={{ href: EAR_PIERCING_BOOKING.hub, label: "Book ear piercing" }} className="mt-8" />
+      <EarPiercingCarousel exclude={exclude} bookHref={EAR_PIERCING_BOOKING.hub} showDetails={false} className="mt-8" />
     </section>
   );
 }
@@ -263,14 +270,14 @@ export function HomeRealPhotos() {
           <p className="mt-6 max-w-[48ch] text-sm leading-relaxed text-base-content/65" data-results-caption>
             {RESULTS_CAPTION}
           </p>
-          <p className="mt-4">
-            <Link
-              href="/procedures/xeomin"
-              className="rounded-sm text-[0.95rem] text-secondary underline decoration-secondary/30 underline-offset-[6px] transition-colors hover:decoration-secondary"
-            >
-              More results
-            </Link>
-          </p>
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Button asChild size="lg" className="w-full sm:w-auto">
+              <Link href="/consult?procedure=xeomin">Book Xeomin</Link>
+            </Button>
+            <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+              <Link href="/procedures/xeomin">More results</Link>
+            </Button>
+          </div>
         </div>
         <BeforeAfterShowcase />
       </div>
