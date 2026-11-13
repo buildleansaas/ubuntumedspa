@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "tsx --test src/lib/analytics.test.ts src/lib/consult-procedure-interests.test.ts src/lib/order-notifications.test.ts src/lib/card-cash-pricing.test.ts src/lib/filler-removal.test.ts src/lib/text-to-book.test.ts src/lib/b12.test.ts src/lib/botox-honesty.test.ts src/lib/co2-products.test.ts src/config/gbp-posts.test.ts src/lib/review-page.test.ts src/lib/service-satellites.test.ts src/lib/xeomin-concerns.test.ts src/lib/prices-page.test.ts src/config/offers.test.ts src/lib/home-owner-link.test.ts src/lib/sitemap-pages.test.ts src/config/clinic-photos.test.ts",
+    "test": "tsx --test src/lib/analytics.test.ts src/lib/consult-procedure-interests.test.ts src/lib/order-notifications.test.ts src/lib/card-cash-pricing.test.ts src/lib/filler-removal.test.ts src/lib/text-to-book.test.ts src/lib/b12.test.ts src/lib/botox-honesty.test.ts src/lib/co2-products.test.ts src/config/gbp-posts.test.ts src/lib/review-page.test.ts src/lib/service-satellites.test.ts src/lib/xeomin-concerns.test.ts src/lib/prices-page.test.ts src/config/offers.test.ts src/lib/home-owner-link.test.ts src/lib/sitemap-pages.test.ts src/config/clinic-photos.test.ts src/lib/consult-concerns.test.ts",
     "test:analytics": "tsx --test src/lib/analytics.test.ts",
     "test:orders": "tsx --test src/lib/order-notifications.test.ts",
     "verify:seo": "node scripts/verify-seo.mjs",

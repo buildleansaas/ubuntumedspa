@@ -8,6 +8,8 @@ export type ConsultSubmissionInput = {
   email: string;
   phone: string;
   comments: string;
+  /** "What would you like help with?" answers (health information: inbox and this record only, never analytics). */
+  concerns?: string[];
   interests: string[];
   referral: string;
   affiliateId?: string;

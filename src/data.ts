@@ -1,3 +1,4 @@
+import { CONSULT_CONCERN_LABELS } from "./lib/consult-concerns";
 import { cashCardLabel, cashCardProse, cardPriceLabel, cardQuantityBreakLineCents, formatUsdShort } from "./lib/price";
 
 // Prices: the cash amount is the source; card / online amounts are derived (see lib/price).
@@ -11,6 +12,7 @@ export const DEFAULT_FORM_SUBMISSION =
         name: "",
         phone: "",
         comments: "",
+        concerns: [],
         interests: [],
         referral: "",
       }
@@ -19,7 +21,8 @@ export const DEFAULT_FORM_SUBMISSION =
         name: "Alex Taylor",
         phone: "8045550102",
         comments: "I would like to talk through treatment options and what recovery might look like.",
-        interests: ["PRP Facial"],
+        concerns: ["Tired or uneven skin"],
+        interests: [],
         referral: "Google search",
       };
 
@@ -42,8 +45,15 @@ export const FORM_INPUTS = [
     helperText: "We only use this to reach you about scheduling or questions.",
   },
   {
+    id: "concerns",
+    label: "What would you like help with?",
+    type: "checkbox",
+    options: CONSULT_CONCERN_LABELS,
+    helperText: "Choose any that fit. Jenny will suggest the right treatment at your consultation.",
+  },
+  {
     id: "interests",
-    label: "Interests",
+    label: "Already know the treatment?",
     type: "checkbox",
     options: [
       "OH-Shot",
@@ -59,7 +69,7 @@ export const FORM_INPUTS = [
       "Blomdahl Ear Piercing",
       "Vitamin B-12 Injections",
     ],
-    helperText: "Select any treatments you would like to discuss so we can prepare.",
+    helperText: "Optional. Select any treatments you would like to discuss.",
   },
   {
     id: "comments",
