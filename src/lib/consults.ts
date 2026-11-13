@@ -10,7 +10,10 @@ export type ConsultSubmissionInput = {
   comments: string;
   /** "What would you like help with?" answers (health information: inbox and this record only, never analytics). */
   concerns?: string[];
+  /** Treatments the visitor ticked. */
   interests: string[];
+  /** Treatments their concerns point to (not chosen by the visitor). */
+  suggestedInterests?: string[];
   referral: string;
   affiliateId?: string;
   affiliateCode?: string;

@@ -11,8 +11,8 @@ const schema = yup.object({
   name: yup.string().required(),
   email: yup.string().email().required(),
   phone: yup.string().required(),
-  concerns: yup.array().of(yup.string().required()).max(20).default([]),
-  interests: yup.array().of(yup.string().required()).max(20).default([]),
+  concerns: yup.array().of(yup.string().max(200).required()).max(20).default([]),
+  interests: yup.array().of(yup.string().max(200).required()).max(20).default([]),
   referral: yup.string().required(),
   comments: yup.string().required(),
   affiliateId: yup.string().optional(),
@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
     if ("error" in selections) {
       return NextResponse.json({ success: false, error: selections.error }, { status: 400 });
     }
-    const { concerns: normalizedConcerns, interests: normalizedInterests } = selections;
+    const { concerns: normalizedConcerns, interests: normalizedInterests, suggestedInterests } = selections;
     const affiliateCodeFromCookie = parseAffiliateCodeCookie(req.cookies.get(AFFILIATE_REFERRAL_COOKIE)?.value);
     const resolvedAffiliate =
       affiliateCode || affiliateCodeFromCookie ? await getAffiliateByCode(affiliateCode || affiliateCodeFromCookie || "") : null;
@@ -62,6 +62,7 @@ export async function POST(req: NextRequest) {
       phone,
       concerns: normalizedConcerns,
       interests: normalizedInterests,
+      suggestedInterests,
       referral,
       comments,
       affiliateId: finalAffiliateId,
@@ -84,7 +85,8 @@ export async function POST(req: NextRequest) {
           Email: ${email}
           Phone: ${phone}
           wants help with: ${normalizedConcerns.join(", ") || "Not given"}
-          interests: ${normalizedInterests.join(", ") || "Not sure yet"}
+          treatments they picked: ${normalizedInterests.join(", ") || "None"}
+          likely treatments (from their concerns): ${suggestedInterests.join(", ") || "None"}
           comments: ${comments}
           referral: ${referral}
           affiliateId: ${finalAffiliateId || "None"}

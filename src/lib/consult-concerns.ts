@@ -1,4 +1,4 @@
-import { normalizeConsultInterests } from "./consult-procedure-interests";
+import { allowedConsultInterests } from "./consult-procedure-interests";
 
 /**
  * "What would you like help with?" on the consult form (Austin and Jenny, 2026-11-13; Jenny approved this list).
@@ -30,17 +30,20 @@ const INTERESTS_BY_CONCERN = new Map<string, readonly string[]>(
 export const normalizeConsultConcerns = (names: string[] = []) =>
   CONSULT_CONCERN_LABELS.filter((label) => names.includes(label));
 
-export const NO_SELECTION_ERROR = "Choose at least one thing you would like help with.";
+export const NO_SELECTION_ERROR = "Choose at least one thing you would like help with, or a treatment you already know.";
 
 /**
- * Final selections for a consult request: the known concerns, plus the treatments the visitor picked and the treatments
- * their concerns map to. At least one concern or treatment is required.
+ * Final selections for a consult request. `interests` are only the treatments the visitor ticked; `suggestedInterests`
+ * are the treatments their concerns point to, kept apart so no email, text or page presents a guess as their choice.
+ * At least one concern or ticked treatment is required.
  */
 export const resolveConsultSelections = ({ concerns = [], interests = [] }: { concerns?: string[]; interests?: string[] }) => {
   const normalizedConcerns = normalizeConsultConcerns(concerns);
-  const fromConcerns = normalizedConcerns.flatMap((label) => INTERESTS_BY_CONCERN.get(label) ?? []);
-  const normalizedInterests = normalizeConsultInterests([...interests, ...fromConcerns]);
+  const picked = allowedConsultInterests(interests);
+  const suggested = allowedConsultInterests(normalizedConcerns.flatMap((label) => INTERESTS_BY_CONCERN.get(label) ?? [])).filter(
+    (name) => !picked.includes(name)
+  );
 
-  if (!normalizedConcerns.length && !normalizedInterests.length) return { error: NO_SELECTION_ERROR } as const;
-  return { concerns: normalizedConcerns, interests: normalizedInterests } as const;
+  if (!normalizedConcerns.length && !picked.length) return { error: NO_SELECTION_ERROR } as const;
+  return { concerns: normalizedConcerns, interests: picked, suggestedInterests: suggested } as const;
 };

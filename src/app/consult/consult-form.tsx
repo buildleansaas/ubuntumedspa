@@ -238,6 +238,8 @@ const ConsultationForm: React.FC = () => {
 
   return (
     <form
+      method="post"
+      action="/consult"
       className="mx-auto max-w-3xl border border-base-300 bg-base-100 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10"
       onChangeCapture={trackFirstInteraction}
       onSubmit={onSubmit}

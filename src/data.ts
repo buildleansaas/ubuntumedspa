@@ -1,4 +1,5 @@
 import { CONSULT_CONCERN_LABELS } from "./lib/consult-concerns";
+import { CONSULT_INTEREST_OPTIONS } from "./lib/consult-procedure-interests";
 import { cashCardLabel, cashCardProse, cardPriceLabel, cardQuantityBreakLineCents, formatUsdShort } from "./lib/price";
 
 // Prices: the cash amount is the source; card / online amounts are derived (see lib/price).
@@ -55,20 +56,7 @@ export const FORM_INPUTS = [
     id: "interests",
     label: "Already know the treatment?",
     type: "checkbox",
-    options: [
-      "OH-Shot",
-      "Pe-Shot",
-      "PRP Breast Lift",
-      "Hair Restoration",
-      "PRP Facial",
-      "Microneedling with PRP",
-      "PRP Face Lift",
-      "Joint Restoration",
-      "Xeomin (Botox alternative)",
-      "Hyperhidrosis Treatment",
-      "Blomdahl Ear Piercing",
-      "Vitamin B-12 Injections",
-    ],
+    options: CONSULT_INTEREST_OPTIONS,
     helperText: "Optional. Select any treatments you would like to discuss.",
   },
   {

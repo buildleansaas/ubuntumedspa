@@ -12,6 +12,22 @@ const LEGACY_INTEREST_ALIASES: Record<string, string> = {
   Xeomin: XEOMIN_INTEREST,
 };
 
+/** The consult form's treatment checkboxes. The API keeps only these (after mapping legacy names). */
+export const CONSULT_INTEREST_OPTIONS = [
+  "OH-Shot",
+  "Pe-Shot",
+  "PRP Breast Lift",
+  "Hair Restoration",
+  "PRP Facial",
+  "Microneedling with PRP",
+  "PRP Face Lift",
+  "Joint Restoration",
+  XEOMIN_INTEREST,
+  "Hyperhidrosis Treatment",
+  "Blomdahl Ear Piercing",
+  "Vitamin B-12 Injections",
+];
+
 export const PROCEDURE_INTERESTS: Record<string, string[]> = {
   botox: [XEOMIN_INTEREST],
   xeomin: [XEOMIN_INTEREST],
@@ -40,3 +56,7 @@ export const getProcedureInterests = (procedure?: string | null) =>
 /** Normalizes submitted consult interests: legacy intimacy names plus the pre-2026-11 wrinkle-relaxer labels. */
 export const normalizeConsultInterests = (names: string[]) =>
   Array.from(new Set(normalizeIntimacyProcedureNames(names).map((name) => LEGACY_INTEREST_ALIASES[name] ?? name)));
+
+/** normalizeConsultInterests, then only the form's real treatment options (unknown strings are dropped, never stored). */
+export const allowedConsultInterests = (names: string[]) =>
+  normalizeConsultInterests(names).filter((name) => CONSULT_INTEREST_OPTIONS.includes(name));
