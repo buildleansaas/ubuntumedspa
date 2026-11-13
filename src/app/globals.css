@@ -208,3 +208,106 @@ h1 {
     transform: none;
   }
 }
+
+/* Sheets (cart drawer, mobile menu). Keyframe animations, not transitions, so Radix keeps the panel mounted until
+   the exit animation ends. In: 280ms soft ease-out. Out: 200ms ease-in. The backdrop fades with it. */
+@keyframes sheet-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sheet-overlay-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes sheet-in-right {
+  from { transform: translate3d(100%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes sheet-out-right {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(100%, 0, 0); }
+}
+
+@keyframes sheet-in-left {
+  from { transform: translate3d(-100%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes sheet-out-left {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-100%, 0, 0); }
+}
+
+@keyframes sheet-in-top {
+  from { transform: translate3d(0, -100%, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes sheet-out-top {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, -100%, 0); }
+}
+
+@keyframes sheet-in-bottom {
+  from { transform: translate3d(0, 100%, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes sheet-out-bottom {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, 100%, 0); }
+}
+
+.sheet-overlay[data-state="open"] {
+  animation: sheet-overlay-in 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sheet-overlay[data-state="closed"] {
+  animation: sheet-overlay-out 200ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.sheet-panel[data-state="open"] {
+  animation-duration: 280ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sheet-panel[data-state="closed"] {
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  animation-fill-mode: forwards;
+}
+
+.sheet-panel[data-side="right"][data-state="open"] { animation-name: sheet-in-right; }
+.sheet-panel[data-side="right"][data-state="closed"] { animation-name: sheet-out-right; }
+.sheet-panel[data-side="left"][data-state="open"] { animation-name: sheet-in-left; }
+.sheet-panel[data-side="left"][data-state="closed"] { animation-name: sheet-out-left; }
+.sheet-panel[data-side="top"][data-state="open"] { animation-name: sheet-in-top; }
+.sheet-panel[data-side="top"][data-state="closed"] { animation-name: sheet-out-top; }
+.sheet-panel[data-side="bottom"][data-state="open"] { animation-name: sheet-in-bottom; }
+.sheet-panel[data-side="bottom"][data-state="closed"] { animation-name: sheet-out-bottom; }
+
+/* Reduced motion: no slide, only a fade, cut to near-instant by the global reduced-motion rule above. */
+@media (prefers-reduced-motion: reduce) {
+  .sheet-panel[data-state="open"] { animation-name: sheet-overlay-in !important; }
+  .sheet-panel[data-state="closed"] { animation-name: sheet-overlay-out !important; }
+}
+
+/* Header cart count: a small bump when an item is added. */
+@keyframes cart-count-bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+.cart-count-bump {
+  animation: cart-count-bump 320ms cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cart-count-bump {
+    animation: none;
+  }
+}
