@@ -4,6 +4,7 @@ import BeforeAfterShowcase from "components/before-after-showcase";
 import {
   CARPAL_TUNNEL_CAPTION,
   CARPAL_TUNNEL_PHOTO,
+  BEFORE_LABEL,
   CROWS_FEET_HEADING,
   CROWS_FEET_INTRO,
   CROWS_FEET_PAIRS,
@@ -88,7 +89,7 @@ function SectionHeader({
 export function CrowsFeetResults() {
   return (
     <section className="scroll-mt-28 py-12 text-left md:py-16" aria-labelledby="crows-feet-results" data-clinic-photos="crows-feet">
-      <div className="grid items-center gap-8 rounded-[2rem] bg-base-200 p-6 md:p-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12">
+      <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
         <div>
           <SectionHeader id="crows-feet-results" eyebrow="Real patient photos" heading={CROWS_FEET_HEADING} intro={CROWS_FEET_INTRO} />
           <p className="mt-6 max-w-md text-sm leading-relaxed text-base-content/65" data-results-caption>
@@ -174,34 +175,54 @@ export function PiccirilloTraining() {
   return <TrainedBy trainers={["piccirillo"]} />;
 }
 
-/** Homepage: the before/after showcase and the triplets, in one quiet marsh-mist band. */
+/** A photo with its caption underneath (no overlay). */
+function CaptionedPhoto({ photo, caption, aspect = "aspect-[3/4]", className = "" }: { photo: ClinicPhoto; caption: string; aspect?: string; className?: string }) {
+  return (
+    <figure className={className}>
+      <div className={`${aspect} overflow-hidden rounded-lg bg-base-200`}>
+        <Photo photo={photo} />
+      </div>
+      <figcaption className="mt-3 text-sm leading-snug text-base-content/65">{caption}</figcaption>
+    </figure>
+  );
+}
+
+/** Homepage: one crow's feet pair and the triplets, editorial and quiet (Tidewater). */
 export function HomeRealPhotos() {
+  const pair = CROWS_FEET_PAIRS[0];
   const triplets = EAR_PIERCING_PHOTOS[0];
   return (
-    <section className="w-full scroll-mt-28 py-10 md:py-16" aria-labelledby="home-real-photos" data-clinic-photos="home">
-      <div className="grid items-start gap-10 rounded-[2rem] bg-base-200 px-5 py-10 sm:px-8 md:px-12 md:py-14 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] lg:gap-14">
+    <section className="w-full scroll-mt-28 py-16 md:py-24" aria-labelledby="home-real-photos" data-clinic-photos="home">
+      <SectionHeader
+        id="home-real-photos"
+        eyebrow="Real photos from Jenny's patients"
+        heading="Real patients, real results"
+        intro="Xeomin for crow's feet, before and after."
+        showEyebrow
+      />
+      <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-16">
         <div>
-          <SectionHeader
-            id="home-real-photos"
-            eyebrow="Real photos from Jenny's patients"
-            heading="Real patients, real results"
-            intro="Xeomin for crow's feet, before and after."
-            showEyebrow
-          />
-          <div className="mt-8">
-            <BeforeAfterShowcase />
+          <div className="grid grid-cols-2 gap-4 md:gap-6" data-active-pair={pair.id}>
+            <CaptionedPhoto photo={pair.before} caption={BEFORE_LABEL} />
+            <CaptionedPhoto photo={pair.after} caption={pair.afterLabel} />
           </div>
-          <p className="mt-5 max-w-[65ch] text-sm leading-relaxed text-base-content/65">
-            {RESULTS_CAPTION}{" "}
-            <Link href="/procedures/xeomin" className="link link-primary">
-              Xeomin details
+          <p className="mt-6 max-w-[60ch] text-sm leading-relaxed text-base-content/65">{RESULTS_CAPTION}</p>
+          <p className="mt-4">
+            <Link
+              href="/procedures/xeomin"
+              className="rounded-sm text-[0.95rem] text-secondary underline decoration-secondary/30 underline-offset-[6px] transition-colors hover:decoration-secondary"
+            >
+              More results
             </Link>
           </p>
         </div>
-        <div className="lg:pt-[8.5rem]">
-          <Tile photo={triplets.photo} caption={triplets.caption} />
-          <p className="mt-4 text-sm">
-            <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
+        <div>
+          <CaptionedPhoto photo={triplets.photo} caption={triplets.caption} aspect="aspect-[4/5]" />
+          <p className="mt-4">
+            <Link
+              href="/procedures/blomdahl-ear-piercing"
+              className="rounded-sm text-[0.95rem] text-secondary underline decoration-secondary/30 underline-offset-[6px] transition-colors hover:decoration-secondary"
+            >
               Ear piercing details
             </Link>
           </p>

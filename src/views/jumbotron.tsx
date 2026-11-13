@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "components/ui/button";
 import useCopyToClipBoard from "hooks/use-copy-to-clipboard";
 import { trackPhoneClick } from "lib/analytics";
 import Link from "next/link";
@@ -27,8 +26,12 @@ const FEATURED_LINKS = [
   ["Williamsburg Location", "/locations/williamsburg-va"],
 ] as const;
 
+const quietList = "flex flex-wrap gap-x-2 gap-y-1.5";
+const dot = "after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none";
+
 // Answers the Botox-alternative search in the first screen (ScaleSleek f_vh33afabed). The clinic uses only Xeomin.
 // Prices come from the server page as props, so the catalog stays out of this client chunk.
+// Tidewater: same words and links as before; credentials and featured links are quiet dotted lines, one filled button.
 export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: string; xeominCard: string }) {
   const { handleCopy } = useCopyToClipBoard();
 
@@ -39,76 +42,87 @@ export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: stri
   };
 
   return (
-    <section className="py-12 md:py-16 lg:py-20" id="procedures" aria-labelledby="home-hero-heading">
-      <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(16rem,22rem)] lg:gap-16">
-        <div className="max-w-3xl">
+    <section className="pb-16 pt-4 md:pb-24 md:pt-10" id="procedures" aria-labelledby="home-hero-heading">
+      <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(16rem,22rem)] lg:gap-20">
+        <div className="max-w-2xl">
+          <p className="text-sm text-base-content/65">Williamsburg, Virginia</p>
           <h1
             id="home-hero-heading"
-            className="font-display mt-4 text-[2.45rem] font-medium leading-[1.08] tracking-tight text-base-content sm:text-5xl md:text-6xl lg:text-[4.15rem]"
+            className="font-display mt-4 text-[2.4rem] leading-[1.08] tracking-tight text-base-content sm:text-5xl lg:text-[3.6rem]"
           >
             Nurse Practitioner Led Medical Spa in Williamsburg, VA
           </h1>
-          <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-base-content md:text-xl">
+          <p className="mt-7 max-w-[60ch] text-lg leading-relaxed text-base-content/85 md:text-xl">
             Looking for Botox in Williamsburg, VA? We use{" "}
-            <Link href="/procedures/xeomin" className="font-medium text-primary hover:underline">
+            <Link href="/procedures/xeomin" className="link link-primary no-underline hover:underline">
               Xeomin®
             </Link>
             , a wrinkle relaxer in the same category as Botox®, for frown lines, forehead lines, and crow&apos;s feet.
             From {xeominCash} cash ({xeominCard} by card or online).
           </p>
-          <p className="mt-4 max-w-[62ch] text-lg leading-relaxed text-base-content/90 md:text-xl">
+          <p className="mt-4 max-w-[60ch] text-base leading-relaxed text-base-content/75 md:text-lg">
             A local med spa with Jenny Brady, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified
             OH-Shot provider and certified Blomdahl medical ear piercing provider.
           </p>
-          <ul className="mt-6 flex max-w-[68ch] flex-wrap gap-2" aria-label="Jenny Brady credentials and certifications">
+          <ul className={`mt-5 ${quietList} text-sm text-base-content/60`} aria-label="Jenny Brady credentials and certifications">
             {CREDENTIALS.map((credential) => (
-              <li key={credential} className="text-sm text-base-content/75 after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none">
+              <li key={credential} className={dot}>
                 {credential}
               </li>
             ))}
           </ul>
-          <p className="mt-6 max-w-[65ch] text-base leading-relaxed text-base-content/80 md:text-lg">
+          <p className="mt-6 max-w-[60ch] text-base leading-relaxed text-base-content/75">
             Compare treatment options, check Williamsburg clinic details, or request a consultation for conservative planning,
             clear education, and natural-looking goals.
           </p>
-          <nav className="mt-6" aria-label="Featured treatments and location">
-            <ul className="flex max-w-3xl flex-wrap gap-x-5 gap-y-2">
+          <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4">
+            <Link
+              href="/consult"
+              className="inline-flex h-12 items-center rounded-full bg-primary px-7 text-[0.95rem] font-medium text-primary-content transition-colors hover:bg-primary/90"
+            >
+              Book a visit
+            </Link>
+            <Link
+              href="/prices"
+              className="rounded-sm text-[0.95rem] text-secondary underline decoration-secondary/30 underline-offset-[6px] transition-colors hover:decoration-secondary"
+            >
+              See prices
+            </Link>
+            <button
+              type="button"
+              onClick={handleAction}
+              className="rounded-sm text-[0.95rem] text-base-content/75 transition-colors hover:text-base-content"
+            >
+              +1 (804) 738-9483
+            </button>
+          </div>
+          <nav className="mt-8" aria-label="Featured treatments and location">
+            <ul className={`${quietList} text-sm`}>
               {FEATURED_LINKS.map(([label, href]) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-sm text-base-content underline decoration-base-300 underline-offset-[5px] transition-colors hover:text-primary hover:decoration-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-4"
-                  >
+                <li key={href} className={dot}>
+                  <Link href={href} className="text-secondary transition-colors hover:text-base-content">
                     {label}
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button asChild size="lg" className="w-full sm:w-auto">
-              <Link href="/consult">Book a Williamsburg Consultation</Link>
-            </Button>
-            <Button variant="secondary" size="lg" className="w-full sm:w-auto" onClick={handleAction}>
-              +1 (804) 738-9483
-            </Button>
-          </div>
         </div>
 
-        <figure className="mx-auto w-full max-w-[20rem] lg:mx-0 lg:max-w-none lg:justify-self-end">
-          <div className="relative aspect-[4/5] overflow-hidden border border-base-300 bg-base-200">
+        <figure className="mx-auto w-full max-w-[17rem] sm:max-w-[19rem] lg:mx-0 lg:max-w-none lg:justify-self-end">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-b-[1.75rem] rounded-t-[999px] bg-base-200">
             <Image
               src="/jenny.jpg"
               alt="Our aesthetic nurse practitioner"
               fill
               priority
-              sizes="(max-width: 1024px) 70vw, 352px"
+              sizes="(max-width: 640px) 272px, (max-width: 1024px) 304px, 352px"
               className="object-cover object-[center_18%]"
             />
           </div>
-          <figcaption className="mt-4 border-t border-base-300 pt-3">
-            <p className="font-display text-2xl font-medium leading-none text-base-content">Jenny Brady</p>
-            <p className="mt-2 text-sm leading-6 text-base-content/80">MSN, RN, CPNP, PMHS</p>
+          <figcaption className="mt-4 text-center lg:text-left">
+            <p className="font-display text-xl leading-none text-base-content">Jenny Brady</p>
+            <p className="mt-2 text-sm text-base-content/60">MSN, RN, CPNP, PMHS</p>
           </figcaption>
         </figure>
       </div>

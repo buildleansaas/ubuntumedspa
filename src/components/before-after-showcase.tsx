@@ -6,7 +6,8 @@ import { BEFORE_LABEL, CROWS_FEET_PAIRS, type ClinicPhoto } from "config/clinic-
 
 function Half({ photo, label }: { photo: ClinicPhoto; label: string }) {
   return (
-    <div className="relative aspect-[3/4] overflow-hidden">
+    <figure>
+    <div className="aspect-[3/4] overflow-hidden rounded-lg bg-base-200">
       <img
         src={photo.src}
         alt={photo.alt}
@@ -16,10 +17,9 @@ function Half({ photo, label }: { photo: ClinicPhoto; label: string }) {
         decoding="async"
         className="h-full w-full object-cover"
       />
-      <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-neutral/70 to-transparent px-4 pb-3 pt-10 text-sm font-medium text-white">
-        {label}
-      </span>
-    </div>
+      </div>
+      <figcaption className="mt-3 text-sm text-base-content/65">{label}</figcaption>
+    </figure>
   );
 }
 
@@ -30,12 +30,12 @@ export default function BeforeAfterShowcase() {
 
   return (
     <div>
-      <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-base-300" data-active-pair={pair.id}>
+      <div className="grid grid-cols-2 gap-4 md:gap-6" data-active-pair={pair.id}>
         <Half photo={pair.before} label={BEFORE_LABEL} />
         <Half photo={pair.after} label={pair.afterLabel} />
       </div>
       {CROWS_FEET_PAIRS.length > 1 && (
-        <div className="mt-4 flex flex-wrap gap-2" role="tablist" aria-label="Choose a patient">
+        <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2" role="tablist" aria-label="Choose a patient">
           {CROWS_FEET_PAIRS.map((item, index) => (
             <button
               key={item.id}
@@ -43,10 +43,10 @@ export default function BeforeAfterShowcase() {
               role="tab"
               aria-selected={index === active}
               onClick={() => setActive(index)}
-              className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
+              className={`rounded-sm text-sm underline-offset-[6px] transition-colors ${
                 index === active
-                  ? "border-primary bg-primary text-primary-content"
-                  : "border-base-300 bg-base-100 text-base-content/75 hover:border-secondary hover:text-secondary"
+                  ? "text-base-content underline decoration-base-content/40"
+                  : "text-secondary hover:text-base-content"
               }`}
             >
               Result {index + 1}

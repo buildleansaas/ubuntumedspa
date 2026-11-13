@@ -1,9 +1,7 @@
 import React from "react";
-import Link from "next/link";
 
-import { getSearchAnswers } from "views/search-answers";
-
-// The homepage's own questions (unchanged copy).
+// The homepage's own questions (unchanged copy). The search answers render as their own H2s (views/search-answers),
+// so this list holds only these, and nothing shows twice.
 export const homeFaqs = [
   {
     question: "What medical spa services are available in Williamsburg, VA?",
@@ -22,59 +20,34 @@ export const homeFaqs = [
   },
 ];
 
-/** Every question shown on the homepage, in order. The FAQPage schema and the visible list both come from here. */
-export const getHomeFaqs = (xeominCash: string, xeominCard: string) => [
-  ...getSearchAnswers(xeominCash, xeominCard).map(({ question, answer }) => ({ question, answer })),
-  ...homeFaqs,
-];
-
-const inlineList = (links: Array<{ href: string; label: string }>) =>
-  links.map((link, index) => (
-    <React.Fragment key={link.href}>
-      {index > 0 ? (index === links.length - 1 ? " and " : ", ") : null}
-      <Link href={link.href} className="link link-primary">
-        {link.label}
-      </Link>
-    </React.Fragment>
-  ));
-
-function Question({ question, children }: { question: string; children: React.ReactNode }) {
+// Native <details>: every answer is in the server HTML, so the visible FAQ matches the FAQPage schema.
+export default function HomeQuestions() {
   return (
-    <details className="group border-b border-base-300">
-      <summary className="flex cursor-pointer list-none items-start justify-between gap-6 rounded-sm py-6 [&::-webkit-details-marker]:hidden">
-        <h3 className="font-display text-xl leading-snug text-base-content md:text-[1.4rem]">{question}</h3>
-        <span
-          aria-hidden="true"
-          className="mt-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-base-300 text-base-content/60 transition-transform group-open:rotate-45"
-        >
-          +
-        </span>
-      </summary>
-      <div className="max-w-[65ch] pb-7 text-base leading-relaxed text-base-content/80">{children}</div>
-    </details>
-  );
-}
-
-// The three search answers (wrinkle relaxer, Hydrafacial, dermal fillers) keep their exact text; their links stay inline.
-export default function HomeQuestions({ xeominCash, xeominCard }: { xeominCash: string; xeominCard: string }) {
-  return (
-    <section className="w-full py-16 md:py-24" aria-labelledby="home-faq-heading" data-search-answers>
+    <section className="w-full scroll-mt-28 py-16 md:py-24" aria-labelledby="home-faq-heading">
       <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.6fr)] lg:gap-20">
-        <h2 id="home-faq-heading" className="font-display text-3xl leading-tight tracking-tight text-base-content md:text-[2.6rem]">
-          Questions
-        </h2>
+        <div>
+          <p className="text-sm text-base-content/65">Williamsburg med spa FAQ</p>
+          <h2
+            id="home-faq-heading"
+            className="font-display mt-3 text-3xl leading-tight tracking-tight text-base-content md:text-[2.6rem]"
+          >
+            Quick answers before you book
+          </h2>
+        </div>
         <div className="border-t border-base-300">
-          {getSearchAnswers(xeominCash, xeominCard).map((item) => (
-            <Question key={item.id} question={item.question}>
-              <p>{item.answer}</p>
-              {item.more ? <p className="mt-3">{item.more}</p> : null}
-              {item.links.length ? <p className="mt-3">More: {inlineList(item.links)}.</p> : null}
-            </Question>
-          ))}
           {homeFaqs.map((faq) => (
-            <Question key={faq.question} question={faq.question}>
-              <p>{faq.answer}</p>
-            </Question>
+            <details key={faq.question} className="group border-b border-base-300">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-6 rounded-sm py-6 [&::-webkit-details-marker]:hidden">
+                <h3 className="font-display text-xl leading-snug text-base-content md:text-[1.4rem]">{faq.question}</h3>
+                <span
+                  aria-hidden="true"
+                  className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-base-300 text-base-content/60 transition-transform group-open:rotate-45"
+                >
+                  +
+                </span>
+              </summary>
+              <p className="max-w-[65ch] pb-7 text-base leading-relaxed text-base-content/75">{faq.answer}</p>
+            </details>
           ))}
         </div>
       </div>

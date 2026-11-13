@@ -10,6 +10,7 @@ export default function CtaFooter({
   return (
     <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="cta" aria-labelledby="home-cta-heading">
       <div className="mx-auto max-w-2xl">
+        <p className="eyebrow">Consultation</p>
         <h2 id="home-cta-heading" className="mt-4 text-4xl leading-[1.12] tracking-tight text-base-content md:text-5xl">
           Begin Your Journey to Restorative Wellness
         </h2>

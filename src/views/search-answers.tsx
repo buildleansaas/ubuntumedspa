@@ -59,24 +59,24 @@ export const getSearchAnswers = (xeominCash: string, xeominCard: string): Search
 
 export default function SearchAnswers({ xeominCash, xeominCard }: { xeominCash: string; xeominCard: string }) {
   return (
-    <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-label="Botox alternative, Hydrafacial, and dermal fillers in Williamsburg" data-search-answers>
-      <div className="grid gap-10 lg:grid-cols-3 lg:gap-12">
+    <section className="w-full scroll-mt-28 py-16 md:py-24" aria-label="Botox alternative, Hydrafacial, and dermal fillers in Williamsburg" data-search-answers>
+      <div className="grid gap-12 lg:grid-cols-3 lg:gap-14">
         {getSearchAnswers(xeominCash, xeominCard).map((item) => (
-          <article key={item.id} aria-labelledby={item.id} className="border-t-2 border-primary/30 pt-6">
-            <h2 id={item.id} className="font-display text-2xl font-medium leading-[1.2] tracking-tight text-base-content md:text-3xl">
+          <article key={item.id} aria-labelledby={item.id} className="border-t border-base-300 pt-7">
+            <h2 id={item.id} className="font-display text-2xl leading-[1.2] tracking-tight text-base-content md:text-[1.7rem]">
               {item.heading}
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-base-content/85">
+            <p className="mt-5 text-base leading-relaxed text-base-content/75">
               <strong className="font-medium text-base-content">{item.question}</strong> {item.answer}
             </p>
             {item.more ? (
-              <p className="mt-3 text-base leading-relaxed text-base-content/85">{item.more}</p>
+              <p className="mt-3 text-base leading-relaxed text-base-content/75">{item.more}</p>
             ) : null}
             {item.links.length ? (
-              <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+              <ul className="mt-4 flex flex-wrap gap-x-2 gap-y-1.5 text-sm">
                 {item.links.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="link link-primary text-sm">
+                  <li key={link.href} className="after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none">
+                    <Link href={link.href} className="text-secondary transition-colors hover:text-base-content">
                       {link.label}
                     </Link>
                   </li>

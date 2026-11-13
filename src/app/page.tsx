@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import CtaFooter from "components/cta-footer";
 import NamedReviews from "components/named-reviews";
 import StructuredData from "components/structured-data";
 import { HomeRealPhotos } from "components/clinic-photos";
@@ -11,9 +12,18 @@ import { COMMERCE_CATALOG_BY_SLUG, EAR_PIERCING_PRICES } from "config/commerce-c
 import { buildPageMetadata } from "lib/metadata";
 import { cardPriceLabel, formatUsdShort } from "lib/price";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "lib/seo";
+import BlomdahlCallout from "views/blomdahl-callout";
+import BotoxPartyCallout from "views/botox-party-callout";
 import HomeChooser, { type ChooserTile } from "views/home-chooser";
-import HomeHero, { HOME_BOOK_HREF } from "views/home-hero";
-import HomeQuestions, { getHomeFaqs } from "views/home-questions";
+import HomeQuestions, { homeFaqs } from "views/home-questions";
+import HomeVisit from "views/home-visit";
+import Jumbotron from "views/jumbotron";
+import LatestPosts from "views/latest-posts";
+import OhShotCallout from "views/oh-shot-callout";
+import Procedures from "views/procedures";
+import Products from "views/products";
+import ProviderCallout from "views/provider-callout";
+import SearchAnswers, { getSearchAnswers } from "views/search-answers";
 
 export const metadata: Metadata = buildPageMetadata({
   title: DEFAULT_TITLE,
@@ -26,6 +36,16 @@ const XEOMIN_CARD = cardPriceLabel(COMMERCE_CATALOG_BY_SLUG.xeomin.cashAmountCen
 
 const cash = (slug: string) => formatUsdShort(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
 const card = (slug: string) => cardPriceLabel(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
+
+const localLinks = [
+  { href: "/procedures/botox", label: "Botox alternative in Williamsburg" },
+  { href: "/procedures/xeomin", label: "Xeomin in Williamsburg" },
+  { href: "/locations/williamsburg-va", label: "Hours & directions" },
+  { href: "/locations", label: "Areas we serve" },
+  { href: "/locations/yorktown-va", label: "Yorktown med spa" },
+  { href: "/procedures/blomdahl-ear-piercing", label: "Ear piercing in Williamsburg" },
+  { href: "/prices", label: "Med spa prices" },
+] as const;
 
 const CHOOSER_TILES: ChooserTile[] = [
   {
@@ -100,28 +120,54 @@ const FIRST_VISIT_STEPS = [
   },
 ];
 
-const BOOKING_LINE = "Book the visit, then text or call Jenny to pick a time.";
-
 const sectionHeading = "font-display text-3xl leading-tight tracking-tight text-base-content md:text-[2.6rem]";
 const textLink =
   "rounded-sm text-[0.95rem] text-secondary underline decoration-secondary/30 underline-offset-[6px] transition-colors hover:decoration-secondary";
 
+// Tidewater homepage: every section, word and link from the previous homepage, in a calmer presentation
+// (spacing, type, color, one filled button per screen), plus the treatment chooser, first-visit steps and price list.
 export default async function Page() {
   return (
     <div className="w-full">
-      <StructuredData type="FAQ" faqs={getHomeFaqs(XEOMIN_CASH, XEOMIN_CARD)} />
-      <StructuredData type="Person" />
+      <StructuredData type="FAQ" faqs={[...getSearchAnswers(XEOMIN_CASH, XEOMIN_CARD), ...homeFaqs]} />
+      <Jumbotron xeominCash={XEOMIN_CASH} xeominCard={XEOMIN_CARD} />
+      <HomeRealPhotos />
 
-      {/* 1. Hero */}
-      <HomeHero xeominCash={XEOMIN_CASH} piercingCash={EAR_PIERCING_PRICES.oneEarCash} />
-
-      {/* 2. What brings you in? */}
       <HomeChooser tiles={CHOOSER_TILES} />
 
-      {/* 3. Meet Jenny (existing provider copy) */}
-      <section className="w-full py-16 md:py-24" aria-labelledby="home-jenny-heading">
-        <div className="grid items-center gap-12 lg:grid-cols-[minmax(16rem,22rem)_minmax(0,1fr)] lg:gap-20">
-          <figure className="mx-auto w-full max-w-[20rem] lg:mx-0 lg:max-w-none">
+      {/* Local care with Jenny, merged with the provider bio */}
+      <section className="w-full scroll-mt-28 py-16 md:py-24" aria-labelledby="home-local-intro-heading">
+        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,22rem)] lg:gap-20">
+          <div>
+            <p className="text-sm text-base-content/65">Nurse Practitioner led medical spa in Williamsburg, VA</p>
+            <h2 id="home-local-intro-heading" className={`${sectionHeading} mt-3`}>
+              Local care with Jenny Brady, MSN, RN, CPNP, PMHS for Xeomin wrinkle relaxer, PRP, sweating treatment, and medical ear piercing.
+            </h2>
+            <p className="mt-6 max-w-[65ch] text-base leading-relaxed text-base-content/75 md:text-lg">
+              Williamsburg Med Spa is a Nurse Practitioner led medical spa in Williamsburg, VA. Jenny Brady brings
+              MSN, RN, CPNP, PMHS, Cellular Medicine Association-certified OH-Shot provider training, and
+              certified Blomdahl provider training for medical ear piercing, so care starts with medical screening,
+              calm education, and treatment planning shaped around realistic goals.
+            </p>
+            <nav className="mt-6" aria-label="Williamsburg services and nearby areas">
+              <ul className="flex max-w-3xl flex-wrap gap-x-2 gap-y-1.5 text-sm">
+                {localLinks.map((item) => (
+                  <li key={item.href} className="after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none">
+                    <Link className="text-secondary transition-colors hover:text-base-content" href={item.href}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <ProviderCallout merged />
+            <p className="mt-6">
+              <Link href="/staff/jenny-brady" className={textLink}>
+                More about Jenny
+              </Link>
+            </p>
+          </div>
+          <figure className="mx-auto w-full max-w-[20rem] lg:sticky lg:top-28 lg:mx-0 lg:max-w-none">
             <Image
               src={CARPAL_TUNNEL_PHOTO.src}
               alt={CARPAL_TUNNEL_PHOTO.alt}
@@ -132,32 +178,10 @@ export default async function Page() {
             />
             <figcaption className="mt-3 text-sm text-base-content/65">{HOME_INJECTION_CAPTION}</figcaption>
           </figure>
-          <div className="max-w-2xl">
-            <h2 id="home-jenny-heading" className={sectionHeading}>
-              Meet Jenny Brady
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-base-content/80">
-              With 26 years in medicine and six years dedicated to aesthetics, Jenny blends primary care and mental
-              health expertise with a holistic, patient-first approach. She combines regenerative PRP therapies,
-              advanced injection techniques, and practical wellness counseling to help you look and feel your best,
-              naturally.
-            </p>
-            <p className="mt-4 text-lg leading-relaxed text-base-content/80">
-              Care starts with medical screening, calm education, and treatment planning shaped around realistic goals.
-            </p>
-            <p className="mt-6 text-sm leading-relaxed text-base-content/65">
-              MSN, RN, CPNP, PMHS · Cellular Medicine Association-certified OH-Shot provider · Certified Blomdahl provider
-            </p>
-            <p className="mt-7">
-              <Link href="/staff/jenny-brady" className={textLink}>
-                More about Jenny
-              </Link>
-            </p>
-          </div>
         </div>
       </section>
 
-      {/* 4. Your first visit */}
+      {/* Your first visit */}
       <section className="w-full py-16 md:py-24" aria-labelledby="home-first-visit-heading">
         <h2 id="home-first-visit-heading" className={sectionHeading}>
           Your first visit
@@ -175,13 +199,19 @@ export default async function Page() {
         </ol>
       </section>
 
-      {/* 5. Real results (captions and disclosure unchanged) */}
-      <HomeRealPhotos />
-
-      {/* 6. Reviews: renders only when consented, named reviews exist */}
+      <SearchAnswers xeominCash={XEOMIN_CASH} xeominCard={XEOMIN_CARD} />
       <NamedReviews heading="Clinic reviews" />
+      <Procedures
+        variant="editorial"
+        featured={
+          <div className="grid gap-16 lg:grid-cols-2 lg:gap-14">
+            <OhShotCallout />
+            <BlomdahlCallout />
+          </div>
+        }
+      />
 
-      {/* 7. Prices, written out */}
+      {/* Prices, written out */}
       <section className="w-full py-16 md:py-24" aria-labelledby="home-prices-heading">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.6fr)] lg:gap-20">
           <div>
@@ -200,9 +230,7 @@ export default async function Page() {
                     {row.name}
                   </Link>
                   <span className="w-full sm:w-auto sm:text-right">
-                    <span className="text-lg text-base-content">
-                      {row.cash} cash
-                    </span>{" "}
+                    <span className="text-lg text-base-content">{row.cash} cash</span>{" "}
                     <span className="block text-sm text-base-content/60 sm:inline">
                       {row.note} · {row.card} by card or online
                     </span>
@@ -219,25 +247,12 @@ export default async function Page() {
         </div>
       </section>
 
-      {/* 8. Questions: FAQPage schema above is built from the same list */}
-      <HomeQuestions xeominCash={XEOMIN_CASH} xeominCard={XEOMIN_CARD} />
-
-      {/* 9. Visit */}
-      <section className="w-full py-16 md:py-24" aria-labelledby="home-visit-heading">
-        <div className="rounded-[2rem] bg-base-200 px-6 py-12 text-center sm:px-10 md:py-16">
-          <h2 id="home-visit-heading" className={sectionHeading}>
-            Visit
-          </h2>
-          <p className="mt-5 text-lg text-base-content/80">3900 Powhatan Parkway, Williamsburg, VA 23188</p>
-          <p className="mx-auto mt-2 max-w-[48ch] text-base text-base-content/70">{BOOKING_LINE}</p>
-          <Link
-            href={HOME_BOOK_HREF}
-            className="mt-8 inline-flex h-12 items-center rounded-full bg-primary px-7 text-[0.95rem] font-medium text-primary-content transition-colors hover:bg-primary/90"
-          >
-            Book a visit
-          </Link>
-        </div>
-      </section>
+      <Products variant="editorial" />
+      <LatestPosts />
+      <BotoxPartyCallout />
+      <HomeQuestions />
+      <HomeVisit />
+      <CtaFooter variant="editorial" />
     </div>
   );
 }

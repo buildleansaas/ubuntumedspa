@@ -11,7 +11,7 @@ export default function CmaCredentialStrip({ className, centered = false }: CmaC
   return (
     <div
       className={cn(
-        "flex w-fit max-w-full items-center gap-3 border border-base-300 bg-base-100 px-3.5 py-3",
+        "flex w-fit max-w-full items-center gap-3 rounded-xl border border-base-300 bg-base-100 px-3.5 py-3",
         centered && "mx-auto",
         className
       )}

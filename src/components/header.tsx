@@ -2,8 +2,11 @@ import Link from "next/link";
 
 import CartTrigger from "components/cart-trigger";
 import MobileMenu from "components/mobile-menu";
+import OffersNavLink from "components/offers-nav-link";
+import { getActiveOffers } from "config/offers";
 
-// Tidewater header: four quiet links and one filled button. Offers, Events, Blog and Products live in the footer.
+// Tidewater header: quiet text links (Offers shows only while an offer runs) and one filled button.
+// Events, Blog and Products live in the footer.
 const NAV_ITEMS = [
   { href: "/procedures", label: "Treatments" },
   { href: "/prices", label: "Prices" },
@@ -15,6 +18,7 @@ const NAV_ITEMS = [
 export const BOOK_HREF = "/consult";
 
 export default function Header() {
+  const offerCount = getActiveOffers().length;
   return (
     <header className="flex w-full items-center justify-between gap-3 py-3 sm:gap-4 lg:py-4">
       <Link href="/" className="min-w-0 flex-1 rounded-md">
@@ -26,10 +30,10 @@ export default function Header() {
               height={96}
               src="/logo-header.png"
               alt="Williamsburg Med Spa logo"
-              className="h-9 w-auto sm:h-10 md:h-11"
+              className="h-8 w-auto sm:h-10 md:h-11"
             />
           </picture>
-          <p className="ml-2.5 truncate font-display text-[1.3rem] font-normal leading-none tracking-tight text-base-content min-[380px]:text-[1.45rem] sm:ml-3 sm:text-[1.6rem]">
+          <p className="ml-2 truncate font-display text-[1.1rem] font-normal leading-none tracking-tight text-base-content min-[380px]:text-[1.2rem] sm:ml-3 sm:text-[1.6rem]">
             Williamsburg Med Spa
           </p>
         </div>
@@ -46,6 +50,7 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <OffersNavLink initialCount={offerCount} />
         </nav>
         <Link
           href={BOOK_HREF}
@@ -56,7 +61,8 @@ export default function Header() {
         <CartTrigger mode="compact" className="ml-3 h-10 w-10 border-transparent" />
       </div>
 
-      <div className="flex items-center gap-1.5 lg:hidden">
+      <div className="flex shrink-0 items-center gap-0.5 lg:hidden">
+        <OffersNavLink initialCount={offerCount} variant="compact" />
         <CartTrigger mode="compact" className="border-transparent" />
         <MobileMenu items={NAV_ITEMS} bookHref={BOOK_HREF} />
       </div>
