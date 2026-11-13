@@ -1,3 +1,4 @@
+import { AFTER_HEADER, CARD_GRID, Section, SectionHeader } from "components/layout";
 import { ProductCard } from "components/product-card";
 import { products } from "data";
 
@@ -15,26 +16,21 @@ export default function Products({
 
   if (variant === "editorial") {
     return (
-      <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="home-products" aria-labelledby="home-products-heading">
-        <div className="max-w-3xl">
-          <p className="eyebrow">For pickup</p>
-          <Heading
-            id="home-products-heading"
-            className="font-display mt-4 text-4xl font-medium leading-[1.12] tracking-tight text-base-content md:text-5xl"
-          >
-            Skincare Products
-          </Heading>
-          <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">
-            Products available for pickup at Williamsburg Med Spa. Ask Jenny which fits your routine.
-          </p>
-        </div>
+      <Section id="home-products" labelledBy="home-products-heading">
+        <SectionHeader
+          as={Heading}
+          id="home-products-heading"
+          eyebrow="For pickup"
+          title="Skincare Products"
+          intro="Products available for pickup at Williamsburg Med Spa. Ask Jenny which fits your routine."
+        />
 
-        <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={`${AFTER_HEADER} ${CARD_GRID}`}>
           {visibleProducts.map((product) => (
             <ProductCard key={product.slug} {...product} slug={product.slug} tone="editorial" />
           ))}
         </div>
-      </section>
+      </Section>
     );
   }
 

@@ -1,4 +1,5 @@
 import BlogPostCard from "components/blog-post-card";
+import { CARD_GRID } from "components/layout";
 import type { PostMetadata } from "lib/blog";
 import { cn } from "lib/utils";
 
@@ -28,9 +29,8 @@ export default function BlogPostCollection({
 
       <div
         className={cn(
-          "grid gap-x-6 gap-y-10 lg:gap-x-8",
-          featuredFirst && featuredArticle ? "mt-12" : undefined,
-          "md:grid-cols-2 xl:grid-cols-3"
+          CARD_GRID,
+          featuredFirst && featuredArticle ? "mt-12" : undefined
         )}
       >
         {gridArticles.map((article) => (

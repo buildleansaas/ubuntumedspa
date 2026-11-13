@@ -2,6 +2,7 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import AddToCartButton from "components/add-to-cart-button";
+import { CARD_FLUSH, CARD_TITLE } from "components/layout";
 import { Button } from "components/ui/button";
 import { getCatalogConfigBySlug } from "config/commerce-catalog";
 import { humanizeMedicalCopy } from "lib/humanize";
@@ -35,12 +36,12 @@ export const ProcedureCard = ({ product, tone = "default" }: Props) => {
   const TitleTag = editorial ? "h3" : "h2";
 
   return (
-    <article className={editorial ? "flex h-full flex-col" : "space-y-3"}>
+    <article className={editorial ? CARD_FLUSH : "space-y-3"}>
       <Link href={`/procedures/${product.slug}`} passHref className="group block">
         <div
           className={
             editorial
-              ? "relative aspect-[3/2] w-full overflow-hidden rounded-xl bg-base-200"
+              ? "relative aspect-[3/2] w-full overflow-hidden bg-base-200"
               : "relative aspect-[3/2] w-full overflow-hidden rounded-md bg-base-200"
           }
         >
@@ -59,16 +60,16 @@ export const ProcedureCard = ({ product, tone = "default" }: Props) => {
           />
         </div>
       </Link>
-      <div className={editorial ? "mt-4 flex flex-1 flex-col" : "space-y-1"}>
+      <div className={editorial ? "flex flex-1 flex-col px-6 pt-6" : "space-y-1"}>
         <div className={editorial ? "space-y-3" : "flex items-start justify-between gap-3"}>
-          <TitleTag className={editorial ? "font-display text-[1.5rem] leading-tight text-base-content" : "min-w-0 text-xl font-bold"}>
+          <TitleTag className={editorial ? CARD_TITLE : "min-w-0 text-xl font-bold"}>
             {product.name}
           </TitleTag>
           {showCmaCertifiedTag ? (
             <span
               className={
                 editorial
-                  ? "inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full border border-base-300 bg-base-100 px-2.5 py-0.5 text-[11px] text-base-content/70"
+                  ? "inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full border border-base-300 bg-base-100 px-3 py-1 text-xs text-base-content/70"
                   : "inline-flex shrink-0 items-center gap-1.5 rounded-full border border-base-300 bg-base-100 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-base-content/70"
               }
             >
@@ -86,7 +87,7 @@ export const ProcedureCard = ({ product, tone = "default" }: Props) => {
           ) : null}
         </div>
         {editorial ? (
-          <p className="mt-2 text-[0.95rem] leading-6 text-base-content/80">{humanizeMedicalCopy(product.headline)}</p>
+          <p className="mt-2 text-base leading-relaxed text-base-content/80">{humanizeMedicalCopy(product.headline)}</p>
         ) : (
           <h3 className="text-lg">{humanizeMedicalCopy(product.headline)}</h3>
         )}
@@ -94,7 +95,7 @@ export const ProcedureCard = ({ product, tone = "default" }: Props) => {
           {humanizeMedicalCopy(product.subline)}
         </p>
       </div>
-      <div className={editorial ? "mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap" : "flex flex-wrap items-end gap-2"}>
+      <div className={editorial ? "mt-auto flex flex-col gap-3 p-6 sm:flex-row sm:flex-wrap" : "flex flex-wrap items-end gap-2"}>
         {catalogItem && (
           <AddToCartButton
             slug={catalogItem.slug}

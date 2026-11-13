@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { AFTER_HEADER, BUTTON_ROW, CARD, CARD_GRID, CARD_LINK, CARD_TITLE, Section, SectionHeader } from "components/layout";
 import { Button } from "components/ui/button";
 
 export type ChooserTile = {
@@ -13,22 +14,17 @@ export type ChooserTile = {
 // "What brings you in?" Each tile is one real link: a plain question, then the treatment name.
 export default function HomeChooser({ tiles }: { tiles: ChooserTile[] }) {
   return (
-    <section className="w-full border-t border-base-300 py-16 md:py-24" aria-labelledby="home-chooser-heading">
-      <h2 id="home-chooser-heading" className="font-display text-3xl leading-tight tracking-tight text-base-content md:text-[2.6rem]">
-        What brings you in?
-      </h2>
-      <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-home-chooser>
+    <Section labelledBy="home-chooser-heading">
+      <SectionHeader id="home-chooser-heading" title="What brings you in?" />
+      <ul className={`${AFTER_HEADER} ${CARD_GRID}`} data-home-chooser>
         {tiles.map((tile) => (
-          <li key={tile.href} className="flex">
-            <Link
-              href={tile.href}
-              className="group flex w-full flex-col justify-between rounded-2xl border border-base-300 bg-base-100 p-6 transition-colors hover:border-secondary/50 hover:bg-base-200/60 md:p-7"
-            >
-              <span className="font-display text-xl leading-snug text-base-content md:text-[1.4rem]">{tile.question}</span>
+          <li key={tile.href}>
+            <Link href={tile.href} className={`group ${CARD} ${CARD_LINK} justify-between`}>
+              <span className={CARD_TITLE}>{tile.question}</span>
               <span className="mt-8 flex items-baseline justify-between gap-3 text-sm">
                 <span className="text-secondary">
                   {tile.treatment}
-                  <span aria-hidden="true" className="ml-1.5 inline-block transition-transform group-hover:translate-x-0.5">
+                  <span aria-hidden="true" className="ml-2 inline-block transition-transform group-hover:translate-x-0.5">
                     →
                   </span>
                 </span>
@@ -38,7 +34,7 @@ export default function HomeChooser({ tiles }: { tiles: ChooserTile[] }) {
           </li>
         ))}
       </ul>
-      <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+      <div className={`${AFTER_HEADER} ${BUTTON_ROW}`}>
         <Button asChild size="lg" className="w-full sm:w-auto">
           <Link href="/consult">Book a visit</Link>
         </Button>
@@ -46,6 +42,6 @@ export default function HomeChooser({ tiles }: { tiles: ChooserTile[] }) {
           <Link href="/procedures">All treatments</Link>
         </Button>
       </div>
-    </section>
+    </Section>
   );
 }

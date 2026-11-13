@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 
+import { CARD_GRID, Section } from "components/layout";
+
 // Searches the homepage shows up for, each answered under its own H2 (ScaleSleek f_vh33afabed, 2026-11-06).
 // The clinic uses only Xeomin, and does not offer Hydrafacial or dermal fillers: each answer says so plainly.
 export type SearchAnswer = {
@@ -59,11 +61,11 @@ export const getSearchAnswers = (xeominCash: string, xeominCard: string): Search
 
 export default function SearchAnswers({ xeominCash, xeominCard }: { xeominCash: string; xeominCard: string }) {
   return (
-    <section className="scroll-mt-28 border-t border-base-300 py-12 md:py-14" aria-label="Botox alternative, Hydrafacial, and dermal fillers in Williamsburg" data-search-answers>
-      <div className="grid gap-8 lg:grid-cols-3 lg:gap-10">
+    <Section tight label="Botox alternative, Hydrafacial, and dermal fillers in Williamsburg" data-search-answers>
+      <div className={CARD_GRID}>
         {getSearchAnswers(xeominCash, xeominCard).map((item) => (
           <article key={item.id} aria-labelledby={item.id}>
-            <h2 id={item.id} className="font-display text-xl font-normal leading-snug tracking-tight text-base-content/90">
+            <h2 id={item.id} className="font-display text-xl leading-snug tracking-tight text-base-content/90">
               {item.heading}
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-base-content/75">
@@ -86,6 +88,6 @@ export default function SearchAnswers({ xeominCash, xeominCard }: { xeominCash: 
           </article>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

@@ -13,9 +13,12 @@ function isMobileUserAgent() {
 export default function CtaButtons({
   consultHref = "/consult",
   align = "center",
+  size,
 }: {
   consultHref?: string;
   align?: "center" | "start";
+  /** Button height; section-level rows use "lg". Defaults to "lg" when aligned to the start. */
+  size?: "default" | "lg";
 }) {
   const { handleCopy } = useCopyToClipBoard();
 
@@ -25,21 +28,25 @@ export default function CtaButtons({
     else handleCopy("8047389483");
   };
   const alignedStart = align === "start";
+  const buttonSize = size ?? (alignedStart ? "lg" : "default");
+  const fullOnPhone = alignedStart || buttonSize === "lg";
   return (
     <div
       className={
         alignedStart
           ? "flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center"
-          : "flex flex-wrap items-center justify-center gap-2"
+          : fullOnPhone
+            ? "flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center"
+            : "flex flex-wrap items-center justify-center gap-2"
       }
     >
-      <Button asChild size={alignedStart ? "lg" : "default"} className={alignedStart ? "w-full sm:w-auto" : undefined}>
+      <Button asChild size={buttonSize} className={fullOnPhone ? "w-full sm:w-auto" : undefined}>
         <Link href={consultHref}>Book a Consultation</Link>
       </Button>
       <Button
         variant="secondary"
-        size={alignedStart ? "lg" : "default"}
-        className={alignedStart ? "w-full sm:w-auto" : undefined}
+        size={buttonSize}
+        className={fullOnPhone ? "w-full sm:w-auto" : undefined}
         onClick={handleAction}
       >
         +1 (804) 738-9483

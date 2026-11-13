@@ -2,6 +2,7 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import AddToCartButton from "components/add-to-cart-button";
+import { CARD_FLUSH, CARD_TITLE } from "components/layout";
 import { Button } from "components/ui/button";
 import { getCatalogConfigBySlug } from "config/commerce-catalog";
 import { humanizeMedicalCopy } from "lib/humanize";
@@ -23,10 +24,10 @@ export const ProductCard = ({ name, image, headline, subline, slug, tone = "defa
   const TitleTag = editorial ? "h3" : "h2";
 
   return (
-    <article className={editorial ? "flex h-full flex-col" : "space-y-3"}>
+    <article className={editorial ? CARD_FLUSH : "space-y-3"}>
       <Link href={`/products/${slug}`} passHref className="group relative block">
         {editorial ? (
-          <div className="relative aspect-square overflow-hidden rounded-xl bg-base-200">
+          <div className="relative aspect-square overflow-hidden bg-base-200">
             <Image
               fill
               src={image}
@@ -52,18 +53,18 @@ export const ProductCard = ({ name, image, headline, subline, slug, tone = "defa
           </div>
         )}
       </Link>
-      <div className={editorial ? "mt-4 flex flex-1 flex-col" : "space-y-1"}>
-        <TitleTag className={editorial ? "font-display text-[1.5rem] leading-tight text-base-content" : "text-xl font-bold"}>
+      <div className={editorial ? "flex flex-1 flex-col px-6 pt-6" : "space-y-1"}>
+        <TitleTag className={editorial ? CARD_TITLE : "text-xl font-bold"}>
           {name}
         </TitleTag>
         {editorial ? (
-          <p className="mt-2 text-[0.95rem] leading-6 text-base-content/80">{humanizeMedicalCopy(headline)}</p>
+          <p className="mt-2 text-base leading-relaxed text-base-content/80">{humanizeMedicalCopy(headline)}</p>
         ) : (
           <h3 className="text-lg">{humanizeMedicalCopy(headline)}</h3>
         )}
         <p className={editorial ? "mt-2 text-sm leading-6 text-base-content/65" : "text-sm"}>{humanizeMedicalCopy(subline)}</p>
       </div>
-      <div className={editorial ? "mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap" : "flex flex-wrap items-end gap-2"}>
+      <div className={editorial ? "mt-auto flex flex-col gap-3 p-6 sm:flex-row sm:flex-wrap" : "flex flex-wrap items-end gap-2"}>
         {catalogItem && (
           <AddToCartButton
             slug={catalogItem.slug}

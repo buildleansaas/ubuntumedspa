@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import DirectionsButton from "components/directions-button";
 import TrackedPhoneLink from "components/tracked-phone-link";
+import { BUTTON_ROW_CENTER, BandCta } from "components/layout";
 import { Button } from "components/ui/button";
 
 const ADDRESS = "3900 Powhatan Parkway, Williamsburg, VA 23188";
@@ -17,60 +18,48 @@ const LOCATION_LINKS = [
 
 export default function HomeVisit() {
   return (
-    <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" aria-labelledby="home-visit-heading">
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.7fr)] lg:gap-16">
-        <div className="max-w-xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Visit The Clinic</p>
-          <h2
-            id="home-visit-heading"
-            className="font-display mt-4 text-4xl font-medium leading-[1.12] tracking-tight text-base-content md:text-5xl"
-          >
-            Williamsburg Med Spa
-          </h2>
-          <address className="mt-6 text-lg not-italic leading-relaxed text-base-content/90">{ADDRESS}</address>
-          <p className="mt-3 text-base leading-relaxed text-base-content/80">Hours: Mon–Fri 6–8pm; Sat–Sun 10am–6pm</p>
-          <p className="mt-5 max-w-[62ch] text-base leading-relaxed text-base-content/80">
-            Patients visit from Williamsburg, James City County, Kingsmill, New Town, Yorktown, Newport News, Toano,
-            Norge, Lightfoot, and Ford&apos;s Colony.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button asChild size="lg" className="w-full sm:w-auto">
-              <TrackedPhoneLink href={PHONE_HREF} location="location_nap">
-                +1 (804) 738-9483
-              </TrackedPhoneLink>
-            </Button>
-            <DirectionsButton
-              address={ADDRESS}
-              latitude={37.2729739}
-              longitude={-76.7635887}
-              variant="secondary"
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              Get Directions
-            </DirectionsButton>
-          </div>
-        </div>
-
-        <div className="border-t border-base-300 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-2">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Williamsburg and nearby</p>
-          <ul className="mt-5 divide-y divide-base-300 border-y border-base-300">
-            {LOCATION_LINKS.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="flex items-center justify-between py-3.5 text-base text-base-content transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-4"
-                >
-                  {item.label}
-                  <span aria-hidden className="text-base-content/40">
-                    →
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+    <BandCta headingId="home-visit-heading" eyebrow="Visit The Clinic" title="Williamsburg Med Spa">
+      <address className="mt-6 text-lg not-italic leading-relaxed text-base-content/90">{ADDRESS}</address>
+      <p className="mt-2 text-base leading-relaxed text-base-content/80">Hours: Mon–Fri 6–8pm; Sat–Sun 10am–6pm</p>
+      <p className="mx-auto mt-4 max-w-[62ch] text-base leading-relaxed text-base-content/75">
+        Patients visit from Williamsburg, James City County, Kingsmill, New Town, Yorktown, Newport News, Toano,
+        Norge, Lightfoot, and Ford&apos;s Colony.
+      </p>
+      <div className={`mt-8 ${BUTTON_ROW_CENTER}`}>
+        <Button asChild size="lg" className="w-full sm:w-auto">
+          <TrackedPhoneLink href={PHONE_HREF} location="location_nap">
+            +1 (804) 738-9483
+          </TrackedPhoneLink>
+        </Button>
+        <DirectionsButton
+          address={ADDRESS}
+          latitude={37.2729739}
+          longitude={-76.7635887}
+          variant="secondary"
+          size="lg"
+          className="w-full sm:w-auto"
+        >
+          Get Directions
+        </DirectionsButton>
       </div>
-    </section>
+
+      <nav className="mt-10" aria-labelledby="home-visit-nearby">
+        <p id="home-visit-nearby" className="eyebrow">
+          Williamsburg and nearby
+        </p>
+        <ul className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2">
+          {LOCATION_LINKS.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className="text-base text-base-content underline decoration-base-300 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </BandCta>
   );
 }

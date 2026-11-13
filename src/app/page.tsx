@@ -4,6 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 
 import CtaFooter from "components/cta-footer";
+import {
+  AFTER_HEADER,
+  BUTTON_ROW,
+  ROW,
+  ROWS,
+  SPLIT,
+  SPLIT_MEDIA,
+  SPLIT_TEXT,
+  Section,
+  SectionHeader,
+  Split,
+} from "components/layout";
 import { Button } from "components/ui/button";
 import NamedReviews from "components/named-reviews";
 import StructuredData from "components/structured-data";
@@ -108,8 +120,6 @@ const PRICE_ROWS = [
   { name: "OH-Shot", href: "/procedures/oh-shot", cash: cash("oh-shot"), card: card("oh-shot"), note: "per treatment" },
 ];
 
-const sectionHeading = "font-display text-3xl leading-tight tracking-tight text-base-content md:text-[2.6rem]";
-
 // Tidewater homepage: main's sections and visual elements in the Tidewater palette and type (clear buttons per
 // screen), plus the treatment chooser and price list. Every section ends with a clear booking button.
 export default async function Page() {
@@ -121,65 +131,68 @@ export default async function Page() {
 
       <HomeChooser tiles={CHOOSER_TILES} />
 
-      <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-labelledby="home-local-intro-heading">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:gap-16">
-        <div>
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
-            Nurse Practitioner led medical spa in Williamsburg, VA
-          </p>
-          <h2
-            id="home-local-intro-heading"
-            className="font-display mt-4 text-3xl font-medium leading-[1.15] tracking-tight text-base-content md:text-4xl"
-          >
-            Local care with Jenny Brady, MSN, RN, CPNP, PMHS for Xeomin wrinkle relaxer, PRP, sweating treatment, and medical ear piercing.
-          </h2>
-          <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">
-            Williamsburg Med Spa is a Nurse Practitioner led medical spa in Williamsburg, VA. Jenny Brady brings
-            MSN, RN, CPNP, PMHS, Cellular Medicine Association-certified OH-Shot provider training, and
-            certified Blomdahl provider training for medical ear piercing, so care starts with medical screening,
-            calm education, and treatment planning shaped around realistic goals.
-          </p>
-          <nav className="mt-6" aria-label="Williamsburg services and nearby areas">
-            <ul className="flex max-w-3xl flex-wrap gap-x-5 gap-y-2">
-              {localLinks.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    className="text-sm text-base-content underline decoration-base-300 underline-offset-[5px] transition-colors hover:text-primary hover:decoration-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-4"
-                    href={item.href}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button asChild size="lg" className="w-full sm:w-auto">
-              <Link href="/consult">Book a visit</Link>
-            </Button>
-            <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
-              <Link href="/staff/jenny-brady">About Jenny</Link>
-            </Button>
-          </div>
-        </div>
-        <figure className="mx-auto w-full max-w-sm lg:max-w-none">
-          <Image
-            src={CARPAL_TUNNEL_PHOTO.src}
-            alt={CARPAL_TUNNEL_PHOTO.alt}
-            width={CARPAL_TUNNEL_PHOTO.width}
-            height={CARPAL_TUNNEL_PHOTO.height}
-            sizes="(max-width: 448px) 90vw, 384px"
-            className="aspect-[4/5] w-full rounded-[1.75rem] object-cover object-[50%_35%]"
-          />
-          <figcaption className="mt-3 text-sm text-base-content/75">{HOME_INJECTION_CAPTION}</figcaption>
-        </figure>
-        </div>
-      </section>
+      <Section labelledBy="home-local-intro-heading">
+        <Split
+          ratio="even"
+          text={
+            <>
+              <SectionHeader
+                id="home-local-intro-heading"
+                eyebrow="Nurse Practitioner led medical spa in Williamsburg, VA"
+                title="Local care with Jenny Brady, MSN, RN, CPNP, PMHS for Xeomin wrinkle relaxer, PRP, sweating treatment, and medical ear piercing."
+                intro={
+                  <>
+                    Williamsburg Med Spa is a Nurse Practitioner led medical spa in Williamsburg, VA. Jenny Brady brings
+                    MSN, RN, CPNP, PMHS, Cellular Medicine Association-certified OH-Shot provider training, and
+                    certified Blomdahl provider training for medical ear piercing, so care starts with medical screening,
+                    calm education, and treatment planning shaped around realistic goals.
+                  </>
+                }
+              />
+              <nav className="mt-6" aria-label="Williamsburg services and nearby areas">
+                <ul className="flex flex-wrap gap-x-6 gap-y-2">
+                  {localLinks.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        className="text-sm text-base-content underline decoration-base-300 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-4"
+                        href={item.href}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+              <div className={`mt-8 ${BUTTON_ROW}`}>
+                <Button asChild size="lg" className="w-full sm:w-auto">
+                  <Link href="/consult">Book a visit</Link>
+                </Button>
+                <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+                  <Link href="/staff/jenny-brady">About Jenny</Link>
+                </Button>
+              </div>
+            </>
+          }
+          media={
+            <figure className="w-full max-w-sm lg:ml-auto">
+              <Image
+                src={CARPAL_TUNNEL_PHOTO.src}
+                alt={CARPAL_TUNNEL_PHOTO.alt}
+                width={CARPAL_TUNNEL_PHOTO.width}
+                height={CARPAL_TUNNEL_PHOTO.height}
+                sizes="(max-width: 448px) 90vw, 384px"
+                className="aspect-[4/5] w-full rounded-2xl object-cover object-[50%_35%]"
+              />
+              <figcaption className="mt-3 text-sm text-base-content/75">{HOME_INJECTION_CAPTION}</figcaption>
+            </figure>
+          }
+        />
+      </Section>
       <NamedReviews heading="Clinic reviews" />
       <Procedures
         variant="editorial"
         featured={
-          <div className="grid gap-8">
+          <div className="grid gap-16 md:gap-20">
             <OhShotCallout />
             <BlomdahlCallout />
           </div>
@@ -189,67 +202,61 @@ export default async function Page() {
       <SearchAnswers xeominCash={XEOMIN_CASH} xeominCard={XEOMIN_CARD} />
 
       {/* Prices, written out */}
-      <section className="w-full border-t border-base-300 py-16 md:py-24" aria-labelledby="home-prices-heading">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.6fr)] lg:gap-20">
-          <div>
-            <h2 id="home-prices-heading" className={sectionHeading}>
-              Prices, written out
-            </h2>
-            <p className="mt-5 max-w-[36ch] text-base leading-relaxed text-base-content/75">
-              Cash price first. The card price applies online and to card payments in the office.
-            </p>
-          </div>
-          <div>
-            <ul className="border-t border-base-300" data-home-prices>
-              {PRICE_ROWS.map((row) => (
-                <li key={row.href} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-base-300 py-5">
-                  <Link href={row.href} className="rounded-sm text-lg text-base-content hover:text-secondary">
-                    {row.name}
-                  </Link>
-                  <span className="w-full sm:w-auto sm:text-right">
-                    <span className="text-lg text-base-content">{row.cash} cash</span>{" "}
-                    <span className="block text-sm text-base-content/60 sm:inline">
-                      {row.note} · {row.card} by card or online
+      <Section labelledBy="home-prices-heading">
+        <Split
+          align="start"
+          text={
+            <SectionHeader
+              id="home-prices-heading"
+              title="Prices, written out"
+              intro="Cash price first. The card price applies online and to card payments in the office."
+            />
+          }
+          media={
+            <>
+              <ul className={ROWS} data-home-prices>
+                {PRICE_ROWS.map((row) => (
+                  <li key={row.href} className={ROW}>
+                    <Link href={row.href} className="rounded-sm text-lg text-base-content hover:text-secondary">
+                      {row.name}
+                    </Link>
+                    <span className="sm:text-right">
+                      <span className="text-lg text-base-content">{row.cash} cash</span>{" "}
+                      <span className="block text-sm text-base-content/60 sm:inline">
+                        {row.note} · {row.card} by card or online
+                      </span>
                     </span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Button asChild size="lg" className="w-full sm:w-auto">
-                <Link href="/consult">Book a visit</Link>
-              </Button>
-              <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
-                <Link href="/prices">All prices</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+                  </li>
+                ))}
+              </ul>
+              <div className={`mt-8 ${BUTTON_ROW}`}>
+                <Button asChild size="lg" className="w-full sm:w-auto">
+                  <Link href="/consult">Book a visit</Link>
+                </Button>
+                <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+                  <Link href="/prices">All prices</Link>
+                </Button>
+              </div>
+            </>
+          }
+        />
+      </Section>
 
       <ProviderCallout />
       <Products variant="editorial" />
       <LatestPosts />
       <BotoxPartyCallout />
-      <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" aria-labelledby="home-faq-heading">
-        <div className="max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Williamsburg med spa FAQ</p>
-          <h2
-            id="home-faq-heading"
-            className="font-display mt-4 text-4xl font-medium leading-[1.12] tracking-tight text-base-content md:text-5xl"
-          >
-            Quick answers before you book
-          </h2>
-          <div className="mt-8 divide-y divide-base-300 border-y border-base-300">
-            {homeFaqs.map((faq) => (
-              <article key={faq.question} className="py-6 md:py-8">
-                <h3 className="font-display text-2xl font-medium leading-tight text-base-content md:text-3xl">{faq.question}</h3>
-                <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-base-content/85">{faq.answer}</p>
-              </article>
-            ))}
-          </div>
+      <Section labelledBy="home-faq-heading">
+        <SectionHeader id="home-faq-heading" eyebrow="Williamsburg med spa FAQ" title="Quick answers before you book" />
+        <div className={`${AFTER_HEADER} ${ROWS}`}>
+          {homeFaqs.map((faq) => (
+            <article key={faq.question} className={`${SPLIT} gap-y-3 border-b border-base-300 py-8`}>
+              <h3 className={`font-display text-2xl leading-snug text-base-content ${SPLIT_TEXT.wide}`}>{faq.question}</h3>
+              <p className={`max-w-[62ch] text-base leading-relaxed text-base-content/85 ${SPLIT_MEDIA.wide}`}>{faq.answer}</p>
+            </article>
+          ))}
         </div>
-      </section>
+      </Section>
       <HomeVisit />
       <CtaFooter variant="editorial" />
     </div>

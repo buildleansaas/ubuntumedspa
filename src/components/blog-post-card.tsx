@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import CategoryTag from "components/category-tag";
 import DateTag from "components/date-tag";
+import { CARD_BODY, CARD_FLUSH, CARD_TITLE } from "components/layout";
 import type { PostMetadata } from "lib/blog";
 import { humanizeMedicalCopy } from "lib/humanize";
 
@@ -67,16 +68,17 @@ export default function BlogPostCard({
   }
 
   const imageClassName = editorial
-    ? "relative block aspect-[3/2] overflow-hidden rounded-xl bg-base-200"
+    ? "relative block aspect-[3/2] overflow-hidden bg-base-200"
     : variant === "featured"
       ? "relative block aspect-[16/10] overflow-hidden rounded-lg border border-base-300 bg-base-200 shadow-sm md:aspect-auto"
       : "relative block aspect-[16/10] overflow-hidden rounded-lg border border-base-300 bg-base-200 shadow-sm";
-  const articleClassName =
-    variant === "featured"
+  const articleClassName = editorial && variant !== "featured"
+    ? `group relative isolate ${CARD_FLUSH}`
+    : variant === "featured"
       ? "group relative isolate md:grid md:grid-cols-[1.05fr_0.95fr] md:items-stretch md:gap-8"
       : "group relative isolate flex h-full flex-col";
   const titleClassName = editorial
-    ? "font-display text-[1.4rem] leading-tight text-base-content text-balance"
+    ? `${CARD_TITLE} text-balance`
     : variant === "featured"
       ? "text-2xl/snug sm:text-3xl/snug font-semibold tracking-tight text-base-content text-balance"
       : "text-lg/snug font-semibold tracking-tight text-base-content text-balance";
@@ -99,7 +101,7 @@ export default function BlogPostCard({
         <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
       </Link>
 
-      <div className={variant === "featured" ? "min-w-0 py-6 md:py-8" : "min-w-0 flex-1 pt-5"}>
+      <div className={variant === "featured" ? "min-w-0 py-6 md:py-8" : editorial ? `min-w-0 ${CARD_BODY}` : "min-w-0 flex-1 pt-5"}>
         <div className="flex flex-wrap items-center gap-2">
           <DateTag date={article.date} />
           {article.tags.slice(0, variant === "featured" ? 3 : 2).map((tag) => (
