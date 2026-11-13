@@ -4,6 +4,23 @@ import StructuredData from "components/structured-data";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 import HomeOwnerLink from "components/home-owner-link";
+import {
+  AFTER_HEADER,
+  BUTTON_ROW,
+  CARD,
+  CARD_GRID,
+  CARD_GRID_2,
+  CARD_LINK,
+  CARD_TITLE,
+  H1,
+  INTRO,
+  ROWS,
+  SPLIT,
+  SPLIT_MEDIA,
+  SPLIT_TEXT,
+  Section,
+  SectionHeader,
+} from "components/layout";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Locations Near Williamsburg, VA | Williamsburg Med Spa",
@@ -79,129 +96,133 @@ const locationFaqs = [
 
 export default function LocationsIndexPage() {
   return (
-    <div className="w-full py-14 md:py-20">
+    <>
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations"]} />
       <StructuredData type="FAQ" faqs={locationFaqs} />
-      <header className="mb-10 max-w-3xl text-left md:mb-14">
-        <h1 className="text-3xl md:text-5xl font-light">Areas We Serve</h1>
-        <p className="text-base md:text-lg text-base-content/70 mt-3 max-w-2xl">
-          Our primary clinic is in Williamsburg, VA. Many patients visit us from nearby communities across James City
-          County, the Peninsula, and surrounding neighborhoods because the trip feels worth it for thoughtful care,
-          natural-looking results, and a visit planned around them.
-        </p>
-      </header>
 
-      <section className="mb-8 rounded-2xl border border-base-300 bg-base-200 p-6 md:mb-10 md:p-8">
-        <h2 className="text-2xl md:text-3xl font-light">Why patients make the trip</h2>
-        <p className="text-base md:text-lg text-base-content/80 mt-3 max-w-4xl">
-          Williamsburg Med Spa is set up as a destination clinic, not a rushed stop. Patients often come in from nearby
-          cities because they want clear recommendations, gentle aesthetic care, and enough time to make the visit feel
-          intentional.
-        </p>
-        <p className="text-sm md:text-base text-base-content/70 mt-3 max-w-4xl">
-          If you would rather have us come to you, Mobile Med Spa is available not only in these locations, but across
-          Virginia as well.
-        </p>
-      </section>
-
-      <section className="mb-10 md:mb-12">
+      <Section tight labelledBy="locations-heading">
         <div className="max-w-3xl">
-          <h2 className="text-2xl md:text-3xl font-light">Typical travel times and routes</h2>
-          <p className="text-base md:text-lg text-base-content/80 mt-2">
-            Here are the routes many patients use when planning a visit to Williamsburg. Travel times are typical
-            estimates and can vary with traffic.
+          <h1 id="locations-heading" className={H1}>Areas We Serve</h1>
+          <p className={`mt-6 ${INTRO}`}>
+            Our primary clinic is in Williamsburg, VA. Many patients visit us from nearby communities across James City
+            County, the Peninsula, and surrounding neighborhoods because the trip feels worth it for thoughtful care,
+            natural-looking results, and a visit planned around them.
           </p>
         </div>
+      </Section>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-6">
+      <Section labelledBy="why-make-the-trip">
+        <SectionHeader
+          id="why-make-the-trip"
+          title="Why patients make the trip"
+          intro={
+            <>
+              Williamsburg Med Spa is set up as a destination clinic, not a rushed stop. Patients often come in from
+              nearby cities because they want clear recommendations, gentle aesthetic care, and enough time to make the
+              visit feel intentional.
+            </>
+          }
+        >
+          <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-base-content/75">
+            If you would rather have us come to you, Mobile Med Spa is available not only in these locations, but across
+            Virginia as well.
+          </p>
+        </SectionHeader>
+      </Section>
+
+      <Section labelledBy="travel-times">
+        <SectionHeader
+          id="travel-times"
+          title="Typical travel times and routes"
+          intro={
+            <>
+              Here are the routes many patients use when planning a visit to Williamsburg. Travel times are typical
+              estimates and can vary with traffic.
+            </>
+          }
+        />
+        <div className={`${AFTER_HEADER} ${CARD_GRID}`}>
           {travelGroups.map((group) => (
-            <div key={group.title} className="rounded-xl border border-base-300 bg-base-100 p-5">
-              <h3 className="text-lg font-semibold">{group.title}</h3>
-              <p className="text-sm font-medium text-primary mt-2">{group.time}</p>
-              <p className="text-sm text-base-content/80 mt-3">{group.route}</p>
+            <div key={group.title} className={CARD}>
+              <h3 className={CARD_TITLE}>{group.title}</h3>
+              <p className="mt-3 text-sm font-medium text-secondary">{group.time}</p>
+              <p className="mt-3 text-base leading-relaxed text-base-content/75">{group.route}</p>
             </div>
           ))}
         </div>
-      </section>
+      </Section>
 
-      <section className="mb-10 rounded-2xl border border-base-300 p-6 md:mb-12 md:p-8">
-        <h2 className="text-2xl md:text-3xl font-light">If you want us to travel to you</h2>
-        <p className="text-base md:text-lg text-base-content/80 mt-3 max-w-4xl">
-          Mobile Med Spa is available well beyond the communities listed below. If traveling to Williamsburg is not the
-          best fit, we can discuss appointments across Virginia.
-        </p>
-        <p className="text-base md:text-lg text-base-content/80 mt-3 max-w-4xl">
-          For parties, private events, and special opportunities, destination travel may also be available worldwide by
-          request.
-        </p>
-        <div className="flex flex-wrap gap-3 mt-6">
-          <Button asChild>
+      <Section labelledBy="travel-to-you">
+        <SectionHeader id="travel-to-you" title="If you want us to travel to you" />
+        <div className="mt-6 max-w-[62ch] space-y-4 text-lg leading-relaxed text-base-content/80">
+          <p>
+            Mobile Med Spa is available well beyond the communities listed below. If traveling to Williamsburg is not the
+            best fit, we can discuss appointments across Virginia.
+          </p>
+          <p>
+            For parties, private events, and special opportunities, destination travel may also be available worldwide by
+            request.
+          </p>
+        </div>
+        <div className={`${AFTER_HEADER} ${BUTTON_ROW}`}>
+          <Button asChild size="lg">
             <Link href="/consult">Ask About Mobile or Event Travel</Link>
           </Button>
-          <Button asChild variant="secondary">
+          <Button asChild size="lg" variant="outline">
             <Link href="/locations/williamsburg-va">View Williamsburg Clinic Details</Link>
           </Button>
         </div>
-      </section>
+      </Section>
 
-      <section className="mb-10 md:mb-12 border border-base-300 bg-base-100 p-6 md:p-8">
-        <div className="max-w-3xl">
-          <h2 className="mt-3 text-2xl md:text-3xl font-light">Start with the area closest to your route</h2>
-          <p className="mt-3 text-base md:text-lg text-base-content/80">
-            If you searched for a med spa near me, these local pages explain the practical route, visit timing, and treatment starting points before you book.
-          </p>
-        </div>
-        <div className="mt-5 flex flex-wrap gap-2">
+      <Section labelledBy="closest-area">
+        <SectionHeader
+          id="closest-area"
+          title="Start with the area closest to your route"
+          intro="If you searched for a med spa near me, these local pages explain the practical route, visit timing, and treatment starting points before you book."
+        />
+        <div className={`${AFTER_HEADER} ${BUTTON_ROW}`}>
           {localIntentLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm text-secondary transition-colors hover:text-base-content after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none"
-            >
-              {link.label}
+            <Button key={link.href} asChild size="lg" variant="outline">
+              <Link href={link.href}>{link.label}</Link>
+            </Button>
+          ))}
+        </div>
+      </Section>
+
+      <Section labelledBy="nearby-communities">
+        <SectionHeader
+          id="nearby-communities"
+          title="Nearby communities we regularly serve"
+          intro={
+            <>
+              These are some of the local areas patients most often travel from when booking a visit to Williamsburg Med
+              Spa.
+            </>
+          }
+        />
+        <div className={`${AFTER_HEADER} ${CARD_GRID_2}`}>
+          {locations.map((location) => (
+            <Link key={location.slug} href={`/locations/${location.slug}`} className={`${CARD} ${CARD_LINK}`}>
+              <h2 className={CARD_TITLE}>{location.name}</h2>
+              <p className="mt-3 text-base leading-relaxed text-base-content/75">{location.summary}</p>
             </Link>
           ))}
         </div>
-      </section>
-
-      <section>
-        <div className="max-w-3xl mb-4">
-          <h2 className="text-2xl md:text-3xl font-light">Nearby communities we regularly serve</h2>
-          <p className="text-base md:text-lg text-base-content/80 mt-2">
-            These are some of the local areas patients most often travel from when booking a visit to Williamsburg Med
-            Spa.
-          </p>
-        </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-        {locations.map((location) => (
-          <Link
-            key={location.slug}
-            href={`/locations/${location.slug}`}
-            className="block rounded-xl border border-base-300 p-4 hover:border-primary transition-colors text-left"
-          >
-            <h2 className="text-lg font-semibold mb-1">{location.name}</h2>
-            <p className="text-sm text-base-content/80">{location.summary}</p>
-          </Link>
-        ))}
-      </div>
-      </section>
+      </Section>
 
       {/* The same locationFaqs array feeds the FAQPage schema above, so the visible answers and the schema stay identical. */}
-      <section className="mt-10 max-w-3xl md:mt-12" aria-labelledby="location-faqs">
-        <h2 id="location-faqs" className="mb-4 text-2xl md:text-3xl font-light">
-          Questions
-        </h2>
-        <dl className="space-y-5">
+      <Section labelledBy="location-faqs">
+        <SectionHeader id="location-faqs" title="Questions" />
+        <dl className={`${AFTER_HEADER} ${ROWS}`}>
           {locationFaqs.map(({ question, answer }) => (
-            <div key={question} data-faq-question>
-              <dt className="font-semibold text-base-content">{question}</dt>
-              <dd className="mt-1 text-base text-base-content/80">{answer}</dd>
+            <div key={question} data-faq-question className={`${SPLIT} gap-y-3 border-b border-base-300 py-8`}>
+              <dt className={`font-display text-2xl leading-snug text-base-content ${SPLIT_TEXT.wide}`}>{question}</dt>
+              <dd className={`max-w-[62ch] text-base leading-relaxed text-base-content/85 ${SPLIT_MEDIA.wide}`}>{answer}</dd>
             </div>
           ))}
         </dl>
-      </section>
-      <HomeOwnerLink className="mt-8" />
-    </div>
+        <HomeOwnerLink className="mt-8" />
+      </Section>
+    </>
   );
 }

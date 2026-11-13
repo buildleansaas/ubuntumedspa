@@ -57,6 +57,8 @@ export function Section({
   );
 }
 
+/** The page title scale (hero H1). */
+export const H1 = "font-display text-4xl font-light leading-tight tracking-tight text-base-content sm:text-5xl lg:text-6xl";
 /** The one section heading scale. */
 export const H2 = "font-display text-3xl font-light leading-tight tracking-tight text-base-content md:text-[2.75rem]";
 /** Intro paragraph under a section heading. */

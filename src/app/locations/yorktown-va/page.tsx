@@ -5,6 +5,7 @@ import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 import HomeOwnerLink, { XeominHubLink } from "components/home-owner-link";
+import { AFTER_HEADER, BUTTON_ROW, CARD, CARD_GRID, CARD_LINK, cardGridFor, CARD_TITLE, H1, H2, INTRO, ROW, ROWS, Section, SectionHeader, Split } from "components/layout";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near Yorktown, VA | Xeomin, a Botox Alternative",
@@ -43,79 +44,89 @@ const serviceLinks = [
 
 export default function YorktownPage() {
   return (
-    <div className="w-full py-14 md:py-20">
+    <>
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations", "Yorktown"]} />
-      <header className="mb-10 max-w-3xl text-left md:mb-14">
-        <h1 className="text-3xl md:text-5xl font-light">Med Spa Near Yorktown, VA</h1>
-        <p className="text-base md:text-lg text-base-content/70 mt-2">
-          Consult-led aesthetic, regenerative, and medical ear piercing care for Yorktown patients willing to make a planned Williamsburg visit.
-        </p>
-      </header>
 
-      <section className="prose prose-neutral max-w-none text-base-content/90">
-        <p>
-          If you are in Yorktown searching for a med spa near me, Williamsburg Med Spa is a nearby option for natural-looking injectables, PRP therapies, hyperhidrosis care, and appointment-based Blomdahl medical ear piercing.
-        </p>
-        <p>
-          This page is built for Yorktown patients comparing a calm clinical visit against retail or rushed alternatives. Expect a provider-led consultation, clear discussion of risks and aftercare, and treatment planning based on your goals rather than a one-size-fits-all package.
-        </p>
-      </section>
+      <Section tight labelledBy="yorktown-heading">
+        <div className="max-w-3xl">
+          <h1 id="yorktown-heading" className={H1}>Med Spa Near Yorktown, VA</h1>
+          <p className={`mt-6 ${INTRO}`}>
+            Consult-led aesthetic, regenerative, and medical ear piercing care for Yorktown patients willing to make a planned Williamsburg visit.
+          </p>
+          <div className="mt-6 max-w-[62ch] space-y-4 text-base leading-relaxed text-base-content/80">
+            <p>
+              If you are in Yorktown searching for a med spa near me, Williamsburg Med Spa is a nearby option for natural-looking injectables, PRP therapies, hyperhidrosis care, and appointment-based Blomdahl medical ear piercing.
+            </p>
+            <p>
+              This page is built for Yorktown patients comparing a calm clinical visit against retail or rushed alternatives. Expect a provider-led consultation, clear discussion of risks and aftercare, and treatment planning based on your goals rather than a one-size-fits-all package.
+            </p>
+          </div>
+        </div>
+      </Section>
 
-      <section className="mt-8 border border-base-300 bg-base-100 p-6 md:p-8">
-        <h2 className="text-2xl font-light">Quick read for Yorktown patients</h2>
-        <ul className="mt-4 grid gap-3 text-sm text-base-content/75 md:grid-cols-3">
-          <li>Best for Yorktown patients who want a quieter Williamsburg clinic visit rather than a high-volume retail setting.</li>
-          <li>Useful starting point for Xeomin (our wrinkle relaxer), PRP, hyperhidrosis, and medical ear piercing questions.</li>
-          <li>Families planning first earrings can review sterile equipment, hypoallergenic starter jewelry, placement, and aftercare before booking.</li>
+      <Section labelledBy="yorktown-quick-read">
+        <SectionHeader id="yorktown-quick-read" title="Quick read for Yorktown patients" />
+        <ul className={`${AFTER_HEADER} ${CARD_GRID}`}>
+          <li className={`${CARD} text-base leading-relaxed text-base-content/80`}>Best for Yorktown patients who want a quieter Williamsburg clinic visit rather than a high-volume retail setting.</li>
+          <li className={`${CARD} text-base leading-relaxed text-base-content/80`}>Useful starting point for Xeomin (our wrinkle relaxer), PRP, hyperhidrosis, and medical ear piercing questions.</li>
+          <li className={`${CARD} text-base leading-relaxed text-base-content/80`}>Families planning first earrings can review sterile equipment, hypoallergenic starter jewelry, placement, and aftercare before booking.</li>
         </ul>
-      </section>
+      </Section>
 
-      <section className="mt-8">
-        <h2 className="text-2xl font-light">Procedure-specific local starting points</h2>
-        <p className="mt-2 text-sm text-base-content/65">
-          If you searched for a med spa near me, start with the treatment family that matches your goal, then schedule a consultation if you want help choosing.
-        </p>
-        <div className="mt-4 grid gap-3 md:grid-cols-2">
+      <Section labelledBy="yorktown-starting-points">
+        <SectionHeader
+          id="yorktown-starting-points"
+          title="Procedure-specific local starting points"
+          intro="If you searched for a med spa near me, start with the treatment family that matches your goal, then schedule a consultation if you want help choosing."
+        />
+        <div className={`${AFTER_HEADER} ${cardGridFor(serviceLinks.length)}`}>
           {serviceLinks.map((link) => (
-            <Link key={link.label} href={link.href} className="rounded-xl border border-base-300 bg-base-100 p-4 transition hover:border-primary/40">
-              <span className="block text-sm font-semibold text-base-content">{link.label}</span>
-              <span className="mt-1 block text-sm text-base-content/65">{link.copy}</span>
+            <Link key={link.label} href={link.href} className={`${CARD} ${CARD_LINK}`}>
+              <span className={`block ${CARD_TITLE}`}>{link.label}</span>
+              <span className="mt-3 block text-base leading-relaxed text-base-content/75">{link.copy}</span>
             </Link>
           ))}
         </div>
-      </section>
+      </Section>
 
-      <section className="mt-8 grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
-        <div className="prose prose-neutral max-w-none text-base-content/90">
-          <h2>Getting here from Yorktown</h2>
-          <p>
-            From Yorktown, many patients use the Colonial Parkway or I-64 toward Williamsburg, then connect through Route 199 and Monticello Avenue toward Powhatan Parkway. Build in traffic buffer around school, bridge, and commuter times.
-          </p>
-          <h2>How to plan the visit</h2>
-          <ul>
-            <li>Bring current medications, skin history, and prior injectable history if relevant.</li>
-            <li>Avoid scheduling a first piercing immediately before swimming, sports, or a rushed evening.</li>
-            <li>If you are unsure which treatment fits, book the consultation first rather than guessing from a menu.</li>
-          </ul>
-        </div>
-        <aside className="rounded-xl border border-base-300 bg-base-100 p-5">
-          <h2 className="text-xl font-light">Nearby areas this page helps</h2>
-          <ul className="mt-3 space-y-2 text-sm text-base-content/70">
-            <li>Yorktown</li>
-            <li>Tabb</li>
-            <li>Grafton</li>
-            <li>Lower Peninsula</li>
-          </ul>
-        </aside>
-      </section>
+      <Section labelledBy="yorktown-getting-here">
+        <Split
+          align="start"
+          text={
+            <div>
+              <h2 id="yorktown-getting-here" className={H2}>Getting here from Yorktown</h2>
+              <p className="mt-6 text-lg leading-relaxed text-base-content/80">
+                From Yorktown, many patients use the Colonial Parkway or I-64 toward Williamsburg, then connect through Route 199 and Monticello Avenue toward Powhatan Parkway. Build in traffic buffer around school, bridge, and commuter times.
+              </p>
+              <h2 className={`mt-12 ${H2}`}>How to plan the visit</h2>
+              <ul className={`mt-6 ${ROWS}`}>
+                <li className={`${ROW} py-4 text-base text-base-content/80`}>Bring current medications, skin history, and prior injectable history if relevant.</li>
+                <li className={`${ROW} py-4 text-base text-base-content/80`}>Avoid scheduling a first piercing immediately before swimming, sports, or a rushed evening.</li>
+                <li className={`${ROW} py-4 text-base text-base-content/80`}>If you are unsure which treatment fits, book the consultation first rather than guessing from a menu.</li>
+              </ul>
+              <div className={`${AFTER_HEADER} ${BUTTON_ROW}`}>
+                <Button asChild size="lg"><Link href="/consult">Book a Consultation</Link></Button>
+                <Button asChild size="lg" variant="outline"><Link href="/locations/williamsburg-va">Williamsburg Location Details</Link></Button>
+                <DirectionsButton size="lg" variant="outline" address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2729739} longitude={-76.7635887} />
+              </div>
+              <HomeOwnerLink className="mt-8" />
+              <XeominHubLink className="mt-2" />
+            </div>
+          }
+          media={
+            <aside className={CARD}>
+              <h2 className={CARD_TITLE}>Nearby areas this page helps</h2>
+              <ul className={`mt-4 ${ROWS}`}>
+                <li className={`${ROW} py-3 text-base text-base-content/80`}>Yorktown</li>
+                <li className={`${ROW} py-3 text-base text-base-content/80`}>Tabb</li>
+                <li className={`${ROW} py-3 text-base text-base-content/80`}>Grafton</li>
+                <li className={`${ROW} py-3 text-base text-base-content/80`}>Lower Peninsula</li>
+              </ul>
+            </aside>
+          }
+        />
+      </Section>
 
-      <div className="mt-8 flex flex-wrap gap-3">
-        <Button asChild size="sm"><Link href="/consult">Book a Consultation</Link></Button>
-        <Button asChild size="sm" variant="secondary"><Link href="/locations/williamsburg-va">Williamsburg Location Details</Link></Button>
-        <DirectionsButton size="sm" address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2729739} longitude={-76.7635887} />
-      </div>
-      <HomeOwnerLink className="mt-6" />
-      <XeominHubLink className="mt-2" />
-    </div>
+    </>
   );
 }
