@@ -107,14 +107,15 @@ export default async function ProductPage(props: Params) {
               maxQuantity={catalogItem.maxQuantity}
               fulfillment={catalogItem.fulfillment}
               customerNote={catalogItem.customerNote}
+              className="mx-auto mt-4 max-w-md"
             />
           ) : (
             <CtaButtons />
           )}
         </div>
 
-        <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24" id="benefits">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
+        <div className="mx-auto mt-16 max-w-5xl scroll-mt-28 border-t border-base-300 py-16 text-left md:py-20" id="benefits">
+          <h2 className="pb-3 text-left text-3xl font-light tracking-tight text-base-content md:text-4xl">
             {"benefitsHeading" in product && product.benefitsHeading ? (
               <span className="font-bold">{product.benefitsHeading}</span>
             ) : (
@@ -123,28 +124,26 @@ export default async function ProductPage(props: Params) {
               </>
             )}
           </h2>
-          <h2 className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(product.benefitsHeadline)}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {product.benefits.map(({ emoji, benefit, description }) => (
-              <Card key={benefit} className="border-4 border-primary bg-primary text-left text-primary-content">
-                <CardHeader>
-                  <CardTitle>
-                    {emoji} {benefit}
-                  </CardTitle>
+          <h2 className="mb-8 text-xl font-light text-base-content/80 lg:text-2xl">{humanizeMedicalCopy(product.benefitsHeadline)}</h2>
+          <div className="mb-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+            {product.benefits.map(({ benefit, description }) => (
+              <Card key={benefit} className="text-left">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-xl">{benefit}</CardTitle>
                 </CardHeader>
-                <CardContent>{humanizeMedicalCopy(description)}</CardContent>
+                <CardContent className="text-base leading-relaxed text-base-content/75">{humanizeMedicalCopy(description)}</CardContent>
               </Card>
             ))}
           </div>
-          <CtaButtons />
+          <CtaButtons align="start" />
         </div>
 
-        <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24 max-w-3xl" id="faqs">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
+        <div className="mx-auto max-w-5xl scroll-mt-28 border-t border-base-300 py-16 text-left md:py-20" id="faqs">
+          <h2 className="max-w-3xl pb-3 text-left text-3xl font-light tracking-tight text-base-content md:text-4xl">
             Frequently Asked Questions about <span className="font-bold">{product.name}</span>
           </h2>
-          <h2 className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(product.faqHeadline)}</h2>
-          <Accordion type="single" collapsible className="text-left">
+          <h2 className="mb-8 text-xl font-light text-base-content/80 lg:text-2xl">{humanizeMedicalCopy(product.faqHeadline)}</h2>
+          <Accordion type="single" collapsible className="max-w-3xl text-left">
             {product.faqs.map(({ question, answer }) => (
               <AccordionItem key={question} value={question}>
                 <AccordionTrigger>{question}</AccordionTrigger>
@@ -152,7 +151,7 @@ export default async function ProductPage(props: Params) {
               </AccordionItem>
             ))}
           </Accordion>
-          <div className="flex flex-col lg:flex-row lg:justify-center xl:items-center mt-12 space-x-4">
+          <div className="mt-12 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {Boolean(articles.length) && (
               <>
                 <OpenCartButton>View Cart</OpenCartButton>
@@ -166,12 +165,12 @@ export default async function ProductPage(props: Params) {
         </div>
 
         {Boolean(articles.length) && (
-          <div className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="posts">
-            <div className="mb-16">
-              <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
+          <div className="mx-auto max-w-5xl scroll-mt-28 border-t border-base-300 py-16 md:py-20" id="posts">
+            <div className="mb-12">
+              <h2 className="pb-3 text-left text-3xl font-light tracking-tight text-base-content md:text-4xl">
                 More About <span className="font-semibold">{product.name}</span>
               </h2>
-              <p className="text-lg lg:text-xl max-w-5xl mx-auto text-center">{humanizeMedicalCopy(product.blogHeadline)}</p>
+              <p className="max-w-3xl text-left text-lg leading-relaxed text-base-content/75">{humanizeMedicalCopy(product.blogHeadline)}</p>
             </div>
             <div className="max-w-3xl mx-auto">
               {articles.map((article) => (

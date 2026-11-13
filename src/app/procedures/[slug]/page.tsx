@@ -438,7 +438,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         {/* PRP_BREAST_OWNER_COPY_CONTRACT_END */}
 
         {procedure.slug === "prp-hair-restoration" && (
-          <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="prp-hair-fit">
+          <section className="mx-auto mt-12 max-w-5xl border-y border-base-300 py-10 text-left" aria-labelledby="prp-hair-fit">
             <h2 id="prp-hair-fit" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
               Is PRP a reasonable fit for your hair-loss pattern?
             </h2>
@@ -496,7 +496,13 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
           </section>
         )}
 
-        <section className="mx-auto max-w-3xl py-16 text-left md:py-20" id="pricing">
+        <section
+          className={`mx-auto scroll-mt-28 py-16 text-left md:py-20 ${
+            catalogItem ? "grid max-w-5xl items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,25rem)] lg:gap-14" : "max-w-3xl"
+          }`}
+          id="pricing"
+        >
+          <div className="lg:pt-6">
           <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
             {catalogItem ? "Pricing & booking" : "Treatment planning"}
           </p>
@@ -505,7 +511,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               <h2 className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
                 Clear Blomdahl ear piercing pricing before you visit
               </h2>
-              <div className="mx-auto mt-6 grid max-w-4xl gap-4 text-left md:grid-cols-3">
+              <div className="mt-8 grid gap-3 text-left sm:grid-cols-3 lg:grid-cols-1">
                 {[
                   {
                     price: EAR_PIERCING_PRICES.oneEarCash,
@@ -521,11 +527,18 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                   },
                   { price: "Nurse-led", card: null, label: "Placement + aftercare", copy: "Jenny Brady, MSN, RN, CPNP, PMHS reviews fit and care." },
                 ].map(({ price, card, label, copy }) => (
-                  <div key={label} className="border border-base-300 bg-base-100 p-5">
-                    <p className="text-3xl font-semibold tracking-tight text-base-content">{price}</p>
-                    {card && <p className="mt-1 text-sm text-base-content/70">cash · {card} card/online</p>}
-                    <h3 className="mt-2 text-base font-semibold text-base-content">{label}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-base-content/70">{copy}</p>
+                  <div
+                    key={label}
+                    className="rounded-xl border border-base-300 bg-base-100/60 p-5 lg:grid lg:grid-cols-[11.5rem_minmax(0,1fr)] lg:gap-x-6"
+                  >
+                    <div>
+                      <p className="font-display text-3xl font-light tracking-tight text-base-content">{price}</p>
+                      {card && <p className="mt-1 text-sm text-base-content/70">cash · {card} card/online</p>}
+                    </div>
+                    <div>
+                      <h3 className="mt-3 text-base font-semibold text-base-content lg:mt-0">{label}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-base-content/70">{copy}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -535,11 +548,12 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               <h2 className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
                 A conservative plan built around your goals
               </h2>
-              <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-base-content/70 md:text-lg">
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-base-content/70 md:text-lg">
                 {consultationSupportCopy}
               </p>
             </>
           )}
+          </div>
 
           {catalogItem && (
             <CatalogPurchasePanel
@@ -559,8 +573,8 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
           )}
         </section>
 
-        <section className="mx-auto mt-10 max-w-4xl text-left">
-          <p className="text-base leading-relaxed text-base-content/75">{humanizeMedicalCopy(procedure.description)}</p>
+        <section className="mx-auto mt-10 max-w-5xl text-left [&>p]:max-w-3xl">
+          <p className="text-base leading-relaxed text-base-content/75 md:text-lg">{humanizeMedicalCopy(procedure.description)}</p>
           {"trademarkNote" in procedure && procedure.trademarkNote && (
             <p className="mt-3 text-xs leading-relaxed text-base-content/60">{procedure.trademarkNote}</p>
           )}
@@ -607,18 +621,18 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         </section>
 
         {satelliteGroup && (
-          <section className="mx-auto mt-8 max-w-4xl text-left" aria-labelledby="satellite-pages">
-            <div className="border border-base-300 bg-base-100 p-6">
-              <h2 id="satellite-pages" className="mt-3 text-2xl font-light tracking-tight text-base-content">
+          <section className="mx-auto mt-8 max-w-5xl text-left" aria-labelledby="satellite-pages">
+            <div className="border-t border-base-300 pt-10">
+              <h2 id="satellite-pages" className="text-3xl font-light tracking-tight text-base-content">
                 {satelliteGroup.heading}
               </h2>
-              <p className="mt-3 text-base leading-relaxed text-base-content/70">{satelliteGroup.intro}</p>
+              <p className="mt-3 max-w-3xl text-base leading-relaxed text-base-content/70">{satelliteGroup.intro}</p>
               <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {satelliteGroup.links.map(({ href, label, description }) => (
                   <Link
                     key={href}
                     href={href}
-                    className="group border border-base-300 bg-base-100 px-4 py-4 transition hover:border-primary hover:shadow-sm"
+                    className="group rounded-xl border border-base-300 bg-base-100 px-5 py-4 transition-colors hover:border-base-content/40 hover:bg-base-200/50 motion-reduce:transition-none"
                   >
                     <span className="block text-base font-semibold text-base-content group-hover:text-primary">{label}</span>
                     <span className="mt-1 block text-sm leading-relaxed text-base-content/65">{description}</span>
@@ -630,13 +644,13 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         )}
 
         {"whatToExpect" in procedure && procedure.whatToExpect && (
-          <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="what-to-expect">
+          <section className="mx-auto mt-12 max-w-5xl text-left" aria-labelledby="what-to-expect">
             <h2 id="what-to-expect" className="text-3xl font-light tracking-tight text-base-content md:text-4xl">
               {procedure.whatToExpect.heading}
             </h2>
             <ol className="mt-6 grid gap-4 md:grid-cols-2">
               {procedure.whatToExpect.steps.map(({ title, description }, index) => (
-                <li key={title} className="border border-base-300 bg-base-100 p-5">
+                <li key={title} className="rounded-xl border border-base-300 bg-base-100 p-5">
                   <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/70">Step {index + 1}</p>
                   <h3 className="mt-2 text-base font-semibold text-base-content">{title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-base-content/75">{description}</p>
@@ -647,7 +661,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         )}
 
         {procedure.slug === "blomdahl-ear-piercing" && (
-          <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="infant-ear-piercing">
+          <section className="mx-auto mt-12 max-w-5xl text-left" aria-labelledby="infant-ear-piercing">
             <h2 id="infant-ear-piercing" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
               Infant &amp; baby ear piercing with a pediatric nurse practitioner
             </h2>
@@ -664,24 +678,24 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button asChild>
-                <Link href="/procedures/blomdahl-ear-piercing/for/children">Infant &amp; kids ear piercing details</Link>
-              </Button>
-              <Button asChild variant="secondary">
                 <Link href="/consult?procedure=blomdahl-ear-piercing&intent=children&utm_source=website&utm_medium=procedure_page&utm_campaign=ear_piercing_infant">
                   Book a baby&apos;s first earrings
                 </Link>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link href="/procedures/blomdahl-ear-piercing/for/children">Infant &amp; kids ear piercing details</Link>
               </Button>
             </div>
           </section>
         )}
 
         {procedure.slug === "blomdahl-ear-piercing" && (
-          <section className="mx-auto mt-12 max-w-4xl text-left">
-            <div className="border border-base-300 bg-base-100 p-6">
-              <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">
+          <section className="mx-auto mt-12 max-w-5xl text-left">
+            <div className="border-t border-base-300 pt-10">
+              <h2 className="text-3xl font-light tracking-tight text-base-content">
                 Start with the question your family is actually asking
               </h2>
-              <p className="mt-3 text-base leading-relaxed text-base-content/70">
+              <p className="mt-3 max-w-3xl text-base leading-relaxed text-base-content/70">
                 Parents, sensitive-ear patients, re-piercing patients, and nearby families need different answers. These guides keep the Blomdahl details practical and make it easier to choose the right Williamsburg appointment.
               </p>
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -696,7 +710,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                   <Link
                     key={href}
                     href={href}
-                    className="group border border-base-300 bg-base-100 px-4 py-4 transition hover:border-primary hover:shadow-sm"
+                    className="group rounded-xl border border-base-300 bg-base-100 px-5 py-4 transition-colors hover:border-base-content/40 hover:bg-base-200/50 motion-reduce:transition-none"
                   >
                     <span className="block text-base font-semibold text-base-content group-hover:text-primary">{label}</span>
                     <span className="mt-1 block text-sm leading-relaxed text-base-content/65">{copy}</span>
@@ -708,10 +722,10 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         )}
 
         {procedure.slug === "blomdahl-ear-piercing" && (
-          <section className="mx-auto mt-8 max-w-4xl text-left">
-            <div className="border border-base-300 bg-base-100 p-6">
-              <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">Plan around your route</h2>
-              <p className="mt-3 text-base leading-relaxed text-base-content/70">
+          <section className="mx-auto mt-8 max-w-5xl text-left">
+            <div className="border-t border-base-300 pt-10">
+              <h2 className="text-3xl font-light tracking-tight text-base-content">Plan around your route</h2>
+              <p className="mt-3 max-w-3xl text-base leading-relaxed text-base-content/70">
                 Start with the local page closest to your visit for directions, expectations, and family planning notes.
               </p>
               <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -723,7 +737,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                   <Link
                     key={href}
                     href={href}
-                    className="group flex items-center justify-between border border-base-300 bg-base-100 px-4 py-3 text-sm font-medium text-base-content transition hover:border-primary hover:text-primary"
+                    className="group flex items-center justify-between rounded-xl border border-base-300 bg-base-100 px-5 py-3.5 text-sm font-medium text-base-content transition-colors hover:border-base-content/40 hover:bg-base-200/50 motion-reduce:transition-none"
                   >
                     <span>{label}</span>
                     <span aria-hidden="true" className="text-base-content/35 transition group-hover:translate-x-0.5 group-hover:text-primary">
@@ -737,12 +751,12 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         )}
 
         {(procedure.slug === "botox" || procedure.slug === "xeomin") && (
-          <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="xeomin-by-concern">
-            <div className="border border-base-300 bg-base-100 p-6">
-              <h2 id="xeomin-by-concern" className="mt-3 text-2xl font-light tracking-tight text-base-content">
+          <section className="mx-auto mt-12 max-w-5xl text-left" aria-labelledby="xeomin-by-concern">
+            <div className="border-t border-base-300 pt-10">
+              <h2 id="xeomin-by-concern" className="text-3xl font-light tracking-tight text-base-content">
                 Xeomin by concern
               </h2>
-              <p className="mt-3 text-base leading-relaxed text-base-content/70">
+              <p className="mt-3 max-w-3xl text-base leading-relaxed text-base-content/70">
                 Start with the area that bothers you most. Each page covers how Jenny plans Xeomin for that concern, what to expect, and
                 pricing.
               </p>
@@ -751,7 +765,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                   <Link
                     key={page.path}
                     href={page.path}
-                    className="group border border-base-300 bg-base-100 px-4 py-4 transition hover:border-primary hover:shadow-sm"
+                    className="group rounded-xl border border-base-300 bg-base-100 px-5 py-4 transition-colors hover:border-base-content/40 hover:bg-base-200/50 motion-reduce:transition-none"
                   >
                     <span className="block text-base font-semibold text-base-content group-hover:text-primary">
                       {page.h1.replace(/ in Williamsburg, VA$/, "")}
@@ -766,8 +780,8 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
 
         <div className="text-center">
 
-        <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24" id="benefits">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
+        <div className="mx-auto mt-16 max-w-5xl scroll-mt-28 border-t border-base-300 py-16 text-left md:py-20" id="benefits">
+          <h2 className="pb-4 text-left text-3xl font-light tracking-tight text-base-content md:text-4xl">
             {procedure.slug === "prp-breast-lift" ? (
               "What this treatment approach involves"
             ) : procedure.slug === "prp-hair-restoration" ? (
@@ -778,16 +792,14 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               <><span className="font-bold">{procedure.name}</span> Benefits</>
             )}
           </h2>
-          <p className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.benefitsHeadline)}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {procedure.benefits.map(({ emoji, benefit, description }) => (
-              <Card key={benefit} className="text-left border border-base-300 bg-base-100 text-base-content">
-                <CardHeader>
-                  <CardTitle>
-                    {emoji} {benefit}
-                  </CardTitle>
+          <p className="mb-8 max-w-3xl text-lg leading-relaxed text-base-content/75">{humanizeMedicalCopy(procedure.benefitsHeadline)}</p>
+          <div className="mb-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+            {procedure.benefits.map(({ benefit, description }) => (
+              <Card key={benefit} className="text-left">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-xl">{benefit}</CardTitle>
                 </CardHeader>
-                <CardContent>{humanizeMedicalCopy(description)}</CardContent>
+                <CardContent className="text-base leading-relaxed text-base-content/75">{humanizeMedicalCopy(description)}</CardContent>
               </Card>
             ))}
           </div>
@@ -795,12 +807,12 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
           {Boolean(procedure.testimonials?.length) && (
             <ProcedureTestimonials procedureName={procedure.name} items={procedure.testimonials} />
           )}
-          <CtaButtons consultHref={ownerConsultationHref} />
+          <CtaButtons consultHref={ownerConsultationHref} align="start" />
         </div>
 
         {hasAilments && (
-          <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24" id="applications">
-            <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
+          <div className="mx-auto max-w-5xl scroll-mt-28 border-t border-base-300 py-16 text-left md:py-20" id="applications">
+            <h2 className="pb-4 text-left text-3xl font-light tracking-tight text-base-content md:text-4xl">
               How can{" "}
               {[
                 "oh-shot",
@@ -811,36 +823,33 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               ].includes(procedure.slug) && "the "}
               <span className="font-bold">{procedure.name}</span> help me?
             </h2>
-            <p className="text-xl lg:text-2xl mb-8 font-light text-justify">{humanizeMedicalCopy(procedure.ailmentsHeadline)}</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <p className="mb-8 max-w-3xl text-lg leading-relaxed text-base-content/75">{humanizeMedicalCopy(procedure.ailmentsHeadline)}</p>
+            <div className="mb-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
               {publishedAilments
                 ?.sort((a, b) => ailmentsSortOrder[a.tag] - ailmentsSortOrder[b.tag])
                 .map(({ title, tag, description }) => {
                   return (
-                    <Card
-                      key={title}
-                      className="border border-base-300 bg-base-100 text-left text-base-content"
-                    >
-                      <CardHeader>
-                        <CardTitle className="flex items-center justify-between">
-                          {title} <Badge variant="outline">{ailmentsTagLabels[tag] ?? "Treatment Area"}</Badge>
+                    <Card key={title} className="text-left">
+                      <CardHeader className="pb-2">
+                        <CardTitle className="flex items-start justify-between gap-3 text-xl">
+                          {title} <Badge variant="outline" className="mt-1 shrink-0">{ailmentsTagLabels[tag] ?? "Treatment Area"}</Badge>
                         </CardTitle>
                       </CardHeader>
-                      <CardContent>{humanizeMedicalCopy(description)}</CardContent>
+                      <CardContent className="text-base leading-relaxed text-base-content/75">{humanizeMedicalCopy(description)}</CardContent>
                     </Card>
                   );
                 })}
             </div>
-            <CtaButtons consultHref={ownerConsultationHref} />
+            <CtaButtons consultHref={ownerConsultationHref} align="start" />
           </div>
         )}
 
-        <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24 max-w-3xl" id="faqs">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
+        <div className="mx-auto max-w-5xl scroll-mt-28 border-t border-base-300 py-16 text-left md:py-20" id="faqs">
+          <h2 className="max-w-3xl pb-4 text-left text-3xl font-light tracking-tight text-base-content md:text-4xl">
             Frequently Asked Questions about <span className="font-bold">{procedure.name}</span>
           </h2>
-          <p className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.faqHeadline)}</p>
-          <Accordion type="single" collapsible className="text-left mb-12">
+          <p className="mb-8 max-w-3xl text-lg leading-relaxed text-base-content/75">{humanizeMedicalCopy(procedure.faqHeadline)}</p>
+          <Accordion type="single" collapsible className="mb-12 max-w-3xl text-left">
             {procedure.faqs.map(({ question, answer }) => (
               <AccordionItem key={question} value={question}>
                 <AccordionTrigger>{question}</AccordionTrigger>
@@ -857,29 +866,26 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               .
             </p>
           ) : null}
-          <CtaButtons consultHref={ownerConsultationHref} />
+          <CtaButtons consultHref={ownerConsultationHref} align="start" />
         </div>
 
         {Boolean(articles.length) && (
-          <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="posts" aria-labelledby="procedure-posts-heading">
-            <div className="mx-auto max-w-6xl px-6 md:px-0">
+          <section className="mx-auto max-w-5xl scroll-mt-28 border-t border-base-300 py-16 text-left md:py-20" id="posts" aria-labelledby="procedure-posts-heading">
+            <div>
               <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div className="max-w-3xl">
                   <h2
                     id="procedure-posts-heading"
-                    className="mt-3 text-4xl/snug font-light tracking-tight text-base-content text-balance sm:text-5xl/snug md:text-6xl/snug"
+                    className="text-3xl font-light tracking-tight text-base-content text-balance md:text-4xl"
                   >
                     More About <span className="font-semibold">{procedure.name}</span>
                   </h2>
                 </div>
-                <Link
-                  href="/blog"
-                  className="self-start rounded-md border border-base-300 px-4 py-2 text-sm font-medium text-base-content transition-colors hover:border-primary/40 hover:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-base-100 md:self-auto"
-                >
-                  View all articles
-                </Link>
+                <Button asChild variant="outline" className="self-start md:self-auto">
+                  <Link href="/blog">View all articles</Link>
+                </Button>
               </div>
-              <p className="mt-5 max-w-4xl text-base leading-relaxed text-base-content/70 md:text-lg">
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-base-content/70 md:text-lg">
                 {humanizeMedicalCopy(procedure.blogHeadline)}
               </p>
               <BlogPostCollection articles={articles} tone="editorial" />
@@ -887,15 +893,15 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
           </section>
         )}
         {featuredGuide && featuredGuideCta && (
-          <div className="my-24 max-w-3xl mx-auto border-t border-base-300 pt-10 text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-3">{featuredGuideCta.heading}</h2>
-            <p className="text-base md:text-lg text-base-content/80 mb-6">{featuredGuideCta.description}</p>
+          <div className="mx-auto mb-8 mt-4 max-w-5xl border-t border-base-300 pt-12 text-left">
+            <h2 className="mb-3 text-2xl font-light tracking-tight md:text-3xl">{featuredGuideCta.heading}</h2>
+            <p className="mb-6 max-w-3xl text-base text-base-content/80 md:text-lg">{featuredGuideCta.description}</p>
             <Button asChild variant="secondary">
               <Link href={featuredGuide.href}>{featuredGuideCta.linkLabel}</Link>
             </Button>
           </div>
         )}
-        {HOME_OWNER_LINK_PROCEDURES.has(procedure.slug) && <HomeOwnerLink className="mx-auto mb-12 mt-10 max-w-3xl text-center" />}
+        {HOME_OWNER_LINK_PROCEDURES.has(procedure.slug) && <HomeOwnerLink className="mx-auto mb-12 mt-8 w-full max-w-5xl text-left" />}
         <CtaFooter consultHref={ownerConsultationHref} />
       </div>
       </div>

@@ -21,7 +21,7 @@ export default function BlogPostCollection({
   // One responsive render (Tidewater): the old version drew every card twice, a list for phones and a grid for
   // desktop, so each post's text was in the HTML two times.
   return (
-    <div className={cn("mt-12", className)}>
+    <div className={cn("mt-12 text-left", className)}>
       {featuredFirst && featuredArticle && (
         <BlogPostCard article={featuredArticle} variant="featured" priority tone={tone} />
       )}

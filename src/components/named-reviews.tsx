@@ -24,7 +24,7 @@ export default function NamedReviews({ serviceSlug, heading = "Patient reviews" 
       </h2>
       <ul className="mt-8 grid gap-6 md:grid-cols-2">
         {reviews.map((review) => (
-          <li key={review.id} className="border border-base-300 p-6">
+          <li key={review.id} className="rounded-xl border border-base-300 p-6">
             <blockquote className="text-base leading-relaxed text-base-content/85">
               <p>{review.quote}</p>
             </blockquote>
@@ -34,7 +34,7 @@ export default function NamedReviews({ serviceSlug, heading = "Patient reviews" 
               <time dateTime={review.datePublished}>{formatReviewDate(review.datePublished)}</time>
             </p>
             {review.imageSrc ? (
-              <div className="relative mt-4 aspect-[4/3] max-w-xs overflow-hidden border border-base-300 bg-base-200">
+              <div className="relative mt-4 aspect-[4/3] max-w-xs overflow-hidden rounded-lg border border-base-300 bg-base-200">
                 <Image src={review.imageSrc} alt="" fill sizes="320px" className="object-cover" />
               </div>
             ) : null}
