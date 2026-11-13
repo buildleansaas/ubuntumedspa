@@ -4,6 +4,10 @@ import Link from "next/link";
 import { Button } from "components/ui/button";
 import { getCatalogConfigBySlug } from "config/commerce-catalog";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
+import { EAR_PIERCING_PHOTOS } from "config/clinic-photos";
+
+// A real first-earrings photo (released; taken at home, so no caption names the clinic). The triplets photo already shows higher on the homepage.
+const CALLOUT_PHOTO = EAR_PIERCING_PHOTOS[1].photo;
 
 export default function BlomdahlCallout() {
   const piercing = getCatalogConfigBySlug("blomdahl-ear-piercing");
@@ -14,7 +18,7 @@ export default function BlomdahlCallout() {
       className="scroll-mt-28 border border-base-300"
       aria-labelledby="blomdahl-callout-heading"
     >
-      <article className="grid gap-8 p-6 md:p-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(14rem,18rem)] lg:items-center lg:gap-12 lg:p-10">
+      <article className="grid gap-8 p-6 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:items-center lg:gap-12 lg:p-10">
         <div className="max-w-2xl">
           <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
             Blomdahl medical ear piercing
@@ -50,12 +54,12 @@ export default function BlomdahlCallout() {
           </div>
         </div>
 
-        <div className="relative aspect-[4/5] w-full overflow-hidden border border-base-300 bg-base-200 lg:max-w-[18rem] lg:justify-self-end">
+        <div className="relative aspect-[4/5] w-full overflow-hidden border border-base-300 bg-base-200 lg:justify-self-end">
           <Image
-            src={piercing?.imagePath || "/procedure/blomdahl-family-ear-piercing-consult-jenny.webp"}
-            alt="Consultation about starter earrings for a child's ear piercing"
+            src={CALLOUT_PHOTO.src}
+            alt={CALLOUT_PHOTO.alt}
             fill
-            sizes="(max-width: 1024px) 90vw, 288px"
+            sizes="(max-width: 1024px) 90vw, 384px"
             className="object-cover"
           />
         </div>

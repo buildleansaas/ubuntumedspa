@@ -19,6 +19,7 @@ import {
   xeominClusterPages,
   type XeominClusterPage,
 } from "lib/xeomin-concerns";
+import { CrowsFeetResults } from "components/clinic-photos";
 
 const ORIGIN = "https://www.williamsburgmedspa.com";
 
@@ -102,6 +103,8 @@ export default function XeominClusterPageView({ page }: { page: XeominClusterPag
           </Button>
         </div>
       </header>
+
+      {page.slug === "crows-feet" && <CrowsFeetResults />}
 
       {page.sections.map((section) => (
         <section key={section.heading} className="mb-10 max-w-3xl md:mb-14">

@@ -1639,7 +1639,7 @@ export const procedures = [
     headline: "Xeomin® is a wrinkle relaxer in the same treatment category as Botox®, planned around your natural expression.",
     subline:
       "If you came here looking for Botox®, the wrinkle relaxer we use is Xeomin®. It treats the same common areas, such as forehead lines, frown lines, and crow's feet. Jenny Brady, MSN, RN, CPNP, PMHS plans each Xeomin visit with a conservative, movement-aware approach.",
-    image: "/procedure/blomdahl-family-ear-piercing-consult-jenny.webp",
+    image: "/procedure/botox-xeomin-consultation-planning.webp",
     price: `${formatUsdShort(25000)} credit blocks · ${cashCardLabel(25000)}`,
     trademarkNote:
       "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand.",
@@ -2162,7 +2162,7 @@ export const procedures = [
     headline: "Nurse-led Blomdahl ear piercing in Williamsburg for infants, children, teens, and adults.",
     subline:
       "A sterile, appointment-based piercing visit with Jenny Brady, hypoallergenic Blomdahl starter jewelry, placement planning, and aftercare for first earrings, re-piercing, and sensitive ears.",
-    image: "/procedure/blomdahl-family-ear-piercing-consult.webp",
+    image: "/clinic/blomdahl-pearl-stud.webp",
     price: `${formatUsdShort(4500)} per ear or ${earBothCash} for both ears cash · ${cardPriceLabel(4500)} or ${earBothCard} card/online`,
     // programmatic SEO copy
     blogHeadline:

@@ -5,6 +5,7 @@ import Link from "next/link";
 import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
+import { TreatmentRoomPhotos } from "components/clinic-photos";
 import HomeOwnerLink, { XeominHubLink } from "components/home-owner-link";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -47,6 +48,10 @@ export default function WilliamsburgLocationPage() {
           longitude={-76.7635887}
         />
       </section>
+
+      <div className="mb-10 md:mb-14">
+        <TreatmentRoomPhotos />
+      </div>
 
       <section className="mb-10 md:mb-14">
         <h2 className="text-2xl md:text-3xl font-light mb-2">Parking & Directions</h2>

@@ -18,6 +18,9 @@ import SearchAnswers, { getSearchAnswers } from "views/search-answers";
 import { buildPageMetadata } from "lib/metadata";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "lib/seo";
 import StructuredData from "components/structured-data";
+import { HomeRealPhotos } from "components/clinic-photos";
+import { CARPAL_TUNNEL_PHOTO, HOME_INJECTION_CAPTION } from "config/clinic-photos";
+import Image from "next/image";
 import { COMMERCE_CATALOG_BY_SLUG } from "config/commerce-catalog";
 import { cardPriceLabel, formatUsdShort } from "lib/price";
 
@@ -63,8 +66,10 @@ export default async function Page() {
     <div className="w-full">
       <StructuredData type="FAQ" faqs={[...getSearchAnswers(XEOMIN_CASH, XEOMIN_CARD), ...homeFaqs]} />
       <Jumbotron xeominCash={XEOMIN_CASH} xeominCard={XEOMIN_CARD} />
+      <HomeRealPhotos />
       <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-labelledby="home-local-intro-heading">
-        <div className="max-w-3xl">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:gap-16">
+        <div>
           <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
             Nurse Practitioner led medical spa in Williamsburg, VA
           </p>
@@ -94,6 +99,18 @@ export default async function Page() {
               ))}
             </ul>
           </nav>
+        </div>
+        <figure className="mx-auto w-full max-w-sm lg:max-w-none">
+          <Image
+            src={CARPAL_TUNNEL_PHOTO.src}
+            alt={CARPAL_TUNNEL_PHOTO.alt}
+            width={CARPAL_TUNNEL_PHOTO.width}
+            height={CARPAL_TUNNEL_PHOTO.height}
+            sizes="(max-width: 448px) 90vw, 384px"
+            className="aspect-[4/5] w-full rounded-2xl object-cover object-[50%_35%]"
+          />
+          <figcaption className="mt-3 text-sm text-base-content/75">{HOME_INJECTION_CAPTION}</figcaption>
+        </figure>
         </div>
       </section>
       <SearchAnswers xeominCash={XEOMIN_CASH} xeominCard={XEOMIN_CARD} />
