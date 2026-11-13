@@ -9,6 +9,7 @@ import Header from "components/header";
 import Footer from "components/footer";
 import { CONTAINER, Container } from "components/layout";
 import CartDrawerLoader from "components/cart-drawer-loader";
+import PageTransition from "components/page-transition";
 import { CartProvider } from "components/cart-provider";
 import { Metadata, Viewport } from "next";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, ORIGIN } from "lib/seo";
@@ -102,7 +103,7 @@ export default function Layout({ children }: LayoutProps) {
             {/* One container for every page: sections paint full-bleed bands but keep their content on this grid. */}
             <main className={CONTAINER}>
               <div className="relative flex w-full flex-col text-base-content">
-                {children}
+                <PageTransition>{children}</PageTransition>
                 <Footer />
               </div>
             </main>
