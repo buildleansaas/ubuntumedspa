@@ -79,7 +79,7 @@ const locationFaqs = [
 
 export default function LocationsIndexPage() {
   return (
-    <div className="max-w-xl md:max-w-6xl mx-auto md:px-8 py-12 md:py-16">
+    <div className="w-full py-14 md:py-20">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations"]} />
       <StructuredData type="FAQ" faqs={locationFaqs} />
       <header className="mb-10 max-w-3xl text-left md:mb-14">

@@ -24,7 +24,7 @@ const CREDENTIALS = [
 
 export default function JennyBradyPage() {
   return (
-    <div className="mx-auto max-w-5xl py-14 md:py-20">
+    <div className="w-full max-w-5xl py-14 md:py-20">
       <StructuredData type="Person" />
       <div className="grid items-start gap-8 md:grid-cols-[minmax(12rem,16rem)_minmax(0,1fr)] md:gap-14">
         <figure className="mx-auto w-full max-w-[16rem] md:mx-0">

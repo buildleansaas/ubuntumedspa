@@ -64,7 +64,7 @@ export default async function EventDetailPage(props: PageProps) {
       />
       <StructuredData type="FAQ" faqs={event.faq.items} />
 
-      <div className="max-w-xl md:max-w-7xl mx-auto md:px-8 z-10">
+      <div className="z-10 w-full">
         <section className="px-6 py-16 md:px-0 md:py-24 lg:py-28" aria-labelledby={`${event.slug}-hero-heading`}>
           <div className="mx-auto max-w-6xl">
             <div className="relative overflow-hidden border border-base-300 bg-base-200">

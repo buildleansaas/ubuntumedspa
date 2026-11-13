@@ -43,7 +43,7 @@ const serviceLinks = [
 
 export default function YorktownPage() {
   return (
-    <div className="max-w-xl md:max-w-5xl mx-auto md:px-8 py-12 md:py-16">
+    <div className="w-full py-14 md:py-20">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations", "Yorktown"]} />
       <header className="mb-10 max-w-3xl text-left md:mb-14">
         <h1 className="text-3xl md:text-5xl font-light">Med Spa Near Yorktown, VA</h1>

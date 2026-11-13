@@ -31,7 +31,7 @@ export default function XeominClusterPageView({ page }: { page: XeominClusterPag
   const siblings = xeominClusterPages.filter((sibling) => sibling.slug !== page.slug);
 
   return (
-    <main className="mx-auto max-w-xl py-12 md:max-w-5xl md:px-8 md:py-16">
+    <main className="w-full py-14 md:py-20">
       <StructuredData
         type="Breadcrumb"
         breadcrumbItems={[

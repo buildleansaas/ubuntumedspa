@@ -21,7 +21,7 @@ export default function OffersPage() {
   const offers = getActiveOffers();
 
   return (
-    <div className="mx-auto max-w-4xl py-14 md:py-20">
+    <div className="w-full max-w-4xl py-14 md:py-20">
       <StructuredData
         type="Breadcrumb"
         breadcrumbItems={[

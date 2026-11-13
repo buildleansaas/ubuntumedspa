@@ -74,7 +74,7 @@ const faqs = [
 
 export default function JamesCityCountyPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+    <div className="w-full py-14 md:py-20">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations", "James City County"]} />
       <StructuredData type="FAQ" faqs={faqs} />
 

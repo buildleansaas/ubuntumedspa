@@ -19,7 +19,7 @@ export default function EventsPage() {
   const events = getPublishedEvents();
 
   return (
-    <div className="max-w-xl md:max-w-7xl mx-auto md:px-8 py-12 md:py-16">
+    <div className="w-full py-14 md:py-20">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Events"]} />
 
       <section className="mx-auto max-w-3xl text-left">

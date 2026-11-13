@@ -26,7 +26,7 @@ export default function ServiceSatellitePageView({ page }: { page: ServiceSatell
   const links = getSatelliteLinks(page);
 
   return (
-    <main className="max-w-xl md:max-w-5xl mx-auto px-4 md:px-8 py-12 md:py-16">
+    <main className="w-full py-14 md:py-20">
       <StructuredData
         type="Breadcrumb"
         breadcrumbItems={[

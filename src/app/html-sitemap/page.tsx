@@ -99,7 +99,7 @@ export default async function HtmlSitemapPage() {
   ];
 
   return (
-    <article className="mx-auto max-w-3xl py-14 md:py-20">
+    <article className="w-full max-w-3xl py-14 md:py-20">
       <h1 className="mt-4 text-4xl leading-[1.08] tracking-tight text-base-content md:text-6xl">Sitemap</h1>
       <p className="mt-5 max-w-[62ch] text-base leading-8 text-base-content/85 md:text-lg">
         These are the public pages on williamsburgmedspa.com. Search engines use the{" "}

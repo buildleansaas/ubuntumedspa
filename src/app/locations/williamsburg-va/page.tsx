@@ -17,7 +17,7 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function WilliamsburgLocationPage() {
   return (
-    <div className="max-w-xl md:max-w-7xl mx-auto md:px-8 py-12 md:py-16">
+    <div className="w-full py-14 md:py-20">
 
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations", "Williamsburg, VA"]} />
       <header className="mb-10 max-w-3xl text-left md:mb-14">

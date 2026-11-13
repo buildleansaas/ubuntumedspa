@@ -55,7 +55,7 @@ export default async function EarPiercingIntentPage(props: Params) {
   const relatedAreas = getRelatedAreasForIntent(page);
 
   return (
-    <main className="max-w-xl md:max-w-6xl mx-auto md:px-8 py-12 md:py-16">
+    <main className="w-full py-14 md:py-20">
       <StructuredData
         type="Breadcrumb"
         breadcrumbItems={[
