@@ -3,7 +3,7 @@ import * as yup from "yup";
 
 import { AFFILIATE_REFERRAL_COOKIE, parseAffiliateCodeCookie } from "lib/affiliates";
 import { getAffiliateByCode } from "lib/affiliates.server";
-import { normalizeConsultInterests } from "lib/consult-procedure-interests";
+import { resolveConsultSelections } from "lib/consult-concerns";
 import { getMailConfig, sendMail } from "lib/mailer";
 import { createConsultRequest, updateConsultNotificationStatus } from "lib/consults";
 
@@ -11,7 +11,8 @@ const schema = yup.object({
   name: yup.string().required(),
   email: yup.string().email().required(),
   phone: yup.string().required(),
-  interests: yup.array().of(yup.string().required()).min(1).required(),
+  concerns: yup.array().of(yup.string().max(200).required()).max(20).default([]),
+  interests: yup.array().of(yup.string().max(200).required()).max(20).default([]),
   referral: yup.string().required(),
   comments: yup.string().required(),
   affiliateId: yup.string().optional(),
@@ -29,6 +30,7 @@ export async function POST(req: NextRequest) {
       name,
       email,
       phone,
+      concerns,
       interests,
       referral,
       comments,
@@ -42,7 +44,11 @@ export async function POST(req: NextRequest) {
       abortEarly: false,
       stripUnknown: true,
     });
-    const normalizedInterests = normalizeConsultInterests(interests);
+    const selections = resolveConsultSelections({ concerns, interests });
+    if ("error" in selections) {
+      return NextResponse.json({ success: false, error: selections.error }, { status: 400 });
+    }
+    const { concerns: normalizedConcerns, interests: normalizedInterests, suggestedInterests } = selections;
     const affiliateCodeFromCookie = parseAffiliateCodeCookie(req.cookies.get(AFFILIATE_REFERRAL_COOKIE)?.value);
     const resolvedAffiliate =
       affiliateCode || affiliateCodeFromCookie ? await getAffiliateByCode(affiliateCode || affiliateCodeFromCookie || "") : null;
@@ -54,7 +60,9 @@ export async function POST(req: NextRequest) {
       name,
       email,
       phone,
+      concerns: normalizedConcerns,
       interests: normalizedInterests,
+      suggestedInterests,
       referral,
       comments,
       affiliateId: finalAffiliateId,
@@ -71,12 +79,14 @@ export async function POST(req: NextRequest) {
       await sendMail({
         to: getMailConfig().leadsTo,
         replyTo: email,
-        subject: `[MED SPA LEAD] ${name}, ${normalizedInterests.join(", ")}`,
+        subject: `[MED SPA LEAD] ${name}, ${(normalizedInterests.length ? normalizedInterests : normalizedConcerns).join(", ")}`,
         text: `
           Name: ${name}
           Email: ${email}
           Phone: ${phone}
-          interests: ${normalizedInterests.join(", ")}
+          wants help with: ${normalizedConcerns.join(", ") || "Not given"}
+          treatments they picked: ${normalizedInterests.join(", ") || "None"}
+          likely treatments (from their concerns): ${suggestedInterests.join(", ") || "None"}
           comments: ${comments}
           referral: ${referral}
           affiliateId: ${finalAffiliateId || "None"}

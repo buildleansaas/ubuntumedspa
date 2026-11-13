@@ -18,6 +18,7 @@ import {
 import { getCurrentBrowserUrl, subscribeToLocationChange } from "lib/client-location";
 import { createOnceTracker, trackConsultStart, trackConsultSubmitSuccess } from "lib/analytics";
 import { getProcedureInterests } from "lib/consult-procedure-interests";
+import { NO_SELECTION_ERROR } from "lib/consult-concerns";
 import { cn } from "lib/utils";
 
 export interface FormState {
@@ -25,6 +26,7 @@ export interface FormState {
   name: string;
   phone: string;
   comments: string;
+  concerns: string[];
   interests: string[];
   referral: string;
 }
@@ -64,7 +66,7 @@ const ConsultationForm: React.FC = () => {
   const [affiliateReferral, setAffiliateReferral] = useState<AffiliateSnapshot | null>(null);
   const [sourceContext, setSourceContext] = useState<ReturnType<typeof getConsultSourceContext>>(null);
   const trackFirstInteraction = useRef(createOnceTracker(trackConsultStart)).current;
-  const wideFieldIds = ["name", "interests", "comments", "referral"] as const;
+  const wideFieldIds = ["name", "concerns", "interests", "comments", "referral"] as const;
 
   const inputClassName =
     "mt-2 w-full border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/45 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
@@ -76,19 +78,12 @@ const ConsultationForm: React.FC = () => {
     });
   };
 
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    if (e.target.checked) {
-      setFormState({
-        ...formState,
-        interests: [...formState.interests, value],
-      });
-    } else {
-      setFormState({
-        ...formState,
-        interests: formState.interests.filter((interest) => interest !== value),
-      });
-    }
+  const handleCheckboxChange = (field: "concerns" | "interests") => (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
+    setFormState((current) => ({
+      ...current,
+      [field]: checked ? [...current[field], value] : current[field].filter((item) => item !== value),
+    }));
   };
 
   useEffect(() => {
@@ -199,13 +194,15 @@ const ConsultationForm: React.FC = () => {
       name: yup.string().required(),
       email: yup.string().email().required(),
       phone: yup.string().required(),
-      interests: yup.array().of(yup.string()).required(),
+      concerns: yup.array().of(yup.string()),
+      interests: yup.array().of(yup.string()),
       referral: yup.string().required(),
       comments: yup.string().required(),
     });
 
     try {
       await schema.validate(formState);
+      if (!formState.concerns.length && !formState.interests.length) throw new Error(NO_SELECTION_ERROR);
       const response = await fetch("/api/consult", {
         body: JSON.stringify({
           ...formState,
@@ -241,6 +238,8 @@ const ConsultationForm: React.FC = () => {
 
   return (
     <form
+      method="post"
+      action="/consult"
       className="mx-auto max-w-3xl border border-base-300 bg-base-100 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10"
       onChangeCapture={trackFirstInteraction}
       onSubmit={onSubmit}
@@ -317,13 +316,14 @@ const ConsultationForm: React.FC = () => {
                   ) : null}
                 </div>
               );
-            case "checkbox":
+            case "checkbox": {
+              const field = input.id === "concerns" ? "concerns" : "interests";
               return (
                 <fieldset key={String(input.id)} className="space-y-3 md:col-span-2" aria-describedby={helperId}>
                   <legend className="block text-sm font-semibold text-base-content">{input.label}</legend>
                   <div className="grid gap-3 sm:grid-cols-2">
                     {input.options?.map((option) => {
-                      const checked = formState.interests.includes(option);
+                      const checked = formState[field].includes(option);
 
                       return (
                         <label
@@ -337,10 +337,10 @@ const ConsultationForm: React.FC = () => {
                         >
                           <input
                             type="checkbox"
-                            name="interests"
+                            name={field}
                             value={option}
                             checked={checked}
-                            onChange={handleCheckboxChange}
+                            onChange={handleCheckboxChange(field)}
                             className="mt-1 h-4 w-4 shrink-0 accent-primary"
                           />
                           <span>{option}</span>
@@ -355,6 +355,7 @@ const ConsultationForm: React.FC = () => {
                   ) : null}
                 </fieldset>
               );
+            }
             case "textarea":
               return (
                 <div className="space-y-2 md:col-span-2" key={String(input.id)}>
