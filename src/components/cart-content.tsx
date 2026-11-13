@@ -41,10 +41,10 @@ type Props = {
   onNavigate?: () => void;
 };
 
-const surfaceCardClass = "relative overflow-hidden border border-base-300 bg-base-100";
+const surfaceCardClass = "relative overflow-hidden rounded-2xl border border-base-300 bg-base-100";
 const surfaceAccentClass = "hidden";
 const eyebrowClass = "eyebrow";
-const softButtonClass = "rounded-md";
+const softButtonClass = "";
 const homeOShotHref = "/#oh-shot-callout";
 const homeOShotHash = "#oh-shot-callout";
 
@@ -65,7 +65,7 @@ function QuantityControl({
     return (
       <div
         className={cn(
-          "inline-flex items-center rounded-md border border-base-300 bg-base-200 text-sm text-base-content/80",
+          "inline-flex items-center rounded-full border border-base-300 bg-base-200 text-sm text-base-content/80",
           compact ? "px-2 py-1 text-[13px] sm:px-3 sm:py-1.5 sm:text-sm" : "px-2.5 py-1.5 sm:px-3"
         )}
       >
@@ -76,7 +76,7 @@ function QuantityControl({
 
   return (
     <div>
-      <div className="inline-flex items-center overflow-hidden rounded-md border border-base-300 bg-base-100">
+      <div className="inline-flex items-center overflow-hidden rounded-full border border-base-300 bg-base-100">
         <button
           type="button"
           aria-label={`Decrease ${item.name} quantity`}
@@ -224,7 +224,7 @@ function CartRecommendationsSection({ recommendations }: { recommendations: Cart
   if (!recommendations.length) return null;
 
   return (
-    <section className="order-1 xl:order-2 xl:pl-4" aria-labelledby="cart-recommendations-heading">
+    <section className="order-2 min-w-0 xl:pl-4" aria-labelledby="cart-recommendations-heading">
       <p className={eyebrowClass}>Related products and procedures</p>
       <h2
         id="cart-recommendations-heading"
@@ -236,7 +236,7 @@ function CartRecommendationsSection({ recommendations }: { recommendations: Cart
         Based on what&apos;s in your cart and what patients often explore next.
       </p>
 
-      <div className="mt-6 grid grid-flow-col auto-cols-[17.5rem] gap-5 overflow-x-auto pb-2 pr-4 xl:grid-flow-row xl:auto-cols-auto xl:grid-cols-1 xl:gap-8 xl:overflow-visible xl:pr-0">
+      <div className="mt-6 grid gap-8 sm:grid-cols-2 xl:grid-cols-1">
         {recommendations.map((recommendation) => {
           const fulfillmentCopy =
             recommendation.fulfillment === "appointment"
@@ -248,14 +248,14 @@ function CartRecommendationsSection({ recommendations }: { recommendations: Cart
               key={recommendation.slug}
               className="space-y-3 xl:border-t xl:border-base-300 xl:pt-8 first:xl:border-t-0 first:xl:pt-0"
             >
-              <div className="relative aspect-square overflow-hidden rounded-md bg-base-200">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-base-200">
                 {recommendation.imagePath ? (
                   <Image
                     src={recommendation.imagePath}
                     alt={recommendation.name}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 1279px) 17.5rem, 24rem"
+                    sizes="(max-width: 639px) 100vw, (max-width: 1279px) 50vw, 24rem"
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center text-primary">
@@ -548,7 +548,7 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
                           type="button"
                           aria-label={`Remove ${item.name}`}
                           onClick={() => removeItem(item.slug)}
-                          className="absolute right-0 top-0 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-base-300 bg-base-100 text-base-content/70 transition-colors duration-150 hover:bg-base-200 hover:text-base-content focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 sm:h-9 sm:w-9"
+                          className="absolute right-0 top-0 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-base-300 bg-base-100 text-base-content/70 transition-colors duration-150 hover:bg-base-200 hover:text-base-content focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 sm:h-9 sm:w-9"
                         >
                           <X className="h-4 w-4" />
                         </button>
@@ -636,10 +636,10 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
         </p>
       </div>
 
-      <div className="flex flex-col gap-8 xl:grid xl:grid-cols-[minmax(0,2fr)_minmax(18rem,1fr)] xl:items-start xl:gap-10">
+      <div className="flex flex-col gap-12 xl:grid xl:grid-cols-[minmax(0,2fr)_minmax(18rem,1fr)] xl:items-start xl:gap-12">
         <CartRecommendationsSection recommendations={recommendations} />
 
-        <section className={cn("order-2 xl:order-1", !recommendations.length && "mx-auto w-full max-w-4xl")}>
+        <section className={cn("order-1 min-w-0", !recommendations.length && "mx-auto w-full max-w-4xl")}>
           <p className={cn(eyebrowClass, "mb-4")}>Current cart</p>
           {cartBody}
         </section>
