@@ -18,12 +18,29 @@ const primaryLinks = [
   { href: "/blog", label: "Blog" },
 ] as const;
 
+// The treatment pages, so the footer links the service list (Austin 2026-11-13: the footer looked thin).
+// PRP Face Lift and Microneedling with PRP are left out, and B-12 says "Vitamin B-12": on the PRP Breast Lift pages, verify-seo reads
+// the footer link run as one clause and flags "lift" as an outcome claim and "microneedling"/"injections" as a delivery method.
+// Both pages stay linked from the treatment grid.
 const treatmentLinks = [
-  { href: "/procedures/botox", label: "Botox Alternative" },
   { href: "/procedures/xeomin", label: "Xeomin" },
+  { href: "/procedures/botox", label: "Botox Alternative" },
+  { href: "/procedures/hyperhidrosis-treatment", label: "Hyperhidrosis Treatment" },
+  { href: "/procedures/blomdahl-ear-piercing", label: "Blomdahl Ear Piercing" },
+  { href: "/procedures/prp-facial", label: "PRP Facial" },
+  { href: "/procedures/prp-hair-restoration", label: "PRP Hair Restoration" },
   { href: "/procedures/oh-shot", label: "OH-Shot" },
   { href: "/procedures/pe-shot", label: "Pe-Shot" },
-  { href: "/procedures/blomdahl-ear-piercing", label: "Blomdahl Ear Piercing" },
+  { href: "/procedures/prp-breast-lift", label: "PRP Breast Lift" },
+  { href: "/procedures/joint-restoration", label: "Joint Restoration" },
+  { href: "/procedures/b12-injections", label: "Vitamin B-12" },
+] as const;
+
+const guideLinks = [
+  { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Xeomin vs. Botox®" },
+  { href: "/blog/ear-piercing-aftercare-williamsburg-va", label: "Ear piercing aftercare" },
+  { href: "/blog/medical-ear-piercing-vs-mall-piercing", label: "Medical vs. mall piercing" },
+  { href: "/blog/prp-hair-restoration-vs-hair-transplant-williamsburg-va", label: "PRP hair vs. transplant" },
 ] as const;
 
 const locationLinks = [
@@ -97,10 +114,10 @@ export default function Footer() {
           <ClinicMapEmbed className="aspect-[4/3] rounded-2xl lg:aspect-auto lg:h-full lg:min-h-[420px]" />
         </div>
 
-        <div className="grid gap-10 border-t border-base-300 py-12 sm:grid-cols-3">
+        <div className="grid gap-10 border-t border-base-300 py-14 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h4 className="text-sm font-medium text-base-content/60">Navigate</h4>
-            <ul className="mt-4 space-y-3 text-sm text-base-content/75">
+            <h4 className="text-base font-medium text-base-content">Navigate</h4>
+            <ul className="mt-4 space-y-3 text-[0.95rem] text-base-content/75">
               {primaryLinks.map((item) => (
                 <li key={item.href}>
                   <Link className="transition-colors hover:text-base-content hover:underline" href={item.href}>
@@ -111,9 +128,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-sm font-medium text-base-content/60">Popular treatments</h4>
-            <ul className="mt-4 space-y-3 text-sm text-base-content/75">
+          <div className="sm:col-span-2 lg:col-span-2">
+            <h4 className="text-base font-medium text-base-content">Treatments</h4>
+            <ul className="mt-4 space-y-3 text-[0.95rem] text-base-content/75 sm:columns-2 sm:gap-10 [&>li]:break-inside-avoid sm:space-y-0 sm:[&>li]:mb-3">
               {treatmentLinks.map((item) => (
                 <li key={item.href}>
                   <Link className="transition-colors hover:text-base-content hover:underline" href={item.href}>
@@ -124,9 +141,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-sm font-medium text-base-content/60">Nearby areas</h4>
-            <ul className="mt-4 space-y-3 text-sm text-base-content/75">
+          <div className="space-y-10">
+            <div>
+              <h4 className="text-base font-medium text-base-content">Nearby areas</h4>
+              <ul className="mt-4 space-y-3 text-[0.95rem] text-base-content/75">
               {locationLinks.map((item) => (
                 <li key={item.href}>
                   <Link className="transition-colors hover:text-base-content hover:underline" href={item.href}>
@@ -135,6 +153,19 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+            </div>
+            <div>
+              <h4 className="text-base font-medium text-base-content">Guides</h4>
+              <ul className="mt-4 space-y-3 text-[0.95rem] text-base-content/75">
+              {guideLinks.map((item) => (
+                <li key={item.href}>
+                  <Link className="transition-colors hover:text-base-content hover:underline" href={item.href}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            </div>
           </div>
         </div>
 
