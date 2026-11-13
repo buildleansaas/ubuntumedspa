@@ -135,6 +135,8 @@ export const CARPAL_TUNNEL_PHOTO = photo(
   1200
 );
 export const CARPAL_TUNNEL_CAPTION = "Jenny injecting a wrist for carpal tunnel.";
+// Austin, 2026-11-13: this is Jenny giving a PRP injection; it sits beside the homepage intro.
+export const HOME_INJECTION_CAPTION = "Jenny Brady giving a PRP injection at a patient's wrist.";
 
 export const SUPPLIES_PHOTO = photo(
   "prp-supplies-laid-out",

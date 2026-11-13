@@ -18,7 +18,7 @@ export default function OhShotCallout() {
       aria-labelledby="oh-shot-callout-heading"
     >
       <LegacyOhShotHash />
-      <article className="grid gap-8 p-6 md:p-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(14rem,18rem)] lg:items-center lg:gap-12 lg:p-10">
+      <article className="grid gap-8 p-6 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:items-center lg:gap-12 lg:p-10">
         <div className="max-w-2xl">
           <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
             Featured Women&apos;s Sexual Wellness Treatment
@@ -54,12 +54,12 @@ export default function OhShotCallout() {
           </div>
         </div>
 
-        <div className="relative aspect-[4/5] w-full overflow-hidden border border-base-300 bg-base-200 lg:max-w-[18rem] lg:justify-self-end">
+        <div className="relative aspect-[4/5] w-full overflow-hidden border border-base-300 bg-base-200 lg:justify-self-end">
           <Image
             src={ohShot.imagePath || "/procedure/oh-shot/womens-intimate-wellness-lifestyle.webp"}
             alt="Woman enjoying a confident, worry-free lifestyle after intimate wellness care planning"
             fill
-            sizes="(max-width: 1024px) 90vw, 288px"
+            sizes="(max-width: 1024px) 90vw, 384px"
             className="object-cover"
           />
         </div>

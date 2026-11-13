@@ -110,7 +110,7 @@ test("photos are placed on the right pages", () => {
     assert.ok(at > 0 && at < heroEnd, `${component} is not right under the hero`);
   }
   const home = read("src/app/page.tsx");
-  assert.ok(home.indexOf("<HomeRealPhotos />") === home.indexOf("<Jumbotron />") + "<Jumbotron />".length + 7, "homepage photos sit right under the hero");
+  assert.match(home, /<Jumbotron[^>]*\/>\s*<HomeRealPhotos \/>/, "homepage photos sit right under the hero");
   assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<TreatmentRoomPhotos \/>/);
   // Austin 2026-11-05: the treatment room is at the clinic address, so it also shows on the Williamsburg location page.
   assert.match(read("src/app/locations/williamsburg-va/page.tsx"), /<TreatmentRoomPhotos \/>/);

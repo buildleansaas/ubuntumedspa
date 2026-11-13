@@ -60,17 +60,17 @@ export const getSearchAnswers = (xeominCash: string, xeominCard: string): Search
 export default function SearchAnswers({ xeominCash, xeominCard }: { xeominCash: string; xeominCard: string }) {
   return (
     <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-label="Botox alternative, Hydrafacial, and dermal fillers in Williamsburg" data-search-answers>
-      <div className="grid max-w-3xl gap-10">
+      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
         {getSearchAnswers(xeominCash, xeominCard).map((item) => (
-          <article key={item.id} aria-labelledby={item.id}>
-            <h2 id={item.id} className="font-display text-3xl font-medium leading-[1.15] tracking-tight text-base-content md:text-4xl">
+          <article key={item.id} aria-labelledby={item.id} className="border-t-2 border-primary/30 pt-6">
+            <h2 id={item.id} className="font-display text-2xl font-medium leading-[1.2] tracking-tight text-base-content md:text-3xl">
               {item.heading}
             </h2>
-            <p className="mt-4 max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">
+            <p className="mt-4 text-base leading-relaxed text-base-content/85">
               <strong className="font-medium text-base-content">{item.question}</strong> {item.answer}
             </p>
             {item.more ? (
-              <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-base-content/85">{item.more}</p>
+              <p className="mt-3 text-base leading-relaxed text-base-content/85">{item.more}</p>
             ) : null}
             {item.links.length ? (
               <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">

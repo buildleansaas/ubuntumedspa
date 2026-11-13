@@ -282,7 +282,7 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
     maxQuantity: 2,
     requiresScheduling: true,
     fulfillment: "appointment",
-    imagePath: "/procedure/blomdahl-family-ear-piercing-consult-jenny.webp",
+    imagePath: "/clinic/blomdahl-jenny-triplets-first-earrings.webp",
     stripeProductKey: "wms_procedure_blomdahl_ear_piercing",
     stripePriceLookupKey: "wms_procedure_blomdahl_ear_piercing_45_v1",
   },

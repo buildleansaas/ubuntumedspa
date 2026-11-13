@@ -50,7 +50,8 @@ export default function Procedures({
   if (variant === "editorial") {
     return (
       <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="services" aria-labelledby="home-procedures-heading">
-        <div className="max-w-3xl">
+        <div className="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
+          <div>
           <p className="eyebrow">{kicker}</p>
           <Heading
             id="home-procedures-heading"
@@ -58,7 +59,9 @@ export default function Procedures({
           >
             Medical Spa Treatments in Williamsburg, VA
           </Heading>
-          <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">
+          </div>
+          <div>
+          <p className="max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">
             Compare Xeomin® (our wrinkle relaxer and a Botox® alternative), PRP treatments, microneedling with PRP, hyperhidrosis care, Blomdahl medical ear piercing for babies, children, teens, and adults, and vitamin B-12 injections. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation.
           </p>
           {showBotoxAlternativeLink ? (
@@ -70,6 +73,7 @@ export default function Procedures({
               .
             </p>
           ) : null}
+          </div>
         </div>
 
         {featured ? <div className="mt-12">{featured}</div> : null}
