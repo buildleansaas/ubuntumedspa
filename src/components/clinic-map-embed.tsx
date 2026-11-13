@@ -7,9 +7,9 @@ const CLINIC_MAP_QUERY = "Williamsburg Med Spa, 3900 Powhatan Parkway, Williamsb
  */
 export const CLINIC_MAP_EMBED_SRC = `https://maps.google.com/maps?q=${encodeURIComponent(CLINIC_MAP_QUERY)}&z=16&output=embed`;
 
-export default function ClinicMapEmbed() {
+export default function ClinicMapEmbed({ className = "mt-6 aspect-[16/9] max-w-xl" }: { className?: string }) {
   return (
-    <div className="relative mt-6 aspect-[16/9] w-full max-w-xl overflow-hidden border border-base-300 bg-base-200">
+    <div className={`relative w-full overflow-hidden border border-base-300 bg-base-200 ${className}`}>
       <iframe
         title="Map of Williamsburg Med Spa, 3900 Powhatan Parkway, Williamsburg, VA 23188"
         src={CLINIC_MAP_EMBED_SRC}
