@@ -5,6 +5,7 @@ import test from "node:test";
 
 import { FORM_INPUTS } from "../data";
 import { consultBookingMessage } from "./text-to-book";
+import { CONSULT_INTEREST_OPTIONS, PROCEDURE_INTERESTS } from "./consult-procedure-interests";
 import { CONSULT_CONCERNS, NO_SELECTION_ERROR, normalizeConsultConcerns, resolveConsultSelections } from "./consult-concerns";
 
 const ROOT = join(__dirname, "..", "..");
@@ -81,4 +82,9 @@ test("the privacy policy no longer says we process no sensitive information", ()
   const policy = read("src/markdown/policies/privacy.mdx");
   assert.doesNotMatch(policy, /do not process sensitive (personal )?information/i);
   assert.match(policy, /do not sell it or share it with advertising or analytics providers/);
+});
+
+test("every page prefill (/consult?procedure=) is a treatment the API keeps, and old labels still map", () => {
+  for (const value of Object.values(PROCEDURE_INTERESTS).flat()) assert.ok(CONSULT_INTEREST_OPTIONS.includes(value), value);
+  assert.deepEqual(resolveConsultSelections({ interests: ["Breast Lift"] }), { concerns: [], interests: ["PRP Breast Lift"], suggestedInterests: [] });
 });

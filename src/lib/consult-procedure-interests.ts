@@ -10,6 +10,7 @@ export const XEOMIN_INTEREST = "Xeomin (Botox alternative)";
 const LEGACY_INTEREST_ALIASES: Record<string, string> = {
   Botox: XEOMIN_INTEREST,
   Xeomin: XEOMIN_INTEREST,
+  "Breast Lift": "PRP Breast Lift",
 };
 
 /** The consult form's treatment checkboxes. The API keeps only these (after mapping legacy names). */
