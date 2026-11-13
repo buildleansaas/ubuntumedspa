@@ -5,6 +5,7 @@ import DirectionsButton from "components/directions-button";
 import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 import { cardPriceLabel, formatUsdShort } from "lib/price";
+import HomeOwnerLink from "components/home-owner-link";
 
 const xeominCash = formatUsdShort(25000);
 const xeominCard = cardPriceLabel(25000);
@@ -200,6 +201,7 @@ export default function NewportNewsPage() {
           <DirectionsButton size="sm" address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2729739} longitude={-76.7635887} />
         </div>
       </section>
+      <HomeOwnerLink className="mb-10" />
     </div>
   );
 }

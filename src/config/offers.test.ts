@@ -7,7 +7,7 @@ import React, { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { COMMERCE_CATALOG_BY_SLUG } from "./commerce-catalog";
-import { OFFERS, OFFERS_TITLE, OFFERS_DESCRIPTION, getActiveOffers, isOfferActive } from "./offers";
+import { OFFERS, OFFERS_TITLE, OFFERS_DESCRIPTION, activeOfferMetaDescription, getActiveOffers, isOfferActive } from "./offers";
 import { cardPriceCents } from "../lib/price";
 
 const ROOT = process.cwd();
@@ -100,8 +100,77 @@ test("the header shows the highlighted Offers link (desktop and mobile); footer 
   assert.match(badge, /useEffect\(\(\) => \{\s*setCount\(getActiveOffers\(\)\.length\);/);
   assert.match(badge, /if \(count === 0/);
   assert.match(read("src/components/footer.tsx"), /\{ href: "\/offers", label: "Offers" \}/);
-  assert.match(read("src/app/sitemap.ts"), /\.\.\.\(getActiveOffers\(\)\.length \? \[\{\s*url: "https:\/\/www\.williamsburgmedspa\.com\/offers",?\s*\}\] : \[\]\)/);
+  assert.match(read("src/lib/sitemap-pages.ts"), /includeOffers = getActiveOffers\(\)\.length > 0/);
+  assert.match(read("src/lib/sitemap-pages.ts"), /\.\.\.\(includeOffers \? \["\/offers"\] : \[\]\)/);
   assert.match(read("src/app/offers/page.tsx"), /getActiveOffers\(\)\.length \? metadata : \{ \.\.\.metadata, robots: \{ index: false, follow: true \} \}/);
   assert.match(read("src/app/html-sitemap/page.tsx"), /\{ href: "\/offers", label: "Offers" \}/);
   assert.match(read("src/app/procedures/[slug]/page.tsx"), /data-offer-callout=\{offer\.slug\}/);
+});
+
+test("the holiday piercing post shows the sibling offer only while it runs, from config, with a tagged /offers link", () => {
+  const { default: OfferCallout, offerEndsLabel, offerCalloutHref } =
+    require("../components/offer-callout") as typeof import("../components/offer-callout");
+  assert.equal(offerEndsLabel("2026-12-31"), "December 31, 2026");
+  assert.equal(
+    offerCalloutHref(sibling, "holiday_sibling_offer"),
+    "/offers?utm_source=website&utm_medium=blog&utm_campaign=holiday_sibling_offer#sibling-ear-piercing"
+  );
+  const render = (initialActive: boolean) =>
+    unescape(
+      renderToStaticMarkup(
+        createElement(OfferCallout, { slug: "sibling-ear-piercing", campaign: "holiday_sibling_offer", initialActive })
+      )
+    );
+  const html = render(true);
+  assert.match(html, /Sibling Ear Piercing: 2 Kids, Both Ears, \$140, through December 31, 2026\./);
+  assert.match(html, /\$140 cash instead of \$160/);
+  assert.match(html, /By card it is \$144\.50\./);
+  assert.match(html, /href="\/offers\?utm_source=website&utm_medium=blog&utm_campaign=holiday_sibling_offer#sibling-ear-piercing"/);
+  assert.equal(render(false), "", "an inactive offer renders nothing");
+  assert.equal(
+    renderToStaticMarkup(createElement(OfferCallout, { slug: "no-such-offer", campaign: "x", initialActive: true })),
+    ""
+  );
+  // Seeded from the server render, re-checked after mount (same pattern as the header badge).
+  const callout = read("src/components/offer-callout.tsx");
+  assert.match(callout, /useState\(initialActive\)/);
+  assert.match(callout, /setActive\(offer \? isOfferActive\(offer\) : false\)/);
+  assert.doesNotMatch(callout, /\$\d/, "no hand-typed dollar amounts");
+
+  const post = read("src/markdown/planning-holiday-ear-piercing-williamsburg-va.mdx");
+  assert.match(
+    post,
+    /<OfferCallout slug="sibling-ear-piercing" campaign="holiday_sibling_offer" initialActive=\{getActiveOffers\(\)\.some\(\(offer\) => offer\.slug === "sibling-ear-piercing"\)\} \/>/
+  );
+  // The offer stays out of the post's FAQ (and so its FAQPage JSON-LD), which outlives the offer.
+  const faqs = post.slice(post.indexOf("faqs:"), post.indexOf("};"));
+  assert.doesNotMatch(faqs, /sibling|offer|140/i);
+  // Existing copy is kept apart from "the regular price", so the line stays true next to the offer.
+  assert.match(post, /A holiday does not change the piercing system, the regular price, or the age guidance\./);
+});
+
+test("an offer's search snippet shows only while it runs, on the page it points to", () => {
+  const sibling = OFFERS.find((offer) => offer.slug === "sibling-ear-piercing");
+  assert.ok(sibling?.metaDescription);
+  const hub = sibling.learnMoreHref;
+  assert.equal(activeOfferMetaDescription(hub, sibling.startsOn), sibling.metaDescription);
+  assert.equal(activeOfferMetaDescription(hub, sibling.endsOn), sibling.metaDescription);
+  assert.equal(activeOfferMetaDescription(hub, "2027-01-01"), undefined, "gone the day after it ends");
+  assert.equal(activeOfferMetaDescription("/procedures/xeomin", sibling.startsOn), undefined, "only on its own page");
+  for (const offer of OFFERS.filter((item) => item.metaDescription)) {
+    const text = offer.metaDescription ?? "";
+    assert.ok(text.length <= 160, `${offer.slug}: snippet is ${text.length} characters`);
+    const cash = text.indexOf(" cash");
+    const card = text.indexOf(" card");
+    assert.ok(cash > 0 && card > cash, `${offer.slug}: cash price before card price`);
+    assert.doesNotMatch(text, /botox/i);
+  }
+  const verifier = readFileSync(join(process.cwd(), "scripts", "verify-seo.mjs"), "utf8");
+  assert.ok(verifier.includes(sibling.metaDescription), "verify:seo expects the same snippet text");
+  assert.ok(verifier.includes(`endsOn: "${sibling.endsOn}"`), "verify:seo uses the same end date");
+  assert.ok(verifier.includes(`startsOn: "${sibling.startsOn}"`), "verify:seo uses the same start date");
+  const endsLabel = new Intl.DateTimeFormat("en-US", { timeZone: "UTC", month: "short", day: "numeric" }).format(
+    new Date(`${sibling.endsOn}T00:00:00Z`)
+  );
+  assert.ok(sibling.metaDescription.includes(`through ${endsLabel}:`), "the snippet's end date is the offer's endsOn");
 });

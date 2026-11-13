@@ -4,7 +4,9 @@ import { formatUsdShort } from "./price";
 const cashPrice = (slug: string) => formatUsdShort(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
 
 // The clinic's only wrinkle relaxer is Xeomin. It does not offer Botox® brand.
-// Homepage snippet CTR test started 2026-11-04 (docs/seo/homepage-snippet-ctr-test-2026-11-04.md).
+// Homepage snippet CTR test started 2026-11-04 (docs/seo/homepage-snippet-ctr-test-2026-11-04.md). The title and meta
+// were changed 2026-11-06 (PR #173) and restored 2026-11-08: the homepage owns the med spa searches, and
+// /procedures/botox owns the Botox-alternative searches (docs/seo/williamsburg-protected-query-owner-ledger.md).
 // Keep the lead words "Medical Spa Williamsburg VA"; prices come from the catalog.
 export const DEFAULT_TITLE = "Medical Spa Williamsburg VA | Nurse-Led, Prices Posted";
 export const DEFAULT_DESCRIPTION = `Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) from ${cashPrice(

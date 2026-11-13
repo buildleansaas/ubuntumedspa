@@ -66,7 +66,9 @@ test("robots.txt disallows /review like /gbp, and the sitemap leaves it out", ()
   const robots = readFileSync(join(ROOT, "src/app/robots.txt/route.ts"), "utf8");
   assert.match(robots, /^Disallow: \/gbp$/m);
   assert.match(robots, /^Disallow: \/review$/m);
-  assert.doesNotMatch(readFileSync(join(ROOT, "src/app/sitemap.ts"), "utf8"), /["'`]\/review/);
+  for (const file of ["src/app/sitemap.ts", "src/lib/sitemap-pages.ts"]) {
+    assert.doesNotMatch(readFileSync(join(ROOT, file), "utf8"), /["'`]\/review/);
+  }
 });
 
 test("trackReviewClick sends review_click with only the CTA location", () => {

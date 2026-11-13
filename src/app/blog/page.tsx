@@ -4,6 +4,7 @@ import CtaFooter from "components/cta-footer";
 import StructuredData from "components/structured-data";
 import { getPublishedBlogPosts } from "lib/blog";
 import { buildPageMetadata } from "lib/metadata";
+import HomeOwnerLink from "components/home-owner-link";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Williamsburg Med Spa Blog | PRP, Injectables, and Treatment Education",
@@ -28,6 +29,7 @@ export default async function BlogPage() {
         </p>
       </header>
       <BlogPostCollection articles={articles} featuredFirst tone="editorial" />
+      <HomeOwnerLink className="mt-10" />
       <CtaFooter />
     </div>
   );

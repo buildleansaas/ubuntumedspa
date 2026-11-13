@@ -1,104 +1,35 @@
 import { MetadataRoute } from "next";
 
-import { procedures, products } from "data";
 import { getPublishedBlogPosts } from "lib/blog";
-import { getPublishedEvents } from "lib/events";
-import { publishedEarPiercingIntentPages } from "lib/ear-piercing-intents";
-import { publishedEarPiercingAreas } from "lib/local-service-areas";
-import { serviceSatellitePaths } from "lib/service-satellites";
-import { xeominClusterPages } from "lib/xeomin-concerns";
-import { getActiveOffers } from "config/offers";
+import { sitemapPagePaths } from "lib/sitemap-pages";
+import contentDates from "config/content-dates.json";
+
+const ORIGIN = "https://www.williamsburgmedspa.com";
+const pageDates: Record<string, string> = contentDates;
 
 // Re-generated daily so /offers leaves the sitemap after its last offer ends.
 export const revalidate = 86400;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getPublishedBlogPosts();
-  const publishedProcedures = procedures.filter((procedure) => !("published" in procedure) || procedure.published !== false);
-  const publishedProducts = products.filter((product) => !("published" in product) || product.published !== false);
-  const publishedEvents = getPublishedEvents();
+  const { beforeArticles, afterArticles } = sitemapPagePaths();
 
-  const urls = [
-    {
-      url: "https://www.williamsburgmedspa.com",
-    },
-    {
-      url: "https://www.williamsburgmedspa.com/consult",
-    },
-    {
-      url: "https://www.williamsburgmedspa.com/blog",
-    },
-    {
-      url: "https://www.williamsburgmedspa.com/procedures",
-    },
-    {
-      url: "https://www.williamsburgmedspa.com/products",
-    },
-    {
-      url: "https://www.williamsburgmedspa.com/prices",
-    },
-    ...(getActiveOffers().length ? [{
-      url: "https://www.williamsburgmedspa.com/offers",
-    }] : []),
-    {
-      url: "https://www.williamsburgmedspa.com/staff/jenny-brady",
-    },
-    {
-      url: "https://www.williamsburgmedspa.com/locations",
-    },
-    {
-      url: "https://www.williamsburgmedspa.com/locations/williamsburg-va",
-    },
-    {
-      url: "https://www.williamsburgmedspa.com/locations/james-city-county-va",
-    },
-    {
-      url: "https://www.williamsburgmedspa.com/locations/yorktown-va",
-    },
-    {
-      url: "https://www.williamsburgmedspa.com/locations/newport-news-va",
-    },
-    ...articles.map((article) => ({
-      url: `https://www.williamsburgmedspa.com${article.href}`,
-      lastModified: new Date(article.dateModified ?? article.date),
+  // lastmod is the real date each page's copy last changed: frontmatter for blog posts, git history for every other
+  // page (src/config/content-dates.json, written by `pnpm content-dates`). The blog index moves with its newest post.
+  const articleDates = articles.map((article) => new Date(article.dateModified ?? article.date));
+  const newestArticle = articleDates.reduce<Date | undefined>((newest, date) => (!newest || date > newest ? date : newest), undefined);
+  const page = (path: string) => {
+    const committed = pageDates[path] ? new Date(`${pageDates[path]}T00:00:00Z`) : undefined;
+    const lastModified = path === "/blog" && newestArticle && (!committed || newestArticle > committed) ? newestArticle : committed;
+    return { url: path === "/" ? ORIGIN : `${ORIGIN}${path}`, ...(lastModified ? { lastModified } : {}) };
+  };
+
+  return [
+    ...beforeArticles.map(page),
+    ...articles.map((article, index) => ({
+      url: `${ORIGIN}${article.href}`,
+      lastModified: articleDates[index],
     })),
-    ...publishedProcedures.map((procedure) => ({
-      url: `https://www.williamsburgmedspa.com/procedures/${procedure.slug}`,
-    })),
-    ...publishedEarPiercingAreas.map((area) => ({
-      url: `https://www.williamsburgmedspa.com/procedures/blomdahl-ear-piercing/near/${area.slug}`,
-    })),
-    ...publishedEarPiercingIntentPages.map((page) => ({
-      url: `https://www.williamsburgmedspa.com/procedures/blomdahl-ear-piercing/for/${page.slug}`,
-    })),
-    ...serviceSatellitePaths.map((path) => ({
-      url: `https://www.williamsburgmedspa.com${path}`,
-    })),
-    ...xeominClusterPages.map((page) => ({
-      url: `https://www.williamsburgmedspa.com${page.path}`,
-    })),
-    ...publishedProducts.map((product) => ({
-      url: `https://www.williamsburgmedspa.com/products/${product.slug}`,
-    })),
-    {
-      url: "https://www.williamsburgmedspa.com/privacy",
-    },
-    {
-      url: "https://www.williamsburgmedspa.com/terms",
-    },
-    {
-      url: "https://www.williamsburgmedspa.com/cookies",
-    },
-    {
-      url: "https://www.williamsburgmedspa.com/html-sitemap",
-    },
-    {
-      url: "https://www.williamsburgmedspa.com/events",
-    },
-    ...publishedEvents.map((event) => ({
-      url: `https://www.williamsburgmedspa.com${event.canonicalPath}`,
-    })),
+    ...afterArticles.map(page),
   ];
-
-  return urls;
 }

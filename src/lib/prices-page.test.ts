@@ -159,7 +159,7 @@ test("OfferCatalog JSON-LD lists every catalog item at its card price (what chec
   }
 });
 
-test("homepage snippet CTR test (2026-11-04): title and meta", () => {
+test("homepage snippet CTR test (2026-11-04; title and meta restored 2026-11-08)", () => {
   assert.equal(DEFAULT_TITLE, "Medical Spa Williamsburg VA | Nurse-Led, Prices Posted");
   assert.ok(DEFAULT_TITLE.startsWith("Medical Spa Williamsburg VA"));
   assert.ok(DEFAULT_TITLE.length <= 60, `title is ${DEFAULT_TITLE.length}`);
@@ -184,6 +184,6 @@ test("homepage snippet CTR test (2026-11-04): title and meta", () => {
 test("/prices is linked from the footer and /procedures and is in both sitemaps", () => {
   assert.match(read("src/components/footer.tsx"), /\{ href: "\/prices", label: "Prices" \}/);
   assert.match(read("src/app/procedures/page.tsx"), /href="\/prices"/);
-  assert.match(read("src/app/sitemap.ts"), /"https:\/\/www\.williamsburgmedspa\.com\/prices"/);
+  assert.match(read("src/lib/sitemap-pages.ts"), /"\/prices"/);
   assert.match(read("src/app/html-sitemap/page.tsx"), /href: "\/prices"/);
 });

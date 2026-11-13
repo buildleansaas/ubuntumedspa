@@ -25,8 +25,9 @@ import { cashCardProse, cardPriceSchemaValue } from "lib/price";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import { getHubSatelliteGroup } from "lib/service-satellites";
 import { CrowsFeetResults, EarPiercingPhotos, HyperhidrosisSteps, JointPhotos, PrpTubePhoto, RunelsTraining } from "components/clinic-photos";
-import { getActiveOffers } from "config/offers";
+import { activeOfferMetaDescription, getActiveOffers } from "config/offers";
 import { XEOMIN_HYPERHIDROSIS_OFF_LABEL, XEOMIN_OFF_LABEL_NOTE, xeominClusterPages } from "lib/xeomin-concerns";
+import HomeOwnerLink, { HOME_OWNER_LINK_PROCEDURES } from "components/home-owner-link";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
 const ailmentsTagLabels = {
@@ -104,7 +105,7 @@ export async function generateMetadata(props: Params) {
   const procedure = procedures.find((med) => med.slug === params.slug);
   const seo = procedure?.seo;
   const headingTitle = seo?.title ?? "Procedure";
-  const description = seo?.description ?? "";
+  const description = activeOfferMetaDescription(`/procedures/${params.slug}`) ?? seo?.description ?? "";
   const documentTitle =
     seo && "documentTitle" in seo && typeof seo.documentTitle === "string" && seo.documentTitle
       ? seo.documentTitle
@@ -900,6 +901,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             </Button>
           </div>
         )}
+        {HOME_OWNER_LINK_PROCEDURES.has(procedure.slug) && <HomeOwnerLink className="mx-auto mb-12 mt-10 max-w-3xl text-center" />}
         <CtaFooter consultHref={ownerConsultationHref} />
       </div>
       </div>

@@ -1,5 +1,6 @@
 import { COMMERCE_CATALOG_BY_SLUG, EAR_PIERCING_PRICES } from "config/commerce-catalog";
 import { cardPriceLabel, formatUsdShort } from "lib/price";
+import type { GbpArt } from "lib/gbp-art";
 import { GOOGLE_REVIEW_URL } from "lib/seo";
 
 /**
@@ -29,6 +30,8 @@ export type GbpPost = {
   kicker?: string;
   title: string;
   subtitle: string;
+  /** Spot illustration from lib/gbp-art; trust posts use Jenny's photo instead. */
+  art?: GbpArt;
   /** Price chip on the image, built from the catalog. */
   priceLine?: string;
   body: string;
@@ -68,6 +71,7 @@ export const GBP_POSTS: GbpPost[] = [
     publishOn: "2026-11-09",
     type: "update",
     template: "spotlight",
+    art: "studs",
     kicker: "Plan ahead for the holidays",
     title: "Holiday ear piercing",
     subtitle: "Book early and leave room for aftercare before the gatherings start.",
@@ -87,6 +91,7 @@ export const GBP_POSTS: GbpPost[] = [
     publishOn: "2026-11-16",
     type: "update",
     template: "spotlight",
+    art: "calendar",
     kicker: "A Botox® alternative",
     title: "Xeomin® before holiday photos",
     subtitle: "The fuller effect is commonly seen around two weeks, so plan ahead.",
@@ -107,6 +112,7 @@ export const GBP_POSTS: GbpPost[] = [
     type: "update",
     template: "holiday",
     holiday: "thanksgiving",
+    art: "pie",
     title: "Happy Thanksgiving",
     subtitle: "Thank you for letting us be part of your year.",
     body: paragraphs(
@@ -142,6 +148,7 @@ export const GBP_POSTS: GbpPost[] = [
     publishOn: "2026-12-07",
     type: "update",
     template: "question",
+    art: "earring-pair",
     title: "Medical Plastic or titanium starter earrings?",
     subtitle: "How the two Blomdahl starter options compare for sensitive ears.",
     body: paragraphs(
@@ -161,6 +168,7 @@ export const GBP_POSTS: GbpPost[] = [
     publishOn: "2026-12-14",
     type: "update",
     template: "question",
+    art: "vial",
     title: "Looking for Botox®? We use Xeomin®",
     subtitle: "Same treatment category as Botox®. The plan matters more than the name.",
     body: paragraphs(
@@ -181,6 +189,7 @@ export const GBP_POSTS: GbpPost[] = [
     type: "update",
     template: "holiday",
     holiday: "christmas",
+    art: "ornament",
     title: "Merry Christmas",
     subtitle: "Wishing you a warm and peaceful holiday season.",
     body: paragraphs(
@@ -199,6 +208,7 @@ export const GBP_POSTS: GbpPost[] = [
     type: "update",
     template: "holiday",
     holiday: "newyear",
+    art: "droplet",
     kicker: "New year skin",
     title: "Start the year with a PRP Facial",
     subtitle: "A facial that uses platelet-rich plasma from your own blood.",
@@ -219,6 +229,7 @@ export const GBP_POSTS: GbpPost[] = [
     publishOn: "2027-01-04",
     type: "update",
     template: "spotlight",
+    art: "hand",
     title: "Hyperhidrosis treatment",
     subtitle: "Localized treatment for underarms, palms, feet, and other sweat-prone areas.",
     priceLine: chip(`${hyperhidrosis.cash}+`, `${hyperhidrosis.card}+`),
@@ -238,6 +249,7 @@ export const GBP_POSTS: GbpPost[] = [
     publishOn: "2027-01-11",
     type: "update",
     template: "question",
+    art: "aftercare",
     title: "What does ear piercing aftercare look like?",
     subtitle: "Keep it clean, leave the starter earrings in, and know when to call.",
     body: paragraphs(
@@ -274,6 +286,7 @@ export const GBP_POSTS: GbpPost[] = [
     publishOn: "2027-01-25",
     type: "update",
     template: "spotlight",
+    art: "hair",
     kicker: "Thinning hair?",
     title: "PRP hair restoration",
     subtitle: "A non-surgical, consult-led option for select men and women.",
