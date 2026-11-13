@@ -53,7 +53,6 @@ export default function NewportNewsPage() {
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations", "Newport News"]} />
       <StructuredData type="FAQ" faqs={faqs} />
       <header className="mb-10 max-w-3xl text-left md:mb-14">
-        <p className="text-sm uppercase tracking-[0.22em] text-primary mb-3">Newport News service area</p>
         <h1 className="text-3xl md:text-5xl font-light">Med Spa Newport News, at Our Williamsburg Clinic</h1>
         <p className="text-base md:text-lg text-base-content/70 mt-3">
           There is no Newport News street address. Xeomin, PRP, and ear-piercing visits are at Williamsburg Med Spa,
@@ -129,7 +128,6 @@ export default function NewportNewsPage() {
 
       <section id="compare-treatments" className="mb-10 md:mb-12 border-y border-base-300 py-8 md:py-10 scroll-mt-24">
         <div className="max-w-4xl">
-          <p className="text-sm uppercase tracking-[0.18em] text-primary mb-2">Compare your starting point</p>
           <h2 className="text-2xl md:text-3xl font-light mb-3">Xeomin or PRP?</h2>
           <p className="text-base md:text-lg text-base-content/80 mb-6">
             The right choice depends on what you want to change. Xeomin, our wrinkle relaxer, addresses lines caused by

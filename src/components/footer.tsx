@@ -11,8 +11,8 @@ const primaryLinks = [
   { href: "/offers", label: "Offers" },
   { href: "/products", label: "Products" },
   { href: "/locations", label: "Locations" },
+  { href: "/events", label: "Events" },
   { href: "/blog", label: "Blog" },
-
 ] as const;
 
 const treatmentLinks = [
@@ -34,7 +34,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-20 w-full border-t border-base-300 text-base-content">
+    <footer className="mt-24 w-full border-t border-base-300 text-base-content">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
         <div className="py-12">
           <FooterLocationCta />
@@ -42,8 +42,7 @@ export default function Footer() {
 
         <div className="grid gap-10 border-t border-base-300 py-12 md:grid-cols-2 xl:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div className="max-w-xl">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Williamsburg Med Spa</p>
-            <h3 className="font-display mt-3 text-4xl font-medium leading-[1.1] tracking-tight text-base-content md:text-5xl">
+            <h3 className="font-display text-3xl font-light leading-[1.15] tracking-tight text-base-content md:text-4xl">
               Rejuvenate Your Life
             </h3>
             {/* PRP_BREAST_SHARED_COPY_CONTRACT_START */}
@@ -80,7 +79,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-[0.16em] text-base-content/60">Navigate</h4>
+            <h4 className="text-sm font-medium text-base-content/60">Navigate</h4>
             <ul className="mt-4 space-y-3 text-sm text-base-content/75">
               {primaryLinks.map((item) => (
                 <li key={item.href}>
@@ -93,9 +92,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-[0.16em] text-base-content/60">
-              Popular Treatments
-            </h4>
+            <h4 className="text-sm font-medium text-base-content/60">Popular treatments</h4>
             <ul className="mt-4 space-y-3 text-sm text-base-content/75">
               {treatmentLinks.map((item) => (
                 <li key={item.href}>
@@ -108,7 +105,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-[0.16em] text-base-content/60">Nearby Areas</h4>
+            <h4 className="text-sm font-medium text-base-content/60">Nearby areas</h4>
             <ul className="mt-4 space-y-3 text-sm text-base-content/75">
               {locationLinks.map((item) => (
                 <li key={item.href}>

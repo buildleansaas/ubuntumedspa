@@ -40,7 +40,6 @@ export default function FooterAffiliateCta() {
   if (!affiliateProfile) {
     return (
       <section className="w-full text-left">
-        <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Affiliate Program</p>
         <h3 className="mt-3 text-2xl/snug md:text-3xl/snug font-light tracking-tight text-base-content">
           Get your referral link and start sharing.
         </h3>
@@ -60,7 +59,6 @@ export default function FooterAffiliateCta() {
 
   return (
     <section className="w-full text-left">
-      <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Share With Your Friends</p>
       <h3 className="mt-3 text-2xl/snug md:text-3xl/snug font-light tracking-tight text-base-content">
         Your referral tools are ready.
       </h3>

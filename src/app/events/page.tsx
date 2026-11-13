@@ -23,7 +23,6 @@ export default function EventsPage() {
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Events"]} />
 
       <section className="mx-auto max-w-3xl text-left">
-        <p className="mb-3 text-sm uppercase tracking-[0.18em] text-base-content/60">Private parties</p>
         <h1 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light leading-tight">
           Host the wrinkle relaxer party your friends already keep asking about.
         </h1>
@@ -70,7 +69,6 @@ export default function EventsPage() {
             </div>
 
             <div className="p-6">
-              <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">{event.listing.eyebrow}</p>
               <h2 className="mt-3 text-2xl/snug font-light text-base-content">{event.listing.title}</h2>
               <p className="mt-3 text-base leading-relaxed text-base-content/75">{event.listing.description}</p>
 

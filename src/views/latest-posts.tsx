@@ -10,7 +10,6 @@ export default async function LatestPosts() {
     <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" aria-labelledby="latest-posts-heading">
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div className="max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Latest Guidance</p>
           <h2
             id="latest-posts-heading"
             className="font-display mt-3 text-4xl font-medium leading-[1.12] tracking-tight text-base-content text-balance md:text-5xl"

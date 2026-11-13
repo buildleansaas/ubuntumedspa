@@ -72,7 +72,6 @@ export default function ServiceSatellitePageView({ page }: { page: ServiceSatell
       </nav>
 
       <header className="mb-10 md:mb-14 max-w-3xl text-left">
-        <p className="text-sm uppercase tracking-wide text-base-content/60 mb-3">{page.eyebrow}</p>
         <h1 className="text-3xl md:text-5xl font-light leading-tight">{page.h1}</h1>
         {page.intro.map((paragraph) => (
           <p key={paragraph} className="text-base md:text-lg text-base-content/75 mt-4">
@@ -92,7 +91,6 @@ export default function ServiceSatellitePageView({ page }: { page: ServiceSatell
       {page.hubSlug === "hyperhidrosis-treatment" && page.slug === "underarm-sweating" && <HyperhidrosisSteps />}
 
       <section className="mb-10 md:mb-14 rounded-xl border border-base-300 p-5 md:p-6" id="pricing">
-        <p className="text-sm uppercase tracking-wide text-base-content/60 mb-2">{SATELLITE_TEMPLATE_COPY.pricingEyebrow}</p>
         <h2 className="text-2xl md:text-3xl font-light mb-3">{page.price.heading}</h2>
         <p className="text-2xl font-semibold tracking-tight text-base-content mb-3">{page.price.label}</p>
         <p className="text-base md:text-lg text-base-content/80">{page.price.body}</p>
@@ -151,7 +149,7 @@ export default function ServiceSatellitePageView({ page }: { page: ServiceSatell
         <h2 className="text-2xl md:text-3xl font-light mb-3">{SATELLITE_TEMPLATE_COPY.relatedHeading}</h2>
         <div className="flex flex-wrap gap-2">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary">
+            <Link key={link.href} href={link.href} className="text-sm text-secondary transition-colors hover:text-base-content after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none">
               {link.label}
             </Link>
           ))}

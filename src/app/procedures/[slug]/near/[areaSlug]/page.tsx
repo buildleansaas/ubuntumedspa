@@ -78,7 +78,6 @@ export default async function LocalInjectableServicePage(props: Params) {
       <header className="mb-10 md:mb-14 px-4 md:px-0">
         <div className={page.heroImage ? "grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(360px,0.82fr)]" : "text-center"}>
           <div className={page.heroImage ? "text-left" : "text-center"}>
-            <p className="text-sm uppercase tracking-wide text-base-content/60 mb-3">Williamsburg injectable treatment planning</p>
             <h1 className="text-3xl md:text-5xl font-light leading-tight">{page.title}</h1>
             <p className={page.heroImage ? "text-base md:text-lg text-base-content/75 mt-4 max-w-2xl" : "text-base md:text-lg text-base-content/75 mt-4 max-w-3xl mx-auto"}>
               {page.intro}
@@ -86,7 +85,7 @@ export default async function LocalInjectableServicePage(props: Params) {
             {page.heroChips ? (
               <div className={page.heroImage ? "flex flex-wrap gap-2 mt-5" : "flex flex-wrap justify-center gap-2 mt-5"}>
                 {page.heroChips.map((chip) => (
-                  <span key={chip} className="rounded-full border border-base-300 bg-base-100 px-3 py-1 text-xs md:text-sm text-base-content/75">
+                  <span key={chip} className="text-sm text-base-content/70 after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none">
                     {chip}
                   </span>
                 ))}
@@ -220,7 +219,6 @@ export default async function LocalInjectableServicePage(props: Params) {
       {page.pricing ? (
         <section className="mb-10 md:mb-14 px-4 md:px-0">
           <div className="rounded-xl border border-base-300 bg-base-100 p-5 md:p-6">
-            <p className="text-sm uppercase tracking-wide text-base-content/60 mb-2">Pricing and treatment credit</p>
             <h2 className="text-2xl md:text-3xl font-light mb-3">{page.pricing.heading}</h2>
             <p className="text-base md:text-lg text-base-content/80 mb-3">{page.pricing.body}</p>
             <p className="text-sm text-base-content/65">{page.pricing.note}</p>
@@ -269,7 +267,7 @@ export default async function LocalInjectableServicePage(props: Params) {
               <p className="text-base md:text-lg text-base-content/80">{page.providerNote.body}</p>
               <div className="flex flex-wrap gap-2">
                 {page.providerNote.links.map((link) => (
-                  <Link key={link.href} href={link.href} className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary">
+                  <Link key={link.href} href={link.href} className="text-sm text-secondary transition-colors hover:text-base-content after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none">
                     {link.label}
                   </Link>
                 ))}
@@ -295,7 +293,7 @@ export default async function LocalInjectableServicePage(props: Params) {
         <h2 className="text-2xl md:text-3xl font-light mb-3">Related Williamsburg pages</h2>
         <div className="flex flex-wrap gap-2">
           {page.relatedLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary">
+            <Link key={link.href} href={link.href} className="text-sm text-secondary transition-colors hover:text-base-content after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none">
               {link.label}
             </Link>
           ))}

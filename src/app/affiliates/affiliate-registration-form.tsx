@@ -198,7 +198,6 @@ export default function AffiliateRegistrationForm({
   if (affiliateProfile) {
     return (
       <div className={isEmbedded ? embeddedAffiliateToolsShellClassName : shellClassName}>
-        <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Your referral tools</p>
         <h3 className="mt-3 text-2xl font-light text-base-content">Your link is live.</h3>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-base-content/75">
           We found the affiliate tied to <span className="font-medium text-base-content">{affiliateProfile.email}</span>.

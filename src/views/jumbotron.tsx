@@ -42,7 +42,6 @@ export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: stri
     <section className="py-12 md:py-16 lg:py-20" id="procedures" aria-labelledby="home-hero-heading">
       <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(16rem,22rem)] lg:gap-16">
         <div className="max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Williamsburg, Virginia</p>
           <h1
             id="home-hero-heading"
             className="font-display mt-4 text-[2.45rem] font-medium leading-[1.08] tracking-tight text-base-content sm:text-5xl md:text-6xl lg:text-[4.15rem]"
@@ -63,7 +62,7 @@ export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: stri
           </p>
           <ul className="mt-6 flex max-w-[68ch] flex-wrap gap-2" aria-label="Jenny Brady credentials and certifications">
             {CREDENTIALS.map((credential) => (
-              <li key={credential} className="border border-base-300 px-3 py-1 text-sm text-base-content/85">
+              <li key={credential} className="text-sm text-base-content/75 after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none">
                 {credential}
               </li>
             ))}

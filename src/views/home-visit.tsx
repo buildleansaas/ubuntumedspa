@@ -20,7 +20,6 @@ export default function HomeVisit() {
     <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" aria-labelledby="home-visit-heading">
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.7fr)] lg:gap-16">
         <div className="max-w-xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Visit The Clinic</p>
           <h2
             id="home-visit-heading"
             className="font-display mt-4 text-4xl font-medium leading-[1.12] tracking-tight text-base-content md:text-5xl"

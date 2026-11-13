@@ -39,7 +39,6 @@ export default function PricesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(offerCatalog).replace(/</g, "\\u003c") }}
       />
 
-      <p className="eyebrow">Posted prices</p>
       <h1 className="font-display mt-4 text-4xl font-medium leading-[1.1] tracking-tight text-base-content md:text-6xl">
         {PRICES_H1}
       </h1>

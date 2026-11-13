@@ -22,7 +22,6 @@ export default function BotoxPartyCallout() {
         </div>
 
         <div className="max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Wrinkle Relaxer Party</p>
 
           <h2
             id="botox-party-callout-heading"

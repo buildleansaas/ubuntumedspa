@@ -52,21 +52,34 @@ function Tile({ photo, caption, aspect = "aspect-[4/5]", badge }: { photo: Clini
           {badge}
         </span>
       )}
-      <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent px-4 pb-3 pt-12 text-sm leading-snug text-white">
+      <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-neutral/80 via-neutral/30 to-transparent px-4 pb-3 pt-12 text-sm leading-snug text-white">
         {caption}
       </figcaption>
     </figure>
   );
 }
 
-function SectionHeader({ id, eyebrow, heading, intro }: { id: string; eyebrow: string; heading: string; intro?: string }) {
+// Tidewater: the eyebrow label is shown only where `showEyebrow` is set (the homepage), as a quiet sentence-case note.
+function SectionHeader({
+  id,
+  eyebrow,
+  heading,
+  intro,
+  showEyebrow = false,
+}: {
+  id: string;
+  eyebrow: string;
+  heading: string;
+  intro?: string;
+  showEyebrow?: boolean;
+}) {
   return (
     <div className="max-w-2xl">
-      <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/70">{eyebrow}</p>
-      <h2 id={id} className="font-display mt-3 text-3xl font-medium leading-tight tracking-tight text-base-content md:text-4xl">
+      {showEyebrow && <p className="text-sm text-base-content/65">{eyebrow}</p>}
+      <h2 id={id} className={`font-display ${showEyebrow ? "mt-3" : ""} text-3xl leading-tight tracking-tight text-base-content md:text-[2.4rem]`}>
         {heading}
       </h2>
-      {intro && <p className="mt-3 text-base leading-relaxed text-base-content/80 md:text-lg">{intro}</p>}
+      {intro && <p className="mt-4 text-base leading-relaxed text-base-content/75 md:text-lg">{intro}</p>}
     </div>
   );
 }
@@ -75,7 +88,7 @@ function SectionHeader({ id, eyebrow, heading, intro }: { id: string; eyebrow: s
 export function CrowsFeetResults() {
   return (
     <section className="scroll-mt-28 py-12 text-left md:py-16" aria-labelledby="crows-feet-results" data-clinic-photos="crows-feet">
-      <div className="grid items-center gap-8 rounded-3xl bg-base-200/60 p-6 md:p-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12">
+      <div className="grid items-center gap-8 rounded-[2rem] bg-base-200 p-6 md:p-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12">
         <div>
           <SectionHeader id="crows-feet-results" eyebrow="Real patient photos" heading={CROWS_FEET_HEADING} intro={CROWS_FEET_INTRO} />
           <p className="mt-6 max-w-md text-sm leading-relaxed text-base-content/65" data-results-caption>
@@ -134,7 +147,7 @@ export function TrainedBy({ trainers = ["runels", "piccirillo"] }: { trainers?: 
   const shown = TRAINERS.filter((trainer) => trainers.includes(trainer.key));
   return (
     <section className="py-8 text-left" aria-label="Jenny's training" data-clinic-photos="trained-by">
-      <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/70">Trained by</p>
+      <p className="text-sm text-base-content/65">Trained by</p>
       <ul className={`mt-4 grid gap-4 ${shown.length > 1 ? "md:grid-cols-2" : "max-w-xl"}`}>
         {shown.map((trainer) => (
           <li key={trainer.key} className="flex items-center gap-4 rounded-2xl border border-base-300 bg-base-100 p-3 pr-5" data-clinic-photos={trainer.key}>
@@ -161,32 +174,33 @@ export function PiccirilloTraining() {
   return <TrainedBy trainers={["piccirillo"]} />;
 }
 
-/** Homepage: the before/after showcase and the triplets, right under the hero. */
+/** Homepage: the before/after showcase and the triplets, in one quiet marsh-mist band. */
 export function HomeRealPhotos() {
   const triplets = EAR_PIERCING_PHOTOS[0];
   return (
-    <section className="scroll-mt-28 py-12 md:py-16" aria-labelledby="home-real-photos" data-clinic-photos="home">
-      <div className="grid items-start gap-8 rounded-3xl bg-base-200/60 p-6 md:p-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-12">
+    <section className="w-full scroll-mt-28 py-10 md:py-16" aria-labelledby="home-real-photos" data-clinic-photos="home">
+      <div className="grid items-start gap-10 rounded-[2rem] bg-base-200 px-5 py-10 sm:px-8 md:px-12 md:py-14 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] lg:gap-14">
         <div>
           <SectionHeader
             id="home-real-photos"
             eyebrow="Real photos from Jenny's patients"
             heading="Real patients, real results"
             intro="Xeomin for crow's feet, before and after."
+            showEyebrow
           />
-          <div className="mt-6">
+          <div className="mt-8">
             <BeforeAfterShowcase />
           </div>
-          <p className="mt-4 text-sm leading-relaxed text-base-content/65">
+          <p className="mt-5 max-w-[65ch] text-sm leading-relaxed text-base-content/65">
             {RESULTS_CAPTION}{" "}
             <Link href="/procedures/xeomin" className="link link-primary">
               Xeomin details
             </Link>
           </p>
         </div>
-        <div className="lg:pt-24">
+        <div className="lg:pt-[8.5rem]">
           <Tile photo={triplets.photo} caption={triplets.caption} />
-          <p className="mt-3 text-sm">
+          <p className="mt-4 text-sm">
             <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
               Ear piercing details
             </Link>

@@ -146,7 +146,6 @@ export default function LocationsIndexPage() {
 
       <section className="mb-10 md:mb-12 border border-base-300 bg-base-100 p-6 md:p-8">
         <div className="max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Local med spa searches</p>
           <h2 className="mt-3 text-2xl md:text-3xl font-light">Start with the area closest to your route</h2>
           <p className="mt-3 text-base md:text-lg text-base-content/80">
             If you searched for a med spa near me, these local pages explain the practical route, visit timing, and treatment starting points before you book.
@@ -157,7 +156,7 @@ export default function LocationsIndexPage() {
             <Link
               key={link.href}
               href={link.href}
-              className="border border-base-300 bg-base-100 px-3 py-1.5 text-sm text-base-content/75 transition hover:border-primary hover:text-primary"
+              className="text-sm text-secondary transition-colors hover:text-base-content after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none"
             >
               {link.label}
             </Link>

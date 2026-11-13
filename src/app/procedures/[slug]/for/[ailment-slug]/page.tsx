@@ -218,7 +218,6 @@ export default async function AilmentPage(props: Params) {
         {procedure.slug === "botox" && (
           <section className="scroll-mt-28 max-w-3xl border-t border-base-300 py-16 md:py-24" id="botox-consultation">
             <div className="border border-base-300 bg-base-200 p-6 text-left md:p-10">
-              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Wrinkle relaxer consultation</p>
               <h2 className="mt-3 text-2xl md:text-4xl mx-auto leading-tight pb-4 font-light">
                 Plan Xeomin around the area you actually want to treat
               </h2>
@@ -276,7 +275,6 @@ export default async function AilmentPage(props: Params) {
         {metadata.relatedGuide && (
           <section className="scroll-mt-28 max-w-3xl border-t border-base-300 py-16 md:py-24" id="guide">
             <div className="border border-base-300 bg-base-200 p-6 text-left md:p-10">
-              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">{metadata.relatedGuide.eyebrow}</p>
               <h2 className="mt-3 text-2xl md:text-4xl mx-auto leading-tight pb-4 font-light">
                 {metadata.relatedGuide.heading}
               </h2>

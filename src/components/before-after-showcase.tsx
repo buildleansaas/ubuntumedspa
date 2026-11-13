@@ -16,7 +16,7 @@ function Half({ photo, label }: { photo: ClinicPhoto; label: string }) {
         decoding="async"
         className="h-full w-full object-cover"
       />
-      <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-4 pb-3 pt-10 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-white">
+      <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-neutral/70 to-transparent px-4 pb-3 pt-10 text-sm font-medium text-white">
         {label}
       </span>
     </div>
@@ -30,7 +30,7 @@ export default function BeforeAfterShowcase() {
 
   return (
     <div>
-      <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-base-300 shadow-sm" data-active-pair={pair.id}>
+      <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-base-300" data-active-pair={pair.id}>
         <Half photo={pair.before} label={BEFORE_LABEL} />
         <Half photo={pair.after} label={pair.afterLabel} />
       </div>
@@ -43,10 +43,10 @@ export default function BeforeAfterShowcase() {
               role="tab"
               aria-selected={index === active}
               onClick={() => setActive(index)}
-              className={`rounded-full border px-4 py-1.5 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${
+              className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
                 index === active
                   ? "border-primary bg-primary text-primary-content"
-                  : "border-base-300 bg-base-100 text-base-content/75 hover:border-primary hover:text-primary"
+                  : "border-base-300 bg-base-100 text-base-content/75 hover:border-secondary hover:text-secondary"
               }`}
             >
               Result {index + 1}

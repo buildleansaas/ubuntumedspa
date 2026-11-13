@@ -88,11 +88,10 @@ test("/offers renders one H1, cash before card, the terms, and a text-Jenny CTA"
   }
 });
 
-test("the header shows the highlighted Offers link (desktop and mobile); footer and sitemaps list /offers", () => {
-  const header = read("src/components/header.tsx");
-  assert.match(header, /<OffersNavLink initialCount=\{offerCount\} \/>/);
-  assert.match(header, /<OffersNavLink initialCount=\{offerCount\} variant="compact" \/>/);
-  assert.match(header, /const offerCount = getActiveOffers\(\)\.length;/);
+// Tidewater design preview: the header keeps four links and one button, so /offers moved to the footer (Navigate list).
+// The badge component stays in the repo, hydration-safe, for wherever it is placed next.
+test("the footer, html sitemap and sitemaps list /offers; the Offers badge stays hydration-safe", () => {
+  assert.doesNotMatch(read("src/components/header.tsx"), /OffersNavLink/);
   const badge = read("src/components/offers-nav-link.tsx");
   // The first client render must match the server HTML (no hydration mismatch): seed from the prop, recount after mount.
   assert.match(badge, /useState\(initialCount\)/);

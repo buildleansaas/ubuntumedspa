@@ -28,7 +28,6 @@ function ArticleHeader({ metadata }: { metadata: Metadata }) {
 
   return (
     <header className="mx-auto max-w-3xl">
-      <p className="eyebrow">Journal</p>
       <h1 className="mt-4 text-4xl leading-[1.08] tracking-tight text-balance text-base-content sm:text-5xl md:text-6xl">
         {metadata.title}
       </h1>

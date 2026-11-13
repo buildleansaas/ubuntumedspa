@@ -5,7 +5,6 @@ import { Button } from "components/ui/button";
 export default function NotFound() {
   return (
     <div className="mx-auto max-w-2xl py-20 md:py-28">
-      <p className="eyebrow">404</p>
       <h1 className="mt-4 text-4xl leading-[1.1] tracking-tight text-base-content md:text-6xl">This page is not available</h1>
       <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-base-content/85">
         The address may have changed. Return home, review treatments, or request a consultation.

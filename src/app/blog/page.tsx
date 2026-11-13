@@ -20,7 +20,6 @@ export default async function BlogPage() {
     <div className="mx-auto max-w-6xl px-6 md:px-8">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Blog"]} />
       <header className="max-w-3xl py-14 text-left md:py-20">
-        <p className="eyebrow">Treatment Education</p>
         <h1 className="mt-4 text-4xl leading-[1.08] tracking-tight text-balance text-base-content sm:text-5xl md:text-6xl">
           Williamsburg Med Spa Blog
         </h1>

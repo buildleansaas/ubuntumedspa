@@ -213,7 +213,6 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <section className="grid items-center gap-10 border-b border-base-300 pb-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)]">
           <div className="text-left">
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Williamsburg med spa procedure</p>
             <h1 className="max-w-4xl text-4xl font-light leading-tight tracking-tight text-base-content md:text-6xl">
               {pageHeading}
             </h1>
@@ -245,7 +244,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                   <Link
                     key={href}
                     href={href}
-                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
+                    className="text-secondary transition-colors hover:text-base-content after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none"
                   >
                     {label}
                   </Link>
@@ -264,7 +263,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                   <Link
                     key={href}
                     href={href}
-                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
+                    className="text-secondary transition-colors hover:text-base-content after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none"
                   >
                     {label}
                   </Link>
@@ -299,7 +298,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                   <Link
                     key={href}
                     href={href}
-                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
+                    className="text-secondary transition-colors hover:text-base-content after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none"
                   >
                     {label}
                   </Link>
@@ -312,7 +311,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                   <Link
                     key={page.path}
                     href={page.path}
-                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
+                    className="text-secondary transition-colors hover:text-base-content after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none"
                   >
                     {page.label}
                   </Link>
@@ -440,7 +439,6 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
 
         {procedure.slug === "prp-hair-restoration" && (
           <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="prp-hair-fit">
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Choose the right next step</p>
             <h2 id="prp-hair-fit" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
               Is PRP a reasonable fit for your hair-loss pattern?
             </h2>
@@ -611,7 +609,6 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         {satelliteGroup && (
           <section className="mx-auto mt-8 max-w-4xl text-left" aria-labelledby="satellite-pages">
             <div className="border border-base-300 bg-base-100 p-6">
-              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">{satelliteGroup.eyebrow}</p>
               <h2 id="satellite-pages" className="mt-3 text-2xl font-light tracking-tight text-base-content">
                 {satelliteGroup.heading}
               </h2>
@@ -651,7 +648,6 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
 
         {procedure.slug === "blomdahl-ear-piercing" && (
           <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="infant-ear-piercing">
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Babies & young kids</p>
             <h2 id="infant-ear-piercing" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
               Infant &amp; baby ear piercing with a pediatric nurse practitioner
             </h2>
@@ -682,7 +678,6 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         {procedure.slug === "blomdahl-ear-piercing" && (
           <section className="mx-auto mt-12 max-w-4xl text-left">
             <div className="border border-base-300 bg-base-100 p-6">
-              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Choose your ear piercing path</p>
               <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">
                 Start with the question your family is actually asking
               </h2>
@@ -715,7 +710,6 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         {procedure.slug === "blomdahl-ear-piercing" && (
           <section className="mx-auto mt-8 max-w-4xl text-left">
             <div className="border border-base-300 bg-base-100 p-6">
-              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Nearby pages</p>
               <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">Plan around your route</h2>
               <p className="mt-3 text-base leading-relaxed text-base-content/70">
                 Start with the local page closest to your visit for directions, expectations, and family planning notes.
@@ -745,7 +739,6 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         {(procedure.slug === "botox" || procedure.slug === "xeomin") && (
           <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="xeomin-by-concern">
             <div className="border border-base-300 bg-base-100 p-6">
-              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Treatment areas &amp; cost</p>
               <h2 id="xeomin-by-concern" className="mt-3 text-2xl font-light tracking-tight text-base-content">
                 Xeomin by concern
               </h2>
@@ -872,7 +865,6 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             <div className="mx-auto max-w-6xl px-6 md:px-0">
               <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div className="max-w-3xl">
-                  <p className="text-xs uppercase tracking-[0.22em] text-base-content/60">Related Guidance</p>
                   <h2
                     id="procedure-posts-heading"
                     className="mt-3 text-4xl/snug font-light tracking-tight text-base-content text-balance sm:text-5xl/snug md:text-6xl/snug"

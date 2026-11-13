@@ -20,9 +20,6 @@ export default function OhShotCallout() {
       <LegacyOhShotHash />
       <article className="grid gap-8 p-6 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:items-center lg:gap-12 lg:p-10">
         <div className="max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
-            Featured Women&apos;s Sexual Wellness Treatment
-          </p>
 
           <h2
             id="oh-shot-callout-heading"

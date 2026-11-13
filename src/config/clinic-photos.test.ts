@@ -111,7 +111,10 @@ test("photos are placed on the right pages", () => {
     assert.ok(at > 0 && at < heroEnd, `${component} is not right under the hero`);
   }
   const home = read("src/app/page.tsx");
-  assert.match(home, /<Jumbotron[^>]*\/>\s*<HomeRealPhotos \/>/, "homepage photos sit right under the hero");
+  // Tidewater homepage: the real photos sit in the top half, after the hero, chooser, Jenny and first-visit sections
+  // and before prices and questions.
+  const order = ["<HomeHero", "<HomeChooser", "<HomeRealPhotos />", 'id="home-prices-heading"', "<HomeQuestions"].map((marker) => home.indexOf(marker));
+  assert.ok(order.every((at, index) => at > 0 && (index === 0 || at > order[index - 1])), `homepage section order: ${order}`);
   assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<TreatmentRoomPhotos \/>/);
   // Austin 2026-11-05: the treatment room is at the clinic address, so it also shows on the Williamsburg location page.
   assert.match(read("src/app/locations/williamsburg-va/page.tsx"), /<TreatmentRoomPhotos \/>/);

@@ -9,7 +9,6 @@ export default function AffiliateProgramCallout() {
       <div className="mx-auto max-w-5xl">
         <article className="group relative isolate flex flex-col gap-8 md:flex-row-reverse md:items-center md:justify-between lg:gap-12">
           <div className="max-w-2xl flex-1">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Affiliate Program</p>
 
             <h2
               id="affiliate-program-callout-heading"

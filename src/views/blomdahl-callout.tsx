@@ -20,9 +20,6 @@ export default function BlomdahlCallout() {
     >
       <article className="grid gap-8 p-6 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:items-center lg:gap-12 lg:p-10">
         <div className="max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
-            Blomdahl medical ear piercing
-          </p>
 
           <h2
             id="blomdahl-callout-heading"

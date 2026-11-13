@@ -97,7 +97,6 @@ export default async function EarPiercingAreaPage(props: Params) {
       <StructuredData type="FAQ" faqs={area.faqs} />
 
       <header className="mb-12 max-w-3xl text-left md:mb-16">
-        <p className="text-sm uppercase tracking-wide text-base-content/60 mb-3">{eyebrow}</p>
         <h1 className="text-3xl md:text-5xl font-light leading-tight">{headline}</h1>
         <p className="text-base md:text-lg text-base-content/75 mt-4 max-w-3xl mx-auto">
           {area.localIntro} Williamsburg Med Spa offers Blomdahl sterile ear piercing with hypoallergenic starter jewelry{" "}
@@ -196,7 +195,7 @@ export default async function EarPiercingAreaPage(props: Params) {
         </p>
         <div className="flex flex-wrap gap-2">
           {area.nearbyNeighborhoods.map((neighborhood) => (
-            <span key={neighborhood} className="rounded-full border border-base-300 px-3 py-1 text-sm">
+            <span key={neighborhood} className="text-sm text-base-content/70 after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none">
               {neighborhood}
             </span>
           ))}
@@ -243,7 +242,7 @@ export default async function EarPiercingAreaPage(props: Params) {
             <Link
               key={item.slug}
               href={`/procedures/blomdahl-ear-piercing/near/${item.slug}`}
-              className="rounded-full border border-base-300 px-3 py-1 text-sm hover:border-primary"
+              className="text-sm text-secondary transition-colors hover:text-base-content after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none"
             >
               {item.name}
             </Link>

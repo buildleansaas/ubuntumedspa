@@ -7,8 +7,7 @@ export default function FooterLocationCta() {
   const address = "3900 Powhatan Parkway, Williamsburg, VA 23188";
   return (
     <section className="w-full text-left">
-      <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">Visit The Clinic</p>
-      <h3 className="font-display mt-3 text-3xl font-medium leading-tight tracking-tight text-base-content md:text-4xl">
+      <h3 className="font-display text-3xl font-light leading-tight tracking-tight text-base-content md:text-4xl">
         Williamsburg Med Spa
       </h3>
       <p className="mt-4 max-w-xl text-base md:text-lg leading-relaxed text-base-content/80">{address}</p>

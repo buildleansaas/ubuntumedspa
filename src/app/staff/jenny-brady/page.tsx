@@ -39,12 +39,11 @@ export default function JennyBradyPage() {
           </div>
         </figure>
         <div className="max-w-2xl">
-          <p className="eyebrow">Provider</p>
           <h1 className="mt-4 text-4xl leading-[1.1] tracking-tight text-base-content md:text-6xl">Jenny Brady</h1>
           <p className="mt-4 text-lg text-base-content/85">MSN, RN, CPNP, PMHS</p>
           <ul className="mt-5 flex flex-wrap gap-2" aria-label="Jenny Brady credentials and certifications">
             {CREDENTIALS.map((credential) => (
-              <li key={credential} className="border border-base-300 px-3 py-1 text-sm text-base-content/85">
+              <li key={credential} className="text-sm text-base-content/75 after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none">
                 {credential}
               </li>
             ))}

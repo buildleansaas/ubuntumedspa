@@ -47,7 +47,6 @@ export default async function CheckoutSuccessPage(
   return (
     <div className="max-w-5xl mx-auto py-12">
       {order.paymentStatus === "paid" && <ClearCartOnMount />}
-      <p className="text-sm uppercase tracking-[0.18em] text-base-content/60 mb-2">Checkout Complete</p>
       <h1 className="text-4xl font-semibold mb-4">
         {order.paymentStatus === "paid" ? "Payment received" : "We’re processing your order"}
       </h1>

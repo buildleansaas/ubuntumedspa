@@ -28,7 +28,6 @@ export default function ConsultationPage() {
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Consult"]} />
       <section className="grid gap-8 border-b border-base-300 pb-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,1.05fr)] lg:items-start">
         <div>
-          <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Williamsburg consultation</p>
           <h1 className="max-w-4xl text-4xl font-light leading-tight tracking-tight text-base-content sm:text-5xl md:text-6xl">
             Book a med spa consultation in Williamsburg, VA
           </h1>
@@ -61,7 +60,6 @@ export default function ConsultationPage() {
 
       <section className="grid gap-8 border-b border-base-300 py-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <p className="eyebrow">What this visit helps with</p>
           <h2 className="mt-3 text-3xl font-light leading-tight text-base-content md:text-4xl">
             Use the consult to pick the right first step, not to guess from a menu.
           </h2>
@@ -101,7 +99,7 @@ export default function ConsultationPage() {
           <p className="font-semibold text-base-content">Nearby patients commonly visit from:</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {nearbyAreas.map((area) => (
-              <span key={area} className="rounded-full border border-base-300 px-3 py-1.5 text-sm text-base-content/70">
+              <span key={area} className="text-sm text-base-content/70 after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none">
                 {area}
               </span>
             ))}

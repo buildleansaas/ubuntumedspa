@@ -178,7 +178,8 @@ test("homepage snippet CTR test (2026-11-04; title and meta restored 2026-11-08)
   assert.equal(homeMetadata.title, DEFAULT_TITLE);
   assert.equal(homeMetadata.description, DEFAULT_DESCRIPTION);
   // The meta says "See all prices": the homepage links /prices.
-  assert.match(read("src/app/page.tsx"), /href: "\/prices"/);
+  assert.match(read("src/app/page.tsx"), /href="\/prices"/);
+  assert.match(read("src/views/home-hero.tsx"), /href="\/prices"/);
 });
 
 test("/prices is linked from the footer and /procedures and is in both sitemaps", () => {

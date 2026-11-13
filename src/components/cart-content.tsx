@@ -472,7 +472,6 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
                 <AlertCircle className="h-5 w-5" />
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-[11px] uppercase tracking-[0.22em] text-error/80">Cart Issue</p>
                 <h2 className="mt-2 text-xl font-semibold tracking-tight text-base-content">
                   We couldn&apos;t validate this cart yet
                 </h2>

@@ -30,7 +30,6 @@ export default function OffersPage() {
         ]}
       />
 
-      <p className="eyebrow">Williamsburg Med Spa</p>
       <h1 className="font-display mt-4 text-4xl font-medium leading-[1.1] tracking-tight text-base-content md:text-6xl">
         {OFFERS_H1}
       </h1>
@@ -56,7 +55,6 @@ export default function OffersPage() {
               data-offer-slug={offer.slug}
               className="scroll-mt-28 rounded-2xl border-2 border-primary/40 bg-base-100 p-6 md:p-8"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Offer</p>
               <h2 className="font-display mt-2 text-2xl font-medium leading-tight tracking-tight text-base-content md:text-3xl">
                 {offer.title}
               </h2>

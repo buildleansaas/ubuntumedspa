@@ -22,7 +22,6 @@ export default async function EventSchedulingPage(
 
   return (
     <div className="max-w-5xl mx-auto py-12">
-      <p className="text-sm uppercase tracking-[0.18em] text-base-content/60 mb-2">{event.schedule.eyebrow}</p>
       <h1 className="text-4xl font-semibold mb-4">{event.schedule.heading}</h1>
       <p className="text-base-content/70 mb-8">{event.schedule.body}</p>
 

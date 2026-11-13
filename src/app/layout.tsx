@@ -1,6 +1,6 @@
 import React from "react";
 import Script from "next/script";
-import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
+import { Hanken_Grotesk, Newsreader } from "next/font/google";
 
 import "./globals.css";
 import ClientUtilities from "components/client-utilities";
@@ -16,15 +16,17 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-const editorialSerif = Cormorant_Garamond({
+// Tidewater type: Newsreader (variable, with optical size) for headings at 300-500, Hanken Grotesk for text.
+const editorialSerif = Newsreader({
   subsets: ["latin"],
-  weight: ["500", "600"],
+  axes: ["opsz"],
   variable: "--font-editorial-serif",
   display: "swap",
 });
 
-const editorialSans = Source_Sans_3({
+const editorialSans = Hanken_Grotesk({
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
   variable: "--font-editorial-sans",
   display: "swap",
 });
@@ -69,7 +71,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: "light",
-  themeColor: "#fbfaf7",
+  themeColor: "#f4f3ef",
 };
 
 export default function Layout({ children }: LayoutProps) {
