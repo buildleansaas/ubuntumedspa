@@ -106,7 +106,7 @@ export default async function Page() {
             alt={CARPAL_TUNNEL_PHOTO.alt}
             width={CARPAL_TUNNEL_PHOTO.width}
             height={CARPAL_TUNNEL_PHOTO.height}
-            sizes="(max-width: 1024px) 90vw, 416px"
+            sizes="(max-width: 448px) 90vw, 384px"
             className="aspect-[4/5] w-full rounded-2xl object-cover object-[50%_35%]"
           />
           <figcaption className="mt-3 text-sm text-base-content/75">{HOME_INJECTION_CAPTION}</figcaption>

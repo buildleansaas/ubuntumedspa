@@ -60,7 +60,7 @@ export const getSearchAnswers = (xeominCash: string, xeominCard: string): Search
 export default function SearchAnswers({ xeominCash, xeominCard }: { xeominCash: string; xeominCard: string }) {
   return (
     <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-label="Botox alternative, Hydrafacial, and dermal fillers in Williamsburg" data-search-answers>
-      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+      <div className="grid gap-10 lg:grid-cols-3 lg:gap-12">
         {getSearchAnswers(xeominCash, xeominCard).map((item) => (
           <article key={item.id} aria-labelledby={item.id} className="border-t-2 border-primary/30 pt-6">
             <h2 id={item.id} className="font-display text-2xl font-medium leading-[1.2] tracking-tight text-base-content md:text-3xl">

@@ -4,6 +4,7 @@ import { join } from "node:path";
 import test from "node:test";
 
 import {
+  clinicPhotoBySrc,
   CROWS_FEET_PAIRS,
   EAR_PIERCING_PHOTOS,
   HYPERHIDROSIS_STEPS,
@@ -96,7 +97,7 @@ test("photos are placed on the right pages", () => {
   const hub = read("src/app/procedures/[slug]/page.tsx");
   assert.match(hub, /\(procedure\.slug === "botox" \|\| procedure\.slug === "xeomin"\) && <CrowsFeetResults \/>/);
   assert.match(hub, /procedure\.slug === "hyperhidrosis-treatment" && <HyperhidrosisSteps \/>/);
-  assert.match(hub, /procedure\.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos \/>/);
+  assert.match(hub, /procedure\.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos exclude={heroImagePath} \/>/);
   assert.match(hub, /procedure\.slug === "oh-shot" && <RunelsTraining \/>/);
   assert.match(read("src/views/xeomin-cluster-page.tsx"), /page\.slug === "crows-feet" && <CrowsFeetResults \/>/);
   assert.match(read("src/views/service-satellite-page.tsx"), /page\.slug === "underarm-sweating" && <HyperhidrosisSteps \/>/);
@@ -105,7 +106,7 @@ test("photos are placed on the right pages", () => {
   assert.match(read("src/components/clinic-photos.tsx"), /export function JointPhotos[\s\S]*?<PiccirilloTraining \/>/);
   // Austin 2026-11-05: proof of work sits right under the hero, above the first content section.
   const heroEnd = hub.indexOf("{/* PRP_BREAST_OWNER_COPY_CONTRACT_START */}");
-  for (const component of ["<CrowsFeetResults />", "<HyperhidrosisSteps />", "<EarPiercingPhotos />", "<JointPhotos />", "<PrpTubePhoto />", "<RunelsTraining />"]) {
+  for (const component of ["<CrowsFeetResults />", "<HyperhidrosisSteps />", "<EarPiercingPhotos exclude={heroImagePath} />", "<JointPhotos />", "<PrpTubePhoto />", "<RunelsTraining />"]) {
     const at = hub.indexOf(component);
     assert.ok(at > 0 && at < heroEnd, `${component} is not right under the hero`);
   }
@@ -118,3 +119,13 @@ test("photos are placed on the right pages", () => {
   assert.doesNotMatch(PRP_TUBE_CAPTION + SUPPLIES_CAPTION, /clinic|Williamsburg|home/i);
   assert.match(read("src/app/staff/jenny-brady/page.tsx"), /<TrainedBy \/>/);
 });
+
+test("a released home photo used as the ear piercing hero keeps its own alt, never the clinic name", () => {
+  assert.match(read("src/app/procedures/[slug]/page.tsx"), /alt=\{heroClinicPhoto\?\.alt \?\?/);
+  const hero = read("src/config/commerce-catalog.ts").match(/imagePath: "(\/clinic\/blomdahl[^"]+)"/)?.[1];
+  assert.ok(hero, "ear piercing hero is a released clinic photo");
+  const photo = clinicPhotoBySrc(hero);
+  assert.ok(photo, "hero photo is in EAR_PIERCING_PHOTOS");
+  assert.doesNotMatch(photo.alt, /clinic|office|Powhatan|Williamsburg/i);
+});
+

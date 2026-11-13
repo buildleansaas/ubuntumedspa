@@ -109,12 +109,13 @@ export function HyperhidrosisSteps() {
   );
 }
 
-export function EarPiercingPhotos() {
+// `exclude` drops the photo already shown as the page hero, so it doesn't repeat right under it.
+export function EarPiercingPhotos({ exclude }: { exclude?: string }) {
   return (
     <section className="scroll-mt-28 py-12 text-left md:py-16" aria-labelledby="ear-piercing-photos" data-clinic-photos="ear-piercing">
       <SectionHeader id="ear-piercing-photos" eyebrow="Real photos from Jenny's patients" heading={EAR_PIERCING_PHOTOS_HEADING} />
-      <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-        {EAR_PIERCING_PHOTOS.map(({ photo, caption }) => (
+      <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-3">
+        {EAR_PIERCING_PHOTOS.filter(({ photo }) => photo.src !== exclude).map(({ photo, caption }) => (
           <Tile key={photo.src} photo={photo} caption={caption} />
         ))}
       </div>

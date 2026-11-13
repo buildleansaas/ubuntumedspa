@@ -2162,7 +2162,7 @@ export const procedures = [
     headline: "Nurse-led Blomdahl ear piercing in Williamsburg for infants, children, teens, and adults.",
     subline:
       "A sterile, appointment-based piercing visit with Jenny Brady, hypoallergenic Blomdahl starter jewelry, placement planning, and aftercare for first earrings, re-piercing, and sensitive ears.",
-    image: "/clinic/blomdahl-jenny-triplets-first-earrings.webp",
+    image: "/clinic/blomdahl-pearl-stud.webp",
     price: `${formatUsdShort(4500)} per ear or ${earBothCash} for both ears cash · ${cardPriceLabel(4500)} or ${earBothCard} card/online`,
     // programmatic SEO copy
     blogHeadline:

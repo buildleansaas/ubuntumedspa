@@ -25,6 +25,7 @@ import { cashCardProse, cardPriceSchemaValue } from "lib/price";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import { getHubSatelliteGroup } from "lib/service-satellites";
 import { CrowsFeetResults, EarPiercingPhotos, HyperhidrosisSteps, JointPhotos, PrpTubePhoto, RunelsTraining } from "components/clinic-photos";
+import { clinicPhotoBySrc } from "config/clinic-photos";
 import { activeOfferMetaDescription, getActiveOffers } from "config/offers";
 import { XEOMIN_HYPERHIDROSIS_OFF_LABEL, XEOMIN_OFF_LABEL_NOTE, xeominClusterPages } from "lib/xeomin-concerns";
 import HomeOwnerLink, { HOME_OWNER_LINK_PROCEDURES } from "components/home-owner-link";
@@ -154,6 +155,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
   // The /procedures/botox page is the Botox-alternative page: it sells the Xeomin item (the clinic does not offer Botox® brand).
   const catalogItem = getCatalogConfigBySlug(("catalogSlug" in procedure && procedure.catalogSlug) || slug);
   const heroImagePath = catalogItem?.imagePath;
+  const heroClinicPhoto = heroImagePath ? clinicPhotoBySrc(heroImagePath) : undefined;
   const publishedAilments = await getPublishedAilmentsForProcedure(procedure.slug);
   const articles = (await getPublishedBlogPosts())
     .filter(({ tags }) => tags?.includes(procedure.slug === "botox" ? "Botox Alternative" : procedure.name))
@@ -366,11 +368,11 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               <div className="relative aspect-[4/3]">
                 <Image
                   src={heroImagePath}
-                  alt={`${procedure.name} at Williamsburg Med Spa`}
+                  alt={heroClinicPhoto?.alt ?? `${procedure.name} at Williamsburg Med Spa`}
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 520px"
-                  className="object-cover"
+                  className={heroClinicPhoto ? "object-cover object-[50%_25%]" : "object-cover"}
                 />
               </div>
             </div>
@@ -381,7 +383,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         {procedure.slug === "oh-shot" && <RunelsTraining />}
         {(procedure.slug === "botox" || procedure.slug === "xeomin") && <CrowsFeetResults />}
         {procedure.slug === "hyperhidrosis-treatment" && <HyperhidrosisSteps />}
-        {procedure.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos />}
+        {procedure.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos exclude={heroImagePath} />}
         {procedure.slug === "joint-restoration" && (
           <section className="py-12 md:py-16" aria-label="Jenny's joint treatment and orthopedic PRP training">
             <JointPhotos />

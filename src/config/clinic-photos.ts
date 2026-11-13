@@ -100,6 +100,11 @@ export const EAR_PIERCING_PHOTOS = [
 ] as const;
 export const EAR_PIERCING_PHOTOS_HEADING = "First earrings";
 
+/** A released photo used outside its gallery (e.g. as a catalog hero) keeps its own alt, so the home-photo rule still holds. */
+export function clinicPhotoBySrc(src: string): ClinicPhoto | undefined {
+  return EAR_PIERCING_PHOTOS.find(({ photo }) => photo.src === src)?.photo;
+}
+
 export const RUNELS_PHOTO = photo(
   "jenny-brady-dr-charles-runels-fairhope",
   "Jenny Brady with Dr. Charles Runels on a balcony in Fairhope, Alabama",
