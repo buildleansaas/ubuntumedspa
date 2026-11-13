@@ -199,7 +199,6 @@ export default async function Page() {
         </ol>
       </section>
 
-      <SearchAnswers xeominCash={XEOMIN_CASH} xeominCard={XEOMIN_CARD} />
       <NamedReviews heading="Clinic reviews" />
       <Procedures
         variant="editorial"
@@ -210,6 +209,8 @@ export default async function Page() {
           </div>
         }
       />
+      {/* Austin 2026-11-13: these answers sit after the treatments, quieter, so they don't interrupt the page. */}
+      <SearchAnswers xeominCash={XEOMIN_CASH} xeominCard={XEOMIN_CARD} />
 
       {/* Prices, written out */}
       <section className="w-full border-t border-base-300 py-16 md:py-24" aria-labelledby="home-prices-heading">
