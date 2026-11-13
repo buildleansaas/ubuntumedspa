@@ -11,7 +11,7 @@ export type ChooserTile = {
 // "What brings you in?" Each tile is one real link: a plain question, then the treatment name.
 export default function HomeChooser({ tiles }: { tiles: ChooserTile[] }) {
   return (
-    <section className="w-full py-16 md:py-24" aria-labelledby="home-chooser-heading">
+    <section className="w-full border-t border-base-300 py-16 md:py-24" aria-labelledby="home-chooser-heading">
       <h2 id="home-chooser-heading" className="font-display text-3xl leading-tight tracking-tight text-base-content md:text-[2.6rem]">
         What brings you in?
       </h2>

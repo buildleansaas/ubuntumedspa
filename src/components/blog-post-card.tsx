@@ -67,7 +67,7 @@ export default function BlogPostCard({
   }
 
   const imageClassName = editorial
-    ? "relative block aspect-[4/3] overflow-hidden border border-base-300 bg-base-200"
+    ? "relative block aspect-[3/2] overflow-hidden rounded-xl bg-base-200"
     : variant === "featured"
       ? "relative block aspect-[16/10] overflow-hidden rounded-lg border border-base-300 bg-base-200 shadow-sm md:aspect-auto"
       : "relative block aspect-[16/10] overflow-hidden rounded-lg border border-base-300 bg-base-200 shadow-sm";
@@ -76,7 +76,7 @@ export default function BlogPostCard({
       ? "group relative isolate md:grid md:grid-cols-[1.05fr_0.95fr] md:items-stretch md:gap-8"
       : "group relative isolate flex h-full flex-col";
   const titleClassName = editorial
-    ? "font-display text-2xl font-medium leading-tight text-base-content text-balance"
+    ? "font-display text-[1.4rem] leading-tight text-base-content text-balance"
     : variant === "featured"
       ? "text-2xl/snug sm:text-3xl/snug font-semibold tracking-tight text-base-content text-balance"
       : "text-lg/snug font-semibold tracking-tight text-base-content text-balance";

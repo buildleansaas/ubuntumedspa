@@ -40,7 +40,7 @@ export const ProcedureCard = ({ product, tone = "default" }: Props) => {
         <div
           className={
             editorial
-              ? "relative aspect-[4/3] w-full overflow-hidden border border-base-300 bg-base-200"
+              ? "relative aspect-[3/2] w-full overflow-hidden rounded-xl bg-base-200"
               : "relative aspect-[3/2] w-full overflow-hidden rounded-md bg-base-200"
           }
         >
@@ -61,14 +61,14 @@ export const ProcedureCard = ({ product, tone = "default" }: Props) => {
       </Link>
       <div className={editorial ? "mt-4 flex flex-1 flex-col" : "space-y-1"}>
         <div className={editorial ? "space-y-3" : "flex items-start justify-between gap-3"}>
-          <TitleTag className={editorial ? "font-display text-[1.75rem] font-medium leading-tight text-base-content" : "min-w-0 text-xl font-bold"}>
+          <TitleTag className={editorial ? "font-display text-[1.5rem] leading-tight text-base-content" : "min-w-0 text-xl font-bold"}>
             {product.name}
           </TitleTag>
           {showCmaCertifiedTag ? (
             <span
               className={
                 editorial
-                  ? "inline-flex w-fit shrink-0 items-center gap-1.5 border border-base-300 bg-base-100 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-base-content/80"
+                  ? "inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full border border-base-300 bg-base-100 px-2.5 py-0.5 text-[11px] text-base-content/70"
                   : "inline-flex shrink-0 items-center gap-1.5 rounded-full border border-base-300 bg-base-100 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-base-content/70"
               }
             >
@@ -86,28 +86,38 @@ export const ProcedureCard = ({ product, tone = "default" }: Props) => {
           ) : null}
         </div>
         {editorial ? (
-          <p className="mt-3 text-base leading-6 text-base-content/85">{humanizeMedicalCopy(product.headline)}</p>
+          <p className="mt-2 text-[0.95rem] leading-6 text-base-content/80">{humanizeMedicalCopy(product.headline)}</p>
         ) : (
           <h3 className="text-lg">{humanizeMedicalCopy(product.headline)}</h3>
         )}
-        <p className={editorial ? "mt-2 text-sm leading-6 text-base-content/75" : "text-sm"}>
+        <p className={editorial ? "mt-2 text-sm leading-6 text-base-content/65" : "text-sm"}>
           {humanizeMedicalCopy(product.subline)}
         </p>
       </div>
-      <div className={editorial ? "mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap" : "flex flex-wrap items-end gap-2"}>
+      <div className={editorial ? "mt-4 flex flex-wrap items-center gap-x-5 gap-y-2" : "flex flex-wrap items-end gap-2"}>
         {catalogItem && (
           <AddToCartButton
             slug={catalogItem.slug}
             kind={catalogItem.kind}
             quantity={catalogItem.minQuantity}
-            className={editorial ? "w-full sm:w-auto" : undefined}
+            variant={editorial ? "outline" : undefined}
+            size={editorial ? "sm" : undefined}
           />
         )}
-        <Button asChild variant="secondary" className={editorial ? "w-full sm:w-auto" : undefined}>
-          <Link href={`/procedures/${product.slug}`}>
+        {editorial ? (
+          <Link
+            href={`/procedures/${product.slug}`}
+            className="rounded-sm text-sm text-secondary underline decoration-secondary/30 underline-offset-[6px] transition-colors hover:decoration-secondary"
+          >
             Learn More<span className="sr-only"> about {humanizeMedicalCopy(product.headline)}</span>
           </Link>
-        </Button>
+        ) : (
+          <Button asChild variant="secondary">
+            <Link href={`/procedures/${product.slug}`}>
+              Learn More<span className="sr-only"> about {humanizeMedicalCopy(product.headline)}</span>
+            </Link>
+          </Button>
+        )}
       </div>
     </article>
   );

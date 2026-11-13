@@ -15,7 +15,7 @@ import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "lib/seo";
 import BlomdahlCallout from "views/blomdahl-callout";
 import BotoxPartyCallout from "views/botox-party-callout";
 import HomeChooser, { type ChooserTile } from "views/home-chooser";
-import HomeQuestions, { homeFaqs } from "views/home-questions";
+import { homeFaqs } from "views/home-questions";
 import HomeVisit from "views/home-visit";
 import Jumbotron from "views/jumbotron";
 import LatestPosts from "views/latest-posts";
@@ -124,8 +124,8 @@ const sectionHeading = "font-display text-3xl leading-tight tracking-tight text-
 const textLink =
   "rounded-sm text-[0.95rem] text-secondary underline decoration-secondary/30 underline-offset-[6px] transition-colors hover:decoration-secondary";
 
-// Tidewater homepage: every section, word and link from the previous homepage, in a calmer presentation
-// (spacing, type, color, one filled button per screen), plus the treatment chooser, first-visit steps and price list.
+// Tidewater homepage: main's sections and visual elements in the Tidewater palette and type (one filled button per
+// screen), plus the treatment chooser, first-visit steps and price list.
 export default async function Page() {
   return (
     <div className="w-full">
@@ -135,54 +135,54 @@ export default async function Page() {
 
       <HomeChooser tiles={CHOOSER_TILES} />
 
-      {/* Local care with Jenny, merged with the provider bio */}
-      <section className="w-full scroll-mt-28 py-16 md:py-24" aria-labelledby="home-local-intro-heading">
-        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,22rem)] lg:gap-20">
-          <div>
-            <p className="text-sm text-base-content/65">Nurse Practitioner led medical spa in Williamsburg, VA</p>
-            <h2 id="home-local-intro-heading" className={`${sectionHeading} mt-3`}>
-              Local care with Jenny Brady, MSN, RN, CPNP, PMHS for Xeomin wrinkle relaxer, PRP, sweating treatment, and medical ear piercing.
-            </h2>
-            <p className="mt-6 max-w-[65ch] text-base leading-relaxed text-base-content/75 md:text-lg">
-              Williamsburg Med Spa is a Nurse Practitioner led medical spa in Williamsburg, VA. Jenny Brady brings
-              MSN, RN, CPNP, PMHS, Cellular Medicine Association-certified OH-Shot provider training, and
-              certified Blomdahl provider training for medical ear piercing, so care starts with medical screening,
-              calm education, and treatment planning shaped around realistic goals.
-            </p>
-            <nav className="mt-6" aria-label="Williamsburg services and nearby areas">
-              <ul className="flex max-w-3xl flex-wrap gap-x-2 gap-y-1.5 text-sm">
-                {localLinks.map((item) => (
-                  <li key={item.href} className="after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none">
-                    <Link className="text-secondary transition-colors hover:text-base-content" href={item.href}>
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <ProviderCallout merged />
-            <p className="mt-6">
-              <Link href="/staff/jenny-brady" className={textLink}>
-                More about Jenny
-              </Link>
-            </p>
-          </div>
-          <figure className="mx-auto w-full max-w-[20rem] lg:sticky lg:top-28 lg:mx-0 lg:max-w-none">
-            <Image
-              src={CARPAL_TUNNEL_PHOTO.src}
-              alt={CARPAL_TUNNEL_PHOTO.alt}
-              width={CARPAL_TUNNEL_PHOTO.width}
-              height={CARPAL_TUNNEL_PHOTO.height}
-              sizes="(max-width: 1024px) 320px, 352px"
-              className="aspect-[4/5] w-full rounded-[1.75rem] object-cover object-[50%_35%]"
-            />
-            <figcaption className="mt-3 text-sm text-base-content/65">{HOME_INJECTION_CAPTION}</figcaption>
-          </figure>
+      <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-labelledby="home-local-intro-heading">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:gap-16">
+        <div>
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
+            Nurse Practitioner led medical spa in Williamsburg, VA
+          </p>
+          <h2
+            id="home-local-intro-heading"
+            className="font-display mt-4 text-3xl font-medium leading-[1.15] tracking-tight text-base-content md:text-4xl"
+          >
+            Local care with Jenny Brady, MSN, RN, CPNP, PMHS for Xeomin wrinkle relaxer, PRP, sweating treatment, and medical ear piercing.
+          </h2>
+          <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">
+            Williamsburg Med Spa is a Nurse Practitioner led medical spa in Williamsburg, VA. Jenny Brady brings
+            MSN, RN, CPNP, PMHS, Cellular Medicine Association-certified OH-Shot provider training, and
+            certified Blomdahl provider training for medical ear piercing, so care starts with medical screening,
+            calm education, and treatment planning shaped around realistic goals.
+          </p>
+          <nav className="mt-6" aria-label="Williamsburg services and nearby areas">
+            <ul className="flex max-w-3xl flex-wrap gap-x-5 gap-y-2">
+              {localLinks.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    className="text-sm text-base-content underline decoration-base-300 underline-offset-[5px] transition-colors hover:text-primary hover:decoration-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-4"
+                    href={item.href}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+        <figure className="mx-auto w-full max-w-sm lg:max-w-none">
+          <Image
+            src={CARPAL_TUNNEL_PHOTO.src}
+            alt={CARPAL_TUNNEL_PHOTO.alt}
+            width={CARPAL_TUNNEL_PHOTO.width}
+            height={CARPAL_TUNNEL_PHOTO.height}
+            sizes="(max-width: 448px) 90vw, 384px"
+            className="aspect-[4/5] w-full rounded-[1.75rem] object-cover object-[50%_35%]"
+          />
+          <figcaption className="mt-3 text-sm text-base-content/75">{HOME_INJECTION_CAPTION}</figcaption>
+        </figure>
         </div>
       </section>
-
       {/* Your first visit */}
-      <section className="w-full py-16 md:py-24" aria-labelledby="home-first-visit-heading">
+      <section className="w-full border-t border-base-300 py-16 md:py-24" aria-labelledby="home-first-visit-heading">
         <h2 id="home-first-visit-heading" className={sectionHeading}>
           Your first visit
         </h2>
@@ -204,7 +204,7 @@ export default async function Page() {
       <Procedures
         variant="editorial"
         featured={
-          <div className="grid gap-16 lg:grid-cols-2 lg:gap-14">
+          <div className="grid gap-8">
             <OhShotCallout />
             <BlomdahlCallout />
           </div>
@@ -212,7 +212,7 @@ export default async function Page() {
       />
 
       {/* Prices, written out */}
-      <section className="w-full py-16 md:py-24" aria-labelledby="home-prices-heading">
+      <section className="w-full border-t border-base-300 py-16 md:py-24" aria-labelledby="home-prices-heading">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.6fr)] lg:gap-20">
           <div>
             <h2 id="home-prices-heading" className={sectionHeading}>
@@ -247,10 +247,29 @@ export default async function Page() {
         </div>
       </section>
 
+      <ProviderCallout />
       <Products variant="editorial" />
       <LatestPosts />
       <BotoxPartyCallout />
-      <HomeQuestions />
+      <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" aria-labelledby="home-faq-heading">
+        <div className="max-w-3xl">
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Williamsburg med spa FAQ</p>
+          <h2
+            id="home-faq-heading"
+            className="font-display mt-4 text-4xl font-medium leading-[1.12] tracking-tight text-base-content md:text-5xl"
+          >
+            Quick answers before you book
+          </h2>
+          <div className="mt-8 divide-y divide-base-300 border-y border-base-300">
+            {homeFaqs.map((faq) => (
+              <article key={faq.question} className="py-6 md:py-8">
+                <h3 className="font-display text-2xl font-medium leading-tight text-base-content md:text-3xl">{faq.question}</h3>
+                <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-base-content/85">{faq.answer}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
       <HomeVisit />
       <CtaFooter variant="editorial" />
     </div>

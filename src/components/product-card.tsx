@@ -26,7 +26,7 @@ export const ProductCard = ({ name, image, headline, subline, slug, tone = "defa
     <article className={editorial ? "flex h-full flex-col" : "space-y-3"}>
       <Link href={`/products/${slug}`} passHref className="group relative block">
         {editorial ? (
-          <div className="relative aspect-square overflow-hidden border border-base-300 bg-base-200">
+          <div className="relative aspect-square overflow-hidden rounded-xl bg-base-200">
             <Image
               fill
               src={image}
@@ -53,26 +53,27 @@ export const ProductCard = ({ name, image, headline, subline, slug, tone = "defa
         )}
       </Link>
       <div className={editorial ? "mt-4 flex flex-1 flex-col" : "space-y-1"}>
-        <TitleTag className={editorial ? "font-display text-[1.75rem] font-medium leading-tight text-base-content" : "text-xl font-bold"}>
+        <TitleTag className={editorial ? "font-display text-[1.5rem] leading-tight text-base-content" : "text-xl font-bold"}>
           {name}
         </TitleTag>
         {editorial ? (
-          <p className="mt-3 text-base leading-6 text-base-content/85">{humanizeMedicalCopy(headline)}</p>
+          <p className="mt-2 text-[0.95rem] leading-6 text-base-content/80">{humanizeMedicalCopy(headline)}</p>
         ) : (
           <h3 className="text-lg">{humanizeMedicalCopy(headline)}</h3>
         )}
-        <p className={editorial ? "mt-2 text-sm leading-6 text-base-content/75" : "text-sm"}>{humanizeMedicalCopy(subline)}</p>
+        <p className={editorial ? "mt-2 text-sm leading-6 text-base-content/65" : "text-sm"}>{humanizeMedicalCopy(subline)}</p>
       </div>
-      <div className={editorial ? "mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap" : "flex flex-wrap items-end gap-2"}>
+      <div className={editorial ? "mt-4 flex flex-wrap items-center gap-2" : "flex flex-wrap items-end gap-2"}>
         {catalogItem && (
           <AddToCartButton
             slug={catalogItem.slug}
             kind={catalogItem.kind}
             quantity={catalogItem.minQuantity}
-            className={editorial ? "w-full sm:w-auto" : undefined}
+            variant={editorial ? "outline" : undefined}
+            size={editorial ? "sm" : undefined}
           />
         )}
-        <Button asChild variant="secondary" className={editorial ? "w-full sm:w-auto" : undefined}>
+        <Button asChild variant={editorial ? "ghost" : "secondary"} size={editorial ? "sm" : undefined} className={editorial ? "px-2 text-secondary hover:bg-transparent hover:underline" : undefined}>
           <Link href={`/products/${slug}`}>
             Learn More<span className="sr-only"> about {humanizeMedicalCopy(headline)}</span>
           </Link>

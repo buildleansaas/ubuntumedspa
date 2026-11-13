@@ -106,18 +106,16 @@ test("three pages that showed for the Botox search link to /procedures/botox, th
   assert.match(html, /<a[^>]*href="\/procedures\/botox"[^>]*>Botox alternative in Williamsburg, VA<\/a>/);
 });
 
-// Tidewater homepage: the homepage's own FAQs sit in a <details> list (answers in the server HTML), the search answers
-// keep their H2s, and nothing is listed twice. The FAQPage schema (search answers + homeFaqs) matches what's visible.
-const { default: HomeQuestions, homeFaqs } = require("../views/home-questions") as typeof import("../views/home-questions");
+// Tidewater homepage: the homepage's own FAQs render visibly (main's list, each question an H3 with its answer), and
+// the FAQPage schema is the search answers plus these, matching what's on the page.
+const { homeFaqs } = require("../views/home-questions") as typeof import("../views/home-questions");
 
-test("homepage FAQ list shows every homeFaqs question with its answer, once", () => {
-  const html = renderToStaticMarkup(createElement(HomeQuestions));
-  const questions = [...html.matchAll(/<h3[^>]*>(.*?)<\/h3>/g)].map((match) => text(match[1]));
-  assert.deepEqual(questions, homeFaqs.map((faq) => faq.question));
-  for (const faq of homeFaqs) assert.ok(text(html).includes(text(faq.answer)), `answer not visible: ${faq.question}`);
-  assert.equal(html.match(/<details\b/g)?.length, homeFaqs.length);
-  const searchQuestions = getSearchAnswers("$250", "$257.78").map((item) => item.question);
-  for (const question of searchQuestions) assert.ok(!questions.includes(question), `${question} is listed twice`);
+test("homepage renders every homeFaqs question and answer, and lists them in the FAQ schema", () => {
+  const home = readFileSync("src/app/page.tsx", "utf8");
+  assert.equal(homeFaqs.length, 3);
+  assert.match(home, /\{homeFaqs\.map\(\(faq\) => \([\s\S]{0,400}\{faq\.question\}[\s\S]{0,300}\{faq\.answer\}/);
+  assert.match(home, /faqs=\{\[\.\.\.getSearchAnswers\(XEOMIN_CASH, XEOMIN_CARD\), \.\.\.homeFaqs\]\}/);
+  assert.doesNotMatch(home, /<details\b/, "FAQ answers are always visible");
 });
 
 test("homepage prices come from the catalog: no typed dollar amounts, cash before card", () => {

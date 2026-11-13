@@ -44,7 +44,7 @@ export default function AddToCartButton({
             <ToastAction
               altText="View cart"
               onClick={openCart}
-              className="border-primary bg-primary text-primary-content hover:bg-primary-focus hover:text-primary-content"
+              className="border-primary bg-primary text-primary-content hover:bg-primary/90 hover:text-primary-content"
             >
               View Cart
             </ToastAction>

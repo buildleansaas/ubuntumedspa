@@ -1,10 +1,11 @@
 import Link from "next/link";
 
 import BeforeAfterShowcase from "components/before-after-showcase";
+import Carousel from "components/carousel";
+import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import {
   CARPAL_TUNNEL_CAPTION,
   CARPAL_TUNNEL_PHOTO,
-  BEFORE_LABEL,
   CROWS_FEET_HEADING,
   CROWS_FEET_INTRO,
   CROWS_FEET_PAIRS,
@@ -123,16 +124,87 @@ export function HyperhidrosisSteps() {
   );
 }
 
+// One line of existing Blomdahl copy per slide (from the homepage Blomdahl callout). The baby photos were taken at home,
+// so slide text never names the clinic or a place.
+const EAR_SLIDE_LINES = [
+  "Jenny Brady, MSN, RN, CPNP, PMHS uses sterile single-use Blomdahl cassettes.",
+  "Babies are generally pierced at 6 months or older with pediatrician guidance.",
+  "Hypoallergenic Medical Plastic or Medical Grade Titanium starter earrings.",
+  "Sterile single-use Blomdahl cassettes and hypoallergenic starter earrings.",
+] as const;
+
+// Focal point per photo, so faces and ears stay in frame when the slide crops it.
+const EAR_FOCUS: Record<string, string> = {
+  "/clinic/blomdahl-jenny-triplets-first-earrings.webp": "50% 50%",
+  "/clinic/blomdahl-baby-first-earrings.webp": "55% 32%",
+  "/clinic/blomdahl-child-flower-stud.webp": "45% 38%",
+  "/clinic/blomdahl-pearl-stud.webp": "62% 35%",
+};
+
+export const EAR_PIERCING_SLIDES = EAR_PIERCING_PHOTOS.map((item, index) => ({
+  ...item,
+  line: EAR_SLIDE_LINES[index % EAR_SLIDE_LINES.length],
+  focus: EAR_FOCUS[item.photo.src] ?? "50% 40%",
+}));
+
+/**
+ * Every released ear piercing photo as a carousel. Each slide has one fixed shape: on wide screens the photo fills
+ * about 58% (object-fit cover at its focal point) and the text sits beside it; on phones the photo is on top.
+ * `exclude` drops the photo already shown as the page hero.
+ */
+export function EarPiercingCarousel({
+  exclude,
+  link = { href: "/procedures/blomdahl-ear-piercing", label: "Ear piercing details" },
+  className = "",
+}: {
+  exclude?: string;
+  link?: { href: string; label: string };
+  className?: string;
+}) {
+  const slides = EAR_PIERCING_SLIDES.filter(({ photo }) => photo.src !== exclude);
+  return (
+    <Carousel label="Ear piercing photos" slideLabel="Photo" className={className}>
+      {slides.map((slide) => (
+        <figure
+          key={slide.photo.src}
+          className="grid h-full overflow-hidden rounded-2xl bg-base-200 md:aspect-[2/1] md:grid-cols-[58%_1fr]"
+        >
+          <div className="aspect-[4/3] overflow-hidden md:aspect-auto md:h-full">
+            <img
+              src={slide.photo.src}
+              alt={slide.photo.alt}
+              width={slide.photo.width}
+              height={slide.photo.height}
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover"
+              style={{ objectPosition: slide.focus }}
+            />
+          </div>
+          <figcaption className="flex flex-col justify-center p-6 md:p-10">
+            <p className="font-display text-2xl leading-snug text-base-content md:text-[1.75rem]">{slide.caption}</p>
+            <p className="mt-3 text-base leading-relaxed text-base-content/70">{slide.line}</p>
+            <p className="mt-5">
+              <Link
+                href={link.href}
+                className="rounded-sm text-[0.95rem] text-secondary underline decoration-secondary/30 underline-offset-[6px] transition-colors hover:decoration-secondary"
+              >
+                {link.label}
+              </Link>
+            </p>
+          </figcaption>
+        </figure>
+      ))}
+    </Carousel>
+  );
+}
+
 // `exclude` drops the photo already shown as the page hero, so it doesn't repeat right under it.
 export function EarPiercingPhotos({ exclude }: { exclude?: string }) {
   return (
     <section className="scroll-mt-28 py-12 text-left md:py-16" aria-labelledby="ear-piercing-photos" data-clinic-photos="ear-piercing">
-      <SectionHeader id="ear-piercing-photos" eyebrow="Real photos from Jenny's patients" heading={EAR_PIERCING_PHOTOS_HEADING} />
-      <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-3">
-        {EAR_PIERCING_PHOTOS.filter(({ photo }) => photo.src !== exclude).map(({ photo, caption }) => (
-          <Tile key={photo.src} photo={photo} caption={caption} />
-        ))}
-      </div>
+      <SectionHeader id="ear-piercing-photos" eyebrow="Real photos from Jenny's patients" heading={EAR_PIERCING_PHOTOS_HEADING} showEyebrow />
+      <EarPiercingCarousel exclude={exclude} link={{ href: EAR_PIERCING_BOOKING.hub, label: "Book ear piercing" }} className="mt-8" />
     </section>
   );
 }
@@ -175,38 +247,22 @@ export function PiccirilloTraining() {
   return <TrainedBy trainers={["piccirillo"]} />;
 }
 
-/** A photo with its caption underneath (no overlay). */
-function CaptionedPhoto({ photo, caption, aspect = "aspect-[3/4]", className = "" }: { photo: ClinicPhoto; caption: string; aspect?: string; className?: string }) {
-  return (
-    <figure className={className}>
-      <div className={`${aspect} overflow-hidden rounded-lg bg-base-200`}>
-        <Photo photo={photo} />
-      </div>
-      <figcaption className="mt-3 text-sm leading-snug text-base-content/65">{caption}</figcaption>
-    </figure>
-  );
-}
-
-/** Homepage: one crow's feet pair and the triplets, editorial and quiet (Tidewater). */
+/** Homepage: every crow's feet pair as a slideshow, with the disclosure under it (Tidewater). */
 export function HomeRealPhotos() {
-  const pair = CROWS_FEET_PAIRS[0];
-  const triplets = EAR_PIERCING_PHOTOS[0];
   return (
     <section className="w-full scroll-mt-28 py-16 md:py-24" aria-labelledby="home-real-photos" data-clinic-photos="home">
-      <SectionHeader
-        id="home-real-photos"
-        eyebrow="Real photos from Jenny's patients"
-        heading="Real patients, real results"
-        intro="Xeomin for crow's feet, before and after."
-        showEyebrow
-      />
-      <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-16">
-        <div>
-          <div className="grid grid-cols-2 gap-4 md:gap-6" data-active-pair={pair.id}>
-            <CaptionedPhoto photo={pair.before} caption={BEFORE_LABEL} />
-            <CaptionedPhoto photo={pair.after} caption={pair.afterLabel} />
-          </div>
-          <p className="mt-6 max-w-[60ch] text-sm leading-relaxed text-base-content/65">{RESULTS_CAPTION}</p>
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-16">
+        <div className="lg:pt-6">
+          <SectionHeader
+            id="home-real-photos"
+            eyebrow="Real photos from Jenny's patients"
+            heading="Real patients, real results"
+            intro="Xeomin for crow's feet, before and after."
+            showEyebrow
+          />
+          <p className="mt-6 max-w-[48ch] text-sm leading-relaxed text-base-content/65" data-results-caption>
+            {RESULTS_CAPTION}
+          </p>
           <p className="mt-4">
             <Link
               href="/procedures/xeomin"
@@ -216,17 +272,7 @@ export function HomeRealPhotos() {
             </Link>
           </p>
         </div>
-        <div>
-          <CaptionedPhoto photo={triplets.photo} caption={triplets.caption} aspect="aspect-[4/5]" />
-          <p className="mt-4">
-            <Link
-              href="/procedures/blomdahl-ear-piercing"
-              className="rounded-sm text-[0.95rem] text-secondary underline decoration-secondary/30 underline-offset-[6px] transition-colors hover:decoration-secondary"
-            >
-              Ear piercing details
-            </Link>
-          </p>
-        </div>
+        <BeforeAfterShowcase />
       </div>
     </section>
   );

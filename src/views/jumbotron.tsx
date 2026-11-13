@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Button } from "components/ui/button";
 import useCopyToClipBoard from "hooks/use-copy-to-clipboard";
 import { trackPhoneClick } from "lib/analytics";
 import Link from "next/link";
@@ -26,12 +27,9 @@ const FEATURED_LINKS = [
   ["Williamsburg Location", "/locations/williamsburg-va"],
 ] as const;
 
-const quietList = "flex flex-wrap gap-x-2 gap-y-1.5";
-const dot = "after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none";
-
 // Answers the Botox-alternative search in the first screen (ScaleSleek f_vh33afabed). The clinic uses only Xeomin.
 // Prices come from the server page as props, so the catalog stays out of this client chunk.
-// Tidewater: same words and links as before; credentials and featured links are quiet dotted lines, one filled button.
+// Tidewater: main's words, credential chips and links in the new palette; one filled button.
 export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: string; xeominCard: string }) {
   const { handleCopy } = useCopyToClipBoard();
 
@@ -64,9 +62,9 @@ export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: stri
             A local med spa with Jenny Brady, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified
             OH-Shot provider and certified Blomdahl medical ear piercing provider.
           </p>
-          <ul className={`mt-5 ${quietList} text-sm text-base-content/60`} aria-label="Jenny Brady credentials and certifications">
+          <ul className="mt-5 flex max-w-[64ch] flex-wrap gap-1.5" aria-label="Jenny Brady credentials and certifications">
             {CREDENTIALS.map((credential) => (
-              <li key={credential} className={dot}>
+              <li key={credential} className="rounded-full border border-base-300 px-2.5 py-0.5 text-xs text-base-content/70">
                 {credential}
               </li>
             ))}
@@ -88,19 +86,18 @@ export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: stri
             >
               See prices
             </Link>
-            <button
-              type="button"
-              onClick={handleAction}
-              className="rounded-sm text-[0.95rem] text-base-content/75 transition-colors hover:text-base-content"
-            >
+            <Button variant="secondary" size="lg" onClick={handleAction}>
               +1 (804) 738-9483
-            </button>
+            </Button>
           </div>
           <nav className="mt-8" aria-label="Featured treatments and location">
-            <ul className={`${quietList} text-sm`}>
+            <ul className="flex max-w-3xl flex-wrap gap-x-5 gap-y-2">
               {FEATURED_LINKS.map(([label, href]) => (
-                <li key={href} className={dot}>
-                  <Link href={href} className="text-secondary transition-colors hover:text-base-content">
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="text-sm text-base-content underline decoration-base-300 underline-offset-[5px] transition-colors hover:text-secondary hover:decoration-secondary"
+                  >
                     {label}
                   </Link>
                 </li>
