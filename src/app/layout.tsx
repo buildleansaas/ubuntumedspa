@@ -7,6 +7,7 @@ import ClientUtilities from "components/client-utilities";
 import StructuredData from "components/structured-data";
 import Header from "components/header";
 import Footer from "components/footer";
+import { CONTAINER, Container } from "components/layout";
 import CartDrawerLoader from "components/cart-drawer-loader";
 import { CartProvider } from "components/cart-provider";
 import { Metadata, Viewport } from "next";
@@ -94,12 +95,13 @@ export default function Layout({ children }: LayoutProps) {
           <StructuredData type="LocalBusiness" />
           <div className="min-h-screen w-full">
             <div className="sticky top-0 z-40 w-full border-b border-base-300 bg-base-100/95 backdrop-blur-md">
-              <div className="mx-auto w-full px-3 sm:px-4 md:max-w-7xl md:px-8">
+              <Container>
                 <Header />
-              </div>
+              </Container>
             </div>
-            <main className="mx-auto w-full max-w-8xl px-4 pt-6 md:px-9 md:pt-8 lg:px-18 xl:px-27">
-              <div className="relative flex w-full flex-col items-center justify-center text-base-content">
+            {/* One container for every page: sections paint full-bleed bands but keep their content on this grid. */}
+            <main className={CONTAINER}>
+              <div className="relative flex w-full flex-col text-base-content">
                 {children}
                 <Footer />
               </div>

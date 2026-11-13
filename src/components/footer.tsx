@@ -34,8 +34,9 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-24 w-full border-t border-base-300 text-base-content">
-      <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
+    <footer className="rule-top-bleed w-full text-base-content">
+      {/* <main> already gives the footer the site container, so its text shares the sections' left edge. */}
+      <div className="w-full">
         <div className="py-12">
           <FooterLocationCta />
         </div>
