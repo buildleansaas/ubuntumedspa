@@ -11,8 +11,11 @@ import {
   AFTER_HEADER,
   BUTTON_ROW,
   CARD,
+  CARD_BODY,
+  CARD_FLUSH,
   CARD_GRID,
   CARD_GRID_2,
+  CARD_GRID_4,
   CARD_LINK,
   CARD_TITLE,
   SPLIT,
@@ -23,6 +26,7 @@ import {
   cardGridFor,
 } from "components/layout";
 
+import { ConcernFaceArt, CreditBlocksArt, isConcernArea } from "components/concern-art";
 import CtaFooter from "components/cta-footer";
 import CatalogPurchasePanel from "components/catalog-purchase-panel";
 import BlogPostCollection from "components/blog-post-collection";
@@ -732,13 +736,31 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               </>
             }
           />
-          <div className={`${AFTER_HEADER} ${cardGridFor(xeominClusterPages.length)}`}>
-            {xeominClusterPages.map((page) => (
-              <Link key={page.path} href={page.path} className={`group ${CARD} ${CARD_LINK}`}>
-                <span className={`block ${CARD_TITLE} group-hover:text-primary`}>{page.h1.replace(/ in Williamsburg, VA$/, "")}</span>
-                <span className="mt-2 block text-sm leading-relaxed text-base-content/80">{page.summary}</span>
-              </Link>
-            ))}
+          {/* Four area cards, each with the same face and its area picked out, then the cost card across the full width. */}
+          <div className={`${AFTER_HEADER} ${CARD_GRID_4}`}>
+            {xeominClusterPages.map((page) =>
+              isConcernArea(page.slug) ? (
+                <Link key={page.path} href={page.path} className={`group ${CARD_FLUSH} ${CARD_LINK}`}>
+                  <ConcernFaceArt area={page.slug} />
+                  <span className={CARD_BODY}>
+                    <span className={`block ${CARD_TITLE} group-hover:text-primary`}>{page.h1.replace(/ in Williamsburg, VA$/, "")}</span>
+                    <span className="mt-2 block text-sm leading-relaxed text-base-content/80">{page.summary}</span>
+                  </span>
+                </Link>
+              ) : (
+                <Link
+                  key={page.path}
+                  href={page.path}
+                  className={`group ${CARD_FLUSH} ${CARD_LINK} sm:col-span-2 sm:flex-row lg:col-span-4`}
+                >
+                  <CreditBlocksArt className="sm:w-56 sm:shrink-0 md:w-64" />
+                  <span className={`${CARD_BODY} sm:justify-center`}>
+                    <span className={`block ${CARD_TITLE} group-hover:text-primary`}>{page.h1.replace(/ in Williamsburg, VA$/, "")}</span>
+                    <span className="mt-2 block max-w-[62ch] text-sm leading-relaxed text-base-content/80">{page.summary}</span>
+                  </span>
+                </Link>
+              )
+            )}
           </div>
         </Section>
       )}
