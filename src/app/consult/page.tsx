@@ -83,7 +83,7 @@ export default function ConsultationPage() {
           <h2 className="text-3xl font-light text-base-content">Before you submit</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-3">
             {[
-              ["1", "Choose interests", "Pick every service family you want to discuss so the team can prepare."],
+              ["1", "Say what you'd like help with", "Choose any concerns that fit, or treatments you already know. Not sure yet is fine."],
               ["2", "Add context", "Mention goals, timing, prior treatment, sensitivities, or what you are unsure about."],
               ["3", "Schedule", "After submission, you will be routed toward scheduling or follow-up next steps."],
             ].map(([step, title, copy]) => (
