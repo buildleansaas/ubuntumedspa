@@ -27,12 +27,18 @@ import {
 
 export type SatelliteHubSlug = "hyperhidrosis-treatment" | "prp-breast-lift" | "prp-face-lift" | "xeomin";
 export type SatelliteFaq = { question: string; answer: string };
+/** The two Peninsula drives the route map draws (components/peninsula-route-map.tsx). */
+export type PeninsulaRoute = "newport-news" | "yorktown";
 export type SatelliteSection = {
   heading: string;
   paragraphs?: string[];
   bullets?: string[];
   steps?: { title: string; description: string }[];
+  /** Draw the Peninsula route map for this drive (the near pages' travel section). */
+  routeMap?: PeninsulaRoute;
 };
+/** The drive summary a route card shows: the map, the drive time, the route steps, and a Google Maps link. */
+export type SatelliteRoute = { map: PeninsulaRoute; driveTime: string; steps: string[]; directionsHref: string };
 export type SatelliteLink = { href: string; label: string };
 
 export type ServiceSatellitePage = {
@@ -383,12 +389,15 @@ type NearArea = {
   /** Xeomin wording from the area's /locations page and the Xeomin hub FAQ. */
   xeominLocalNotes: string[];
   localFaq: SatelliteFaq;
+  /** Which drive the route map highlights. */
+  mapRoute: PeninsulaRoute;
 };
 
 const NEAR_AREAS: NearArea[] = [
   {
     slug: "newport-news-va",
     name: "Newport News",
+    mapRoute: "newport-news",
     notLocalLine: "There is no Newport News street address.",
     localIntro:
       "Patients from Oyster Point, Denbigh, Kiln Creek, and City Center usually take I-64 west toward Williamsburg. From northern Newport News, I-64 is often the simplest route before local roads to Powhatan Parkway.",
@@ -434,6 +443,7 @@ const NEAR_AREAS: NearArea[] = [
   {
     slug: "yorktown-va",
     name: "Yorktown",
+    mapRoute: "yorktown",
     notLocalLine: "The clinic is in Williamsburg, not Yorktown.",
     localIntro:
       "Patients from Yorktown, Tabb, and Grafton plan this as a Williamsburg appointment, usually by the Colonial Parkway or I-64, then Route 199 and Powhatan Parkway.",
@@ -479,6 +489,17 @@ const NEAR_AREAS: NearArea[] = [
 /** Drive time as stated on /locations ("Yorktown and Newport News: Typically 25–35 minutes"). */
 export const PENINSULA_DRIVE_TIME = "typically 25–35 minutes";
 
+/** Google Maps driving directions from the town to the clinic (opens in a new tab). */
+export const peninsulaDirectionsHref = (townName: string) =>
+  `https://www.google.com/maps/dir/?api=1&origin=${townName.replace(/ /g, "+")},+VA&destination=Williamsburg+Med+Spa,+3900+Powhatan+Parkway,+Williamsburg,+VA+23188`;
+
+const nearAreaRoute = (area: NearArea): SatelliteRoute => ({
+  map: area.mapRoute,
+  driveTime: PENINSULA_DRIVE_TIME,
+  steps: area.routeSteps,
+  directionsHref: peninsulaDirectionsHref(area.name),
+});
+
 const BREAST_CASH_CENTS = cashCents("prp-breast-lift");
 const FACE_LIFT_CASH_CENTS = cashCents("prp-face-lift");
 
@@ -489,6 +510,7 @@ const travelSection = (area: NearArea): SatelliteSection => ({
     ...area.timingNotes,
   ],
   steps: area.routeSteps.map((step, index) => ({ title: `Step ${index + 1}`, description: step })),
+  routeMap: area.mapRoute,
 });
 
 const planningSection = (area: NearArea, extra: string[] = []): SatelliteSection => ({
@@ -719,11 +741,15 @@ export const getHubSatelliteGroup = (hubSlug: string) => {
     intro: isConcern
       ? "Each page covers how treatment works for that area, what to expect, side effects, and pricing."
       : `Appointments are at ${CLINIC_ADDRESS}. These pages cover the drive (${PENINSULA_DRIVE_TIME}), ${pages[0].hubSlug === "xeomin" ? "credit-block pricing" : "the one-visit price"}, and how to book.`,
-    links: pages.map((page) => ({
-      href: satellitePath(page),
-      label: page.kind === "concern" ? page.label : `${HUB_LABELS[page.hubSlug]} near ${page.label}`,
-      description: page.linkDescription,
-    })),
+    links: pages.map((page) => {
+      const area = page.kind === "near" ? NEAR_AREAS.find((item) => item.slug === page.slug) : undefined;
+      return {
+        href: satellitePath(page),
+        label: page.kind === "concern" ? page.label : `${HUB_LABELS[page.hubSlug]} near ${page.label}`,
+        description: page.linkDescription,
+        route: area ? nearAreaRoute(area) : undefined,
+      };
+    }),
   };
 };
 

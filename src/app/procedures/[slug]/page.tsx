@@ -43,6 +43,7 @@ import { CrowsFeetResults, EarPiercingPhotos, HyperhidrosisSteps, JointPhotos, P
 import { clinicPhotoBySrc } from "config/clinic-photos";
 import { activeOfferMetaDescription, getActiveOffers } from "config/offers";
 import { XEOMIN_HYPERHIDROSIS_OFF_LABEL, XEOMIN_OFF_LABEL_NOTE, xeominClusterPages } from "lib/xeomin-concerns";
+import RouteCard from "components/route-card";
 import HomeOwnerLink, { HOME_OWNER_LINK_PROCEDURES } from "components/home-owner-link";
 
 // Quiet in-page links under the hero, separated by a middle dot.
@@ -621,12 +622,16 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         <Section labelledBy="satellite-pages">
           <SectionHeader id="satellite-pages" title={satelliteGroup.heading} intro={satelliteGroup.intro} />
           <div className={`${AFTER_HEADER} ${cardGridFor(satelliteGroup.links.length)}`}>
-            {satelliteGroup.links.map(({ href, label, description }) => (
-              <Link key={href} href={href} className={`group ${CARD} ${CARD_LINK}`}>
-                <span className={`block ${CARD_TITLE} group-hover:text-primary`}>{label}</span>
-                <span className="mt-2 block text-sm leading-relaxed text-base-content/80">{description}</span>
-              </Link>
-            ))}
+            {satelliteGroup.links.map(({ href, label, description, route }) =>
+              route ? (
+                <RouteCard key={href} href={href} label={label} description={description} route={route} />
+              ) : (
+                <Link key={href} href={href} className={`group ${CARD} ${CARD_LINK}`}>
+                  <span className={`block ${CARD_TITLE} group-hover:text-primary`}>{label}</span>
+                  <span className="mt-2 block text-sm leading-relaxed text-base-content/80">{description}</span>
+                </Link>
+              )
+            )}
           </div>
         </Section>
       )}
