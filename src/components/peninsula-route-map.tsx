@@ -172,18 +172,23 @@ const ROUTES: Record<
     markers: [
       { at: [37.205, -76.576], label: "1" },
       { at: [37.237, -76.705], label: "2" },
+      { at: [37.2705, -76.755], label: "3" },
     ],
     desc: "A schematic map of the Virginia Peninsula, not to scale, with the James River to the south and the York River to the north. The highlighted route starts in Newport News and follows I-64 west toward Williamsburg, then Route 199 toward Monticello Avenue and New Town, and ends at the Williamsburg Med Spa pin on Powhatan Parkway. Yorktown and Hampton are marked for reference.",
   },
   yorktown: {
     from: "Yorktown",
-    main: [...rev(PARKWAY_YORK), ...MONTICELLO.slice(1)],
-    alternative: [...YORKTOWN_LINK, ...rev(I64_MID).slice(3), ...rev(RT199_SOUTH).slice(1)],
+    // The highlight follows the stated steps exactly: toward Williamsburg, then Route 199 and Monticello Avenue. The
+    // Colonial Parkway is the other way the copy names; it's drawn as the soft alternative (no Parkway-to-199 ramp is
+    // drawn, since the copy names none).
+    main: [...YORKTOWN_LINK, ...rev(I64_MID).slice(3), ...rev(RT199_SOUTH).slice(1), ...MONTICELLO.slice(3)],
+    alternative: [...rev(PARKWAY_YORK)],
     markers: [
-      { at: [37.265, -76.59], label: "1" },
-      { at: [37.27, -76.725], label: "2" },
+      { at: [37.19, -76.54], label: "1" },
+      { at: [37.237, -76.705], label: "2" },
+      { at: [37.2705, -76.755], label: "3" },
     ],
-    desc: "A schematic map of the Virginia Peninsula, not to scale, with the York River to the north and the James River to the south. The highlighted route starts in Yorktown and follows the Colonial Parkway along the York River toward Williamsburg, then connects through Route 199 and Monticello Avenue to the Williamsburg Med Spa pin on Powhatan Parkway. A dashed line shows the other option, I-64 toward Williamsburg. Newport News and Hampton are marked for reference.",
+    desc: "A schematic map of the Virginia Peninsula, not to scale, with the York River to the north and the James River to the south. The highlighted route starts in Yorktown and heads toward Williamsburg, then connects through Route 199 and Monticello Avenue to the Williamsburg Med Spa pin on Powhatan Parkway. A soft line shows the other way toward Williamsburg, the Colonial Parkway along the York River. Newport News and Hampton are marked for reference.",
   },
 };
 

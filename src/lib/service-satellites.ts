@@ -490,12 +490,15 @@ const NEAR_AREAS: NearArea[] = [
 export const PENINSULA_DRIVE_TIME = "typically 25–35 minutes";
 
 /** Google Maps driving directions from the town to the clinic (opens in a new tab). */
+const mapQuery = (text: string) => text.replace(/ /g, "+");
+const CLINIC_MAP_DESTINATION = mapQuery(`Williamsburg Med Spa, ${CLINIC_ADDRESS}`);
+
 export const peninsulaDirectionsHref = (townName: string) =>
-  `https://www.google.com/maps/dir/?api=1&origin=${townName.replace(/ /g, "+")},+VA&destination=Williamsburg+Med+Spa,+3900+Powhatan+Parkway,+Williamsburg,+VA+23188`;
+  `https://www.google.com/maps/dir/?api=1&origin=${mapQuery(townName)},+VA&destination=${CLINIC_MAP_DESTINATION}&travelmode=driving`;
 
 /** Apple Maps driving directions from the town to the clinic (opens Maps on iPhone and Mac, the web map elsewhere). */
 export const peninsulaAppleDirectionsHref = (townName: string) =>
-  `https://maps.apple.com/?saddr=${townName.replace(/ /g, "+")},+VA&daddr=Williamsburg+Med+Spa,+3900+Powhatan+Parkway,+Williamsburg,+VA+23188&dirflg=d`;
+  `https://maps.apple.com/?saddr=${mapQuery(townName)},+VA&daddr=${CLINIC_MAP_DESTINATION}&dirflg=d`;
 
 const nearAreaRoute = (area: NearArea): SatelliteRoute => ({
   map: area.mapRoute,

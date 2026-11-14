@@ -372,3 +372,6 @@ h1 {
     }
   }
 }
+@media print {
+  .route-map .rm-route-line { animation: none; stroke-dashoffset: 0; }
+}
