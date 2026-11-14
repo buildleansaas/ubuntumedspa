@@ -505,7 +505,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
 
       <Section id="pricing">
         <div className={`${SPLIT} items-start`}>
-          <div className={catalogItem ? SPLIT_TEXT.even : "lg:col-span-9"}>
+          <div className={catalogItem ? `${SPLIT_TEXT.even} max-lg:contents` : "lg:col-span-9"}>
             <SectionHeader
               eyebrow={catalogItem ? "Pricing & booking" : "Treatment planning"}
               title={
@@ -545,8 +545,9 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                 ))}
               </div>
             )}
-            {/* Austin 2026-11-13: the service details sit beside the booking card instead of in a half-empty row below it. */}
-            <div className="mt-10 [&>p]:max-w-[62ch]">
+            {/* Austin 2026-11-13: the service details sit beside the booking card instead of in a half-empty row below it.
+                On phones the left column dissolves (max-lg:contents) so the card comes right after the heading, then the details. */}
+            <div className="mt-10 max-lg:order-last [&>p]:max-w-[62ch]">
               <p className="text-base leading-relaxed text-base-content/75 md:text-lg">{humanizeMedicalCopy(procedure.description)}</p>
               {"trademarkNote" in procedure && procedure.trademarkNote && (
                 <p className="mt-3 text-xs leading-relaxed text-base-content/80">{procedure.trademarkNote}</p>
@@ -595,7 +596,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
           </div>
 
           {catalogItem && (
-            <div className={`${SPLIT_MEDIA.even} lg:sticky lg:top-28`}>
+            <div className={`${SPLIT_MEDIA.even} lg:[@media(min-height:820px)]:sticky lg:top-28`}>
               <CatalogPurchasePanel
                 slug={catalogItem.slug}
                 kind={catalogItem.kind}
