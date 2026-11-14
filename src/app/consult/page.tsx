@@ -24,11 +24,10 @@ const nearbyAreas = ["Williamsburg", "James City County", "Yorktown", "Newport N
 
 export default function ConsultationPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+    <div className="w-full py-14 md:py-20">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Consult"]} />
       <section className="grid gap-8 border-b border-base-300 pb-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,1.05fr)] lg:items-start">
         <div>
-          <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Williamsburg consultation</p>
           <h1 className="max-w-4xl text-4xl font-light leading-tight tracking-tight text-base-content sm:text-5xl md:text-6xl">
             Book a med spa consultation in Williamsburg, VA
           </h1>
@@ -36,7 +35,7 @@ export default function ConsultationPage() {
             Start here if you want help choosing between injectables, PRP, hyperhidrosis care, intimate wellness,
             or medical ear piercing with Williamsburg Med Spa.
           </p>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-base-content/65">
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-base-content/80">
             Jenny Brady reviews your goals, medical history, candidacy, risk factors, timing, and next steps before
             recommending a treatment plan. If a service is not the right fit, the consultation should make that clear too.
           </p>
@@ -48,9 +47,9 @@ export default function ConsultationPage() {
               ["Clear next step", "Submit the form, then text or call Jenny to pick a time."],
               ["Private intake", "Share the concerns you want Jenny to review before the visit."],
             ].map(([title, copy]) => (
-              <div key={title} className="border border-base-300 bg-base-100 p-4">
+              <div key={title} className="rounded-xl border border-base-300 bg-base-100 p-4">
                 <p className="font-semibold text-base-content">{title}</p>
-                <p className="mt-1 text-sm leading-6 text-base-content/65">{copy}</p>
+                <p className="mt-1 text-sm leading-6 text-base-content/80">{copy}</p>
               </div>
             ))}
           </div>
@@ -61,7 +60,6 @@ export default function ConsultationPage() {
 
       <section className="grid gap-8 border-b border-base-300 py-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <p className="eyebrow">What this visit helps with</p>
           <h2 className="mt-3 text-3xl font-light leading-tight text-base-content md:text-4xl">
             Use the consult to pick the right first step, not to guess from a menu.
           </h2>
@@ -72,7 +70,7 @@ export default function ConsultationPage() {
         </div>
         <div className="grid gap-3">
           {consultationPaths.map((path) => (
-            <div key={path} className="flex gap-3 border border-base-300 bg-base-100 p-4">
+            <div key={path} className="flex gap-3 rounded-xl border border-base-300 bg-base-100 p-4">
               <span className="mt-3 h-px w-6 shrink-0 bg-base-300" />
               <p className="text-base leading-7 text-base-content/75">{path}</p>
             </div>
@@ -89,31 +87,31 @@ export default function ConsultationPage() {
               ["2", "Add context", "Mention goals, timing, prior treatment, sensitivities, or what you are unsure about."],
               ["3", "Schedule", "After submission, you will be routed toward scheduling or follow-up next steps."],
             ].map(([step, title, copy]) => (
-              <div key={step} className="border border-base-300 bg-base-100 p-5">
+              <div key={step} className="rounded-xl border border-base-300 bg-base-100 p-5">
                 <p className="text-sm font-semibold text-primary">Step {step}</p>
                 <h3 className="mt-2 text-lg font-semibold text-base-content">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-base-content/65">{copy}</p>
+                <p className="mt-2 text-sm leading-6 text-base-content/80">{copy}</p>
               </div>
             ))}
           </div>
         </div>
-        <aside className="border border-base-300 bg-base-100 p-5">
+        <aside className="rounded-xl border border-base-300 bg-base-100 p-5">
           <p className="font-semibold text-base-content">Nearby patients commonly visit from:</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {nearbyAreas.map((area) => (
-              <span key={area} className="rounded-full border border-base-300 px-3 py-1.5 text-sm text-base-content/70">
+              <span key={area} className="text-sm text-base-content/70 after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none">
                 {area}
               </span>
             ))}
           </div>
-          <p className="mt-5 text-sm leading-6 text-base-content/65">
+          <p className="mt-5 text-sm leading-6 text-base-content/80">
             Want to compare service pages first? Start with <Link href="/procedures" className="font-medium text-primary hover:underline">all procedures</Link> or the <Link href="/locations/williamsburg-va" className="font-medium text-primary hover:underline">Williamsburg location guide</Link>.
           </p>
           <HomeOwnerLink className="mt-3" />
         </aside>
       </section>
 
-      <p className="border-t border-base-300 pt-6 text-center text-sm text-base-content/60">
+      <p className="border-t border-base-300 pt-6 text-center text-sm text-base-content/80">
         Treatment recommendations depend on your history, examination, and goals. Outcomes vary by patient.
       </p>
     </div>

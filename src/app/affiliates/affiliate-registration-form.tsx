@@ -198,7 +198,6 @@ export default function AffiliateRegistrationForm({
   if (affiliateProfile) {
     return (
       <div className={isEmbedded ? embeddedAffiliateToolsShellClassName : shellClassName}>
-        <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Your referral tools</p>
         <h3 className="mt-3 text-2xl font-light text-base-content">Your link is live.</h3>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-base-content/75">
           We found the affiliate tied to <span className="font-medium text-base-content">{affiliateProfile.email}</span>.
@@ -207,11 +206,11 @@ export default function AffiliateRegistrationForm({
 
         <div className={cn("mt-6", isEmbedded ? "border-t border-base-300 pt-6" : "border border-base-300 bg-base-100 p-5 sm:p-6")}>
           <div className="max-w-2xl">
-            <p className="text-xs uppercase tracking-[0.18em] text-base-content/55">Edit referral code</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-base-content/80">Edit referral code</p>
             <h4 className="mt-2 text-xl font-light tracking-tight text-base-content sm:text-2xl">
               Make your link easier to remember.
             </h4>
-            <p className="mt-2 text-sm leading-6 text-base-content/65 sm:text-base">
+            <p className="mt-2 text-sm leading-6 text-base-content/80 sm:text-base">
               Pick the version you want people to type or copy. Old links you&apos;ve already shared will still work.
             </p>
           </div>
@@ -231,14 +230,14 @@ export default function AffiliateRegistrationForm({
               autoCorrect="off"
               spellCheck={false}
             />
-            <p className="mt-3 text-sm leading-6 text-base-content/60">
+            <p className="mt-3 text-sm leading-6 text-base-content/80">
               Use lowercase letters, numbers, and hyphens. Any older links tied to you will keep routing correctly.
             </p>
             {affiliateCodeError ? <p className="mt-2 text-sm text-error">{affiliateCodeError}</p> : null}
           </div>
 
           <div className="mt-5 flex flex-col gap-3 border-t border-base-300/80 pt-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm leading-6 text-base-content/60">
+            <p className="text-sm leading-6 text-base-content/80">
               Your referral URL and share tools update as soon as you save.
             </p>
 
@@ -260,7 +259,7 @@ export default function AffiliateRegistrationForm({
         </div>
 
         <div className={cn("mt-6", isEmbedded ? "border-t border-base-300 pt-6" : "border border-base-300 bg-base-100 p-5")}>
-          <p className="text-xs uppercase tracking-[0.16em] text-base-content/55">Default referral link</p>
+          <p className="text-xs uppercase tracking-[0.16em] text-base-content/80">Default referral link</p>
           <p className="mt-2 break-all text-sm leading-6 text-base-content/80">{referralUrl}</p>
         </div>
 
@@ -281,7 +280,7 @@ export default function AffiliateRegistrationForm({
           </Button>
         </div>
 
-        <div className="mt-6 flex items-start gap-2 text-sm leading-6 text-base-content/60">
+        <div className="mt-6 flex items-start gap-2 text-sm leading-6 text-base-content/80">
           <Share2 className="mt-1 h-4 w-4 shrink-0" />
           We provide the link, the guide, and copy-ready text. You just send people to the site.
         </div>
@@ -293,7 +292,7 @@ export default function AffiliateRegistrationForm({
     <form className={shellClassName} onSubmit={handleSubmit}>
       {!isEmbedded ? (
         <div className="border-b border-base-300 pb-6">
-          <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Get your referral link</p>
+          <p className="text-sm uppercase tracking-[0.18em] text-base-content/80">Get your referral link</p>
           <p className="mt-3 max-w-2xl text-base text-base-content/70">
             Enter your full name and email once. We&apos;ll generate your affiliate code instantly so you can start
             sharing right away.
@@ -333,7 +332,7 @@ export default function AffiliateRegistrationForm({
       </div>
 
       <div className="mt-8 flex flex-col gap-4 border-t border-base-300 pt-6 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-base-content/60">
+        <p className="text-sm text-base-content/80">
           You&apos;ll get a code instantly, plus a homepage link and copy-ready text you can use right away.
         </p>
         <Button type="submit" disabled={loading} className="w-full md:w-auto">

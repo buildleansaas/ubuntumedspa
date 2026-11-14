@@ -105,3 +105,75 @@ test("three pages that showed for the Botox search link to /procedures/botox, th
   const html = renderToStaticMarkup(createElement(SearchAnswers, { xeominCash: "$250", xeominCard: "$257.78" }));
   assert.match(html, /<a[^>]*href="\/procedures\/botox"[^>]*>Botox alternative in Williamsburg, VA<\/a>/);
 });
+
+// Tidewater homepage: the homepage's own FAQs render visibly (main's list, each question an H3 with its answer), and
+// the FAQPage schema is the search answers plus these, matching what's on the page.
+const { homeFaqs } = require("../views/home-questions") as typeof import("../views/home-questions");
+
+test("homepage renders every homeFaqs question and answer, and lists them in the FAQ schema", () => {
+  const home = readFileSync("src/app/page.tsx", "utf8");
+  assert.equal(homeFaqs.length, 3);
+  assert.match(home, /\{homeFaqs\.map\(\(faq\) => \([\s\S]{0,400}\{faq\.question\}[\s\S]{0,300}\{faq\.answer\}/);
+  assert.match(home, /faqs=\{\[\.\.\.getSearchAnswers\(XEOMIN_CASH, XEOMIN_CARD\), \.\.\.homeFaqs\]\}/);
+  assert.doesNotMatch(home, /<details\b/, "FAQ answers are always visible");
+});
+
+const { CHOOSER_TILES, HOME_PRICE_ROWS, HOME_PRICE_INTRO } = require("../views/home-prices") as typeof import("../views/home-prices");
+const { COMMERCE_CATALOG_BY_SLUG } = require("../config/commerce-catalog") as typeof import("../config/commerce-catalog");
+const { CONSULT_CONCERN_LABELS } = require("./consult-concerns") as typeof import("./consult-concerns");
+const { CARD_PRICE_SENTENCE, cardPriceLabel, formatUsdShort } = require("./price") as typeof import("./price");
+
+test("homepage prices come from the catalog: no typed dollar amounts, cash before card", () => {
+  for (const file of ["src/app/page.tsx", "src/views/home-prices.ts", "src/views/home-chooser.tsx", "src/views/home-questions.tsx", "src/views/jumbotron.tsx"]) {
+    assert.doesNotMatch(readFileSync(file, "utf8"), /\$\d/, `${file} has a typed dollar amount`);
+  }
+  const home = readFileSync("src/app/page.tsx", "utf8");
+  const rowCash = home.indexOf("{row.cash} cash");
+  const rowCard = home.indexOf("{row.card} by card or online");
+  assert.ok(rowCash > 0 && rowCash < rowCard, "price rows show cash before card");
+  assert.match(home, /intro=\{HOME_PRICE_INTRO\}/);
+  assert.equal(HOME_PRICE_INTRO, `Cash price first. ${CARD_PRICE_SENTENCE}`);
+
+  const cash = (slug: string) => formatUsdShort(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
+  const card = (slug: string) => cardPriceLabel(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
+  const rows = Object.fromEntries(HOME_PRICE_ROWS.map((row) => [row.href, row]));
+  // A Xeomin credit block is exactly the block price: no "from".
+  assert.deepEqual(rows["/procedures/xeomin"], {
+    name: "Xeomin",
+    href: "/procedures/xeomin",
+    cash: cash("xeomin"),
+    card: card("xeomin"),
+    note: "per credit block",
+  });
+  // Hyperhidrosis starts at its catalog price (the hub and satellites say "from" / "starts at"); the homepage says "from".
+  assert.deepEqual(rows["/procedures/hyperhidrosis-treatment"], {
+    name: "Hyperhidrosis treatment",
+    href: "/procedures/hyperhidrosis-treatment",
+    cash: `from ${cash("hyperhidrosis-treatment")}`,
+    card: `from ${card("hyperhidrosis-treatment")}`,
+    note: "per treatment",
+  });
+  const tiles = Object.fromEntries(CHOOSER_TILES.map((tile) => [tile.href, tile]));
+  assert.equal(tiles["/procedures/hyperhidrosis-treatment"].price, `from ${cash("hyperhidrosis-treatment")} cash`);
+  assert.equal(tiles["/procedures/xeomin"].price, `from ${cash("xeomin")} cash`);
+});
+
+test("the homepage chooser tiles are real links to the treatment owner pages, labelled with approved consult concerns", () => {
+  assert.deepEqual(
+    CHOOSER_TILES.map((tile) => [tile.concern, tile.href]),
+    [
+      ["Lines when I frown, raise my brows or smile", "/procedures/xeomin"],
+      ["Heavy sweating (underarms, palms, feet)", "/procedures/hyperhidrosis-treatment"],
+      ["My child's first earrings / ear piercing", "/procedures/blomdahl-ear-piercing"],
+      ["Tired or uneven skin", "/procedures/prp-facial"],
+      ["Thinning hair", "/procedures/prp-hair-restoration"],
+      ["Intimate dryness or discomfort", "/procedures/oh-shot"],
+    ]
+  );
+  for (const tile of CHOOSER_TILES) {
+    assert.ok(CONSULT_CONCERN_LABELS.includes(tile.concern), `not a consult concern: ${tile.concern}`);
+  }
+  assert.match(readFileSync("src/app/page.tsx", "utf8"), /<HomeChooser tiles=\{CHOOSER_TILES\} \/>/);
+  assert.match(readFileSync("src/views/home-chooser.tsx", "utf8"), /<Link\s+href=\{tile\.href\}/);
+  assert.match(readFileSync("src/views/home-chooser.tsx", "utf8"), /\{tile\.concern\}/);
+});

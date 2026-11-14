@@ -10,33 +10,34 @@
   prefersdark: false;
   color-scheme: light;
 
-  /* Warm white field, charcoal text, deep green used sparingly. */
-  --color-base-100: oklch(99.2% 0.004 95);
-  --color-base-200: oklch(96.4% 0.01 90);
-  --color-base-300: oklch(88.2% 0.014 85);
-  --color-base-content: oklch(24% 0.02 155);
+  /* Tidewater: oyster linen page, marsh mist bands, pewter lines, river slate text.
+     One filled button per screen (primary). Links use James River blue (secondary). */
+  --color-base-100: #f4f3ef;
+  --color-base-200: #e8ebe8;
+  --color-base-300: #d3d8d5;
+  --color-base-content: #24313a;
 
-  --color-primary: oklch(36% 0.048 155);
-  --color-primary-content: oklch(98.6% 0.004 95);
-  --color-secondary: oklch(50% 0.028 75);
-  --color-secondary-content: oklch(98.6% 0.004 95);
-  --color-accent: oklch(58% 0.04 150);
-  --color-accent-content: oklch(24% 0.02 155);
-  --color-neutral: oklch(28% 0.016 155);
-  --color-neutral-content: oklch(97.5% 0.006 95);
+  --color-primary: #24313a;
+  --color-primary-content: #f4f3ef;
+  --color-secondary: #436379;
+  --color-secondary-content: #f4f3ef;
+  --color-accent: #6f8470;
+  --color-accent-content: #f4f3ef;
+  --color-neutral: #24313a;
+  --color-neutral-content: #f4f3ef;
 
-  --color-info: oklch(48% 0.04 230);
-  --color-info-content: oklch(98.6% 0.004 95);
-  --color-success: oklch(46% 0.07 155);
-  --color-success-content: oklch(98.6% 0.004 95);
-  --color-warning: oklch(62% 0.08 75);
-  --color-warning-content: oklch(24% 0.02 70);
-  --color-error: oklch(50% 0.14 25);
-  --color-error-content: oklch(98.6% 0.004 95);
+  --color-info: #436379;
+  --color-info-content: #f4f3ef;
+  --color-success: #4e6b52;
+  --color-success-content: #f4f3ef;
+  --color-warning: #9a7a3c;
+  --color-warning-content: #f4f3ef;
+  --color-error: #a2463b;
+  --color-error-content: #f4f3ef;
 
-  --radius-selector: 0.25rem;
-  --radius-field: 0.25rem;
-  --radius-box: 0.125rem;
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
@@ -49,17 +50,17 @@
   prefersdark: false;
   color-scheme: dark;
 
-  --color-base-100: oklch(20% 0.014 155);
-  --color-base-200: oklch(24% 0.014 155);
-  --color-base-300: oklch(32% 0.014 155);
-  --color-base-content: oklch(94% 0.008 95);
+  --color-base-100: #1c262d;
+  --color-base-200: #222e36;
+  --color-base-300: #34424b;
+  --color-base-content: #ecebe6;
 
-  --color-primary: oklch(74% 0.05 150);
-  --color-primary-content: oklch(20% 0.014 155);
-  --color-secondary: oklch(70% 0.03 75);
-  --color-secondary-content: oklch(20% 0.014 155);
-  --color-accent: oklch(72% 0.04 150);
-  --color-accent-content: oklch(20% 0.014 155);
+  --color-primary: #ecebe6;
+  --color-primary-content: #1c262d;
+  --color-secondary: #9db6c8;
+  --color-secondary-content: #1c262d;
+  --color-accent: #a3b5a4;
+  --color-accent-content: #1c262d;
   --color-neutral: oklch(36% 0.014 155);
   --color-neutral-content: oklch(94% 0.008 95);
 
@@ -99,28 +100,87 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Headings: Newsreader at light weights, never bold. Unlayered, so it wins over font-medium/semibold utilities. */
 h1,
 h2,
 h3 {
   font-family: var(--font-editorial-serif), "Iowan Old Style", Palatino, Georgia, serif;
-  font-weight: 500;
-  letter-spacing: -0.015em;
+  font-weight: 360;
+  letter-spacing: -0.012em;
   line-height: 1.15;
+  font-optical-sizing: auto;
 }
 
-.eyebrow {
+h1 {
+  font-weight: 320;
+}
+
+/* Bold words inside headings ("More About <b>Xeomin</b>") stay at the heading's light weight. */
+:is(h1, h2, h3) :is(strong, b, .font-bold, .font-semibold, .font-extrabold) {
+  font-weight: inherit;
+}
+
+/* Small tracked uppercase labels read as noise. Any that remain read as quiet sentence-case notes instead. */
+.eyebrow,
+.uppercase[class*="tracking-[0."] {
   font-family: var(--font-editorial-sans), ui-sans-serif, system-ui, sans-serif;
-  font-size: 0.75rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.875rem;
   font-weight: 500;
-  letter-spacing: 0.22em;
   line-height: 1.4;
-  text-transform: uppercase;
-  color: color-mix(in oklch, var(--color-base-content) 80%, transparent);
+  color: color-mix(in oklch, var(--color-base-content) 72%, transparent);
+}
+
+/* Section bands (src/components/layout.tsx). Sibling sections alternate base-100 / base-200. The band colour is
+   painted with a 100vmax box-shadow and clipped to the section's own height, so it runs full-bleed while the
+   content stays inside the one container, and it never adds a horizontal scrollbar. */
+[data-section]:nth-child(even of [data-section]):not([data-tone="plain"]),
+[data-section][data-tone="muted"] {
+  background-color: var(--color-base-200);
+  box-shadow: 0 0 0 100vmax var(--color-base-200);
+  clip-path: inset(0 -100vmax);
+}
+
+/* A full-bleed hairline on top of an element that sits in the container (the footer). border-image-outset paints
+   past the box without widening the page. */
+.rule-top-bleed {
+  border-top: 1px solid var(--color-base-300);
+  border-image: linear-gradient(var(--color-base-300), var(--color-base-300)) 1 / 1px 0 0 0 / 0 100vmax;
+}
+
+/* Links in body copy: James River blue. */
+.link-primary {
+  color: var(--color-secondary);
+}
+
+.link-primary:hover {
+  color: var(--color-base-content);
+}
+
+/* Visible focus everywhere. */
+:where(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 3px;
 }
 
 ::selection {
-  background: oklch(88% 0.03 145);
-  color: oklch(24% 0.02 155);
+  background: #d3d8d5;
+  color: #24313a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @keyframes cart-item-reveal {
@@ -146,5 +206,108 @@ h3 {
     opacity: 1;
     animation: none;
     transform: none;
+  }
+}
+
+/* Sheets (cart drawer, mobile menu). Keyframe animations, not transitions, so Radix keeps the panel mounted until
+   the exit animation ends. In: 280ms soft ease-out. Out: 200ms ease-in. The backdrop fades with it. */
+@keyframes sheet-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sheet-overlay-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes sheet-in-right {
+  from { transform: translate3d(100%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes sheet-out-right {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(100%, 0, 0); }
+}
+
+@keyframes sheet-in-left {
+  from { transform: translate3d(-100%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes sheet-out-left {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-100%, 0, 0); }
+}
+
+@keyframes sheet-in-top {
+  from { transform: translate3d(0, -100%, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes sheet-out-top {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, -100%, 0); }
+}
+
+@keyframes sheet-in-bottom {
+  from { transform: translate3d(0, 100%, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes sheet-out-bottom {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, 100%, 0); }
+}
+
+.sheet-overlay[data-state="open"] {
+  animation: sheet-overlay-in 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sheet-overlay[data-state="closed"] {
+  animation: sheet-overlay-out 200ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.sheet-panel[data-state="open"] {
+  animation-duration: 280ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sheet-panel[data-state="closed"] {
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  animation-fill-mode: forwards;
+}
+
+.sheet-panel[data-side="right"][data-state="open"] { animation-name: sheet-in-right; }
+.sheet-panel[data-side="right"][data-state="closed"] { animation-name: sheet-out-right; }
+.sheet-panel[data-side="left"][data-state="open"] { animation-name: sheet-in-left; }
+.sheet-panel[data-side="left"][data-state="closed"] { animation-name: sheet-out-left; }
+.sheet-panel[data-side="top"][data-state="open"] { animation-name: sheet-in-top; }
+.sheet-panel[data-side="top"][data-state="closed"] { animation-name: sheet-out-top; }
+.sheet-panel[data-side="bottom"][data-state="open"] { animation-name: sheet-in-bottom; }
+.sheet-panel[data-side="bottom"][data-state="closed"] { animation-name: sheet-out-bottom; }
+
+/* Reduced motion: no slide, only a fade, cut to near-instant by the global reduced-motion rule above. */
+@media (prefers-reduced-motion: reduce) {
+  .sheet-panel[data-state="open"] { animation-name: sheet-overlay-in !important; }
+  .sheet-panel[data-state="closed"] { animation-name: sheet-overlay-out !important; }
+}
+
+/* Header cart count: a small bump when an item is added. */
+@keyframes cart-count-bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+.cart-count-bump {
+  animation: cart-count-bump 320ms cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cart-count-bump {
+    animation: none;
   }
 }

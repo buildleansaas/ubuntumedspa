@@ -129,3 +129,41 @@ test("a released home photo used as the ear piercing hero keeps its own alt, nev
   assert.doesNotMatch(photo.alt, /clinic|office|Powhatan|Williamsburg/i);
 });
 
+
+// Round 3 (Austin): the crow's feet results are a slideshow of every pair, and every ear piercing photo is a carousel.
+// Every slide is in the server HTML (nothing lazy-rendered out of the DOM).
+test("slideshow and carousel render every photo, with alt text and captions, and no slide text names a place", async () => {
+  const React = await import("react");
+  (globalThis as { React?: unknown }).React = React;
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const { default: BeforeAfterShowcase } = await import("../components/before-after-showcase");
+  const { EarPiercingCarousel, EAR_PIERCING_SLIDES } = await import("../components/clinic-photos");
+
+  const results = renderToStaticMarkup(React.createElement(BeforeAfterShowcase));
+  for (const pair of CROWS_FEET_PAIRS) {
+    assert.ok(results.includes(`src="${pair.before.src}"`) && results.includes(`src="${pair.after.src}"`), pair.id);
+    assert.ok(results.includes(`>${pair.afterLabel}</figcaption>`), pair.afterLabel);
+  }
+  assert.equal(results.match(/aria-roledescription="slide"/g)?.length, CROWS_FEET_PAIRS.length);
+
+  const ears = renderToStaticMarkup(React.createElement(EarPiercingCarousel));
+  assert.equal(EAR_PIERCING_SLIDES.length, EAR_PIERCING_PHOTOS.length);
+  for (const slide of EAR_PIERCING_SLIDES) {
+    assert.ok(ears.includes(`src="${slide.photo.src}"`), slide.photo.src);
+    assert.ok(ears.includes(`alt="${slide.photo.alt.replace(/'/g, "&#x27;")}"`), slide.photo.alt);
+    assert.ok(ears.includes(slide.caption.replace(/'/g, "&#x27;")), slide.caption);
+    // The baby photos were taken at home: no slide text names the clinic or a place.
+    assert.doesNotMatch(slide.caption + slide.line, /clinic|office|Powhatan|Williamsburg|Med Spa/i);
+  }
+  const hero = EAR_PIERCING_PHOTOS[0].photo.src;
+  assert.ok(!renderToStaticMarkup(React.createElement(EarPiercingCarousel, { exclude: hero })).includes(`src="${hero}"`));
+
+  // Placement: the homepage Blomdahl callout shows the carousel; the homepage results no longer repeat the triplets.
+  assert.match(read("src/views/blomdahl-callout.tsx"), /<EarPiercingCarousel\b/);
+  const home = read("src/components/clinic-photos.tsx").match(/export function HomeRealPhotos[\s\S]*?\n}\n/)?.[0] ?? "";
+  assert.match(home, /<BeforeAfterShowcase \/>/);
+  assert.match(home, /\{RESULTS_CAPTION\}/);
+  assert.doesNotMatch(home, /EAR_PIERCING_PHOTOS/);
+  // No autoplay in the carousel.
+  assert.doesNotMatch(read("src/components/carousel.tsx"), /setInterval|setTimeout/);
+});

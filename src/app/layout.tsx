@@ -1,13 +1,15 @@
 import React from "react";
 import Script from "next/script";
-import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
+import { Hanken_Grotesk, Newsreader } from "next/font/google";
 
 import "./globals.css";
 import ClientUtilities from "components/client-utilities";
 import StructuredData from "components/structured-data";
 import Header from "components/header";
 import Footer from "components/footer";
+import { CONTAINER, Container } from "components/layout";
 import CartDrawerLoader from "components/cart-drawer-loader";
+import PageTransition from "components/page-transition";
 import { CartProvider } from "components/cart-provider";
 import { Metadata, Viewport } from "next";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, ORIGIN } from "lib/seo";
@@ -16,15 +18,17 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-const editorialSerif = Cormorant_Garamond({
+// Tidewater type: Newsreader (variable, with optical size) for headings at 300-500, Hanken Grotesk for text.
+const editorialSerif = Newsreader({
   subsets: ["latin"],
-  weight: ["500", "600"],
+  axes: ["opsz"],
   variable: "--font-editorial-serif",
   display: "swap",
 });
 
-const editorialSans = Source_Sans_3({
+const editorialSans = Hanken_Grotesk({
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
   variable: "--font-editorial-sans",
   display: "swap",
 });
@@ -69,7 +73,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: "light",
-  themeColor: "#fbfaf7",
+  themeColor: "#f4f3ef",
 };
 
 export default function Layout({ children }: LayoutProps) {
@@ -92,13 +96,14 @@ export default function Layout({ children }: LayoutProps) {
           <StructuredData type="LocalBusiness" />
           <div className="min-h-screen w-full">
             <div className="sticky top-0 z-40 w-full border-b border-base-300 bg-base-100/95 backdrop-blur-md">
-              <div className="mx-auto w-full px-3 sm:px-4 md:max-w-7xl md:px-8">
+              <Container>
                 <Header />
-              </div>
+              </Container>
             </div>
-            <main className="mx-auto w-full max-w-8xl px-4 pt-6 md:px-9 md:pt-8 lg:px-18 xl:px-27">
-              <div className="relative flex w-full flex-col items-center justify-center text-base-content">
-                {children}
+            {/* One container for every page: sections paint full-bleed bands but keep their content on this grid. */}
+            <main className={CONTAINER}>
+              <div className="relative flex w-full flex-col text-base-content">
+                <PageTransition>{children}</PageTransition>
                 <Footer />
               </div>
             </main>

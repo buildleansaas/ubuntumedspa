@@ -47,7 +47,6 @@ export default async function CheckoutSuccessPage(
   return (
     <div className="max-w-5xl mx-auto py-12">
       {order.paymentStatus === "paid" && <ClearCartOnMount />}
-      <p className="text-sm uppercase tracking-[0.18em] text-base-content/60 mb-2">Checkout Complete</p>
       <h1 className="text-4xl font-semibold mb-4">
         {order.paymentStatus === "paid" ? "Payment received" : "We’re processing your order"}
       </h1>
@@ -57,7 +56,7 @@ export default async function CheckoutSuccessPage(
           : "Stripe has not marked this order as paid yet. Refresh shortly or check your email confirmation."}
       </p>
 
-      <div className="border border-base-300 bg-base-200 p-6 mb-8">
+      <div className="rounded-xl border border-base-300 bg-base-200 p-6 mb-8">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Order Summary</h2>
           <p className="font-semibold">{formatUsd(order.subtotalCents)}</p>
@@ -67,7 +66,7 @@ export default async function CheckoutSuccessPage(
             <div key={item.slug} className="flex items-center justify-between text-sm">
               <div>
                 <p className="font-medium">{item.name}</p>
-                <p className="text-base-content/60">
+                <p className="text-base-content/80">
                   {item.quantity} x {formatUsd(item.unitAmountCents)}
                   {item.pricingMode === "increment_credit"
                     ? ` · ${formatUsdShort(creditAmountCentsForItem(item))} treatment credit`
@@ -90,7 +89,7 @@ export default async function CheckoutSuccessPage(
       )}
 
       {(!order.requiresScheduling || order.items.some((item) => item.fulfillment === "pickup")) && (
-        <div className="border border-base-300 bg-base-200 p-6">
+        <div className="rounded-xl border border-base-300 bg-base-200 p-6">
           <h2 className="text-2xl font-semibold mb-3">Pickup Details</h2>
           <p className="text-base-content/70">
             Your product order has been recorded for pickup. We&apos;ll contact you to set a pickup time.

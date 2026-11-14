@@ -14,7 +14,6 @@ export default async function ConsultSchedulingPage(props: { params: Promise<{ t
 
   return (
     <div className="max-w-5xl mx-auto py-12">
-      <p className="text-sm uppercase tracking-[0.18em] text-base-content/60 mb-2">Consultation Scheduling</p>
       <h1 className="text-4xl font-semibold mb-4">Text Jenny to pick your consultation time</h1>
       <p className="text-base-content/70 mb-8">Your intake form has been recorded. Text or call Jenny and she will confirm a time.</p>
 

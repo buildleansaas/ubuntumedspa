@@ -6,6 +6,27 @@ import { Button } from "components/ui/button";
 import { buildPageMetadata } from "lib/metadata";
 import Link from "next/link";
 import HomeOwnerLink from "components/home-owner-link";
+import {
+  AFTER_HEADER,
+  BandCta,
+  BUTTON_ROW,
+  BUTTON_ROW_CENTER,
+  CARD,
+  CARD_GRID,
+  CARD_LINK,
+  CARD_TITLE,
+  cardGridFor,
+  H1,
+  INTRO,
+  ROW,
+  ROWS,
+  SPLIT,
+  SPLIT_MEDIA,
+  SPLIT_TEXT,
+  Section,
+  SectionHeader,
+  Split,
+} from "components/layout";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Med Spa Near James City County, VA | Xeomin, a Botox Alternative",
@@ -74,168 +95,154 @@ const faqs = [
 
 export default function JamesCityCountyPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+    <>
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Locations", "James City County"]} />
       <StructuredData type="FAQ" faqs={faqs} />
 
-      <header className="grid gap-8 border-b border-base-300 pb-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:items-end">
-        <div>
-          <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">James City County service area</p>
-          <h1 className="max-w-3xl text-4xl font-light leading-tight sm:text-5xl">Med Spa Near James City County, VA</h1>
-          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-base-content/75">
-            Compare consultation-led Xeomin (our wrinkle relaxer), PRP hair restoration, hyperhidrosis care, and Blomdahl
-            medical ear piercing at the Williamsburg clinic near New Town.
-          </p>
-          <p className="mt-4 max-w-3xl leading-relaxed text-base-content/75">
-            Your best first visit depends on what you want to improve. Start with a specific treatment page when you know
-            your concern, or book a consultation when you want Jenny Brady to help you compare options.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button asChild>
-              <Link href="/consult?utm_source=website&utm_medium=location_page&utm_campaign=james_city_county">Book a Consultation</Link>
-            </Button>
-            <DirectionsButton address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2729739} longitude={-76.7635887} />
-          </div>
-        </div>
+      <Section tight labelledBy="jcc-heading">
+        <Split
+          ratio="even"
+          text={
+            <div>
+              <h1 id="jcc-heading" className={H1}>Med Spa Near James City County, VA</h1>
+              <p className={`mt-6 ${INTRO}`}>
+                Compare consultation-led Xeomin (our wrinkle relaxer), PRP hair restoration, hyperhidrosis care, and Blomdahl
+                medical ear piercing at the Williamsburg clinic near New Town.
+              </p>
+              <p className="mt-4 max-w-[62ch] leading-relaxed text-base-content/75">
+                Your best first visit depends on what you want to improve. Start with a specific treatment page when you know
+                your concern, or book a consultation when you want Jenny Brady to help you compare options.
+              </p>
+              <div className={`mt-8 ${BUTTON_ROW}`}>
+                <Button asChild size="lg">
+                  <Link href="/consult?utm_source=website&utm_medium=location_page&utm_campaign=james_city_county">Book a Consultation</Link>
+                </Button>
+                <DirectionsButton size="lg" variant="outline" address="3900 Powhatan Parkway, Williamsburg, VA 23188" latitude={37.2729739} longitude={-76.7635887} />
+              </div>
+            </div>
+          }
+          media={
+            <aside className={CARD} aria-label="Williamsburg clinic at a glance">
+              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Williamsburg clinic at a glance</p>
+              <dl className={`mt-4 ${ROWS}`}>
+                <div className={`${ROW} py-4`}>
+                  <dt className="shrink-0 font-medium text-base-content sm:w-24">Address</dt>
+                  <dd className="text-base-content/70 sm:flex-1">3900 Powhatan Parkway, Williamsburg, VA 23188</dd>
+                </div>
+                <div className={`${ROW} py-4`}>
+                  <dt className="shrink-0 font-medium text-base-content sm:w-24">Access</dt>
+                  <dd className="text-base-content/70 sm:flex-1">Near New Town, with approaches from Route 199, Monticello Avenue, and Richmond Road.</dd>
+                </div>
+                <div className={`${ROW} py-4`}>
+                  <dt className="shrink-0 font-medium text-base-content sm:w-24">Hours</dt>
+                  <dd className="text-base-content/70 sm:flex-1">Mon–Fri 6:00pm–8:00pm; Sat–Sun 10:00am–6:00pm</dd>
+                </div>
+              </dl>
+            </aside>
+          }
+        />
+      </Section>
 
-        <aside className="border-y border-base-300 py-5" aria-label="Williamsburg clinic at a glance">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Williamsburg clinic at a glance</p>
-          <dl className="mt-4 divide-y divide-base-300 text-sm">
-            <div className="grid gap-1 py-3 sm:grid-cols-[6rem_1fr]">
-              <dt className="font-medium text-base-content">Address</dt>
-              <dd className="text-base-content/70">3900 Powhatan Parkway, Williamsburg, VA 23188</dd>
-            </div>
-            <div className="grid gap-1 py-3 sm:grid-cols-[6rem_1fr]">
-              <dt className="font-medium text-base-content">Access</dt>
-              <dd className="text-base-content/70">Near New Town, with approaches from Route 199, Monticello Avenue, and Richmond Road.</dd>
-            </div>
-            <div className="grid gap-1 py-3 sm:grid-cols-[6rem_1fr]">
-              <dt className="font-medium text-base-content">Hours</dt>
-              <dd className="text-base-content/70">Mon–Fri 6:00pm–8:00pm; Sat–Sun 10:00am–6:00pm</dd>
-            </div>
-          </dl>
-        </aside>
-      </header>
-
-      <section className="border-b border-base-300 py-10" aria-labelledby="jcc-treatment-starting-points">
-        <div className="max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Treatment guide</p>
-          <h2 id="jcc-treatment-starting-points" className="mt-2 text-3xl font-light sm:text-4xl">
-            Choose the right treatment starting point
-          </h2>
-          <p className="mt-4 leading-relaxed text-base-content/75">
-            Use these starting points to compare what each service may address, candidacy considerations, pricing where
-            published, and the right next booking step for your concern.
-          </p>
-        </div>
-        <div className="mt-7 grid border-y border-base-300 md:grid-cols-2">
-          {serviceLinks.map((service, index) => (
-            <Link
-              key={service.href}
-              href={service.href}
-              className={`group block py-5 transition-colors hover:bg-base-200/35 md:px-5 ${index % 2 === 0 ? "md:border-r md:border-base-300" : ""} ${index < serviceLinks.length - 2 ? "border-b border-base-300" : ""}`}
-            >
-              <span className="font-medium text-base-content underline-offset-4 group-hover:underline">{service.label}</span>
-              <p className="mt-2 text-sm leading-relaxed text-base-content/70">{service.note}</p>
+      <Section labelledBy="jcc-treatment-starting-points">
+        <SectionHeader
+          id="jcc-treatment-starting-points"
+          title="Choose the right treatment starting point"
+          intro={
+            <>
+              Use these starting points to compare what each service may address, candidacy considerations, pricing where
+              published, and the right next booking step for your concern.
+            </>
+          }
+        />
+        <div className={`${AFTER_HEADER} ${cardGridFor(serviceLinks.length)}`}>
+          {serviceLinks.map((service) => (
+            <Link key={service.href} href={service.href} className={`${CARD} ${CARD_LINK}`}>
+              <span className={CARD_TITLE}>{service.label}</span>
+              <p className="mt-3 text-base leading-relaxed text-base-content/75">{service.note}</p>
             </Link>
           ))}
         </div>
-        <Link href="/procedures" className="mt-5 inline-block text-sm font-medium text-primary underline underline-offset-4">
-          View all procedures
-        </Link>
-      </section>
-
-      <section className="border-b border-base-300 py-10" aria-labelledby="jcc-visit-reasons">
-        <div className="max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">What to expect</p>
-          <h2 id="jcc-visit-reasons" className="mt-2 text-3xl font-light sm:text-4xl">
-            Consultation-led care close to James City County
-          </h2>
+        <div className="mt-8">
+          <Button asChild size="lg" variant="outline">
+            <Link href="/procedures">View all procedures</Link>
+          </Button>
         </div>
-        <div className="mt-7 grid gap-7 md:grid-cols-3">
-          <div>
-            <h3 className="font-medium text-base-content">A clear first decision</h3>
-            <p className="mt-2 text-sm leading-relaxed text-base-content/70">
+      </Section>
+
+      <Section labelledBy="jcc-visit-reasons">
+        <SectionHeader id="jcc-visit-reasons" title="Consultation-led care close to James City County" />
+        <div className={`${AFTER_HEADER} ${CARD_GRID}`}>
+          <div className={CARD}>
+            <h3 className={CARD_TITLE}>A clear first decision</h3>
+            <p className="mt-3 text-base leading-relaxed text-base-content/75">
               Jenny reviews your goal, health history, timing, alternatives, and aftercare before you commit to a treatment path.
             </p>
           </div>
-          <div>
-            <h3 className="font-medium text-base-content">Direct service guidance</h3>
-            <p className="mt-2 text-sm leading-relaxed text-base-content/70">
+          <div className={CARD}>
+            <h3 className={CARD_TITLE}>Direct service guidance</h3>
+            <p className="mt-3 text-base leading-relaxed text-base-content/75">
               Treatment pages explain what each service may address, what it cannot promise, and whether consultation comes first.
             </p>
           </div>
-          <div>
-            <h3 className="font-medium text-base-content">Practical arrival</h3>
-            <p className="mt-2 text-sm leading-relaxed text-base-content/70">
+          <div className={CARD}>
+            <h3 className={CARD_TITLE}>Practical arrival</h3>
+            <p className="mt-3 text-base leading-relaxed text-base-content/75">
               The clinic is near New Town with on-site parking. Current routing is available through the directions button.
             </p>
           </div>
         </div>
-        <p className="mt-7 text-sm leading-relaxed text-base-content/70">
+        <p className="mt-8 max-w-[62ch] text-base leading-relaxed text-base-content/75">
           Nearby communities include {neighborhoods.join(", ")}. Visit times vary by starting point and traffic, so use current
           directions when planning your appointment.
         </p>
-      </section>
+      </Section>
 
-      <section className="border-b border-base-300 py-10" aria-labelledby="jcc-plan-visit">
-        <div className="mb-7 max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Plan your visit</p>
-          <h2 id="jcc-plan-visit" className="mt-2 text-3xl font-light sm:text-4xl">
-            Williamsburg clinic details
-          </h2>
-          <p className="mt-4 leading-relaxed text-base-content/75">
-            Confirm the address, hours, phone number, parking, and current route before leaving James City County.
-          </p>
-        </div>
-        <NAP
-          name="Williamsburg Med Spa"
-          addressLines={["3900 Powhatan Parkway", "Williamsburg, VA 23188"]}
-          phone="+1 (804) 738-9483"
-          hours={["Mon–Fri 6:00pm–8:00pm", "Sat–Sun 10:00am–6:00pm"]}
-          showMap={true}
-          mapsQuery="3900 Powhatan Parkway, Williamsburg, VA 23188"
-          latitude={37.2729739}
-          longitude={-76.7635887}
+      <Section labelledBy="jcc-plan-visit">
+        <SectionHeader
+          id="jcc-plan-visit"
+          title="Williamsburg clinic details"
+          intro="Confirm the address, hours, phone number, parking, and current route before leaving James City County."
         />
-      </section>
-
-      <section className="border-b border-base-300 py-10" aria-labelledby="jcc-faqs">
-        <div className="max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Common questions</p>
-          <h2 id="jcc-faqs" className="mt-2 text-3xl font-light sm:text-4xl">
-            James City County med spa visit FAQs
-          </h2>
+        <div className={AFTER_HEADER}>
+          <NAP
+            name="Williamsburg Med Spa"
+            addressLines={["3900 Powhatan Parkway", "Williamsburg, VA 23188"]}
+            phone="+1 (804) 738-9483"
+            hours={["Mon–Fri 6:00pm–8:00pm", "Sat–Sun 10:00am–6:00pm"]}
+            showMap={true}
+            mapsQuery="3900 Powhatan Parkway, Williamsburg, VA 23188"
+            latitude={37.2729739}
+            longitude={-76.7635887}
+          />
         </div>
-        <div className="mt-6 divide-y divide-base-300 border-y border-base-300">
+      </Section>
+
+      <Section labelledBy="jcc-faqs">
+        <SectionHeader id="jcc-faqs" title="James City County med spa visit FAQs" />
+        <div className={`${AFTER_HEADER} ${ROWS}`}>
           {faqs.map((faq) => (
-            <details key={faq.question} className="group py-5">
-              <summary className="cursor-pointer list-none pr-8 font-medium text-base-content marker:content-none">
-                {faq.question}
-              </summary>
-              <p className="mt-3 max-w-3xl leading-relaxed text-base-content/70">{faq.answer}</p>
-            </details>
+            <article key={faq.question} className={`${SPLIT} gap-y-3 border-b border-base-300 py-8`}>
+              <h3 className={`font-display text-2xl leading-snug text-base-content ${SPLIT_TEXT.wide}`}>{faq.question}</h3>
+              <p className={`max-w-[62ch] text-base leading-relaxed text-base-content/85 ${SPLIT_MEDIA.wide}`}>{faq.answer}</p>
+            </article>
           ))}
         </div>
-      </section>
+      </Section>
 
-      <section className="py-10 text-center" aria-labelledby="jcc-final-cta">
-        <h2 id="jcc-final-cta" className="text-3xl font-light sm:text-4xl">
-          Choose your next step
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-base-content/75">
+      <BandCta headingId="jcc-final-cta" title="Choose your next step">
+        <p className={`mx-auto mt-4 ${INTRO}`}>
           Review the treatment page that matches your concern, or book a consultation when you want help comparing options.
         </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <Button asChild>
+        <div className={`mt-8 ${BUTTON_ROW_CENTER}`}>
+          <Button asChild size="lg">
             <Link href="/consult?utm_source=website&utm_medium=location_page&utm_campaign=james_city_county">Book a Consultation</Link>
           </Button>
-          <Button asChild variant="secondary">
+          <Button asChild size="lg" variant="outline">
             <Link href="/locations/williamsburg-va">Williamsburg Location Details</Link>
           </Button>
         </div>
-      </section>
-      <HomeOwnerLink className="pb-10 text-center" />
-    </div>
+        <HomeOwnerLink className="mt-8" />
+      </BandCta>
+    </>
   );
 }

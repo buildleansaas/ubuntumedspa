@@ -158,7 +158,7 @@ export default async function AilmentPage(props: Params) {
 
         <section className="scroll-mt-28 max-w-3xl border-t border-base-300 py-16 md:py-24" id="pain">
           <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">{metadata.painHeading}</h2>
-          <div className="border border-base-300 bg-base-200 p-6 md:p-10 space-y-4">
+          <div className="rounded-xl border border-base-300 bg-base-200 p-6 md:p-10 space-y-4">
             {metadata.painParagraphs.map((paragraph) => (
               <p key={paragraph} className="text-base md:text-lg text-base-content/80 leading-relaxed">
                 {paragraph}
@@ -200,7 +200,7 @@ export default async function AilmentPage(props: Params) {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             {metadata.expectationsSteps.map((step, index) => (
-              <Card key={step.title} className="border border-base-300 bg-base-100 text-left text-base-content">
+              <Card key={step.title} className="rounded-xl border border-base-300 bg-base-100 text-left text-base-content">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
                     <span className="inline-flex items-center justify-center h-8 min-w-8 px-2 rounded-full bg-primary-content text-primary text-sm font-semibold">
@@ -217,8 +217,7 @@ export default async function AilmentPage(props: Params) {
 
         {procedure.slug === "botox" && (
           <section className="scroll-mt-28 max-w-3xl border-t border-base-300 py-16 md:py-24" id="botox-consultation">
-            <div className="border border-base-300 bg-base-200 p-6 text-left md:p-10">
-              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Wrinkle relaxer consultation</p>
+            <div className="rounded-xl border border-base-300 bg-base-200 p-6 text-left md:p-10">
               <h2 className="mt-3 text-2xl md:text-4xl mx-auto leading-tight pb-4 font-light">
                 Plan Xeomin around the area you actually want to treat
               </h2>
@@ -275,8 +274,7 @@ export default async function AilmentPage(props: Params) {
 
         {metadata.relatedGuide && (
           <section className="scroll-mt-28 max-w-3xl border-t border-base-300 py-16 md:py-24" id="guide">
-            <div className="border border-base-300 bg-base-200 p-6 text-left md:p-10">
-              <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">{metadata.relatedGuide.eyebrow}</p>
+            <div className="rounded-xl border border-base-300 bg-base-200 p-6 text-left md:p-10">
               <h2 className="mt-3 text-2xl md:text-4xl mx-auto leading-tight pb-4 font-light">
                 {metadata.relatedGuide.heading}
               </h2>

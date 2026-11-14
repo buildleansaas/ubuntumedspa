@@ -40,7 +40,7 @@ export default function TextToBook({ heading, intro, message, location }: TextTo
   };
 
   return (
-    <div className="border border-base-300 bg-base-100 p-6">
+    <div className="rounded-xl border border-base-300 bg-base-100 p-6">
       <h2 className="text-2xl font-semibold mb-3">{heading}</h2>
       <p className="text-base-content/70 mb-5">{intro}</p>
 
@@ -66,9 +66,9 @@ export default function TextToBook({ heading, intro, message, location }: TextTo
         )}
       </div>
 
-      <p className="mt-5 text-xs uppercase tracking-[0.18em] text-base-content/60">Your message</p>
+      <p className="mt-5 text-xs uppercase tracking-[0.18em] text-base-content/80">Your message</p>
       <p className="mt-2 border border-base-300 bg-base-200 p-4 text-sm leading-relaxed text-base-content/80">{message}</p>
-      <p className="mt-3 text-sm text-base-content/60">
+      <p className="mt-3 text-sm text-base-content/80">
         Add a few days and times that work for you, then send. Jenny will text back to confirm. On a computer, text{" "}
         {BOOKING_PHONE_DISPLAY} from your phone with the message above.
       </p>

@@ -7,6 +7,21 @@ import { Button } from "components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "components/ui/accordion";
 import CmaCredentialStrip from "components/cma-credential-strip";
+import {
+  AFTER_HEADER,
+  BUTTON_ROW,
+  CARD,
+  CARD_GRID,
+  CARD_GRID_2,
+  CARD_LINK,
+  CARD_TITLE,
+  SPLIT,
+  SPLIT_MEDIA,
+  SPLIT_TEXT,
+  Section,
+  SectionHeader,
+  cardGridFor,
+} from "components/layout";
 
 import CtaFooter from "components/cta-footer";
 import CatalogPurchasePanel from "components/catalog-purchase-panel";
@@ -29,6 +44,11 @@ import { clinicPhotoBySrc } from "config/clinic-photos";
 import { activeOfferMetaDescription, getActiveOffers } from "config/offers";
 import { XEOMIN_HYPERHIDROSIS_OFF_LABEL, XEOMIN_OFF_LABEL_NOTE, xeominClusterPages } from "lib/xeomin-concerns";
 import HomeOwnerLink, { HOME_OWNER_LINK_PROCEDURES } from "components/home-owner-link";
+
+// Quiet in-page links under the hero, separated by a middle dot.
+const HERO_LINKS = "mt-6 flex flex-wrap gap-x-2 gap-y-1 text-sm";
+const HERO_LINK =
+  "text-secondary transition-colors hover:text-base-content after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none";
 
 const ailmentsSortOrder = { common: 1, uncommon: 2, experimental: 3 };
 const ailmentsTagLabels = {
@@ -210,50 +230,45 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         }}
       />
       <StructuredData type="FAQ" faqs={procedure.faqs} />
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <section className="grid items-center gap-10 border-b border-base-300 pb-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)]">
-          <div className="text-left">
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Williamsburg med spa procedure</p>
-            <h1 className="max-w-4xl text-4xl font-light leading-tight tracking-tight text-base-content md:text-6xl">
+      <Section tight>
+        <div className={`${SPLIT} items-center`}>
+          <div className={heroImagePath ? SPLIT_TEXT.even : "lg:col-span-9"}>
+            <h1 className="font-display text-4xl font-light leading-tight tracking-tight text-base-content sm:text-5xl lg:text-6xl">
               {pageHeading}
             </h1>
-            <p className="mt-5 max-w-3xl text-xl font-light leading-relaxed text-base-content/85 lg:text-2xl">
+            <p className="mt-6 max-w-[62ch] text-xl font-light leading-relaxed text-base-content/85 lg:text-2xl">
               {humanizeMedicalCopy(procedure.headline)}
             </p>
-            <p className="mt-4 max-w-3xl text-base leading-relaxed text-base-content/70 md:text-lg">
+            <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-base-content/70 md:text-lg">
               {humanizeMedicalCopy(procedure.subline)}
             </p>
             {(procedure.slug === "botox" || procedure.slug === "xeomin") && (
-              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-base-content/60" data-off-label-note>
+              <p className="mt-3 max-w-[62ch] text-sm leading-relaxed text-base-content/80" data-off-label-note>
                 {XEOMIN_OFF_LABEL_NOTE}
               </p>
             )}
             {(procedure.slug === "hyperhidrosis-treatment" || procedure.slug === "xeomin") && (
-              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-base-content/60" data-off-label-note>
+              <p className="mt-3 max-w-[62ch] text-sm leading-relaxed text-base-content/80" data-off-label-note>
                 {XEOMIN_HYPERHIDROSIS_OFF_LABEL}
               </p>
             )}
             {showOShotCredential && <CmaCredentialStrip className="mt-6 max-w-3xl" />}
             {procedure.slug === "hyperhidrosis-treatment" && (
-              <div className="mt-6 flex flex-wrap gap-2 text-sm">
+              <div className={HERO_LINKS}>
                 {[
                   ["Treatment areas", "#applications"],
                   ["Pricing", "#pricing"],
                   ["FAQs", "#faqs"],
                   ["Xeomin vs Botox", "/blog/botox-vs-xeomin-williamsburg-va"],
                 ].map(([label, href]) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
-                  >
+                  <Link key={href} href={href} className={HERO_LINK}>
                     {label}
                   </Link>
                 ))}
               </div>
             )}
             {procedure.slug === "microneedling-with-prp" && (
-              <div className="mt-6 flex flex-wrap gap-2 text-sm">
+              <div className={HERO_LINKS}>
                 {[
                   ["Acne scars", "#applications"],
                   ["Skin texture", "#applications"],
@@ -261,11 +276,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                   ["PRP Facial", "/procedures/prp-facial"],
                   ["Book consult", "/consult?procedure=microneedling-with-prp&utm_source=website&utm_medium=procedure_page&utm_campaign=microneedling_prp"],
                 ].map(([label, href]) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
-                  >
+                  <Link key={href} href={href} className={HERO_LINK}>
                     {label}
                   </Link>
                 ))}
@@ -285,7 +296,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                   </Link>
                 ))}
             {procedure.slug === "blomdahl-ear-piercing" && (
-              <div className="mt-6 flex flex-wrap gap-2 text-sm">
+              <div className={HERO_LINKS}>
                 {[
                   ["Infant & Kids Ear Piercing", "/procedures/blomdahl-ear-piercing/for/children"],
                   ["Sensitive Ears", "/procedures/blomdahl-ear-piercing/for/sensitive-ears"],
@@ -296,31 +307,23 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                   ["Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
                   ["Newport News", "/procedures/blomdahl-ear-piercing/near/newport-news-va"],
                 ].map(([label, href]) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
-                  >
+                  <Link key={href} href={href} className={HERO_LINK}>
                     {label}
                   </Link>
                 ))}
               </div>
             )}
             {(procedure.slug === "botox" || procedure.slug === "xeomin") && (
-              <div className="mt-6 flex flex-wrap gap-2 text-sm">
+              <div className={HERO_LINKS}>
                 {xeominClusterPages.map((page) => (
-                  <Link
-                    key={page.path}
-                    href={page.path}
-                    className="border border-base-300 bg-base-100 px-3 py-1.5 text-base-content/75 transition hover:border-primary hover:text-primary"
-                  >
+                  <Link key={page.path} href={page.path} className={HERO_LINK}>
                     {page.label}
                   </Link>
                 ))}
               </div>
             )}
-            <div className="mt-8 flex flex-wrap gap-3 sm:gap-4">
-              <Button asChild>
+            <div className={`mt-8 ${BUTTON_ROW}`}>
+              <Button asChild size="lg" className="w-full sm:w-auto">
                 <Link
                   href={
                     procedure.slug === "blomdahl-ear-piercing"
@@ -345,18 +348,18 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                         : "Book a Consultation"}
                 </Link>
               </Button>
-              <Button asChild variant="secondary">
+              <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
                 <Link href={catalogItem ? "#pricing" : "#benefits"}>{catalogItem ? "View Pricing" : "Explore Benefits"}</Link>
               </Button>
               {procedure.slug === "blomdahl-ear-piercing" && (
-                <Button asChild variant="outline">
+                <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
                   <TrackedPhoneLink href="tel:+18047389483" location="service_page">
                     Call (804) 738-9483
                   </TrackedPhoneLink>
                 </Button>
               )}
               {featuredGuide && featuredGuideCta && (
-                <Button asChild variant="outline">
+                <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
                   <Link href={featuredGuide.href}>{featuredGuideCta.button}</Link>
                 </Button>
               )}
@@ -364,33 +367,38 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
           </div>
 
           {heroImagePath && (
-            <div className="relative overflow-hidden border border-base-300 bg-base-200">
+            <div className={`relative overflow-hidden rounded-2xl bg-base-200 ${SPLIT_MEDIA.even}`}>
               <div className="relative aspect-[4/3]">
                 <Image
                   src={heroImagePath}
                   alt={heroClinicPhoto?.alt ?? `${procedure.name} at Williamsburg Med Spa`}
                   fill
                   priority
-                  sizes="(max-width: 1024px) 100vw, 520px"
+                  sizes="(max-width: 1024px) 100vw, 576px"
                   className={heroClinicPhoto ? "object-cover object-[50%_25%]" : "object-cover"}
                 />
               </div>
             </div>
           )}
-        </section>
+        </div>
+      </Section>
 
-        {/* Real clinic photos sit right under the hero (Austin, 2026-11-05: proof of work higher on the page). */}
-        {procedure.slug === "oh-shot" && <RunelsTraining />}
-        {(procedure.slug === "botox" || procedure.slug === "xeomin") && <CrowsFeetResults />}
-        {procedure.slug === "hyperhidrosis-treatment" && <HyperhidrosisSteps />}
-        {procedure.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos exclude={heroImagePath} />}
-        {procedure.slug === "joint-restoration" && (
-          <section className="py-12 md:py-16" aria-label="Jenny's joint treatment and orthopedic PRP training">
-            <JointPhotos />
-          </section>
-        )}
-        {["prp-facial", "prp-hair-restoration", "joint-restoration"].includes(procedure.slug) && <PrpTubePhoto />}
+      {/* Real clinic photos sit right under the hero (Austin, 2026-11-05: proof of work higher on the page). */}
+      {procedure.slug === "oh-shot" && <RunelsTraining />}
+      {(procedure.slug === "botox" || procedure.slug === "xeomin") && <CrowsFeetResults />}
+      {procedure.slug === "hyperhidrosis-treatment" && <HyperhidrosisSteps />}
+      {procedure.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos exclude={heroImagePath} />}
+      {procedure.slug === "joint-restoration" && (
+        <Section label="Jenny's joint treatment and orthopedic PRP training">
+          <JointPhotos />
+        </Section>
+      )}
+      {["prp-facial", "prp-hair-restoration", "joint-restoration"].includes(procedure.slug) && <PrpTubePhoto />}
 
+      {/* The PRP Breast Lift copy below is locked by verify-seo, byte for byte. The wrapper only places it on the
+          shared grid: it drops the block's own centring, divider lines and padding, and sets the shared H2 size. */}
+      {procedure.slug === "prp-breast-lift" && (
+        <Section className="[&>section]:mx-0 [&>section]:mt-0 [&>section]:border-y-0 [&>section]:py-0 md:[&>section_h2]:text-[2.75rem]">
         {/* PRP_BREAST_OWNER_COPY_CONTRACT_START */}
         {procedure.slug === "prp-breast-lift" && (
           <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="prp-breast-lift-expectations">
@@ -437,77 +445,78 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
           </section>
         )}
         {/* PRP_BREAST_OWNER_COPY_CONTRACT_END */}
+        </Section>
+      )}
 
-        {procedure.slug === "prp-hair-restoration" && (
-          <section className="mx-auto mt-12 max-w-4xl border-y border-base-300 py-10 text-left" aria-labelledby="prp-hair-fit">
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Choose the right next step</p>
-            <h2 id="prp-hair-fit" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
-              Is PRP a reasonable fit for your hair-loss pattern?
-            </h2>
-            <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
-              <p>
-                If you searched for a female hair transplant or a hairline transplant in Williamsburg, this visit is not that surgery. PRP does
-                not move follicles. A transplant specialist may be more useful when the goal is to rebuild a hairline.
-              </p>
-              <p>
-                Research suggests platelet-rich plasma may improve hair density for some people with pattern hair loss, but response varies and
-                treatment protocols are not standardized. A consultation can review the pattern and whether medical or dermatology evaluation
-                should come before a cosmetic treatment.
-              </p>
-              <p>
-                PRP may support existing follicles. It does not create new follicles in a bald area, diagnose the cause of shedding, or move follicles
-                the way hair transplant surgery does.
-              </p>
-            </div>
-
-            <ul className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 md:grid-cols-3">
-              {[
-                ["PRP may belong in the conversation", "Gradual thinning, a widening part, lower density, or earlier pattern changes where follicles may still be active."],
-                ["Medical evaluation may come first", "Sudden or patchy loss, rapid shedding, scalp pain, redness, scaling, or a new medication or health change."],
-                ["A transplant specialist may be more useful", "Advanced bald areas or a goal that requires moving follicles to rebuild coverage or a hairline."],
-              ].map(([title, copy]) => (
-                <li key={title}>
-                  <h3 className="font-semibold text-base-content">{title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-base-content/70">{copy}</p>
-                </li>
-              ))}
-            </ul>
-
-            <ol className="mt-8 grid gap-x-8 gap-y-6 border-t border-base-300 pt-7 sm:grid-cols-2">
-              {[
-                ["01", "Consultation and pattern review", "Review when the change started, where it is happening, scalp symptoms, health history, medications, prior treatment, and your goals."],
-                ["02", "Blood draw and PRP preparation", "A small blood sample is processed to prepare the platelet-rich portion used for treatment."],
-                ["03", "Targeted scalp treatment", "Jenny confirms the selected scalp areas and reviews what to expect before PRP is placed with small injections."],
-                ["04", "Aftercare and next-step plan", "Leave with guidance for temporary tenderness, redness, swelling, bruising, or pinpoint bleeding and when to contact the office."],
-              ].map(([number, title, copy]) => (
-                <li key={number} className="grid grid-cols-[2.5rem_1fr] gap-3">
-                  <span className="text-sm font-semibold tracking-[0.12em] text-primary">{number}</span>
-                  <div>
-                    <h3 className="font-semibold text-base-content">{title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-base-content/70">{copy}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-
-            <p className="mt-8 border-t border-base-300 pt-6 text-sm leading-relaxed text-base-content/70">
-              PRP hair restoration is <strong className="font-semibold text-base-content">{catalogItem?.displayPrice}</strong>. Book the consultation
-              first if Jenny has not already reviewed your candidacy. If PRP fits your plan, purchase one session, then text or call Jenny
-              to book it.
+      {procedure.slug === "prp-hair-restoration" && (
+        <Section labelledBy="prp-hair-fit">
+          <SectionHeader id="prp-hair-fit" title="Is PRP a reasonable fit for your hair-loss pattern?" />
+          <div className="mt-6 max-w-[62ch] space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
+            <p>
+              If you searched for a female hair transplant or a hairline transplant in Williamsburg, this visit is not that surgery. PRP does
+              not move follicles. A transplant specialist may be more useful when the goal is to rebuild a hairline.
             </p>
-          </section>
-        )}
+            <p>
+              Research suggests platelet-rich plasma may improve hair density for some people with pattern hair loss, but response varies and
+              treatment protocols are not standardized. A consultation can review the pattern and whether medical or dermatology evaluation
+              should come before a cosmetic treatment.
+            </p>
+            <p>
+              PRP may support existing follicles. It does not create new follicles in a bald area, diagnose the cause of shedding, or move follicles
+              the way hair transplant surgery does.
+            </p>
+          </div>
 
-        <section className="mx-auto max-w-3xl py-16 text-left md:py-20" id="pricing">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">
-            {catalogItem ? "Pricing & booking" : "Treatment planning"}
+          <ul className={`${AFTER_HEADER} ${CARD_GRID}`}>
+            {[
+              ["PRP may belong in the conversation", "Gradual thinning, a widening part, lower density, or earlier pattern changes where follicles may still be active."],
+              ["Medical evaluation may come first", "Sudden or patchy loss, rapid shedding, scalp pain, redness, scaling, or a new medication or health change."],
+              ["A transplant specialist may be more useful", "Advanced bald areas or a goal that requires moving follicles to rebuild coverage or a hairline."],
+            ].map(([title, copy]) => (
+              <li key={title} className={CARD}>
+                <h3 className={CARD_TITLE}>{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-base-content/70">{copy}</p>
+              </li>
+            ))}
+          </ul>
+
+          <ol className={`mt-6 md:mt-8 ${CARD_GRID_2}`}>
+            {[
+              ["01", "Consultation and pattern review", "Review when the change started, where it is happening, scalp symptoms, health history, medications, prior treatment, and your goals."],
+              ["02", "Blood draw and PRP preparation", "A small blood sample is processed to prepare the platelet-rich portion used for treatment."],
+              ["03", "Targeted scalp treatment", "Jenny confirms the selected scalp areas and reviews what to expect before PRP is placed with small injections."],
+              ["04", "Aftercare and next-step plan", "Leave with guidance for temporary tenderness, redness, swelling, bruising, or pinpoint bleeding and when to contact the office."],
+            ].map(([number, title, copy]) => (
+              <li key={number} className={CARD}>
+                <span className="text-sm font-semibold tracking-wide text-primary">{number}</span>
+                <h3 className={`mt-2 ${CARD_TITLE}`}>{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-base-content/70">{copy}</p>
+              </li>
+            ))}
+          </ol>
+
+          <p className="mt-8 max-w-[62ch] text-sm leading-relaxed text-base-content/70">
+            PRP hair restoration is <strong className="font-semibold text-base-content">{catalogItem?.displayPrice}</strong>. Book the consultation
+            first if Jenny has not already reviewed your candidacy. If PRP fits your plan, purchase one session, then text or call Jenny
+            to book it.
           </p>
-          {procedure.slug === "blomdahl-ear-piercing" ? (
-            <>
-              <h2 className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
-                Clear Blomdahl ear piercing pricing before you visit
-              </h2>
-              <div className="mx-auto mt-6 grid max-w-4xl gap-4 text-left md:grid-cols-3">
+        </Section>
+      )}
+
+      <Section id="pricing">
+        <div className={`${SPLIT} items-start`}>
+          <div className={catalogItem ? SPLIT_TEXT.even : "lg:col-span-9"}>
+            <SectionHeader
+              eyebrow={catalogItem ? "Pricing & booking" : "Treatment planning"}
+              title={
+                procedure.slug === "blomdahl-ear-piercing"
+                  ? "Clear Blomdahl ear piercing pricing before you visit"
+                  : "A conservative plan built around your goals"
+              }
+              intro={procedure.slug === "blomdahl-ear-piercing" ? undefined : consultationSupportCopy}
+            />
+            {procedure.slug === "blomdahl-ear-piercing" && (
+              <div className={`${AFTER_HEADER} grid gap-6 sm:grid-cols-3 lg:grid-cols-1`}>
                 {[
                   {
                     price: EAR_PIERCING_PRICES.oneEarCash,
@@ -523,51 +532,48 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                   },
                   { price: "Nurse-led", card: null, label: "Placement + aftercare", copy: "Jenny Brady, MSN, RN, CPNP, PMHS reviews fit and care." },
                 ].map(({ price, card, label, copy }) => (
-                  <div key={label} className="border border-base-300 bg-base-100 p-5">
-                    <p className="text-3xl font-semibold tracking-tight text-base-content">{price}</p>
-                    {card && <p className="mt-1 text-sm text-base-content/70">cash · {card} card/online</p>}
-                    <h3 className="mt-2 text-base font-semibold text-base-content">{label}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-base-content/70">{copy}</p>
+                  <div key={label} className={`${CARD} lg:grid lg:grid-cols-2 lg:gap-x-6`}>
+                    <div>
+                      <p className="font-display text-3xl font-light tracking-tight text-base-content">{price}</p>
+                      {card && <p className="mt-1 text-sm text-base-content/70">cash · {card} card/online</p>}
+                    </div>
+                    <div>
+                      <h3 className="mt-3 text-base font-semibold text-base-content lg:mt-0">{label}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-base-content/70">{copy}</p>
+                    </div>
                   </div>
                 ))}
               </div>
-            </>
-          ) : (
-            <>
-              <h2 className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
-                A conservative plan built around your goals
-              </h2>
-              <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-base-content/70 md:text-lg">
-                {consultationSupportCopy}
-              </p>
-            </>
-          )}
+            )}
+          </div>
 
           {catalogItem && (
-            <CatalogPurchasePanel
-              slug={catalogItem.slug}
-              kind={catalogItem.kind}
-              name={catalogItem.name}
-              displayPrice={catalogItem.displayPrice}
-              pricingMode={catalogItem.pricingMode}
-              unitAmountCents={catalogItem.unitAmountCents}
-              quantityLabel={catalogItem.quantityLabel}
-              minQuantity={catalogItem.minQuantity}
-              maxQuantity={catalogItem.maxQuantity}
-              fulfillment={catalogItem.fulfillment}
-              purchaseLabel={catalogItem.purchaseLabel}
-              customerNote={catalogItem.customerNote}
-            />
+            <div className={SPLIT_MEDIA.even}>
+              <CatalogPurchasePanel
+                slug={catalogItem.slug}
+                kind={catalogItem.kind}
+                name={catalogItem.name}
+                displayPrice={catalogItem.displayPrice}
+                pricingMode={catalogItem.pricingMode}
+                unitAmountCents={catalogItem.unitAmountCents}
+                quantityLabel={catalogItem.quantityLabel}
+                minQuantity={catalogItem.minQuantity}
+                maxQuantity={catalogItem.maxQuantity}
+                fulfillment={catalogItem.fulfillment}
+                purchaseLabel={catalogItem.purchaseLabel}
+                customerNote={catalogItem.customerNote}
+              />
+            </div>
           )}
-        </section>
+        </div>
 
-        <section className="mx-auto mt-10 max-w-4xl text-left">
-          <p className="text-base leading-relaxed text-base-content/75">{humanizeMedicalCopy(procedure.description)}</p>
+        <div className="mt-16 max-w-3xl md:mt-20 [&>p]:max-w-[62ch]">
+          <p className="text-base leading-relaxed text-base-content/75 md:text-lg">{humanizeMedicalCopy(procedure.description)}</p>
           {"trademarkNote" in procedure && procedure.trademarkNote && (
-            <p className="mt-3 text-xs leading-relaxed text-base-content/60">{procedure.trademarkNote}</p>
+            <p className="mt-3 text-xs leading-relaxed text-base-content/80">{procedure.trademarkNote}</p>
           )}
           {procedure.slug !== "prp-breast-lift" && procedure.slug !== "prp-hair-restoration" && (
-            <p className="mt-3 text-sm leading-relaxed text-base-content/65">{consultationSupportCopy}</p>
+            <p className="mt-3 text-sm leading-relaxed text-base-content/80">{consultationSupportCopy}</p>
           )}
           <p className="mt-4 text-sm text-base-content/70">
             Serving patients from Williamsburg, James City County, Yorktown, Newport News, Toano, Norge, Lightfoot, and nearby communities. {" "}
@@ -594,7 +600,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               : "Visits are appointment-led so Jenny can review fit, timing, treatment areas, pricing, and aftercare before you proceed."}
           </p>
           {Boolean(relatedLinks.length) && (
-            <p className="mt-4 text-sm leading-relaxed text-base-content/65">
+            <p className="mt-4 text-sm leading-relaxed text-base-content/80">
               Compare related options: {relatedLinks.map((item, index) => (
                 <span key={item.href}>
                   {index > 0 && (index === relatedLinks.length - 1 ? " and " : ", ")}
@@ -606,176 +612,139 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               .
             </p>
           )}
-        </section>
+        </div>
+      </Section>
 
-        {satelliteGroup && (
-          <section className="mx-auto mt-8 max-w-4xl text-left" aria-labelledby="satellite-pages">
-            <div className="border border-base-300 bg-base-100 p-6">
-              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">{satelliteGroup.eyebrow}</p>
-              <h2 id="satellite-pages" className="mt-3 text-2xl font-light tracking-tight text-base-content">
-                {satelliteGroup.heading}
-              </h2>
-              <p className="mt-3 text-base leading-relaxed text-base-content/70">{satelliteGroup.intro}</p>
-              <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {satelliteGroup.links.map(({ href, label, description }) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    className="group border border-base-300 bg-base-100 px-4 py-4 transition hover:border-primary hover:shadow-sm"
-                  >
-                    <span className="block text-base font-semibold text-base-content group-hover:text-primary">{label}</span>
-                    <span className="mt-1 block text-sm leading-relaxed text-base-content/65">{description}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
+      {satelliteGroup && (
+        <Section labelledBy="satellite-pages">
+          <SectionHeader id="satellite-pages" title={satelliteGroup.heading} intro={satelliteGroup.intro} />
+          <div className={`${AFTER_HEADER} ${cardGridFor(satelliteGroup.links.length)}`}>
+            {satelliteGroup.links.map(({ href, label, description }) => (
+              <Link key={href} href={href} className={`group ${CARD} ${CARD_LINK}`}>
+                <span className={`block ${CARD_TITLE} group-hover:text-primary`}>{label}</span>
+                <span className="mt-2 block text-sm leading-relaxed text-base-content/80">{description}</span>
+              </Link>
+            ))}
+          </div>
+        </Section>
+      )}
 
-        {"whatToExpect" in procedure && procedure.whatToExpect && (
-          <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="what-to-expect">
-            <h2 id="what-to-expect" className="text-3xl font-light tracking-tight text-base-content md:text-4xl">
-              {procedure.whatToExpect.heading}
-            </h2>
-            <ol className="mt-6 grid gap-4 md:grid-cols-2">
-              {procedure.whatToExpect.steps.map(({ title, description }, index) => (
-                <li key={title} className="border border-base-300 bg-base-100 p-5">
-                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/70">Step {index + 1}</p>
-                  <h3 className="mt-2 text-base font-semibold text-base-content">{title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-base-content/75">{description}</p>
-                </li>
-              ))}
-            </ol>
-          </section>
-        )}
+      {"whatToExpect" in procedure && procedure.whatToExpect && (
+        <Section labelledBy="what-to-expect">
+          <SectionHeader id="what-to-expect" title={procedure.whatToExpect.heading} />
+          <ol className={`${AFTER_HEADER} ${cardGridFor(procedure.whatToExpect.steps.length)}`}>
+            {procedure.whatToExpect.steps.map(({ title, description }, index) => (
+              <li key={title} className={CARD}>
+                <p className="eyebrow">Step {index + 1}</p>
+                <h3 className={`mt-2 ${CARD_TITLE}`}>{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-base-content/75">{description}</p>
+              </li>
+            ))}
+          </ol>
+        </Section>
+      )}
 
-        {procedure.slug === "blomdahl-ear-piercing" && (
-          <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="infant-ear-piercing">
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Babies & young kids</p>
-            <h2 id="infant-ear-piercing" className="mt-3 text-3xl font-light tracking-tight text-base-content md:text-4xl">
-              Infant &amp; baby ear piercing with a pediatric nurse practitioner
-            </h2>
-            <div className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
-              <p>
-                Jenny Brady is a certified pediatric nurse practitioner (CPNP), so infant and baby ear piercing is a big part of her
-                practice. Babies are generally pierced at 6 months or older with your pediatrician&apos;s guidance, and Jenny will not
-                pierce if she has any safety concerns.
-              </p>
-              <p>
-                Visits are private and unhurried. Jenny reviews health history and placement with you, uses a sterile single-use Blomdahl
-                cassette and hypoallergenic starter earrings, and teaches aftercare written for babies and toddlers before you leave.
-              </p>
-            </div>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild>
-                <Link href="/procedures/blomdahl-ear-piercing/for/children">Infant &amp; kids ear piercing details</Link>
-              </Button>
-              <Button asChild variant="secondary">
-                <Link href="/consult?procedure=blomdahl-ear-piercing&intent=children&utm_source=website&utm_medium=procedure_page&utm_campaign=ear_piercing_infant">
-                  Book a baby&apos;s first earrings
-                </Link>
-              </Button>
-            </div>
-          </section>
-        )}
+      {procedure.slug === "blomdahl-ear-piercing" && (
+        <Section labelledBy="infant-ear-piercing">
+          <SectionHeader id="infant-ear-piercing" title={<>Infant &amp; baby ear piercing with a pediatric nurse practitioner</>} />
+          <div className="mt-6 max-w-[62ch] space-y-4 text-base leading-relaxed text-base-content/75 md:text-lg">
+            <p>
+              Jenny Brady is a certified pediatric nurse practitioner (CPNP), so infant and baby ear piercing is a big part of her
+              practice. Babies are generally pierced at 6 months or older with your pediatrician&apos;s guidance, and Jenny will not
+              pierce if she has any safety concerns.
+            </p>
+            <p>
+              Visits are private and unhurried. Jenny reviews health history and placement with you, uses a sterile single-use Blomdahl
+              cassette and hypoallergenic starter earrings, and teaches aftercare written for babies and toddlers before you leave.
+            </p>
+          </div>
+          <div className={`mt-8 ${BUTTON_ROW}`}>
+            <Button asChild size="lg" className="w-full sm:w-auto">
+              <Link href="/consult?procedure=blomdahl-ear-piercing&intent=children&utm_source=website&utm_medium=procedure_page&utm_campaign=ear_piercing_infant">
+                Book a baby&apos;s first earrings
+              </Link>
+            </Button>
+            <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+              <Link href="/procedures/blomdahl-ear-piercing/for/children">Infant &amp; kids ear piercing details</Link>
+            </Button>
+          </div>
+        </Section>
+      )}
 
-        {procedure.slug === "blomdahl-ear-piercing" && (
-          <section className="mx-auto mt-12 max-w-4xl text-left">
-            <div className="border border-base-300 bg-base-100 p-6">
-              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Choose your ear piercing path</p>
-              <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">
-                Start with the question your family is actually asking
-              </h2>
-              <p className="mt-3 text-base leading-relaxed text-base-content/70">
-                Parents, sensitive-ear patients, re-piercing patients, and nearby families need different answers. These guides keep the Blomdahl details practical and make it easier to choose the right Williamsburg appointment.
-              </p>
-              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {[
-                  ["Infant, baby & kids ear piercing", "/procedures/blomdahl-ear-piercing/for/children", "For parents planning a baby's or child's first earrings."],
-                  ["Sensitive ears or nickel concerns", "/procedures/blomdahl-ear-piercing/for/sensitive-ears", "For families comparing Medical Plastic, titanium, and hypoallergenic starter earrings."],
-                  ["Re-piercing closed or problem piercings", "/procedures/blomdahl-ear-piercing/for/re-piercing", "For patients who need placement reviewed before piercing again."],
-                  ["Blomdahl vs mall ear piercing", "/blog/medical-ear-piercing-vs-mall-piercing", "For parents comparing a medical setting with retail piercing."],
-                  ["Medical Plastic vs titanium", "/blog/blomdahl-medical-plastic-vs-titanium-earrings", "For sensitive-ear patients choosing starter jewelry."],
-                  ["Ear piercing aftercare", "/blog/ear-piercing-aftercare-williamsburg-va", "For cleaning, healing, sports, swimming, and when to call."],
-                ].map(([label, href, copy]) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    className="group border border-base-300 bg-base-100 px-4 py-4 transition hover:border-primary hover:shadow-sm"
-                  >
-                    <span className="block text-base font-semibold text-base-content group-hover:text-primary">{label}</span>
-                    <span className="mt-1 block text-sm leading-relaxed text-base-content/65">{copy}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
+      {procedure.slug === "blomdahl-ear-piercing" && (
+        <Section>
+          <SectionHeader
+            title="Start with the question your family is actually asking"
+            intro="Parents, sensitive-ear patients, re-piercing patients, and nearby families need different answers. These guides keep the Blomdahl details practical and make it easier to choose the right Williamsburg appointment."
+          />
+          <div className={`${AFTER_HEADER} ${CARD_GRID}`}>
+            {[
+              ["Infant, baby & kids ear piercing", "/procedures/blomdahl-ear-piercing/for/children", "For parents planning a baby's or child's first earrings."],
+              ["Sensitive ears or nickel concerns", "/procedures/blomdahl-ear-piercing/for/sensitive-ears", "For families comparing Medical Plastic, titanium, and hypoallergenic starter earrings."],
+              ["Re-piercing closed or problem piercings", "/procedures/blomdahl-ear-piercing/for/re-piercing", "For patients who need placement reviewed before piercing again."],
+              ["Blomdahl vs mall ear piercing", "/blog/medical-ear-piercing-vs-mall-piercing", "For parents comparing a medical setting with retail piercing."],
+              ["Medical Plastic vs titanium", "/blog/blomdahl-medical-plastic-vs-titanium-earrings", "For sensitive-ear patients choosing starter jewelry."],
+              ["Ear piercing aftercare", "/blog/ear-piercing-aftercare-williamsburg-va", "For cleaning, healing, sports, swimming, and when to call."],
+            ].map(([label, href, copy]) => (
+              <Link key={href} href={href} className={`group ${CARD} ${CARD_LINK}`}>
+                <span className={`block ${CARD_TITLE} group-hover:text-primary`}>{label}</span>
+                <span className="mt-2 block text-sm leading-relaxed text-base-content/80">{copy}</span>
+              </Link>
+            ))}
+          </div>
+        </Section>
+      )}
 
-        {procedure.slug === "blomdahl-ear-piercing" && (
-          <section className="mx-auto mt-8 max-w-4xl text-left">
-            <div className="border border-base-300 bg-base-100 p-6">
-              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Nearby pages</p>
-              <h2 className="mt-3 text-2xl font-light tracking-tight text-base-content">Plan around your route</h2>
-              <p className="mt-3 text-base leading-relaxed text-base-content/70">
-                Start with the local page closest to your visit for directions, expectations, and family planning notes.
-              </p>
-              <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {[
-                  ["Williamsburg", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
-                  ["Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
-                  ["Newport News", "/procedures/blomdahl-ear-piercing/near/newport-news-va"],
-                ].map(([label, href]) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    className="group flex items-center justify-between border border-base-300 bg-base-100 px-4 py-3 text-sm font-medium text-base-content transition hover:border-primary hover:text-primary"
-                  >
-                    <span>{label}</span>
-                    <span aria-hidden="true" className="text-base-content/35 transition group-hover:translate-x-0.5 group-hover:text-primary">
-                      →
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
+      {procedure.slug === "blomdahl-ear-piercing" && (
+        <Section>
+          <SectionHeader
+            title="Plan around your route"
+            intro="Start with the local page closest to your visit for directions, expectations, and family planning notes."
+          />
+          <div className={`${AFTER_HEADER} ${CARD_GRID}`}>
+            {[
+              ["Williamsburg", "/procedures/blomdahl-ear-piercing/near/williamsburg-va"],
+              ["Yorktown", "/procedures/blomdahl-ear-piercing/near/yorktown-va"],
+              ["Newport News", "/procedures/blomdahl-ear-piercing/near/newport-news-va"],
+            ].map(([label, href]) => (
+              <Link key={href} href={href} className={`group ${CARD} ${CARD_LINK} flex-row items-center justify-between`}>
+                <span className={CARD_TITLE}>{label}</span>
+                <span aria-hidden="true" className="text-base-content/35 transition group-hover:translate-x-0.5 group-hover:text-primary">
+                  →
+                </span>
+              </Link>
+            ))}
+          </div>
+        </Section>
+      )}
 
-        {(procedure.slug === "botox" || procedure.slug === "xeomin") && (
-          <section className="mx-auto mt-12 max-w-4xl text-left" aria-labelledby="xeomin-by-concern">
-            <div className="border border-base-300 bg-base-100 p-6">
-              <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/80">Treatment areas &amp; cost</p>
-              <h2 id="xeomin-by-concern" className="mt-3 text-2xl font-light tracking-tight text-base-content">
-                Xeomin by concern
-              </h2>
-              <p className="mt-3 text-base leading-relaxed text-base-content/70">
+      {(procedure.slug === "botox" || procedure.slug === "xeomin") && (
+        <Section labelledBy="xeomin-by-concern">
+          <SectionHeader
+            id="xeomin-by-concern"
+            title="Xeomin by concern"
+            intro={
+              <>
                 Start with the area that bothers you most. Each page covers how Jenny plans Xeomin for that concern, what to expect, and
                 pricing.
-              </p>
-              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {xeominClusterPages.map((page) => (
-                  <Link
-                    key={page.path}
-                    href={page.path}
-                    className="group border border-base-300 bg-base-100 px-4 py-4 transition hover:border-primary hover:shadow-sm"
-                  >
-                    <span className="block text-base font-semibold text-base-content group-hover:text-primary">
-                      {page.h1.replace(/ in Williamsburg, VA$/, "")}
-                    </span>
-                    <span className="mt-1 block text-sm leading-relaxed text-base-content/65">{page.summary}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
+              </>
+            }
+          />
+          <div className={`${AFTER_HEADER} ${cardGridFor(xeominClusterPages.length)}`}>
+            {xeominClusterPages.map((page) => (
+              <Link key={page.path} href={page.path} className={`group ${CARD} ${CARD_LINK}`}>
+                <span className={`block ${CARD_TITLE} group-hover:text-primary`}>{page.h1.replace(/ in Williamsburg, VA$/, "")}</span>
+                <span className="mt-2 block text-sm leading-relaxed text-base-content/80">{page.summary}</span>
+              </Link>
+            ))}
+          </div>
+        </Section>
+      )}
 
-        <div className="text-center">
-
-        <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24" id="benefits">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
-            {procedure.slug === "prp-breast-lift" ? (
+      <Section id="benefits">
+        <SectionHeader
+          title={
+            procedure.slug === "prp-breast-lift" ? (
               "What this treatment approach involves"
             ) : procedure.slug === "prp-hair-restoration" ? (
               "What PRP hair restoration may support"
@@ -783,130 +752,129 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               procedure.benefitsHeading
             ) : (
               <><span className="font-bold">{procedure.name}</span> Benefits</>
-            )}
-          </h2>
-          <p className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.benefitsHeadline)}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {procedure.benefits.map(({ emoji, benefit, description }) => (
-              <Card key={benefit} className="text-left border border-base-300 bg-base-100 text-base-content">
-                <CardHeader>
-                  <CardTitle>
-                    {emoji} {benefit}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>{humanizeMedicalCopy(description)}</CardContent>
-              </Card>
-            ))}
-          </div>
-          <NamedReviews serviceSlug={procedure.slug} heading={`${procedure.name} reviews`} />
-          {Boolean(procedure.testimonials?.length) && (
+            )
+          }
+          intro={humanizeMedicalCopy(procedure.benefitsHeadline)}
+        />
+        <div className={`${AFTER_HEADER} ${cardGridFor(procedure.benefits.length)}`}>
+          {procedure.benefits.map(({ benefit, description }) => (
+            <Card key={benefit} className="h-full text-left">
+              <CardHeader className="pb-2">
+                <CardTitle className={CARD_TITLE}>{benefit}</CardTitle>
+              </CardHeader>
+              <CardContent className="text-base leading-relaxed text-base-content/75">{humanizeMedicalCopy(description)}</CardContent>
+            </Card>
+          ))}
+        </div>
+        <NamedReviews serviceSlug={procedure.slug} heading={`${procedure.name} reviews`} embedded />
+        {Boolean(procedure.testimonials?.length) && (
+          <div className="mt-16 md:mt-20">
             <ProcedureTestimonials procedureName={procedure.name} items={procedure.testimonials} />
-          )}
-          <CtaButtons consultHref={ownerConsultationHref} />
-        </div>
-
-        {hasAilments && (
-          <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24" id="applications">
-            <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
-              How can{" "}
-              {[
-                "oh-shot",
-                "pe-shot",
-                "prp-face-lift",
-                "prp-facial",
-                "prp-breast-lift",
-              ].includes(procedure.slug) && "the "}
-              <span className="font-bold">{procedure.name}</span> help me?
-            </h2>
-            <p className="text-xl lg:text-2xl mb-8 font-light text-justify">{humanizeMedicalCopy(procedure.ailmentsHeadline)}</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              {publishedAilments
-                ?.sort((a, b) => ailmentsSortOrder[a.tag] - ailmentsSortOrder[b.tag])
-                .map(({ title, tag, description }) => {
-                  return (
-                    <Card
-                      key={title}
-                      className="border border-base-300 bg-base-100 text-left text-base-content"
-                    >
-                      <CardHeader>
-                        <CardTitle className="flex items-center justify-between">
-                          {title} <Badge variant="outline">{ailmentsTagLabels[tag] ?? "Treatment Area"}</Badge>
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>{humanizeMedicalCopy(description)}</CardContent>
-                    </Card>
-                  );
-                })}
-            </div>
-            <CtaButtons consultHref={ownerConsultationHref} />
           </div>
         )}
-
-        <div className="scroll-mt-28 border-t border-base-300 py-16 text-left md:py-24 max-w-3xl" id="faqs">
-          <h2 className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium">
-            Frequently Asked Questions about <span className="font-bold">{procedure.name}</span>
-          </h2>
-          <p className="text-xl lg:text-2xl mb-8 font-light">{humanizeMedicalCopy(procedure.faqHeadline)}</p>
-          <Accordion type="single" collapsible className="text-left mb-12">
-            {procedure.faqs.map(({ question, answer }) => (
-              <AccordionItem key={question} value={question}>
-                <AccordionTrigger>{question}</AccordionTrigger>
-                <AccordionContent>{answer}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-          {procedure.slug === "blomdahl-ear-piercing" ? (
-            <p className="mb-12 max-w-3xl text-base leading-relaxed text-base-content/80">
-              The cassette-versus-gun comparison is written out in the{" "}
-              <Link href="/blog/medical-ear-piercing-vs-mall-piercing" className="link link-primary">
-                medical ear piercing versus mall piercing guide
-              </Link>
-              .
-            </p>
-          ) : null}
-          <CtaButtons consultHref={ownerConsultationHref} />
+        <div className={AFTER_HEADER}>
+          <CtaButtons consultHref={ownerConsultationHref} align="start" />
         </div>
+      </Section>
 
-        {Boolean(articles.length) && (
-          <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="posts" aria-labelledby="procedure-posts-heading">
-            <div className="mx-auto max-w-6xl px-6 md:px-0">
-              <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-                <div className="max-w-3xl">
-                  <p className="text-xs uppercase tracking-[0.22em] text-base-content/60">Related Guidance</p>
-                  <h2
-                    id="procedure-posts-heading"
-                    className="mt-3 text-4xl/snug font-light tracking-tight text-base-content text-balance sm:text-5xl/snug md:text-6xl/snug"
-                  >
-                    More About <span className="font-semibold">{procedure.name}</span>
-                  </h2>
-                </div>
-                <Link
-                  href="/blog"
-                  className="self-start rounded-md border border-base-300 px-4 py-2 text-sm font-medium text-base-content transition-colors hover:border-primary/40 hover:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-base-100 md:self-auto"
-                >
-                  View all articles
-                </Link>
-              </div>
-              <p className="mt-5 max-w-4xl text-base leading-relaxed text-base-content/70 md:text-lg">
-                {humanizeMedicalCopy(procedure.blogHeadline)}
-              </p>
-              <BlogPostCollection articles={articles} tone="editorial" />
-            </div>
-          </section>
-        )}
-        {featuredGuide && featuredGuideCta && (
-          <div className="my-24 max-w-3xl mx-auto border-t border-base-300 pt-10 text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-3">{featuredGuideCta.heading}</h2>
-            <p className="text-base md:text-lg text-base-content/80 mb-6">{featuredGuideCta.description}</p>
-            <Button asChild variant="secondary">
-              <Link href={featuredGuide.href}>{featuredGuideCta.linkLabel}</Link>
+      {hasAilments && (
+        <Section id="applications">
+          <SectionHeader
+            title={
+              <>
+                How can{" "}
+                {[
+                  "oh-shot",
+                  "pe-shot",
+                  "prp-face-lift",
+                  "prp-facial",
+                  "prp-breast-lift",
+                ].includes(procedure.slug) && "the "}
+                <span className="font-bold">{procedure.name}</span> help me?
+              </>
+            }
+            intro={humanizeMedicalCopy(procedure.ailmentsHeadline)}
+          />
+          <div className={`${AFTER_HEADER} ${cardGridFor(publishedAilments.length)}`}>
+            {publishedAilments
+              ?.sort((a, b) => ailmentsSortOrder[a.tag] - ailmentsSortOrder[b.tag])
+              .map(({ title, tag, description }) => {
+                return (
+                  <Card key={title} className="h-full text-left">
+                    <CardHeader className="pb-2">
+                      <CardTitle className={`flex items-start justify-between gap-3 ${CARD_TITLE}`}>
+                        {title} <Badge variant="outline" className="mt-1 shrink-0">{ailmentsTagLabels[tag] ?? "Treatment Area"}</Badge>
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="text-base leading-relaxed text-base-content/75">{humanizeMedicalCopy(description)}</CardContent>
+                  </Card>
+                );
+              })}
+          </div>
+          <div className={AFTER_HEADER}>
+            <CtaButtons consultHref={ownerConsultationHref} align="start" />
+          </div>
+        </Section>
+      )}
+
+      <Section id="faqs">
+        <SectionHeader
+          title={<>Frequently Asked Questions about <span className="font-bold">{procedure.name}</span></>}
+          intro={humanizeMedicalCopy(procedure.faqHeadline)}
+        />
+        <Accordion type="single" collapsible className={`${AFTER_HEADER} max-w-3xl border-t border-base-300 text-left`}>
+          {procedure.faqs.map(({ question, answer }) => (
+            <AccordionItem key={question} value={question}>
+              <AccordionTrigger>{question}</AccordionTrigger>
+              <AccordionContent>{answer}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+        {procedure.slug === "blomdahl-ear-piercing" ? (
+          <p className="mt-8 max-w-[62ch] text-base leading-relaxed text-base-content/80">
+            The cassette-versus-gun comparison is written out in the{" "}
+            <Link href="/blog/medical-ear-piercing-vs-mall-piercing" className="link link-primary">
+              medical ear piercing versus mall piercing guide
+            </Link>
+            .
+          </p>
+        ) : null}
+        <div className={AFTER_HEADER}>
+          <CtaButtons consultHref={ownerConsultationHref} align="start" />
+        </div>
+      </Section>
+
+      {Boolean(articles.length) && (
+        <Section id="posts" labelledBy="procedure-posts-heading">
+          <SectionHeader
+            id="procedure-posts-heading"
+            title={<>More About <span className="font-semibold">{procedure.name}</span></>}
+            intro={humanizeMedicalCopy(procedure.blogHeadline)}
+          />
+          <BlogPostCollection articles={articles} tone="editorial" className={AFTER_HEADER} />
+          <div className={`${AFTER_HEADER} ${BUTTON_ROW}`}>
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
+              <Link href="/blog">View all articles</Link>
             </Button>
           </div>
-        )}
-        {HOME_OWNER_LINK_PROCEDURES.has(procedure.slug) && <HomeOwnerLink className="mx-auto mb-12 mt-10 max-w-3xl text-center" />}
-        <CtaFooter consultHref={ownerConsultationHref} />
-      </div>
-      </div>
+        </Section>
+      )}
+      {((featuredGuide && featuredGuideCta) || HOME_OWNER_LINK_PROCEDURES.has(procedure.slug)) && (
+        <Section tight>
+          {featuredGuide && featuredGuideCta && (
+            <>
+              <SectionHeader title={featuredGuideCta.heading} intro={featuredGuideCta.description} />
+              <div className={`mt-8 ${BUTTON_ROW}`}>
+                <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+                  <Link href={featuredGuide.href}>{featuredGuideCta.linkLabel}</Link>
+                </Button>
+              </div>
+            </>
+          )}
+          {HOME_OWNER_LINK_PROCEDURES.has(procedure.slug) && <HomeOwnerLink className={featuredGuide && featuredGuideCta ? "mt-8" : ""} />}
+        </Section>
+      )}
+      <CtaFooter consultHref={ownerConsultationHref} />
     </>
   );
 }

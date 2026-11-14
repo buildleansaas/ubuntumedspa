@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 
+import { AFTER_HEADER, CARD_GRID, INTRO, Section, SectionHeader } from "components/layout";
 import { ProcedureCard } from "components/procedure-card";
 import { procedures } from "data";
 
@@ -49,23 +50,16 @@ export default function Procedures({
 
   if (variant === "editorial") {
     return (
-      <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-24" id="services" aria-labelledby="home-procedures-heading">
-        <div className="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
-          <div>
-          <p className="eyebrow">{kicker}</p>
-          <Heading
-            id="home-procedures-heading"
-            className="font-display mt-4 text-4xl font-medium leading-[1.12] tracking-tight text-base-content md:text-5xl"
-          >
-            Medical Spa Treatments in Williamsburg, VA
-          </Heading>
-          </div>
-          <div>
-          <p className="max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">
-            Compare Xeomin® (our wrinkle relaxer and a Botox® alternative), PRP treatments, microneedling with PRP, hyperhidrosis care, Blomdahl medical ear piercing for babies, children, teens, and adults, and vitamin B-12 injections. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation.
-          </p>
+      <Section id="services" labelledBy="home-procedures-heading">
+        <SectionHeader
+          as={Heading}
+          id="home-procedures-heading"
+          eyebrow={kicker}
+          title="Medical Spa Treatments in Williamsburg, VA"
+          intro="Compare Xeomin® (our wrinkle relaxer and a Botox® alternative), PRP treatments, microneedling with PRP, hyperhidrosis care, Blomdahl medical ear piercing for babies, children, teens, and adults, and vitamin B-12 injections. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation."
+        >
           {showBotoxAlternativeLink ? (
-            <p className="mt-4 max-w-[65ch] text-base leading-relaxed text-base-content/85 md:text-lg">
+            <p className={`mt-4 ${INTRO}`}>
               Looking for Botox in Williamsburg? We use Xeomin®, a wrinkle relaxer in the same category. See our{" "}
               <Link href="/procedures/botox" className="link link-primary">
                 Botox alternative in Williamsburg
@@ -73,17 +67,16 @@ export default function Procedures({
               .
             </p>
           ) : null}
-          </div>
-        </div>
+        </SectionHeader>
 
-        {featured ? <div className="mt-12">{featured}</div> : null}
+        {featured ? <div className={AFTER_HEADER}>{featured}</div> : null}
 
-        <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 xl:grid-cols-3">
+        <div className={`${featured ? "mt-16 md:mt-20" : AFTER_HEADER} ${CARD_GRID}`}>
           {visibleProcedures.map((procedure) => (
             <ProcedureCard key={procedure.slug} tone="editorial" product={{ ...procedure, slug: procedure.slug }} />
           ))}
         </div>
-      </section>
+      </Section>
     );
   }
 

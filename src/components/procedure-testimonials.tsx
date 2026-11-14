@@ -15,20 +15,20 @@ export default function ProcedureTestimonials({ procedureName, items }: Props) {
 
   const gridClassName =
     testimonials.length === 1
-      ? "grid grid-cols-1 gap-8 mb-12 justify-items-center"
+      ? "grid grid-cols-1 gap-8 mb-12 justify-items-start"
       : testimonials.length === 2
-      ? "grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 justify-items-center"
-      : "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-12 justify-items-center";
+      ? "grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 justify-items-start"
+      : "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-12 justify-items-start";
 
   return (
-    <section className="text-center" aria-labelledby="testimonials-heading" id="testimonials">
+    <section className="text-left" aria-labelledby="testimonials-heading" id="testimonials">
       <h3
         id="testimonials-heading"
-        className="text-2xl md:text-4xl mx-auto leading-tight pb-4 text-left font-medium"
+        className="pb-3 text-left text-2xl font-light tracking-tight text-base-content md:text-3xl"
       >
         <span className="font-bold">{procedureName}</span> Testimonials
       </h3>
-      <p className="text-xl lg:text-2xl mb-8 font-light">{sectionDescription}</p>
+      <p className="mb-8 max-w-3xl text-lg leading-relaxed text-base-content/75">{sectionDescription}</p>
 
       <div className={gridClassName}>
         {testimonials.map((t) => {
@@ -36,7 +36,7 @@ export default function ProcedureTestimonials({ procedureName, items }: Props) {
           return (
             <Card
               key={t.id}
-              className="w-full max-w-[520px] bg-base-100 text-base-content border-4 border-base-200 shadow-sm overflow-hidden"
+              className="w-full max-w-[520px] overflow-hidden rounded-xl border border-base-300 bg-base-100 text-base-content"
             >
               <div className="p-4">
                 <div className="relative w-full aspect-[10/11] overflow-hidden rounded-md bg-base-200">

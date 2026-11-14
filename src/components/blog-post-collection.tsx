@@ -1,4 +1,5 @@
 import BlogPostCard from "components/blog-post-card";
+import { CARD_GRID } from "components/layout";
 import type { PostMetadata } from "lib/blog";
 import { cn } from "lib/utils";
 
@@ -18,30 +19,23 @@ export default function BlogPostCollection({
   const [featuredArticle, ...remainingArticles] = articles;
   const gridArticles = featuredFirst ? remainingArticles : articles;
 
+  // One responsive render (Tidewater): the old version drew every card twice, a list for phones and a grid for
+  // desktop, so each post's text was in the HTML two times.
   return (
-    <div className={cn("mt-12", className)}>
-      <div className="space-y-6 md:hidden">
-        {articles.map((article) => (
-          <BlogPostCard key={article.routeSlug} article={article} variant="list" tone={tone} />
-        ))}
-      </div>
+    <div className={cn("mt-12 text-left", className)}>
+      {featuredFirst && featuredArticle && (
+        <BlogPostCard article={featuredArticle} variant="featured" priority tone={tone} />
+      )}
 
-      <div className="hidden md:block">
-        {featuredFirst && featuredArticle && (
-          <BlogPostCard article={featuredArticle} variant="featured" priority tone={tone} />
+      <div
+        className={cn(
+          CARD_GRID,
+          featuredFirst && featuredArticle ? "mt-12" : undefined
         )}
-
-        <div
-          className={cn(
-            "grid gap-x-6 gap-y-10 lg:gap-x-8",
-            featuredFirst && featuredArticle ? "mt-12" : undefined,
-            "md:grid-cols-2 xl:grid-cols-3"
-          )}
-        >
-          {gridArticles.map((article) => (
-            <BlogPostCard key={article.routeSlug} article={article} tone={tone} />
-          ))}
-        </div>
+      >
+        {gridArticles.map((article) => (
+          <BlogPostCard key={article.routeSlug} article={article} tone={tone} />
+        ))}
       </div>
     </div>
   );

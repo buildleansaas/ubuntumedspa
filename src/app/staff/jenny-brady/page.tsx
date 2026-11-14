@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import CtaButtons from "components/cta-buttons";
 import StructuredData from "components/structured-data";
 import { buildPageMetadata } from "lib/metadata";
 import { TrainedBy, TreatmentRoomPhotos } from "components/clinic-photos";
@@ -23,7 +24,7 @@ const CREDENTIALS = [
 
 export default function JennyBradyPage() {
   return (
-    <div className="mx-auto max-w-5xl py-14 md:py-20">
+    <div className="w-full max-w-5xl py-14 md:py-20">
       <StructuredData type="Person" />
       <div className="grid items-start gap-8 md:grid-cols-[minmax(12rem,16rem)_minmax(0,1fr)] md:gap-14">
         <figure className="mx-auto w-full max-w-[16rem] md:mx-0">
@@ -39,12 +40,11 @@ export default function JennyBradyPage() {
           </div>
         </figure>
         <div className="max-w-2xl">
-          <p className="eyebrow">Provider</p>
           <h1 className="mt-4 text-4xl leading-[1.1] tracking-tight text-base-content md:text-6xl">Jenny Brady</h1>
           <p className="mt-4 text-lg text-base-content/85">MSN, RN, CPNP, PMHS</p>
           <ul className="mt-5 flex flex-wrap gap-2" aria-label="Jenny Brady credentials and certifications">
             {CREDENTIALS.map((credential) => (
-              <li key={credential} className="border border-base-300 px-3 py-1 text-sm text-base-content/85">
+              <li key={credential} className="text-sm text-base-content/75 after:ml-2 after:text-base-content/30 after:content-['·'] last:after:content-none">
                 {credential}
               </li>
             ))}
@@ -85,6 +85,9 @@ export default function JennyBradyPage() {
               </Link>
               .
             </p>
+          </div>
+          <div className="mt-8">
+            <CtaButtons align="start" />
           </div>
           <TreatmentRoomPhotos />
         </div>

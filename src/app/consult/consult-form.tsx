@@ -69,7 +69,7 @@ const ConsultationForm: React.FC = () => {
   const wideFieldIds = ["name", "concerns", "interests", "comments", "referral"] as const;
 
   const inputClassName =
-    "mt-2 w-full border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/45 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
+    "mt-2 w-full rounded-lg border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState({
@@ -240,12 +240,12 @@ const ConsultationForm: React.FC = () => {
     <form
       method="post"
       action="/consult"
-      className="mx-auto max-w-3xl border border-base-300 bg-base-100 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10"
+      className="mx-auto max-w-3xl rounded-2xl border border-base-300 bg-base-100 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10"
       onChangeCapture={trackFirstInteraction}
       onSubmit={onSubmit}
     >
       <div className="border-b border-base-300 pb-6">
-        <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Consultation intake</p>
+        <p className="text-sm uppercase tracking-[0.18em] text-base-content/80">Consultation intake</p>
         <p className="mt-3 max-w-2xl text-base text-base-content/70">
           Share the essentials below so Jenny can prepare for the right treatment conversation and the team can route you to scheduling.
         </p>
@@ -287,7 +287,7 @@ const ConsultationForm: React.FC = () => {
                       value={affiliateReferral.affiliateName}
                       readOnly
                     />
-                    <p className="text-xs text-base-content/60" id={helperId}>
+                    <p className="text-xs text-base-content/80" id={helperId}>
                       This consultation was opened from {affiliateReferral.affiliateName}&apos;s referral link.
                     </p>
                   </div>
@@ -310,7 +310,7 @@ const ConsultationForm: React.FC = () => {
                     placeholder={input.label}
                   />
                   {input.helperText ? (
-                    <p className="text-xs text-base-content/60" id={helperId}>
+                    <p className="text-xs text-base-content/80" id={helperId}>
                       {input.helperText}
                     </p>
                   ) : null}
@@ -349,7 +349,7 @@ const ConsultationForm: React.FC = () => {
                     })}
                   </div>
                   {input.helperText ? (
-                    <p className="text-xs text-base-content/60" id={helperId}>
+                    <p className="text-xs text-base-content/80" id={helperId}>
                       {input.helperText}
                     </p>
                   ) : null}
@@ -373,7 +373,7 @@ const ConsultationForm: React.FC = () => {
                     placeholder={input.label}
                   />
                   {input.helperText ? (
-                    <p className="text-xs text-base-content/60" id={helperId}>
+                    <p className="text-xs text-base-content/80" id={helperId}>
                       {input.helperText}
                     </p>
                   ) : null}
@@ -386,8 +386,8 @@ const ConsultationForm: React.FC = () => {
       </div>
 
       <div className="mt-8 flex flex-col gap-4 border-t border-base-300 pt-6 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-base-content/60">Most consultation requests receive a response within 2 business days.</p>
-        <Button type="submit" disabled={loading} className="w-full sm:w-auto">
+        <p className="text-sm text-base-content/80">Most consultation requests receive a response within 2 business days.</p>
+        <Button type="submit" disabled={loading} className="w-full shrink-0 whitespace-nowrap sm:w-auto">
           {loading ? (
             <>
               <Loader className="mr-2 size-4 animate-spin" /> Sending...

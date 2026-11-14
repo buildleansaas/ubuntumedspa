@@ -19,7 +19,7 @@ const SheetOverlay = React.forwardRef<
   <SheetPrimitive.Overlay
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-black/25 backdrop-blur-[2px] transition-opacity duration-200 ease-out data-[state=closed]:opacity-0 data-[state=open]:opacity-100 motion-reduce:transition-none",
+      "sheet-overlay fixed inset-0 z-50 bg-black/25 backdrop-blur-[2px]",
       className
     )}
     {...props}
@@ -28,16 +28,16 @@ const SheetOverlay = React.forwardRef<
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 
 const sheetVariants = cva(
-  "fixed z-50 p-0 shadow-2xl transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] data-[state=closed]:opacity-100 data-[state=closed]:duration-200 motion-reduce:transition-none",
+  "sheet-panel fixed z-50 p-0 shadow-2xl will-change-transform",
   {
     variants: {
       side: {
-        top: "inset-x-0 top-0 border-b border-base-300 bg-base-100 data-[state=closed]:-translate-y-full data-[state=open]:translate-y-0",
+        top: "inset-x-0 top-0 border-b border-base-300 bg-base-100",
         bottom:
-          "inset-x-0 bottom-0 border-t border-base-300 bg-base-100 data-[state=closed]:translate-y-full data-[state=open]:translate-y-0",
-        left: "inset-y-0 left-0 h-full w-full border-r border-base-300 bg-base-100 data-[state=closed]:-translate-x-full data-[state=open]:translate-x-0 sm:max-w-[32rem]",
+          "inset-x-0 bottom-0 border-t border-base-300 bg-base-100",
+        left: "inset-y-0 left-0 h-full w-full border-r border-base-300 bg-base-100 sm:max-w-[32rem]",
         right:
-          "inset-y-0 right-0 h-full w-full border-l border-base-300 bg-base-100 data-[state=closed]:translate-x-full data-[state=open]:translate-x-0 sm:max-w-[32rem]",
+          "inset-y-0 right-0 h-full w-full border-l border-base-300 bg-base-100 sm:max-w-[32rem]",
       },
     },
     defaultVariants: {
@@ -54,7 +54,7 @@ const SheetContent = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Con
   ({ side = "right", className, children, ...props }, ref) => (
     <SheetPortal>
       <SheetOverlay />
-      <SheetPrimitive.Content ref={ref} className={cn(sheetVariants({ side }), className)} {...props}>
+      <SheetPrimitive.Content ref={ref} data-side={side ?? "right"} className={cn(sheetVariants({ side }), className)} {...props}>
         {children}
         <SheetPrimitive.Close className="absolute right-3 top-3 z-10 inline-flex h-8 w-8 items-center justify-center rounded-md border border-base-300 bg-base-100 text-base-content/70 shadow-sm transition-colors duration-150 hover:bg-base-200 hover:text-base-content focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2 disabled:pointer-events-none sm:right-4 sm:top-4 sm:h-9 sm:w-9">
           <X className="h-4 w-4" />

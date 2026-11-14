@@ -176,7 +176,7 @@ export default function RouteProgressBar() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-x-0 top-0 z-[9999] h-[2px] origin-left bg-primary transition-[opacity,transform] duration-200 ease-out"
+      className="pointer-events-none fixed inset-x-0 top-0 z-[9999] h-[3px] origin-left bg-accent shadow-[0_0_8px_color-mix(in_oklch,var(--color-accent)_40%,transparent)] transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
       style={{
         opacity: isVisible ? 1 : 0,
         transform: `scaleX(${progress})`,

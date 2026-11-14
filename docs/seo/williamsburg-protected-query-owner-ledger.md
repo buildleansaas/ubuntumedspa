@@ -90,6 +90,8 @@ Update 2026-11-04 (PR #155, honesty change): the clinic uses only Xeomin and doe
 
 Update 2026-11-08 (owner transfer test): `/procedures/botox` becomes the owner for `botox williamsburg` and `botox williamsburg va`, as planned above ("preferred long-term service destination"). Why now: Google's URL Inspection reported `/procedures/botox` as "URL is unknown to Google" on 2026-11-04, which is why the homepage ranks for these searches (90 days on Google, 2026-08-04 to 2026-11-02: `botox williamsburg` 312 impressions at position 15.9, `botox williamsburg va` 265 impressions at 8.8), while Bing ranks `/procedures/botox` about 1.4 for `botox williamsburg va`. The test is reversible and internal-link only: indexing is requested for `/procedures/botox`; /events, /locations/williamsburg-va, /locations/yorktown-va and the homepage's Botox-alternative H2 answer link to it with "Botox alternative in Williamsburg, VA"; the homepage title and meta stay the med spa owner's (restored after PR #173 briefly changed them). The homepage keeps its honest Botox-alternative answer under the H1 (it links to /procedures/xeomin). Record both URLs for both queries at D14 and D28 (2026-11-22, 2026-12-06). If neither URL improves by D28 and the homepage's med spa queries hold, the links stay; if the homepage's med spa queries lose position, look for another cause before touching the title again.
 
+Update 2026-11-13 (merge date TBD): Homepage redesign (#182) deployed on merge: chooser and price list added, the three H2 answers moved below the treatments and set smaller. D14/D28 reads after the deploy date are confounded; restart the homepage CTR window from the deploy date.
+
 ### Williamsburg dermal fillers
 
 Protected observed owner: `https://www.williamsburgmedspa.com/`

@@ -31,7 +31,7 @@ export default function XeominClusterPageView({ page }: { page: XeominClusterPag
   const siblings = xeominClusterPages.filter((sibling) => sibling.slug !== page.slug);
 
   return (
-    <main className="mx-auto max-w-xl py-12 md:max-w-5xl md:px-8 md:py-16">
+    <main className="w-full py-14 md:py-20">
       <StructuredData
         type="Breadcrumb"
         breadcrumbItems={[
@@ -78,7 +78,7 @@ export default function XeominClusterPageView({ page }: { page: XeominClusterPag
       </nav>
 
       <header className="mb-10 max-w-3xl text-left md:mb-14">
-        <p className="mb-3 text-sm uppercase tracking-wide text-base-content/60">
+        <p className="mb-3 text-sm uppercase tracking-wide text-base-content/80">
           Xeomin® wrinkle relaxer · Williamsburg, VA{page.areaTag === "uncommon" ? " · Less common area" : ""}
         </p>
         <h1 className="text-3xl font-light leading-tight md:text-5xl">{page.h1}</h1>
@@ -152,12 +152,17 @@ export default function XeominClusterPageView({ page }: { page: XeominClusterPag
         </p>
       </section>
 
-      <section className="mb-10 border border-base-300 p-5 md:mb-14 md:p-6" id="pricing" aria-labelledby="xeomin-pricing">
-        <h2 id="xeomin-pricing" className="mb-3 text-2xl font-light md:text-3xl">
+      <section
+        className="mb-10 grid scroll-mt-28 items-start gap-8 border-t border-base-300 pt-10 md:mb-14 md:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] md:gap-12"
+        id="pricing"
+        aria-labelledby="xeomin-pricing"
+      >
+        <div>
+        <h2 id="xeomin-pricing" className="mb-4 text-2xl font-light md:text-3xl">
           Xeomin pricing
         </h2>
-        <p className="text-3xl font-semibold tracking-tight text-base-content">{XEOMIN_PRICES.blockCash} cash</p>
-        <p className="mt-1 text-sm text-base-content/70">per credit block · {XEOMIN_PRICES.blockCard} card/online</p>
+        <p className="font-display text-5xl font-light leading-none tracking-tight text-base-content">{XEOMIN_PRICES.blockCash} cash</p>
+        <p className="mt-2 text-sm text-base-content/70">per credit block · {XEOMIN_PRICES.blockCard} card/online</p>
         <p className="mt-4 text-base text-base-content/80 md:text-lg">
           Each block adds {XEOMIN_PRICES.blockCash} of treatment credit. Your total depends on the areas treated, muscle strength, and your
           dosing plan, and any unused value remains as account credit.{" "}
@@ -167,6 +172,7 @@ export default function XeominClusterPageView({ page }: { page: XeominClusterPag
             </Link>
           )}
         </p>
+        </div>
         {catalogItem && (
           <CatalogPurchasePanel
             slug={catalogItem.slug}
@@ -181,6 +187,7 @@ export default function XeominClusterPageView({ page }: { page: XeominClusterPag
             fulfillment={catalogItem.fulfillment}
             purchaseLabel={catalogItem.purchaseLabel}
             customerNote={catalogItem.customerNote}
+            hidePrice
           />
         )}
       </section>
@@ -226,7 +233,7 @@ export default function XeominClusterPageView({ page }: { page: XeominClusterPag
               className="border border-base-300 px-4 py-3 transition hover:border-primary"
             >
               <span className="block font-semibold text-base-content">{sibling.h1.replace(/ in Williamsburg, VA$/, "")}</span>
-              <span className="mt-1 block text-sm text-base-content/65">{sibling.summary}</span>
+              <span className="mt-1 block text-sm text-base-content/80">{sibling.summary}</span>
             </Link>
           ))}
         </div>
@@ -248,7 +255,7 @@ export default function XeominClusterPageView({ page }: { page: XeominClusterPag
         </p>
       </section>
 
-      <p className="text-xs leading-relaxed text-base-content/60">{XEOMIN_TRADEMARK_NOTE}</p>
+      <p className="text-xs leading-relaxed text-base-content/80">{XEOMIN_TRADEMARK_NOTE}</p>
     </main>
   );
 }

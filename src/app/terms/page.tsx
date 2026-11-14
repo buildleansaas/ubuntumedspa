@@ -13,9 +13,8 @@ export const metadata: Metadata = buildPageMetadata({
 export default function TermsPage() {
   return (
     <article className="mx-auto max-w-3xl py-14 md:py-20">
-      <p className="text-xs font-medium uppercase tracking-[0.22em] text-base-content/60">Williamsburg Med Spa</p>
       <h1 className="mt-4 text-4xl leading-[1.08] tracking-tight text-base-content md:text-6xl">Terms of Use</h1>
-      <p className="mt-4 text-sm text-base-content/60">Last updated October 31, 2026</p>
+      <p className="mt-4 text-sm text-base-content/80">Last updated October 31, 2026</p>
 
       <div className="mt-8 space-y-6 text-base leading-8 text-base-content/85">
         <p>

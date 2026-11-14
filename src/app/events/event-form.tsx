@@ -17,7 +17,7 @@ import { cn } from "lib/utils";
 const WIDE_FIELD_TYPES = new Set(["textarea", "checkbox"]);
 
 const inputClassName =
-  "mt-2 w-full border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/45 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
+  "mt-2 w-full border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
 
 const getOptionGroups = (field: EventFieldDefinition): EventOptionGroup[] => {
   if (field.optionGroups?.length) return field.optionGroups;
@@ -116,14 +116,14 @@ export default function EventForm({ event }: { event: EventDefinition }) {
                 <legend className="block text-sm font-semibold text-base-content">{field.label}</legend>
                 <div className="space-y-2">
                   {field.helperText ? (
-                    <p className="max-w-3xl text-sm leading-6 text-base-content/65" id={helperId}>
+                    <p className="max-w-3xl text-sm leading-6 text-base-content/80" id={helperId}>
                       {field.helperText}
                     </p>
                   ) : null}
                 </div>
 
                 {lockedOptions.length ? (
-                  <div className="border border-base-300 bg-base-100 p-5 sm:p-6">
+                  <div className="rounded-xl border border-base-300 bg-base-100 p-5 sm:p-6">
                     <p className="text-[11px] uppercase tracking-[0.24em] text-primary/80">Core offer</p>
                     <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                       <div>
@@ -143,9 +143,9 @@ export default function EventForm({ event }: { event: EventDefinition }) {
                   {optionGroups.map((group) => (
                     <div
                       key={group.label}
-                      className="border border-base-300 bg-base-200/40 p-4 sm:p-5"
+                      className="rounded-xl border border-base-300 bg-base-200/40 p-4 sm:p-5"
                     >
-                      <p className="text-[11px] uppercase tracking-[0.22em] text-base-content/55">{group.label}</p>
+                      <p className="text-[11px] uppercase tracking-[0.22em] text-base-content/80">{group.label}</p>
                       <div className="mt-4 grid gap-3">
                         {group.options.map((option) => {
                           const checked = checkedValues.includes(option);
@@ -197,7 +197,7 @@ export default function EventForm({ event }: { event: EventDefinition }) {
                   placeholder={field.placeholder || field.label}
                 />
                 {field.helperText ? (
-                  <p className="text-xs text-base-content/60" id={helperId}>
+                  <p className="text-xs text-base-content/80" id={helperId}>
                     {field.helperText}
                   </p>
                 ) : null}
@@ -222,7 +222,7 @@ export default function EventForm({ event }: { event: EventDefinition }) {
                 placeholder={field.placeholder || field.label}
               />
               {field.helperText ? (
-                <p className="text-xs text-base-content/60" id={helperId}>
+                <p className="text-xs text-base-content/80" id={helperId}>
                   {field.helperText}
                 </p>
               ) : null}
@@ -232,7 +232,7 @@ export default function EventForm({ event }: { event: EventDefinition }) {
       </div>
 
       <div className="mt-8 flex flex-col gap-4 border-t border-base-300/80 pt-6 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-base-content/60">
+        <p className="text-sm text-base-content/80">
           After you submit, we&apos;ll send you straight into scheduling for a quick planning call.
         </p>
         <Button type="submit" disabled={loading} className="w-full sm:w-auto">

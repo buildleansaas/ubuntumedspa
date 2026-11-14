@@ -2,7 +2,9 @@
 
 import CatalogAddToCartControl from "components/catalog-add-to-cart-control";
 import OpenCartButton from "components/open-cart-button";
-import { CASH_CARD_NOTE } from "lib/price";
+import { creditBlockCreditSentence, getCatalogConfigBySlug } from "config/commerce-catalog";
+import { CASH_CARD_NOTE, formatUsdShort } from "lib/price";
+import { cn } from "lib/utils";
 
 type Props = {
   slug: string;
@@ -17,6 +19,33 @@ type Props = {
   fulfillment: "pickup" | "appointment";
   purchaseLabel?: string;
   customerNote?: string;
+  /** The surrounding section already states the price and how credit works (Xeomin concern pages): show them once. */
+  hidePrice?: boolean;
+  className?: string;
+};
+
+type PriceParts = { cash: string; cashSuffix: string; card: string };
+
+/**
+ * Splits the catalog display price ("$45 per ear or $80 for both ears cash · $46.66 or $82.70 card/online")
+ * into the cash part (shown large) and the card/online part (shown smaller), keeping the catalog wording and order.
+ * Credit-block items are the exception: their display price names the block price twice, so the panel shows the
+ * block price once ("<cash> cash per credit block", then "<card> card/online"). No price is ever typed here.
+ */
+const splitDisplayPrice = (displayPrice: string, pricingMode: Props["pricingMode"], cashAmountCents?: number, cardAmountCents?: number): PriceParts => {
+  // Credit-block items read "$250 credit blocks · $250 cash · $257.78 card/online": show the block price once.
+  if (pricingMode === "increment_credit" && cashAmountCents !== undefined && cardAmountCents !== undefined) {
+    return {
+      cash: formatUsdShort(cashAmountCents),
+      cashSuffix: "cash per credit block",
+      card: `${formatUsdShort(cardAmountCents)} card/online`,
+    };
+  }
+  const parts = displayPrice.split(" · ");
+  const card = parts.length > 1 ? parts[parts.length - 1] : "";
+  const cashPart = parts.length > 1 ? parts.slice(0, -1).join(" · ") : displayPrice;
+  const cashMatch = cashPart.match(/^(.*?)( cash)$/);
+  return cashMatch ? { cash: cashMatch[1], cashSuffix: "cash", card } : { cash: cashPart, cashSuffix: "", card };
 };
 
 export default function CatalogPurchasePanel({
@@ -32,45 +61,81 @@ export default function CatalogPurchasePanel({
   fulfillment,
   purchaseLabel,
   customerNote,
+  hidePrice = false,
+  className,
 }: Props) {
   const isAppointment = fulfillment === "appointment";
+  const catalogItem = getCatalogConfigBySlug(slug);
+  const price = splitDisplayPrice(displayPrice, pricingMode, catalogItem?.cashAmountCents, catalogItem?.unitAmountCents);
+  // Credit-block notes repeat the price already shown above; keep only how the credit works.
+  const explainer =
+    pricingMode === "increment_credit" && catalogItem?.cashAmountCents
+      ? creditBlockCreditSentence(catalogItem.cashAmountCents)
+      : customerNote;
+  const longCash = price.cash.length > 14;
 
   return (
-    <div className="mx-auto mt-8 max-w-4xl border-y border-base-300 py-6 text-left">
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-        <div>
-          <p className="eyebrow">
-            {purchaseLabel || (kind === "procedure" ? "Reserve appointment" : "Reserve for pickup")}
-          </p>
-          <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-2">
-            <h2 className="text-2xl font-light tracking-tight text-base-content">{name}</h2>
-            <p className="text-xl font-semibold text-base-content">{displayPrice}</p>
-          </div>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-base-content/70">
-            {isAppointment
-              ? "Pay online first, then text or call Jenny to book your appointment."
-              : "Products are paid online and held for pickup."}
-          </p>
-          {customerNote && <p className="mt-2 max-w-2xl text-sm leading-relaxed text-base-content/70">{customerNote}</p>}
-        </div>
-
-        <div className="border border-base-300 bg-base-100 p-4">
-          <div className="flex flex-wrap items-center gap-3">
-            <CatalogAddToCartControl
-              slug={slug}
-              kind={kind}
-              pricingMode={pricingMode}
-              unitAmountCents={unitAmountCents}
-              quantityLabel={quantityLabel}
-              minQuantity={minQuantity}
-              maxQuantity={maxQuantity}
-              showSubtotal
-            />
-            <OpenCartButton variant="secondary">View Cart</OpenCartButton>
-          </div>
-          <p className="mt-3 max-w-xs text-xs leading-5 text-base-content/60">{CASH_CARD_NOTE}</p>
-        </div>
+    <div
+      data-booking-card
+      className={cn(
+        "w-full rounded-2xl border border-base-300 bg-base-100 p-6 text-left shadow-[0_1px_2px_rgba(36,49,58,0.04),0_12px_32px_-16px_rgba(36,49,58,0.18)] sm:p-8",
+        className
+      )}
+    >
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h2 className="text-2xl font-light tracking-tight text-base-content">{name}</h2>
+        <p className="text-xs font-medium uppercase tracking-[0.16em] text-base-content/80">
+          {purchaseLabel || (kind === "procedure" ? "Reserve appointment" : "Reserve for pickup")}
+        </p>
       </div>
+
+      {!hidePrice && (
+      <p className="mt-5 border-b border-base-300 pb-5">
+        <span className="block text-balance">
+          <span
+            className={cn(
+              "font-display font-light tracking-tight text-base-content tabular-nums",
+              longCash ? "text-2xl leading-snug md:text-[1.7rem]" : "text-5xl leading-none"
+            )}
+          >
+            {price.cash}
+          </span>
+          {price.cashSuffix && <span className="ml-2 text-base text-base-content/75">{price.cashSuffix}</span>}
+        </span>
+        {price.card && (
+          <>
+            <span className="sr-only"> · </span>
+            <span className="mt-2 block text-sm text-base-content/80">{price.card}</span>
+          </>
+        )}
+      </p>
+      )}
+
+      <div className="mt-5 space-y-2 text-sm leading-relaxed text-base-content/75">
+        <p>
+          {isAppointment
+            ? "Pay online first, then text or call Jenny to book your appointment."
+            : "Products are paid online and held for pickup."}
+        </p>
+        {explainer && !hidePrice && <p>{explainer}</p>}
+      </div>
+
+      <CatalogAddToCartControl
+        slug={slug}
+        kind={kind}
+        pricingMode={pricingMode}
+        unitAmountCents={unitAmountCents}
+        quantityLabel={quantityLabel}
+        minQuantity={minQuantity}
+        maxQuantity={maxQuantity}
+        showSubtotal
+        className="mt-6"
+      />
+      <OpenCartButton variant="outline" size="lg" className="mt-3 w-full">
+        View Cart
+      </OpenCartButton>
+
+      <p className="mt-5 text-xs leading-5 text-base-content/80">{CASH_CARD_NOTE}</p>
     </div>
   );
 }

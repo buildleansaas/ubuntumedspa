@@ -9,6 +9,8 @@ import { normalizeIntimacyProcedureSlug } from "lib/intimacy-aliases";
 type CartContextValue = {
   items: CartItem[];
   totalCount: number;
+  /** True once the saved cart has been read from localStorage. */
+  hydrated: boolean;
   isCartOpen: boolean;
   addItem: (item: CartItem) => void;
   replaceItems: (items: CartItem[]) => void;
@@ -60,6 +62,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     () => ({
       items,
       totalCount: items.reduce((sum, item) => sum + sanitizeCartQuantity(item.quantity), 0),
+      hydrated,
       isCartOpen,
       addItem: (item) => {
         setItems((current) => {
@@ -112,7 +115,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         setIsCartOpen((current) => !current);
       },
     }),
-    [isCartOpen, items]
+    [hydrated, isCartOpen, items]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

@@ -18,7 +18,7 @@ export const metadata: Metadata = buildPageMetadata({
   canonical: "/affiliates",
 });
 
-const sectionEyebrowClass = "text-[11px] uppercase tracking-[0.24em] text-base-content/60";
+const sectionEyebrowClass = "text-[11px] uppercase tracking-[0.24em] text-base-content/80";
 const sectionHeadingClass = "mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content";
 const sectionBodyClass = "mt-4 text-base md:text-lg leading-relaxed text-base-content/80";
 const surfaceCardClass = "border-t border-base-300 pt-5";
@@ -180,7 +180,7 @@ export default function AffiliatesPage() {
               friends to.
             </p>
 
-            <ul className="mx-auto flex max-w-4xl list-none flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-base-content/60">
+            <ul className="mx-auto flex max-w-4xl list-none flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-base-content/80">
               {programHighlights.map((item) => (
                 <li key={item}>{item}</li>
               ))}
@@ -301,7 +301,7 @@ export default function AffiliatesPage() {
               <article key={item.title} className={surfaceCardClass}>
                 <h3 className="text-2xl font-light text-base-content">{item.title}</h3>
                 <p className="mt-3 text-base leading-relaxed text-base-content/75">{item.description}</p>
-                <p className="mt-4 text-sm leading-6 text-base-content/60">
+                <p className="mt-4 text-sm leading-6 text-base-content/80">
                   <span className="font-medium text-base-content/80">Best for:</span> {item.bestFor}
                 </p>
                 <div className="mt-5">
@@ -345,7 +345,7 @@ export default function AffiliatesPage() {
           <div className="mt-10 border border-base-300 bg-base-100">
             <div className="grid gap-0 lg:grid-cols-2">
               <div className="px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10 lg:border-r lg:border-base-300">
-                <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Do say</p>
+                <p className="text-sm uppercase tracking-[0.18em] text-base-content/80">Do say</p>
                 <ul className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75">
                   {guardrails.do.map((item) => (
                     <li key={item} className="flex items-start gap-3">
@@ -357,7 +357,7 @@ export default function AffiliatesPage() {
               </div>
 
               <div className="border-t border-base-300 px-6 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10 lg:border-t-0">
-                <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Avoid saying</p>
+                <p className="text-sm uppercase tracking-[0.18em] text-base-content/80">Avoid saying</p>
                 <ul className="mt-5 space-y-4 text-base leading-relaxed text-base-content/75">
                   {guardrails.avoid.map((item) => (
                     <li key={item} className="flex items-start gap-3">

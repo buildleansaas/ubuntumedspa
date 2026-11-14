@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { AFTER_HEADER, CARD, CARD_GRID, CARD_GRID_2, Section, SectionHeader } from "components/layout";
 import { reviewsForService } from "data/published-reviews";
 
 const formatReviewDate = (isoDate: string) => {
@@ -13,18 +14,25 @@ const formatReviewDate = (isoDate: string) => {
   }).format(new Date(Date.UTC(year, month - 1, day)));
 };
 
-export default function NamedReviews({ serviceSlug, heading = "Patient reviews" }: { serviceSlug?: string; heading?: string }) {
+export default function NamedReviews({
+  serviceSlug,
+  heading = "Patient reviews",
+  embedded = false,
+}: {
+  serviceSlug?: string;
+  heading?: string;
+  /** Inside another section (procedure benefits): no band or section padding of its own. */
+  embedded?: boolean;
+}) {
   const reviews = reviewsForService(serviceSlug);
   if (!reviews.length) return null;
 
-  return (
-    <section className="scroll-mt-28 border-t border-base-300 py-16 md:py-20" aria-labelledby="named-reviews-heading">
-      <h2 id="named-reviews-heading" className="font-display text-3xl font-medium tracking-tight text-base-content md:text-4xl">
-        {heading}
-      </h2>
-      <ul className="mt-8 grid gap-6 md:grid-cols-2">
+  const body = (
+    <>
+      <SectionHeader id="named-reviews-heading" title={heading} />
+      <ul className={`${AFTER_HEADER} ${reviews.length > 2 ? CARD_GRID : CARD_GRID_2}`}>
         {reviews.map((review) => (
-          <li key={review.id} className="border border-base-300 p-6">
+          <li key={review.id} className={CARD}>
             <blockquote className="text-base leading-relaxed text-base-content/85">
               <p>{review.quote}</p>
             </blockquote>
@@ -34,13 +42,22 @@ export default function NamedReviews({ serviceSlug, heading = "Patient reviews" 
               <time dateTime={review.datePublished}>{formatReviewDate(review.datePublished)}</time>
             </p>
             {review.imageSrc ? (
-              <div className="relative mt-4 aspect-[4/3] max-w-xs overflow-hidden border border-base-300 bg-base-200">
+              <div className="relative mt-4 aspect-[4/3] max-w-xs overflow-hidden rounded-2xl border border-base-300 bg-base-200">
                 <Image src={review.imageSrc} alt="" fill sizes="320px" className="object-cover" />
               </div>
             ) : null}
           </li>
         ))}
       </ul>
-    </section>
+    </>
   );
+
+  if (embedded) {
+    return (
+      <section className="mt-16 scroll-mt-28 text-left md:mt-20" aria-labelledby="named-reviews-heading">
+        {body}
+      </section>
+    );
+  }
+  return <Section labelledBy="named-reviews-heading">{body}</Section>;
 }

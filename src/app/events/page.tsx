@@ -19,11 +19,10 @@ export default function EventsPage() {
   const events = getPublishedEvents();
 
   return (
-    <div className="max-w-xl md:max-w-7xl mx-auto md:px-8 py-12 md:py-16">
+    <div className="w-full py-14 md:py-20">
       <StructuredData type="Breadcrumb" breadCrumbs={["Home", "Events"]} />
 
       <section className="mx-auto max-w-3xl text-left">
-        <p className="mb-3 text-sm uppercase tracking-[0.18em] text-base-content/60">Private parties</p>
         <h1 className="text-base-content text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-light leading-tight">
           Host the wrinkle relaxer party your friends already keep asking about.
         </h1>
@@ -48,17 +47,22 @@ export default function EventsPage() {
           ["Xeomin-led gateway", "Keep the event focused on Xeomin while giving guests a natural way to ask about PRP and other services."],
           ["Planning call first", "Share your guest count, timing, and location idea before anything is confirmed."],
         ].map(([title, description]) => (
-          <div key={title} className="border border-base-300 bg-base-100 p-5">
+          <div key={title} className="rounded-xl border border-base-300 bg-base-100 p-5">
             <h2 className="text-lg font-medium text-base-content">{title}</h2>
             <p className="mt-2 text-sm leading-6 text-base-content/70">{description}</p>
           </div>
         ))}
       </section>
 
-      <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className={events.length === 1 ? "mx-auto mt-12 max-w-5xl" : "mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3"}>
         {events.map((event) => (
-          <article key={event.slug} className="overflow-hidden border border-base-300 bg-base-100">
-            <div className="relative aspect-[4/3] bg-base-200">
+          <article
+            key={event.slug}
+            className={`overflow-hidden rounded-xl border border-base-300 bg-base-100 ${
+              events.length === 1 ? "md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]" : ""
+            }`}
+          >
+            <div className={`relative aspect-[4/3] bg-base-200 ${events.length === 1 ? "md:aspect-auto md:min-h-full" : ""}`}>
               <Image
                 src={event.thumbnailImageSrc || event.heroImageSrc}
                 alt={event.thumbnailImageAlt || event.heroImageAlt}
@@ -69,16 +73,15 @@ export default function EventsPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
             </div>
 
-            <div className="p-6">
-              <p className="text-[11px] uppercase tracking-[0.24em] text-base-content/60">{event.listing.eyebrow}</p>
-              <h2 className="mt-3 text-2xl/snug font-light text-base-content">{event.listing.title}</h2>
+            <div className="p-6 md:p-8">
+              <h2 className="text-2xl/snug font-light text-base-content">{event.listing.title}</h2>
               <p className="mt-3 text-base leading-relaxed text-base-content/75">{event.listing.description}</p>
 
               <div className="mt-5 flex flex-wrap gap-2">
                 {event.listing.highlights.map((highlight) => (
                   <span
                     key={highlight}
-                    className="rounded-full border border-base-300 bg-base-100 px-3 py-1 text-xs text-base-content/65"
+                    className="rounded-full border border-base-300 bg-base-100 px-3 py-1 text-xs text-base-content/80"
                   >
                     {highlight}
                   </span>
@@ -94,8 +97,8 @@ export default function EventsPage() {
           </article>
         ))}
       </div>
-      <HomeOwnerLink className="mt-10" />
-      <XeominHubLink className="mt-2" />
+      <HomeOwnerLink className="mx-auto mt-10 max-w-5xl" />
+      <XeominHubLink className="mx-auto mt-2 max-w-5xl" />
     </div>
   );
 }

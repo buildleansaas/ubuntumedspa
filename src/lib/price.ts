@@ -78,5 +78,7 @@ export const cardPriceLabel = (cashCents: number) => formatUsdShort(cardPriceCen
 /** Card price as a schema.org Offer price string, e.g. "46.66". */
 export const cardPriceSchemaValue = (cashCents: number) => (cardPriceCents(cashCents) / 100).toFixed(2);
 
-export const CASH_CARD_NOTE =
-  "Paying cash in the office? You pay the cash price. The card price applies online and to card payments in the office.";
+/** The second sentence of CASH_CARD_NOTE, for intros that lead with their own first sentence. */
+export const CARD_PRICE_SENTENCE = "The card price applies online and to card payments in the office.";
+
+export const CASH_CARD_NOTE = `Paying cash in the office? You pay the cash price. ${CARD_PRICE_SENTENCE}`;

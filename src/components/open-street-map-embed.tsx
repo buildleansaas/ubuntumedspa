@@ -56,7 +56,7 @@ export default function OpenStreetMapEmbed({
           src={src}
         />
       </div>
-      <p className="text-xs text-base-content/60">
+      <p className="text-xs text-base-content/80">
         Map data ©{" "}
         <a
           className="underline underline-offset-2 hover:text-primary"
