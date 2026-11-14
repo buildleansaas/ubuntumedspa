@@ -21,13 +21,12 @@ import NamedReviews from "components/named-reviews";
 import StructuredData from "components/structured-data";
 import { HomeRealPhotos } from "components/clinic-photos";
 import { CARPAL_TUNNEL_PHOTO, HOME_INJECTION_CAPTION } from "config/clinic-photos";
-import { COMMERCE_CATALOG_BY_SLUG, EAR_PIERCING_PRICES } from "config/commerce-catalog";
 import { buildPageMetadata } from "lib/metadata";
-import { cardPriceLabel, formatUsdShort } from "lib/price";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "lib/seo";
 import BlomdahlCallout from "views/blomdahl-callout";
 import BotoxPartyCallout from "views/botox-party-callout";
-import HomeChooser, { type ChooserTile } from "views/home-chooser";
+import HomeChooser from "views/home-chooser";
+import { CHOOSER_TILES, HOME_PRICE_INTRO, HOME_PRICE_ROWS, XEOMIN_CARD, XEOMIN_CASH } from "views/home-prices";
 import { homeFaqs } from "views/home-questions";
 import HomeVisit from "views/home-visit";
 import Jumbotron from "views/jumbotron";
@@ -44,12 +43,6 @@ export const metadata: Metadata = buildPageMetadata({
   canonical: "/",
 });
 
-const XEOMIN_CASH = formatUsdShort(COMMERCE_CATALOG_BY_SLUG.xeomin.cashAmountCents);
-const XEOMIN_CARD = cardPriceLabel(COMMERCE_CATALOG_BY_SLUG.xeomin.cashAmountCents);
-
-const cash = (slug: string) => formatUsdShort(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
-const card = (slug: string) => cardPriceLabel(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
-
 const localLinks = [
   { href: "/procedures/botox", label: "Botox alternative in Williamsburg" },
   { href: "/procedures/xeomin", label: "Xeomin in Williamsburg" },
@@ -60,68 +53,10 @@ const localLinks = [
   { href: "/prices", label: "Med spa prices" },
 ] as const;
 
-const CHOOSER_TILES: ChooserTile[] = [
-  {
-    question: "Lines when I frown, raise my brows or smile",
-    treatment: "Xeomin",
-    href: "/procedures/xeomin",
-    price: `from ${XEOMIN_CASH} cash`,
-  },
-  {
-    question: "Sweating that clothes and antiperspirant can't handle",
-    treatment: "Hyperhidrosis treatment",
-    href: "/procedures/hyperhidrosis-treatment",
-    price: `${cash("hyperhidrosis-treatment")} cash`,
-  },
-  {
-    question: "My child's first earrings",
-    treatment: "Blomdahl ear piercing",
-    href: "/procedures/blomdahl-ear-piercing",
-    price: `${EAR_PIERCING_PRICES.oneEarCash} per ear, cash`,
-  },
-  {
-    question: "Skin that looks tired or uneven",
-    treatment: "PRP Facial",
-    href: "/procedures/prp-facial",
-    price: `${cash("prp-facial")} cash`,
-  },
-  {
-    question: "Thinning hair",
-    treatment: "PRP hair restoration",
-    href: "/procedures/prp-hair-restoration",
-    price: `${cash("prp-hair-restoration")} per treatment, cash`,
-  },
-  {
-    question: "Intimate comfort or bladder leaks",
-    treatment: "OH-Shot",
-    href: "/procedures/oh-shot",
-    price: `${cash("oh-shot")} cash`,
-  },
-];
-
-// Cash first, card smaller. Every amount comes from the catalog.
-const PRICE_ROWS = [
-  { name: "Xeomin", href: "/procedures/xeomin", cash: `from ${XEOMIN_CASH}`, card: XEOMIN_CARD, note: "per credit block" },
-  {
-    name: "Blomdahl ear piercing",
-    href: "/procedures/blomdahl-ear-piercing",
-    cash: EAR_PIERCING_PRICES.oneEarCash,
-    card: EAR_PIERCING_PRICES.oneEarCard,
-    note: "per ear",
-  },
-  { name: "PRP Facial", href: "/procedures/prp-facial", cash: cash("prp-facial"), card: card("prp-facial"), note: "per treatment" },
-  {
-    name: "Hyperhidrosis treatment",
-    href: "/procedures/hyperhidrosis-treatment",
-    cash: cash("hyperhidrosis-treatment"),
-    card: card("hyperhidrosis-treatment"),
-    note: "per treatment",
-  },
-  { name: "OH-Shot", href: "/procedures/oh-shot", cash: cash("oh-shot"), card: card("oh-shot"), note: "per treatment" },
-];
-
 // Tidewater homepage: main's sections and visual elements in the Tidewater palette and type (clear buttons per
-// screen), plus the treatment chooser and price list. Every section ends with a clear booking button.
+// screen), plus the treatment chooser and price list. Filled booking buttons sit in the hero, the photo results, the
+// chooser, the local intro, the treatment callouts, the price list, the visit details and the closing call to action;
+// sections such as reviews, the search answers, products, posts and the FAQ have none.
 export default async function Page() {
   return (
     <div className="w-full">
@@ -209,20 +144,20 @@ export default async function Page() {
             <SectionHeader
               id="home-prices-heading"
               title="Prices, written out"
-              intro="Cash price first. The card price applies online and to card payments in the office."
+              intro={HOME_PRICE_INTRO}
             />
           }
           media={
             <>
               <ul className={ROWS} data-home-prices>
-                {PRICE_ROWS.map((row) => (
+                {HOME_PRICE_ROWS.map((row) => (
                   <li key={row.href} className={ROW}>
                     <Link href={row.href} className="rounded-sm text-lg text-base-content hover:text-secondary">
                       {row.name}
                     </Link>
                     <span className="sm:text-right">
                       <span className="text-lg text-base-content">{row.cash} cash</span>{" "}
-                      <span className="block text-sm text-base-content/60 sm:inline">
+                      <span className="block text-sm text-base-content/80 sm:inline">
                         {row.note} · {row.card} by card or online
                       </span>
                     </span>

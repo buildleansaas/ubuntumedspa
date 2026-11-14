@@ -74,10 +74,10 @@ export function CrowsFeetResults() {
         text={
           <>
             <SectionHeader id="crows-feet-results" title={CROWS_FEET_HEADING} intro={CROWS_FEET_INTRO} />
-            <p className="mt-6 max-w-[62ch] text-sm leading-relaxed text-base-content/65" data-results-caption>
+            <p className="mt-6 max-w-[62ch] text-sm leading-relaxed text-base-content/80" data-results-caption>
               {RESULTS_CAPTION}
             </p>
-            <p className="mt-2 text-sm text-base-content/65">{CROWS_FEET_PAIRS.length} results shown.</p>
+            <p className="mt-2 text-sm text-base-content/80">{CROWS_FEET_PAIRS.length} results shown.</p>
           </>
         }
         media={<BeforeAfterShowcase />}
@@ -101,12 +101,12 @@ export function HyperhidrosisSteps() {
           <Tile photo={JENNY_TREATING_UNDERARM} caption={JENNY_TREATING_UNDERARM_CAPTION} />
         </li>
       </ol>
-      <p className="mt-4 text-sm text-base-content/65">{HYPERHIDROSIS_STEPS_NOTE}</p>
+      <p className="mt-4 text-sm text-base-content/80">{HYPERHIDROSIS_STEPS_NOTE}</p>
     </Section>
   );
 }
 
-// One line of existing Blomdahl copy per slide (from the homepage Blomdahl callout). The baby photos were taken at home,
+// One line per slide, lines drawn from the callout copy (the homepage Blomdahl callout). The baby photos were taken at home,
 // so slide text never names the clinic or a place.
 const EAR_SLIDE_LINES = [
   "Jenny Brady, MSN, RN, CPNP, PMHS uses sterile single-use Blomdahl cassettes.",
@@ -261,7 +261,7 @@ export function HomeRealPhotos() {
             title="Real patients, real results"
             intro="Xeomin for crow's feet, before and after."
           />
-          <p className="mt-6 max-w-[62ch] text-sm leading-relaxed text-base-content/65" data-results-caption>
+          <p className="mt-6 max-w-[62ch] text-sm leading-relaxed text-base-content/80" data-results-caption>
             {RESULTS_CAPTION}
           </p>
           <div className={`mt-8 ${BUTTON_ROW}`}>
@@ -269,7 +269,7 @@ export function HomeRealPhotos() {
               <Link href="/consult?procedure=xeomin">Book Xeomin</Link>
             </Button>
             <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
-              <Link href="/procedures/xeomin">More results</Link>
+              <Link href="/procedures/xeomin">Xeomin details</Link>
             </Button>
           </div>
           </>

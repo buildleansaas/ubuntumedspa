@@ -39,7 +39,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   });
 }
 
-const sectionEyebrowClass = "text-[11px] uppercase tracking-[0.24em] text-base-content/60";
+const sectionEyebrowClass = "text-[11px] uppercase tracking-[0.24em] text-base-content/80";
 const sectionHeadingClass = "mt-4 text-3xl/snug md:text-4xl/snug font-light tracking-tight text-base-content text-balance";
 const sectionBodyClass = "mt-4 text-base md:text-lg leading-relaxed text-base-content/80";
 const surfaceCardClass = "border border-base-300 bg-base-100 p-5";
@@ -129,7 +129,7 @@ export default async function EventDetailPage(props: PageProps) {
             {event.rewards.cards.map((card) => (
               <article key={`${card.eyebrow || card.title}`} className={surfaceCardClass}>
                 {card.eyebrow ? (
-                  <p className="text-sm uppercase tracking-[0.18em] text-base-content/55">{card.eyebrow}</p>
+                  <p className="text-sm uppercase tracking-[0.18em] text-base-content/80">{card.eyebrow}</p>
                 ) : null}
                 <h3 className="mt-3 text-2xl font-light text-base-content">{card.title}</h3>
                 <p className="mt-3 text-base leading-relaxed text-base-content/75">{card.description}</p>
@@ -148,7 +148,7 @@ export default async function EventDetailPage(props: PageProps) {
           <div className="mx-auto mt-10 grid max-w-5xl gap-4 md:grid-cols-2 xl:grid-cols-4">
             {event.process.steps.map((step, index) => (
               <div key={step.title} className={surfaceCardClass}>
-                <p className="text-sm uppercase tracking-[0.18em] text-base-content/55">Step {index + 1}</p>
+                <p className="text-sm uppercase tracking-[0.18em] text-base-content/80">Step {index + 1}</p>
                 <h3 className="mt-3 text-xl font-light text-base-content">{step.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-base-content/70">{step.description}</p>
               </div>
@@ -207,7 +207,7 @@ export default async function EventDetailPage(props: PageProps) {
           </div>
 
           {event.form.disclaimer ? (
-            <p className="mt-6 text-sm text-base-content/60 text-center max-w-2xl mx-auto">{event.form.disclaimer}</p>
+            <p className="mt-6 text-sm text-base-content/80 text-center max-w-2xl mx-auto">{event.form.disclaimer}</p>
           ) : null}
         </section>
 

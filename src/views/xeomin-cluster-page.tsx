@@ -78,7 +78,7 @@ export default function XeominClusterPageView({ page }: { page: XeominClusterPag
       </nav>
 
       <header className="mb-10 max-w-3xl text-left md:mb-14">
-        <p className="mb-3 text-sm uppercase tracking-wide text-base-content/60">
+        <p className="mb-3 text-sm uppercase tracking-wide text-base-content/80">
           Xeomin® wrinkle relaxer · Williamsburg, VA{page.areaTag === "uncommon" ? " · Less common area" : ""}
         </p>
         <h1 className="text-3xl font-light leading-tight md:text-5xl">{page.h1}</h1>
@@ -233,7 +233,7 @@ export default function XeominClusterPageView({ page }: { page: XeominClusterPag
               className="border border-base-300 px-4 py-3 transition hover:border-primary"
             >
               <span className="block font-semibold text-base-content">{sibling.h1.replace(/ in Williamsburg, VA$/, "")}</span>
-              <span className="mt-1 block text-sm text-base-content/65">{sibling.summary}</span>
+              <span className="mt-1 block text-sm text-base-content/80">{sibling.summary}</span>
             </Link>
           ))}
         </div>
@@ -255,7 +255,7 @@ export default function XeominClusterPageView({ page }: { page: XeominClusterPag
         </p>
       </section>
 
-      <p className="text-xs leading-relaxed text-base-content/60">{XEOMIN_TRADEMARK_NOTE}</p>
+      <p className="text-xs leading-relaxed text-base-content/80">{XEOMIN_TRADEMARK_NOTE}</p>
     </main>
   );
 }

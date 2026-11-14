@@ -197,7 +197,7 @@ export default function NewportNewsPage() {
           text={
             <div>
               <h2 id="newport-news-getting-here" className={H2}>Getting Here from Newport News</h2>
-              <ol className="mt-6 list-decimal pl-5 marker:text-base-content/50">
+              <ol className="mt-6 list-decimal pl-5 marker:text-base-content/80">
                 <li className="border-b border-base-300 py-4 pl-2 first:border-t text-base text-base-content/80">Take I-64 west toward Williamsburg.</li>
                 <li className="border-b border-base-300 py-4 pl-2 first:border-t text-base text-base-content/80">Use Route 199 toward Monticello Avenue and New Town.</li>
                 <li className="border-b border-base-300 py-4 pl-2 first:border-t text-base text-base-content/80">Turn onto Powhatan Parkway and look for the clinic entrance near the main lot.</li>

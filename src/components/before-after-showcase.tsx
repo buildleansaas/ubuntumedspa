@@ -17,7 +17,7 @@ function Half({ photo, label }: { photo: ClinicPhoto; label: string }) {
           className="h-full w-full object-cover"
         />
       </div>
-      <figcaption className="mt-3 text-sm text-base-content/65">{label}</figcaption>
+      <figcaption className="mt-3 text-sm text-base-content/80">{label}</figcaption>
     </figure>
   );
 }

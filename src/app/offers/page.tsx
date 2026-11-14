@@ -60,7 +60,7 @@ export default function OffersPage() {
               </h2>
               <p className="mt-4 text-2xl font-semibold tracking-tight text-base-content" data-offer-price>
                 {formatUsdShort(offer.offerCashCents)} cash · {cardPriceLabel(offer.offerCashCents)} card
-                <span className="ml-3 text-base font-normal text-base-content/60">
+                <span className="ml-3 text-base font-normal text-base-content/80">
                   <span className="sr-only">Regular cash price </span>
                   <s>{formatUsdShort(offer.regularCashCents)}</s>
                 </span>

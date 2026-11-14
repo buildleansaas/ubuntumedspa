@@ -62,7 +62,7 @@ export const ProductCard = ({ name, image, headline, subline, slug, tone = "defa
         ) : (
           <h3 className="text-lg">{humanizeMedicalCopy(headline)}</h3>
         )}
-        <p className={editorial ? "mt-2 text-sm leading-6 text-base-content/65" : "text-sm"}>{humanizeMedicalCopy(subline)}</p>
+        <p className={editorial ? "mt-2 text-sm leading-6 text-base-content/80" : "text-sm"}>{humanizeMedicalCopy(subline)}</p>
       </div>
       <div className={editorial ? "mt-auto flex flex-col gap-3 p-6 sm:flex-row sm:flex-wrap" : "flex flex-wrap items-end gap-2"}>
         {catalogItem && (

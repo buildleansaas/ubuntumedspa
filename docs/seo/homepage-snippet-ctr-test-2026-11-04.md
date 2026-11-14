@@ -10,6 +10,8 @@ PR #173 (deployed 2026-11-07) replaced this test's title and meta with Botox-alt
 
 From the 2026-11-08 deploy the title and meta are the 2026-11-04 versions again, but this is no longer a clean snippet test: the body changes from #173 stay (the Botox-alternative answer under the H1, three H2 answers, and their FAQ schema). That supersedes the rule at the end of this doc ("Do not change the homepage H1 or body until the verdict"). Read results as title + body together, not as a title effect. Count the D7/D14/D28/D56 checkpoints from 2026-11-08 (D14 2026-11-22, D28 2026-12-06), use 2026-10-07 to 2026-11-03 as the before window, and leave 2026-11-04 to 2026-11-08 out (two title changes in five days). The "Ended early" section below is history.
 
+Update 2026-11-13 (merge date TBD): Homepage redesign (#182) deployed on merge: chooser and price list added, the three H2 answers moved below the treatments and set smaller. D14/D28 reads after the deploy date are confounded; restart the homepage CTR window from the deploy date.
+
 ## Ended early 2026-11-06 (ScaleSleek f_vh33afabed)
 
 This title-only test was abandoned on 2026-11-06, two days in, with no verdict. The homepage is Google's pick for `botox williamsburg` (71 impressions, position 16.0) and `botox williamsburg va` (60 impressions, position 8.7), 2026-10-06 to 2026-11-02, and the 2026-11-06 PR changes the title, meta, hero, body, FAQ schema and inbound links in one deploy to answer them. That is a multi-variable change, not a snippet test: a CTR shift after it can't be attributed to the title alone. The new title also moves back toward the Xeomin/Botox-alternative wording of the pre-test title (which had the 2.9% baseline), with the lead words "Medical Spa Williamsburg VA" kept first.

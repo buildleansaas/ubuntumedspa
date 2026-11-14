@@ -60,8 +60,8 @@ export default function AffiliateShareScripts() {
           <article key={item.title} className="border-t border-base-300 pt-6">
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0">
-                <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">{item.title}</p>
-                <p className="mt-2 text-sm leading-6 text-base-content/60">{item.note}</p>
+                <p className="text-sm uppercase tracking-[0.18em] text-base-content/80">{item.title}</p>
+                <p className="mt-2 text-sm leading-6 text-base-content/80">{item.note}</p>
               </div>
 
               <Button

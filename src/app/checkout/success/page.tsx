@@ -66,7 +66,7 @@ export default async function CheckoutSuccessPage(
             <div key={item.slug} className="flex items-center justify-between text-sm">
               <div>
                 <p className="font-medium">{item.name}</p>
-                <p className="text-base-content/60">
+                <p className="text-base-content/80">
                   {item.quantity} x {formatUsd(item.unitAmountCents)}
                   {item.pricingMode === "increment_credit"
                     ? ` · ${formatUsdShort(creditAmountCentsForItem(item))} treatment credit`

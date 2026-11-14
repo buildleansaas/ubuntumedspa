@@ -221,7 +221,7 @@ export default async function LocalInjectableServicePage(props: Params) {
           <div className="rounded-xl border border-base-300 bg-base-100 p-5 md:p-6">
             <h2 className="text-2xl md:text-3xl font-light mb-3">{page.pricing.heading}</h2>
             <p className="text-base md:text-lg text-base-content/80 mb-3">{page.pricing.body}</p>
-            <p className="text-sm text-base-content/65">{page.pricing.note}</p>
+            <p className="text-sm text-base-content/80">{page.pricing.note}</p>
           </div>
         </section>
       ) : null}

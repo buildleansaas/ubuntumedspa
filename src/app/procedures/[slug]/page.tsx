@@ -243,12 +243,12 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               {humanizeMedicalCopy(procedure.subline)}
             </p>
             {(procedure.slug === "botox" || procedure.slug === "xeomin") && (
-              <p className="mt-3 max-w-[62ch] text-sm leading-relaxed text-base-content/60" data-off-label-note>
+              <p className="mt-3 max-w-[62ch] text-sm leading-relaxed text-base-content/80" data-off-label-note>
                 {XEOMIN_OFF_LABEL_NOTE}
               </p>
             )}
             {(procedure.slug === "hyperhidrosis-treatment" || procedure.slug === "xeomin") && (
-              <p className="mt-3 max-w-[62ch] text-sm leading-relaxed text-base-content/60" data-off-label-note>
+              <p className="mt-3 max-w-[62ch] text-sm leading-relaxed text-base-content/80" data-off-label-note>
                 {XEOMIN_HYPERHIDROSIS_OFF_LABEL}
               </p>
             )}
@@ -570,10 +570,10 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
         <div className="mt-16 max-w-3xl md:mt-20 [&>p]:max-w-[62ch]">
           <p className="text-base leading-relaxed text-base-content/75 md:text-lg">{humanizeMedicalCopy(procedure.description)}</p>
           {"trademarkNote" in procedure && procedure.trademarkNote && (
-            <p className="mt-3 text-xs leading-relaxed text-base-content/60">{procedure.trademarkNote}</p>
+            <p className="mt-3 text-xs leading-relaxed text-base-content/80">{procedure.trademarkNote}</p>
           )}
           {procedure.slug !== "prp-breast-lift" && procedure.slug !== "prp-hair-restoration" && (
-            <p className="mt-3 text-sm leading-relaxed text-base-content/65">{consultationSupportCopy}</p>
+            <p className="mt-3 text-sm leading-relaxed text-base-content/80">{consultationSupportCopy}</p>
           )}
           <p className="mt-4 text-sm text-base-content/70">
             Serving patients from Williamsburg, James City County, Yorktown, Newport News, Toano, Norge, Lightfoot, and nearby communities. {" "}
@@ -600,7 +600,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               : "Visits are appointment-led so Jenny can review fit, timing, treatment areas, pricing, and aftercare before you proceed."}
           </p>
           {Boolean(relatedLinks.length) && (
-            <p className="mt-4 text-sm leading-relaxed text-base-content/65">
+            <p className="mt-4 text-sm leading-relaxed text-base-content/80">
               Compare related options: {relatedLinks.map((item, index) => (
                 <span key={item.href}>
                   {index > 0 && (index === relatedLinks.length - 1 ? " and " : ", ")}
@@ -622,7 +622,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             {satelliteGroup.links.map(({ href, label, description }) => (
               <Link key={href} href={href} className={`group ${CARD} ${CARD_LINK}`}>
                 <span className={`block ${CARD_TITLE} group-hover:text-primary`}>{label}</span>
-                <span className="mt-2 block text-sm leading-relaxed text-base-content/65">{description}</span>
+                <span className="mt-2 block text-sm leading-relaxed text-base-content/80">{description}</span>
               </Link>
             ))}
           </div>
@@ -688,7 +688,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             ].map(([label, href, copy]) => (
               <Link key={href} href={href} className={`group ${CARD} ${CARD_LINK}`}>
                 <span className={`block ${CARD_TITLE} group-hover:text-primary`}>{label}</span>
-                <span className="mt-2 block text-sm leading-relaxed text-base-content/65">{copy}</span>
+                <span className="mt-2 block text-sm leading-relaxed text-base-content/80">{copy}</span>
               </Link>
             ))}
           </div>
@@ -734,7 +734,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             {xeominClusterPages.map((page) => (
               <Link key={page.path} href={page.path} className={`group ${CARD} ${CARD_LINK}`}>
                 <span className={`block ${CARD_TITLE} group-hover:text-primary`}>{page.h1.replace(/ in Williamsburg, VA$/, "")}</span>
-                <span className="mt-2 block text-sm leading-relaxed text-base-content/65">{page.summary}</span>
+                <span className="mt-2 block text-sm leading-relaxed text-base-content/80">{page.summary}</span>
               </Link>
             ))}
           </div>

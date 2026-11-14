@@ -91,7 +91,7 @@ export const ProcedureCard = ({ product, tone = "default" }: Props) => {
         ) : (
           <h3 className="text-lg">{humanizeMedicalCopy(product.headline)}</h3>
         )}
-        <p className={editorial ? "mt-2 text-sm leading-6 text-base-content/65" : "text-sm"}>
+        <p className={editorial ? "mt-2 text-sm leading-6 text-base-content/80" : "text-sm"}>
           {humanizeMedicalCopy(product.subline)}
         </p>
       </div>

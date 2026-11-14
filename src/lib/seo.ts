@@ -23,3 +23,6 @@ export const GOOGLE_REVIEW_URL = "https://g.page/r/Cde-gEi21QPUEBM/review";
 
 // Our own landing page for review requests (QR codes, texts). It sends everyone to GOOGLE_REVIEW_URL.
 export const REVIEW_PAGE_URL = `${ORIGIN}/review`;
+
+/** Published clinic hours, as shown in the footer and the homepage visit section. */
+export const CLINIC_HOURS = "Mon–Fri 6–8pm; Sat–Sun 10am–6pm";

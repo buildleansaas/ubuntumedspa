@@ -51,6 +51,9 @@ const CREDIT_BLOCK_CASH_CENTS = 25000;
 const creditBlockCash = formatUsdShort(CREDIT_BLOCK_CASH_CENTS);
 const creditBlockCard = formatUsdShort(cardPriceCents(CREDIT_BLOCK_CASH_CENTS));
 
+/** How a credit block works, without its price. Shared by the catalog note and the purchase panel. */
+export const CREDIT_BLOCK_CREDIT_SENTENCE = `Each block adds ${creditBlockCash} of treatment credit, and any unused value remains as account credit.`;
+
 const deriveCardQuantityPriceBreaks = (cashBreaks: Record<number, number> | undefined) => {
   if (!cashBreaks) return undefined;
   return Object.fromEntries(
@@ -243,7 +246,7 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
     stripeProductKey: "wms_procedure_xeomin",
     stripePriceLookupKey: "wms_procedure_xeomin_block_250_v1",
     customerNote:
-      `Xeomin is prepaid online in ${creditBlockCash} credit blocks (${creditBlockCash} per block in cash or ${creditBlockCard} online by card). Each block adds ${creditBlockCash} of treatment credit, and any unused value remains as account credit.`,
+      `Xeomin is prepaid online in ${creditBlockCash} credit blocks (${creditBlockCash} per block in cash or ${creditBlockCard} online by card). ${CREDIT_BLOCK_CREDIT_SENTENCE}`,
   },
   {
     slug: "hyperhidrosis-treatment",

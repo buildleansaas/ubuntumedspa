@@ -4,6 +4,7 @@ import DirectionsButton from "components/directions-button";
 import TrackedPhoneLink from "components/tracked-phone-link";
 import { BUTTON_ROW_CENTER, BandCta } from "components/layout";
 import { Button } from "components/ui/button";
+import { CLINIC_HOURS } from "lib/seo";
 
 const ADDRESS = "3900 Powhatan Parkway, Williamsburg, VA 23188";
 const PHONE_HREF = "tel:+18047389483" as const;
@@ -20,7 +21,7 @@ export default function HomeVisit() {
   return (
     <BandCta headingId="home-visit-heading" eyebrow="Visit The Clinic" title="Williamsburg Med Spa">
       <address className="mt-6 text-lg not-italic leading-relaxed text-base-content/90">{ADDRESS}</address>
-      <p className="mt-2 text-base leading-relaxed text-base-content/80">Hours: Mon–Fri 6–8pm; Sat–Sun 10am–6pm</p>
+      <p className="mt-2 text-base leading-relaxed text-base-content/80">Hours: {CLINIC_HOURS}</p>
       <p className="mx-auto mt-4 max-w-[62ch] text-base leading-relaxed text-base-content/75">
         Patients visit from Williamsburg, James City County, Kingsmill, New Town, Yorktown, Newport News, Toano,
         Norge, Lightfoot, and Ford&apos;s Colony.

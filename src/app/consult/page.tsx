@@ -35,7 +35,7 @@ export default function ConsultationPage() {
             Start here if you want help choosing between injectables, PRP, hyperhidrosis care, intimate wellness,
             or medical ear piercing with Williamsburg Med Spa.
           </p>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-base-content/65">
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-base-content/80">
             Jenny Brady reviews your goals, medical history, candidacy, risk factors, timing, and next steps before
             recommending a treatment plan. If a service is not the right fit, the consultation should make that clear too.
           </p>
@@ -49,7 +49,7 @@ export default function ConsultationPage() {
             ].map(([title, copy]) => (
               <div key={title} className="rounded-xl border border-base-300 bg-base-100 p-4">
                 <p className="font-semibold text-base-content">{title}</p>
-                <p className="mt-1 text-sm leading-6 text-base-content/65">{copy}</p>
+                <p className="mt-1 text-sm leading-6 text-base-content/80">{copy}</p>
               </div>
             ))}
           </div>
@@ -90,7 +90,7 @@ export default function ConsultationPage() {
               <div key={step} className="rounded-xl border border-base-300 bg-base-100 p-5">
                 <p className="text-sm font-semibold text-primary">Step {step}</p>
                 <h3 className="mt-2 text-lg font-semibold text-base-content">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-base-content/65">{copy}</p>
+                <p className="mt-2 text-sm leading-6 text-base-content/80">{copy}</p>
               </div>
             ))}
           </div>
@@ -104,14 +104,14 @@ export default function ConsultationPage() {
               </span>
             ))}
           </div>
-          <p className="mt-5 text-sm leading-6 text-base-content/65">
+          <p className="mt-5 text-sm leading-6 text-base-content/80">
             Want to compare service pages first? Start with <Link href="/procedures" className="font-medium text-primary hover:underline">all procedures</Link> or the <Link href="/locations/williamsburg-va" className="font-medium text-primary hover:underline">Williamsburg location guide</Link>.
           </p>
           <HomeOwnerLink className="mt-3" />
         </aside>
       </section>
 
-      <p className="border-t border-base-300 pt-6 text-center text-sm text-base-content/60">
+      <p className="border-t border-base-300 pt-6 text-center text-sm text-base-content/80">
         Treatment recommendations depend on your history, examination, and goals. Outcomes vary by patient.
       </p>
     </div>

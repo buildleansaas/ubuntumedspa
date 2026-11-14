@@ -6,7 +6,8 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
  * A small accessible carousel (no library). Every slide stays in the server HTML; the track is a native
  * scroll-snap row, so swipe works on phones. Arrows, dots and the Left/Right keys move one slide.
  * No autoplay. Smooth scrolling is off under prefers-reduced-motion. Slides that are not showing are `inert`,
- * so keyboard focus never lands on a hidden link.
+ * so keyboard focus never lands on a hidden link. A visually hidden status reads "Slide 2 of 3" after a button or
+ * arrow-key move only.
  */
 export default function Carousel({
   label,
@@ -24,6 +25,8 @@ export default function Carousel({
   const count = slides.length;
   const track = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  // Read out only after a button or arrow-key move, never on swipe or scroll.
+  const [announcement, setAnnouncement] = useState("");
 
   const go = useCallback(
     (index: number) => {
@@ -33,8 +36,9 @@ export default function Carousel({
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       el.scrollTo({ left: next * el.clientWidth, behavior: reduce ? "auto" : "smooth" });
       setActive(next);
+      setAnnouncement(`${slideLabel} ${next + 1} of ${count}`);
     },
-    [count]
+    [count, slideLabel]
   );
 
   useEffect(() => {
@@ -73,7 +77,6 @@ export default function Carousel({
       <div
         ref={track}
         className="flex w-full snap-x snap-mandatory items-stretch overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        aria-live="polite"
       >
         {slides.map((slide, index) => (
           <div
@@ -88,6 +91,10 @@ export default function Carousel({
           </div>
         ))}
       </div>
+
+      <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+        {announcement}
+      </p>
 
       {count > 1 && (
         <div className="mt-5 flex items-center justify-between gap-4">

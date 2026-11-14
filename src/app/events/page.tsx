@@ -81,7 +81,7 @@ export default function EventsPage() {
                 {event.listing.highlights.map((highlight) => (
                   <span
                     key={highlight}
-                    className="rounded-full border border-base-300 bg-base-100 px-3 py-1 text-xs text-base-content/65"
+                    className="rounded-full border border-base-300 bg-base-100 px-3 py-1 text-xs text-base-content/80"
                   >
                     {highlight}
                   </span>

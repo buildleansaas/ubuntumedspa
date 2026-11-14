@@ -2,7 +2,7 @@
 
 import CatalogAddToCartControl from "components/catalog-add-to-cart-control";
 import OpenCartButton from "components/open-cart-button";
-import { getCatalogConfigBySlug } from "config/commerce-catalog";
+import { CREDIT_BLOCK_CREDIT_SENTENCE, getCatalogConfigBySlug } from "config/commerce-catalog";
 import { CASH_CARD_NOTE, formatUsdShort } from "lib/price";
 import { cn } from "lib/utils";
 
@@ -28,8 +28,9 @@ type PriceParts = { cash: string; cashSuffix: string; card: string };
 
 /**
  * Splits the catalog display price ("$45 per ear or $80 for both ears cash · $46.66 or $82.70 card/online")
- * into the cash part (shown large) and the card/online part (shown smaller). The rendered text keeps the
- * exact catalog wording and order, so no price is ever typed here.
+ * into the cash part (shown large) and the card/online part (shown smaller), keeping the catalog wording and order.
+ * Credit-block items are the exception: their display price names the block price twice, so the panel shows the
+ * block price once ("<cash> cash per credit block", then "<card> card/online"). No price is ever typed here.
  */
 const splitDisplayPrice = (displayPrice: string, pricingMode: Props["pricingMode"], cashAmountCents?: number, cardAmountCents?: number): PriceParts => {
   // Credit-block items read "$250 credit blocks · $250 cash · $257.78 card/online": show the block price once.
@@ -69,7 +70,7 @@ export default function CatalogPurchasePanel({
   // Credit-block notes repeat the price already shown above; keep only how the credit works.
   const explainer =
     pricingMode === "increment_credit" && catalogItem
-      ? `Each block adds ${formatUsdShort(catalogItem.cashAmountCents)} of treatment credit, and any unused value remains as account credit.`
+      ? CREDIT_BLOCK_CREDIT_SENTENCE
       : customerNote;
   const longCash = price.cash.length > 14;
 
@@ -83,7 +84,7 @@ export default function CatalogPurchasePanel({
     >
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <h2 className="text-2xl font-light tracking-tight text-base-content">{name}</h2>
-        <p className="text-xs font-medium uppercase tracking-[0.16em] text-base-content/60">
+        <p className="text-xs font-medium uppercase tracking-[0.16em] text-base-content/80">
           {purchaseLabel || (kind === "procedure" ? "Reserve appointment" : "Reserve for pickup")}
         </p>
       </div>
@@ -104,7 +105,7 @@ export default function CatalogPurchasePanel({
         {price.card && (
           <>
             <span className="sr-only"> · </span>
-            <span className="mt-2 block text-sm text-base-content/65">{price.card}</span>
+            <span className="mt-2 block text-sm text-base-content/80">{price.card}</span>
           </>
         )}
       </p>
@@ -134,7 +135,7 @@ export default function CatalogPurchasePanel({
         View Cart
       </OpenCartButton>
 
-      <p className="mt-5 text-xs leading-5 text-base-content/60">{CASH_CARD_NOTE}</p>
+      <p className="mt-5 text-xs leading-5 text-base-content/80">{CASH_CARD_NOTE}</p>
     </div>
   );
 }

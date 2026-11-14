@@ -4,14 +4,15 @@ import { AFTER_HEADER, BUTTON_ROW, CARD, CARD_GRID, CARD_LINK, CARD_TITLE, Secti
 import { Button } from "components/ui/button";
 
 export type ChooserTile = {
-  question: string;
+  /** A consult concern label (src/lib/consult-concerns.ts), in the visitor's own words. */
+  concern: string;
   treatment: string;
   href: string;
   /** Price note built from the catalog in page.tsx, e.g. "from <cash> cash". */
   price?: string;
 };
 
-// "What brings you in?" Each tile is one real link: a plain question, then the treatment name.
+// "What brings you in?" Each tile is one real link: a concern in the visitor's words, then the treatment name.
 export default function HomeChooser({ tiles }: { tiles: ChooserTile[] }) {
   return (
     <Section labelledBy="home-chooser-heading">
@@ -20,7 +21,7 @@ export default function HomeChooser({ tiles }: { tiles: ChooserTile[] }) {
         {tiles.map((tile) => (
           <li key={tile.href}>
             <Link href={tile.href} className={`group ${CARD} ${CARD_LINK} justify-between`}>
-              <span className={CARD_TITLE}>{tile.question}</span>
+              <span className={CARD_TITLE}>{tile.concern}</span>
               <span className="mt-8 flex items-baseline justify-between gap-3 text-sm">
                 <span className="text-secondary">
                   {tile.treatment}
@@ -28,7 +29,7 @@ export default function HomeChooser({ tiles }: { tiles: ChooserTile[] }) {
                     →
                   </span>
                 </span>
-                {tile.price ? <span className="text-base-content/60">{tile.price}</span> : null}
+                {tile.price ? <span className="text-base-content/80">{tile.price}</span> : null}
               </span>
             </Link>
           </li>

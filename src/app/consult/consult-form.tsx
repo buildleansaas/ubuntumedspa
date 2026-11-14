@@ -245,7 +245,7 @@ const ConsultationForm: React.FC = () => {
       onSubmit={onSubmit}
     >
       <div className="border-b border-base-300 pb-6">
-        <p className="text-sm uppercase tracking-[0.18em] text-base-content/60">Consultation intake</p>
+        <p className="text-sm uppercase tracking-[0.18em] text-base-content/80">Consultation intake</p>
         <p className="mt-3 max-w-2xl text-base text-base-content/70">
           Share the essentials below so Jenny can prepare for the right treatment conversation and the team can route you to scheduling.
         </p>
@@ -287,7 +287,7 @@ const ConsultationForm: React.FC = () => {
                       value={affiliateReferral.affiliateName}
                       readOnly
                     />
-                    <p className="text-xs text-base-content/60" id={helperId}>
+                    <p className="text-xs text-base-content/80" id={helperId}>
                       This consultation was opened from {affiliateReferral.affiliateName}&apos;s referral link.
                     </p>
                   </div>
@@ -310,7 +310,7 @@ const ConsultationForm: React.FC = () => {
                     placeholder={input.label}
                   />
                   {input.helperText ? (
-                    <p className="text-xs text-base-content/60" id={helperId}>
+                    <p className="text-xs text-base-content/80" id={helperId}>
                       {input.helperText}
                     </p>
                   ) : null}
@@ -349,7 +349,7 @@ const ConsultationForm: React.FC = () => {
                     })}
                   </div>
                   {input.helperText ? (
-                    <p className="text-xs text-base-content/60" id={helperId}>
+                    <p className="text-xs text-base-content/80" id={helperId}>
                       {input.helperText}
                     </p>
                   ) : null}
@@ -373,7 +373,7 @@ const ConsultationForm: React.FC = () => {
                     placeholder={input.label}
                   />
                   {input.helperText ? (
-                    <p className="text-xs text-base-content/60" id={helperId}>
+                    <p className="text-xs text-base-content/80" id={helperId}>
                       {input.helperText}
                     </p>
                   ) : null}
@@ -386,7 +386,7 @@ const ConsultationForm: React.FC = () => {
       </div>
 
       <div className="mt-8 flex flex-col gap-4 border-t border-base-300 pt-6 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-base-content/60">Most consultation requests receive a response within 2 business days.</p>
+        <p className="text-sm text-base-content/80">Most consultation requests receive a response within 2 business days.</p>
         <Button type="submit" disabled={loading} className="w-full shrink-0 whitespace-nowrap sm:w-auto">
           {loading ? (
             <>

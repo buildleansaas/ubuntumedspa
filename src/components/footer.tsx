@@ -5,11 +5,12 @@ import DirectionsButton from "components/directions-button";
 import TrackedPhoneLink from "components/tracked-phone-link";
 import { Button } from "components/ui/button";
 import FooterSocialLinks from "components/footer-social-links";
+import { CLINIC_HOURS } from "lib/seo";
 
 
 const primaryLinks = [
   { href: "/consult", label: "Consult" },
-  { href: "/procedures", label: "Procedures" },
+  { href: "/procedures", label: "All treatments" },
   { href: "/prices", label: "Prices" },
   { href: "/offers", label: "Offers" },
   { href: "/products", label: "Products" },
@@ -67,7 +68,7 @@ export default function Footer() {
             </h3>
             <div className="mt-4 space-y-1.5 text-base leading-relaxed text-base-content/80">
               <p>{ADDRESS}</p>
-              <p className="text-base-content/70">Hours: Mon–Fri 6–8pm; Sat–Sun 10am–6pm</p>
+              <p className="text-base-content/70">Hours: {CLINIC_HOURS}</p>
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <DirectionsButton address={ADDRESS} latitude={37.2729739} longitude={-76.7635887}>
@@ -169,7 +170,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-base-300 py-5 text-sm text-base-content/60 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-3 border-t border-base-300 py-5 text-sm text-base-content/80 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap items-center gap-2">
             <span>© {year}</span>
             <span>Williamsburg Med Spa</span>

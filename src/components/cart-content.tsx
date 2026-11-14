@@ -113,7 +113,7 @@ function QuantityControl({
         </button>
       </div>
       {!hideLabel && (
-        <p className="mt-1.5 text-[10px] uppercase tracking-[0.16em] text-base-content/60 sm:mt-2 sm:text-[11px] sm:tracking-[0.18em]">
+        <p className="mt-1.5 text-[10px] uppercase tracking-[0.16em] text-base-content/80 sm:mt-2 sm:text-[11px] sm:tracking-[0.18em]">
           {item.quantityLabel}
         </p>
       )}
@@ -167,16 +167,16 @@ function CartSummaryCard({
       <div className="relative">
         {resolved ? (
           <div>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-base-content/60 sm:text-[11px] sm:tracking-[0.24em]">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-base-content/80 sm:text-[11px] sm:tracking-[0.24em]">
               Total online by card
             </p>
             <div className="mt-2 flex items-end gap-3">
               <p className="text-[2rem] font-semibold leading-none tracking-tight text-base-content sm:text-3xl">
                 {formatUsd(resolved.subtotalCents)}
               </p>
-              <p className="pb-1 text-sm text-base-content/55">before taxes</p>
+              <p className="pb-1 text-sm text-base-content/80">before taxes</p>
             </div>
-            <p className="mt-2 text-sm leading-5 text-base-content/65">
+            <p className="mt-2 text-sm leading-5 text-base-content/80">
               {CASH_CARD_NOTE}
               {typeof resolved.cashSubtotalCents === "number" ? ` Cash total: ${formatUsdShort(resolved.cashSubtotalCents)}.` : null}
             </p>
@@ -268,7 +268,7 @@ function CartRecommendationsSection({ recommendations }: { recommendations: Cart
                 )}
               </div>
 
-              <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-base-content/60">
+              <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-base-content/80">
                 <span>{recommendation.kind === "procedure" ? "Procedure" : "Product"}</span>
                 <span className="text-base-content/35">•</span>
                 <span>{recommendation.displayPrice}</span>
@@ -276,7 +276,7 @@ function CartRecommendationsSection({ recommendations }: { recommendations: Cart
 
               <h3 className="text-2xl font-light tracking-tight text-base-content">{recommendation.name}</h3>
               <p className="text-sm leading-6 text-base-content/70">{recommendation.reason}</p>
-              <p className="text-xs text-base-content/60">{fulfillmentCopy}</p>
+              <p className="text-xs text-base-content/80">{fulfillmentCopy}</p>
 
               <div className="flex flex-wrap gap-2 pt-1">
                 <AddToCartButton
@@ -557,7 +557,7 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
                           <h2 className="text-[1.05rem] font-semibold tracking-tight text-base-content sm:text-lg">
                             {item.name}
                           </h2>
-                          <p className="mt-1.5 text-sm leading-5 text-base-content/65">{itemMeta}</p>
+                          <p className="mt-1.5 text-sm leading-5 text-base-content/80">{itemMeta}</p>
                         </div>
 
                         <div className="mt-4 flex items-end justify-between gap-4 sm:mt-5">
@@ -574,7 +574,7 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
                             <p className="text-[1.3rem] font-semibold leading-none tracking-tight text-base-content sm:text-[1.65rem]">
                               {formatUsd(item.lineTotalCents)}
                             </p>
-                            <p className="mt-1 text-xs text-base-content/55">online by card</p>
+                            <p className="mt-1 text-xs text-base-content/80">online by card</p>
                           </div>
                         </div>
                       </div>

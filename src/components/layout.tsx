@@ -125,7 +125,7 @@ export function Split({
   );
 }
 
-/** Card grid: 3 columns on desktop, 2 on tablet, 1 on phone, one gap. Use `cols={2}` for long-text cards. */
+/** Card grid: 3 columns on desktop, 2 on tablet, 1 on phone, one gap. Use `CARD_GRID_2` for long-text cards. */
 export const CARD_GRID = "grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3";
 export const CARD_GRID_2 = "grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8";
 /** The card grid for n cards: 2 columns when n splits evenly into 2 but not 3 (no orphan card), else 3. */

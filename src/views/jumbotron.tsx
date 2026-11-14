@@ -44,7 +44,7 @@ export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: stri
     <Section tight id="procedures" labelledBy="home-hero-heading">
       <div className={`${SPLIT} items-center`}>
         <div className={SPLIT_TEXT.even}>
-          <p className="text-sm text-base-content/65">Williamsburg, Virginia</p>
+          <p className="text-sm text-base-content/80">Williamsburg, Virginia</p>
           <h1
             id="home-hero-heading"
             className="font-display mt-4 text-4xl leading-tight tracking-tight text-base-content sm:text-5xl lg:text-6xl"
@@ -114,7 +114,7 @@ export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: stri
           </div>
           <figcaption className="mt-4">
             <p className="font-display text-xl leading-none text-base-content">Jenny Brady</p>
-            <p className="mt-2 text-sm text-base-content/60">MSN, RN, CPNP, PMHS</p>
+            <p className="mt-2 text-sm text-base-content/80">MSN, RN, CPNP, PMHS</p>
           </figcaption>
         </figure>
       </div>

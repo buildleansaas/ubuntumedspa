@@ -105,7 +105,7 @@ export default function FooterAffiliateCta() {
         </Button>
       </div>
 
-      <div className="mt-4 flex items-start gap-2 text-sm leading-6 text-base-content/60">
+      <div className="mt-4 flex items-start gap-2 text-sm leading-6 text-base-content/80">
         <Share2 className="mt-1 h-4 w-4 shrink-0" />
         The link above automatically points to this page with your referral code attached.
       </div>

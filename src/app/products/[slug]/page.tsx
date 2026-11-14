@@ -90,7 +90,7 @@ export default async function ProductPage(props: Params) {
           <h1 className="text-4xl/snug sm:text-5xl/snug md:text-6xl/snug mx-auto leading-tight pb-4">{product.name}</h1>
           <p className="text-xl lg:text-2xl mb-8 max-w-5xl mx-auto font-light">{humanizeMedicalCopy(product.headline)}</p>
           <p className="text-lg max-w-4xl mx-auto mb-8">{humanizeMedicalCopy(product.description)}</p>
-          <p className="text-xs md:text-sm text-base-content/60 max-w-3xl mx-auto mb-8">
+          <p className="text-xs md:text-sm text-base-content/80 max-w-3xl mx-auto mb-8">
             Product information is educational and does not replace medical guidance. Ask your provider whether a
             product is appropriate for your skin type and goals.
           </p>

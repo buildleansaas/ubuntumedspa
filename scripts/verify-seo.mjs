@@ -145,13 +145,22 @@ for (const block of extractAll(sitemapXml, /<url>([\s\S]*?)<\/url>/g)) {
   }
 }
 
+// The site-wide footer links most treatment, location and guide pages, so a body-level link check run on the whole page
+// can never fail. Link and requiredHtml checks read the page before its <footer> (header and main), like the Jenny
+// word count below.
+const bodyBeforeFooter = (html) => {
+  const footerAt = html.search(/<footer\b/i);
+  return footerAt >= 0 ? html.slice(0, footerAt) : html;
+};
+
 const pages = [];
 for (let index = 0; index < sitemapUrls.length; index += 8) {
   const batch = sitemapUrls.slice(index, index + 8);
   const results = await Promise.all(
     batch.map(async (canonicalUrl) => {
       const response = await fetchLocal(canonicalUrl);
-      return { canonicalUrl, response, html: await response.text() };
+      const html = await response.text();
+      return { canonicalUrl, response, html, body: bodyBeforeFooter(html) };
     })
   );
   pages.push(...results);
@@ -279,9 +288,10 @@ if (![301, 302, 307, 308].includes(affiliateResponse.status)) {
 }
 
 const home = pages.find((page) => normalizePath(page.canonicalUrl) === "/")?.html || "";
+const homeBody = bodyBeforeFooter(home);
 for (const owner of ["/procedures/botox", "/procedures/xeomin", "/procedures/blomdahl-ear-piercing", "/prices"]) {
   const pattern = new RegExp(`href=["']${owner.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`);
-  if (!pattern.test(home)) fail(`homepage does not directly link to query owner ${owner}`);
+  if (!pattern.test(homeBody)) fail(`homepage does not directly link to query owner ${owner}`);
 }
 const homeTitle = getVisibleText(home.match(/<title(?:\s[^>]*)?>([\s\S]*?)<\/title>/i)?.[1] || "");
 if (/filler/i.test(homeTitle)) {
@@ -291,7 +301,7 @@ if (homeTitle !== "Medical Spa Williamsburg VA | Nurse-Led, Prices Posted") {
   fail(`homepage title competes or drifted: ${JSON.stringify(homeTitle)}`);
 }
 if (/ear piercing/i.test(homeTitle)) fail("homepage title still competes for the ear piercing head term");
-const homeLinks = [...home.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)].map((match) => ({
+const homeLinks = [...homeBody.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)].map((match) => ({
   attributes: getTagAttributes(`<a ${match[1]}>`),
   text: getVisibleText(match[2]),
 }));
@@ -414,7 +424,7 @@ for (const [path, expectation] of Object.entries(snippetExpectations)) {
 const reviewPage = pages.find(
   (candidate) => normalizePath(candidate.canonicalUrl) === "/blog/blomdahl-medical-plastic-vs-titanium-earrings"
 );
-if (reviewPage && !/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(reviewPage.html)) {
+if (reviewPage && !/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(reviewPage.body)) {
   fail("Blomdahl earrings review does not link to the ear piercing hub");
 }
 
@@ -425,11 +435,11 @@ if (!home.includes("Cellular Medicine Association-trained and certified OH-Shot 
 }
 const homepagePiercingBooking =
   "/consult?procedure=blomdahl-ear-piercing&amp;utm_source=website&amp;utm_medium=homepage_callout&amp;utm_campaign=ear_piercing_homepage";
-if (!home.includes(`href="${homepagePiercingBooking}"`)) {
+if (!homeBody.includes(`href="${homepagePiercingBooking}"`)) {
   fail("homepage Blomdahl callout is missing its booking campaign");
 }
 for (const href of ["/procedures/blomdahl-ear-piercing", "/procedures/blomdahl-ear-piercing/for/children"]) {
-  if (!new RegExp(`href=["']${href}["']`).test(home)) fail(`homepage Blomdahl callout is missing ${href}`);
+  if (!new RegExp(`href=["']${href}["']`).test(homeBody)) fail(`homepage Blomdahl callout is missing ${href}`);
 }
 const piercingHub = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/blomdahl-ear-piercing");
 const childrenPiercing = pages.find(
@@ -466,14 +476,14 @@ if (williamsburgPiercingVisit) {
   if (!/3900 Powhatan Parkway/.test(williamsburgPiercingVisit.html)) {
     fail("Williamsburg piercing visit page does not name the clinic address");
   }
-  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(williamsburgPiercingVisit.html)) {
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(williamsburgPiercingVisit.body)) {
     fail("Williamsburg piercing visit page does not link to the hub");
   }
 }
 if (piercingHub && !piercingHub.html.includes("Does Blomdahl use a needle or a piercing gun?")) {
   fail("Blomdahl hub is missing the cassette versus gun FAQ");
 }
-if (piercingHub && !/href=["']\/blog\/medical-ear-piercing-vs-mall-piercing["']/.test(piercingHub.html)) {
+if (piercingHub && !/href=["']\/blog\/medical-ear-piercing-vs-mall-piercing["']/.test(piercingHub.body)) {
   fail("Blomdahl hub does not link to the medical versus mall guide");
 }
 for (const path of [
@@ -487,10 +497,10 @@ for (const path of [
     fail(`location page missing from sitemap: ${path}`);
     continue;
   }
-  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(locationPage.html)) {
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(locationPage.body)) {
     fail(`${path} does not link to the Blomdahl hub`);
   }
-  if (!/href=["']\/procedures\/blomdahl-ear-piercing\/for\/children["']/.test(locationPage.html)) {
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing\/for\/children["']/.test(locationPage.body)) {
     fail(`${path} does not link to children's ear piercing`);
   }
   const locationTitle = readSnippet(locationPage.html).title;
@@ -532,7 +542,7 @@ if (mallBlog) {
   if (!/mall gun/i.test(mallSnippet.description) || !/Williamsburg/.test(mallSnippet.description)) {
     fail("mall piercing blog meta dropped the gun contrast or Williamsburg");
   }
-  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(mallBlog.html)) {
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(mallBlog.body)) {
     fail("mall piercing blog does not link to the hub");
   }
 }
@@ -559,10 +569,10 @@ for (const [path, locationPath, proof] of [
   }
   if (!areaPage.html.includes(proof)) fail(`${path} is missing local proof ${proof}`);
   if (!/3900 Powhatan Parkway/.test(areaPage.html)) fail(`${path} does not name the Williamsburg clinic`);
-  if (!new RegExp(`href=["']${locationPath}["']`).test(areaPage.html)) {
+  if (!new RegExp(`href=["']${locationPath}["']`).test(areaPage.body)) {
     fail(`${path} does not link to ${locationPath}`);
   }
-  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(areaPage.html)) {
+  if (!/href=["']\/procedures\/blomdahl-ear-piercing["']/.test(areaPage.body)) {
     fail(`${path} does not link to the hub`);
   }
 }
@@ -576,6 +586,7 @@ if (
 }
 
 const newportNews = pages.find((page) => normalizePath(page.canonicalUrl) === "/locations/newport-news-va")?.html || "";
+const newportNewsBody = bodyBeforeFooter(newportNews);
 for (const owner of [
   "/procedures/botox",
   "/procedures/xeomin",
@@ -586,7 +597,7 @@ for (const owner of [
   "/locations/williamsburg-va",
 ]) {
   const pattern = new RegExp(`href=["']${owner.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`);
-  if (!pattern.test(newportNews)) fail(`Newport News owner does not directly link to ${owner}`);
+  if (!pattern.test(newportNewsBody)) fail(`Newport News owner does not directly link to ${owner}`);
 }
 if (/Quick read|Popular searches|Easy internal links/.test(newportNews)) {
   fail("Newport News owner exposes operator-facing SEO language");
@@ -778,7 +789,7 @@ for (const [path, expectation] of Object.entries(ownerPageExpectations)) {
     if (forbiddenText.test(text)) fail(`${path} contains forbidden owner-page copy: ${forbiddenText}`);
   }
   for (const requiredHtml of expectation.requiredHtml || []) {
-    if (!requiredHtml.test(page.html)) fail(`${path} missing required owner-page HTML: ${requiredHtml}`);
+    if (!requiredHtml.test(page.body)) fail(`${path} missing required owner-page HTML: ${requiredHtml}`);
   }
   for (const forbiddenHtml of expectation.forbiddenHtml || []) {
     if (forbiddenHtml.test(page.html)) fail(`${path} contains forbidden owner-page HTML: ${forbiddenHtml}`);
@@ -865,10 +876,10 @@ for (const [path, expectedTitle, expectedH1, required] of serviceSatelliteExpect
   const text = getVisibleText(page.html);
   for (const copy of required) if (!text.includes(copy)) fail(`${path} is missing ${copy}`);
   const hub = path.split("/").slice(0, 3).join("/");
-  if (!new RegExp(`href=["']${hub}["']`).test(page.html)) fail(`${path} does not link to its hub ${hub}`);
+  if (!new RegExp(`href=["']${hub}["']`).test(page.body)) fail(`${path} does not link to its hub ${hub}`);
   if (path.includes("/near/")) {
     const location = `/locations/${path.split("/").pop()}`;
-    if (!new RegExp(`href=["']${location}["']`).test(page.html)) fail(`${path} does not link to ${location}`);
+    if (!new RegExp(`href=["']${location}["']`).test(page.body)) fail(`${path} does not link to ${location}`);
   }
   if (!page.html.includes('"@type":"FAQPage"')) fail(`${path} is missing FAQPage schema`);
   if (path.startsWith("/procedures/prp-breast-lift/")) {
@@ -877,17 +888,17 @@ for (const [path, expectedTitle, expectedH1, required] of serviceSatelliteExpect
     }
   }
   const hubPage = pages.find((candidate) => normalizePath(candidate.canonicalUrl) === hub);
-  if (hubPage && !new RegExp(`href=["']${path}["']`).test(hubPage.html)) fail(`${hub} does not link to its satellite ${path}`);
+  if (hubPage && !new RegExp(`href=["']${path}["']`).test(hubPage.body)) fail(`${hub} does not link to its satellite ${path}`);
 }
 const prpFacialHub = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/prp-facial");
-if (prpFacialHub && !/href=["']\/blog\/hydrafacial-alternatives-in-williamsburg-va["'][^>]*>HydraFacial alternatives in Williamsburg</.test(prpFacialHub.html)) {
+if (prpFacialHub && !/href=["']\/blog\/hydrafacial-alternatives-in-williamsburg-va["'][^>]*>HydraFacial alternatives in Williamsburg</.test(prpFacialHub.body)) {
   fail("PRP Facial hub does not link to the HydraFacial alternatives guide");
 }
 const hydrafacialGuide = pages.find(
   (page) => normalizePath(page.canonicalUrl) === "/blog/hydrafacial-alternatives-in-williamsburg-va"
 );
 if (!hydrafacialGuide) fail("HydraFacial alternatives guide missing from sitemap");
-if (hydrafacialGuide && !/href=["']\/procedures\/prp-facial["'][^>]*>PRP Facial in Williamsburg</.test(hydrafacialGuide.html)) {
+if (hydrafacialGuide && !/href=["']\/procedures\/prp-facial["'][^>]*>PRP Facial in Williamsburg</.test(hydrafacialGuide.body)) {
   fail('HydraFacial alternatives guide does not link to PRP Facial with "PRP Facial in Williamsburg"');
 }
 if (hydrafacialGuide && /noindex/i.test(hydrafacialGuide.html)) fail("HydraFacial alternatives guide is noindexed");
@@ -1070,13 +1081,13 @@ for (const path of xeominClusterPaths) {
     fail(`Xeomin cluster page missing from sitemap: ${path}`);
     continue;
   }
-  const anchors = extractAll(page.html, /<a[^>]+href=["']\/procedures\/botox["'][^>]*>([\s\S]*?)<\/a>/gi).map((value) =>
+  const anchors = extractAll(page.body, /<a[^>]+href=["']\/procedures\/botox["'][^>]*>([\s\S]*?)<\/a>/gi).map((value) =>
     getVisibleText(value).trim()
   );
   if (!anchors.includes("Botox alternative in Williamsburg")) fail(`${path} does not link to /procedures/botox as "Botox alternative in Williamsburg"`);
-  if (!linksTo(page.html, "/procedures/xeomin")) fail(`${path} does not link to /procedures/xeomin`);
+  if (!linksTo(page.body, "/procedures/xeomin")) fail(`${path} does not link to /procedures/xeomin`);
   for (const sibling of xeominClusterPaths.filter((candidate) => candidate !== path)) {
-    if (!linksTo(page.html, sibling)) fail(`${path} does not link to sibling ${sibling}`);
+    if (!linksTo(page.body, sibling)) fail(`${path} does not link to sibling ${sibling}`);
   }
   const text = getVisibleText(page.html);
   if (!/We use Xeomin®/.test(text)) fail(`${path} is missing the "We use Xeomin®" line`);
@@ -1095,7 +1106,7 @@ for (const owner of ["/procedures/botox", "/procedures/xeomin"]) {
   if (!ownerPage) continue;
   if (!ownerPage.html.includes("Xeomin by concern")) fail(`${owner} is missing the Xeomin by concern block`);
   for (const path of xeominClusterPaths) {
-    if (!linksTo(ownerPage.html, path)) fail(`${owner} does not link to ${path}`);
+    if (!linksTo(ownerPage.body, path)) fail(`${owner} does not link to ${path}`);
   }
 }
 
@@ -1109,13 +1120,13 @@ if (eventsPage) {
   if (eventsTitle === "Botox Parties in Williamsburg, VA | Private Med Spa Events") {
     fail("events title still competes for Botox Williamsburg");
   }
-  if (!/href=["']\/procedures\/xeomin["']/.test(eventsPage.html)) fail("events page does not link to the Xeomin owner");
+  if (!/href=["']\/procedures\/xeomin["']/.test(eventsPage.body)) fail("events page does not link to the Xeomin owner");
 }
 const botoxParty = pages.find((page) => normalizePath(page.canonicalUrl) === "/events/botox-party");
 if (botoxParty && readSnippet(botoxParty.html).title.startsWith("Botox Parties in Williamsburg")) {
   fail("Botox party title still competes for Botox Williamsburg");
 }
-if (botoxParty && !/href=["']\/procedures\/xeomin["']/.test(botoxParty.html)) {
+if (botoxParty && !/href=["']\/procedures\/xeomin["']/.test(botoxParty.body)) {
   fail("wrinkle relaxer party page does not link to the Xeomin owner");
 }
 if (botoxParty && /free Botox|Botox party/i.test(getVisibleText(botoxParty.html))) {
@@ -1134,9 +1145,12 @@ if (!/There is no Newport News street address/.test(newportNews)) {
 if (!/Med spa Newport News/i.test(newportNewsSnippet.description) || !/Botox/.test(newportNewsSnippet.description) || !/typically drive 25–35 minutes/.test(newportNewsSnippet.description)) {
   fail('Newport News meta does not target med spa and Botox, or drops "typically drive 25–35 minutes" (the drive time on /locations)');
 }
-if (!/does not offer Hydrafacial/.test(home)) fail("homepage does not disambiguate Hydrafacial");
-if (!/href=["']\/procedures\/prp-facial["']/.test(home)) fail("homepage Hydrafacial note does not link to PRP Facial");
-if (!/href=["']\/blog\/hydrafacial-alternatives-in-williamsburg-va["']/.test(home)) {
+// The Hydrafacial note lives in the search answers section; the footer and treatment grid also link PRP Facial.
+const homeSearchAnswers = home.match(/<section\b[^>]*data-search-answers[\s\S]*?<\/section>/i)?.[0] || "";
+if (!homeSearchAnswers) fail("homepage is missing the [data-search-answers] section");
+if (!/does not offer Hydrafacial/.test(homeSearchAnswers)) fail("homepage does not disambiguate Hydrafacial");
+if (!/href=["']\/procedures\/prp-facial["']/.test(homeSearchAnswers)) fail("homepage Hydrafacial note does not link to PRP Facial");
+if (!/href=["']\/blog\/hydrafacial-alternatives-in-williamsburg-va["']/.test(homeSearchAnswers)) {
   fail("homepage Hydrafacial note does not link to the alternatives guide");
 }
 const ohShot = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/oh-shot");
@@ -1200,7 +1214,7 @@ if (htmlSitemap) {
     "/terms",
     "/sitemap.xml",
   ]) {
-    if (!new RegExp(`href=["']${href}["']`).test(htmlSitemap.html)) fail(`HTML sitemap missing ${href}`);
+    if (!new RegExp(`href=["']${href}["']`).test(htmlSitemap.body)) fail(`HTML sitemap missing ${href}`);
   }
 }
 if (!home.includes('loading="lazy"')) fail("clinic map iframe is not lazy-loaded");
