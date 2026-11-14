@@ -505,7 +505,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
 
       <Section id="pricing">
         <div className={`${SPLIT} items-start`}>
-          <div className={catalogItem ? SPLIT_TEXT.even : "lg:col-span-9"}>
+          <div className={catalogItem ? `${SPLIT_TEXT.even} max-lg:contents` : "lg:col-span-9"}>
             <SectionHeader
               eyebrow={catalogItem ? "Pricing & booking" : "Treatment planning"}
               title={
@@ -545,10 +545,58 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
                 ))}
               </div>
             )}
+            {/* Austin 2026-11-13: the service details sit beside the booking card instead of in a half-empty row below it.
+                On phones the left column dissolves (max-lg:contents) so the card comes right after the heading, then the details. */}
+            <div className="mt-10 max-lg:order-last [&>p]:max-w-[62ch]">
+              <p className="text-base leading-relaxed text-base-content/75 md:text-lg">{humanizeMedicalCopy(procedure.description)}</p>
+              {"trademarkNote" in procedure && procedure.trademarkNote && (
+                <p className="mt-3 text-xs leading-relaxed text-base-content/80">{procedure.trademarkNote}</p>
+              )}
+              {procedure.slug === "blomdahl-ear-piercing" && (
+                <p className="mt-3 text-sm leading-relaxed text-base-content/80">{consultationSupportCopy}</p>
+              )}
+              <p className="mt-4 text-sm text-base-content/70">
+                Serving patients from Williamsburg, James City County, Yorktown, Newport News, Toano, Norge, Lightfoot, and nearby communities. {" "}
+                <Link href="/locations" className="link link-primary">
+                  Compare nearby service areas
+                </Link>
+                {" "}or{" "}
+                <Link href="/locations/williamsburg-va" className="link link-primary">
+                  view our Williamsburg location
+                </Link>
+                .
+              </p>
+              <p className="mt-4 border-y border-base-300 py-4 text-sm leading-relaxed text-base-content/70">
+                Care is provided by{" "}
+                <Link href="/staff/jenny-brady" className="link link-primary">
+                  Jenny Brady, MSN, RN, CPNP, PMHS
+                </Link>{" "}
+                at our{" "}
+                <Link href="/locations/williamsburg-va" className="link link-primary">
+                  Williamsburg office at 3900 Powhatan Parkway
+                </Link>
+                . {procedure.slug === "prp-breast-lift"
+                  ? "Ask the clinic to define the current service, one-visit purchase terms, and available alternatives before you decide."
+                  : "Visits are appointment-led so Jenny can review fit, timing, treatment areas, pricing, and aftercare before you proceed."}
+              </p>
+              {Boolean(relatedLinks.length) && (
+                <p className="mt-4 text-sm leading-relaxed text-base-content/80">
+                  Compare related options: {relatedLinks.map((item, index) => (
+                    <span key={item.href}>
+                      {index > 0 && (index === relatedLinks.length - 1 ? " and " : ", ")}
+                      <Link href={item.href} className="link link-primary">
+                        {item.label}
+                      </Link>
+                    </span>
+                  ))}
+                  .
+                </p>
+              )}
+            </div>
           </div>
 
           {catalogItem && (
-            <div className={SPLIT_MEDIA.even}>
+            <div className={`${SPLIT_MEDIA.even} lg:[@media(min-height:820px)]:sticky lg:top-28`}>
               <CatalogPurchasePanel
                 slug={catalogItem.slug}
                 kind={catalogItem.kind}
@@ -567,52 +615,6 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
           )}
         </div>
 
-        <div className="mt-16 max-w-3xl md:mt-20 [&>p]:max-w-[62ch]">
-          <p className="text-base leading-relaxed text-base-content/75 md:text-lg">{humanizeMedicalCopy(procedure.description)}</p>
-          {"trademarkNote" in procedure && procedure.trademarkNote && (
-            <p className="mt-3 text-xs leading-relaxed text-base-content/80">{procedure.trademarkNote}</p>
-          )}
-          {procedure.slug !== "prp-breast-lift" && procedure.slug !== "prp-hair-restoration" && (
-            <p className="mt-3 text-sm leading-relaxed text-base-content/80">{consultationSupportCopy}</p>
-          )}
-          <p className="mt-4 text-sm text-base-content/70">
-            Serving patients from Williamsburg, James City County, Yorktown, Newport News, Toano, Norge, Lightfoot, and nearby communities. {" "}
-            <Link href="/locations" className="link link-primary">
-              Compare nearby service areas
-            </Link>
-            {" "}or{" "}
-            <Link href="/locations/williamsburg-va" className="link link-primary">
-              view our Williamsburg location
-            </Link>
-            .
-          </p>
-          <p className="mt-4 border-y border-base-300 py-4 text-sm leading-relaxed text-base-content/70">
-            Care is provided by{" "}
-            <Link href="/staff/jenny-brady" className="link link-primary">
-              Jenny Brady, MSN, RN, CPNP, PMHS
-            </Link>{" "}
-            at our{" "}
-            <Link href="/locations/williamsburg-va" className="link link-primary">
-              Williamsburg office at 3900 Powhatan Parkway
-            </Link>
-            . {procedure.slug === "prp-breast-lift"
-              ? "Ask the clinic to define the current service, one-visit purchase terms, and available alternatives before you decide."
-              : "Visits are appointment-led so Jenny can review fit, timing, treatment areas, pricing, and aftercare before you proceed."}
-          </p>
-          {Boolean(relatedLinks.length) && (
-            <p className="mt-4 text-sm leading-relaxed text-base-content/80">
-              Compare related options: {relatedLinks.map((item, index) => (
-                <span key={item.href}>
-                  {index > 0 && (index === relatedLinks.length - 1 ? " and " : ", ")}
-                  <Link href={item.href} className="link link-primary">
-                    {item.label}
-                  </Link>
-                </span>
-              ))}
-              .
-            </p>
-          )}
-        </div>
       </Section>
 
       {satelliteGroup && (
