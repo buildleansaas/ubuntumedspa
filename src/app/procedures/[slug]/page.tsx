@@ -739,12 +739,13 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
           {/* Four area cards, each with a close sketch of its area marked in boxwood, then the cost card across the full width. */}
           <div className={`${AFTER_HEADER} ${CARD_GRID_4}`}>
             {xeominClusterPages.map((page) =>
-              isConcernArea(page.slug) ? (
+              page.slug !== "cost" ? (
                 <Link key={page.path} href={page.path} className={`group ${CARD_FLUSH} ${CARD_LINK}`}>
-                  <ConcernFaceArt area={page.slug} />
+                  {/* A concern page added later without a drawing still gets a plain card, never the cost layout. */}
+                  {isConcernArea(page.slug) && <ConcernFaceArt area={page.slug} />}
                   <span className={CARD_BODY}>
-                    <span className="eyebrow block">{CONCERN_AREA_LABEL[page.slug]}</span>
-                    <span className={`mt-2 block ${CARD_TITLE} group-hover:text-primary`}>{page.h1.replace(/ in Williamsburg, VA$/, "")}</span>
+                    {isConcernArea(page.slug) && <span className="eyebrow mb-2 block">{CONCERN_AREA_LABEL[page.slug]}</span>}
+                    <span className={`block ${CARD_TITLE} group-hover:text-primary`}>{page.h1.replace(/ in Williamsburg, VA$/, "")}</span>
                     <span className="mt-2 block text-sm leading-relaxed text-base-content/80">{page.summary}</span>
                   </span>
                 </Link>
