@@ -1,0 +1,126 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&family=Hanken+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F3EF;font-family:"Hanken Grotesk";color:#24313A;padding:48px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1216px}
+.card{border:1px solid #D3D8D5;border-radius:14px;overflow:hidden;background:#F4F3EF}
+.card svg{display:block;width:100%;aspect-ratio:4/3}
+.body{padding:20px 24px 28px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6F8470;font-weight:500}
+h3{font-family:Newsreader;font-weight:400;font-size:24px;line-height:1.25;margin:8px 0 10px}
+p{font-size:14px;line-height:1.6;margin:0;color:#24313Acc}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><path id="probe"/></svg>
+<div class="grid" id="grid"></div>
+<script>
+const INK="#24313A", BOX="#4F6B52";
+let hid=0;const PFX="concern-";const halo=(cx,cy,rx,ry)=>{const id=PFX+"h"+(hid++);return `<defs><radialGradient id="${id}"><stop offset="0" stop-color="#6F8470" stop-opacity=".34"/><stop offset=".55" stop-color="#6F8470" stop-opacity=".18"/><stop offset="1" stop-color="#6F8470" stop-opacity="0"/></radialGradient></defs><ellipse cx="${cx}" cy="${cy}" rx="${rx*1.5}" ry="${ry*1.5}" fill="url(#${id})"/>`;};
+const probe=document.getElementById("probe");
+// Brush stroke: sample the centreline, offset both sides by a width profile, return one filled outline.
+// mode "swell" = thin-thick-thin (contours), "flick" = thick base tapering to a hairline tip (lashes, brows).
+function brush(d,w,mode="swell",c=INK,op=1){
+  probe.setAttribute("d",d);const len=probe.getTotalLength(),n=Math.max(12,Math.ceil(len/4));
+  const P=[];for(let i=0;i<=n;i++){const p=probe.getPointAtLength(len*i/n);P.push([p.x,p.y]);}
+  const L=[],R=[];
+  for(let i=0;i<=n;i++){const t=i/n,a=P[Math.max(0,i-1)],b=P[Math.min(n,i+1)];
+    let dx=b[0]-a[0],dy=b[1]-a[1];const m=Math.hypot(dx,dy)||1;dx/=m;dy/=m;
+    const hw=(mode==="flick"? w*Math.pow(1-t,0.9)+0.15 : mode==="tail"? w*Math.pow(Math.sin(Math.PI*Math.min(1,t*1.6+0.0)),0.6)*(1-t*0.85)+0.2 : w*Math.pow(Math.sin(Math.PI*t),0.65)+0.2)/2;
+    L.push([P[i][0]-dy*hw,P[i][1]+dx*hw]);R.push([P[i][0]+dy*hw,P[i][1]-dx*hw]);}
+  const pts=L.concat(R.reverse());
+  return `<path d="M${pts.map(p=>p[0].toFixed(1)+" "+p[1].toFixed(1)).join("L")}Z" fill="${c}" fill-opacity="${op}"/>`;
+}
+const F=(d,c,op=1)=>`<path d="${d}" fill="${c}" fill-opacity="${op}"/>`;
+const svg=(bg,inner)=>`<svg viewBox="0 0 400 300">${F("M0 0H400V300H0Z",bg)}${inner}</svg>`;
+// A closed eye: lid curve plus long lashes that drop and sweep out, longest at the outer corner.
+function closedEye(x0,y0,x1,y1,sag,dir,scale=1,lashN=7){
+  const mx=(x0+x1)/2, lid=`M${x0} ${y0}C${x0+(x1-x0)*.3} ${y0+sag} ${x0+(x1-x0)*.72} ${y1+sag} ${x1} ${y1}`;
+  let s=brush(lid,3.4*scale,"swell");
+  probe.setAttribute("d",lid);const len=probe.getTotalLength();
+  const pts=[...Array(lashN)].map((_,i)=>{const t=0.3+0.68*i/(lashN-1);const q=probe.getPointAtLength(len*t);return {x:q.x,y:q.y,t};});
+  for(const p of pts){const t=p.t;
+    const k=t*t; // longer toward the outer corner
+    const L=(9+15*k)*scale, out=dir*(3+18*k)*scale;
+    s+=brush(`M${p.x} ${p.y}Q${p.x+out*0.15} ${p.y+L*0.95} ${p.x+out} ${p.y+L*0.8}`,2.4*scale,"flick");}
+  // a little flick of liner past the outer corner
+  s+=brush(`M${x1-dir*4} ${y1+1}Q${x1+dir*8} ${y1-1} ${x1+dir*18*scale} ${y1-8*scale}`,2.4*scale,"flick");
+  return s;
+}
+const blush=(cx,cy,rx,ry)=>{const id=PFX+"b"+(hid++);return `<defs><radialGradient id="${id}"><stop offset="0" stop-color="#C4968C" stop-opacity=".38"/><stop offset="1" stop-color="#C4968C" stop-opacity="0"/></radialGradient></defs><ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="url(#${id})"/>`;};
+const cards=[];
+
+// 1. Frown lines
+cards.push({eyebrow:"Between the brows",t:"Xeomin for Frown Lines (11s)",p:"Vertical 11 lines between the brows from frowning, squinting, or concentrating.",
+art:svg("#E8EBE8",
+  F("M110 262C50 220 62 96 170 74C270 54 352 104 344 186C336 260 236 290 170 282C145 279 125 272 110 262Z","#DDE3DC")+
+  // high arched brows, thick at the inner end, hairline at the tail
+  brush("M176 118C150 96 112 92 72 110",7,"flick",INK,.62)+
+  brush("M224 118C250 96 288 92 328 110",7,"flick",INK,.62)+
+  brush("M160 152C140 140 108 138 90 146",1.8,"swell",INK,.3)+brush("M240 152C260 140 292 138 310 146",1.8,"swell",INK,.3)+closedEye(168,170,84,160,22,-1,1)+
+  closedEye(232,170,316,160,22,1,1)+
+  // one side of the nose bridge, a single fading stroke
+  brush("M184 132C190 170 190 214 176 252",2.6,"swell",INK,.35)+
+  halo(200,116,26,30)+brush("M193 98C191 110 191 122 194 134",4.4,"swell",BOX)+brush("M207 98C209 110 209 122 206 134",4.4,"swell",BOX)
+)});
+
+// 2. Forehead lines: profile, dark sleek hair swept into a low bun
+cards.push({eyebrow:"Across the forehead",t:"Xeomin for Forehead Lines",p:"Horizontal lines from lifting the brows, planned around brow position.",
+art:svg("#EDE7DE",
+  F("M120 60C200 24 330 50 352 150C370 236 290 292 196 286C120 280 84 220 92 150C97 108 100 72 120 60Z","#E3DACD")+
+  // hair mass and bun
+  F("M178 66C192 46 224 34 258 36C302 40 332 70 334 110C335 138 326 160 310 178C300 190 290 202 280 216C272 200 266 182 263 162C260 128 248 96 228 80C214 70 196 66 178 66Z",INK,.86)+
+  `<circle cx="322" cy="176" r="28" fill="${INK}" fill-opacity=".86"/>`+
+  brush("M206 52C240 46 280 62 300 98",1.6,"swell","#F4F3EF",.35)+brush("M238 62C266 70 286 96 292 128",1.4,"swell","#F4F3EF",.25)+
+  // face contour: forehead, brow, nose, pursed lips, chin, under the jaw, front of the neck
+  brush("M178 66C170 84 164 102 164 120C164 128 167 134 170 140C166 154 158 168 150 180C147 185 149 188 155 189C160 190 164 191 166 193C164 197 160 200 157 204C155 207 160 209 165 210C160 212 157 216 160 220C162 223 166 224 168 227C166 232 164 238 166 244C168 250 176 254 186 255C196 256 204 260 210 268C214 278 216 290 216 302",3.4,"swell")+
+  brush("M186 255C214 246 240 230 262 210",1.8,"swell",INK,.4)+
+  brush("M280 216C286 244 294 272 306 302",2.4,"swell",INK,.55)+
+  // arched brow, closed eye with lashes, cheekbone
+  brush("M168 133C178 127 194 127 206 133",4.4,"flick",INK,.6)+
+  brush("M176 152C182 158 192 159 200 154",2.6,"swell")+
+  brush("M179 155Q177 163 170 166",1.8,"flick")+brush("M184 157Q183 166 176 170",1.8,"flick")+brush("M190 158Q190 167 184 172",1.8,"flick")+
+  brush("M204 178C214 192 220 204 222 218",1.6,"swell",INK,.25)+
+  blush(214,196,26,16)+
+  F("M166 193C164 197 160 200 157 204C155 207 160 209 165 210C160 212 157 216 160 220C162 223 166 224 168 227L174 222C172 214 172 202 170 194Z","#C4968C",.55)+
+  brush("M268 204L268 216",1.2,"swell",INK,.6)+`<circle cx="268" cy="222" r="5.5" fill="#F4F3EF" stroke="${INK}" stroke-opacity=".55" stroke-width="1.2"/><circle cx="266.5" cy="220.5" r="1.6" fill="#fff"/>`+
+  // forehead lines
+  halo(192,98,34,26)+brush("M174 82C186 78 200 78 212 82",4,"swell",BOX)+brush("M170 98C184 94 200 94 214 98",4,"swell",BOX)+brush("M168 114C182 110 196 110 210 114",4,"swell",BOX)
+)});
+
+// 3. Crow's feet: one eye, winged
+cards.push({eyebrow:"Outer eyes",t:"Xeomin for Crow's Feet",p:"Smile lines at the outer corners of the eyes, softened without stiffening the smile.",
+art:svg("#E8EBE8",
+  F("M70 90C140 36 300 44 346 126C384 200 326 276 224 280C124 284 46 238 44 164C43 128 52 104 70 90Z","#DDE3DC")+
+  brush("M80 106C140 64 220 58 300 90",9,"tail",INK,.6)+
+  brush("M110 132C160 116 220 116 270 136",2,"swell",INK,.3)+
+  closedEye(70,166,282,150,40,1,1.45,9)+
+  blush(236,232,70,26)+
+  // cheekbone
+  brush("M140 250C200 236 260 230 320 240",2,"swell",INK,.25)+
+  halo(334,148,34,48)+brush("M316 130C324 120 332 114 346 108",4,"swell",BOX)+brush("M318 148C330 146 342 147 356 151",4,"swell",BOX)+brush("M314 166C324 172 332 180 338 192",4,"swell",BOX)
+)});
+
+// 4. Lip flip: a small, pursed mouth
+const UP="M128 172C146 166 164 152 180 141C186 137 192 140 200 147C208 140 214 137 220 141C236 152 254 166 272 172";
+const MID="M128 172C150 176 172 172 188 174C194 175 197 177 200 178C203 177 206 175 212 174C228 172 250 176 272 172";
+const LOW="M128 172C140 200 172 216 200 216C228 216 260 200 272 172";
+cards.push({eyebrow:"Upper lip",t:"Xeomin Lip Flip",p:"A less common, consult-led option for a little more upper-lip show. It does not add volume.",
+art:svg("#EDE7DE",
+  F("M80 120C100 64 210 46 292 76C364 102 360 200 292 240C226 280 118 270 84 214C68 186 70 148 80 120Z","#E3DACD")+
+  `<g transform="translate(200 170) scale(1.16) translate(-200 -170)">`+halo(200,150,70,14)+
+  F(UP+"C250 176 228 172 212 174C206 175 203 177 200 178C197 177 194 175 188 174C172 172 150 176 128 172Z","#C4968C",.6)+
+  F(MID+"C260 200 228 216 200 216C172 216 140 200 128 172Z","#C4968C",.45)+
+  brush("M178 198C190 203 210 203 222 198",3,"swell","#F4F3EF",.75)+
+  brush("M174 152C180 148 186 147 190 149",2,"swell","#F4F3EF",.5)+
+  brush(UP,4,"swell",BOX)+
+  brush(MID,2.8,"swell")+
+  brush("M142 190C158 208 180 216 200 216C220 216 242 208 258 190",2.2,"swell",INK,.6)+
+  // tucked corners
+  brush("M126 168C124 172 125 176 129 178",1.6,"swell",INK,.5)+brush("M274 168C276 172 275 176 271 178",1.6,"swell",INK,.5)+
+  // philtrum and nose base, faint
+  brush("M190 98C188 114 186 126 186 138",1.6,"swell",INK,.28)+brush("M210 98C212 114 214 126 214 138",1.6,"swell",INK,.28)+
+  brush("M162 74C172 86 184 88 192 82C196 78 204 78 208 82C216 88 228 86 238 74",2.2,"swell",INK,.4)+`</g>`+`<circle cx="292" cy="132" r="2.8" fill="${INK}" fill-opacity=".75"/>`
+)});
+
+document.getElementById("grid").innerHTML=cards.map(c=>`<div class="card">${c.art}<div class="body"><div class="eyebrow">${c.eyebrow}</div><h3>${c.t}</h3><p>${c.p}</p></div></div>`).join("");
+</script></body></html>
