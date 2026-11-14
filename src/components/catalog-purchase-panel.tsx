@@ -2,7 +2,7 @@
 
 import CatalogAddToCartControl from "components/catalog-add-to-cart-control";
 import OpenCartButton from "components/open-cart-button";
-import { CREDIT_BLOCK_CREDIT_SENTENCE, getCatalogConfigBySlug } from "config/commerce-catalog";
+import { creditBlockCreditSentence, getCatalogConfigBySlug } from "config/commerce-catalog";
 import { CASH_CARD_NOTE, formatUsdShort } from "lib/price";
 import { cn } from "lib/utils";
 
@@ -69,8 +69,8 @@ export default function CatalogPurchasePanel({
   const price = splitDisplayPrice(displayPrice, pricingMode, catalogItem?.cashAmountCents, catalogItem?.unitAmountCents);
   // Credit-block notes repeat the price already shown above; keep only how the credit works.
   const explainer =
-    pricingMode === "increment_credit" && catalogItem
-      ? CREDIT_BLOCK_CREDIT_SENTENCE
+    pricingMode === "increment_credit" && catalogItem?.cashAmountCents
+      ? creditBlockCreditSentence(catalogItem.cashAmountCents)
       : customerNote;
   const longCash = price.cash.length > 14;
 

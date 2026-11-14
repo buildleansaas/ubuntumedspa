@@ -145,12 +145,14 @@ for (const block of extractAll(sitemapXml, /<url>([\s\S]*?)<\/url>/g)) {
   }
 }
 
-// The site-wide footer links most treatment, location and guide pages, so a body-level link check run on the whole page
-// can never fail. Link and requiredHtml checks read the page before its <footer> (header and main), like the Jenny
-// word count below.
+// The site-wide header and footer link most treatment, location and guide pages, so a body-level link check run on the
+// whole page can never fail. Link and requiredHtml checks read only what sits between the site </header> and <footer>.
 const bodyBeforeFooter = (html) => {
   const footerAt = html.search(/<footer\b/i);
-  return footerAt >= 0 ? html.slice(0, footerAt) : html;
+  const end = footerAt >= 0 ? footerAt : html.length;
+  const headerEnd = html.indexOf("</header>");
+  const start = headerEnd >= 0 && headerEnd < end ? headerEnd + "</header>".length : 0;
+  return html.slice(start, end);
 };
 
 const pages = [];

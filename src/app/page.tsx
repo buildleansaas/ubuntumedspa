@@ -55,7 +55,7 @@ const localLinks = [
 
 // Tidewater homepage: main's sections and visual elements in the Tidewater palette and type (clear buttons per
 // screen), plus the treatment chooser and price list. Filled booking buttons sit in the hero, the photo results, the
-// chooser, the local intro, the treatment callouts, the price list, the visit details and the closing call to action;
+// chooser, the local intro, the treatment callouts, the price list, the wrinkle relaxer party, the visit details and the closing call to action;
 // sections such as reviews, the search answers, products, posts and the FAQ have none.
 export default async function Page() {
   return (

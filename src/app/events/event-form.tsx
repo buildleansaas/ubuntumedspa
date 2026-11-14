@@ -17,7 +17,7 @@ import { cn } from "lib/utils";
 const WIDE_FIELD_TYPES = new Set(["textarea", "checkbox"]);
 
 const inputClassName =
-  "mt-2 w-full border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/45 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
+  "mt-2 w-full border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
 
 const getOptionGroups = (field: EventFieldDefinition): EventOptionGroup[] => {
   if (field.optionGroups?.length) return field.optionGroups;

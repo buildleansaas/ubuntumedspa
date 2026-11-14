@@ -8,7 +8,7 @@ export type ChooserTile = {
   concern: string;
   treatment: string;
   href: string;
-  /** Price note built from the catalog in page.tsx, e.g. "from <cash> cash". */
+  /** Price note built from the catalog in src/views/home-prices.ts, e.g. "from <cash> cash". */
   price?: string;
 };
 

@@ -52,7 +52,9 @@ const creditBlockCash = formatUsdShort(CREDIT_BLOCK_CASH_CENTS);
 const creditBlockCard = formatUsdShort(cardPriceCents(CREDIT_BLOCK_CASH_CENTS));
 
 /** How a credit block works, without its price. Shared by the catalog note and the purchase panel. */
-export const CREDIT_BLOCK_CREDIT_SENTENCE = `Each block adds ${creditBlockCash} of treatment credit, and any unused value remains as account credit.`;
+export const creditBlockCreditSentence = (blockCashCents: number) =>
+  `Each block adds ${formatUsdShort(blockCashCents)} of treatment credit, and any unused value remains as account credit.`;
+export const CREDIT_BLOCK_CREDIT_SENTENCE = creditBlockCreditSentence(CREDIT_BLOCK_CASH_CENTS);
 
 const deriveCardQuantityPriceBreaks = (cashBreaks: Record<number, number> | undefined) => {
   if (!cashBreaks) return undefined;

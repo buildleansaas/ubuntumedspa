@@ -145,7 +145,7 @@ test("homepage prices come from the catalog: no typed dollar amounts, cash befor
     card: card("xeomin"),
     note: "per credit block",
   });
-  // Hyperhidrosis is "from" the catalog price everywhere else on the site; the homepage says so too.
+  // Hyperhidrosis starts at its catalog price (the hub and satellites say "from" / "starts at"); the homepage says "from".
   assert.deepEqual(rows["/procedures/hyperhidrosis-treatment"], {
     name: "Hyperhidrosis treatment",
     href: "/procedures/hyperhidrosis-treatment",

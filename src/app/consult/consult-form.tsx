@@ -69,7 +69,7 @@ const ConsultationForm: React.FC = () => {
   const wideFieldIds = ["name", "concerns", "interests", "comments", "referral"] as const;
 
   const inputClassName =
-    "mt-2 w-full rounded-lg border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/45 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
+    "mt-2 w-full rounded-lg border border-base-300 bg-base-100 px-4 py-3 text-base text-base-content transition-colors placeholder:text-base-content/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState({
