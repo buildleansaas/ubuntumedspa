@@ -38,7 +38,7 @@ export type SatelliteSection = {
   routeMap?: PeninsulaRoute;
 };
 /** The drive summary a route card shows: the map, the drive time, the route steps, and a Google Maps link. */
-export type SatelliteRoute = { map: PeninsulaRoute; driveTime: string; steps: string[]; directionsHref: string };
+export type SatelliteRoute = { map: PeninsulaRoute; driveTime: string; steps: string[]; directionsHref: string; appleDirectionsHref: string };
 export type SatelliteLink = { href: string; label: string };
 
 export type ServiceSatellitePage = {
@@ -493,11 +493,16 @@ export const PENINSULA_DRIVE_TIME = "typically 25–35 minutes";
 export const peninsulaDirectionsHref = (townName: string) =>
   `https://www.google.com/maps/dir/?api=1&origin=${townName.replace(/ /g, "+")},+VA&destination=Williamsburg+Med+Spa,+3900+Powhatan+Parkway,+Williamsburg,+VA+23188`;
 
+/** Apple Maps driving directions from the town to the clinic (opens Maps on iPhone and Mac, the web map elsewhere). */
+export const peninsulaAppleDirectionsHref = (townName: string) =>
+  `https://maps.apple.com/?saddr=${townName.replace(/ /g, "+")},+VA&daddr=Williamsburg+Med+Spa,+3900+Powhatan+Parkway,+Williamsburg,+VA+23188&dirflg=d`;
+
 const nearAreaRoute = (area: NearArea): SatelliteRoute => ({
   map: area.mapRoute,
   driveTime: PENINSULA_DRIVE_TIME,
   steps: area.routeSteps,
   directionsHref: peninsulaDirectionsHref(area.name),
+  appleDirectionsHref: peninsulaAppleDirectionsHref(area.name),
 });
 
 const BREAST_CASH_CENTS = cashCents("prp-breast-lift");

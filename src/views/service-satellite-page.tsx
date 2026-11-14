@@ -5,11 +5,13 @@ import TextToBook from "components/text-to-book";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "components/ui/accordion";
 import { Button, buttonVariants } from "components/ui/button";
 import PeninsulaRouteMap from "components/peninsula-route-map";
+import DirectionsLinks from "components/directions-links";
 import { COMMERCE_CATALOG_BY_SLUG } from "config/commerce-catalog";
 import { cardPriceSchemaValue } from "lib/price";
 import {
   getSatelliteLinks,
   hubPath,
+  peninsulaAppleDirectionsHref,
   peninsulaDirectionsHref,
   SATELLITE_TEMPLATE_COPY,
   satelliteHubLabel,
@@ -118,14 +120,7 @@ export default function ServiceSatellitePageView({ page }: { page: ServiceSatell
               <PeninsulaRouteMap route={section.routeMap} size="large" />
               <figcaption className="flex flex-col gap-3 border-t border-base-300 bg-base-100 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
                 <span className="text-sm text-base-content/75">Schematic map, not to scale. Numbers match the steps below.</span>
-                <a
-                  href={peninsulaDirectionsHref(page.label)}
-                  target="_blank"
-                  rel="noopener"
-                  className={buttonVariants({ variant: "outline", size: "sm" })}
-                >
-                  Open directions
-                </a>
+                <DirectionsLinks googleHref={peninsulaDirectionsHref(page.label)} appleHref={peninsulaAppleDirectionsHref(page.label)} />
               </figcaption>
             </figure>
           )}

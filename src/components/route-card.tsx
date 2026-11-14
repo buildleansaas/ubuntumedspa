@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { CARD_FLUSH, CARD_LINK, CARD_TITLE } from "components/layout";
 import PeninsulaRouteMap from "components/peninsula-route-map";
-import { buttonVariants } from "components/ui/button";
+import DirectionsLinks from "components/directions-links";
 import type { SatelliteRoute } from "lib/service-satellites";
 import { cn } from "lib/utils";
 
@@ -56,14 +56,8 @@ export default function RouteCard({
         </ol>
 
         <div className="mt-auto pt-6">
-          <a
-            href={route.directionsHref}
-            target="_blank"
-            rel="noopener"
-            className={cn(buttonVariants({ variant: "outline", size: "sm" }), "relative z-10")}
-          >
-            Open directions
-          </a>
+          <p className="mb-2 text-xs font-medium text-base-content/70">Directions</p>
+          <DirectionsLinks googleHref={route.directionsHref} appleHref={route.appleDirectionsHref} />
         </div>
       </div>
     </article>
