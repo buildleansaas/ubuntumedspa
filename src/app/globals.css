@@ -311,3 +311,67 @@ h1 {
     animation: none;
   }
 }
+
+/* Peninsula route map (components/peninsula-route-map.tsx). The SVG scales with its box, so label sizes are set in map
+   units per container width: about 11-13px on screen at every size, from a 340px phone card to a wide area-page map. */
+.route-map {
+  container-type: inline-size;
+}
+.route-map svg {
+  --rm-fs: 21px;
+  --rm-k: 1.55;
+}
+@container (min-width: 440px) {
+  .route-map svg { --rm-fs: 16px; --rm-k: 1.2; }
+}
+@container (min-width: 560px) {
+  .route-map svg { --rm-fs: 13.5px; --rm-k: 1; }
+}
+@container (min-width: 720px) {
+  .route-map svg { --rm-fs: 11.5px; --rm-k: 0.9; }
+}
+/* Badges, step markers and the pin keep their on-screen size too. */
+.route-map .rm-grow {
+  transform: scale(var(--rm-k));
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.route-map .rm-grow-pin {
+  transform: scale(var(--rm-k));
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.route-map .rm-label { font-size: var(--rm-fs); }
+.route-map .rm-small { font-size: calc(var(--rm-fs) * 0.84); }
+.route-map .rm-badge-text { font-size: 11px; }
+.route-map .rm-marker-text { font-size: 11px; }
+.route-map .rm-halo {
+  paint-order: stroke;
+  stroke: #f4f3ef;
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.route-map .rm-wide-only { display: none; }
+@container (min-width: 440px) {
+  .route-map .rm-wide-only { display: inline; }
+}
+
+/* Optional: the highlighted route draws itself as the map scrolls into view, only where the browser supports
+   scroll-driven animations and the reader has not asked for reduced motion. Without it the map is complete. */
+@keyframes rm-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .route-map .rm-route-line {
+      stroke-dasharray: 1;
+      animation: rm-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 45%;
+    }
+  }
+}
+@media print {
+  .route-map .rm-route-line { animation: none; stroke-dashoffset: 0; }
+}

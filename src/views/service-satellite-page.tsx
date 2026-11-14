@@ -3,12 +3,16 @@ import Link from "next/link";
 import StructuredData from "components/structured-data";
 import TextToBook from "components/text-to-book";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "components/ui/accordion";
-import { Button } from "components/ui/button";
+import { Button, buttonVariants } from "components/ui/button";
+import PeninsulaRouteMap from "components/peninsula-route-map";
+import DirectionsLinks from "components/directions-links";
 import { COMMERCE_CATALOG_BY_SLUG } from "config/commerce-catalog";
 import { cardPriceSchemaValue } from "lib/price";
 import {
   getSatelliteLinks,
   hubPath,
+  peninsulaAppleDirectionsHref,
+  peninsulaDirectionsHref,
   SATELLITE_TEMPLATE_COPY,
   satelliteHubLabel,
   satellitePath,
@@ -110,6 +114,15 @@ export default function ServiceSatellitePageView({ page }: { page: ServiceSatell
                 <li key={item}>{item}</li>
               ))}
             </ul>
+          )}
+          {section.routeMap && (
+            <figure className="my-6 max-w-3xl overflow-hidden rounded-2xl border border-base-300">
+              <PeninsulaRouteMap route={section.routeMap} size="large" />
+              <figcaption className="flex flex-col gap-3 border-t border-base-300 bg-base-100 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+                <span className="text-sm text-base-content/75">Schematic map, not to scale. Numbers match the steps below.</span>
+                <DirectionsLinks googleHref={peninsulaDirectionsHref(page.label)} appleHref={peninsulaAppleDirectionsHref(page.label)} />
+              </figcaption>
+            </figure>
           )}
           {section.steps && (
             <ol className="grid grid-cols-1 md:grid-cols-2 gap-4">
