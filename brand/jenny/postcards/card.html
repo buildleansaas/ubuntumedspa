@@ -1,0 +1,68 @@
+<!doctype html>
+<!-- Med Spa Jenny post card. Params (URL query): size=feed|story|square, kicker, headline, body, cta, img.
+     Render: brand/jenny/postcards/render.sh (headless Chrome screenshot at the size's pixels). -->
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400&display=block" rel="stylesheet">
+<style>
+  /* "Treatment room" palette, sampled from the approved j4 image (see PLAN.md). */
+  :root { --linen:#f6f2ee; --wall:#e7e2dc; --ink:#2a2423; --walnut:#4a3530; --rose:#b43c48; --orchid:#e484a8; --peach:#efd9cb; }
+  * { margin:0; box-sizing:border-box; }
+  html, body { width:var(--w); height:var(--h); background:var(--linen); overflow:hidden; }
+  body { font-family:"Hanken Grotesk", system-ui, sans-serif; color:var(--ink); }
+  .card { position:relative; width:100%; height:100%; display:grid; }
+  .art { position:relative; overflow:hidden; background:var(--wall); }
+  .art img { width:100%; height:100%; object-fit:cover; object-position:50% 18%; display:block; }
+  .copy { padding:var(--pad); display:flex; flex-direction:column; justify-content:center; gap:calc(var(--u)*1.1); }
+  .kicker { font-weight:700; font-size:calc(var(--u)*0.95); letter-spacing:.02em; color:var(--rose); display:flex; align-items:center; gap:.6em; }
+  .kicker::before { content:""; width:1.6em; height:.32em; border-radius:1em; background:var(--orchid); }
+  h1 { font-family:"Newsreader", Georgia, serif; font-weight:500; font-size:calc(var(--u)*2.6); line-height:1.08; letter-spacing:-.01em; }
+  h1 em { font-style:italic; color:var(--rose); }
+  p { font-size:calc(var(--u)*1.15); line-height:1.45; color:#4d4442; max-width:30em; }
+  .cta { align-self:flex-start; background:var(--ink); color:var(--linen); font-weight:600; font-size:calc(var(--u)*1.05);
+         padding:.7em 1.15em; border-radius:999px; }
+  .foot { display:flex; justify-content:space-between; align-items:center; font-size:calc(var(--u)*0.85); color:var(--walnut);
+          border-top:2px solid var(--wall); padding-top:calc(var(--u)*0.9); margin-top:calc(var(--u)*0.4); }
+  .foot b { font-family:"Newsreader", Georgia, serif; font-size:1.25em; font-weight:500; color:var(--ink); }
+  /* feed 1080x1350: art on top, copy below */
+  .feed .card { grid-template-rows:47% 53%; }
+  .feed .art img { object-position:50% 30%; }
+  .feed .art { border-radius:0 0 48px 48px; }
+  /* story 1080x1920: art fills, copy in a linen sheet at the bottom (top 250px kept clear for the app UI) */
+  .story .card { grid-template-rows:50% 50%; }
+  .story .art img { object-position:50% 25%; }
+  .story .art { border-radius:0 0 56px 56px; }
+  .story .copy { padding-bottom:calc(var(--pad) + 140px); }
+  /* square 1080x1080: art left, copy right */
+  .square .card { grid-template-columns:44% 56%; }
+  .square .art { border-radius:0 48px 48px 0; }
+  .square h1 { font-size:calc(var(--u)*2.2); }
+</style></head>
+<body>
+<div class="card">
+  <div class="art"><img id="img" alt=""></div>
+  <div class="copy">
+    <div class="kicker" id="kicker"></div>
+    <h1 id="headline"></h1>
+    <p id="body"></p>
+    <div class="cta" id="cta"></div>
+    <div class="foot"><b>Williamsburg Med Spa</b><span>williamsburgmedspa.com</span></div>
+  </div>
+</div>
+<script>
+  const q = new URLSearchParams(location.search);
+  const sizes = { feed:[1080,1350,28,64], story:[1080,1920,36,80], square:[1080,1080,30,56] };
+  const k = sizes[q.get("size")] ? q.get("size") : "feed";
+  const [w,h,u,pad] = sizes[k];
+  document.body.className = k;
+  const s = document.documentElement.style;
+  s.setProperty("--w", w+"px"); s.setProperty("--h", h+"px"); s.setProperty("--u", u+"px"); s.setProperty("--pad", pad+"px");
+  for (const id of ["kicker","body","cta"]) { const v = q.get(id); const el = document.getElementById(id); v ? el.textContent = v : el.remove(); }
+  // headline: *word* becomes italic rose emphasis; everything else is text, never HTML
+  const hl = document.getElementById("headline");
+  (q.get("headline") || "").split(/(\*[^*]+\*)/).forEach(part => {
+    if (/^\*[^*]+\*$/.test(part)) { const em = document.createElement("em"); em.textContent = part.slice(1,-1); hl.append(em); }
+    else hl.append(part);
+  });
+  document.getElementById("img").src = q.get("img") || "../refs/approved-j4-room.png";
+</script>
+</body></html>
