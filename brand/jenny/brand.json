@@ -1,0 +1,25 @@
+{
+  "brand": "williamsburg-medspa/jenny",
+  "about": "Med Spa Jenny: cartoon brand character of the owner (Jenny Brady, NP) for williamsburgmedspa.com. Flat 2D style shared with ai-avatars cartoon-mia. Approved by Austin 2026-11-17: j4-room, seed 44.",
+  "consent": "Real person. Austin's friend and client; confirm Jenny's OK before public use. Use only for her business. Any LoRA trained on her stays private and out of git.",
+  "refs": {
+    "approved": "refs/approved-j4-room.png",
+    "source_photo": "../../public/jenny.jpg",
+    "room_photos": "../../public/clinic/treatment-room-chair-window.webp",
+    "room_photos_2": "../../public/clinic/treatment-room-chair-centrifuge.webp"
+  },
+  "style": "Flat 2D cartoon illustration in an original TV animation style: thick clean black outlines, flat cel-shaded colors, simple shapes, big expressive eyes, no gradients, no photorealism",
+  "character": "Med Spa Jenny, a 40-year-old adult woman cartoon character, a friendly nurse practitioner with long wavy jet-black hair worn down past her shoulders, warm dark brown eyes, bold dark eyebrows, long eyelashes, a round full face with a big bright toothy smile, warm light olive-tan skin, small diamond stud earrings, wearing short-sleeve black medical scrubs with a V-neck top",
+  "setting": "in her cozy home med spa treatment room with a white padded reclining treatment chair with a folded red towel on the seat, a large window with white sheer gray-trellis-pattern curtains, pink orchids in a white pot, a dark carved wooden desk with a small white lab centrifuge, soft gray walls, bright daylight",
+  "seed": 44,
+  "size": "768x1344",
+  "shots": [
+    {
+      "id": "j4-room",
+      "seed": 44,
+      "scene": "standing next to a white padded reclining treatment chair with a folded red towel on the seat, facing the camera with a warm welcoming smile, hands clasped in front of her, in her cozy home med spa treatment room with a large window with white sheer trellis-pattern curtains, pink orchids, a dark carved wooden desk with a small white lab centrifuge, soft gray walls, bright daylight",
+      "setting": "",
+      "pick": true
+    }
+  ]
+}
