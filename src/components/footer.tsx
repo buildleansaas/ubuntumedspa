@@ -185,6 +185,13 @@ export default function Footer() {
               Sitemap
             </Link>
             <span aria-hidden>·</span>
+            {/* The GBP plan (docs/seo/google-business-profile-plan-2026-10-03.md) asked for a footer review link.
+                /review is our noindex landing page that sends everyone to the Google review form. robots.txt disallows it, so the
+                link is nofollow: Google never sees that noindex, and a sitewide followed link could index it as a bare URL. */}
+            <Link className="transition-colors hover:text-base-content hover:underline" href="/review" rel="nofollow">
+              Leave us a review
+            </Link>
+            <span aria-hidden>·</span>
             <Link className="transition-colors hover:text-base-content hover:underline" href="/privacy">
               Privacy
             </Link>

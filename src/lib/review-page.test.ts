@@ -87,3 +87,12 @@ test("trackReviewClick sends review_click with only the CTA location", () => {
   }
   assert.deepEqual(calls, [["event", "review_click", { cta_location: "review_page" }]]);
 });
+
+test("the footer links the review page (GBP plan follow-up)", () => {
+  const footer = readFileSync(join(ROOT, "src/components/footer.tsx"), "utf8");
+  const link = stripComments(footer).match(/href="\/review"([^>]*)>\s*([^<]*?)\s*</);
+  assert.ok(link, "footer has no /review link");
+  assert.match(link[1], /rel="nofollow"/, "/review is robots-disallowed, so the footer link must be nofollow");
+  assert.equal(link[2], "Leave us a review");
+  assert.equal(link[2].match(BANNED_COPY), null);
+});
