@@ -146,7 +146,7 @@ Protected and intended current owner: `https://www.williamsburgmedspa.com/locati
 
 Update 2026-11-05 (PR #167, per the vault plan Williamsburg-Med-Spa-SEO-Plan.md item 1): the Botox/Xeomin queries (`botox newport news`, `botox newport news va`, `xeomin newport news`) move to `https://www.williamsburgmedspa.com/procedures/xeomin/near/newport-news-va`. The location page keeps `med spa newport news` and its "Xeomin near Newport News" link points to the new page. Watch both pages' Botox impressions at D7/D14/D28 (baseline above: 82 and 20 impressions, positions 13.66 and 17.05); if the location page loses them without the new page gaining, point the link back and revisit.
 
-Update 2026-11-20 (Botox offered again): `botox newport news` and `botox newport news va` are owned by `https://www.williamsburgmedspa.com/locations/newport-news-va`. Its title is now "Med Spa Newport News | Botox & Xeomin from $250 Cash" and its Botox FAQ answers Yes. `/procedures/botox` and `/procedures/xeomin/near/newport-news-va` support it with links; do not retarget them at this query.
+Update 2026-11-20 (Botox offered again): `botox newport news` and `botox newport news va` are owned by `https://www.williamsburgmedspa.com/locations/newport-news-va`. Its title is now "Med Spa Newport News | Botox & Xeomin from $250 Cash" and its Botox FAQ answers Yes. `/procedures/xeomin/near/newport-news-va` links to it, and the site footer links it on every page (including `/procedures/botox`). The Newport News page links to `/procedures/botox` as "Botox in Williamsburg", never with "Newport News" anchor text; do not retarget other pages at this query.
 
 Exact protected queries:
 

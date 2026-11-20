@@ -40,9 +40,12 @@ export const XEOMIN_PRICES = (() => {
 
 const { blockCash, blockCard } = XEOMIN_PRICES;
 
-/** The side-effects line already used on the site (comparison guide and GBP posts). */
+/**
+ * The side-effects line used on the site (comparison guide and GBP posts). Source for the second sentence: XEOMIN Prescribing
+ * Information, Highlights, Adverse Reactions: upper facial lines (>1% of patients): injection site bruising.
+ */
 export const XEOMIN_SIDE_EFFECTS =
-  "Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites. Rare but serious risks should be discussed directly with your provider before treatment.";
+  "Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites. On the Xeomin® label, bruising at the injection site is the most common side effect for upper facial lines. Rare but serious risks should be discussed directly with your provider before treatment.";
 
 /** Source: XEOMIN Medication Guide, boxed warning (distant spread of toxin effect). Shown after the side-effects line. */
 export const XEOMIN_SEEK_HELP =

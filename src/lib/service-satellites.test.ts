@@ -157,7 +157,7 @@ test("each hub links to all of its satellites", () => {
     const expected = serviceSatellitePages.filter((page) => page.hubSlug === hub).map(satellitePath);
     assert.deepEqual(group.links.map((link) => link.href).sort(), expected.sort(), hub);
   }
-  // The Botox-alternative page links the Xeomin area pages too.
+  // The Botox page (Botox and Xeomin, priced the same) links the Xeomin area pages too.
   assert.deepEqual(getHubSatelliteGroup("botox")?.links, getHubSatelliteGroup("xeomin")?.links);
   const hubRoute = read("src/app/procedures/[slug]/page.tsx");
   assert.match(hubRoute, /getHubSatelliteGroup\(procedure\.slug\)/);

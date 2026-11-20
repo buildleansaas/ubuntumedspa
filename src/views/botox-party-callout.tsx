@@ -16,7 +16,7 @@ export default function BotoxPartyCallout() {
           <SectionHeader
             id="botox-party-callout-heading"
             eyebrow="Wrinkle Relaxer Party"
-            title="Host a wrinkle relaxer party and make your own treatment free."
+            title="Host a wrinkle relaxer party and make your own Botox or Xeomin treatment free."
           />
 
           <p className={`mt-4 ${INTRO}`}>

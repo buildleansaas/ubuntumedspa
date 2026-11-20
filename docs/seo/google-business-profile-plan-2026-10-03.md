@@ -33,7 +33,7 @@ Williamsburg Med Spa
 
 ### Description
 
-*Updated 2026-11-20: the clinic offers Botox® and Xeomin® again, priced the same; Botox can be added back to the profile's services.*
+*Updated 2026-11-20: the clinic offers Botox® and Xeomin® again, priced the same. Botox is back in the services table below.*
 
 *Updated 2026-11-04: the clinic uses only Xeomin (it does not offer Botox® brand) and no longer offers dermal filler, so both are removed below.*
 

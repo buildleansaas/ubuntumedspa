@@ -1783,7 +1783,7 @@ export const procedures = [
       {
         question: "What side effects are possible?",
         answer:
-          "Common side effects can include temporary injection-site redness, swelling, bruising, or tenderness, as well as headache and temporary eyelid or brow drooping. Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment. Your consultation includes a review of risks, contraindications, and warning signs.",
+          "Common side effects can include temporary injection-site redness, swelling, bruising, or tenderness, as well as headache, eyelid swelling, and temporary eyelid or brow drooping. Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment. Your consultation includes a review of risks, contraindications, and warning signs.",
       },
     ],
   },
@@ -1989,7 +1989,7 @@ export const procedures = [
       {
         question: "Are there any side effects?",
         answer:
-          "Common side effects are mild and include temporary redness, swelling, or bruising at the injection site. It's essential to consult with your practitioner regarding any potential risks.",
+          "Common side effects can include temporary redness, swelling, tenderness, or bruising at the injection site. On the Xeomin® label, bruising at the injection site is the most common side effect for upper facial lines. Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment. Your consultation includes a review of risks, contraindications, and warning signs.",
       },
     ],
   },

@@ -39,7 +39,7 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 const serviceLinks = [
-  { href: "/procedures/botox", label: "Botox near Newport News", note: "Botox and Xeomin, priced the same, for frown lines, forehead lines, and crow's feet. Jenny helps you choose." },
+  { href: "/procedures/botox", label: "Botox in Williamsburg", note: "Botox and Xeomin, priced the same, for frown lines, forehead lines, and crow's feet. Jenny helps you choose." },
   { href: "/procedures/xeomin/near/newport-news-va", label: "Xeomin near Newport News", note: "Xeomin for frown lines, forehead lines, and crow's feet, with a natural, measured plan." },
   { href: "/procedures/blomdahl-ear-piercing", label: "Blomdahl ear piercing", note: "Sterile single-use cassettes and hypoallergenic starter earrings at the Williamsburg clinic." },
   { href: "/procedures/blomdahl-ear-piercing/for/children", label: "Infant and kids ear piercing", note: "For parents planning a baby's or child's first earrings." },
@@ -82,7 +82,7 @@ export default function NewportNewsPage() {
             <div>
               <h1 id="newport-news-heading" className={H1}>Med Spa Newport News, at Our Williamsburg Clinic</h1>
               <p className={`mt-6 ${INTRO}`}>
-                There is no Newport News street address. Xeomin, PRP, and ear-piercing visits are at Williamsburg Med Spa,
+                There is no Newport News street address. Botox, Xeomin, PRP, and ear-piercing visits are at Williamsburg Med Spa,
                 3900 Powhatan Parkway, Williamsburg, VA 23188. Take I-64 west toward Route 199 and New Town.
               </p>
               <div className="mt-6 max-w-[62ch] space-y-4 text-base leading-relaxed text-base-content/80">
@@ -92,7 +92,7 @@ export default function NewportNewsPage() {
                   Williamsburg location with conservative planning, clear timelines, and careful follow-up.
                 </p>
                 <p>
-                  Common visit goals include softening expression lines with Xeomin, asking about PRP for joints or skin, treating excessive sweating, and choosing a more clinical ear
+                  Common visit goals include softening expression lines with Botox or Xeomin, asking about PRP for joints or skin, treating excessive sweating, and choosing a more clinical ear
                   piercing appointment for a child or adult with sensitive ears.
                 </p>
               </div>
@@ -175,7 +175,8 @@ export default function NewportNewsPage() {
           <div className={CARD}>
             <h3 className={CARD_TITLE}>For movement-related lines</h3>
             <p className="mt-3 text-base leading-relaxed text-base-content/75">
-              Start with <Link href="/procedures/xeomin" className="link link-primary">Xeomin</Link> if your
+              Start with <Link href="/procedures/botox" className="link link-primary">Botox</Link> or{" "}
+              <Link href="/procedures/xeomin" className="link link-primary">Xeomin</Link> if your
               concern is tied to facial movement, such as frown lines or forehead lines.
             </p>
           </div>

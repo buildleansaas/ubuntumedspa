@@ -106,7 +106,7 @@ export default function WilliamsburgLocationPage() {
           intro={
             <>
               Start with the specific treatment question, not a generic spa menu. Jenny Brady sees patients for
-              consultation-led Xeomin, PRP treatments, hyperhidrosis care, OH-Shot consultations, and nurse-led Blomdahl
+              consultation-led Botox and Xeomin, PRP treatments, hyperhidrosis care, OH-Shot consultations, and nurse-led Blomdahl
               medical ear piercing at the Williamsburg clinic.
             </>
           }
@@ -221,6 +221,10 @@ export default function WilliamsburgLocationPage() {
         <div className="mt-6 max-w-[62ch] space-y-3 text-base leading-relaxed text-base-content/75">
           <p>
             If you searched for a medical spa near Williamsburg, VA, the most relevant starting points are{" "}
+            <Link href="/procedures/botox" className="link link-primary">
+              Botox
+            </Link>{" "}
+            and{" "}
             <Link href="/procedures/xeomin" className="link link-primary">
               Xeomin
             </Link>

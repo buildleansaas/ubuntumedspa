@@ -169,6 +169,14 @@ test("the /procedures/xeomin page agrees with the cluster on duration (about 3 t
 test("the side-effects line is the one already used on the site", () => {
   assert.ok(read("src/markdown/botox-vs-xeomin-williamsburg-va.mdx").includes(XEOMIN_SIDE_EFFECTS.replace(/^Temporary/, "temporary")));
   assert.ok(read("src/config/gbp-posts.ts").includes(XEOMIN_SIDE_EFFECTS));
+  // XEOMIN label, Highlights, Adverse Reactions: upper facial lines (>1%): injection site bruising.
+  assert.match(XEOMIN_SIDE_EFFECTS, /On the Xeomin® label, bruising at the injection site is the most common side effect for upper facial lines\./);
+  const xeominHubFaq = procedures.find((procedure) => procedure.slug === "xeomin")?.faqs.find((faq) => faq.question === "Are there any side effects?");
+  assert.match(xeominHubFaq?.answer ?? "", /bruising at the injection site is the most common side effect for upper facial lines/);
+  assert.match(xeominHubFaq?.answer ?? "", /Get medical help right away if you have trouble swallowing, speaking, or breathing/);
+  // BOTOX Cosmetic label, Highlights: glabellar eyelid ptosis, lateral canthal eyelid edema, forehead headache and brow ptosis.
+  const botoxFaq = procedures.find((procedure) => procedure.slug === "botox")?.faqs.find((faq) => faq.question === "What side effects are possible?");
+  assert.match(botoxFaq?.answer ?? "", /headache, eyelid swelling, and temporary eyelid or brow drooping/);
 });
 
 for (const page of xeominClusterPages) {

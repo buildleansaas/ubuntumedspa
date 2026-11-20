@@ -176,8 +176,8 @@ export const GBP_POSTS: GbpPost[] = [
       `Both are prescription botulinum toxin type A treatments. In cosmetic care, both temporarily reduce activity in selected muscles, which can soften lines from repeated expression such as frown lines, forehead lines, and crow's feet.`,
       `Xeomin® (incobotulinumtoxinA) is different from Botox® (onabotulinumtoxinA). They are manufactured differently and their dose units are not interchangeable, so compare quotes on the full treatment plan, not a unit price.`,
       `Timing is similar for many patients: change often shows within several days, with a fuller effect around two weeks, and smoothing commonly lasts about 3 to 4 months. Individual response, area, and dosing can change that.`,
-      `A natural look is mostly a planning question, not a brand question. It comes from careful muscle mapping, balanced dosing, and a clear talk about how much movement you want to keep.`,
-      `Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites. Rare but serious risks should be discussed directly with your provider before treatment. At Williamsburg Med Spa, ${JENNY} reviews your history, prior response, and goals before planning treatment.`,
+      `A natural look comes from careful muscle mapping, balanced dosing, and a clear talk about how much movement you want to keep.`,
+      `Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites. On the Xeomin® label, bruising at the injection site is the most common side effect for upper facial lines. Rare but serious risks should be discussed directly with your provider before treatment. At Williamsburg Med Spa, ${JENNY} reviews your history, prior response, and goals before planning treatment.`,
       `Our Botox® vs Xeomin® guide has the details. Tap Learn more to read it.`
     ),
     cta: "LEARN_MORE",
