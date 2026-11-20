@@ -49,6 +49,8 @@ export const CROWS_FEET_PAIRS = [
 ] as const;
 
 export const CROWS_FEET_HEADING = "Real results: crow's feet";
+/** On /procedures/botox the results are labelled Xeomin, because the photos are Xeomin results. */
+export const CROWS_FEET_HEADING_XEOMIN = "Real results: crow's feet with Xeomin";
 export const CROWS_FEET_INTRO = "Before and after Xeomin for crow's feet, from two Williamsburg Med Spa patients.";
 export const BEFORE_LABEL = "Before";
 

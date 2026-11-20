@@ -1,5 +1,7 @@
 # Oct 2026 baselines for existing owner slices
 
+Update 2026-11-20: the clinic offers Botox® and Xeomin® again, priced the same (this reverses PR #155's Xeomin-only change of 2026-11-04). It still does not offer filler.
+
 Update 2026-11-04 (PR #155): the clinic uses only Xeomin (no Botox® brand) and no longer offers filler.
 
 These numbers come from the Oct 2026 keyword audit. They are recorded here so issues #118, #119, and #120 do not start a second implementation. The work stays on issue #71.

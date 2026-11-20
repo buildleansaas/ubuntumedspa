@@ -55,7 +55,8 @@ test("competing procedure and blog pages render the home owner link", () => {
 
 // ScaleSleek finding f_vh33afabed: the homepage answers "botox williamsburg", "hydrafacial williamsburg va" and
 // "dermal fillers williamsburg" under their own H2s and answers the Botox search in the hero. Since 2026-11-08 the
-// Botox-alternative links (three pages and the homepage H2 answer) go to /procedures/botox, the owner. Checked on rendered HTML.
+// Botox links (three pages and the homepage H2 answer) go to /procedures/botox, the owner; since 2026-11-20 they say
+// "Botox in Williamsburg, VA" because Botox is offered again. Checked on rendered HTML.
 (globalThis as { React?: typeof React }).React = React;
 const { default: SearchAnswers, getSearchAnswers } = require("../views/search-answers") as typeof import("../views/search-answers");
 const { default: Jumbotron } = require("../views/jumbotron") as typeof import("../views/jumbotron");
@@ -65,7 +66,7 @@ test("homepage answers the Botox, Hydrafacial and dermal filler searches under H
   const html = renderToStaticMarkup(createElement(SearchAnswers, { xeominCash: "$250", xeominCard: "$257.78" }));
   const h2s = [...html.matchAll(/<h2[^>]*>(.*?)<\/h2>/g)].map((match) => text(match[1]));
   assert.deepEqual(h2s, [
-    "A Botox alternative in Williamsburg, VA: we use Xeomin®",
+    "Botox and Xeomin in Williamsburg, VA",
     "Hydrafacial in Williamsburg, VA? We offer PRP Facial instead",
     "Dermal fillers in Williamsburg, VA: not offered here",
   ]);
@@ -88,7 +89,7 @@ test("the hero answers the Botox search right under the one H1, before the backg
   const after = text(html.slice(html.indexOf("</h1>")));
   assert.ok(
     after.startsWith(
-      "Looking for Botox in Williamsburg, VA? We use Xeomin®, a wrinkle relaxer in the same category as Botox®, for frown lines, forehead lines, and crow's feet. From $250 cash ($257.78 by card or online).A local med spa with Jenny Brady"
+      "Looking for Botox in Williamsburg, VA? We offer Botox® and Xeomin® for frown lines, forehead lines, and crow's feet, priced the same. From $250 cash ($257.78 by card or online).A local med spa with Jenny Brady"
     ),
     after.slice(0, 300)
   );
@@ -96,14 +97,14 @@ test("the hero answers the Botox search right under the one H1, before the backg
 });
 
 test("three pages that showed for the Botox search link to /procedures/botox, the owner", () => {
-  assert.equal(XEOMIN_OWNER_LINK_ANCHOR, "Botox alternative in Williamsburg, VA");
+  assert.equal(XEOMIN_OWNER_LINK_ANCHOR, "Botox in Williamsburg, VA");
   assert.match(readFileSync("src/components/home-owner-link.tsx", "utf8"), /<Link href=\{XEOMIN_HUB_PATH\}/);
   assert.equal(XEOMIN_HUB_PATH, "/procedures/botox");
   for (const page of ["events", "locations/williamsburg-va", "locations/yorktown-va"]) {
     assert.match(readFileSync(`src/app/${page}/page.tsx`, "utf8"), /<XeominHubLink\b/, `/${page} is missing the link to /procedures/botox`);
   }
   const html = renderToStaticMarkup(createElement(SearchAnswers, { xeominCash: "$250", xeominCard: "$257.78" }));
-  assert.match(html, /<a[^>]*href="\/procedures\/botox"[^>]*>Botox alternative in Williamsburg, VA<\/a>/);
+  assert.match(html, /<a[^>]*href="\/procedures\/botox"[^>]*>Botox in Williamsburg, VA<\/a>/);
 });
 
 // Tidewater homepage: the homepage's own FAQs render visibly (main's list, each question an H3 with its answer), and
@@ -137,7 +138,14 @@ test("homepage prices come from the catalog: no typed dollar amounts, cash befor
   const cash = (slug: string) => formatUsdShort(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
   const card = (slug: string) => cardPriceLabel(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
   const rows = Object.fromEntries(HOME_PRICE_ROWS.map((row) => [row.href, row]));
-  // A Xeomin credit block is exactly the block price: no "from".
+  // A Botox or Xeomin credit block is exactly the block price: no "from". Botox is priced like Xeomin.
+  assert.deepEqual(rows["/procedures/botox"], {
+    name: "Botox",
+    href: "/procedures/botox",
+    cash: cash("botox"),
+    card: card("botox"),
+    note: "per credit block",
+  });
   assert.deepEqual(rows["/procedures/xeomin"], {
     name: "Xeomin",
     href: "/procedures/xeomin",
@@ -155,14 +163,15 @@ test("homepage prices come from the catalog: no typed dollar amounts, cash befor
   });
   const tiles = Object.fromEntries(CHOOSER_TILES.map((tile) => [tile.href, tile]));
   assert.equal(tiles["/procedures/hyperhidrosis-treatment"].price, `from ${cash("hyperhidrosis-treatment")} cash`);
-  assert.equal(tiles["/procedures/xeomin"].price, `from ${cash("xeomin")} cash`);
+  assert.equal(tiles["/procedures/botox"].price, `from ${cash("botox")} cash`);
+  assert.equal(cash("botox"), cash("xeomin"));
 });
 
 test("the homepage chooser tiles are real links to the treatment owner pages, labelled with approved consult concerns", () => {
   assert.deepEqual(
     CHOOSER_TILES.map((tile) => [tile.concern, tile.href]),
     [
-      ["Lines when I frown, raise my brows or smile", "/procedures/xeomin"],
+      ["Lines when I frown, raise my brows or smile", "/procedures/botox"],
       ["Heavy sweating (underarms, palms, feet)", "/procedures/hyperhidrosis-treatment"],
       ["My child's first earrings / ear piercing", "/procedures/blomdahl-ear-piercing"],
       ["Tired or uneven skin", "/procedures/prp-facial"],

@@ -16,7 +16,7 @@ export default async function LatestPosts() {
         title="Williamsburg Med Spa Blog"
         intro={
           <>
-            Read straightforward guidance on Xeomin (and how it compares with Botox), PRP treatments, hyperhidrosis care, and
+            Read straightforward guidance on Botox and Xeomin (and how they compare), PRP treatments, hyperhidrosis care, and
             medical ear piercing from Williamsburg Med Spa. These articles are written to help you compare options,
             understand candidacy, and decide what to ask during consultation.
           </>

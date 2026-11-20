@@ -67,13 +67,13 @@ function Tile({ photo, caption, aspect = "aspect-[4/5]", badge }: { photo: Clini
 // shown before (the homepage and the ear piercing photos), with the same text.
 
 /** Crow's feet results: copy on the left, one large before/after with a result switcher on the right. */
-export function CrowsFeetResults() {
+export function CrowsFeetResults({ heading = CROWS_FEET_HEADING }: { heading?: string } = {}) {
   return (
     <Section labelledBy="crows-feet-results" data-clinic-photos="crows-feet">
       <Split
         text={
           <>
-            <SectionHeader id="crows-feet-results" title={CROWS_FEET_HEADING} intro={CROWS_FEET_INTRO} />
+            <SectionHeader id="crows-feet-results" title={heading} intro={CROWS_FEET_INTRO} />
             <p className="mt-6 max-w-[62ch] text-sm leading-relaxed text-base-content/80" data-results-caption>
               {RESULTS_CAPTION}
             </p>

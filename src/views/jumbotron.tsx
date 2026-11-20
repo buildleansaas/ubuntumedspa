@@ -21,14 +21,14 @@ const CREDENTIALS = [
 ] as const;
 
 const FEATURED_LINKS = [
-  ["Botox Alternative", "/procedures/botox"],
+  ["Botox", "/procedures/botox"],
   ["Xeomin", "/procedures/xeomin"],
   ["OH-Shot", "/procedures/oh-shot"],
   ["Blomdahl Ear Piercing", "/procedures/blomdahl-ear-piercing"],
   ["Williamsburg Location", "/locations/williamsburg-va"],
 ] as const;
 
-// Answers the Botox-alternative search in the first screen (ScaleSleek f_vh33afabed). The clinic uses only Xeomin.
+// Answers the Botox search in the first screen (ScaleSleek f_vh33afabed). The clinic offers Botox and Xeomin, priced the same.
 // Prices come from the server page as props, so the catalog stays out of this client chunk.
 // Tidewater: main's words, credential chips, links and buttons in the new palette.
 export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: string; xeominCard: string }) {
@@ -52,12 +52,16 @@ export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: stri
             Nurse Practitioner Led Medical Spa in Williamsburg, VA
           </h1>
           <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-base-content/85 md:text-xl">
-            Looking for Botox in Williamsburg, VA? We use{" "}
+            Looking for Botox in Williamsburg, VA? We offer{" "}
+            <Link href="/procedures/botox" className="link link-primary no-underline hover:underline">
+              Botox®
+            </Link>{" "}
+            and{" "}
             <Link href="/procedures/xeomin" className="link link-primary no-underline hover:underline">
               Xeomin®
-            </Link>
-            , a wrinkle relaxer in the same category as Botox®, for frown lines, forehead lines, and crow&apos;s feet.
-            From {xeominCash} cash ({xeominCard} by card or online).
+            </Link>{" "}
+            for frown lines, forehead lines, and crow&apos;s feet, priced the same. From {xeominCash} cash ({xeominCard} by
+            card or online).
           </p>
           <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-base-content/75 md:text-lg">
             A local med spa with Jenny Brady, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified

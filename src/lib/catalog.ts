@@ -80,6 +80,21 @@ const validateQuantity = (catalogItem: CatalogItemConfig, quantity: number) => {
   return quantity;
 };
 
+/**
+ * The synced Mongo record whose Stripe IDs checkout may use for a catalog slug. An item's own record that the sync retired
+ * (active: false) may point at an archived Stripe price, which Checkout rejects ("botox" was retired 2026-11-04 and is
+ * back 2026-11-20 at the same amount), so it is ignored until the next sync reactivates it; checkout then sends
+ * price_data at the current card price. A legacy slug's record (oh-shot -> o-shot) is used as before.
+ */
+export const pickStripeRecord = <T extends { active?: boolean }>(
+  records: Record<string, T>,
+  slug: string,
+  legacySlug?: string
+): T | undefined => {
+  const own = records[slug];
+  return (own?.active === false ? undefined : own) ?? (legacySlug ? records[legacySlug] : undefined);
+};
+
 export const getCatalogRecords = async () => {
   await ensureMongoIndexes();
   const db = await getDb();
@@ -150,8 +165,7 @@ export const resolveCart = async (rawItems: CartItemInput[]): Promise<ResolvedCa
   for (const { catalogItem, quantity } of validated) {
     const pricing = resolveCartItemPricing(catalogItem, quantity);
 
-    const legacySlug = legacyStripeRecordSlugs[catalogItem.slug];
-    const stripeRecord = stripeRecords[catalogItem.slug] ?? (legacySlug ? stripeRecords[legacySlug] : undefined);
+    const stripeRecord = pickStripeRecord(stripeRecords, catalogItem.slug, legacyStripeRecordSlugs[catalogItem.slug]);
 
     items.push({
       ...catalogItem,

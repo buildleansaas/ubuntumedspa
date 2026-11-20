@@ -8,17 +8,17 @@ import HomeOwnerLink, { XeominHubLink } from "components/home-owner-link";
 import { AFTER_HEADER, BUTTON_ROW, CARD, CARD_GRID, CARD_LINK, cardGridFor, CARD_TITLE, H1, H2, INTRO, ROW, ROWS, Section, SectionHeader, Split } from "components/layout";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near Yorktown, VA | Xeomin, a Botox Alternative",
+  title: "Med Spa Near Yorktown, VA | Botox & Xeomin",
   description:
-    "Visit Williamsburg Med Spa from Yorktown for Xeomin® (a Botox® alternative), PRP therapies, hyperhidrosis care, and Blomdahl medical ear piercing.",
+    "Visit Williamsburg Med Spa from Yorktown for Botox® and Xeomin®, PRP therapies, hyperhidrosis care, and Blomdahl medical ear piercing.",
   canonical: "/locations/yorktown-va",
 });
 
 const serviceLinks = [
   {
-    label: "Botox alternative in Williamsburg",
+    label: "Botox in Williamsburg",
     href: "/procedures/botox",
-    copy: "Searching for Botox? We use Xeomin®, a wrinkle relaxer in the same category, with a consult-first plan.",
+    copy: "We offer Botox® and Xeomin®, priced the same, with a consult-first plan.",
   },
   {
     label: "Xeomin treatment planning",
@@ -68,7 +68,7 @@ export default function YorktownPage() {
         <SectionHeader id="yorktown-quick-read" title="Quick read for Yorktown patients" />
         <ul className={`${AFTER_HEADER} ${CARD_GRID}`}>
           <li className={`${CARD} text-base leading-relaxed text-base-content/80`}>Best for Yorktown patients who want a quieter Williamsburg clinic visit rather than a high-volume retail setting.</li>
-          <li className={`${CARD} text-base leading-relaxed text-base-content/80`}>Useful starting point for Xeomin (our wrinkle relaxer), PRP, hyperhidrosis, and medical ear piercing questions.</li>
+          <li className={`${CARD} text-base leading-relaxed text-base-content/80`}>Useful starting point for Botox, Xeomin, PRP, hyperhidrosis, and medical ear piercing questions.</li>
           <li className={`${CARD} text-base leading-relaxed text-base-content/80`}>Families planning first earrings can review sterile equipment, hypoallergenic starter jewelry, placement, and aftercare before booking.</li>
         </ul>
       </Section>

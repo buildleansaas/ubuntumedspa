@@ -1,8 +1,8 @@
 import { COMMERCE_CATALOG_BY_SLUG } from "config/commerce-catalog";
 import { cardPriceLabel, formatUsdShort } from "lib/price";
 
-// The clinic's only wrinkle relaxer is Xeomin; it does not offer Botox® brand. The procedureSlug "botox" entry below is the
-// Botox-alternative page for people searching for Botox (these /near/williamsburg-va URLs redirect to the main pages).
+// The clinic offers Botox® and Xeomin®, priced the same (Botox is back from 2026-11-20). The procedureSlug "botox" entry
+// below is the Botox page (these /near/williamsburg-va URLs redirect to the main pages).
 const xeominBlockCashCents = COMMERCE_CATALOG_BY_SLUG.xeomin.cashAmountCents;
 const xeominBlock = formatUsdShort(xeominBlockCashCents);
 const xeominBlockPrices = `${xeominBlock} cash, ${cardPriceLabel(xeominBlockCashCents)} online by card`;
@@ -63,40 +63,40 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
   {
     procedureSlug: "botox",
     areaSlug: "williamsburg-va",
-    serviceName: "Xeomin (Botox alternative)",
-    shortName: "Xeomin",
+    serviceName: "Botox",
+    shortName: "Botox",
     areaName: "Williamsburg, VA",
-    title: "Botox Alternative in Williamsburg, VA: Xeomin®",
-    metaTitle: "Botox Alternative in Williamsburg, VA | Xeomin® for Frown Lines & Crow's Feet",
+    title: "Botox in Williamsburg, VA",
+    metaTitle: "Botox in Williamsburg, VA | Botox & Xeomin, Same Price",
     metaDescription:
-      `Looking for Botox in Williamsburg, VA? We use Xeomin®, a wrinkle relaxer in the same category, for frown lines and crow's feet. ${xeominBlock} cash per credit block.`,
+      `Botox® in Williamsburg, VA for frown lines, forehead lines, and crow's feet. We also offer Xeomin®, priced the same. ${xeominBlock} cash per credit block.`,
     intro:
-      "Williamsburg Med Spa does not offer Botox® brand. Our wrinkle relaxer is Xeomin®, planned conservatively for frown lines, forehead lines, crow's feet, and natural-looking movement.",
+      "Williamsburg Med Spa offers Botox® and Xeomin®, priced the same, planned conservatively for frown lines, forehead lines, crow's feet, and natural-looking movement. Jenny helps you choose.",
     whyLocal:
-      "Patients searching for Botox in Williamsburg often want a local injector who will explain dosing, timing, follow-up expectations, and pricing. Here that conversation is about Xeomin, a wrinkle relaxer in the same treatment category as Botox®.",
+      "Patients searching for Botox in Williamsburg often want a local injector who will explain dosing, timing, follow-up expectations, and pricing, and whether Botox or Xeomin suits them better.",
     treatmentPlanning:
-      "Common Xeomin conversations include frown lines, forehead lines, crow's feet, lip flip consults, brow balance, and selected lower-face concerns when anatomy and goals fit.",
+      "Common Botox conversations include frown lines, forehead lines, crow's feet, neck bands, lip flip consults, brow balance, and selected lower-face concerns when anatomy and goals fit.",
     trustNote:
-      "Jenny Brady, MSN, RN, CPNP, PMHS reviews your expression, goals, prior injectable history, timing, comfort level, and budget before recommending Xeomin or another option.",
+      "Jenny Brady, MSN, RN, CPNP, PMHS reviews your expression, goals, prior injectable history, timing, comfort level, and budget before recommending Botox, Xeomin, or another option.",
     consultNote:
-      "During consultation, Jenny reviews your face at rest and with movement, prior injectable history (including whether you have had Botox® elsewhere), upcoming events, and medication history before planning Xeomin.",
+      "During consultation, Jenny reviews your face at rest and with movement, prior injectable history, upcoming events, and medication history before planning Botox or Xeomin.",
     heroImage: {
       src: "/procedure/williamsburg-botox-jenny-ai-consultation.webp",
-      alt: "Jenny Brady reviewing Xeomin wrinkle-relaxer planning at Williamsburg Med Spa",
+      alt: "Jenny Brady reviewing Botox and Xeomin planning at Williamsburg Med Spa",
       width: 1536,
       height: 1024,
     },
-    heroChips: ["Forehead lines", "Frown lines / 11s", "Crow's feet", "Lip flip consults", "Xeomin vs Botox guidance", `${xeominBlock} credit blocks (${xeominBlock} cash, ${cardPriceLabel(xeominBlockCashCents)} card)`],
+    heroChips: ["Forehead lines", "Frown lines / 11s", "Crow's feet", "Neck bands", "Botox or Xeomin guidance", `${xeominBlock} credit blocks (${xeominBlock} cash, ${cardPriceLabel(xeominBlockCashCents)} card)`],
     fitGuidance: {
       goodFit: [
         "You want to soften frown lines, forehead lines, or crow's feet without losing natural expression.",
         "You are planning around a wedding, reunion, photo session, or other event and want realistic timing guidance.",
-        "You have had Botox® elsewhere and want to understand how a Xeomin plan compares for your movement pattern.",
+        "You have had Botox® or Xeomin® elsewhere and want to continue, or want to understand how the two compare for your movement pattern.",
         "You prefer conservative treatment planning before committing to a dose.",
       ],
       considerInstead: [
         "If the concern is volume loss rather than movement lines, a wrinkle relaxer is not the right tool, and Jenny can explain what may fit better.",
-        "If the concern is skin texture, Jenny may discuss skincare, PRP, or facial treatments instead of Xeomin alone.",
+        "If the concern is skin texture, Jenny may discuss skincare, PRP, or facial treatments instead of a wrinkle relaxer alone.",
         "If you are pregnant, nursing, or have a medical contraindication, treatment may need to wait or change.",
         "If you want a permanent result or a promised outcome, Xeomin is not that kind of treatment.",
       ],
@@ -124,22 +124,22 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       },
     ],
     pricing: {
-      heading: "Xeomin pricing at Williamsburg Med Spa",
+      heading: "Botox pricing at Williamsburg Med Spa",
       body:
-        `Xeomin is prepaid online in ${xeominBlock} treatment-credit blocks (${xeominBlockPrices}). The credit is applied to your Xeomin visit, and any unused value remains as account credit. Jenny reviews treatment areas and likely dosing range before confirming the plan.`,
+        `Botox is prepaid online in ${xeominBlock} treatment-credit blocks (${xeominBlockPrices}), the same as Xeomin. The credit is applied to your visit, and any unused value remains as account credit. Jenny reviews treatment areas and likely dosing range before confirming the plan.`,
       note: "Final treatment cost depends on treatment areas, dose strategy, and candidacy. Xeomin and Botox® units are not interchangeable, so compare full treatment plans, not unit prices.",
     },
     comparison: {
-      heading: "Had Botox® before? How Xeomin compares",
+      heading: "Botox or Xeomin? How they compare",
       body:
-        "Xeomin and Botox® are both neuromodulators, but they are not interchangeable products and their units do not convert one to one. Williamsburg Med Spa uses Xeomin only. If you have had Botox® elsewhere, Jenny can review your history and goals during consultation.",
+        "Xeomin and Botox® are both neuromodulators, but they are not interchangeable products and their units do not convert one to one. Williamsburg Med Spa offers both. If you have had either one elsewhere, Jenny can review your history and goals during consultation.",
       links: [
-        { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Read the Xeomin vs Botox guide" },
+        { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Read the Botox vs Xeomin guide" },
         { href: "/procedures/xeomin", label: "Main Xeomin service page" },
       ],
       image: {
         src: "/procedure/botox-xeomin-consultation-planning.webp",
-        alt: "Xeomin wrinkle-relaxer consultation planning in Williamsburg",
+        alt: "Botox and Xeomin consultation planning in Williamsburg",
         width: 1400,
         height: 933,
       },
@@ -147,14 +147,14 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     consultationSteps: [
       { title: "Movement review", body: "Jenny reviews your face at rest and with expression so the plan matches how your muscles actually move." },
       { title: "Goal setting", body: "You discuss subtle softening, stronger smoothing, event timing, and how much natural movement you want to keep." },
-      { title: "Prior treatment history", body: "If you have had Botox® elsewhere (or another wrinkle relaxer), that history is reviewed before a Xeomin dose is planned." },
+      { title: "Prior treatment history", body: "If you have had Botox®, Xeomin®, or another wrinkle relaxer elsewhere, that history is reviewed before a dose is planned." },
       { title: "Treatment plan and pricing", body: "Areas, dose strategy, timing, and treatment-credit expectations are explained before treatment." },
       { title: "Aftercare and follow-up expectations", body: "Jenny reviews aftercare, onset timing, and the typical settling window so you know what to watch for." },
     ],
     providerNote: {
-      heading: "Nurse-led Xeomin planning in Williamsburg",
+      heading: "Nurse-led Botox and Xeomin planning in Williamsburg",
       body:
-        "Xeomin planning at Williamsburg Med Spa is consultation-first. Jenny Brady, MSN, RN, CPNP, PMHS focuses on conservative, movement-aware treatment decisions so patients can ask questions before choosing a dose plan.",
+        "Botox and Xeomin planning at Williamsburg Med Spa is consultation-first. Jenny Brady, MSN, RN, CPNP, PMHS focuses on conservative, movement-aware treatment decisions so patients can ask questions before choosing a dose plan.",
       links: [
         { href: "/staff/jenny-brady", label: "Meet Jenny Brady" },
         { href: "/locations/williamsburg-va", label: "Williamsburg clinic details" },
@@ -164,7 +164,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       {
         question: "Do you offer Botox®?",
         answer:
-          "No. We use Xeomin® (incobotulinumtoxinA), a wrinkle relaxer in the same category as Botox®. It is used for the same frown lines, forehead lines, and crow's feet. Units are not interchangeable, so compare the full treatment plan, not a unit price.",
+          "Yes. Williamsburg Med Spa offers Botox® Cosmetic and Xeomin®, priced the same, for frown lines, forehead lines, and crow's feet. Units are not interchangeable, so compare the full treatment plan, not a unit price.",
       },
       {
         question: "How long does Xeomin usually last?",
@@ -189,7 +189,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       {
         question: "Is Xeomin the same as Botox®?",
         answer:
-          "Xeomin and Botox® are both neuromodulators, but they are different products and their units are not interchangeable. Williamsburg Med Spa uses Xeomin only.",
+          "Xeomin and Botox® are both neuromodulators, but they are different products and their units are not interchangeable. Williamsburg Med Spa offers both, and Jenny helps you choose.",
       },
       {
         question: "What should I avoid after Xeomin?",
@@ -198,7 +198,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       },
     ],
     relatedLinks: [
-      { href: "/procedures/botox", label: "Botox alternative in Williamsburg" },
+      { href: "/procedures/botox", label: "Botox in Williamsburg" },
       { href: "/procedures/xeomin", label: "Main Xeomin service page" },
       { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Xeomin vs Botox guide" },
       { href: "/staff/jenny-brady", label: "Meet Jenny Brady" },
@@ -212,11 +212,11 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     shortName: "Xeomin",
     areaName: "Williamsburg, VA",
     title: "Xeomin in Williamsburg, VA",
-    metaTitle: "Xeomin in Williamsburg, VA | Botox Alternative for Natural Movement",
+    metaTitle: "Xeomin in Williamsburg, VA | Botox Also Offered, Same Price",
     metaDescription:
       "Xeomin in Williamsburg, VA with Williamsburg Med Spa for frown lines, forehead lines, crow's feet, lip flip conversations, and natural-looking movement.",
     intro:
-      "Xeomin® is the clinic's wrinkle relaxer and a Botox® alternative, planned for patients who want to soften expression lines while keeping natural facial movement.",
+      "Xeomin® is one of the clinic's two wrinkle relaxers, alongside Botox®, planned for patients who want to soften expression lines while keeping natural facial movement.",
     whyLocal:
       "Patients researching Xeomin in Williamsburg often compare it with Botox and want a clear explanation of onset, dosing, treatment areas, and whether it fits their prior injectable history.",
     treatmentPlanning:
@@ -229,7 +229,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
       {
         question: "Is Xeomin different from Botox®?",
         answer:
-          "Yes. Xeomin and Botox® are both neuromodulators, but they are different products and their units are not interchangeable. Williamsburg Med Spa uses Xeomin only and does not offer Botox® brand.",
+          "Yes. Xeomin and Botox® are both neuromodulators, but they are different products and their units are not interchangeable. Williamsburg Med Spa offers both, priced the same.",
       },
       {
         question: "How long does Xeomin last?",
@@ -249,7 +249,7 @@ export const localInjectableServicePages: LocalInjectableServicePage[] = [
     ],
     relatedLinks: [
       { href: "/procedures/xeomin", label: "Main Xeomin service page" },
-      { href: "/procedures/botox", label: "Botox alternative in Williamsburg" },
+      { href: "/procedures/botox", label: "Botox in Williamsburg" },
       { href: "/locations/williamsburg-va", label: "Williamsburg clinic details" },
     ],
   },

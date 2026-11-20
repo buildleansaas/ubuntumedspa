@@ -4,7 +4,7 @@ import Link from "next/link";
 import { CARD_GRID, Section } from "components/layout";
 
 // Searches the homepage shows up for, each answered under its own H2 (ScaleSleek f_vh33afabed, 2026-11-06).
-// The clinic uses only Xeomin, and does not offer Hydrafacial or dermal fillers: each answer says so plainly.
+// The clinic offers Botox and Xeomin (priced the same), and does not offer Hydrafacial or dermal fillers: each answer says so plainly.
 export type SearchAnswer = {
   id: string;
   heading: string;
@@ -17,13 +17,13 @@ export type SearchAnswer = {
 export const getSearchAnswers = (xeominCash: string, xeominCard: string): SearchAnswer[] => [
   {
     id: "home-botox-alternative",
-    heading: "A Botox alternative in Williamsburg, VA: we use Xeomin®",
+    heading: "Botox and Xeomin in Williamsburg, VA",
     question: "Do you offer Botox® in Williamsburg?",
-    answer: `No. We use Xeomin®, a wrinkle relaxer in the same category as Botox®, for frown lines, forehead lines, and crow's feet. Xeomin starts at ${xeominCash} cash (${xeominCard} by card or online), and Jenny Brady, MSN, RN, CPNP, PMHS plans every treatment.`,
+    answer: `Yes. We offer Botox® and Xeomin® for frown lines, forehead lines, and crow's feet, priced the same: from ${xeominCash} cash (${xeominCard} by card or online). Jenny Brady, MSN, RN, CPNP, PMHS helps you choose and plans every treatment.`,
     links: [
-      { href: "/procedures/botox", label: "Botox alternative in Williamsburg, VA" },
+      { href: "/procedures/botox", label: "Botox in Williamsburg, VA" },
       { href: "/procedures/xeomin", label: "Xeomin in Williamsburg" },
-      { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Xeomin vs. Botox®" },
+      { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Botox® vs. Xeomin®" },
     ],
   },
   {
@@ -51,8 +51,9 @@ export const getSearchAnswers = (xeominCash: string, xeominCard: string): Search
     heading: "Dermal fillers in Williamsburg, VA: not offered here",
     question: "Do you offer dermal fillers in Williamsburg?",
     answer:
-      "No. Williamsburg Med Spa does not offer dermal fillers, including lip filler. For lines that show when you frown, raise your brows, or squint, ask about Xeomin. For skin texture and glow, ask about PRP Facial.",
+      "No. Williamsburg Med Spa does not offer dermal fillers, including lip filler. For lines that show when you frown, raise your brows, or squint, ask about Botox or Xeomin. For skin texture and glow, ask about PRP Facial.",
     links: [
+      { href: "/procedures/botox", label: "Botox" },
       { href: "/procedures/xeomin", label: "Xeomin" },
       { href: "/procedures/prp-facial", label: "PRP Facial" },
     ],
@@ -61,7 +62,7 @@ export const getSearchAnswers = (xeominCash: string, xeominCard: string): Search
 
 export default function SearchAnswers({ xeominCash, xeominCard }: { xeominCash: string; xeominCard: string }) {
   return (
-    <Section tight label="Botox alternative, Hydrafacial, and dermal fillers in Williamsburg" data-search-answers>
+    <Section tight label="Botox and Xeomin, Hydrafacial, and dermal fillers in Williamsburg" data-search-answers>
       <div className={CARD_GRID}>
         {getSearchAnswers(xeominCash, xeominCard).map((item) => (
           <article key={item.id} aria-labelledby={item.id}>

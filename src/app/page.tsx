@@ -44,7 +44,7 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 const localLinks = [
-  { href: "/procedures/botox", label: "Botox alternative in Williamsburg" },
+  { href: "/procedures/botox", label: "Botox in Williamsburg" },
   { href: "/procedures/xeomin", label: "Xeomin in Williamsburg" },
   { href: "/locations/williamsburg-va", label: "Hours & directions" },
   { href: "/locations", label: "Areas we serve" },
@@ -74,7 +74,7 @@ export default async function Page() {
               <SectionHeader
                 id="home-local-intro-heading"
                 eyebrow="Nurse Practitioner led medical spa in Williamsburg, VA"
-                title="Local care with Jenny Brady, MSN, RN, CPNP, PMHS for Xeomin wrinkle relaxer, PRP, sweating treatment, and medical ear piercing."
+                title="Local care with Jenny Brady, MSN, RN, CPNP, PMHS for Botox and Xeomin, PRP, sweating treatment, and medical ear piercing."
                 intro={
                   <>
                     Williamsburg Med Spa is a Nurse Practitioner led medical spa in Williamsburg, VA. Jenny Brady brings

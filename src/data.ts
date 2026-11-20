@@ -1239,7 +1239,7 @@ export const procedures = [
         "Non-surgical PRP Face Lift in Williamsburg, VA: Xeomin® and the PRP Facial in one visit, planned at a consultation first. Results vary.",
     },
     description:
-      "The PRP Face Lift is a non-surgical visit that combines two treatments: Xeomin® and the PRP Facial. Xeomin, the clinic's wrinkle relaxer (a Botox® alternative), temporarily relaxes the muscles behind movement lines such as frown lines, forehead lines, and crow's feet. The PRP Facial uses platelet-rich plasma from a small sample of your own blood to support skin texture and tone. It is not a surgical face lift, it does not remove or tighten skin the way surgery does, and results vary from person to person. Jenny reviews your goals, health history, and whether this combined visit, one treatment alone, or a referral is the better fit before anything is done.",
+      "The PRP Face Lift is a non-surgical visit that combines two treatments: Xeomin® and the PRP Facial. Xeomin, one of the clinic's two wrinkle relaxers (Botox® is the other), temporarily relaxes the muscles behind movement lines such as frown lines, forehead lines, and crow's feet. The PRP Facial uses platelet-rich plasma from a small sample of your own blood to support skin texture and tone. It is not a surgical face lift, it does not remove or tighten skin the way surgery does, and results vary from person to person. Jenny reviews your goals, health history, and whether this combined visit, one treatment alone, or a referral is the better fit before anything is done.",
     headline: "Xeomin® and the PRP Facial in One Non-Surgical Visit",
     subline:
       "The PRP Face Lift pairs Xeomin for movement lines with the PRP Facial for skin texture and tone in one visit. It is non-surgical, results vary, and it starts with a consultation.",
@@ -1618,45 +1618,46 @@ export const procedures = [
     ],
   },
   {
-    // The /procedures/botox URL is kept for people searching for Botox. The clinic does not offer Botox® brand: its only
-    // wrinkle relaxer is Xeomin. The /procedures/botox page is the Botox-alternative page and its purchase panel sells
-    // the Xeomin catalog item (catalogSlug). The /procedures listing card for this entry links to that page and has no
-    // buy button of its own, so the listing never shows two Xeomin buy buttons side by side.
-    name: "Botox Alternative (Xeomin)",
+    // /procedures/botox is the Botox® page (Botox is offered again from 2026-11-20, alongside Xeomin). Botox is priced
+    // exactly like Xeomin: the same cash credit blocks, card price computed the same way (commerce-catalog.ts).
+    // Medical claims follow the BOTOX Cosmetic Prescribing Information (DailyMed, revised 10/2024): adults, temporary
+    // improvement in moderate to severe glabellar lines, lateral canthal lines, forehead lines, and platysma bands.
+    // Every other area on this page is off-label (BOTOX_OFF_LABEL_NOTE in lib/xeomin-concerns.ts).
+    name: "Botox",
     slug: "botox",
     published: true,
-    catalogSlug: "xeomin",
+    catalogSlug: "botox",
     seo: {
-      title: `Botox Alternative in Williamsburg, VA | Xeomin® from ${formatUsdShort(25000)} Cash`,
-      h1: "A Botox Alternative in Williamsburg, VA: We Use Xeomin®",
+      title: `Botox in Williamsburg, VA | Botox & Xeomin from ${formatUsdShort(25000)} Cash`,
+      h1: "Botox® in Williamsburg, VA",
       description:
-        `Searching for Botox in Williamsburg? We use Xeomin®, a wrinkle relaxer in the same category as Botox®. ${formatUsdShort(25000)} cash per credit block (${cardPriceLabel(25000)} card). Nurse-led.`,
+        `Botox® and Xeomin® in Williamsburg, VA with Jenny Brady, NP, who helps you choose. ${formatUsdShort(25000)} cash per credit block (${cardPriceLabel(25000)} card).`,
     },
     description:
-      "Williamsburg Med Spa does not offer Botox® brand. Our wrinkle relaxer is Xeomin® (incobotulinumtoxinA), a botulinum toxin type A injectable in the same treatment category as Botox®, used to temporarily soften dynamic expression lines in appropriate adult candidates. Jenny Brady, MSN, RN, CPNP, PMHS plans Xeomin around forehead lines, frown lines, crow's feet, and selected lower-face areas, with dosing shaped around your facial movement so results look smooth, balanced, and natural.",
-    headline: "Xeomin® is a wrinkle relaxer in the same treatment category as Botox®, planned around your natural expression.",
+      "Williamsburg Med Spa offers Botox® Cosmetic (onabotulinumtoxinA) and Xeomin® (incobotulinumtoxinA). Both are botulinum toxin type A wrinkle relaxers that temporarily relax the muscles behind expression lines. BOTOX Cosmetic is FDA-approved in adults for the temporary improvement in the appearance of moderate to severe frown lines, crow's feet, forehead lines, and vertical neck (platysma) bands. Jenny Brady, MSN, RN, CPNP, PMHS helps you choose between Botox and Xeomin and plans the dose around your facial movement, so results look smooth, balanced, and natural.",
+    headline: "Botox® and Xeomin®, planned around your natural expression. Jenny helps you choose.",
     subline:
-      "If you came here looking for Botox®, the wrinkle relaxer we use is Xeomin®. It treats the same common areas, such as forehead lines, frown lines, and crow's feet. Jenny Brady, MSN, RN, CPNP, PMHS plans each Xeomin visit with a conservative, movement-aware approach.",
+      "Botox treats frown lines, forehead lines, crow's feet, and neck bands. Both Botox and Xeomin are priced the same, in cash credit blocks, and Jenny Brady, MSN, RN, CPNP, PMHS plans each visit with a conservative, movement-aware approach.",
     image: "/procedure/botox-xeomin-consultation-planning.webp",
     price: `${formatUsdShort(25000)} credit blocks · ${cashCardLabel(25000)}`,
     trademarkNote:
-      "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand.",
+      "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan.",
     // programmatic SEO copy
     blogHeadline:
-      "Looking for Botox in Williamsburg? Review Xeomin timing, common treatment areas, aftercare, and our Xeomin vs Botox guide before you book.",
+      "Looking for Botox in Williamsburg? Review timing, common treatment areas, aftercare, and our Botox vs Xeomin guide before you book.",
     benefitsHeadline:
-      "Xeomin is a wrinkle relaxer in the same category as Botox®. It is often used to soften dynamic lines while keeping facial movement balanced and results appropriate to your goals.",
+      "Botox is a wrinkle relaxer used to soften dynamic lines while keeping facial movement balanced and results appropriate to your goals. If Xeomin suits you better, Jenny will say so.",
     benefits: [
       {
         emoji: "🌟",
         benefit: "Targeted Wrinkle Softening",
         description:
-          "Xeomin is commonly used to reduce the look of expression lines in high-movement areas such as the forehead, glabella, and crow's feet.",
+          "Botox is commonly used to reduce the look of expression lines in high-movement areas such as the forehead, between the brows, and crow's feet.",
       },
       {
         emoji: "⏱",
         benefit: "Quick Appointments",
-        description: "Most Xeomin appointments are short and fit easily into a workday schedule.",
+        description: "Most Botox appointments are short and fit easily into a workday schedule.",
       },
       {
         emoji: "💉",
@@ -1666,118 +1667,123 @@ export const procedures = [
       },
       {
         emoji: "🎯",
-        benefit: "Personalized Dosing",
+        benefit: "Botox or Xeomin, Your Choice",
         description:
-          "Xeomin dosing is adjusted by treatment area, muscle activity, and your desired outcome to keep results natural-looking.",
+          "Jenny explains how Botox and Xeomin compare and adjusts the dose by treatment area, muscle activity, and the result you want.",
       },
     ],
     ailmentsHeadline:
-      "Xeomin can be used across several high-motion facial areas depending on anatomy and goals. We focus on preserving expression while softening the movement patterns that make lines look more pronounced over time.",
+      "Botox can be used across several high-motion facial areas depending on anatomy and goals. We focus on preserving expression while softening the movement patterns that make lines look more pronounced over time.",
     ailments: [
       {
         title: "Forehead Lines",
         description:
-          "Horizontal forehead movement can create visible lines over time. Xeomin can soften these lines while preserving a natural, expressive look.",
+          "Horizontal forehead lines are one of the uses on the BOTOX Cosmetic label. Treatment can soften these lines while preserving a natural, expressive look.",
         slug: "forehead-lines",
         tag: "common",
       },
       {
         title: "Frown Lines (11s)",
         description:
-          "Glabellar lines between the brows are one of the most requested wrinkle-relaxer areas and are commonly treated with precise Xeomin dosing patterns.",
+          "Glabellar lines between the brows are one of the most requested wrinkle-relaxer areas and are on the BOTOX Cosmetic label.",
         slug: "frown-lines",
         tag: "common",
       },
       {
         title: "Crow's Feet",
         description:
-          "Lateral eye lines from smiling or squinting can be softened with targeted Xeomin treatment that keeps your smile looking natural.",
+          "Lateral eye lines from smiling or squinting are on the BOTOX Cosmetic label and can be softened with targeted treatment that keeps your smile looking natural.",
         slug: "crows-feet",
         tag: "common",
       },
       {
+        title: "Neck Bands",
+        description:
+          "Vertical platysma bands on the neck are on the BOTOX Cosmetic label for adults with moderate to severe bands. Jenny reviews whether your neck is a good fit.",
+        slug: "neck-band-softening",
+        tag: "uncommon",
+      },
+      {
         title: "Bunny Lines",
         description:
-          "Nasal scrunch lines can be addressed with conservative Xeomin placement for patients who want refinement in this smaller treatment zone.",
+          "Nasal scrunch lines are an off-label area that can be addressed with conservative placement for patients who want refinement in this smaller zone.",
         slug: "bunny-lines",
         tag: "uncommon",
       },
       {
         title: "Subtle Brow Lift Support",
         description:
-          "In selected candidates, Xeomin can support a cleaner brow shape and brighter eye appearance as part of a full-face plan.",
+          "In selected candidates, an off-label approach can support a cleaner brow shape as part of a full-face plan.",
         slug: "subtle-brow-lift-support",
         tag: "uncommon",
       },
       {
         title: "Lip Flip",
         description:
-          "A conservative Xeomin lip-flip approach can improve upper-lip show and smile balance when anatomy and movement patterns are appropriate.",
+          "An off-label lip flip can change upper-lip show when anatomy and movement patterns are appropriate. It does not add volume, and it starts with a consultation.",
         slug: "lip-flip",
         tag: "uncommon",
       },
       {
         title: "Masseter Slimming / Bruxism Support",
         description:
-          "Xeomin masseter treatment may support jaw clenching concerns and lower-face contour goals in carefully selected patients.",
+          "Masseter treatment is off-label for cosmetic Botox and needs a careful evaluation of jaw clenching and lower-face goals first.",
         slug: "masseter-slimming-bruxism-support",
-        tag: "experimental",
-      },
-      {
-        title: "Neck Band Softening",
-        description:
-          "Vertical platysmal neck bands can sometimes be softened with Xeomin as part of a broader neck and jawline strategy.",
-        slug: "neck-band-softening",
         tag: "experimental",
       },
     ],
     faqHeadline:
-      "Get practical answers about Xeomin as a Botox alternative in Williamsburg: cost, timing, common treatment areas, candidacy, and how Xeomin compares with Botox®.",
+      "Get practical answers about Botox in Williamsburg: cost, timing, common treatment areas, candidacy, and how Botox compares with Xeomin.",
     faqs: [
       {
         question: "Do you offer Botox®?",
         answer:
-          "No. We use Xeomin® (incobotulinumtoxinA), a wrinkle relaxer in the same category as Botox®. It is used for the same frown lines, forehead lines, and crow's feet. Units are not interchangeable, so compare the full treatment plan, not a unit price.",
+          "Yes. Williamsburg Med Spa offers Botox® Cosmetic and Xeomin®. Both are wrinkle relaxers for frown lines, forehead lines, and crow's feet, and Jenny helps you choose between them at your visit.",
       },
       {
-        question: "What is Xeomin commonly used for?",
+        question: "Should I choose Botox or Xeomin?",
         answer:
-          "Xeomin is commonly used to temporarily improve the look of forehead lines, glabellar (frown) lines, and crow's feet in appropriate adult candidates.",
+          "Both are botulinum toxin type A products and both are priced the same here. Botox's cosmetic label also covers vertical neck bands. If you have had one before and liked it, you can stay with it. Otherwise Jenny walks you through the difference and your treatment history before you decide.",
       },
       {
-        question: "How much does Xeomin cost in Williamsburg?",
+        question: "What is Botox commonly used for?",
         answer:
-          `Williamsburg Med Spa prices Xeomin in ${formatUsdShort(25000)} credit blocks (${formatUsdShort(25000)} per block in cash or ${cardPriceLabel(25000)} online by card). Your total depends on the areas treated, muscle strength, and your dosing plan.`,
+          "BOTOX Cosmetic is FDA-approved in adults for the temporary improvement in the appearance of moderate to severe frown lines (glabellar lines), crow's feet (lateral canthal lines), forehead lines, and vertical neck (platysma) bands. Other areas are off-label and are reviewed at your consultation.",
       },
       {
-        question: "How soon will I notice Xeomin results?",
+        question: "How much does Botox cost in Williamsburg?",
         answer:
-          "Many patients begin noticing improvement in several days, with fuller visible effect commonly developing around two weeks.",
+          `Williamsburg Med Spa prices Botox in ${formatUsdShort(25000)} credit blocks (${formatUsdShort(25000)} per block in cash or ${cardPriceLabel(25000)} online by card), the same as Xeomin. Your total depends on the areas treated, muscle strength, and your dosing plan.`,
       },
       {
-        question: "How long can Xeomin results last?",
+        question: "How soon will I notice Botox results?",
         answer:
-          "Results vary, but many patients see benefits for about 3 to 4 months before planning maintenance treatment.",
+          "Many patients begin noticing a change within several days, with the fuller effect commonly developing over about two weeks. Results vary.",
       },
       {
-        question: "How is Xeomin different from Botox®?",
+        question: "How long can Botox results last?",
         answer:
-          "Both are botulinum toxin type A products, but they have different formulations and their dose units are not interchangeable. Williamsburg Med Spa uses Xeomin only; Jenny can explain how a Xeomin plan compares if you have had Botox® elsewhere.",
+          "Results vary, but many patients see the effect for about 3 to 4 months before planning maintenance treatment.",
       },
       {
-        question: "Is there downtime after Xeomin?",
+        question: "How is Botox different from Xeomin?",
+        answer:
+          "Both are botulinum toxin type A products, but they have different formulations and their dose units are not interchangeable. Jenny can explain how a Botox or Xeomin plan compares, especially if you have had either one elsewhere.",
+      },
+      {
+        question: "Is there downtime after Botox?",
         answer:
           "Most patients return to normal daily activities the same day. Jenny will review simple aftercare instructions based on the areas treated and your risk of bruising or tenderness.",
       },
       {
-        question: "Am I a good candidate for Xeomin?",
+        question: "Am I a good candidate for Botox?",
         answer:
-          "Xeomin may be appropriate for adults with expression lines caused by repeated movement, but candidacy depends on your health history, medications, pregnancy or nursing status, prior injectable history, and the look you want to preserve.",
+          "Botox may be appropriate for adults with expression lines caused by repeated movement, but candidacy depends on your health history, medications, pregnancy or nursing status, prior injectable history, and the look you want to preserve.",
       },
       {
         question: "What side effects are possible?",
         answer:
-          "Common side effects can include temporary injection-site redness, swelling, bruising, or tenderness. Your consultation should include a review of risks, contraindications, and warning signs.",
+          "Common side effects can include temporary injection-site redness, swelling, bruising, or tenderness, as well as headache, eyelid swelling, and temporary eyelid or brow drooping. Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment. Your consultation includes a review of risks, contraindications, and warning signs.",
       },
     ],
   },
@@ -1787,10 +1793,10 @@ export const procedures = [
     seo: {
       title: `Xeomin® in Williamsburg, VA | Wrinkle Relaxer from ${formatUsdShort(25000)} Cash`,
       description:
-        `Xeomin® is our wrinkle relaxer, a Botox® alternative for frown lines, forehead lines, and crow's feet. ${formatUsdShort(25000)} cash per credit block (${cardPriceLabel(25000)} card).`,
+        `Xeomin® in Williamsburg for frown lines, forehead lines, and crow's feet. We also offer Botox®. ${formatUsdShort(25000)} cash per credit block (${cardPriceLabel(25000)} card).`,
     },
     description:
-      "Xeomin® (incobotulinumtoxinA) is the clinic's wrinkle relaxer and a Botox® alternative. It is a botulinum toxin type A injectable used to soften dynamic expression lines in areas such as forehead lines, frown lines, crow's feet, lip flip zones, bunny lines, and selected lower-face movement patterns. Williamsburg Med Spa does not offer Botox® brand. Xeomin treatment is planned around muscle movement, facial balance, and realistic follow-up timing so results look refreshed rather than frozen.",
+      "Xeomin® (incobotulinumtoxinA) is one of the clinic's two wrinkle relaxers, alongside Botox®. It is a botulinum toxin type A injectable used to soften dynamic expression lines in areas such as forehead lines, frown lines, crow's feet, lip flip zones, bunny lines, and selected lower-face movement patterns. Jenny helps you choose between Xeomin and Botox. Xeomin treatment is planned around muscle movement, facial balance, and realistic follow-up timing so results look refreshed rather than frozen.",
     headline: "Xeomin injections planned for subtle, natural-looking movement.",
     subline:
       "Xeomin can treat forehead lines, frown lines, crow's feet, lip flip concerns, bunny lines, and select lower-face areas with a conservative dosing approach.",
@@ -1959,12 +1965,12 @@ export const procedures = [
       },
     ],
     faqHeadline:
-      "Get practical answers about Xeomin treatment areas, onset, longevity, and how Xeomin compares with Botox® if you are looking for a Botox alternative.",
+      "Get practical answers about Xeomin treatment areas, onset, longevity, and how Xeomin compares with Botox®, which we also offer.",
     faqs: [
       {
         question: "How does Xeomin differ from Botox®?",
         answer:
-          "Both Xeomin and Botox® are botulinum toxin type A products with different formulations, and their dose units are not interchangeable. Williamsburg Med Spa uses Xeomin only and does not offer Botox® brand. If you have had Botox® elsewhere, Jenny plans your Xeomin dose from your treatment goals, anatomy, and prior response.",
+          "Both Xeomin and Botox® are botulinum toxin type A products with different formulations, and their dose units are not interchangeable. Williamsburg Med Spa offers both, priced the same. If you have had Botox® before, Jenny plans your Xeomin dose from your treatment goals, anatomy, and prior response.",
       },
       {
         question: "How long does the procedure take?",
@@ -1983,7 +1989,7 @@ export const procedures = [
       {
         question: "Are there any side effects?",
         answer:
-          "Common side effects are mild and include temporary redness, swelling, or bruising at the injection site. It's essential to consult with your practitioner regarding any potential risks.",
+          "Common side effects can include temporary redness, swelling, tenderness, or bruising at the injection site. On the Xeomin® label, bruising at the injection site is the most common side effect for upper facial lines. Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment. Your consultation includes a review of risks, contraindications, and warning signs.",
       },
     ],
   },

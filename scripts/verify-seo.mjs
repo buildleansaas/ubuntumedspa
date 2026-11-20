@@ -318,19 +318,23 @@ const homeDescriptionTag = (home.match(/<meta\b[^>]*>/gi) || []).find(
 );
 const homeDescription = homeDescriptionTag ? getTagAttributes(homeDescriptionTag).content || "" : "";
 const expectedHomeDescription =
-  "Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) from $250 cash, Blomdahl ear piercing $45, B-12 $25, PRP. See all prices.";
+  "Nurse practitioner-led med spa on Powhatan Pkwy: Botox® & Xeomin® from $250 cash, Blomdahl ear piercing $45, B-12 $25, PRP. See all prices.";
 if (homeDescription !== expectedHomeDescription) {
   fail(`homepage meta description is ${JSON.stringify(homeDescription)}`);
 }
 if (homeDescription.length > 160) fail(`homepage meta description is ${homeDescription.length} characters`);
-if (!/Xeomin/.test(homeDescription) || !/Botox® alternative/.test(homeDescription) || !/Blomdahl ear piercing/.test(homeDescription)) {
-  fail("homepage meta drops Xeomin, the Botox-alternative framing, or Blomdahl ear piercing");
+if (!/Xeomin/.test(homeDescription) || !/Botox®/.test(homeDescription) || !/Blomdahl ear piercing/.test(homeDescription)) {
+  fail("homepage meta drops Botox, Xeomin, or Blomdahl ear piercing");
 }
-// The clinic uses only Xeomin; Botox may appear only as the searched-for term or a comparison.
-const homeBotoxAlternativeLink = homeLinks.some(
-  (link) => link.attributes.href === "/procedures/botox" && /botox alternative in williamsburg/i.test(link.text)
+// The clinic offers Botox and Xeomin, priced the same (2026-11-20). /procedures/botox owns the Botox searches.
+const homeBotoxLink = homeLinks.some(
+  (link) => link.attributes.href === "/procedures/botox" && /botox in williamsburg/i.test(link.text)
 );
-if (!homeBotoxAlternativeLink) fail('homepage drops the "Botox alternative in Williamsburg" link');
+if (!homeBotoxLink) fail('homepage drops the "Botox in Williamsburg" link');
+// A page that says the clinic does not offer Botox, or uses only Xeomin, contradicts the business (and cost rankings).
+const FALSE_BOTOX_CLAIM =
+  /(?:\bnot|\bnever|n't|\bno longer)\s+(?:currently\s+)?(?:offer|offers|carry|carries|use|uses)\s+(?:Dysport\s+or\s+)?Botox|\bno Botox®? brand|\bonly\s+(?:uses?\s+)?Xeomin\b|\bXeomin®?[\s-]+only\b|\bwe use Xeomin\b|\bXeomin®?,?\s+not\s+Botox/i;
+if (FALSE_BOTOX_CLAIM.test(getVisibleText(home))) fail("homepage says the clinic does not offer Botox or uses only Xeomin");
 if (/filler/i.test(homeDescription)) fail("homepage meta includes filler language");
 
 const readSnippet = (html) => {
@@ -357,29 +361,29 @@ const snippetExpectations = {
         "Holiday sibling offer through Dec 31: 2 kids, both ears, $140 cash ($144.50 card). Sterile Blomdahl ear piercing in Williamsburg, VA by a pediatric NP.",
     },
   },
-  // Xeomin hub-and-satellite cluster (src/lib/xeomin-concerns.ts). Cash price first, Botox® only as the search term.
+  // Xeomin hub-and-satellite cluster (src/lib/xeomin-concerns.ts). Cash price first; Botox® is offered too, priced the same.
   "/procedures/xeomin/for/frown-lines": {
     title: "Xeomin for Frown Lines in Williamsburg, VA | From $250 Cash",
     description:
-      "Looking for Botox® for frown lines (11s)? We use Xeomin® in Williamsburg, VA. $250 cash per credit block ($257.78 card). Nurse-led, conservative dosing.",
+      "Xeomin® for frown lines (11s) in Williamsburg, VA. We also offer Botox®, priced the same. $250 cash per credit block ($257.78 card). Nurse-led.",
     h1: "Xeomin for Frown Lines (11s) in Williamsburg, VA",
   },
   "/procedures/xeomin/for/forehead-lines": {
     title: "Xeomin for Forehead Lines in Williamsburg, VA | From $250 Cash",
     description:
-      "Looking for Botox® for forehead lines? We use Xeomin® in Williamsburg, VA. $250 cash per credit block ($257.78 card). Planned around your brows.",
+      "Xeomin® for forehead lines in Williamsburg, VA. We also offer Botox®, priced the same. $250 cash per credit block ($257.78 card). Planned around your brows.",
     h1: "Xeomin for Forehead Lines in Williamsburg, VA",
   },
   "/procedures/xeomin/for/crows-feet": {
     title: "Xeomin for Crow's Feet in Williamsburg, VA | From $250 Cash",
     description:
-      "Looking for Botox® for crow's feet? We use Xeomin® in Williamsburg, VA. $250 cash per credit block ($257.78 card). Planned to keep a natural smile.",
+      "Xeomin® for crow's feet in Williamsburg, VA. We also offer Botox®, priced the same. $250 cash per credit block ($257.78 card). Planned to keep a natural smile.",
     h1: "Xeomin for Crow's Feet in Williamsburg, VA",
   },
   "/procedures/xeomin/for/lip-flip": {
     title: "Xeomin Lip Flip in Williamsburg, VA | From $250 Cash",
     description:
-      "Looking for Botox® for a lip flip? We use Xeomin® in Williamsburg, VA. Consult first: it does not add volume. $250 cash per credit block ($257.78 card).",
+      "Xeomin® lip flip in Williamsburg, VA (Botox® also offered). Consult first: it does not add volume. $250 cash per credit block ($257.78 card).",
     h1: "Xeomin Lip Flip in Williamsburg, VA",
   },
   "/procedures/xeomin/cost": {
@@ -607,9 +611,10 @@ if (/Quick read|Popular searches|Easy internal links/.test(newportNews)) {
 if (!newportNews.includes("Do you offer Botox for Newport News patients?")) {
   fail("Newport News owner is missing the visible Botox/Xeomin answer");
 }
-if (!/Botox alternative in Williamsburg/.test(newportNews)) {
-  fail('Newport News owner is missing the "Botox alternative in Williamsburg" link');
+if (!/Botox in Williamsburg/.test(newportNews)) {
+  fail('Newport News owner is missing the "Botox in Williamsburg" link');
 }
+if (FALSE_BOTOX_CLAIM.test(getVisibleText(newportNews))) fail("Newport News owner says the clinic does not offer Botox or uses only Xeomin");
 if (!newportNews.includes('"@type":"FAQPage"')) {
   fail("Newport News owner is missing server-rendered FAQPage schema");
 }
@@ -618,7 +623,7 @@ const ownerPageExpectations = {
   "/prices": {
     title: "Med Spa Prices in Williamsburg, VA | Cash and Card Prices",
     description:
-      "Every price posted: Xeomin® from $250 cash per credit block, ear piercing $45, B-12 $25, PRP facial $600. Cash price first, card/online price shown.",
+      "Every price posted: Botox® & Xeomin® from $250 cash per credit block, ear piercing $45, B-12 $25, PRP facial $600. Cash price first, card/online price shown.",
     h1: "Williamsburg Med Spa Prices",
     required: [
       "$250 credit blocks · $250 cash · $257.78 card/online",
@@ -853,10 +858,10 @@ const serviceSatelliteExpectations = [
   ["/procedures/prp-face-lift/near/yorktown-va", "PRP Face Lift Yorktown VA | $1,500 Cash, Non-Surgical", "PRP Face Lift near Yorktown, VA", ["not a surgical face lift", "typically 25–35 minutes", "$1,500 cash · $1,545.11 card/online"]],
   ...["Newport News", "Yorktown"].map((area) => [
     `/procedures/xeomin/near/${area.toLowerCase().replace(" ", "-")}-va`,
-    `Xeomin near ${area} VA | Botox® Alternative, from $250`,
+    `Xeomin near ${area} VA | Botox® Also Offered, from $250`,
     `Xeomin near ${area}, VA`,
     [
-      "does not offer Botox® brand",
+      "Williamsburg Med Spa offers both, priced the same",
       "typically 25–35 minutes",
       "$250 per credit block cash · $257.78 card/online",
       "Get medical help right away if you have trouble swallowing, speaking, or breathing",
@@ -1018,22 +1023,23 @@ for (const path of priorityPaths) {
 const botoxPage = pages.find((page) => normalizePath(page.canonicalUrl) === "/procedures/botox");
 if (botoxPage) {
   const botoxSnippet = readSnippet(botoxPage.html);
-  if (botoxSnippet.h1 !== "A Botox Alternative in Williamsburg, VA: We Use Xeomin®") {
-    fail(`Botox-alternative H1 changed: ${JSON.stringify(botoxSnippet.h1)}`);
+  if (botoxSnippet.h1 !== "Botox® in Williamsburg, VA") {
+    fail(`Botox H1 changed: ${JSON.stringify(botoxSnippet.h1)}`);
   }
-  if (botoxSnippet.title !== "Botox Alternative in Williamsburg, VA | Xeomin® from $250 Cash") {
-    fail(`Botox-alternative title changed: ${JSON.stringify(botoxSnippet.title)}`);
+  if (botoxSnippet.title !== "Botox in Williamsburg, VA | Botox & Xeomin from $250 Cash") {
+    fail(`Botox title changed: ${JSON.stringify(botoxSnippet.title)}`);
   }
-  if (!/We use Xeomin®/.test(botoxSnippet.description) || !/\$250 cash/.test(botoxSnippet.description)) {
-    fail("Botox-alternative meta dropped Xeomin or the cash price");
+  if (!/Botox® and Xeomin®/.test(botoxSnippet.description) || !/\$250 cash/.test(botoxSnippet.description)) {
+    fail("Botox meta dropped Botox and Xeomin or the cash price");
   }
-  if (!botoxPage.html.includes("Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand.")) {
-    fail("Botox-alternative page is missing the trademark disclaimer");
+  if (!unescapeHtml(botoxPage.html).includes("Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan.")) {
+    fail("Botox page is missing the trademark notice");
   }
-  // The Botox-alternative page sells the Xeomin item; the "botox" catalog item was removed.
-  if (!/id=["']xeomin-quantity["']/.test(botoxPage.html) || /id=["']botox-quantity["']/.test(botoxPage.html)) {
-    fail("Botox-alternative page purchase panel is not the Xeomin item");
-  }
+  if (!/BOTOX Cosmetic&#x27;s FDA label covers|BOTOX Cosmetic's FDA label covers/.test(botoxPage.html)) fail("Botox page is missing its off-label note");
+  // The Botox page sells the botox catalog item (priced like Xeomin).
+  if (!/id=["']botox-quantity["']/.test(botoxPage.html)) fail("Botox page purchase panel is not the Botox item");
+  if (!/href=["']\/procedures\/xeomin["']/.test(botoxPage.body)) fail("Botox page does not link to /procedures/xeomin");
+  if (FALSE_BOTOX_CLAIM.test(getVisibleText(botoxPage.html))) fail("Botox page says the clinic does not offer Botox or uses only Xeomin");
 }
 // Xeomin cluster: every satellite links to the hub with the descriptive anchor and to the product page; the hub and the
 // product page link to every satellite; FAQ schema matches the visible FAQ list; the cash price shows before the card price.
@@ -1086,13 +1092,14 @@ for (const path of xeominClusterPaths) {
   const anchors = extractAll(page.body, /<a[^>]+href=["']\/procedures\/botox["'][^>]*>([\s\S]*?)<\/a>/gi).map((value) =>
     getVisibleText(value).trim()
   );
-  if (!anchors.includes("Botox alternative in Williamsburg")) fail(`${path} does not link to /procedures/botox as "Botox alternative in Williamsburg"`);
+  if (!anchors.includes("Botox in Williamsburg")) fail(`${path} does not link to /procedures/botox as "Botox in Williamsburg"`);
   if (!linksTo(page.body, "/procedures/xeomin")) fail(`${path} does not link to /procedures/xeomin`);
   for (const sibling of xeominClusterPaths.filter((candidate) => candidate !== path)) {
     if (!linksTo(page.body, sibling)) fail(`${path} does not link to sibling ${sibling}`);
   }
   const text = getVisibleText(page.html);
-  if (!/We use Xeomin®/.test(text)) fail(`${path} is missing the "We use Xeomin®" line`);
+  if (!/We offer Botox® and Xeomin®|Botox® is priced the same as Xeomin®/.test(text)) fail(`${path} is missing the "we offer Botox® and Xeomin®" line`);
+  if (FALSE_BOTOX_CLAIM.test(text)) fail(`${path} says the clinic does not offer Botox or uses only Xeomin`);
   const cashIndex = text.indexOf("$250 cash");
   if (cashIndex < 0 || cashIndex > text.indexOf("$257.78")) fail(`${path} does not show the $250 cash price before the card price`);
   if (!text.includes("Temporary side effects can include redness, bruising, tenderness, or swelling at injection sites.")) {
@@ -1122,20 +1129,20 @@ if (eventsPage) {
   if (eventsTitle === "Botox Parties in Williamsburg, VA | Private Med Spa Events") {
     fail("events title still competes for Botox Williamsburg");
   }
-  if (!/href=["']\/procedures\/xeomin["']/.test(eventsPage.body)) fail("events page does not link to the Xeomin owner");
+  if (!/href=["']\/procedures\/botox["']/.test(eventsPage.body)) fail("events page does not link to the Botox owner page");
 }
 const botoxParty = pages.find((page) => normalizePath(page.canonicalUrl) === "/events/botox-party");
 if (botoxParty && readSnippet(botoxParty.html).title.startsWith("Botox Parties in Williamsburg")) {
   fail("Botox party title still competes for Botox Williamsburg");
 }
-if (botoxParty && !/href=["']\/procedures\/xeomin["']/.test(botoxParty.body)) {
-  fail("wrinkle relaxer party page does not link to the Xeomin owner");
+if (botoxParty && !/href=["']\/procedures\/botox["']/.test(botoxParty.body)) {
+  fail("wrinkle relaxer party page does not link to the Botox owner page");
 }
-if (botoxParty && /free Botox|Botox party/i.test(getVisibleText(botoxParty.html))) {
-  fail("wrinkle relaxer party page still offers Botox");
+if (botoxParty && FALSE_BOTOX_CLAIM.test(getVisibleText(botoxParty.html))) {
+  fail("wrinkle relaxer party page says the clinic does not offer Botox or uses only Xeomin");
 }
 const newportNewsSnippet = readSnippet(newportNews);
-if (newportNewsSnippet.title !== "Med Spa Newport News | Xeomin, a Botox Alternative") {
+if (newportNewsSnippet.title !== "Med Spa Newport News | Botox & Xeomin from $250 Cash") {
   fail(`Newport News title is ${JSON.stringify(newportNewsSnippet.title)}`);
 }
 if (!/25–35 minute drive from Newport News/.test(getVisibleText(newportNews))) {

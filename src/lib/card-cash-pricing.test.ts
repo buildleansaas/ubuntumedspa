@@ -105,11 +105,11 @@ test("every catalog item at every allowed quantity nets at least the cash price 
   assert.ok(checked >= COMMERCE_CATALOG.length);
 });
 
-test("increment-credit items (Xeomin) charge the card price but credit exactly the cash value", () => {
+test("increment-credit items (Botox, Xeomin) charge the card price but credit exactly the cash value", () => {
   const creditItems = COMMERCE_CATALOG.filter((item) => item.pricingMode === "increment_credit");
   assert.deepEqual(
     creditItems.map((item) => item.slug).sort(),
-    ["xeomin"]
+    ["botox", "xeomin"]
   );
 
   for (const item of creditItems) {

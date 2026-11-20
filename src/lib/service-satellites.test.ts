@@ -30,6 +30,7 @@ import {
 } from "./xeomin-concerns";
 // Plain ES module shared with scripts/verify-seo.mjs.
 import { unsupportedPrpBreastClaimClasses } from "../../scripts/lib/prp-breast-claims.mjs";
+import { findFalseBotoxClaims } from "./botox-honesty.test";
 
 const ROOT = process.cwd();
 const read = (path: string) => readFileSync(join(ROOT, path), "utf8");
@@ -156,7 +157,7 @@ test("each hub links to all of its satellites", () => {
     const expected = serviceSatellitePages.filter((page) => page.hubSlug === hub).map(satellitePath);
     assert.deepEqual(group.links.map((link) => link.href).sort(), expected.sort(), hub);
   }
-  // The Botox-alternative page links the Xeomin area pages too.
+  // The Botox page (Botox and Xeomin, priced the same) links the Xeomin area pages too.
   assert.deepEqual(getHubSatelliteGroup("botox")?.links, getHubSatelliteGroup("xeomin")?.links);
   const hubRoute = read("src/app/procedures/[slug]/page.tsx");
   assert.match(hubRoute, /getHubSatelliteGroup\(procedure\.slug\)/);
@@ -329,13 +330,15 @@ test("Newport News and Yorktown pages for each service are substantively distinc
   }
 });
 
-test("Xeomin near pages: Xeomin only (never Botox® brand), label wording, risks, off-label lip flip, trademark note", () => {
+test("Xeomin near pages: Botox also offered at the same price, label wording, risks, off-label lip flip, trademark note", () => {
   const pages = serviceSatellitePages.filter((item) => item.hubSlug === "xeomin");
   assert.deepEqual(pages.map((page) => page.slug).sort(), ["newport-news-va", "yorktown-va"]);
   for (const page of pages) {
     const copy = visibleCopy(page);
     const path = satellitePath(page);
-    assert.match(copy, /does not offer Botox® brand/, path);
+    assert.match(copy, /Williamsburg Med Spa offers both, priced the same/, path);
+    assert.match(page.metaDescription, /We also offer Botox®, priced the same/, path);
+    assert.deepEqual(findFalseBotoxClaims(path, copy + page.metaTitle + page.metaDescription), [], path);
     assert.match(copy, /Units are not interchangeable/, path);
     assert.ok(copy.includes(XEOMIN_SIDE_EFFECTS) && copy.includes(XEOMIN_SEEK_HELP), path);
     assert.ok(copy.includes(XEOMIN_LIP_FLIP_OFF_LABEL), path);
@@ -345,8 +348,6 @@ test("Xeomin near pages: Xeomin only (never Botox® brand), label wording, risks
     for (const concern of xeominConcernPages) {
       assert.ok(getSatelliteLinks(page).some((item) => item.href === concern.path), `${path} lacks ${concern.path}`);
     }
-    // Botox is either marked ® or used as the search term ("Botox alternative", "Botox vs"); nothing offers Botox® itself.
-    assert.doesNotMatch(copy + page.metaTitle + page.metaDescription, /Botox(?!®| alternative| vs)/, path);
     assert.doesNotMatch(copy, /\b(?:best|guarantee[ds]?|permanent|cheapest)\b/i, path);
     for (const link of [XEOMIN_HUB_PATH, XEOMIN_COST_PATH, "/procedures/xeomin"]) {
       assert.ok(getSatelliteLinks(page).some((item) => item.href === link), `${path} lacks ${link}`);
@@ -355,7 +356,7 @@ test("Xeomin near pages: Xeomin only (never Botox® brand), label wording, risks
   // The Yorktown note quotes the last sentence of the /procedures/xeomin FAQ; pin it so an FAQ edit cannot change it silently.
   const yorktown = pages.find((page) => page.slug === "yorktown-va");
   assert.ok(
-    yorktown && visibleCopy(yorktown).includes("If you have had Botox® elsewhere, Jenny plans your Xeomin dose from your treatment goals, anatomy, and prior response.")
+    yorktown && visibleCopy(yorktown).includes("If you have had Botox® before, Jenny plans your Xeomin dose from your treatment goals, anatomy, and prior response.")
   );
   // The hub grid on /procedures/xeomin and /procedures/botox never calls Xeomin a one-visit price.
   for (const hub of ["xeomin", "botox"]) {

@@ -1,5 +1,7 @@
 # Williamsburg Med Spa protected query-owner ledger
 
+Update 2026-11-20: the clinic offers Botox® and Xeomin® again, priced the same (this reverses PR #155's Xeomin-only change of 2026-11-04). It still does not offer filler.
+
 Update 2026-11-04 (PR #155): the clinic uses only Xeomin (no Botox® brand) and no longer offers filler.
 
 Updated: 2026-07-20
@@ -88,6 +90,8 @@ Decision:
 
 Update 2026-11-04 (PR #155, honesty change): the clinic uses only Xeomin and does not offer Botox® brand. This supersedes the two rules above ("A future transfer to `/procedures/botox` must be a separate, reversible internal-link/intent test" and "Do not remove Botox language from the homepage"). The homepage's Botox offer language was removed because it was false, not as an ownership test, and `/procedures/botox` is now the Botox-alternative (Xeomin) page. Botox offer language must not return to any page; Botox may appear only in four contexts: the search term ("Botox alternative"), a comparison, a "we do not offer Botox®" statement, or the trademark notice. Keep measuring both `/` and `/procedures/botox` for the botox queries on every checkpoint.
 
+Update 2026-11-20: Botox is offered again alongside Xeomin, priced the same. `/procedures/botox` is the real Botox page again (it also explains Botox vs Xeomin) and owns "botox williamsburg" and "botox near me". "botox newport news" stays with `/locations/newport-news-va` (see Newport News below). Botox offer language is true again and belongs on the homepage and location pages; never write that the clinic does not offer Botox.
+
 Update 2026-11-08 (owner transfer test): `/procedures/botox` becomes the owner for `botox williamsburg` and `botox williamsburg va`, as planned above ("preferred long-term service destination"). Why now: Google's URL Inspection reported `/procedures/botox` as "URL is unknown to Google" on 2026-11-04, which is why the homepage ranks for these searches (90 days on Google, 2026-08-04 to 2026-11-02: `botox williamsburg` 312 impressions at position 15.9, `botox williamsburg va` 265 impressions at 8.8), while Bing ranks `/procedures/botox` about 1.4 for `botox williamsburg va`. The test is reversible and internal-link only: indexing is requested for `/procedures/botox`; /events, /locations/williamsburg-va, /locations/yorktown-va and the homepage's Botox-alternative H2 answer link to it with "Botox alternative in Williamsburg, VA"; the homepage title and meta stay the med spa owner's (restored after PR #173 briefly changed them). The homepage keeps its honest Botox-alternative answer under the H1 (it links to /procedures/xeomin). Record both URLs for both queries at D14 and D28 (2026-11-22, 2026-12-06). If neither URL improves by D28 and the homepage's med spa queries hold, the links stay; if the homepage's med spa queries lose position, look for another cause before touching the title again.
 
 Update 2026-11-13 (merge date TBD): Homepage redesign (#182) deployed on merge: chooser and price list added, the three H2 answers moved below the treatments and set smaller. D14/D28 reads after the deploy date are confounded; restart the homepage CTR window from the deploy date.
@@ -141,6 +145,8 @@ Decision:
 Protected and intended current owner: `https://www.williamsburgmedspa.com/locations/newport-news-va`
 
 Update 2026-11-05 (PR #167, per the vault plan Williamsburg-Med-Spa-SEO-Plan.md item 1): the Botox/Xeomin queries (`botox newport news`, `botox newport news va`, `xeomin newport news`) move to `https://www.williamsburgmedspa.com/procedures/xeomin/near/newport-news-va`. The location page keeps `med spa newport news` and its "Xeomin near Newport News" link points to the new page. Watch both pages' Botox impressions at D7/D14/D28 (baseline above: 82 and 20 impressions, positions 13.66 and 17.05); if the location page loses them without the new page gaining, point the link back and revisit.
+
+Update 2026-11-20 (Botox offered again): `botox newport news` and `botox newport news va` are owned by `https://www.williamsburgmedspa.com/locations/newport-news-va`. Its title is now "Med Spa Newport News | Botox & Xeomin from $250 Cash" and its Botox FAQ answers Yes. `/procedures/xeomin/near/newport-news-va` links to it, and the site footer links it on every page (including `/procedures/botox`). The Newport News page links to `/procedures/botox` as "Botox in Williamsburg", never with "Newport News" anchor text; do not retarget other pages at this query.
 
 Exact protected queries:
 
