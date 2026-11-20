@@ -52,7 +52,13 @@ test("the pre-written text to Jenny names only treatments the visitor picked, ne
 test("treatments alone still work, legacy names still map, and junk or nothing is refused", () => {
   assert.deepEqual(resolveConsultSelections({ interests: ["Botox"] }), {
     concerns: [],
-    interests: ["Xeomin (Botox alternative)"],
+    interests: ["Botox"],
+    suggestedInterests: [],
+  });
+  // The 2026-11-04 to 2026-11-20 label, still sent by cached pages.
+  assert.deepEqual(resolveConsultSelections({ interests: ["Xeomin (Botox alternative)"] }), {
+    concerns: [],
+    interests: ["Xeomin"],
     suggestedInterests: [],
   });
   assert.deepEqual(resolveConsultSelections({}), { error: NO_SELECTION_ERROR });

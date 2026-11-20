@@ -34,14 +34,14 @@ export default function Procedures({
   variant = "default",
   featured = null,
   kicker = "Signature treatments",
-  showBotoxAlternativeLink = false,
+  showBotoxLink = false,
 }: {
   headingTag?: HeadingTag;
   variant?: "default" | "editorial";
   featured?: ReactNode;
   kicker?: string;
-  /** One internal link to the Botox-alternative page; off on the homepage, which already links it. */
-  showBotoxAlternativeLink?: boolean;
+  /** One internal link to the Botox page; off on the homepage, which already links it. */
+  showBotoxLink?: boolean;
 }) {
   const Heading = headingTag;
   const visibleProcedures = sortProcedures(
@@ -56,13 +56,13 @@ export default function Procedures({
           id="home-procedures-heading"
           eyebrow={kicker}
           title="Medical Spa Treatments in Williamsburg, VA"
-          intro="Compare Xeomin® (our wrinkle relaxer and a Botox® alternative), PRP treatments, microneedling with PRP, hyperhidrosis care, Blomdahl medical ear piercing for babies, children, teens, and adults, and vitamin B-12 injections. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation."
+          intro="Compare Botox® and Xeomin® wrinkle relaxers, PRP treatments, microneedling with PRP, hyperhidrosis care, Blomdahl medical ear piercing for babies, children, teens, and adults, and vitamin B-12 injections. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation."
         >
-          {showBotoxAlternativeLink ? (
+          {showBotoxLink ? (
             <p className={`mt-4 ${INTRO}`}>
-              Looking for Botox in Williamsburg? We use Xeomin®, a wrinkle relaxer in the same category. See our{" "}
+              Looking for Botox in Williamsburg? We offer Botox® and Xeomin®, priced the same. See{" "}
               <Link href="/procedures/botox" className="link link-primary">
-                Botox alternative in Williamsburg
+                Botox in Williamsburg
               </Link>
               .
             </p>
@@ -87,7 +87,7 @@ export default function Procedures({
           Medical Spa Treatments in Williamsburg, VA
         </Heading>
         <p className="text-lg lg:text-xl mb-8 max-w-5xl mx-auto">
-          Compare Xeomin® (our wrinkle relaxer and a Botox® alternative), PRP treatments, microneedling with PRP, hyperhidrosis care, Blomdahl medical ear piercing for babies, children, teens, and adults, and vitamin B-12 injections. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation.
+          Compare Botox® and Xeomin® wrinkle relaxers, PRP treatments, microneedling with PRP, hyperhidrosis care, Blomdahl medical ear piercing for babies, children, teens, and adults, and vitamin B-12 injections. Each service page explains who the treatment may fit (including infants with pediatrician guidance), which goals it is commonly used for, and what to review during consultation.
         </p>
       </div>
 

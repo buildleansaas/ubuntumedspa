@@ -20,8 +20,8 @@ export default function BotoxPartyCallout() {
           />
 
           <p className={`mt-4 ${INTRO}`}>
-            We use Xeomin®, a Botox® alternative. Bring 5 or more paid Xeomin guests and the host&apos;s own Xeomin
-            treatment is free. Every additional 5 paid Xeomin guests unlocks more free products and procedure credits.
+            Guests choose Botox® or Xeomin®. Bring 5 or more paid Botox or Xeomin guests and the host&apos;s own
+            treatment is free. Every additional 5 paid guests unlocks more free products and procedure credits.
           </p>
 
           <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-base-content/75">
@@ -34,7 +34,7 @@ export default function BotoxPartyCallout() {
               <Link href={botoxPartyEvent.canonicalPath}>Plan a Wrinkle Relaxer Party</Link>
             </Button>
             <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
-              <Link href="/procedures/xeomin">See Xeomin Details</Link>
+              <Link href="/procedures/botox">See Botox and Xeomin Details</Link>
             </Button>
           </div>
         </div>

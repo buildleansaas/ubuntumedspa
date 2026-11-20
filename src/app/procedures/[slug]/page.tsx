@@ -46,7 +46,7 @@ import { getHubSatelliteGroup } from "lib/service-satellites";
 import { CrowsFeetResults, EarPiercingPhotos, HyperhidrosisSteps, JointPhotos, PrpTubePhoto, RunelsTraining } from "components/clinic-photos";
 import { clinicPhotoBySrc } from "config/clinic-photos";
 import { activeOfferMetaDescription, getActiveOffers } from "config/offers";
-import { XEOMIN_HYPERHIDROSIS_OFF_LABEL, XEOMIN_OFF_LABEL_NOTE, xeominClusterPages } from "lib/xeomin-concerns";
+import { BOTOX_OFF_LABEL_NOTE, XEOMIN_HYPERHIDROSIS_OFF_LABEL, XEOMIN_OFF_LABEL_NOTE, xeominClusterPages } from "lib/xeomin-concerns";
 import RouteCard from "components/route-card";
 import HomeOwnerLink, { HOME_OWNER_LINK_PROCEDURES } from "components/home-owner-link";
 
@@ -70,15 +70,15 @@ const featuredGuideSlugs: Record<string, string> = {
 };
 const featuredGuideCopy: Record<string, { button: string; heading: string; description: string; linkLabel: string }> = {
   botox: {
-    button: "Xeomin vs Botox Guide",
-    heading: "Had Botox® before and wondering how Xeomin compares?",
-    description: "We use Xeomin® only. Review how it compares with Botox® on timing, dosing units, and treatment planning before your appointment.",
-    linkLabel: "Read the Xeomin vs Botox article",
+    button: "Botox vs Xeomin Guide",
+    heading: "Choosing between Botox® and Xeomin®?",
+    description: "We offer both, priced the same. Review how they compare on timing, dosing units, and treatment planning before your appointment.",
+    linkLabel: "Read the Botox vs Xeomin article",
   },
   xeomin: {
     button: "Xeomin vs Botox Guide",
     heading: "Comparing Xeomin with Botox®?",
-    description: "We use Xeomin® only. Review how it compares with Botox® on timing, dosing units, and treatment planning before your appointment.",
+    description: "We offer both, priced the same. Review how they compare on timing, dosing units, and treatment planning before your appointment.",
     linkLabel: "Read the Xeomin vs Botox article",
   },
   "oh-shot": {
@@ -110,7 +110,7 @@ const relatedProcedureLinks: Record<string, Array<{ href: string; label: string 
     { href: "/procedures/hyperhidrosis-treatment", label: "sweating treatment" },
   ],
   xeomin: [
-    { href: "/procedures/botox", label: "Botox alternative in Williamsburg" },
+    { href: "/procedures/botox", label: "Botox in Williamsburg" },
     { href: "/procedures/hyperhidrosis-treatment", label: "sweating treatment" },
   ],
   "prp-facial": [
@@ -177,13 +177,13 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
 
   const procedure = procedures.find((procedure) => procedure.slug === slug);
   if (!procedure) return notFound();
-  // The /procedures/botox page is the Botox-alternative page: it sells the Xeomin item (the clinic does not offer Botox® brand).
+  // catalogSlug lets a page sell a catalog item with a different slug; /procedures/botox sells the "botox" item.
   const catalogItem = getCatalogConfigBySlug(("catalogSlug" in procedure && procedure.catalogSlug) || slug);
   const heroImagePath = catalogItem?.imagePath;
   const heroClinicPhoto = heroImagePath ? clinicPhotoBySrc(heroImagePath) : undefined;
   const publishedAilments = await getPublishedAilmentsForProcedure(procedure.slug);
   const articles = (await getPublishedBlogPosts())
-    .filter(({ tags }) => tags?.includes(procedure.slug === "botox" ? "Botox Alternative" : procedure.name))
+    .filter(({ tags }) => tags?.includes(procedure.name))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   const hasAilments = Boolean(publishedAilments.length);
   const showOShotCredential = procedure.slug === "oh-shot";
@@ -247,7 +247,12 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-base-content/70 md:text-lg">
               {humanizeMedicalCopy(procedure.subline)}
             </p>
-            {(procedure.slug === "botox" || procedure.slug === "xeomin") && (
+            {procedure.slug === "botox" && (
+              <p className="mt-3 max-w-[62ch] text-sm leading-relaxed text-base-content/80" data-off-label-note>
+                {BOTOX_OFF_LABEL_NOTE}
+              </p>
+            )}
+            {procedure.slug === "xeomin" && (
               <p className="mt-3 max-w-[62ch] text-sm leading-relaxed text-base-content/80" data-off-label-note>
                 {XEOMIN_OFF_LABEL_NOTE}
               </p>

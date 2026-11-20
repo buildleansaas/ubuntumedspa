@@ -7,7 +7,7 @@ import { allowedConsultInterests } from "./consult-procedure-interests";
  * These answers are health information: they go to the clinic's inbox and consult record only, never to analytics.
  */
 export const CONSULT_CONCERNS = [
-  { label: "Lines when I frown, raise my brows or smile", interests: ["Xeomin (Botox alternative)"] },
+  { label: "Lines when I frown, raise my brows or smile", interests: ["Botox", "Xeomin"] },
   { label: "Heavy sweating (underarms, palms, feet)", interests: ["Hyperhidrosis Treatment"] },
   { label: "Thinning hair", interests: ["Hair Restoration"] },
   { label: "Tired or uneven skin", interests: ["PRP Facial", "Microneedling with PRP"] },

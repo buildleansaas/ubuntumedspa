@@ -48,7 +48,7 @@ export default async function LocalInjectableServicePage(props: Params) {
   const primaryCtaLabel = `Request a ${page.shortName} Consultation`;
   const secondaryCta =
     page.procedureSlug === "botox"
-      ? { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Compare Xeomin vs Botox" }
+      ? { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Compare Botox vs Xeomin" }
       : { href: `/procedures/${page.procedureSlug}`, label: `View ${page.shortName} Details` };
 
   return (

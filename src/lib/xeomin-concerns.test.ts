@@ -10,10 +10,11 @@ import { CartProvider } from "../components/cart-provider";
 import { getCatalogConfigBySlug } from "../config/commerce-catalog";
 import { procedures } from "../data";
 import XeominClusterPageView from "../views/xeomin-cluster-page";
-import { findDisallowedBotox } from "./botox-honesty.test";
+import { findFalseBotoxClaims } from "./botox-honesty.test";
 import {
   XEOMIN_HYPERHIDROSIS_OFF_LABEL,
   XEOMIN_OFF_LABEL_NOTE,
+  BOTOX_OFF_LABEL_NOTE,
   XEOMIN_CLUSTER_REDIRECTS,
   XEOMIN_HUB_ANCHOR,
   XEOMIN_HUB_PATH,
@@ -48,25 +49,25 @@ const EXPECTED = {
   "/procedures/xeomin/for/frown-lines": {
     title: "Xeomin for Frown Lines in Williamsburg, VA | From $250 Cash",
     description:
-      "Looking for Botox® for frown lines (11s)? We use Xeomin® in Williamsburg, VA. $250 cash per credit block ($257.78 card). Nurse-led, conservative dosing.",
+      "Xeomin® for frown lines (11s) in Williamsburg, VA. We also offer Botox®, priced the same. $250 cash per credit block ($257.78 card). Nurse-led.",
     h1: "Xeomin for Frown Lines (11s) in Williamsburg, VA",
   },
   "/procedures/xeomin/for/forehead-lines": {
     title: "Xeomin for Forehead Lines in Williamsburg, VA | From $250 Cash",
     description:
-      "Looking for Botox® for forehead lines? We use Xeomin® in Williamsburg, VA. $250 cash per credit block ($257.78 card). Planned around your brows.",
+      "Xeomin® for forehead lines in Williamsburg, VA. We also offer Botox®, priced the same. $250 cash per credit block ($257.78 card). Planned around your brows.",
     h1: "Xeomin for Forehead Lines in Williamsburg, VA",
   },
   "/procedures/xeomin/for/crows-feet": {
     title: "Xeomin for Crow's Feet in Williamsburg, VA | From $250 Cash",
     description:
-      "Looking for Botox® for crow's feet? We use Xeomin® in Williamsburg, VA. $250 cash per credit block ($257.78 card). Planned to keep a natural smile.",
+      "Xeomin® for crow's feet in Williamsburg, VA. We also offer Botox®, priced the same. $250 cash per credit block ($257.78 card). Planned to keep a natural smile.",
     h1: "Xeomin for Crow's Feet in Williamsburg, VA",
   },
   "/procedures/xeomin/for/lip-flip": {
     title: "Xeomin Lip Flip in Williamsburg, VA | From $250 Cash",
     description:
-      "Looking for Botox® for a lip flip? We use Xeomin® in Williamsburg, VA. Consult first: it does not add volume. $250 cash per credit block ($257.78 card).",
+      "Xeomin® lip flip in Williamsburg, VA (Botox® also offered). Consult first: it does not add volume. $250 cash per credit block ($257.78 card).",
     h1: "Xeomin Lip Flip in Williamsburg, VA",
   },
   "/procedures/xeomin/cost": {
@@ -111,9 +112,9 @@ test("prices come from the Xeomin catalog item ($250 cash, $257.78 card)", () =>
   assert.equal(item.unitAmountCents, 25778);
 });
 
-test("concern pages say we use Xeomin for the Botox® search, and lip flip stays consult-led", () => {
+test("concern pages tell Botox® searchers we offer Botox® and Xeomin®, and lip flip stays consult-led", () => {
   for (const page of xeominConcernPages) {
-    assert.match(page.botoxLine, /^Looking for Botox® for .+\? We use Xeomin®/);
+    assert.match(page.botoxLine, /^We offer Botox® and Xeomin®/);
     assert.ok(page.faqs.length >= 4 && page.faqs.length <= 6, `${page.path} has ${page.faqs.length} FAQs`);
   }
   const lipFlip = xeominConcernPages.find((page) => page.slug === "lip-flip");
@@ -218,8 +219,8 @@ for (const page of xeominClusterPages) {
     assert.deepEqual(schemaQuestions, visibleQuestions);
     for (const { answer } of page.faqs) assert.ok(text.includes(answer), `${page.path} hides an FAQ answer`);
 
-    // The honesty allowlist holds over the rendered page, not only the source.
-    assert.deepEqual(findDisallowedBotox(page.path, text), []);
+    // The Botox honesty check holds over the rendered page, not only the source.
+    assert.deepEqual(findFalseBotoxClaims(page.path, text), []);
   });
 }
 
@@ -248,9 +249,10 @@ test("next.config.mjs lists each old concern URL redirect above the /procedures/
   assert.equal(XEOMIN_CLUSTER_REDIRECTS.length, 6);
 });
 
-test("#164: the Botox-alternative and Xeomin pages carry an off-label note for each listed non-label area they mention", () => {
+test("#164: the Botox and Xeomin pages carry an off-label note for each listed non-label area they mention", () => {
   const route = readFileSync(join(process.cwd(), "src/app/procedures/[slug]/page.tsx"), "utf8");
-  assert.match(route, /\(procedure\.slug === "botox" \|\| procedure\.slug === "xeomin"\) && \(\s*<p[^>]*data-off-label-note>\s*\{XEOMIN_OFF_LABEL_NOTE\}/);
+  assert.match(route, /procedure\.slug === "xeomin" && \(\s*<p[^>]*data-off-label-note>\s*\{XEOMIN_OFF_LABEL_NOTE\}/);
+  assert.match(route, /procedure\.slug === "botox" && \(\s*<p[^>]*data-off-label-note>\s*\{BOTOX_OFF_LABEL_NOTE\}/);
   assert.match(XEOMIN_OFF_LABEL_NOTE, /frown lines, forehead lines, and crow's feet/);
   const offLabel: Array<[RegExp, RegExp]> = [
     [/lip[- ]flip/i, /lip flip/],
@@ -264,15 +266,17 @@ test("#164: the Botox-alternative and Xeomin pages carry an off-label note for e
   // Sweating is covered by its own note, shown on the hyperhidrosis hub and the Xeomin hub.
   assert.match(JSON.stringify(procedures.find((procedure) => procedure.slug === "xeomin")), /hyperhidrosis/i);
   assert.match(route, /procedure\.slug === "xeomin"\) && \(\s*<p[^>]*data-off-label-note>\s*\{XEOMIN_HYPERHIDROSIS_OFF_LABEL\}/);
-  for (const slug of ["botox", "xeomin"]) {
-    const entry = procedures.find((procedure) => procedure.slug === slug);
-    assert.ok(entry, slug);
-    const rendered = JSON.stringify(entry);
-    for (const [mention, covered] of offLabel) {
-      if (mention.test(rendered)) assert.match(XEOMIN_OFF_LABEL_NOTE, covered, `${slug} mentions ${mention} but the note does not cover it`);
-    }
+  const xeomin = JSON.stringify(procedures.find((procedure) => procedure.slug === "xeomin"));
+  for (const [mention, covered] of offLabel) {
+    if (mention.test(xeomin)) assert.match(XEOMIN_OFF_LABEL_NOTE, covered, `xeomin mentions ${mention} but the note does not cover it`);
   }
   assert.doesNotMatch(XEOMIN_OFF_LABEL_NOTE, /Botox/);
+  // BOTOX Cosmetic's label also covers platysma (neck) bands, so neck bands are on-label on the Botox page.
+  const botox = JSON.stringify(procedures.find((procedure) => procedure.slug === "botox"));
+  for (const [mention, covered] of offLabel.filter(([mention]) => !mention.test("neck bands"))) {
+    if (mention.test(botox)) assert.match(BOTOX_OFF_LABEL_NOTE, covered, `botox mentions ${mention} but the note does not cover it`);
+  }
+  assert.match(BOTOX_OFF_LABEL_NOTE, /vertical neck \(platysma\) bands/);
 });
 
 test("hyperhidrosis (not on Xeomin's label) is called off-label on the hub and every sweating satellite", async () => {

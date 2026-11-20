@@ -25,7 +25,7 @@ const primaryLinks = [
 // Both pages stay linked from the treatment grid.
 const treatmentLinks = [
   { href: "/procedures/xeomin", label: "Xeomin" },
-  { href: "/procedures/botox", label: "Botox Alternative" },
+  { href: "/procedures/botox", label: "Botox" },
   { href: "/procedures/hyperhidrosis-treatment", label: "Hyperhidrosis Treatment" },
   { href: "/procedures/blomdahl-ear-piercing", label: "Blomdahl Ear Piercing" },
   { href: "/procedures/prp-facial", label: "PRP Facial" },
@@ -38,7 +38,7 @@ const treatmentLinks = [
 ] as const;
 
 const guideLinks = [
-  { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Xeomin vs. Botox®" },
+  { href: "/blog/botox-vs-xeomin-williamsburg-va", label: "Botox® vs. Xeomin®" },
   { href: "/blog/ear-piercing-aftercare-williamsburg-va", label: "Ear piercing aftercare" },
   { href: "/blog/medical-ear-piercing-vs-mall-piercing", label: "Medical vs. mall piercing" },
   { href: "/blog/prp-hair-restoration-vs-hair-transplant-williamsburg-va", label: "PRP hair vs. transplant" },

@@ -232,6 +232,27 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
     stripePriceLookupKey: "wms_procedure_joint_restoration_800_v1",
   },
   {
+    // Botox® is priced exactly like Xeomin (Austin, 2026-11-20): the same prepaid cash credit blocks, card price
+    // computed the same way.
+    slug: "botox",
+    kind: "procedure",
+    name: "Botox",
+    shortDescription: `Each block adds ${creditBlockCash} of treatment credit.`,
+    pricingMode: "increment_credit",
+    cashAmountCents: CREDIT_BLOCK_CASH_CENTS,
+    currency: "usd",
+    quantityLabel: `${creditBlockCash} block`,
+    minQuantity: 1,
+    maxQuantity: 4,
+    requiresScheduling: true,
+    fulfillment: "appointment",
+    imagePath: "/procedure/botox-forehead-crows-feet-closeup.webp",
+    stripeProductKey: "wms_procedure_botox",
+    stripePriceLookupKey: "wms_procedure_botox_block_250_v1",
+    customerNote:
+      `Botox is prepaid online in ${creditBlockCash} credit blocks (${creditBlockCash} per block in cash or ${creditBlockCard} online by card). ${CREDIT_BLOCK_CREDIT_SENTENCE}`,
+  },
+  {
     slug: "xeomin",
     kind: "procedure",
     name: "Xeomin",

@@ -65,7 +65,7 @@ test("each row links to a published page that exists", () => {
 test("the groups are the ones the page promises", () => {
   assert.deepEqual(
     getPriceGroups().map((group) => group.name),
-    ["Wrinkle relaxer", "PRP treatments", "Sexual wellness", "Ear piercing", "Injections", "Skincare products"]
+    ["Wrinkle relaxers", "PRP treatments", "Sexual wellness", "Ear piercing", "Injections", "Skincare products"]
   );
 });
 
@@ -90,7 +90,7 @@ test("title, meta, H1, cash/card note", () => {
   assert.ok(PRICES_DESCRIPTION.length <= 160, `meta is ${PRICES_DESCRIPTION.length}`);
   assert.equal(
     PRICES_DESCRIPTION,
-    `Every price posted: Xeomin® from ${cash("xeomin")} cash per credit block, ear piercing ${cash("blomdahl-ear-piercing")}, B-12 ${cash(
+    `Every price posted: Botox® & Xeomin® from ${cash("xeomin")} cash per credit block, ear piercing ${cash("blomdahl-ear-piercing")}, B-12 ${cash(
       "b12-injections"
     )}, PRP facial ${cash("prp-facial")}. Cash price first, card/online price shown.`
   );
@@ -165,13 +165,13 @@ test("homepage snippet CTR test (2026-11-04; title and meta restored 2026-11-08)
   assert.ok(DEFAULT_TITLE.length <= 60, `title is ${DEFAULT_TITLE.length}`);
   assert.equal(
     DEFAULT_DESCRIPTION,
-    `Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) from ${cash("xeomin")} cash, Blomdahl ear piercing ${cash(
+    `Nurse practitioner-led med spa on Powhatan Pkwy: Botox® & Xeomin® from ${cash("xeomin")} cash, Blomdahl ear piercing ${cash(
       "blomdahl-ear-piercing"
     )}, B-12 ${cash("b12-injections")}, PRP. See all prices.`
   );
   assert.equal(
     DEFAULT_DESCRIPTION,
-    "Nurse practitioner-led med spa on Powhatan Pkwy: Xeomin® (a Botox® alternative) from $250 cash, Blomdahl ear piercing $45, B-12 $25, PRP. See all prices."
+    "Nurse practitioner-led med spa on Powhatan Pkwy: Botox® & Xeomin® from $250 cash, Blomdahl ear piercing $45, B-12 $25, PRP. See all prices."
   );
   assert.ok(DEFAULT_DESCRIPTION.length <= 160, `meta is ${DEFAULT_DESCRIPTION.length}`);
   assert.doesNotMatch(DEFAULT_DESCRIPTION + DEFAULT_TITLE, /\bfees?\b|surcharge|filler/i);

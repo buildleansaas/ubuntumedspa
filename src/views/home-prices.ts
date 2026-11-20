@@ -9,6 +9,8 @@ import type { ChooserTile } from "./home-chooser";
 
 export const XEOMIN_CASH = formatUsdShort(COMMERCE_CATALOG_BY_SLUG.xeomin.cashAmountCents);
 export const XEOMIN_CARD = cardPriceLabel(COMMERCE_CATALOG_BY_SLUG.xeomin.cashAmountCents);
+export const BOTOX_CASH = formatUsdShort(COMMERCE_CATALOG_BY_SLUG.botox.cashAmountCents);
+export const BOTOX_CARD = cardPriceLabel(COMMERCE_CATALOG_BY_SLUG.botox.cashAmountCents);
 
 const cash = (slug: string) => formatUsdShort(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
 const card = (slug: string) => cardPriceLabel(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
@@ -28,8 +30,8 @@ const HYPERHIDROSIS_CARD = `from ${card("hyperhidrosis-treatment")}`;
 export const CHOOSER_TILES: ChooserTile[] = [
   {
     concern: concern("Lines when I frown, raise my brows or smile"),
-    treatment: "Xeomin",
-    href: "/procedures/xeomin",
+    treatment: "Botox or Xeomin",
+    href: "/procedures/botox",
     price: `from ${XEOMIN_CASH} cash`,
   },
   {
@@ -66,8 +68,10 @@ export const CHOOSER_TILES: ChooserTile[] = [
 
 export type HomePriceRow = { name: string; href: string; cash: string; card: string; note: string };
 
-// Cash first, card smaller. A Xeomin credit block is exactly the block price, so no "from".
+// Cash first, card smaller. A Botox or Xeomin credit block is exactly the block price, so no "from". Botox is priced
+// exactly like Xeomin (commerce-catalog.ts).
 export const HOME_PRICE_ROWS: HomePriceRow[] = [
+  { name: "Botox", href: "/procedures/botox", cash: BOTOX_CASH, card: BOTOX_CARD, note: "per credit block" },
   { name: "Xeomin", href: "/procedures/xeomin", cash: XEOMIN_CASH, card: XEOMIN_CARD, note: "per credit block" },
   {
     name: "Blomdahl ear piercing",

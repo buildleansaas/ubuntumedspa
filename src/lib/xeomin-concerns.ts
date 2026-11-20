@@ -4,20 +4,21 @@ import { formatUsdShort } from "lib/price";
 /**
  * Xeomin hub-and-satellite cluster (mirrors the Blomdahl ear-piercing /for/ intent pages).
  *
- * The clinic's only wrinkle relaxer is Xeomin® (incobotulinumtoxinA). It does not offer Botox® brand.
- * - Hub: /procedures/botox, the honest Botox-alternative page for people searching for Botox in Williamsburg.
+ * The clinic offers two wrinkle relaxers, Botox® (onabotulinumtoxinA) and Xeomin® (incobotulinumtoxinA), priced the same
+ * (Botox was off the menu 2026-11-04 to 2026-11-20). Jenny helps each patient choose.
+ * - Hub: /procedures/botox, the Botox page, which also explains how Botox and Xeomin compare.
  * - Product page: /procedures/xeomin.
  * - Satellites: /procedures/xeomin/for/<concern> and the /procedures/xeomin/cost page; the Newport News and Yorktown
  *   area pages (/procedures/xeomin/near/<area>) live in lib/service-satellites.ts.
  *
- * Every fact here comes from existing site copy: src/data.ts (the Botox-alternative and Xeomin entries), the Xeomin catalog item,
+ * Every fact here comes from existing site copy: src/data.ts (the Botox and Xeomin entries), the Xeomin catalog item,
  * src/lib/local-injectable-service-pages.ts, src/markdown/botox-vs-xeomin-williamsburg-va.mdx, and the retired
- * src/markdown/ailments/botox/*.mdx pages (already rewritten to Xeomin). No outcome promises and no before/after claims in this copy;
+ * src/markdown/ailments/botox/*.mdx pages. No outcome promises and no before/after claims in this copy;
  * the only before/after content is the consented, captioned crow's feet photos in config/clinic-photos.ts.
  */
 
 export const XEOMIN_HUB_PATH = "/procedures/botox";
-export const XEOMIN_HUB_ANCHOR = "Botox alternative in Williamsburg";
+export const XEOMIN_HUB_ANCHOR = "Botox in Williamsburg";
 export const XEOMIN_PRODUCT_PATH = "/procedures/xeomin";
 export const XEOMIN_PRODUCT_ANCHOR = "Xeomin in Williamsburg, VA";
 export const XEOMIN_COMPARISON_PATH = "/blog/botox-vs-xeomin-williamsburg-va";
@@ -53,8 +54,8 @@ export const XEOMIN_LIP_FLIP_OFF_LABEL =
 
 /**
  * Source: XEOMIN Prescribing Information 1.5 (DailyMed setid ccdc3aae-6e2d-4cd0-a51c-8375bfee9458): the cosmetic indication is
- * upper facial lines only (glabellar, forehead, lateral canthal). Shown under the hero on /procedures/botox and /procedures/xeomin,
- * which list other areas (#164).
+ * upper facial lines only (glabellar, forehead, lateral canthal). Shown under the hero on /procedures/xeomin, which lists
+ * other areas (#164).
  */
 export const XEOMIN_OFF_LABEL_NOTE =
   "Xeomin's cosmetic FDA label covers frown lines, forehead lines, and crow's feet. Other areas, such as the lip flip, bunny lines, gummy smile, chin dimpling, neck bands, and the jaw (masseter), are off-label uses, which means they are not among the uses listed on its FDA label. Jenny reviews whether they fit you at your consultation.";
@@ -63,8 +64,16 @@ export const XEOMIN_OFF_LABEL_NOTE =
 export const XEOMIN_HYPERHIDROSIS_OFF_LABEL =
   "Treating excessive sweating is an off-label use of Xeomin, which means it is not one of the uses listed on its FDA label. Jenny reviews whether it fits you at your consultation.";
 
+/**
+ * Source: BOTOX Cosmetic Prescribing Information, 1 Indications and Usage (DailyMed setid 485d9b71-6881-42c5-a620-a4360c7192ab,
+ * revised 10/2024): adults, temporary improvement of moderate to severe glabellar lines, lateral canthal lines, forehead
+ * lines, and platysma bands. Shown under the hero on /procedures/botox, which lists other areas.
+ */
+export const BOTOX_OFF_LABEL_NOTE =
+  "BOTOX Cosmetic's FDA label covers frown lines, crow's feet, forehead lines, and vertical neck (platysma) bands in adults. Other areas, such as the lip flip, bunny lines, brow shaping, and the jaw (masseter), are off-label uses, which means they are not among the uses listed on its FDA label. Jenny reviews whether they fit you at your consultation.";
+
 export const XEOMIN_TRADEMARK_NOTE =
-  "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand.";
+  "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Xeomin® is a registered trademark of Merz Pharma GmbH & Co. KGaA. Williamsburg Med Spa is not affiliated with Allergan or Merz.";
 
 export type XeominClusterSection = {
   heading: string;
@@ -83,7 +92,7 @@ export type XeominClusterPage = {
   metaTitle: string;
   metaDescription: string;
   h1: string;
-  /** The "Looking for Botox® for …? We use Xeomin®." line. */
+  /** The line that tells Botox® searchers the clinic offers Botox® and Xeomin®. */
   botoxLine: string;
   intro: string;
   /** "common" areas vs the "Less Common Area" tag the site gives the lip flip. */
@@ -110,9 +119,9 @@ export const xeominConcernPages: XeominClusterPage[] = [
     label: "Frown lines (11s)",
     summary: "Vertical 11 lines between the brows from frowning, squinting, or concentrating.",
     metaTitle: `Xeomin for Frown Lines in Williamsburg, VA | From ${blockCash} Cash`,
-    metaDescription: `Looking for Botox® for frown lines (11s)? We use Xeomin® in Williamsburg, VA. ${blockCash} cash per credit block (${blockCard} card). Nurse-led, conservative dosing.`,
+    metaDescription: `Xeomin® for frown lines (11s) in Williamsburg, VA. We also offer Botox®, priced the same. ${blockCash} cash per credit block (${blockCard} card). Nurse-led.`,
     h1: "Xeomin for Frown Lines (11s) in Williamsburg, VA",
-    botoxLine: "Looking for Botox® for frown lines? We use Xeomin®.",
+    botoxLine: "We offer Botox® and Xeomin® for frown lines, priced the same. Jenny helps you choose.",
     intro:
       "Frown lines, often called 11 lines, form between the brows from repeated squinting, concentrating, or pulling the brows together. Xeomin is commonly used to temporarily improve the look of moderate to severe glabellar lines in appropriate adult candidates.",
     areaTag: "common",
@@ -157,7 +166,7 @@ export const xeominConcernPages: XeominClusterPage[] = [
       {
         question: "Do you offer Botox® for frown lines?",
         answer:
-          "No. Williamsburg Med Spa uses Xeomin, a wrinkle relaxer in the same category as Botox®, and does not offer Botox® brand. Units are not interchangeable, so if you have had Botox® elsewhere, Jenny plans your Xeomin dose from your treatment history, anatomy, and goals.",
+          "Yes. Williamsburg Med Spa offers Botox® and Xeomin® for frown lines, priced the same, and Jenny helps you choose. Units are not interchangeable, so if you have had either one elsewhere, Jenny plans your dose from your treatment history, anatomy, and goals.",
       },
       {
         question: "Are frown lines the same as 11 lines?",
@@ -183,9 +192,9 @@ export const xeominConcernPages: XeominClusterPage[] = [
     label: "Forehead lines",
     summary: "Horizontal lines from lifting the brows, planned around brow position.",
     metaTitle: `Xeomin for Forehead Lines in Williamsburg, VA | From ${blockCash} Cash`,
-    metaDescription: `Looking for Botox® for forehead lines? We use Xeomin® in Williamsburg, VA. ${blockCash} cash per credit block (${blockCard} card). Planned around your brows.`,
+    metaDescription: `Xeomin® for forehead lines in Williamsburg, VA. We also offer Botox®, priced the same. ${blockCash} cash per credit block (${blockCard} card). Planned around your brows.`,
     h1: "Xeomin for Forehead Lines in Williamsburg, VA",
-    botoxLine: "Looking for Botox® for forehead lines? We use Xeomin®.",
+    botoxLine: "We offer Botox® and Xeomin® for forehead lines, priced the same. Jenny helps you choose.",
     intro:
       "Forehead lines usually form from repeated lifting of the brows. Over time, those movement lines can become more visible in photos, video calls, and everyday expression. Xeomin is commonly used to temporarily improve the look of forehead lines in appropriate adult candidates.",
     areaTag: "common",
@@ -229,7 +238,7 @@ export const xeominConcernPages: XeominClusterPage[] = [
       {
         question: "Do you offer Botox® for forehead lines?",
         answer:
-          "No. Williamsburg Med Spa uses Xeomin, a wrinkle relaxer in the same category as Botox®, and does not offer Botox® brand. Xeomin and Botox® units are not interchangeable, so Jenny plans your Xeomin dose from your anatomy, goals, and prior treatment history.",
+          "Yes. Williamsburg Med Spa offers Botox® and Xeomin® for forehead lines, priced the same. Xeomin and Botox® units are not interchangeable, so Jenny plans your dose from your anatomy, goals, and prior treatment history.",
       },
       {
         question: "Will forehead Xeomin make my brows feel heavy?",
@@ -255,9 +264,9 @@ export const xeominConcernPages: XeominClusterPage[] = [
     label: "Crow's feet",
     summary: "Smile lines at the outer corners of the eyes, softened without stiffening the smile.",
     metaTitle: `Xeomin for Crow's Feet in Williamsburg, VA | From ${blockCash} Cash`,
-    metaDescription: `Looking for Botox® for crow's feet? We use Xeomin® in Williamsburg, VA. ${blockCash} cash per credit block (${blockCard} card). Planned to keep a natural smile.`,
+    metaDescription: `Xeomin® for crow's feet in Williamsburg, VA. We also offer Botox®, priced the same. ${blockCash} cash per credit block (${blockCard} card). Planned to keep a natural smile.`,
     h1: "Xeomin for Crow's Feet in Williamsburg, VA",
-    botoxLine: "Looking for Botox® for crow's feet? We use Xeomin®.",
+    botoxLine: "We offer Botox® and Xeomin® for crow's feet, priced the same. Jenny helps you choose.",
     intro:
       "Crow's feet are the lines that fan out from the outer corners of the eyes when you smile, squint, or spend time in bright light. Xeomin is commonly used to temporarily improve the look of crow's feet in appropriate adult candidates.",
     areaTag: "common",
@@ -301,7 +310,7 @@ export const xeominConcernPages: XeominClusterPage[] = [
       {
         question: "Do you offer Botox® for crow's feet?",
         answer:
-          "No. Williamsburg Med Spa uses Xeomin, a wrinkle relaxer in the same category as Botox®, and does not offer Botox® brand. If you have had Botox® elsewhere, bring your treatment history: a Xeomin dose is planned for you rather than converted unit for unit.",
+          "Yes. Williamsburg Med Spa offers Botox® and Xeomin® for crow's feet, priced the same. If you have had either one elsewhere, bring your treatment history: your dose is planned for you rather than converted unit for unit.",
       },
       {
         question: "Will Xeomin change my smile?",
@@ -328,9 +337,9 @@ export const xeominConcernPages: XeominClusterPage[] = [
     label: "Lip flip",
     summary: "A less common, consult-led option for a little more upper-lip show. It does not add volume.",
     metaTitle: `Xeomin Lip Flip in Williamsburg, VA | From ${blockCash} Cash`,
-    metaDescription: `Looking for Botox® for a lip flip? We use Xeomin® in Williamsburg, VA. Consult first: it does not add volume. ${blockCash} cash per credit block (${blockCard} card).`,
+    metaDescription: `Xeomin® lip flip in Williamsburg, VA (Botox® also offered). Consult first: it does not add volume. ${blockCash} cash per credit block (${blockCard} card).`,
     h1: "Xeomin Lip Flip in Williamsburg, VA",
-    botoxLine: "Looking for Botox® for a lip flip? We use Xeomin®, and a lip flip starts with a consultation.",
+    botoxLine: "We offer Botox® and Xeomin®, and a lip flip with either one starts with a consultation.",
     intro:
       `${XEOMIN_LIP_FLIP_OFF_LABEL} A lip flip is a less common area and does not add volume. It uses small, carefully placed Xeomin doses to relax selected upper-lip movement when anatomy and goals are appropriate, which in the right candidate can allow a little more upper-lip show.`,
     areaTag: "uncommon",
@@ -375,7 +384,7 @@ export const xeominConcernPages: XeominClusterPage[] = [
       {
         question: "Do you offer Botox® for a lip flip?",
         answer:
-          "We use Xeomin, a wrinkle relaxer in the same category as Botox®, and Williamsburg Med Spa does not offer Botox® brand. A Xeomin lip flip is a less common area, so it starts with a consultation to confirm whether it fits your anatomy and goal.",
+          "Yes. Williamsburg Med Spa offers Botox® and Xeomin®. A lip flip is an off-label use of either one and a less common area, so it starts with a consultation to confirm whether it fits your anatomy and goal.",
       },
       {
         question: "Does a Xeomin lip flip add volume?",
@@ -411,7 +420,7 @@ export const xeominCostPage: XeominClusterPage = {
   metaTitle: `Xeomin Cost in Williamsburg, VA | ${blockCash} Cash per Credit Block`,
   metaDescription: `Xeomin cost in Williamsburg, VA: ${blockCash} cash per credit block (${blockCard} card). Your total depends on areas and dosing. Unused credit stays on your account.`,
   h1: "Xeomin Cost in Williamsburg, VA",
-  botoxLine: "Looking for Botox® prices? We use Xeomin®, and units are not interchangeable, so compare full treatment plans.",
+  botoxLine: "Botox® is priced the same as Xeomin®, in the same credit blocks. Units are not interchangeable, so compare full treatment plans.",
   intro: `At Williamsburg Med Spa, Xeomin is ${blockCash} cash per credit block (${blockCard} online or by card). Your total depends on the areas treated, muscle strength, and your dosing plan.`,
   areaTag: "common",
   sections: [
@@ -433,7 +442,7 @@ export const xeominCostPage: XeominClusterPage = {
       heading: "Why per-unit prices don't compare",
       paragraphs: [
         "Xeomin and Botox® units are not interchangeable. Compare whole treatment plans, not unit prices.",
-        "If you have had Botox® elsewhere, bring your treatment history. A Xeomin dose is planned for you rather than converted unit for unit.",
+        "If you have had Botox® elsewhere, bring your treatment history. A Xeomin dose is planned for you rather than converted unit for unit. Botox® is also offered here at the same block price.",
       ],
     },
   ],

@@ -9,7 +9,7 @@ const CANONICAL_ORIGIN = "https://www.williamsburgmedspa.com";
 export const PRICES_PATH = "/prices";
 
 export const PRICE_GROUPS = [
-  { id: "wrinkle-relaxer", name: "Wrinkle relaxer", slugs: ["xeomin"] },
+  { id: "wrinkle-relaxer", name: "Wrinkle relaxers", slugs: ["botox", "xeomin"] },
   {
     id: "prp-treatments",
     name: "PRP treatments",
@@ -67,7 +67,7 @@ export const getPriceGroups = (catalog: CatalogItemConfig[] = COMMERCE_CATALOG):
 const cash = (slug: string) => formatUsdShort(COMMERCE_CATALOG_BY_SLUG[slug].cashAmountCents);
 
 export const PRICES_TITLE = "Med Spa Prices in Williamsburg, VA | Cash and Card Prices";
-export const PRICES_DESCRIPTION = `Every price posted: Xeomin® from ${cash("xeomin")} cash per credit block, ear piercing ${cash(
+export const PRICES_DESCRIPTION = `Every price posted: Botox® & Xeomin® from ${cash("xeomin")} cash per credit block, ear piercing ${cash(
   "blomdahl-ear-piercing"
 )}, B-12 ${cash("b12-injections")}, PRP facial ${cash("prp-facial")}. Cash price first, card/online price shown.`;
 export const PRICES_H1 = "Williamsburg Med Spa Prices";

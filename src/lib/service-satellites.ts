@@ -89,7 +89,7 @@ const cashCents = (slug: SatelliteHubSlug) => {
   return item.cashAmountCents;
 };
 
-const hubFaqAnswer = (hubSlug: SatelliteHubSlug | "botox", question: string) => {
+const hubFaqAnswer = (hubSlug: SatelliteHubSlug, question: string) => {
   const answer = procedures.find((procedure) => procedure.slug === hubSlug)?.faqs.find((faq) => faq.question === question)?.answer;
   if (!answer) throw new Error(`${hubSlug} hub is missing the FAQ "${question}"`);
   return answer;
@@ -428,10 +428,10 @@ const NEAR_AREAS: NearArea[] = [
       { href: "/procedures/microneedling-with-prp", label: "Microneedling with PRP" },
     ],
     faceLiftLocalNote:
-      "The Newport News page compares Xeomin and PRP: Xeomin addresses lines caused by repeated muscle movement, while PRP treatments focus on skin quality, texture, and tone. The PRP Face Lift combines both in one visit, and your consultation can also look at the PRP Facial or microneedling with PRP on their own.",
+      "The Newport News page compares Botox, Xeomin, and PRP: Botox and Xeomin address lines caused by repeated muscle movement, while PRP treatments focus on skin quality, texture, and tone. The PRP Face Lift combines both in one visit, and your consultation can also look at the PRP Facial or microneedling with PRP on their own.",
     xeominLocalNotes: [
       "Common visit goals for Newport News patients include softening expression lines with Xeomin, asking about PRP for joints or skin, treating excessive sweating, and choosing a more clinical ear piercing appointment.",
-      "The right choice depends on what you want to change. Xeomin, our wrinkle relaxer, addresses lines caused by repeated muscle movement, while PRP treatments focus on skin quality, texture, and tone.",
+      "The right choice depends on what you want to change. Botox and Xeomin, our wrinkle relaxers, address lines caused by repeated muscle movement, while PRP treatments focus on skin quality, texture, and tone.",
       "Williamsburg Med Spa serves Newport News patients from our Williamsburg location with conservative planning, clear timelines, and careful follow-up.",
     ],
     localFaq: {
@@ -461,7 +461,7 @@ const NEAR_AREAS: NearArea[] = [
       "Yorktown patients often want a quieter Williamsburg clinic visit rather than a high-volume retail setting.",
     ],
     otherServices:
-      "The Yorktown page is also a starting point for Xeomin (our wrinkle relaxer), PRP, hyperhidrosis, and medical ear piercing questions.",
+      "The Yorktown page is also a starting point for Botox, Xeomin, PRP, hyperhidrosis, and medical ear piercing questions.",
     localNotes: [
       "The visit is a planned trip to the Williamsburg clinic, which helps avoid walk-in timing.",
       "Consult-led care suits Yorktown patients willing to make a planned Williamsburg visit.",
@@ -613,7 +613,7 @@ const faceLiftNearPage = (area: NearArea): ServiceSatellitePage => ({
     {
       heading: "What the visit combines",
       bullets: [
-        "Xeomin®, the clinic's wrinkle relaxer (a Botox® alternative), temporarily relaxes the muscles behind movement lines such as frown lines, forehead lines, and crow's feet.",
+        "Xeomin®, one of the clinic's two wrinkle relaxers (Botox® is the other), temporarily relaxes the muscles behind movement lines such as frown lines, forehead lines, and crow's feet.",
         "The PRP Facial uses platelet-rich plasma from a small sample of your own blood to support skin texture and tone.",
         "It does not remove or tighten skin the way surgery does.",
         "The visit usually takes about an hour, including preparation and the treatment itself.",
@@ -650,7 +650,7 @@ const faceLiftNearPage = (area: NearArea): ServiceSatellitePage => ({
 });
 
 // ---------------------------------------------------------------------------------------------------------------
-// Xeomin area pages. Copy comes from the /procedures/botox and /procedures/xeomin FAQs and lib/xeomin-concerns.ts.
+// Xeomin area pages. Copy comes from the /procedures/xeomin FAQs and lib/xeomin-concerns.ts. Botox is offered too, priced the same.
 // ---------------------------------------------------------------------------------------------------------------
 
 const XEOMIN_CASH_CENTS = cashCents("xeomin");
@@ -661,12 +661,12 @@ const xeominNearPage = (area: NearArea): ServiceSatellitePage => ({
   slug: area.slug,
   label: area.name,
   linkDescription: `${area.name} drive time, credit-block pricing, and which lines Xeomin is used for.`,
-  metaTitle: `Xeomin near ${area.name} VA | Botox® Alternative, from ${formatUsdShort(XEOMIN_CASH_CENTS)}`,
-  metaDescription: `Looking for Botox® near ${area.name}? We use Xeomin® in Williamsburg. ${formatUsdShort(XEOMIN_CASH_CENTS)} cash per credit block (${cardPriceLabel(XEOMIN_CASH_CENTS)} card). Nurse-led.`,
+  metaTitle: `Xeomin near ${area.name} VA | Botox® Also Offered, from ${formatUsdShort(XEOMIN_CASH_CENTS)}`,
+  metaDescription: `Xeomin® near ${area.name}, at our Williamsburg med spa. We also offer Botox®, priced the same. ${formatUsdShort(XEOMIN_CASH_CENTS)} cash per credit block (${cardPriceLabel(XEOMIN_CASH_CENTS)} card).`,
   h1: `Xeomin near ${area.name}, VA`,
   eyebrow: `${area.name} service area`,
   intro: [
-    `Looking for Botox® near ${area.name}? ${hubFaqAnswer("botox", "Do you offer Botox®?").replace(/^No\. /, "Williamsburg Med Spa does not offer Botox® brand. ")}`,
+    `Looking for Botox® or Xeomin® near ${area.name}? Williamsburg Med Spa offers both, priced the same, and Jenny helps you choose. Both are used for frown lines, forehead lines, and crow's feet. Units are not interchangeable, so compare the full treatment plan, not a unit price.`,
     `${area.notLocalLine} Appointments are at Williamsburg Med Spa, ${CLINIC_ADDRESS}, ${PENINSULA_DRIVE_TIME} by car from ${area.name}.`,
   ],
   price: {
@@ -678,7 +678,7 @@ const xeominNearPage = (area: NearArea): ServiceSatellitePage => ({
     {
       heading: "What Xeomin is used for",
       paragraphs: [
-        hubFaqAnswer("botox", "What is Xeomin commonly used for?"),
+        "Xeomin is commonly used to temporarily improve the look of forehead lines, glabellar (frown) lines, and crow's feet in appropriate adult candidates.",
         `Each area has its own page: ${xeominConcernPages.map((concern) => concern.label.toLowerCase()).join(", ")}. ${XEOMIN_LIP_FLIP_OFF_LABEL}`,
       ],
     },
@@ -693,13 +693,19 @@ const xeominNearPage = (area: NearArea): ServiceSatellitePage => ({
   faqs: [
     whereFaq(area),
     area.localFaq,
-    { question: "How much does Xeomin cost?", answer: hubFaqAnswer("botox", "How much does Xeomin cost in Williamsburg?") },
-    { question: "How long can Xeomin results last?", answer: hubFaqAnswer("botox", "How long can Xeomin results last?") },
+    {
+      question: "How much does Xeomin cost?",
+      answer: `Williamsburg Med Spa prices Xeomin in ${formatUsdShort(XEOMIN_CASH_CENTS)} credit blocks (${formatUsdShort(XEOMIN_CASH_CENTS)} per block in cash or ${cardPriceLabel(XEOMIN_CASH_CENTS)} online by card), the same as Botox. Your total depends on the areas treated, muscle strength, and your dosing plan.`,
+    },
+    {
+      question: "How long can Xeomin results last?",
+      answer: "Results vary, but many patients see benefits for about 3 to 4 months before planning maintenance treatment.",
+    },
   ],
   locationHref: `/locations/${area.slug}`,
   extraLinks: [
     ...xeominConcernPages.map((concern) => ({ href: concern.path, label: `Xeomin for ${concern.label.toLowerCase()}` })),
-    { href: XEOMIN_HUB_PATH, label: "Botox alternative in Williamsburg" },
+    { href: XEOMIN_HUB_PATH, label: "Botox in Williamsburg" },
     { href: XEOMIN_COST_PATH, label: "Xeomin cost in Williamsburg" },
     { href: XEOMIN_COMPARISON_PATH, label: "Botox vs Xeomin in Williamsburg, VA" },
   ],
@@ -739,7 +745,7 @@ export const getSatelliteLinks = (page: ServiceSatellitePage): SatelliteLink[] =
 
 /** The link grid a hub page renders for its satellites (null when the hub has none). */
 export const getHubSatelliteGroup = (hubSlug: string) => {
-  // /procedures/botox is the Botox-alternative page for Xeomin, so it links the Xeomin area pages too.
+  // /procedures/botox (Botox and Xeomin, priced the same) links the Xeomin area pages too.
   const pages = getSatellitesForHub(hubSlug === "botox" ? "xeomin" : hubSlug);
   if (!pages.length) return null;
   const isConcern = pages[0].kind === "concern";

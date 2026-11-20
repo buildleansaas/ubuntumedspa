@@ -9,12 +9,12 @@ import HomeOwnerLink from "components/home-owner-link";
 export const metadata: Metadata = buildPageMetadata({
   title: "Book a Med Spa Consultation in Williamsburg, VA",
   description:
-    "Request a consultation with Williamsburg Med Spa for Xeomin® (a Botox® alternative), PRP, hyperhidrosis care, or Blomdahl ear piercing in Williamsburg, VA.",
+    "Request a consultation with Williamsburg Med Spa for Botox®, Xeomin®, PRP, hyperhidrosis care, or Blomdahl ear piercing in Williamsburg, VA.",
   canonical: "/consult",
 });
 
 const consultationPaths = [
-  "Xeomin wrinkle-relaxer planning (our Botox alternative)",
+  "Botox and Xeomin wrinkle-relaxer planning (Jenny helps you choose)",
   "PRP facial, PRP Face Lift, PRP hair restoration, and other regenerative options",
   "Hyperhidrosis care for underarm, palm, foot, or localized sweating patterns",
   "Blomdahl medical ear piercing for children, teens, adults, and re-piercing",

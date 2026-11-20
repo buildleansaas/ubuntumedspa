@@ -12,7 +12,7 @@ import { AFTER_HEADER, BandCta, BUTTON_ROW, BUTTON_ROW_CENTER, CARD, CARD_GRID, 
 export const metadata: Metadata = buildPageMetadata({
   title: "Medical Spa in Williamsburg, VA | Hours, Directions & Services",
   description:
-    "Hours and directions for Williamsburg Med Spa, 3900 Powhatan Parkway: Xeomin® (a Botox® alternative), PRP, hyperhidrosis care, and Blomdahl ear piercing.",
+    "Hours and directions for Williamsburg Med Spa, 3900 Powhatan Parkway: Botox®, Xeomin®, PRP, hyperhidrosis care, and Blomdahl ear piercing.",
   canonical: "/locations/williamsburg-va",
 });
 
@@ -60,7 +60,7 @@ export default function WilliamsburgLocationPage() {
             <Link href="/procedures/xeomin" className="link link-primary">
               Xeomin
             </Link>{" "}
-            (our wrinkle relaxer and a Botox® alternative), PRP treatments, hyperhidrosis care, OH-Shot services, and{" "}
+            and Botox® wrinkle relaxers, PRP treatments, hyperhidrosis care, OH-Shot services, and{" "}
             <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
               nurse-led Blomdahl medical ear piercing
             </Link>{" "}
@@ -114,7 +114,7 @@ export default function WilliamsburgLocationPage() {
         <div className={`${AFTER_HEADER} ${CARD_GRID}`}>
           <div className={CARD}>
             <h3 className={CARD_TITLE}>Injectables</h3>
-            <p className="mt-3 text-base leading-relaxed text-base-content/75">Xeomin is our wrinkle relaxer. If you searched for Botox, compare Xeomin by movement lines, dosing, onset, and natural-looking goals. We do not offer Botox® brand.</p>
+            <p className="mt-3 text-base leading-relaxed text-base-content/75">We offer Botox® and Xeomin®, priced the same. Jenny helps you compare them by movement lines, dosing, onset, and natural-looking goals.</p>
           </div>
           <div className={CARD}>
             <h3 className={CARD_TITLE}>Regenerative care</h3>
@@ -138,7 +138,7 @@ export default function WilliamsburgLocationPage() {
             <Link href="/consult">Book a Consultation</Link>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <Link href="/procedures/botox">Botox alternative in Williamsburg</Link>
+            <Link href="/procedures/botox">Botox in Williamsburg</Link>
           </Button>
           <Button asChild size="lg" variant="outline">
             <Link href="/procedures/xeomin">Xeomin in Williamsburg</Link>

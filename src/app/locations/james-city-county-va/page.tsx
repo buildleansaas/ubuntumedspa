@@ -29,9 +29,9 @@ import {
 } from "components/layout";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Near James City County, VA | Xeomin, a Botox Alternative",
+  title: "Med Spa Near James City County, VA | Botox & Xeomin",
   description:
-    "Consultation-led Xeomin® (a Botox® alternative), PRP hair restoration, hyperhidrosis care, and Blomdahl ear piercing near James City County, VA.",
+    "Consultation-led Botox® and Xeomin®, PRP hair restoration, hyperhidrosis care, and Blomdahl ear piercing near James City County, VA.",
   canonical: "/locations/james-city-county-va",
 });
 
@@ -40,8 +40,8 @@ const neighborhoods = ["Norge", "Toano", "Lightfoot", "Greensprings", "New Town"
 const serviceLinks = [
   {
     href: "/procedures/botox",
-    label: "Botox alternative in Williamsburg",
-    note: "Searching for Botox? We use Xeomin®, a wrinkle relaxer in the same category, for forehead lines, frown lines, and crow's feet.",
+    label: "Botox in Williamsburg",
+    note: "We offer Botox® and Xeomin®, priced the same, for forehead lines, frown lines, and crow's feet.",
   },
   {
     href: "/procedures/xeomin",
@@ -106,7 +106,7 @@ export default function JamesCityCountyPage() {
             <div>
               <h1 id="jcc-heading" className={H1}>Med Spa Near James City County, VA</h1>
               <p className={`mt-6 ${INTRO}`}>
-                Compare consultation-led Xeomin (our wrinkle relaxer), PRP hair restoration, hyperhidrosis care, and Blomdahl
+                Compare consultation-led Botox and Xeomin, PRP hair restoration, hyperhidrosis care, and Blomdahl
                 medical ear piercing at the Williamsburg clinic near New Town.
               </p>
               <p className="mt-4 max-w-[62ch] leading-relaxed text-base-content/75">

@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readdirSync, readFileSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import test from "node:test";
 
@@ -7,94 +7,63 @@ import { getCartRecommendations } from "../config/cart-recommendations";
 import { COMMERCE_CATALOG, getCatalogConfigBySlug } from "../config/commerce-catalog";
 import { FORM_INPUTS, procedures, products } from "../data";
 import { normalizeCartItems } from "./cart-items";
-import { resolveCart } from "./catalog";
-import { getProcedureInterests, normalizeConsultInterests, XEOMIN_INTEREST } from "./consult-procedure-interests";
+import { pickStripeRecord } from "./catalog";
+import {
+  allowedConsultInterests,
+  BOTOX_INTEREST,
+  getProcedureInterests,
+  normalizeConsultInterests,
+  XEOMIN_INTEREST,
+} from "./consult-procedure-interests";
 import { earPiercingIntentPages } from "./ear-piercing-intents";
 import { EVENTS } from "./events";
 import { localInjectableServicePages } from "./local-injectable-service-pages";
-import { XEOMIN_CLUSTER_REDIRECTS, xeominClusterPages } from "./xeomin-concerns";
+import { serviceSatellitePages } from "./service-satellites";
+import { BOTOX_OFF_LABEL_NOTE, XEOMIN_CLUSTER_REDIRECTS, XEOMIN_TRADEMARK_NOTE, xeominClusterPages } from "./xeomin-concerns";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "./seo";
 
-// Williamsburg Med Spa uses only Xeomin (incobotulinumtoxinA). It does not offer Botox® brand.
-// This is an allowlist: every "Botox" token in served copy, data, and agent notes must sit in one of the contexts
-// below (the search term, a comparison, a "we do not offer" statement, the trademark notice). Anything else fails,
-// so new wording such as "Botox treatments in our office" or "We carry Botox" cannot slip in.
+// Williamsburg Med Spa offers Botox® and Xeomin®, priced the same (Austin, 2026-11-20). From 2026-11-04 to 2026-11-20
+// the site said it used only Xeomin and did not offer Botox, and Google rankings for "botox williamsburg" fell.
+// This test fails if any served copy, data, or agent note says the clinic does not offer Botox or uses only Xeomin.
 
 const ROOT = process.cwd();
 
 const B = String.raw`Botox®?`;
-export const ALLOWED_BOTOX_CONTEXTS: RegExp[] = [
-  // 1. The search term.
-  new RegExp(String.raw`${B}[\s-]+alternatives?\b`, "gi"),
-  new RegExp(String.raw`\b(?:looking|searching|searched|search)\s+for\s+${B}`, "gi"),
-  new RegExp(String.raw`${B}\s+appears\s+only\s+as\s+the\s+search\s+term`, "gi"),
-  // 2. A "we do not offer Botox®" statement, and the questions the copy answers "No" to.
-  new RegExp(String.raw`\b(?:not|never|don't|do not|doesn't|does not)\s+(?:currently\s+)?offer(?:s)?\s+(?:Dysport\s+or\s+)?${B}`, "gi"),
-  new RegExp(String.raw`\b(?:uses Xeomin|Xeomin),\s+not\s+${B}`, "gi"),
-  new RegExp(String.raw`\bnot\s+Dysport\s+or\s+${B}`, "gi"),
-  new RegExp(String.raw`\bDo(?:es)?\s+(?:you|we|Williamsburg Med Spa)\s+offer\s+${B}(?![^.!\n"]{0,40}\?\s*Yes)`, "gi"),
-  new RegExp(String.raw`\bno\s+${B}\s+brand\b`, "gi"),
-  new RegExp(String.raw`${B}\s*\((?:not offered here|which Williamsburg Med Spa does not offer)\)`, "gi"),
-  // 3. Comparisons, limited to the forms the copy uses.
-  new RegExp(String.raw`\b(?:vs\.?|versus|compared with|compares with|compare it with|comparing Xeomin with|different from|differ from|differs from|interchangeable with|longer than)\s+${B}`, "gi"),
-  new RegExp(String.raw`${B}\s+(?:vs\.?|versus)\s+Xeomin\s+in\s+Williamsburg\b`, "gi"),
-  new RegExp(String.raw`\b(?:Is\s+Xeomin|not)\s+the\s+same\s+as\s+${B}`, "gi"),
-  new RegExp(String.raw`\bIs\s+${B}\s+the\s+same\s+as\s+Kybella\b`, "gi"),
-  new RegExp(String.raw`\bsame\s+(?:treatment\s+)?category\s+as\s+${B}`, "gi"),
+export const FALSE_BOTOX_CLAIMS: RegExp[] = [
+  // "does not offer Botox", "don't carry Botox", "no longer offers Dysport or Botox®"
   new RegExp(
-    String.raw`\b(?:Both\s+|Are\s+)?(?:${B}\s+and\s+Xeomin®?|Xeomin®?\s+and\s+${B})\s+(?:are\s+both\s+(?:botulinum|neuromodulators|medical treatments)|are\s+botulinum|are\s+distinct\s+products|are\s+often\s+compared|are\s+prescription|are\s+wrinkle\s+relaxers|as\s+temporary\s+treatments|have\s+in\s+common|units\s+are\s+not\s+interchangeable|the\s+same\s+thing)\b`,
+    String.raw`(?:\bnot|\bnever|n't|\bno longer)\s+(?:currently\s+)?(?:offer|offers|carry|carries|provide|provides|sell|sells|use|uses)\s+(?:Dysport\s+or\s+)?${B}`,
     "gi"
   ),
-  new RegExp(String.raw`\bhad\s+${B}\s+(?:elsewhere|before)\b`, "gi"),
-  new RegExp(String.raw`\bmention\s+${B}`, "gi"),
-  // 4. The trademark notice and the FDA label citation.
-  new RegExp(String.raw`${B}\s+is\s+a\s+registered\s+trademark\s+of\s+Allergan`, "gi"),
-  /\bBOTOX Cosmetic Prescribing Information\b/g,
-  // Legacy consult-form value mapped to "Xeomin (Botox alternative)" (consult-procedure-interests.ts).
-  /\bBotox: XEOMIN_INTEREST\b/g,
+  new RegExp(String.raw`\bno\s+${B}\s+brand\b`, "gi"),
+  new RegExp(String.raw`${B}\s*\((?:not offered|which Williamsburg Med Spa does not offer)`, "gi"),
+  new RegExp(String.raw`\bXeomin®?,?\s+not\s+${B}`, "gi"),
+  new RegExp(String.raw`\bLooking for ${B}[^?]{0,60}\?\s*We use Xeomin`, "gi"),
+  // "uses only Xeomin", "only Xeomin", "Xeomin only", "Xeomin-only", "We use Xeomin®"
+  /\bonly\s+(?:uses?|offers?|carr(?:y|ies))?\s*Xeomin\b/gi,
+  /\bXeomin®?[\s-]+only\b/gi,
+  /\bwe use Xeomin\b/gi,
+  // "its only wrinkle relaxer is Xeomin", "Xeomin, our wrinkle relaxer", "the clinic's wrinkle relaxer"
+  /\b(?:only|sole)\s+wrinkle[\s-]relaxer\b/gi,
+  /\b(?:our|the clinic's)\s+wrinkle[\s-]relaxer\b(?!s)(?!\s+part)/gi,
+  // A "Do you offer Botox?" question answered "No" in the same text.
+  new RegExp(String.raw`\bDo(?:es)?\s+(?:you|we|Williamsburg Med Spa)\s+offer\s+${B}[^?\n]{0,60}\?["'\s,]*(?:answer:\s*)?["'\x60]?\s*No\b`, "gi"),
 ];
 
-/** Hyphenated slugs and ids that exist in the code. Anything else hyphenated ("botox-injections") is copy. */
-const BOTOX_SLUGS = [
-  "botox-vs-xeomin-williamsburg-va",
-  "botox-party-callout-heading",
-  "botox-party-callout",
-  "botox-party",
-  "botox-consultation",
-];
+/**
+ * Text that records the old Xeomin-only rule as history, or tells agents never to write it, is not a claim. A match is
+ * skipped only when the 100 characters before it contain one of these markers.
+ */
+const HISTORY_MARKERS = /never write|revers|2026-11-04|PR #155|until 2026-11-20|From 2026-11-04/i;
 
-/** URL paths, file names, known slugs, the quoted "botox" slug, code identifiers, and (in code) `botox:` keys. */
-const stripSlugsAndIdentifiers = (text: string, isCode: boolean) => {
-  let cleaned = text
-    // Paths and URLs (contain "/") and file names (end in an extension).
-    .replace(/[\w.:~%/-]*botox[\w.~%/-]*/gi, (match) =>
-      match.includes("/") || /\.(?:webp|png|jpe?g|avif|svg|pdf|tsx?|mdx?|json)$/i.test(match) ? " " : match
-    )
-    .replace(new RegExp(String.raw`(?<![\w-])(?:${BOTOX_SLUGS.join("|")})(?![\w-])`, "g"), " ")
-    .replace(/(["'`])botox\1/g, " ")
-    .replace(/\b[a-z]+Botox[A-Za-z]*\b|\bbotox[A-Z][A-Za-z]*\b|\bBOTOX_[A-Z_]+\b|\bBotox[A-Z][A-Za-z]*\b/g, " ");
-  // Object keys only: `botox:` at the start of a line (strings such as "Book botox: $250" are still copy).
-  if (isCode) cleaned = cleaned.replace(/^(\s*)botox(?=\s*:)/gm, "$1 ");
-  return cleaned;
-};
-
-/** In Markdown notes, a backticked search query such as `botox williamsburg va` is a quoted search term. */
-const stripQuotedQueries = (text: string) => text.replace(/`[a-z0-9 ]*botox[a-z0-9 ]*`/g, " ");
-
-export const findDisallowedBotox = (label: string, text: string, kind: "copy" | "code" | "notes" = "copy") => {
-  let cleaned = stripSlugsAndIdentifiers(text, kind === "code");
-  if (kind === "notes") cleaned = stripQuotedQueries(cleaned);
-  const covered: Array<[number, number]> = [];
-  for (const pattern of ALLOWED_BOTOX_CONTEXTS) {
-    for (const match of cleaned.matchAll(new RegExp(pattern.source, pattern.flags.includes("g") ? pattern.flags : `${pattern.flags}g`))) {
-      covered.push([match.index ?? 0, (match.index ?? 0) + match[0].length]);
-    }
-  }
+export const findFalseBotoxClaims = (label: string, text: string) => {
   const found: string[] = [];
-  for (const match of cleaned.matchAll(/botox/gi)) {
-    const index = match.index ?? 0;
-    if (covered.some(([start, end]) => index >= start && index < end)) continue;
-    found.push(`${label}: "${cleaned.slice(Math.max(0, index - 60), index + 50).replace(/\s+/g, " ")}"`);
+  for (const pattern of FALSE_BOTOX_CLAIMS) {
+    for (const match of text.matchAll(new RegExp(pattern.source, pattern.flags))) {
+      const index = match.index ?? 0;
+      if (HISTORY_MARKERS.test(text.slice(Math.max(0, index - 100), index))) continue;
+      found.push(`${label}: "${text.slice(Math.max(0, index - 50), index + 70).replace(/\s+/g, " ")}"`);
+    }
   }
   return found;
 };
@@ -107,21 +76,20 @@ const walk = (dir: string, extensions: string[], recursive = true): string[] =>
   });
 
 // Everything under src/ that can hold copy or data (tests excluded: they quote the false claims on purpose), plus
-// agent and repo notes, so a future session cannot reintroduce Botox offer copy from them.
+// agent and repo notes, so a future session cannot reintroduce the Xeomin-only claim from them.
 const isScannedSource = (path: string) => !/\.test\.tsx?$/.test(path) && !path.includes("node_modules");
 const scannedFiles = [
   ...walk(join(ROOT, "src"), [".ts", ".tsx", ".mdx", ".md", ".json"]).filter(isScannedSource),
   ...walk(join(ROOT, ".agents"), [".md"]),
   join(ROOT, "LOCALIZATION.md"),
-  ...walk(join(ROOT, "docs/seo"), [".md"], false),
 ];
+
 /**
- * Dated SEO planning notes written while the site still listed Botox and filler. They are records, not instructions:
- * each must carry the supersede line near the top, and only then is its body skipped. The list is explicit, so a new
- * note cannot opt out by adding the line.
+ * Dated SEO notes written while the site said "Xeomin only". They are records, not instructions: each must carry the
+ * 2026-11-20 update line, and only then is its body skipped. The list is explicit, so a new note cannot opt out.
  */
-export const SUPERSEDE_LINE =
-  "Update 2026-11-04 (PR #155): the clinic uses only Xeomin (no Botox® brand) and no longer offers filler.";
+export const BOTOX_BACK_LINE =
+  "Update 2026-11-20: the clinic offers Botox® and Xeomin® again, priced the same (this reverses PR #155's Xeomin-only change of 2026-11-04). It still does not offer filler.";
 const HISTORICAL_NOTES = [
   "docs/seo/oct-2026-owner-slice-baselines.md",
   "docs/seo/piercing-consolidation-2026-10.md",
@@ -132,89 +100,111 @@ const HISTORICAL_NOTES = [
   "docs/seo/williamsburg-newport-news-growth-slice.md",
   "docs/seo/williamsburg-protected-query-owner-ledger.md",
 ];
-const kindOf = (path: string) => (/\.tsx?$/.test(path) ? "code" : path.startsWith(join(ROOT, "src")) ? "copy" : "notes");
 
-const renderedData = JSON.stringify([
+const renderedData = [
   procedures,
   products,
   COMMERCE_CATALOG,
   localInjectableServicePages,
+  serviceSatellitePages,
   EVENTS,
   earPiercingIntentPages,
   xeominClusterPages,
   FORM_INPUTS,
   DEFAULT_TITLE,
   DEFAULT_DESCRIPTION,
-]);
+];
 
-test("the allowlist rejects offer wording and accepts the honest contexts (the test can fail)", () => {
+/** Every { question, answer } pair anywhere in the rendered data. */
+const collectFaqs = (value: unknown, out: Array<{ question: string; answer: string }> = []) => {
+  if (Array.isArray(value)) value.forEach((item) => collectFaqs(item, out));
+  else if (value && typeof value === "object") {
+    const record = value as Record<string, unknown>;
+    if (typeof record.question === "string" && typeof record.answer === "string") {
+      out.push({ question: record.question, answer: record.answer });
+    }
+    Object.values(record).forEach((item) => collectFaqs(item, out));
+  }
+  return out;
+};
+
+test("the detector catches Xeomin-only wording and passes the honest Botox and Xeomin copy (the test can fail)", () => {
   for (const falseClaim of [
-    "Soften Smoker's Lines with Xeomin and Botox",
-    "Botox & Xeomin",
-    "Botox treatments in our office",
-    "Botox Cosmetic by Jenny",
-    "Botox injections for crow's feet",
-    "Prepay Botox",
-    "Botox credit blocks",
-    "We carry Botox",
-    "free Botox",
-    "Prepay Xeomin or Botox",
-    "Jenny Brady, MSN, RN, CPNP, PMHS plans Botox around forehead lines",
-    "Most Botox appointments are short",
-    "Host a Botox party that introduces friends",
-    "Williamsburg Med Spa offers Botox, Xeomin, PRP treatments",
-    "Medical Spa Williamsburg VA | Botox, Xeomin & PRP",
-    "Request a Botox Consultation",
-    "Botox in Williamsburg, VA",
-    // Round 2: offers dressed up as comparisons, slug-looking copy, and loose contexts.
-    "Xeomin and Botox as low as $250",
-    "Botox and Xeomin are $250 per block",
-    "Both Botox and Xeomin are offered by Jenny",
-    "Botox and Xeomin have openings this week",
-    "Xeomin and Botox are both available here.",
-    "We carry botox.",
-    "Book botox: $250",
-    "Get botox-injections today",
-    "We offer more than Botox",
-    "Xeomin is the same as Botox.",
-    "Clients who had Botox here love it",
-    "Do we offer Botox? Yes!",
-    "Our Botox vs. Xeomin special",
+    "Williamsburg Med Spa does not offer Botox® brand.",
+    "We don't offer Botox.",
+    "The clinic no longer offers Dysport or Botox®.",
+    "Williamsburg Med Spa does not offer Dysport or Botox® brand.",
+    "Xeomin, no Botox brand.",
+    "| Botox® (not offered here) | Xeomin® (what we use) |",
+    "Williamsburg Med Spa uses Xeomin, not Botox.",
+    "Looking for Botox® for frown lines? We use Xeomin®.",
+    "The clinic uses only Xeomin.",
+    "Williamsburg Med Spa uses Xeomin only.",
+    "We use Xeomin® only.",
+    "A Botox alternative in Williamsburg, VA: we use Xeomin®",
+    "The clinic's only wrinkle relaxer is Xeomin.",
+    "Xeomin, our wrinkle relaxer, addresses lines.",
+    "Xeomin, the clinic's wrinkle relaxer (a Botox® alternative), relaxes muscles.",
+    'question: "Do you offer Botox®?",\n        answer:\n          "No. We use Xeomin®.',
   ]) {
-    assert.ok(findDisallowedBotox("sample", falseClaim).length > 0, `allowlist accepted: ${falseClaim}`);
+    assert.ok(findFalseBotoxClaims("sample", falseClaim).length > 0, `detector missed: ${falseClaim}`);
   }
   for (const honest of [
-    "A Botox Alternative in Williamsburg, VA: We Use Xeomin®",
-    "Looking for Botox in Williamsburg? We use Xeomin®, a wrinkle relaxer in the same category as Botox®.",
-    "Do you offer Botox®? No. We use Xeomin® (incobotulinumtoxinA).",
-    "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand.",
-    "Xeomin vs Botox. Botox vs Xeomin in Williamsburg, VA. Both Xeomin and Botox® are botulinum toxin type A products. If you have had Botox® elsewhere.",
-    'href="/events/botox-party" and /procedures/botox and botox-vs-xeomin-williamsburg-va and "/procedure/botox-closeup.webp"',
+    "Williamsburg Med Spa offers Botox® and Xeomin®, priced the same. Jenny helps you choose.",
+    "Do you offer Botox®? Yes. Williamsburg Med Spa offers Botox® Cosmetic and Xeomin®.",
+    "Williamsburg Med Spa does not offer Dysport.",
+    "No. Williamsburg Med Spa does not offer dermal fillers, including lip filler.",
+    "Williamsburg Med Spa does not offer Hydrafacial, Kybella, Sculptra, or CoolSculpting.",
+    "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan or Merz.",
+    "Botox and Xeomin, our wrinkle relaxers, address lines caused by movement.",
+    "Never write that the clinic does not offer Botox or uses only Xeomin.",
+    "Update 2026-11-20: this reverses PR #155's Xeomin-only change.",
   ]) {
-    assert.deepEqual(findDisallowedBotox("sample", honest), [], honest);
+    assert.deepEqual(findFalseBotoxClaims("sample", honest), [], honest);
   }
 });
 
-test("rendered data mentions Botox only in allowed contexts", () => {
-  assert.deepEqual(findDisallowedBotox("rendered data", renderedData), []);
-  // "Botox" is never a catalog item, consult interest, procedure name, or locked event option.
-  assert.doesNotMatch(renderedData, /"Botox"/);
+test("rendered data never says the clinic does not offer Botox; every 'offer Botox?' FAQ answers Yes", () => {
+  assert.deepEqual(findFalseBotoxClaims("rendered data", JSON.stringify(renderedData)), []);
+  const botoxFaqs = collectFaqs(renderedData).filter(({ question }) => /\boffer Botox/i.test(question));
+  assert.ok(botoxFaqs.length >= 5, `only ${botoxFaqs.length} "offer Botox" FAQs found`);
+  for (const faq of botoxFaqs) assert.match(faq.answer, /^Yes\b/, faq.question);
 });
 
-test("served copy, source, and agent notes mention Botox only in allowed contexts", () => {
+test("served copy, source, and agent notes never say the clinic does not offer Botox or uses only Xeomin", () => {
   for (const note of HISTORICAL_NOTES) {
-    const head = readFileSync(join(ROOT, note), "utf8").split("\n").slice(0, 5).join("\n");
-    assert.ok(head.includes(SUPERSEDE_LINE), `${note} is missing the 2026-11-04 supersede line at the top`);
+    const head = readFileSync(join(ROOT, note), "utf8").split("\n").slice(0, 6).join("\n");
+    assert.ok(head.includes(BOTOX_BACK_LINE), `${note} is missing the 2026-11-20 update line at the top`);
   }
-  const problems = scannedFiles
-    .filter((file) => !HISTORICAL_NOTES.includes(relative(ROOT, file)))
-    .flatMap((file) =>
-    findDisallowedBotox(relative(ROOT, file), readFileSync(file, "utf8"), kindOf(file))
+  const docsSeo = walk(join(ROOT, "docs/seo"), [".md"], false).filter(
+    (file) => !HISTORICAL_NOTES.includes(relative(ROOT, file))
+  );
+  const problems = [...scannedFiles, ...docsSeo].flatMap((file) =>
+    findFalseBotoxClaims(relative(ROOT, file), readFileSync(file, "utf8"))
   );
   assert.deepEqual(problems, []);
 });
 
-test("/procedures/botox/for/<concern> redirects to the Xeomin concern page; every other /procedures/botox/for/* and /near/williamsburg-va to /procedures/botox", () => {
+test("trademark notices name Allergan, say not affiliated, and never say Botox is not offered", () => {
+  const botoxPage = procedures.find((procedure) => procedure.slug === "botox");
+  const notes = [
+    botoxPage && "trademarkNote" in botoxPage ? botoxPage.trademarkNote : "",
+    XEOMIN_TRADEMARK_NOTE,
+    readFileSync(join(ROOT, "src/markdown/botox-vs-xeomin-williamsburg-va.mdx"), "utf8"),
+    readFileSync(join(ROOT, "src/app/terms/page.tsx"), "utf8"),
+  ];
+  for (const note of notes) {
+    assert.match(note, /Botox® is a registered trademark of Allergan, Inc\., an AbbVie company/);
+    assert.match(note, /not\s+affiliated with Allergan/);
+  }
+  assert.equal(
+    botoxPage && "trademarkNote" in botoxPage ? botoxPage.trademarkNote : undefined,
+    XEOMIN_TRADEMARK_NOTE,
+    "the Botox page and the Xeomin pages share one trademark notice"
+  );
+});
+
+test("/procedures/botox redirects keep working: /for/<concern> to the Xeomin concern page, the rest to /procedures/botox", () => {
   const nextConfig = readFileSync(join(ROOT, "next.config.mjs"), "utf8");
   assert.match(nextConfig, /\["\/procedures\/botox\/for\/:ailmentSlug", "\/procedures\/botox"\]/);
   assert.match(nextConfig, /\["\/procedures\/botox\/near\/williamsburg-va", "\/procedures\/botox"\]/);
@@ -231,60 +221,93 @@ test("/procedures/botox/for/<concern> redirects to the Xeomin concern page; ever
   }
 });
 
-test("/procedures/botox is the honest Botox-alternative page and sells Xeomin", () => {
+test("/procedures/botox is the Botox page: Botox title and H1, sells the botox item, links Xeomin, label-based claims", () => {
   const page = procedures.find((procedure) => procedure.slug === "botox");
   assert.ok(page);
-  assert.match(page.seo.title, /Botox Alternative/);
-  assert.match(page.seo.title, /Xeomin/);
-  assert.equal(page.seo.title, "Botox Alternative in Williamsburg, VA | Xeomin® from $250 Cash");
-  assert.match(page.seo.description, /Xeomin/);
+  assert.equal(page.name, "Botox");
+  assert.equal(page.seo.title, "Botox in Williamsburg, VA | Botox & Xeomin from $250 Cash");
+  assert.ok(page.seo.title.length <= 60, `title is ${page.seo.title.length} characters`);
+  assert.ok("h1" in page.seo && page.seo.h1 === "Botox® in Williamsburg, VA");
+  assert.match(page.seo.description, /Botox® and Xeomin®/);
   assert.match(page.seo.description, /\$250 cash per credit block \(\$257\.78 card\)/);
   assert.ok(page.seo.description.length <= 160, `meta is ${page.seo.description.length} characters`);
-  assert.ok("h1" in page.seo && page.seo.h1 === "A Botox Alternative in Williamsburg, VA: We Use Xeomin®");
-  assert.equal(
-    "trademarkNote" in page ? page.trademarkNote : undefined,
-    "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan and does not offer Botox® brand."
-  );
+  assert.ok("catalogSlug" in page && page.catalogSlug === "botox");
+  assert.equal(page.price, procedures.find((procedure) => procedure.slug === "xeomin")?.price);
   assert.equal(page.faqs[0].question, "Do you offer Botox®?");
-  assert.match(page.faqs[0].answer, /^No\. We use Xeomin® \(incobotulinumtoxinA\)/);
-  assert.ok("catalogSlug" in page && page.catalogSlug === "xeomin");
-  assert.equal(page.price, getCatalogConfigBySlug("xeomin")?.displayPrice);
+  assert.match(page.faqs[0].answer, /^Yes\. Williamsburg Med Spa offers Botox® Cosmetic and Xeomin®/);
+  assert.ok(page.faqs.some((faq) => /Botox or Xeomin/.test(faq.question)), "has a 'Botox or Xeomin' FAQ");
+
+  // BOTOX Cosmetic label (DailyMed, revised 10/2024): glabellar, lateral canthal, forehead lines, platysma bands. Anything
+  // else on the page is called off-label.
+  assert.match(page.description, /frown lines, crow's feet, forehead lines, and vertical neck \(platysma\) bands/);
+  assert.match(BOTOX_OFF_LABEL_NOTE, /frown lines, crow's feet, forehead lines, and vertical neck \(platysma\) bands/);
+  const onLabel = new Set(["forehead-lines", "frown-lines", "crows-feet", "neck-band-softening"]);
+  for (const ailment of page.ailments) {
+    if (!onLabel.has(ailment.slug)) assert.match(ailment.description, /off-label/i, ailment.slug);
+  }
+  const allCopy = JSON.stringify(page);
+  assert.doesNotMatch(allCopy, /sweat|hyperhidrosis|migraine/i, "therapeutic BOTOX uses are not cosmetic claims");
+  assert.doesNotMatch(allCopy, /lasts? longer|works? faster|better than Xeomin/i, "no head-to-head outcome claims");
+
+  const view = readFileSync(join(ROOT, "src/app/procedures/[slug]/page.tsx"), "utf8");
+  assert.match(view, /procedure\.slug === "botox" && \(\s*<p[^>]*data-off-label-note>\s*\{BOTOX_OFF_LABEL_NOTE\}/);
+  assert.match(view, /botox: \[\s*\{ href: "\/procedures\/xeomin", label: "Xeomin" \}/);
 
   const xeomin = procedures.find((procedure) => procedure.slug === "xeomin");
   assert.ok(xeomin);
   assert.equal(xeomin.seo.title, "Xeomin® in Williamsburg, VA | Wrinkle Relaxer from $250 Cash");
-  assert.match(xeomin.description, /Botox® alternative/);
+  assert.match(xeomin.description, /alongside Botox®/);
 });
 
-test("the botox catalog item is gone and a stale cart cannot buy it", async () => {
-  assert.equal(getCatalogConfigBySlug("botox"), null);
-  assert.equal(COMMERCE_CATALOG.some((item) => /botox/i.test(`${item.slug} ${item.name} ${item.stripeProductKey}`)), false);
-  assert.deepEqual(normalizeCartItems([{ slug: "botox", kind: "procedure", quantity: 1 }]), []);
-  for (const slug of [...COMMERCE_CATALOG.map((item) => item.slug), "botox"]) {
-    assert.equal(getCartRecommendations([slug], 10).some((item) => item.slug === "botox"), false, slug);
+test("the botox catalog item is back, priced exactly like Xeomin", () => {
+  const botox = getCatalogConfigBySlug("botox");
+  const xeomin = getCatalogConfigBySlug("xeomin");
+  assert.ok(botox && xeomin);
+  assert.equal(botox.name, "Botox");
+  assert.equal(botox.kind, "procedure");
+  for (const field of ["pricingMode", "cashAmountCents", "unitAmountCents", "currency", "quantityLabel", "minQuantity", "maxQuantity", "displayPrice"] as const) {
+    assert.deepEqual(botox[field], xeomin[field], field);
   }
-  assert.equal(getCartRecommendations([], 10).some((item) => item.slug === "botox"), false);
+  assert.equal(botox.cashAmountCents, 25000);
+  assert.equal(botox.unitAmountCents, 25778);
+  assert.equal(botox.stripeProductKey, "wms_procedure_botox");
+  assert.equal(botox.stripePriceLookupKey, "wms_procedure_botox_block_250_v1");
+  assert.ok(botox.imagePath && existsSync(join(ROOT, "public", botox.imagePath)), botox.imagePath);
+  assert.match(botox.customerNote ?? "", /^Botox is prepaid online in \$250 credit blocks/);
 
-  const previousMongoUri = process.env.MONGO_URI;
-  delete process.env.MONGO_URI;
-  try {
-    await assert.rejects(resolveCart([{ slug: "botox", kind: "procedure", quantity: 1 }]), {
-      message: '"botox" is no longer available online. Remove it from your cart to continue.',
-    });
-  } finally {
-    if (previousMongoUri !== undefined) process.env.MONGO_URI = previousMongoUri;
-  }
+  assert.deepEqual(normalizeCartItems([{ slug: "botox", kind: "procedure", quantity: 2 }]), [
+    { slug: "botox", kind: "procedure", quantity: 2 },
+  ]);
+  assert.ok(getCartRecommendations(["botox"], 4).length > 0, "a Botox cart gets recommendations");
+  // A cart that already holds one wrinkle relaxer is not pushed the other one.
+  assert.equal(getCartRecommendations(["xeomin"], 10).some((item) => item.slug === "botox"), false);
+  assert.equal(getCartRecommendations(["botox"], 10).some((item) => item.slug === "xeomin"), true);
 });
 
-test('consult interest "Botox" became "Xeomin (Botox alternative)"; old values still map', () => {
+test("a retired (active: false) Mongo record is never used for checkout; legacy slugs still resolve", () => {
+  const records = {
+    botox: { active: false, stripePriceId: "price_archived" },
+    "o-shot": { active: false, stripePriceId: "price_oshot" },
+    xeomin: { active: true, stripePriceId: "price_xeomin" },
+  };
+  assert.equal(pickStripeRecord(records, "botox"), undefined);
+  assert.equal(pickStripeRecord(records, "xeomin")?.stripePriceId, "price_xeomin");
+  assert.equal(pickStripeRecord(records, "oh-shot", "o-shot")?.stripePriceId, "price_oshot");
+});
+
+test('consult offers "Botox" and "Xeomin" separately; the 2026-11 "Xeomin (Botox alternative)" label still maps', () => {
   const interests = FORM_INPUTS.find((input) => input.id === "interests")?.options ?? [];
-  assert.ok(interests.includes(XEOMIN_INTEREST));
-  assert.equal(interests.includes("Botox"), false);
-  assert.deepEqual(getProcedureInterests("botox"), [XEOMIN_INTEREST]);
-  assert.deepEqual(getProcedureInterests("xeomin"), [XEOMIN_INTEREST]);
-  assert.deepEqual(normalizeConsultInterests(["Botox", "Xeomin", "PRP Facial", "O-Shot"]), [
-    XEOMIN_INTEREST,
+  assert.equal(BOTOX_INTEREST, "Botox");
+  assert.equal(XEOMIN_INTEREST, "Xeomin");
+  assert.ok(interests.includes("Botox"));
+  assert.ok(interests.includes("Xeomin"));
+  assert.equal(interests.includes("Xeomin (Botox alternative)"), false);
+  assert.deepEqual(getProcedureInterests("botox"), ["Botox"]);
+  assert.deepEqual(getProcedureInterests("xeomin"), ["Xeomin"]);
+  assert.deepEqual(normalizeConsultInterests(["Xeomin (Botox alternative)", "Xeomin", "PRP Facial", "O-Shot"]), [
+    "Xeomin",
     "PRP Facial",
     "OH-Shot",
   ]);
+  assert.deepEqual(allowedConsultInterests(["Botox", "Xeomin (Botox alternative)"]), ["Botox", "Xeomin"]);
 });

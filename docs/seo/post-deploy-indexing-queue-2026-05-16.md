@@ -1,5 +1,7 @@
 # Post-Deploy Indexing Queue — Williamsburg Med Spa
 
+Update 2026-11-20: the clinic offers Botox® and Xeomin® again, priced the same (this reverses PR #155's Xeomin-only change of 2026-11-04). It still does not offer filler.
+
 Update 2026-11-04 (PR #155): the clinic uses only Xeomin (no Botox® brand) and no longer offers filler.
 
 Data source: public crawlability checks plus prior GSC/Keywords Everywhere report in `docs/gsc-ke-growth-report-2026-05-07.md`.

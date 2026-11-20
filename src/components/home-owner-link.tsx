@@ -25,19 +25,18 @@ export default function HomeOwnerLink({ className = "" }: { className?: string }
   );
 }
 
-// /procedures/botox owns the Botox-alternative searches (owner ledger, 2026-11-08). Google barely knows that page,
-// so pages that showed for the Botox-alternative searches link to it. The clinic uses only Xeomin, so the link text is the
-// honest Botox alternative wording.
-export const XEOMIN_OWNER_LINK_ANCHOR = "Botox alternative in Williamsburg, VA";
+// /procedures/botox owns the Botox searches (owner ledger, 2026-11-08; Botox is offered again from 2026-11-20). Google
+// barely knows that page, so pages that showed for the Botox searches link to it with the search words as link text.
+export const XEOMIN_OWNER_LINK_ANCHOR = "Botox in Williamsburg, VA";
 
 export function XeominHubLink({ className = "" }: { className?: string }) {
   return (
     <p className={`text-sm leading-6 text-base-content/70 ${className}`}>
-      For a{" "}
+      Looking for{" "}
       <Link href={XEOMIN_HUB_PATH} className="font-medium text-primary hover:underline">
         {XEOMIN_OWNER_LINK_ANCHOR}
       </Link>
-      , we use Xeomin®.
+      ? We offer Botox® and Xeomin®, priced the same.
     </p>
   );
 }

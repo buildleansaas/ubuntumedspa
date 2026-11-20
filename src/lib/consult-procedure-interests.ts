@@ -1,15 +1,15 @@
 import { normalizeIntimacyProcedureNames } from "./intimacy-aliases";
 
 /**
- * The clinic's only wrinkle relaxer is Xeomin. It does not offer Botox® brand, so the consult checkbox is
- * "Xeomin (Botox alternative)" and the pre-2026-11 label maps to it. The /procedures/botox page is the Botox-alternative page.
+ * The clinic offers two wrinkle relaxers, Botox® and Xeomin®, as separate consult checkboxes. From 2026-11-04 to
+ * 2026-11-20 the form had one "Xeomin (Botox alternative)" checkbox; cached pages may still send it, so it maps to Xeomin.
  */
-export const XEOMIN_INTEREST = "Xeomin (Botox alternative)";
+export const BOTOX_INTEREST = "Botox";
+export const XEOMIN_INTEREST = "Xeomin";
 
-/** Interest names the consult form used before 2026-11, still sent by cached pages; mapped to today's labels. */
+/** Interest names older versions of the consult form used, still sent by cached pages; mapped to today's labels. */
 const LEGACY_INTEREST_ALIASES: Record<string, string> = {
-  Botox: XEOMIN_INTEREST,
-  Xeomin: XEOMIN_INTEREST,
+  "Xeomin (Botox alternative)": XEOMIN_INTEREST,
   "Breast Lift": "PRP Breast Lift",
 };
 
@@ -23,6 +23,7 @@ export const CONSULT_INTEREST_OPTIONS = [
   "Microneedling with PRP",
   "PRP Face Lift",
   "Joint Restoration",
+  BOTOX_INTEREST,
   XEOMIN_INTEREST,
   "Hyperhidrosis Treatment",
   "Blomdahl Ear Piercing",
@@ -30,7 +31,7 @@ export const CONSULT_INTEREST_OPTIONS = [
 ];
 
 export const PROCEDURE_INTERESTS: Record<string, string[]> = {
-  botox: [XEOMIN_INTEREST],
+  botox: [BOTOX_INTEREST],
   xeomin: [XEOMIN_INTEREST],
   hyperhidrosis: ["Hyperhidrosis Treatment"],
   "hyperhidrosis-treatment": ["Hyperhidrosis Treatment"],
@@ -54,7 +55,7 @@ export const PROCEDURE_INTERESTS: Record<string, string[]> = {
 export const getProcedureInterests = (procedure?: string | null) =>
   procedure ? PROCEDURE_INTERESTS[procedure.trim()] : undefined;
 
-/** Normalizes submitted consult interests: legacy intimacy names plus the pre-2026-11 wrinkle-relaxer labels. */
+/** Normalizes submitted consult interests: legacy intimacy names plus the 2026-11-04 to 2026-11-20 wrinkle-relaxer label. */
 export const normalizeConsultInterests = (names: string[]) =>
   Array.from(new Set(normalizeIntimacyProcedureNames(names).map((name) => LEGACY_INTEREST_ALIASES[name] ?? name)));
 

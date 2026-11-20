@@ -3,7 +3,7 @@ export const homeFaqs = [
   {
     question: "What medical spa services are available in Williamsburg, VA?",
     answer:
-      "Williamsburg Med Spa offers Xeomin® (our wrinkle relaxer and a Botox® alternative), PRP treatments, hyperhidrosis care, OH-Shot services, and Blomdahl medical ear piercing in Williamsburg, VA. We do not offer Botox® brand.",
+      "Williamsburg Med Spa offers Botox® and Xeomin® wrinkle relaxers, PRP treatments, hyperhidrosis care, OH-Shot services, and Blomdahl medical ear piercing in Williamsburg, VA.",
   },
   {
     question: "Who provides treatments at Williamsburg Med Spa?",

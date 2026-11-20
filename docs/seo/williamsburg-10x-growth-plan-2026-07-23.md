@@ -1,5 +1,7 @@
 # Williamsburg Med Spa: Protect Current Wins + 10x Organic Growth Plan
 
+Update 2026-11-20: the clinic offers Botox® and Xeomin® again, priced the same (this reverses PR #155's Xeomin-only change of 2026-11-04). It still does not offer filler.
+
 Update 2026-11-04 (PR #155): the clinic uses only Xeomin (no Botox® brand) and no longer offers filler.
 
 Date: 2026-07-23

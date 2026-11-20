@@ -170,7 +170,7 @@ const buildWrinkleRelaxerPartyAddOnOptionGroups = (): EventOptionGroup[] => {
   ].filter((group) => group.options.length > 0);
 };
 
-// URL slug "botox-party" is kept for existing links; the event is a Xeomin wrinkle relaxer party (the clinic does not offer Botox® brand).
+// URL slug "botox-party" is kept for existing links. The party is a wrinkle relaxer party: guests can choose Botox® or Xeomin®.
 const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
   slug: "botox-party",
   title: "Wrinkle Relaxer Party",
@@ -178,28 +178,28 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
   canonicalPath: "/events/botox-party",
   metadataTitle: "Plan a Private Friend Party | Williamsburg Med Spa",
   metadataDescription:
-    "Host a wrinkle relaxer party in Williamsburg, VA. We use Xeomin®, a Botox® alternative. Bring paid Xeomin guests and introduce friends to PRP and skin care.",
+    "Host a Botox® or Xeomin® wrinkle relaxer party in Williamsburg, VA. Bring paid guests, make your own treatment free, and introduce friends to PRP.",
   heroImageSrc: "/events/botox-party-hero.webp",
   heroImageAlt: "A stylish group of women laughing together at an intimate outdoor wrinkle relaxer party",
   thumbnailImageSrc: "/events/botox-party-thumb.webp",
   thumbnailImageAlt: "Women socializing at a chic wrinkle relaxer party",
   listing: {
     eyebrow: "Featured Event",
-    title: "Host a Xeomin wrinkle relaxer party that introduces friends to Williamsburg Med Spa.",
+    title: "Host a Botox or Xeomin party that introduces friends to Williamsburg Med Spa.",
     description:
-      "Bring together friends who are already curious about wrinkle relaxers. We use Xeomin®, a Botox® alternative. The event starts with a Xeomin plan and gives guests an easy way to ask about PRP, skin, wellness, and product options without turning the party into a generic sales pitch.",
-    highlights: ["Xeomin-led event", "Private group planning", "PRP questions welcome"],
+      "Bring together friends who are already curious about wrinkle relaxers. Guests can choose Botox® or Xeomin®, and Jenny helps each one decide. The event starts with a wrinkle relaxer plan and gives guests an easy way to ask about PRP, skin, wellness, and product options without turning the party into a generic sales pitch.",
+    highlights: ["Botox or Xeomin", "Private group planning", "PRP questions welcome"],
     ctaLabel: "Plan a Wrinkle Relaxer Party",
   },
   hero: {
     eyebrow: "Williamsburg Med Spa Event",
-    heading: "Turn real friend-group interest into a private Xeomin event.",
+    heading: "Turn real friend-group interest into a private Botox and Xeomin event.",
     body:
-      "Xeomin, our wrinkle relaxer and a Botox® alternative, is the door-opener. The party format helps curious friends meet Jenny, ask practical questions, and learn which next step may fit them, from injectables to PRP, skin, wellness, or products.",
-    highlights: ["Xeomin-led party", "Private planning call", "PRP and skin questions welcome", "Individual screening still required"],
+      "Botox® and Xeomin®, the clinic's two wrinkle relaxers, are the door-opener. The party format helps curious friends meet Jenny, ask practical questions, and learn which next step may fit them, from injectables to PRP, skin, wellness, or products.",
+    highlights: ["Botox or Xeomin", "Private planning call", "PRP and skin questions welcome", "Individual screening still required"],
     primaryCtaLabel: "Plan My Party",
-    secondaryCtaLabel: "Read About Xeomin",
-    secondaryCtaHref: "/procedures/xeomin",
+    secondaryCtaLabel: "Read About Botox and Xeomin",
+    secondaryCtaHref: "/procedures/botox",
   },
   rewards: {
     eyebrow: "Why host",
@@ -210,7 +210,7 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
       {
         eyebrow: "For curious friends",
         title: "Wrinkle relaxers are the easy first question",
-        description: "Most guests already know the idea of a wrinkle relaxer, often after searching for Botox®. Xeomin is the one we use, and it is a natural starting point for a group event.",
+        description: "Most guests already know the idea of a wrinkle relaxer, often after searching for Botox®. We offer Botox and Xeomin, priced the same, so it is a natural starting point for a group event.",
       },
       {
         eyebrow: "For the host",
@@ -228,14 +228,14 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
   },
   process: {
     eyebrow: "How it works",
-    heading: "Plan the party around Xeomin, then leave room for the bigger conversation.",
+    heading: "Plan the party around Botox and Xeomin, then leave room for the bigger conversation.",
     body:
-      "The process is straightforward: send the basics, text Jenny to set up the planning call, confirm the Xeomin-led guest flow, and flag which other services your group may want to ask about.",
+      "The process is straightforward: send the basics, text Jenny to set up the planning call, confirm the wrinkle relaxer guest flow, and flag which other services your group may want to ask about.",
     steps: [
       {
         title: "Share the guest list idea",
         description:
-          "Tell us how many people are interested, whether they are coming for Xeomin first, and what questions they keep bringing up.",
+          "Tell us how many people are interested, whether they are coming for Botox or Xeomin first, and what questions they keep bringing up.",
       },
       {
         title: "Book a planning call",
@@ -245,7 +245,7 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
       {
         title: "Shape the treatment conversation",
         description:
-          "Xeomin remains the anchor, but Jenny can prepare to answer questions about PRP, skin, wellness, products, or other services that fit the group.",
+          "Botox and Xeomin remain the anchor, but Jenny can prepare to answer questions about PRP, skin, wellness, products, or other services that fit the group.",
       },
       {
         title: "Host the event",
@@ -256,7 +256,7 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
   },
   support: {
     eyebrow: "Planning notes",
-    heading: "Use Xeomin as the reason to gather, not the limit of the conversation.",
+    heading: "Use Botox and Xeomin as the reason to gather, not the limit of the conversation.",
     body:
       "This page is built for hosts who already have friends, neighbors, coworkers, or clients asking about wrinkle relaxers and want to make the first step feel social, organized, and credible.",
     supportingBody:
@@ -270,7 +270,7 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
       {
         title: "Add-on conversations are welcome",
         description:
-          "Xeomin is the core offer, but the party can also tee up PRP, skin, wellness, product, and follow-up consultation questions for interested guests.",
+          "Botox and Xeomin are the core offer, but the party can also tee up PRP, skin, wellness, product, and follow-up consultation questions for interested guests.",
       },
       {
         title: "Medical screening still matters",
@@ -285,7 +285,7 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
     body:
       "Share the group size, the date range, the location idea, and anything else the group may want to ask about. Once the form is in, text Jenny to set up a quick planning conversation.",
     disclaimer:
-      "Xeomin is a prescription treatment. Williamsburg Med Spa does not offer Botox® brand. Final treatment plans, dosing, candidacy, and timing are confirmed individually after review.",
+      "Botox and Xeomin are prescription treatments. Final treatment plans, dosing, candidacy, and timing are confirmed individually after review.",
     submitButtonLabel: "Plan My Party",
     successMessage: "Party request received. Next: text Jenny to set up your planning call.",
     fields: [
@@ -312,13 +312,13 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
       },
       {
         id: "expectedGuestCount",
-        label: "Expected paid Xeomin guests",
+        label: "Expected paid Botox or Xeomin guests",
         type: "number",
         required: true,
         min: 5,
         defaultValue: "5",
         placeholder: "5",
-        helperText: "The public host offer starts at 5 paid Xeomin guests.",
+        helperText: "The public host offer starts at 5 paid Botox or Xeomin guests.",
       },
       {
         id: "preferredDates",
@@ -343,11 +343,11 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
         type: "checkbox",
         layout: "full",
         required: false,
-        lockedOptions: ["Xeomin"],
-        defaultValue: ["Xeomin"],
+        lockedOptions: ["Botox", "Xeomin"],
+        defaultValue: ["Botox", "Xeomin"],
         optionGroups: buildWrinkleRelaxerPartyAddOnOptionGroups(),
         helperText:
-          "Xeomin stays included because the party is Xeomin-led. Check anything else guests may want Jenny to be ready to discuss, including PRP or skin questions.",
+          "Botox and Xeomin stay included because the party is a wrinkle relaxer party. Check anything else guests may want Jenny to be ready to discuss, including PRP or skin questions.",
       },
       {
         id: "comments",
@@ -364,12 +364,12 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
       {
         question: "What counts toward the 5-person minimum?",
         answer:
-          "Paid Xeomin guests count toward the host reward. We confirm the qualifying guest count through the actual party bookings and treatments completed.",
+          "Paid Botox or Xeomin guests count toward the host reward. We confirm the qualifying guest count through the actual party bookings and treatments completed.",
       },
       {
         question: "Can guests ask about PRP, skin, or wellness services too?",
         answer:
-          "Yes. Xeomin is the anchor for the party, but the planning form lets you flag PRP, skin, wellness, product, and follow-up consultation questions Jenny should be ready to discuss.",
+          "Yes. Botox and Xeomin are the anchor for the party, but the planning form lets you flag PRP, skin, wellness, product, and follow-up consultation questions Jenny should be ready to discuss.",
       },
       {
         question: "Where can a wrinkle relaxer party happen?",
@@ -379,24 +379,24 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
       {
         question: "How do the extra rewards work after the first five guests?",
         answer:
-          "Every additional five paid Xeomin guests adds more free products and procedure credits for the host. We'll confirm the reward mix during planning.",
+          "Every additional five paid Botox or Xeomin guests adds more free products and procedure credits for the host. We'll confirm the reward mix during planning.",
       },
       {
         question: "Does every guest still need individual screening?",
         answer:
-          "Yes. Xeomin is a medical treatment, so each guest still needs an individual assessment to determine candidacy, dosing, and whether treatment is appropriate.",
+          "Yes. Botox and Xeomin are medical treatments, so each guest still needs an individual assessment to determine candidacy, dosing, and whether treatment is appropriate.",
       },
     ],
   },
   closing: {
     heading: "Make the guest list, then let us help shape the event.",
     subheading:
-      "Five paid Xeomin guests makes the host's own Xeomin treatment free. Every additional five adds more free products and procedure credits.",
+      "Five paid Botox or Xeomin guests makes the host's own Botox or Xeomin treatment free. Every additional five adds more free products and procedure credits.",
     body:
       "Submit the planning form now, then text Jenny to set a time to talk through the details before the party is locked in.",
     primaryCtaLabel: "Plan My Party",
-    secondaryCtaLabel: "Browse Xeomin Details",
-    secondaryCtaHref: "/procedures/xeomin",
+    secondaryCtaLabel: "Browse Botox and Xeomin Details",
+    secondaryCtaHref: "/procedures/botox",
   },
   schedule: {
     eyebrow: "Party Scheduling",

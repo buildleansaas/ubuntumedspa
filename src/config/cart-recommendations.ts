@@ -16,6 +16,18 @@ export type CartRecommendation = CatalogItemConfig & {
 };
 
 const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], RecommendationDefinition[]>> = {
+  botox: [
+    {
+      slug: "co2-lift",
+      reason: "Co2 Lift, a cosmetic carboxytherapy gel you can pick up at the office.",
+      priority: 2,
+    },
+    {
+      slug: "definage-clinical-power-trio-pro",
+      reason: "A stronger home-care option for patients also thinking about tone, firmness, and skin upkeep.",
+      priority: 3,
+    },
+  ],
   xeomin: [
     {
       slug: "co2-lift",

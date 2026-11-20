@@ -32,14 +32,15 @@ const xeominCash = formatUsdShort(25000);
 const xeominCard = cardPriceLabel(25000);
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Med Spa Newport News | Xeomin, a Botox Alternative",
+  title: "Med Spa Newport News | Botox & Xeomin from $250 Cash",
   description:
-    `Med spa Newport News patients typically drive 25–35 minutes to our Williamsburg clinic for Xeomin® (a Botox® alternative, ${formatUsdShort(25000)} cash), PRP, and ear piercing.`,
+    `Med spa Newport News patients typically drive 25–35 minutes to our Williamsburg clinic for Botox® and Xeomin® (${formatUsdShort(25000)} cash), PRP, and ear piercing.`,
   canonical: "/locations/newport-news-va",
 });
 
 const serviceLinks = [
-  { href: "/procedures/xeomin/near/newport-news-va", label: "Xeomin near Newport News", note: "Our wrinkle relaxer for frown lines, forehead lines, and crow's feet, with a natural, measured plan." },
+  { href: "/procedures/botox", label: "Botox near Newport News", note: "Botox and Xeomin, priced the same, for frown lines, forehead lines, and crow's feet. Jenny helps you choose." },
+  { href: "/procedures/xeomin/near/newport-news-va", label: "Xeomin near Newport News", note: "Xeomin for frown lines, forehead lines, and crow's feet, with a natural, measured plan." },
   { href: "/procedures/blomdahl-ear-piercing", label: "Blomdahl ear piercing", note: "Sterile single-use cassettes and hypoallergenic starter earrings at the Williamsburg clinic." },
   { href: "/procedures/blomdahl-ear-piercing/for/children", label: "Infant and kids ear piercing", note: "For parents planning a baby's or child's first earrings." },
   { href: "/procedures/blomdahl-ear-piercing/near/newport-news-va", label: "Newport News visit notes", note: "Driving notes for a Williamsburg piercing appointment." },
@@ -54,7 +55,7 @@ const faqs = [
   {
     question: "Do you offer Botox for Newport News patients?",
     answer:
-      "No. Williamsburg Med Spa uses Xeomin, a wrinkle relaxer in the same category as Botox, and does not offer Botox® brand. Units are not interchangeable, so your consultation compares the full Xeomin plan with any prior treatment you have had.",
+      "Yes. Williamsburg Med Spa offers Botox® and Xeomin®, priced the same, and Jenny helps you choose. Units are not interchangeable, so your consultation compares the full treatment plan with any prior treatment you have had.",
   },
   {
     question: "Where is the appointment located?",
@@ -141,20 +142,19 @@ export default function NewportNewsPage() {
         <SectionHeader
           id="wrinkle-relaxer-heading"
           eyebrow="Looking for Botox near Newport News?"
-          title="Xeomin®, our wrinkle relaxer, 25–35 minutes away"
+          title="Botox® and Xeomin®, 25–35 minutes away"
         />
         <div className="mt-6 max-w-[62ch] space-y-4">
           <p className="text-lg leading-relaxed text-base-content/80">
-            Williamsburg Med Spa does not offer Botox® brand. We use Xeomin®, a wrinkle relaxer in the same treatment
-            category, for frown lines, forehead lines, and crow&apos;s feet. It is {xeominCash} cash per credit block
-            ({xeominCard} card/online). The clinic on Powhatan Parkway is typically a 25–35 minute drive from Newport News.
+            Williamsburg Med Spa offers Botox® and Xeomin® for frown lines, forehead lines, and crow&apos;s feet. Both are
+            {" "}{xeominCash} cash per credit block ({xeominCard} card/online), and Jenny helps you choose. The clinic on Powhatan Parkway is typically a 25–35 minute drive from Newport News.
           </p>
           <p className="text-base leading-relaxed text-base-content/75">
-            Read about our{" "}
+            Read about{" "}
             <Link href="/procedures/botox" className="link link-primary">
-              Botox alternative in Williamsburg
+              Botox in Williamsburg
             </Link>
-            , including how Xeomin compares and why units are not interchangeable.
+            , including how Botox and Xeomin compare and why units are not interchangeable.
           </p>
         </div>
       </Section>
@@ -162,10 +162,10 @@ export default function NewportNewsPage() {
       <Section id="compare-treatments" labelledBy="compare-treatments-heading">
         <SectionHeader
           id="compare-treatments-heading"
-          title="Xeomin or PRP?"
+          title="Botox, Xeomin, or PRP?"
           intro={
             <>
-              The right choice depends on what you want to change. Xeomin, our wrinkle relaxer, addresses lines caused by
+              The right choice depends on what you want to change. Botox and Xeomin, our wrinkle relaxers, address lines caused by
               repeated muscle movement. PRP treatments focus on skin quality, texture, and tone. Your consultation can focus
               on one option or compare both before you decide.
             </>
