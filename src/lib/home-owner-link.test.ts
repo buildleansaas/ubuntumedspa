@@ -55,7 +55,8 @@ test("competing procedure and blog pages render the home owner link", () => {
 
 // ScaleSleek finding f_vh33afabed: the homepage answers "botox williamsburg", "hydrafacial williamsburg va" and
 // "dermal fillers williamsburg" under their own H2s and answers the Botox search in the hero. Since 2026-11-08 the
-// Botox-alternative links (three pages and the homepage H2 answer) go to /procedures/botox, the owner. Checked on rendered HTML.
+// Botox links (three pages and the homepage H2 answer) go to /procedures/botox, the owner; since 2026-11-20 they say
+// "Botox in Williamsburg, VA" because Botox is offered again. Checked on rendered HTML.
 (globalThis as { React?: typeof React }).React = React;
 const { default: SearchAnswers, getSearchAnswers } = require("../views/search-answers") as typeof import("../views/search-answers");
 const { default: Jumbotron } = require("../views/jumbotron") as typeof import("../views/jumbotron");
@@ -141,8 +142,8 @@ test("homepage prices come from the catalog: no typed dollar amounts, cash befor
   assert.deepEqual(rows["/procedures/botox"], {
     name: "Botox",
     href: "/procedures/botox",
-    cash: cash("xeomin"),
-    card: card("xeomin"),
+    cash: cash("botox"),
+    card: card("botox"),
     note: "per credit block",
   });
   assert.deepEqual(rows["/procedures/xeomin"], {
@@ -162,7 +163,8 @@ test("homepage prices come from the catalog: no typed dollar amounts, cash befor
   });
   const tiles = Object.fromEntries(CHOOSER_TILES.map((tile) => [tile.href, tile]));
   assert.equal(tiles["/procedures/hyperhidrosis-treatment"].price, `from ${cash("hyperhidrosis-treatment")} cash`);
-  assert.equal(tiles["/procedures/botox"].price, `from ${cash("xeomin")} cash`);
+  assert.equal(tiles["/procedures/botox"].price, `from ${cash("botox")} cash`);
+  assert.equal(cash("botox"), cash("xeomin"));
 });
 
 test("the homepage chooser tiles are real links to the treatment owner pages, labelled with approved consult concerns", () => {

@@ -21,7 +21,7 @@ export default function BotoxPartyCallout() {
 
           <p className={`mt-4 ${INTRO}`}>
             Guests choose Botox® or Xeomin®. Bring 5 or more paid Botox or Xeomin guests and the host&apos;s own
-            treatment is free. Every additional 5 paid guests unlocks more free products and procedure credits.
+            Botox or Xeomin treatment is free. Every additional 5 paid guests unlocks more free products and procedure credits.
           </p>
 
           <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-base-content/75">

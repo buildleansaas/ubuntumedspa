@@ -1783,7 +1783,7 @@ export const procedures = [
       {
         question: "What side effects are possible?",
         answer:
-          "Common side effects can include temporary injection-site redness, swelling, bruising, or tenderness. Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment. Your consultation includes a review of risks, contraindications, and warning signs.",
+          "Common side effects can include temporary injection-site redness, swelling, bruising, or tenderness, as well as headache and temporary eyelid or brow drooping. Get medical help right away if you have trouble swallowing, speaking, or breathing after treatment. Your consultation includes a review of risks, contraindications, and warning signs.",
       },
     ],
   },

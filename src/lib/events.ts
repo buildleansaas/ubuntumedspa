@@ -178,7 +178,7 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
   canonicalPath: "/events/botox-party",
   metadataTitle: "Plan a Private Friend Party | Williamsburg Med Spa",
   metadataDescription:
-    "Host a Botox® or Xeomin® wrinkle relaxer party in Williamsburg, VA. Bring paid guests, make your own treatment free, and introduce friends to PRP.",
+    "Host a Botox® or Xeomin® party in Williamsburg, VA. Bring paid guests and the host's own Botox or Xeomin treatment is free. Ask about PRP too.",
   heroImageSrc: "/events/botox-party-hero.webp",
   heroImageAlt: "A stylish group of women laughing together at an intimate outdoor wrinkle relaxer party",
   thumbnailImageSrc: "/events/botox-party-thumb.webp",
@@ -391,7 +391,7 @@ const WRINKLE_RELAXER_PARTY_EVENT: EventDefinition = {
   closing: {
     heading: "Make the guest list, then let us help shape the event.",
     subheading:
-      "Five paid Botox or Xeomin guests makes the host's own treatment free. Every additional five adds more free products and procedure credits.",
+      "Five paid Botox or Xeomin guests makes the host's own Botox or Xeomin treatment free. Every additional five adds more free products and procedure credits.",
     body:
       "Submit the planning form now, then text Jenny to set a time to talk through the details before the party is locked in.",
     primaryCtaLabel: "Plan My Party",

@@ -46,7 +46,7 @@ const serviceLinks = [
   {
     href: "/procedures/xeomin",
     label: "Xeomin",
-    note: "Our consultation-led wrinkle relaxer for movement-related facial lines.",
+    note: "Xeomin, one of our two wrinkle relaxers (Botox is the other), for movement-related facial lines.",
   },
   {
     href: "/procedures/prp-hair-restoration",

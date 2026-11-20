@@ -24,7 +24,7 @@ import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "./seo";
 
 // Williamsburg Med Spa offers Botox® and Xeomin®, priced the same (Austin, 2026-11-20). From 2026-11-04 to 2026-11-20
 // the site said it used only Xeomin and did not offer Botox, and Google rankings for "botox williamsburg" fell.
-// This test fails if any served copy, data, or agent note says the clinic does not offer Botox or uses only Xeomin.
+// This test fails if any served copy, data, or agent note says or implies the clinic does not offer Botox, or that Xeomin is its only wrinkle relaxer.
 
 const ROOT = process.cwd();
 
@@ -32,12 +32,12 @@ const B = String.raw`Botox®?`;
 export const FALSE_BOTOX_CLAIMS: RegExp[] = [
   // "does not offer Botox", "don't carry Botox", "no longer offers Dysport or Botox®"
   new RegExp(
-    String.raw`(?:\bnot|\bnever|n't|\bno longer)\s+(?:currently\s+)?(?:offer|offers|carry|carries|provide|provides|sell|sells|use|uses)\s+(?:Dysport\s+or\s+)?${B}`,
+    String.raw`(?:\bnot|\bnever|n(?:'|&apos;|&#x27;|&#39;|’)t|\bno longer)\s+(?:currently\s+)?(?:offer|offers|carry|carries|provide|provides|sell|sells|use|uses)\s+(?:Dysport\s+or\s+)?${B}`,
     "gi"
   ),
   new RegExp(String.raw`\bno\s+${B}\s+brand\b`, "gi"),
   // "Botox is not offered", "Botox® isn't available here"
-  new RegExp(String.raw`${B}\s+(?:brand\s+)?(?:is\s+not|isn't|is\s+no\s+longer)\s+(?:offered|available|sold|carried)`, "gi"),
+  new RegExp(String.raw`${B}\s+(?:brand\s+)?(?:is\s+not|isn(?:'|&apos;|&#x27;|&#39;|’)t|is\s+no\s+longer)\s+(?:offered|available|sold|carried)`, "gi"),
   new RegExp(String.raw`${B}\s*\((?:not offered|which Williamsburg Med Spa does not offer)`, "gi"),
   new RegExp(String.raw`\bXeomin®?,?\s+not\s+${B}`, "gi"),
   new RegExp(String.raw`\bLooking for ${B}[^?]{0,60}\?\s*We use Xeomin`, "gi"),
@@ -47,7 +47,10 @@ export const FALSE_BOTOX_CLAIMS: RegExp[] = [
   /\bwe use Xeomin\b/gi,
   // "its only wrinkle relaxer is Xeomin", "Xeomin, our wrinkle relaxer", "the clinic's wrinkle relaxer"
   /\b(?:only|sole)\s+wrinkle[\s-]relaxer\b/gi,
-  /\b(?:our|the clinic's)\s+wrinkle[\s-]relaxer\b(?!s)(?!\s+part)/gi,
+  // "our wrinkle relaxer", "our consultation-led wrinkle relaxer", "the clinic's own wrinkle relaxer" (one or two words between)
+  /\b(?:our|the clinic's)\s+(?:[\w-]+\s+){0,2}wrinkle[\s-]relaxer\b(?!s)(?!\s+part)/gi,
+  // "the wrinkle relaxer used here", "the wrinkle relaxer offered here", "the wrinkle relaxer we use"
+  /\bthe\s+wrinkle[\s-]relaxer\s+(?:(?:used|offered)\s+here|(?:we|she)\s+(?:use|uses|offer|offers))\b/gi,
   // A "Do you offer Botox?" question answered "No" in the same text.
   new RegExp(String.raw`\bDo(?:es)?\s+(?:you|we|Williamsburg Med Spa)\s+offer\s+${B}[^?\n]{0,60}\?["'\s,]*(?:answer:\s*)?["'\x60]?\s*No\b`, "gi"),
 ];
@@ -56,7 +59,7 @@ export const FALSE_BOTOX_CLAIMS: RegExp[] = [
  * Text that records the old Xeomin-only rule as history, or tells agents never to write it, is not a claim. A match is
  * skipped only when the 100 characters before it contain one of these markers.
  */
-const HISTORY_MARKERS = /never write|revers|2026-11-04|PR #155|until 2026-11-20|From 2026-11-04/i;
+const HISTORY_MARKERS = /never write|reverses PR #155|reversing the 2026-11-04|2026-11-04|PR #155|until 2026-11-20|From 2026-11-04/i;
 
 export const findFalseBotoxClaims = (label: string, text: string) => {
   const found: string[] = [];
@@ -139,6 +142,10 @@ test("the detector catches Xeomin-only wording and passes the honest Botox and X
     "Xeomin, no Botox brand.",
     "Botox is not offered here.",
     "Botox® isn't available at Williamsburg Med Spa.",
+    "We don&apos;t offer Botox.",
+    "We don’t offer Botox.",
+    "Xeomin, our consultation-led wrinkle relaxer, for movement lines.",
+    "If muscle movement is the concern, Xeomin, the wrinkle relaxer used here, may come up.",
     "| Botox® (not offered here) | Xeomin® (what we use) |",
     "Williamsburg Med Spa uses Xeomin, not Botox.",
     "Looking for Botox® for frown lines? We use Xeomin®.",
@@ -161,6 +168,8 @@ test("the detector catches Xeomin-only wording and passes the honest Botox and X
     "Williamsburg Med Spa does not offer Hydrafacial, Kybella, Sculptra, or CoolSculpting.",
     "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan or Merz.",
     "Botox and Xeomin, our wrinkle relaxers, address lines caused by movement.",
+    "Xeomin, one of our two wrinkle relaxers (Botox is the other).",
+    "Botox or Xeomin, the wrinkle relaxers offered here, may come up.",
     "Never write that the clinic does not offer Botox or uses only Xeomin.",
     "Update 2026-11-20: this reverses PR #155's Xeomin-only change.",
   ]) {

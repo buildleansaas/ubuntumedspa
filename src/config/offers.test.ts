@@ -163,7 +163,6 @@ test("an offer's search snippet shows only while it runs, on the page it points 
     const cash = text.indexOf(" cash");
     const card = text.indexOf(" card");
     assert.ok(cash > 0 && card > cash, `${offer.slug}: cash price before card price`);
-    assert.doesNotMatch(text, /botox/i);
   }
   const verifier = readFileSync(join(process.cwd(), "scripts", "verify-seo.mjs"), "utf8");
   assert.ok(verifier.includes(sibling.metaDescription), "verify:seo expects the same snippet text");

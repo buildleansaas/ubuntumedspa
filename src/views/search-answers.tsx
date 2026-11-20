@@ -51,8 +51,9 @@ export const getSearchAnswers = (xeominCash: string, xeominCard: string): Search
     heading: "Dermal fillers in Williamsburg, VA: not offered here",
     question: "Do you offer dermal fillers in Williamsburg?",
     answer:
-      "No. Williamsburg Med Spa does not offer dermal fillers, including lip filler. For lines that show when you frown, raise your brows, or squint, ask about Xeomin. For skin texture and glow, ask about PRP Facial.",
+      "No. Williamsburg Med Spa does not offer dermal fillers, including lip filler. For lines that show when you frown, raise your brows, or squint, ask about Botox or Xeomin. For skin texture and glow, ask about PRP Facial.",
     links: [
+      { href: "/procedures/botox", label: "Botox" },
       { href: "/procedures/xeomin", label: "Xeomin" },
       { href: "/procedures/prp-facial", label: "PRP Facial" },
     ],

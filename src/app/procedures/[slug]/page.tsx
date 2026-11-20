@@ -44,7 +44,7 @@ import { cashCardProse, cardPriceSchemaValue } from "lib/price";
 import { EAR_PIERCING_BOOKING } from "lib/ear-piercing-booking";
 import { getHubSatelliteGroup } from "lib/service-satellites";
 import { CrowsFeetResults, EarPiercingPhotos, HyperhidrosisSteps, JointPhotos, PrpTubePhoto, RunelsTraining } from "components/clinic-photos";
-import { clinicPhotoBySrc } from "config/clinic-photos";
+import { CROWS_FEET_HEADING_XEOMIN, clinicPhotoBySrc } from "config/clinic-photos";
 import { activeOfferMetaDescription, getActiveOffers } from "config/offers";
 import { BOTOX_OFF_LABEL_NOTE, XEOMIN_HYPERHIDROSIS_OFF_LABEL, XEOMIN_OFF_LABEL_NOTE, xeominClusterPages } from "lib/xeomin-concerns";
 import RouteCard from "components/route-card";
@@ -185,7 +185,13 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
   const articles = (await getPublishedBlogPosts())
     .filter(({ tags }) => tags?.includes(procedure.name))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  const hasAilments = Boolean(publishedAilments.length);
+  // Cards come from ailments with a published page. On /procedures/botox the Neck Bands card (on the BOTOX Cosmetic label,
+  // no page of its own) is shown too.
+  const applicationCards =
+    procedure.slug === "botox"
+      ? [...publishedAilments, ...procedure.ailments.filter((ailment) => ailment.slug === "neck-band-softening")]
+      : publishedAilments;
+  const hasAilments = Boolean(applicationCards.length);
   const showOShotCredential = procedure.slug === "oh-shot";
   const pageHeading =
     (procedure.seo && "h1" in procedure.seo ? procedure.seo.h1 : undefined) ||
@@ -327,7 +333,12 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
               <div className={HERO_LINKS}>
                 {xeominClusterPages.map((page) => (
                   <Link key={page.path} href={page.path} className={HERO_LINK}>
-                    {page.label}
+                    {/* These are Xeomin pages; on the Botox page the chip says so. */}
+                    {procedure.slug === "botox"
+                      ? page.slug === "cost"
+                        ? "Xeomin cost"
+                        : `Xeomin for ${page.label.charAt(0).toLowerCase()}${page.label.slice(1)}`
+                      : page.label}
                   </Link>
                 ))}
               </div>
@@ -395,7 +406,8 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
 
       {/* Real clinic photos sit right under the hero (Austin, 2026-11-05: proof of work higher on the page). */}
       {procedure.slug === "oh-shot" && <RunelsTraining />}
-      {(procedure.slug === "botox" || procedure.slug === "xeomin") && <CrowsFeetResults />}
+      {procedure.slug === "xeomin" && <CrowsFeetResults />}
+      {procedure.slug === "botox" && <CrowsFeetResults heading={CROWS_FEET_HEADING_XEOMIN} />}
       {procedure.slug === "hyperhidrosis-treatment" && <HyperhidrosisSteps />}
       {procedure.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos exclude={heroImagePath} />}
       {procedure.slug === "joint-restoration" && (
@@ -831,8 +843,8 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
             }
             intro={humanizeMedicalCopy(procedure.ailmentsHeadline)}
           />
-          <div className={`${AFTER_HEADER} ${cardGridFor(publishedAilments.length)}`}>
-            {publishedAilments
+          <div className={`${AFTER_HEADER} ${cardGridFor(applicationCards.length)}`}>
+            {applicationCards
               ?.sort((a, b) => ailmentsSortOrder[a.tag] - ailmentsSortOrder[b.tag])
               .map(({ title, tag, description }) => {
                 return (

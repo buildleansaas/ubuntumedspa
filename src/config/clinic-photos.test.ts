@@ -95,7 +95,10 @@ test("ear piercing captions never name a location (the photos were taken at home
 
 test("photos are placed on the right pages", () => {
   const hub = read("src/app/procedures/[slug]/page.tsx");
-  assert.match(hub, /\(procedure\.slug === "botox" \|\| procedure\.slug === "xeomin"\) && <CrowsFeetResults \/>/);
+  assert.match(hub, /procedure\.slug === "xeomin" && <CrowsFeetResults \/>/);
+  // The photos are Xeomin results; on the Botox page the heading says so.
+  assert.match(hub, /procedure\.slug === "botox" && <CrowsFeetResults heading=\{CROWS_FEET_HEADING_XEOMIN\} \/>/);
+  assert.equal(read("src/config/clinic-photos.ts").match(/CROWS_FEET_HEADING_XEOMIN = "([^"]+)"/)?.[1], "Real results: crow's feet with Xeomin");
   assert.match(hub, /procedure\.slug === "hyperhidrosis-treatment" && <HyperhidrosisSteps \/>/);
   assert.match(hub, /procedure\.slug === "blomdahl-ear-piercing" && <EarPiercingPhotos exclude={heroImagePath} \/>/);
   assert.match(hub, /procedure\.slug === "oh-shot" && <RunelsTraining \/>/);
