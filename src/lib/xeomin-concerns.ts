@@ -73,7 +73,7 @@ export const BOTOX_OFF_LABEL_NOTE =
   "BOTOX Cosmetic's FDA label covers frown lines, crow's feet, forehead lines, and vertical neck (platysma) bands in adults. Other areas, such as the lip flip, bunny lines, brow shaping, and the jaw (masseter), are off-label uses, which means they are not among the uses listed on its FDA label. Jenny reviews whether they fit you at your consultation.";
 
 export const XEOMIN_TRADEMARK_NOTE =
-  "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Xeomin® is a registered trademark of Merz Pharma GmbH & Co. KGaA. Williamsburg Med Spa is not affiliated with Allergan or Merz.";
+  "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan.";
 
 export type XeominClusterSection = {
   heading: string;

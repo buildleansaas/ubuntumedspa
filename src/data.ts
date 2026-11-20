@@ -1634,14 +1634,14 @@ export const procedures = [
         `Botox® and Xeomin® in Williamsburg, VA with Jenny Brady, NP, who helps you choose. ${formatUsdShort(25000)} cash per credit block (${cardPriceLabel(25000)} card).`,
     },
     description:
-      "Williamsburg Med Spa offers Botox® Cosmetic (onabotulinumtoxinA) and Xeomin® (incobotulinumtoxinA). Both are botulinum toxin type A wrinkle relaxers that temporarily relax the muscles behind expression lines. BOTOX Cosmetic is FDA-approved for adults for the temporary improvement of moderate to severe frown lines, crow's feet, forehead lines, and vertical neck (platysma) bands. Jenny Brady, MSN, RN, CPNP, PMHS helps you choose between Botox and Xeomin and plans the dose around your facial movement, so results look smooth, balanced, and natural.",
+      "Williamsburg Med Spa offers Botox® Cosmetic (onabotulinumtoxinA) and Xeomin® (incobotulinumtoxinA). Both are botulinum toxin type A wrinkle relaxers that temporarily relax the muscles behind expression lines. BOTOX Cosmetic is FDA-approved in adults for the temporary improvement in the appearance of moderate to severe frown lines, crow's feet, forehead lines, and vertical neck (platysma) bands. Jenny Brady, MSN, RN, CPNP, PMHS helps you choose between Botox and Xeomin and plans the dose around your facial movement, so results look smooth, balanced, and natural.",
     headline: "Botox® and Xeomin®, planned around your natural expression. Jenny helps you choose.",
     subline:
       "Botox treats frown lines, forehead lines, crow's feet, and neck bands. Both Botox and Xeomin are priced the same, in cash credit blocks, and Jenny Brady, MSN, RN, CPNP, PMHS plans each visit with a conservative, movement-aware approach.",
     image: "/procedure/botox-xeomin-consultation-planning.webp",
     price: `${formatUsdShort(25000)} credit blocks · ${cashCardLabel(25000)}`,
     trademarkNote:
-      "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Xeomin® is a registered trademark of Merz Pharma GmbH & Co. KGaA. Williamsburg Med Spa is not affiliated with Allergan or Merz.",
+      "Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan.",
     // programmatic SEO copy
     blogHeadline:
       "Looking for Botox in Williamsburg? Review timing, common treatment areas, aftercare, and our Botox vs Xeomin guide before you book.",
@@ -1748,7 +1748,7 @@ export const procedures = [
       {
         question: "What is Botox commonly used for?",
         answer:
-          "BOTOX Cosmetic is FDA-approved for adults for the temporary improvement of moderate to severe frown lines (glabellar lines), crow's feet (lateral canthal lines), forehead lines, and vertical neck (platysma) bands. Other areas are off-label and are reviewed at your consultation.",
+          "BOTOX Cosmetic is FDA-approved in adults for the temporary improvement in the appearance of moderate to severe frown lines (glabellar lines), crow's feet (lateral canthal lines), forehead lines, and vertical neck (platysma) bands. Other areas are off-label and are reviewed at your consultation.",
       },
       {
         question: "How much does Botox cost in Williamsburg?",

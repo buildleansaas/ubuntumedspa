@@ -1032,7 +1032,7 @@ if (botoxPage) {
   if (!/Botox® and Xeomin®/.test(botoxSnippet.description) || !/\$250 cash/.test(botoxSnippet.description)) {
     fail("Botox meta dropped Botox and Xeomin or the cash price");
   }
-  if (!unescapeHtml(botoxPage.html).includes("Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Xeomin® is a registered trademark of Merz Pharma GmbH & Co. KGaA. Williamsburg Med Spa is not affiliated with Allergan or Merz.")) {
+  if (!unescapeHtml(botoxPage.html).includes("Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med Spa is not affiliated with Allergan.")) {
     fail("Botox page is missing the trademark notice");
   }
   if (!/BOTOX Cosmetic&#x27;s FDA label covers|BOTOX Cosmetic's FDA label covers/.test(botoxPage.html)) fail("Botox page is missing its off-label note");

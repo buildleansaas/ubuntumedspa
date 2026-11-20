@@ -36,6 +36,8 @@ export const FALSE_BOTOX_CLAIMS: RegExp[] = [
     "gi"
   ),
   new RegExp(String.raw`\bno\s+${B}\s+brand\b`, "gi"),
+  // "Botox is not offered", "Botox® isn't available here"
+  new RegExp(String.raw`${B}\s+(?:brand\s+)?(?:is\s+not|isn't|is\s+no\s+longer)\s+(?:offered|available|sold|carried)`, "gi"),
   new RegExp(String.raw`${B}\s*\((?:not offered|which Williamsburg Med Spa does not offer)`, "gi"),
   new RegExp(String.raw`\bXeomin®?,?\s+not\s+${B}`, "gi"),
   new RegExp(String.raw`\bLooking for ${B}[^?]{0,60}\?\s*We use Xeomin`, "gi"),
@@ -135,6 +137,8 @@ test("the detector catches Xeomin-only wording and passes the honest Botox and X
     "The clinic no longer offers Dysport or Botox®.",
     "Williamsburg Med Spa does not offer Dysport or Botox® brand.",
     "Xeomin, no Botox brand.",
+    "Botox is not offered here.",
+    "Botox® isn't available at Williamsburg Med Spa.",
     "| Botox® (not offered here) | Xeomin® (what we use) |",
     "Williamsburg Med Spa uses Xeomin, not Botox.",
     "Looking for Botox® for frown lines? We use Xeomin®.",
@@ -279,9 +283,10 @@ test("the botox catalog item is back, priced exactly like Xeomin", () => {
     { slug: "botox", kind: "procedure", quantity: 2 },
   ]);
   assert.ok(getCartRecommendations(["botox"], 4).length > 0, "a Botox cart gets recommendations");
-  // A cart that already holds one wrinkle relaxer is not pushed the other one.
+  // A cart that already holds one wrinkle relaxer is not pushed the other one, either way round.
   assert.equal(getCartRecommendations(["xeomin"], 10).some((item) => item.slug === "botox"), false);
-  assert.equal(getCartRecommendations(["botox"], 10).some((item) => item.slug === "xeomin"), true);
+  assert.equal(getCartRecommendations(["botox"], 10).some((item) => item.slug === "xeomin"), false);
+  assert.equal(getCartRecommendations(["botox", "co2-lift"], 10).some((item) => item.slug === "xeomin"), false);
 });
 
 test("a retired (active: false) Mongo record is never used for checkout; legacy slugs still resolve", () => {

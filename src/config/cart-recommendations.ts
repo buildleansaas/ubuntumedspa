@@ -107,6 +107,8 @@ const CART_RECOMMENDATION_MAP: Partial<Record<CatalogItemConfig["slug"], Recomme
   ],
 };
 
+const WRINKLE_RELAXER_SLUGS = ["botox", "xeomin"];
+
 const CART_RECOMMENDATION_FALLBACKS: RecommendationDefinition[] = [
   {
     slug: "xeomin",
@@ -188,6 +190,11 @@ export const getCartRecommendations = (cartSlugs: string[], limit = 4): CartReco
       ...fallback,
       matchCount: 0,
     });
+  }
+
+  // Botox and Xeomin are alternatives: a cart holding either one is never pushed the other.
+  if (WRINKLE_RELAXER_SLUGS.some((slug) => cartSet.has(slug))) {
+    for (const slug of WRINKLE_RELAXER_SLUGS) candidates.delete(slug);
   }
 
   const ranked = Array.from(candidates.values())

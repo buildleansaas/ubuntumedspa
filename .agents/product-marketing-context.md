@@ -5,7 +5,7 @@
 ## Product Overview
 **One-liner:** Williamsburg Med Spa is a Williamsburg, VA medical spa offering calm, medically grounded aesthetic, regenerative, intimate wellness, and medical ear piercing services with Jenny Brady, MSN, RN, CPNP, PMHS.
 
-**What it does:** The clinic helps local patients compare and plan treatments such as OH-Shot, PRP hair restoration, Pe-Shot, PRP therapies, Botox, Xeomin, hyperhidrosis treatment, and Blomdahl medical ear piercing. Content should help patients understand candidacy, alternatives, risks, and what to ask before booking. The clinic does not offer dermal filler or lip filler (removed 2026-11-03); never present it as a service. The clinic offers Botox® and Xeomin®, priced the same (same cash credit blocks); Jenny helps each patient choose (2026-11-20, reversing the 2026-11-04 Xeomin-only change). Never write that the clinic does not offer Botox or uses only Xeomin.
+**What it does:** The clinic helps local patients compare and plan treatments such as OH-Shot, PRP hair restoration, Pe-Shot, PRP therapies, Botox, Xeomin, hyperhidrosis treatment, and Blomdahl medical ear piercing. Content should help patients understand candidacy, alternatives, risks, and what to ask before booking. The clinic does not offer dermal filler or lip filler (removed 2026-11-03); never present it as a service. The clinic offers Botox® and Xeomin®, priced the same (same cash credit blocks); Jenny helps each patient choose (2026-11-20, reversing the 2026-11-04 Xeomin-only change). Copy must always say both are offered; never call Xeomin the only option.
 
 **Product category:** Local medical spa, aesthetic clinic, regenerative PRP clinic, OH-Shot provider, medical ear piercing provider.
 
