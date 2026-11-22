@@ -8,7 +8,7 @@ import { SOCIAL_LOGO_DATA_URI } from "lib/socialLogo";
 
 /**
  * Google Business Profile post images (1200x900, Google's recommended 4:3).
- * Same palette, logo, phone, and default font as createOpenGraphImage.
+ * Older GBP palette and default font (the site share card moved to brand fonts in lib/createOpenGraphImage.tsx).
  */
 export const GBP_IMAGE_WIDTH = 1200;
 export const GBP_IMAGE_HEIGHT = 900;

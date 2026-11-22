@@ -1,18 +1,15 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 import GiftCardArt from "components/gift-card-art";
 import type { GiftCardTheme } from "config/gift-card-themes";
 import { formatUsdShort } from "lib/price";
+import { logoDataUri, socialFonts } from "lib/social-fonts";
 import { BOOKING_PHONE_DISPLAY } from "lib/text-to-book";
 
 /** 1080 x 1350 gift card PNG (Facebook/Instagram portrait), the same card as the site, on the theme's background. */
 export const GIFT_CARD_IMAGE_WIDTH = 1080;
 export const GIFT_CARD_IMAGE_HEIGHT = 1350;
 
-const asset = (...parts: string[]) => readFileSync(join(process.cwd(), ...parts));
-const logoDataUri = () => `data:image/png;base64,${asset("public", "logo.png").toString("base64")}`;
 
 export const renderGiftCardImage = ({
   theme,
@@ -28,12 +25,7 @@ export const renderGiftCardImage = ({
   message?: string;
 }) => {
   const { colors } = theme;
-  const fonts = [
-    { name: "Newsreader", data: asset("src", "assets", "fonts", "Newsreader-Regular.ttf"), weight: 400 as const, style: "normal" as const },
-    { name: "Newsreader", data: asset("src", "assets", "fonts", "Newsreader-Italic.ttf"), weight: 400 as const, style: "italic" as const },
-    { name: "Hanken", data: asset("src", "assets", "fonts", "HankenGrotesk-Regular.ttf"), weight: 400 as const, style: "normal" as const },
-    { name: "Hanken", data: asset("src", "assets", "fonts", "HankenGrotesk-Bold.ttf"), weight: 700 as const, style: "normal" as const },
-  ];
+  const fonts = socialFonts();
 
   return new ImageResponse(
     (
