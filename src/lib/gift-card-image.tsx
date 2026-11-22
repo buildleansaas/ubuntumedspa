@@ -43,10 +43,11 @@ export const renderGiftCardImage = ({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          justifyContent: "center",
           backgroundImage: `radial-gradient(120% 80% at 50% 0%, ${colors.backgroundTop} 0%, ${colors.backgroundBottom} 100%)`,
           color: colors.text,
           fontFamily: "Hanken",
-          padding: "110px 100px 90px",
+          padding: "90px 100px",
           position: "relative",
         }}
       >
@@ -95,7 +96,7 @@ export const renderGiftCardImage = ({
             {`“${message}”`}
           </div>
         ) : null}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "auto" }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: 70 }}>
           <div style={{ display: "flex", fontSize: 26, color: colors.mutedText }}>Text (804) 738-9483 to book with Jenny</div>
           <div style={{ display: "flex", fontSize: 22, color: colors.mutedText, marginTop: 8, letterSpacing: "0.06em" }}>
             williamsburgmedspa.com · Never expires

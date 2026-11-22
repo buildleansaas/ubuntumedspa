@@ -99,7 +99,7 @@ export default function GiftCardsPage() {
           </span>
         ))}
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+        <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <div className="text-center lg:text-left">
             <p className="text-sm font-semibold tracking-[0.3em]" style={{ color: colors.accent }}>
               {theme.kicker}
@@ -139,7 +139,7 @@ export default function GiftCardsPage() {
                 <GiftCardArt theme={theme} logoSrc="/logo.png" width={520} tilt />
               </div>
               <div className="flex justify-center sm:hidden">
-                <GiftCardArt theme={theme} logoSrc="/logo.png" width={320} tilt />
+                <GiftCardArt theme={theme} logoSrc="/logo.png" width={270} tilt />
               </div>
             </div>
           </div>

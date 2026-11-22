@@ -9,6 +9,10 @@ const nextConfig = {
   // Next 15 streams metadata into <body> for clients it does not class as HTML-limited bots
   // (Googlebot included). Keep every title/description/canonical in <head>, as on Next 13.
   htmlLimitedBots: /.*/,
+  // The gift card PNG reads its fonts and the logo from disk at request time; ship them with that function.
+  outputFileTracingIncludes: {
+    "/gift-cards/card/[token]/image": ["./src/assets/fonts/*.ttf", "./public/logo.png"],
+  },
   async redirects() {
     return [
       {

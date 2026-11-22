@@ -52,7 +52,7 @@ export default async function GiftCardViewPage(props: { params: Promise<{ token:
             <GiftCardArt theme={theme} amountLabel={amount} code={card.code} logoSrc="/logo.png" width={560} />
           </div>
           <div className="sm:hidden">
-            <GiftCardArt theme={theme} amountLabel={amount} code={card.code} logoSrc="/logo.png" width={320} />
+            <GiftCardArt theme={theme} amountLabel={amount} code={card.code} logoSrc="/logo.png" width={280} />
           </div>
         </div>
         {card.message ? (

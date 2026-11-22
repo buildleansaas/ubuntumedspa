@@ -45,23 +45,26 @@ export default function GiftCardArt({
     overflow: "hidden",
     backgroundImage: `linear-gradient(135deg, ${colors.cardFrom} 0%, ${colors.cardTo} 100%)`,
     color: colors.cardInk,
-    padding: `${px(46)} ${px(54)}`,
     boxShadow: `0 ${px(36)} ${px(70)} rgba(0,0,0,0.42)`,
-    transform: tilt ? "rotate(-3deg)" : undefined,
+    ...(tilt ? { transform: "rotate(-3deg)" } : {}),
     fontFamily: sansFont,
   };
 
   return (
-    <div style={card} role="img" aria-label={`Williamsburg Med Spa ${amountLabel ? `${amountLabel} ` : ""}gift card`}>
+    <div
+      style={card}
+      role="img"
+      aria-label={`Williamsburg Med Spa ${amountLabel ? `${amountLabel} ` : ""}gift card`}
+    >
       {colors.ribbon ? (
         <>
           <div
             style={{
               position: "absolute",
               top: 0,
-              bottom: 0,
               left: px(600),
               width: px(34),
+              height: px(500),
               backgroundColor: colors.ribbon,
               opacity: 0.92,
               display: "flex",
@@ -71,8 +74,8 @@ export default function GiftCardArt({
             style={{
               position: "absolute",
               left: 0,
-              right: 0,
               top: px(300),
+              width: px(820),
               height: px(34),
               backgroundColor: colors.ribbon,
               opacity: 0.92,
@@ -87,26 +90,59 @@ export default function GiftCardArt({
         alt=""
         width={Math.round(190 * u)}
         height={Math.round(259 * u)}
-        style={{ position: "absolute", right: px(40), top: px(42), width: px(190), height: px(259) }}
+        style={{
+          position: "absolute",
+          right: px(40),
+          top: px(42),
+          width: px(190),
+          height: px(259),
+        }}
       />
-      <div style={{ display: "flex", fontWeight: 700, letterSpacing: "0.3em", fontSize: px(19), color: colors.cardAccent }}>
-        {theme.cardKicker}
-      </div>
       <div
         style={{
+          position: "absolute",
+          left: px(54),
+          top: px(46),
           display: "flex",
-          fontFamily: serifFont,
-          fontWeight: 400,
-          fontSize: px(amountLabel ? 104 : 66),
-          lineHeight: 1,
-          marginTop: px(22),
-          color: colors.cardInk,
+          flexDirection: "column",
         }}
       >
-        {amountLabel ?? "Gift card"}
-      </div>
-      <div style={{ display: "flex", fontSize: px(24), marginTop: px(16), color: "#4b5b66" }}>
-        {recipientName ? `For ${recipientName}` : "Toward any treatment or product"}
+        <div
+          style={{
+            display: "flex",
+            fontWeight: 700,
+            letterSpacing: "0.3em",
+            fontSize: px(19),
+            color: colors.cardAccent,
+          }}
+        >
+          {theme.cardKicker}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontFamily: serifFont,
+            fontWeight: 400,
+            fontSize: px(amountLabel ? 104 : 66),
+            lineHeight: 1,
+            marginTop: px(22),
+            color: colors.cardInk,
+          }}
+        >
+          {amountLabel ?? "Gift card"}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontSize: px(24),
+            marginTop: px(16),
+            color: "#4b5b66",
+          }}
+        >
+          {recipientName
+            ? `For ${recipientName}`
+            : "Toward any treatment or product"}
+        </div>
       </div>
       <div
         style={{
@@ -117,8 +153,20 @@ export default function GiftCardArt({
           flexDirection: "column",
         }}
       >
-        <div style={{ display: "flex", fontFamily: serifFont, fontSize: px(28) }}>Williamsburg Med Spa</div>
-        <div style={{ display: "flex", fontSize: px(16), letterSpacing: "0.12em", color: "#6b7a84", marginTop: px(4) }}>
+        <div
+          style={{ display: "flex", fontFamily: serifFont, fontSize: px(28) }}
+        >
+          Williamsburg Med Spa
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontSize: px(16),
+            letterSpacing: "0.12em",
+            color: "#6b7a84",
+            marginTop: px(4),
+          }}
+        >
           {code ? code : "JENNY BRADY, NP"}
         </div>
       </div>
