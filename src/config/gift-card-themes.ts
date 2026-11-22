@@ -1,9 +1,10 @@
 /**
  * Gift card themes: one card design, re-skinned per holiday or event.
  *
- * To add next holiday's look, add one entry to GIFT_CARD_THEMES (see docs/gift-cards.md). The /gift-cards page,
- * the recipient's printable card and its PNG all read the active theme, so nothing else changes. Keep theme windows
- * from overlapping; the first match wins. Copy rules: no outcome promises, no prices typed here.
+ * To add next holiday's look, add one entry to GIFT_CARD_THEMES (see docs/gift-cards.md). The /gift-cards page reads
+ * the active theme; a sold card's page and PNG read the theme slug saved on the card, so never delete or rename a slug
+ * that cards were sold under (retire it by removing its dates). Keep windows from overlapping; the first match wins.
+ * Copy rules: no outcome promises, no prices typed here.
  */
 export type GiftCardTheme = {
   slug: string;

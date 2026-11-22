@@ -85,9 +85,11 @@ export default function Layout({ children }: LayoutProps) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          // A gift card page URL is as good as its code: never send it to analytics.
-          if (location.pathname.indexOf('/gift-cards/card/') === 0) {
-            gtag('config', 'G-FBEPLGSS9L', { page_location: location.origin + '/gift-cards/card', page_path: '/gift-cards/card' });
+          // Gift card and order-success URLs carry tokens that open gift card codes: never send them to analytics.
+          var wmsPrivate = location.pathname.indexOf('/gift-cards/card/') === 0 ? '/gift-cards/card'
+            : location.pathname === '/checkout/success' ? '/checkout/success' : null;
+          if (wmsPrivate) {
+            gtag('config', 'G-FBEPLGSS9L', { page_location: location.origin + wmsPrivate, page_path: wmsPrivate, page_referrer: '' });
           } else {
             gtag('config', 'G-FBEPLGSS9L');
           }

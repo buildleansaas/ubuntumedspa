@@ -12,8 +12,9 @@
 - One recipient name and message per order (Stripe custom fields); buying for two people means two orders.
 - Once the Stripe webhook endpoint has `charge.refunded`, `charge.dispute.created` and `charge.dispute.closed` turned on:
   a full refund or a dispute voids the order's cards and emails Jenny; a partial refund emails her the codes so she can
-  decide which one to stop honoring (the card page stays active until someone voids it). A won dispute only emails;
-  cards stay void. A refund or dispute that lands before the order's first sync makes the cards issue as void.
+  decide which one to stop honoring (the card page stays active; voiding a single card is a database edit, so ask
+  Austin). A won dispute only emails; cards stay void. Before the cards are issued, any refund (even partial) or
+  dispute makes every card on the order issue as void (fail closed), and Jenny's refund email says so.
 - If a paid order's cards can't be issued (amount mismatch, database error), Jenny gets one email and the site retries.
 - Safety design and review: `docs/gift-cards-plan.md`.
 
@@ -37,11 +38,14 @@
 2. Run `pnpm test` (the theme test checks the date format) and `pnpm content-dates`.
 3. Look at `/gift-cards` locally at phone and desktop widths.
 4. Cards already sold store their theme's slug (`themeSlug`) and render with that theme's current entry. So never
-   delete or rename a theme slug once cards were sold under it (they would fall back to evergreen); editing next
-   year's colors restyles earlier cards too, so add a new slug (e.g. `christmas-2027`) for a new look.
+   delete or rename a theme slug once cards were sold under it (they would fall back to evergreen). For a new look
+   next year, add a new entry (e.g. `christmas-2027`) with the dates, and delete only the dates (`startsOn`/`endsOn`)
+   from the old entry: it stays for the cards already sold but no longer shows on the page.
 5. Social post images: render the Facebook set from the same design. The 2026-11-22 Christmas set's source is
    `docs/social/christmas-2026-fb-card.html` (open with `?v=gift`, `?v=feed` or `?v=story`, logo.png beside it, and
-   screenshot with headless Chrome at 1080x1350 / 1080x1920). Copy it and change the words and colors.
+   screenshot with headless Chrome at 1080x1350 / 1080x1920; copy `public/logo.png` next to it first). It was made
+   before online gift cards existed ("Message us to order", one $250 credit, a typed card price), so rewrite the copy
+   to match the live offer and take prices from the catalog before reusing it.
 
 ## Rules
 - Never type a price in the page or theme; prices come from the catalog helpers.

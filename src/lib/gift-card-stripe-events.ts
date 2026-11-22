@@ -82,7 +82,9 @@ export const handleChargeRefunded = async (charge: Stripe.Charge) => {
       `Refunded so far: ${formatUsd(charge.amount_refunded)} of ${formatUsd(charge.amount)}.`,
       fullRefund
         ? `Full refund: every gift card on this order is now VOID. Do not honor these codes.`
-        : `Partial refund: the codes are still active. Decide which card the refund covers and don't honor that code.`,
+        : order.giftCardsIssuedAt
+          ? `Partial refund: the codes are still active. Decide which card the refund covers and don't honor that code.`
+          : `Partial refund before the cards were issued: to be safe, the site will issue every card on this order as VOID. Text the buyer and sell them new cards if needed.`,
       ``,
       ...cardList(cards),
       ``,

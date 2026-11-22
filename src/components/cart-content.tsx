@@ -490,16 +490,16 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
                   )}
                   {items.some((item) => isGiftCardSlug(item.slug)) ? (
                     <Button
+                      variant="secondary"
                       className={softButtonClass}
                       onClick={() => items.filter((item) => isGiftCardSlug(item.slug)).forEach((item) => removeItem(item.slug))}
                     >
                       Remove gift cards
                     </Button>
-                  ) : (
-                    <Button asChild className={softButtonClass} onClick={onNavigate}>
-                      <Link href="/cart">Open Fallback Cart</Link>
-                    </Button>
-                  )}
+                  ) : null}
+                  <Button asChild className={softButtonClass} onClick={onNavigate}>
+                    <Link href="/cart">Open Fallback Cart</Link>
+                  </Button>
                 </div>
               </div>
             </div>

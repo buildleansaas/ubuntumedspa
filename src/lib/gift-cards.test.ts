@@ -53,7 +53,7 @@ test("gift cards are capped at $1,000 face value per order, summed across amount
   assert.equal(giftCardCashTotalCents([botox, line(10000, 2)]), 20000);
 });
 
-test("one entry key per gift card unit (the unique key issuing upserts on)", () => {
+test("one entry key per gift card unit (the unique key that makes issuing idempotent)", () => {
   const items = [line(10000, 2), line(2500, 1)];
   assert.equal(giftCardUnitsForItems(items), 3);
   assert.deepEqual(
@@ -81,9 +81,11 @@ test("theme by clinic date: Christmas Nov 15 to Dec 31, evergreen otherwise", ()
   assert.equal(at("2026-11-15T17:00:00Z"), "christmas");
   assert.equal(at("2026-12-31T23:00:00Z"), "christmas"); // 6 PM Dec 31 in Williamsburg
   assert.equal(at("2027-01-01T05:30:00Z"), "evergreen"); // 12:30 AM Jan 1 in Williamsburg
+  // A retired theme keeps its entry (sold cards use it) but has no dates; a live one has both, as MM-DD.
   for (const theme of GIFT_CARD_THEMES) {
-    assert.match(theme.startsOn ?? "", /^\d{2}-\d{2}$/);
-    assert.match(theme.endsOn ?? "", /^\d{2}-\d{2}$/);
+    assert.equal(Boolean(theme.startsOn), Boolean(theme.endsOn), `${theme.slug}: both dates or neither`);
+    if (theme.startsOn) assert.match(theme.startsOn, /^\d{2}-\d{2}$/);
+    if (theme.endsOn) assert.match(theme.endsOn, /^\d{2}-\d{2}$/);
   }
 });
 
@@ -138,7 +140,8 @@ test("receipt and owner email carry every code, no pickup line, and escape buyer
   assert.match(owner.text, /WMS-ABCDE-23457/);
   assert.match(owner.text, /\/gift-cards\/card\/view-1/);
   assert.match(owner.text, /redeem by hand/);
-  assert.doesNotMatch(customer.text, /After your visit/);
+  assert.doesNotMatch(customer.text, /After your visit/, "gift-only receipt has no review line");
+  assert.doesNotMatch(customer.html, /Google review/, "gift-only receipt has no review line");
   assert.match(owner.text, /bought gift cards 2 other time/);
   assert.doesNotMatch(owner.text, /pickup/i);
   assert.match(owner.html, /Merry Christmas &lt;3/);

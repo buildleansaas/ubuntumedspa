@@ -90,7 +90,8 @@ Recipient email delivery, scheduled send, balance tracking, redeem screen, parti
 
 ## Changes after PR #192 review (attack + sweep, 2026-11-22)
 - Refund/dispute lookup falls back to the PaymentIntent's `metadata.orderId`; before issuing, the sync checks the
-  charge and issues void cards if it was already refunded or disputed.
+  charge and issues every card void if it was already refunded (any amount, fail closed) or disputed.
+- Card and success-page URLs are redacted in GA4 (page_location, page_referrer) and both pages send no referrer.
 - A paid order whose cards can't be issued emails Jenny once (`giftCardIssueAlertedAt`), then keeps retrying.
 - Over-cap carts show a "Remove gift cards" button instead of a dead end.
 - Card page URLs are sent to GA4 without their token; success-page links do a full page load.

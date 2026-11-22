@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -12,6 +13,8 @@ import { getGiftCardsForOrder, isGiftCardItem } from "lib/gift-cards";
 import { orderBookingMessage } from "lib/text-to-book";
 
 export const dynamic = "force-dynamic";
+// The order token opens the order's gift cards: never send it on as a referrer.
+export const metadata: Metadata = { referrer: "no-referrer", robots: { index: false, follow: false } };
 
 export default async function CheckoutSuccessPage(
   props: {

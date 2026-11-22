@@ -72,7 +72,7 @@ export const buildOwnerEmail = (order: OrderRecord, receipt: ReceiptOutcome = "s
   const giftLines = cards.length
     ? [
         ``,
-        `Gift cards (redeem by hand: note the code, date and any balance left when it's used; to re-send a lost card, forward its link to the buyer's email above only):`,
+        `Gift cards (each $1 covers $1 at the cash price; redeem by hand: note the code, date and any balance left when it's used; to re-send a lost card, forward its link to the buyer's email above only):`,
         ...cards.map((card) => `${giftCardLine(card)}\n  ${giftCardUrl(card)}`),
         ...(order.giftMessage ? [`Message: "${order.giftMessage}"`] : []),
         ...(gift?.recentGiftOrdersByEmail
@@ -126,7 +126,7 @@ export const buildOwnerEmail = (order: OrderRecord, receipt: ReceiptOutcome = "s
     }</p>
     ${
       cards.length
-        ? `<p><strong>Gift cards</strong> (redeem by hand: note the code, date and any balance left when it's used; to re-send a lost card, forward its link to the buyer's email only):</p><ul>${cards
+        ? `<p><strong>Gift cards</strong> (each $1 covers $1 at the cash price; redeem by hand: note the code, date and any balance left when it's used; to re-send a lost card, forward its link to the buyer's email only):</p><ul>${cards
             .map((card) => `<li>${escapeHtml(giftCardLine(card))} · <a href="${giftCardUrl(card)}">card link</a></li>`)
             .join("")}</ul>${order.giftMessage ? `<p>Message: &ldquo;${escapeHtml(order.giftMessage)}&rdquo;</p>` : ""}${
             gift?.recentGiftOrdersByEmail
@@ -287,7 +287,8 @@ export const sendPaidOrderNotifications = async (orderId: string) => {
   }
   // Gift card orders wait until every card exists (lib/gift-cards ensureGiftCards sets giftCardsIssuedAt).
   if (order.giftCardUnits && !order.giftCardsIssuedAt) return null;
-  // Loaded inside each send, after the claim, so a card voided a moment ago is never emailed as active.
+  // Loaded inside each send, after the claim, so a card voided before the send is not emailed as active (a void during
+  // the SMTP call itself can still slip through; the void email to Jenny follows).
   const loadGift = async (): Promise<GiftCardEmailContext | undefined> => order.giftCardUnits
     ? {
         cards: await (await getDb()).collection<GiftCardRecord>("gift_cards").find({ orderId }).sort({ entryKey: 1 }).toArray(),

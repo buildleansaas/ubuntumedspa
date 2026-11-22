@@ -12,6 +12,8 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Your Williamsburg Med Spa gift card",
   robots: { index: false, follow: false },
+  // The URL is as good as the code: don't pass it on as a referrer.
+  referrer: "no-referrer",
 };
 
 export default async function GiftCardViewPage(props: { params: Promise<{ token: string }> }) {

@@ -29,10 +29,10 @@ export const alertOwnerGiftCardsNotIssued = async (order: OrderRecord, error: un
         ``,
         `Buyer: ${order.customerName || "(no name)"} ${order.customerEmail || ""} ${order.customerPhone || ""}`,
         ...order.items.map((item) => `${item.quantity} x ${item.name}`),
-        `Total paid: ${formatUsd(order.subtotalCents)}`,
+        `Order total: ${formatUsd(order.subtotalCents)} (if the reason is an amount mismatch, check the charge in Stripe)`,
         `Order ID: ${order.orderId}`,
         ``,
-        `If this doesn't clear within a day, text the buyer and forward this email to Austin.`,
+        `If it clears on a retry, you'll get the normal paid-order email with the codes. If it doesn't clear within a day, text the buyer and forward this email to Austin.`,
       ].join("\n"),
     });
   } catch (sendError) {

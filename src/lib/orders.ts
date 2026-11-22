@@ -237,8 +237,8 @@ export const syncOrderFromStripeSession = async (sessionId: string, { notify = t
     await ensureCreditEntries(freshOrder, account);
   }
 
-  // Gift cards must exist before any receipt (which carries the codes). Errors propagate: no emails go out and the
-  // webhook returns an error so Stripe redelivers.
+  // Gift cards must exist before any receipt (which carries the codes). On an error no receipt goes out, Jenny gets
+  // one "not issued" alert, and the error propagates so the webhook returns non-2xx and Stripe redelivers.
   if (freshOrder && paymentStatus === "paid" && freshOrder.giftCardUnits && !freshOrder.giftCardsIssuedAt) {
     try {
       assertSessionMatchesOrder(session, freshOrder);
