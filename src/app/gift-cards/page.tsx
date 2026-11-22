@@ -27,6 +27,8 @@ export function generateMetadata(): Metadata {
     title: "Med Spa Gift Cards in Williamsburg, VA | Williamsburg Med Spa",
     description: `Williamsburg Med Spa gift cards from ${minCash} to ${maxCash}, emailed right after checkout. Use toward Botox®, Xeomin®, PRP, B-12 and more with Jenny Brady, NP. Never expires.`,
     canonical: GIFT_CARDS_PATH,
+    // The share card re-skins with the theme; the slug in the URL makes link previews refresh when the theme changes.
+    image: `/gift-cards/opengraph-image?v=${activeGiftCardTheme().slug}`,
   });
 }
 
