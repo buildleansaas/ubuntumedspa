@@ -1,0 +1,68 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=block" rel="stylesheet">
+<style>
+:root{--slate:#24313a;--slate2:#1c262d;--linen:#f4f3ef;--gold:#d4ae55;--gold2:#a8822f;--sage:#a3b5a4;--mist:#c9d3d8}
+*{margin:0;box-sizing:border-box}
+html,body{width:1080px;height:var(--h);overflow:hidden;background:var(--slate)}
+body{font-family:"Hanken Grotesk",sans-serif;color:var(--linen);
+ background:radial-gradient(120% 80% at 50% 0%,#2e3e49 0%,var(--slate) 55%,var(--slate2) 100%)}
+.sp{position:absolute;color:var(--gold);opacity:.7;font-size:28px}
+.frame{position:absolute;inset:36px;border:2px solid rgba(212,174,85,.55);border-radius:28px}
+.frame::after{content:"";position:absolute;inset:10px;border:1px solid rgba(212,174,85,.25);border-radius:20px}
+.wrap{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;text-align:center;padding:var(--pad) 110px}
+.kicker{font-weight:700;letter-spacing:.32em;font-size:24px;color:var(--gold)}
+h1{font-family:Newsreader,serif;font-weight:400;line-height:1.02;letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--gold)}
+.body{font-size:31px;line-height:1.45;color:var(--mist)}
+.price{font-family:Newsreader,serif;font-size:38px}
+.price small{display:block;font-family:"Hanken Grotesk";font-size:22px;color:var(--sage);margin-top:6px;letter-spacing:.04em}
+.cta{background:var(--gold);color:var(--slate2);font-weight:700;font-size:28px;padding:20px 40px;border-radius:999px}
+.foot{font-size:22px;color:var(--sage);letter-spacing:.06em}
+.foot b{font-family:Newsreader,serif;font-weight:500;font-size:30px;color:var(--linen);letter-spacing:0;display:block;margin-bottom:4px}
+.fine{font-size:17px;color:#8c9aa3}
+/* gift card */
+.gc{width:820px;height:500px;border-radius:30px;position:relative;overflow:hidden;
+ background:linear-gradient(135deg,#f6f1e4 0%,#efe6cf 55%,#e3d3a8 100%);color:var(--slate);
+ box-shadow:0 40px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.2) inset;transform:rotate(-3deg);text-align:left;padding:46px 54px}
+.gc img{position:absolute;right:40px;top:50px;width:190px}
+.gc .t{font-weight:700;letter-spacing:.3em;font-size:19px;color:var(--gold2)}
+.gc h2{font-family:Newsreader,serif;font-weight:400;font-size:66px;line-height:1;margin-top:22px}
+.gc h2 em{color:var(--gold2)}
+.gc .s{font-size:24px;margin-top:16px;color:#4b5b66}
+.gc .n{position:absolute;left:54px;bottom:44px;font-family:Newsreader,serif;font-size:28px}
+.gc .n small{display:block;font-family:"Hanken Grotesk";font-size:17px;letter-spacing:.12em;color:#6b7a84}
+.gc .ribbon{position:absolute;top:0;bottom:0;left:600px;width:34px;background:linear-gradient(90deg,#b01e2e,#d23a46,#b01e2e);opacity:.92}
+.gc .ribbon2{position:absolute;left:0;right:0;top:300px;height:34px;background:linear-gradient(180deg,#b01e2e,#d23a46,#b01e2e);opacity:.92}
+</style></head><body>
+<div class="frame"></div>
+<span class="sp" style="top:90px;left:110px">✦</span><span class="sp" style="top:150px;right:130px;font-size:20px">✦</span>
+<span class="sp" style="bottom:200px;left:90px;font-size:18px">✦</span><span class="sp" style="bottom:120px;right:110px">✦</span>
+<div class="wrap" id="w"></div>
+<script>
+const v=new URLSearchParams(location.search).get('v');
+const H={gift:1350,feed:1350,story:1920,square:1080}[v];document.documentElement.style.setProperty('--h',H+'px');
+const giftCard=`<div class="gc"><div class="ribbon"></div><div class="ribbon2"></div><img src="logo.png"><div class="t">GIFT CERTIFICATE</div><h2>Botox<sup style="font-size:.4em">®</sup> &amp;<br><em>Xeomin<sup style="font-size:.4em">®</sup></em></h2><div class="s">One $250 treatment credit</div><div class="n">Williamsburg Med Spa<small>JENNY BRADY, NP</small></div></div>`;
+const T={
+gift:{pad:'110px',h:`<div class="kicker">THE HOLIDAY GIFT</div>
+<h1 style="font-size:84px;margin-top:26px">Give the gift<br>of a <em>refresh</em></h1>
+<div style="margin:56px 0 44px">${giftCard}</div>
+<div class="body" style="font-size:29px">Botox® and Xeomin® gift certificates,<br>in $250 treatment credits.</div>
+<div class="cta" style="margin-top:36px">Message us to order</div>
+<div class="foot" style="margin-top:auto;padding-bottom:10px"><b>Williamsburg Med Spa</b>williamsburgmedspa.com</div>`},
+feed:{pad:'120px',h:`<img src="logo.png" style="width:150px">
+<div class="kicker" style="margin-top:34px">HOLIDAY BOTOX®</div>
+<h1 style="font-size:96px;margin-top:26px"><em>Refreshed</em><br>by Christmas</h1>
+<div class="body" style="margin-top:40px">Botox® and Xeomin® take about two weeks<br>to fully settle in. Book by <b style="color:var(--linen)">December 10</b><br>to be ready for the holidays.</div>
+<div class="price" style="margin-top:44px">$250 treatment credits<small>$250 CASH · $257.78 CARD</small></div>
+<div class="cta" style="margin-top:40px">Book at williamsburgmedspa.com</div>
+<div class="fine" style="margin-top:auto;padding-bottom:14px">Jenny Brady, NP · Williamsburg, VA · Results vary.</div>`},
+story:{pad:'170px',h:`<img src="logo.png" style="width:160px">
+<div class="kicker" style="margin-top:50px">HOLIDAY BOTOX®</div>
+<h1 style="font-size:112px;margin-top:30px"><em>Refreshed</em><br>by Christmas</h1>
+<div class="body" style="margin-top:56px;font-size:36px">Full effect takes about two weeks.<br>Book by <b style="color:var(--linen)">December 10</b>.</div>
+<div class="price" style="margin-top:56px;font-size:46px">$250 treatment credits<small style="font-size:26px">$250 CASH · $257.78 CARD</small></div>
+<div style="margin-top:20px;transform:scale(.72)">${giftCard}</div>
+<div class="body" style="font-size:30px;margin-top:-40px">Gift certificates available too.</div>
+<div class="fine" style="margin-top:auto;font-size:22px">Jenny Brady, NP · Williamsburg, VA · Results vary.</div>`}};
+document.getElementById('w').style.setProperty('--pad',T[v].pad);document.getElementById('w').innerHTML=T[v].h;
+</script></body></html>

@@ -13,6 +13,7 @@ const primaryLinks = [
   { href: "/procedures", label: "All treatments" },
   { href: "/prices", label: "Prices" },
   { href: "/offers", label: "Offers" },
+  { href: "/gift-cards", label: "Gift cards" },
   { href: "/products", label: "Products" },
   { href: "/locations", label: "Locations" },
   { href: "/events", label: "Events" },

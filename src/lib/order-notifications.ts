@@ -2,7 +2,8 @@ import { getDb } from "lib/mongodb";
 import { getMailConfig, orderEmailsEnabled, sendMail } from "lib/mailer";
 import type { OrderNotificationStatus, OrderRecord } from "lib/orders";
 import { creditAmountCentsForItem } from "lib/cart-pricing";
-import { formatUsd } from "lib/price";
+import { formatUsd, formatUsdShort } from "lib/price";
+import { GIFT_CARD_TERMS, isGiftCardItem, type GiftCardRecord } from "lib/gift-card-rules";
 import { GOOGLE_REVIEW_URL, ORIGIN } from "lib/seo";
 import { BOOKING_PHONE_DISPLAY, bookingSmsHref, bookingTelHref, orderBookingMessage, shortOrderRef } from "lib/text-to-book";
 
@@ -21,8 +22,26 @@ const itemLabel = (item: OrderRecord["items"][number]) =>
 
 const itemLines = (order: OrderRecord) => order.items.map(itemLabel);
 
+// Gift cards are emailed, never picked up: a gift-card-only order gets no pickup line.
 const hasPickupItems = (order: OrderRecord) =>
-  !order.requiresScheduling || order.items.some((item) => item.fulfillment === "pickup");
+  order.items.some((item) => item.fulfillment === "pickup") ||
+  (!order.requiresScheduling && !order.items.every(isGiftCardItem));
+
+export const giftCardUrl = (card: Pick<GiftCardRecord, "viewToken">) => `${ORIGIN}/gift-cards/card/${card.viewToken}`;
+
+const giftCardLine = (card: GiftCardRecord) =>
+  `${formatUsdShort(card.faceValueCents)} gift card${card.recipientName ? ` for ${card.recipientName}` : ""}: code ${card.code}` +
+  (card.status === "void" ? " (VOID)" : "");
+
+/** Gift card email options: the order's issued cards and, for the owner, other gift card buys by the same email. */
+export type GiftCardEmailContext = { cards: GiftCardRecord[]; recentGiftOrdersByEmail?: number };
+
+const assertCardsComplete = (order: OrderRecord, gift?: GiftCardEmailContext) => {
+  const expected = order.giftCardUnits ?? 0;
+  if (expected && (gift?.cards.length ?? 0) !== expected) {
+    throw new Error(`Order ${order.orderId} needs ${expected} gift cards before its emails go out.`);
+  }
+};
 
 const PICKUP_LINE_CUSTOMER = "For the products in your order, we'll contact you to set a pickup time.";
 const PICKUP_LINE_OWNER = "This order has products for pickup. Contact them to set a pickup time.";
@@ -47,7 +66,22 @@ const receiptLine = (order: OrderRecord, receipt: ReceiptOutcome) => {
   return "Their receipt email failed to send. Text or call them.";
 };
 
-export const buildOwnerEmail = (order: OrderRecord, receipt: ReceiptOutcome = "sent") => {
+export const buildOwnerEmail = (order: OrderRecord, receipt: ReceiptOutcome = "sent", gift?: GiftCardEmailContext) => {
+  assertCardsComplete(order, gift);
+  const cards = gift?.cards ?? [];
+  const giftLines = cards.length
+    ? [
+        ``,
+        `Gift cards (each $1 covers $1 at the cash price; redeem by hand: note the code, date and any balance left when it's used; to re-send a lost card, forward its link to the buyer's email above only):`,
+        ...cards.map((card) => `${giftCardLine(card)}\n  ${giftCardUrl(card)}`),
+        ...(order.giftMessage ? [`Message: "${order.giftMessage}"`] : []),
+        ...(gift?.recentGiftOrdersByEmail
+          ? [
+              `WARNING: this email bought gift cards ${gift.recentGiftOrdersByEmail} other time(s) in the last 24 hours. Check before honoring large amounts.`,
+            ]
+          : []),
+      ]
+    : [];
   const name = order.customerName || "(no name given)";
   const phone = order.customerPhone || "";
   const lines = [
@@ -60,6 +94,7 @@ export const buildOwnerEmail = (order: OrderRecord, receipt: ReceiptOutcome = "s
     ...itemLines(order),
     `Total paid: ${formatUsd(order.subtotalCents)}`,
     order.paidAt ? `Paid: ${formatPaidDate(order)}` : "",
+    ...giftLines,
     ``,
     receiptLine(order, receipt),
     hasPickupItems(order) ? PICKUP_LINE_OWNER : "",
@@ -89,6 +124,17 @@ export const buildOwnerEmail = (order: OrderRecord, receipt: ReceiptOutcome = "s
     <p><strong>Total paid: ${formatUsd(order.subtotalCents)}</strong>${
       order.paidAt ? `<br>Paid: ${escapeHtml(formatPaidDate(order))}` : ""
     }</p>
+    ${
+      cards.length
+        ? `<p><strong>Gift cards</strong> (each $1 covers $1 at the cash price; redeem by hand: note the code, date and any balance left when it's used; to re-send a lost card, forward its link to the buyer's email only):</p><ul>${cards
+            .map((card) => `<li>${escapeHtml(giftCardLine(card))} · <a href="${giftCardUrl(card)}">card link</a></li>`)
+            .join("")}</ul>${order.giftMessage ? `<p>Message: &ldquo;${escapeHtml(order.giftMessage)}&rdquo;</p>` : ""}${
+            gift?.recentGiftOrdersByEmail
+              ? `<p><strong>Warning:</strong> this email bought gift cards ${gift.recentGiftOrdersByEmail} other time(s) in the last 24 hours. Check before honoring large amounts.</p>`
+              : ""
+          }`
+        : ""
+    }
     <p>${escapeHtml(receiptLine(order, receipt))}</p>
     ${hasPickupItems(order) ? `<p>${PICKUP_LINE_OWNER}</p>` : ""}
     <p><a href="${getOrderBookingUrl(order)}">Their order page</a> · Order ${escapeHtml(order.orderId)} (their text will say #${escapeHtml(shortOrderRef(order.orderId))})</p>
@@ -101,7 +147,9 @@ export const buildOwnerEmail = (order: OrderRecord, receipt: ReceiptOutcome = "s
   };
 };
 
-export const buildCustomerEmail = (order: OrderRecord) => {
+export const buildCustomerEmail = (order: OrderRecord, gift?: GiftCardEmailContext) => {
+  assertCardsComplete(order, gift);
+  const cards = (gift?.cards ?? []).filter((card) => card.status === "active");
   const firstName = order.customerName?.trim().split(/\s+/)[0];
   const greeting = firstName ? `Hi ${firstName},` : "Hi,";
   const bookingUrl = getOrderBookingUrl(order);
@@ -111,6 +159,15 @@ export const buildCustomerEmail = (order: OrderRecord) => {
       : "",
     hasPickupItems(order) ? PICKUP_LINE_CUSTOMER : "",
   ].filter(Boolean);
+  const giftText = cards.length
+    ? [
+        `Your gift card${cards.length > 1 ? "s" : ""}. Open the link to print it or send it on (the card shows the code, so share it only with the person it's for):`,
+        ...cards.map((card) => `${giftCardLine(card)}\n${giftCardUrl(card)}`),
+        ``,
+        ...GIFT_CARD_TERMS,
+        ``,
+      ]
+    : [];
 
   const text = [
     greeting,
@@ -120,13 +177,12 @@ export const buildCustomerEmail = (order: OrderRecord) => {
     ...itemLines(order),
     `Total paid: ${formatUsd(order.subtotalCents)}`,
     ``,
+    ...giftText,
     ...nextSteps,
     ``,
     `Questions? Just reply to this email.`,
     ``,
-    `After your visit, a quick Google review helps others find us:`,
-    GOOGLE_REVIEW_URL,
-    ``,
+    ...(order.items.every(isGiftCardItem) ? [] : [`After your visit, a quick Google review helps others find us:`, GOOGLE_REVIEW_URL, ``]),
     `Jenny`,
     `Williamsburg Med Spa`,
   ].join("\n");
@@ -139,13 +195,25 @@ export const buildCustomerEmail = (order: OrderRecord) => {
       .join("")}</ul>
     <p><strong>Total paid: ${formatUsd(order.subtotalCents)}</strong></p>
     ${
+      cards.length
+        ? `<p><strong>Your gift card${cards.length > 1 ? "s" : ""}.</strong> Open the link to print it or send it on. The card shows the code, so share it only with the person it's for.</p><ul>${cards
+            .map(
+              (card) =>
+                `<li>${escapeHtml(giftCardLine(card))}<br><a href="${giftCardUrl(card)}">Open the ${escapeHtml(
+                  formatUsdShort(card.faceValueCents)
+                )} gift card</a></li>`
+            )
+            .join("")}</ul><p style="font-size:13px;color:#555">${GIFT_CARD_TERMS.map(escapeHtml).join(" ")}</p>`
+        : ""
+    }
+    ${
       order.requiresScheduling
         ? `<p><strong>Next step:</strong> <a href="${escapeHtml(bookingSmsHref(orderBookingMessage(order)))}">Text Jenny</a> or call <a href="${bookingTelHref}">${BOOKING_PHONE_DISPLAY}</a> to book your appointment. The text opens with your order details filled in. You can also use the Text button on <a href="${bookingUrl}">your order page</a>.</p>`
         : ""
     }
     ${hasPickupItems(order) ? `<p>${PICKUP_LINE_CUSTOMER}</p>` : ""}
     <p>Questions? Just reply to this email.</p>
-    <p>After your visit, a quick <a href="${GOOGLE_REVIEW_URL}">Google review</a> helps others find us.</p>
+    ${order.items.every(isGiftCardItem) ? "" : `<p>After your visit, a quick <a href="${GOOGLE_REVIEW_URL}">Google review</a> helps others find us.</p>`}
     <p>Jenny<br>Williamsburg Med Spa</p>
   `;
 
@@ -171,6 +239,8 @@ const sendOnce = async (
     {
       orderId,
       paymentStatus: "paid",
+      // A gift card order's emails carry the codes: never claim them before every card is issued.
+      $and: [{ $or: [{ giftCardUnits: { $exists: false } }, { giftCardUnits: 0 }, { giftCardsIssuedAt: { $exists: true } }] }],
       $or: [
         { [claimField]: { $exists: false } },
         { [claimField]: { $lt: new Date(Date.now() - STALE_CLAIM_MS) }, [statusField]: { $ne: "sent" } },
@@ -215,6 +285,24 @@ export const sendPaidOrderNotifications = async (orderId: string) => {
   if (order.customerReceiptStatus === "sent" && order.ownerNotificationStatus === "sent") {
     return { customer: "sent" as const, owner: "sent" as const };
   }
+  // Gift card orders wait until every card exists (lib/gift-cards ensureGiftCards sets giftCardsIssuedAt).
+  if (order.giftCardUnits && !order.giftCardsIssuedAt) return null;
+  // Loaded inside each send, after the claim, so a card voided before the send is not emailed as active (a void during
+  // the SMTP call itself can still slip through; the void email to Jenny follows).
+  const loadGift = async (): Promise<GiftCardEmailContext | undefined> => order.giftCardUnits
+    ? {
+        cards: await (await getDb()).collection<GiftCardRecord>("gift_cards").find({ orderId }).sort({ entryKey: 1 }).toArray(),
+        recentGiftOrdersByEmail: order.customerEmail
+          ? await orders.countDocuments({
+              orderId: { $ne: orderId },
+              customerEmail: order.customerEmail,
+              paymentStatus: "paid",
+              giftCardUnits: { $gt: 0 },
+              paidAt: { $gte: new Date(Date.now() - 24 * 60 * 60 * 1000) },
+            })
+          : 0,
+      }
+    : undefined;
 
   let receipt: ReceiptOutcome;
   if (!order.customerEmail) {
@@ -223,16 +311,16 @@ export const sendPaidOrderNotifications = async (orderId: string) => {
       await orders.updateOne({ orderId }, { $set: { customerReceiptStatus: "skipped", updatedAt: new Date() } });
     }
   } else {
-    const result = await sendOnce(orderId, "customerReceiptClaimedAt", "customerReceiptStatus", (claimed) =>
-      sendMail({ to: claimed.customerEmail as string, ...buildCustomerEmail(claimed) })
+    const result = await sendOnce(orderId, "customerReceiptClaimedAt", "customerReceiptStatus", async (claimed) =>
+      sendMail({ to: claimed.customerEmail as string, ...buildCustomerEmail(claimed, await loadGift()) })
     );
     receipt = result === "already_handled" ? await resolveReceiptOutcome(orderId) : result;
   }
 
-  const owner = await sendOnce(orderId, "ownerNotificationClaimedAt", "ownerNotificationStatus", (claimed) =>
+  const owner = await sendOnce(orderId, "ownerNotificationClaimedAt", "ownerNotificationStatus", async (claimed) =>
     sendMail({
       to: getMailConfig().leadsTo,
-      ...buildOwnerEmail(claimed, receipt),
+      ...buildOwnerEmail(claimed, receipt, await loadGift()),
       replyTo: claimed.customerEmail || undefined,
     })
   );

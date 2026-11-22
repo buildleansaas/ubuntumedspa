@@ -85,7 +85,14 @@ export default function Layout({ children }: LayoutProps) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-FBEPLGSS9L');
+          // Gift card and order-success URLs carry tokens that open gift card codes: never send them to analytics.
+          var wmsPrivate = location.pathname.indexOf('/gift-cards/card/') === 0 ? '/gift-cards/card'
+            : location.pathname === '/checkout/success' ? '/checkout/success' : null;
+          if (wmsPrivate) {
+            gtag('config', 'G-FBEPLGSS9L', { page_location: location.origin + wmsPrivate, page_path: wmsPrivate, page_referrer: '' });
+          } else {
+            gtag('config', 'G-FBEPLGSS9L');
+          }
         `}
       </Script>
       <body className="m-0 bg-base-100 p-0 text-base-content antialiased">

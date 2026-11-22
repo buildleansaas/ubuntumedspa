@@ -1,5 +1,7 @@
 "use client";
 
+import { isGiftCardSlug } from "config/commerce-catalog";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -24,7 +26,7 @@ type ResolvedCartItem = {
   maxQuantity: number;
   quantityLabel: string;
   requiresScheduling: boolean;
-  fulfillment: "pickup" | "appointment";
+  fulfillment: "pickup" | "appointment" | "email";
   pricingMode: "fixed" | "quantity" | "increment_credit";
   imagePath?: string;
 };
@@ -486,6 +488,15 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
                       <Link href={homeOShotHref}>Keep Shopping</Link>
                     </Button>
                   )}
+                  {items.some((item) => isGiftCardSlug(item.slug)) ? (
+                    <Button
+                      variant="secondary"
+                      className={softButtonClass}
+                      onClick={() => items.filter((item) => isGiftCardSlug(item.slug)).forEach((item) => removeItem(item.slug))}
+                    >
+                      Remove gift cards
+                    </Button>
+                  ) : null}
                   <Button asChild className={softButtonClass} onClick={onNavigate}>
                     <Link href="/cart">Open Fallback Cart</Link>
                   </Button>
@@ -510,8 +521,12 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
               {resolvedItems.map((item, index) => {
                 const isProcedure = item.kind === "procedure";
                 const itemMeta = [
-                  isProcedure ? "Procedure" : "Product",
-                  item.fulfillment === "appointment" ? "Scheduling after payment" : "Pickup only",
+                  item.fulfillment === "email" ? "Gift card" : isProcedure ? "Procedure" : "Product",
+                  item.fulfillment === "appointment"
+                    ? "Scheduling after payment"
+                    : item.fulfillment === "email"
+                      ? "Emailed after payment"
+                      : "Pickup only",
                   item.pricingMode === "increment_credit" ? "Prepaid blocks" : null,
                 ]
                   .filter(Boolean)

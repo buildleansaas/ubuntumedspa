@@ -19,6 +19,7 @@ export function sitemapPagePaths({ includeOffers = getActiveOffers().length > 0 
     "/procedures",
     "/products",
     "/prices",
+    "/gift-cards",
     ...(includeOffers ? ["/offers"] : []),
     "/staff/jenny-brady",
     "/locations",

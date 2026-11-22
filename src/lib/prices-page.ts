@@ -1,4 +1,11 @@
-import { COMMERCE_CATALOG, COMMERCE_CATALOG_BY_SLUG, type CatalogItemConfig } from "../config/commerce-catalog";
+import {
+  COMMERCE_CATALOG,
+  COMMERCE_CATALOG_BY_SLUG,
+  GIFT_CARD_FACE_VALUES_CENTS,
+  giftCardSlug,
+  isGiftCardSlug,
+  type CatalogItemConfig,
+} from "../config/commerce-catalog";
 import { cardPriceSchemaValue, formatUsdShort } from "./price";
 import { BOOKING_PHONE_DISPLAY } from "./text-to-book";
 
@@ -19,6 +26,7 @@ export const PRICE_GROUPS = [
   { id: "ear-piercing", name: "Ear piercing", slugs: ["blomdahl-ear-piercing"] },
   { id: "injections", name: "Injections", slugs: ["b12-injections", "hyperhidrosis-treatment"] },
   { id: "skincare-products", name: "Skincare products", slugs: ["co2-lift", "co2-v-lift-for-women", "definage-clinical-power-trio-pro"] },
+  { id: "gift-cards", name: "Gift cards", slugs: GIFT_CARD_FACE_VALUES_CENTS.map(giftCardSlug) },
 ] as const;
 
 export type PriceRow = {
@@ -33,7 +41,7 @@ export type PriceRow = {
 export type PriceGroup = { id: string; name: string; rows: PriceRow[] };
 
 export const catalogItemHref = (item: CatalogItemConfig) =>
-  item.kind === "product" ? `/products/${item.slug}` : `/procedures/${item.slug}`;
+  isGiftCardSlug(item.slug) ? "/gift-cards" : item.kind === "product" ? `/products/${item.slug}` : `/procedures/${item.slug}`;
 
 const toRow = (item: CatalogItemConfig): PriceRow => ({
   slug: item.slug,

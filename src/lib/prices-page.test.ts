@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import test from "node:test";
 
@@ -58,6 +58,12 @@ test("each row links to a published page that exists", () => {
     products.filter((product) => !("published" in product) || product.published !== false).map((p) => p.slug)
   );
   for (const item of COMMERCE_CATALOG) {
+    // Gift cards share one page, /gift-cards (src/app/gift-cards/page.tsx).
+    if (item.fulfillment === "email") {
+      assert.equal(catalogItemHref(item), "/gift-cards");
+      assert.ok(existsSync(join(process.cwd(), "src/app/gift-cards/page.tsx")));
+      continue;
+    }
     assert.ok((item.kind === "product" ? productSlugs : procedureSlugs).has(item.slug), `${item.slug} has no page`);
   }
 });
@@ -65,7 +71,7 @@ test("each row links to a published page that exists", () => {
 test("the groups are the ones the page promises", () => {
   assert.deepEqual(
     getPriceGroups().map((group) => group.name),
-    ["Wrinkle relaxers", "PRP treatments", "Sexual wellness", "Ear piercing", "Injections", "Skincare products"]
+    ["Wrinkle relaxers", "PRP treatments", "Sexual wellness", "Ear piercing", "Injections", "Skincare products", "Gift cards"]
   );
 });
 

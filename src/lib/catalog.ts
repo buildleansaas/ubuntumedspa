@@ -4,6 +4,7 @@ import {
   type CatalogKind,
 } from "config/commerce-catalog";
 import { resolveCartItemPricing, resolveSyncedStripePriceId } from "lib/cart-pricing";
+import { assertGiftCardOrderCap } from "lib/gift-card-rules";
 import { normalizeIntimacyProcedureSlug } from "lib/intimacy-aliases";
 import { ensureMongoIndexes, getDb } from "lib/mongodb";
 
@@ -177,6 +178,8 @@ export const resolveCart = async (rawItems: CartItemInput[]): Promise<ResolvedCa
       stripePriceId: resolveSyncedStripePriceId(catalogItem, stripeRecord),
     });
   }
+
+  assertGiftCardOrderCap(items);
 
   const subtotalCents = items.reduce((sum, item) => sum + item.lineTotalCents, 0);
   const cashSubtotalCents = items.reduce((sum, item) => sum + (item.cashLineTotalCents ?? item.lineTotalCents), 0);
