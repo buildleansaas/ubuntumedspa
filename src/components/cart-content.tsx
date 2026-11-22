@@ -1,5 +1,7 @@
 "use client";
 
+import { isGiftCardSlug } from "config/commerce-catalog";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -486,9 +488,18 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
                       <Link href={homeOShotHref}>Keep Shopping</Link>
                     </Button>
                   )}
-                  <Button asChild className={softButtonClass} onClick={onNavigate}>
-                    <Link href="/cart">Open Fallback Cart</Link>
-                  </Button>
+                  {items.some((item) => isGiftCardSlug(item.slug)) ? (
+                    <Button
+                      className={softButtonClass}
+                      onClick={() => items.filter((item) => isGiftCardSlug(item.slug)).forEach((item) => removeItem(item.slug))}
+                    >
+                      Remove gift cards
+                    </Button>
+                  ) : (
+                    <Button asChild className={softButtonClass} onClick={onNavigate}>
+                      <Link href="/cart">Open Fallback Cart</Link>
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>

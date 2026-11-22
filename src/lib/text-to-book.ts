@@ -30,8 +30,8 @@ export const orderBookingMessage = (order: {
   customerName?: string;
   items: { name: string; quantity: number; fulfillment?: string }[];
 }) => {
-  // Pickup products are not part of the visit; name only what is being booked (all items if none are bookable).
-  const bookable = order.items.filter((item) => item.fulfillment !== "pickup");
+  // Pickup products and emailed gift cards are not part of the visit; name only what is being booked (all items if none are bookable).
+  const bookable = order.items.filter((item) => item.fulfillment !== "pickup" && item.fulfillment !== "email");
   const items = bookable.length ? bookable : order.items;
   return [
     greeting(order.customerName),

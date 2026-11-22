@@ -5,6 +5,7 @@ import { ImageResponse } from "next/og";
 import GiftCardArt from "components/gift-card-art";
 import type { GiftCardTheme } from "config/gift-card-themes";
 import { formatUsdShort } from "lib/price";
+import { BOOKING_PHONE_DISPLAY } from "lib/text-to-book";
 
 /** 1080 x 1350 gift card PNG (Facebook/Instagram portrait), the same card as the site, on the theme's background. */
 export const GIFT_CARD_IMAGE_WIDTH = 1080;
@@ -97,7 +98,7 @@ export const renderGiftCardImage = ({
           </div>
         ) : null}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: 70 }}>
-          <div style={{ display: "flex", fontSize: 26, color: colors.mutedText }}>Text (804) 738-9483 to book with Jenny</div>
+          <div style={{ display: "flex", fontSize: 26, color: colors.mutedText }}>{`Text ${BOOKING_PHONE_DISPLAY} to book with Jenny`}</div>
           <div style={{ display: "flex", fontSize: 22, color: colors.mutedText, marginTop: 8, letterSpacing: "0.06em" }}>
             williamsburgmedspa.com · Never expires
           </div>

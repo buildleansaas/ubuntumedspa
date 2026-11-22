@@ -3,7 +3,14 @@ import { randomUUID } from "crypto";
 import { addAccountCredit, type AccountRecord, upsertAccountByEmail } from "lib/accounts";
 import { creditAmountCentsForItem } from "lib/cart-pricing";
 import { type ResolvedCart, resolveCart } from "lib/catalog";
-import { assertSessionMatchesOrder, cleanGiftText, ensureGiftCards, giftCardUnitsForItems } from "lib/gift-cards";
+import {
+  assertSessionMatchesOrder,
+  cleanGiftText,
+  ensureGiftCards,
+  giftCardUnitsForItems,
+  voidGiftCardsForOrder,
+} from "lib/gift-cards";
+import { alertOwnerGiftCardsNotIssued } from "lib/gift-card-alerts";
 import { ensureMongoIndexes, getDb } from "lib/mongodb";
 import { sendPaidOrderNotifications } from "lib/order-notifications";
 import { getStripe } from "lib/stripe";
@@ -41,6 +48,8 @@ export type OrderRecord = {
   /** Set by a refund or dispute; cards issued after this are inserted as void. */
   giftCardsVoidedAt?: Date;
   giftCardsVoidReason?: string;
+  /** Set once Jenny was emailed that a paid order's gift cards could not be issued. */
+  giftCardIssueAlertedAt?: Date;
   giftRecipientName?: string;
   giftMessage?: string;
   stripePaymentIntentId?: string;
@@ -230,9 +239,25 @@ export const syncOrderFromStripeSession = async (sessionId: string, { notify = t
 
   // Gift cards must exist before any receipt (which carries the codes). Errors propagate: no emails go out and the
   // webhook returns an error so Stripe redelivers.
-  if (freshOrder && paymentStatus === "paid" && freshOrder.giftCardUnits) {
-    assertSessionMatchesOrder(session, freshOrder);
-    await ensureGiftCards(freshOrder);
+  if (freshOrder && paymentStatus === "paid" && freshOrder.giftCardUnits && !freshOrder.giftCardsIssuedAt) {
+    try {
+      assertSessionMatchesOrder(session, freshOrder);
+      // A refund or dispute may have landed before this first sync (missed webhook): issue those cards as void.
+      if (stripePaymentIntentId && !freshOrder.giftCardsVoidedAt) {
+        const intent = await stripe.paymentIntents.retrieve(stripePaymentIntentId, { expand: ["latest_charge"] });
+        const charge = typeof intent.latest_charge === "object" ? intent.latest_charge : null;
+        if (charge && (charge.amount_refunded > 0 || charge.disputed)) {
+          await voidGiftCardsForOrder(orderId, charge.disputed ? "disputed before issue" : "refunded before issue");
+        }
+      }
+      await ensureGiftCards((await getOrderById(orderId)) ?? freshOrder);
+    } catch (error) {
+      // Codes fail closed, but Jenny still hears about the paid order (once).
+      await alertOwnerGiftCardsNotIssued(freshOrder, error).catch((alertError) =>
+        console.error("[orders] gift card failure alert failed", orderId, alertError)
+      );
+      throw error;
+    }
   }
 
   if (freshOrder && notify && paymentStatus === "paid") {

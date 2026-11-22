@@ -74,9 +74,11 @@ export const cleanGiftText = (value: string | null | undefined, max: number) => 
   return cleaned || undefined;
 };
 
+// Wording marked for Austin's OK on PR #192: balance across visits, refunds, in-office sales.
 export const GIFT_CARD_TERMS = [
-  "Never expires. No fees.",
-  "Use it toward any treatment or product at Williamsburg Med Spa, in one visit or several.",
+  "Never expires. No monthly or inactivity fees.",
+  "Use it toward any treatment or product at Williamsburg Med Spa. Each $1 on the card covers $1 at the cash price.",
+  "Any value left after a visit stays on the code as credit, and Jenny keeps track of the balance.",
   "Treatments still need Jenny's assessment. If no treatment or product suits the recipient, the buyer can get a refund.",
   "Not redeemable for cash. A lost code is re-sent only to the buyer's email address.",
 ];

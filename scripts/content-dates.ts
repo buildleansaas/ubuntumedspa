@@ -65,7 +65,7 @@ const rules: [RegExp, (match: RegExpMatchArray) => Source[]][] = [
   [/^\/products$/, () => ["src/app/products/page.tsx", "src/views/products.tsx"]],
   [/^\/prices$/, () => ["src/app/prices/page.tsx", "src/config/commerce-catalog.ts"]],
   [/^\/offers$/, () => ["src/app/offers/page.tsx", "src/config/offers.ts"]],
-  [/^\/gift-cards$/, () => ["src/app/gift-cards/page.tsx", "src/config/gift-card-themes.ts", "src/lib/gift-card-rules.ts"]],
+  [/^\/gift-cards$/, () => ["src/app/gift-cards/page.tsx", "src/config/gift-card-themes.ts", "src/lib/gift-card-rules.ts", "src/config/commerce-catalog.ts"]],
   [/^\/staff\/jenny-brady$/, () => ["src/app/staff/jenny-brady/page.tsx"]],
   [/^\/locations(?:\/([a-z-]+))?$/, (m) => [m[1] ? `src/app/locations/${m[1]}/page.tsx` : "src/app/locations/page.tsx"]],
   [

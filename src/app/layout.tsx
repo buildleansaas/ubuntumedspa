@@ -85,7 +85,12 @@ export default function Layout({ children }: LayoutProps) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-FBEPLGSS9L');
+          // A gift card page URL is as good as its code: never send it to analytics.
+          if (location.pathname.indexOf('/gift-cards/card/') === 0) {
+            gtag('config', 'G-FBEPLGSS9L', { page_location: location.origin + '/gift-cards/card', page_path: '/gift-cards/card' });
+          } else {
+            gtag('config', 'G-FBEPLGSS9L');
+          }
         `}
       </Script>
       <body className="m-0 bg-base-100 p-0 text-base-content antialiased">

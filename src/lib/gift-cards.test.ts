@@ -53,7 +53,7 @@ test("gift cards are capped at $1,000 face value per order, summed across amount
   assert.equal(giftCardCashTotalCents([botox, line(10000, 2)]), 20000);
 });
 
-test("one entry key per gift card unit, so issuing is idempotent", () => {
+test("one entry key per gift card unit (the unique key issuing upserts on)", () => {
   const items = [line(10000, 2), line(2500, 1)];
   assert.equal(giftCardUnitsForItems(items), 3);
   assert.deepEqual(
@@ -135,7 +135,10 @@ test("receipt and owner email carry every code, no pickup line, and escape buyer
 
   const owner = buildOwnerEmail(order, "sent", { cards, recentGiftOrdersByEmail: 2 });
   assert.match(owner.text, /WMS-ABCDE-23456/);
+  assert.match(owner.text, /WMS-ABCDE-23457/);
+  assert.match(owner.text, /\/gift-cards\/card\/view-1/);
   assert.match(owner.text, /redeem by hand/);
+  assert.doesNotMatch(customer.text, /After your visit/);
   assert.match(owner.text, /bought gift cards 2 other time/);
   assert.doesNotMatch(owner.text, /pickup/i);
   assert.match(owner.html, /Merry Christmas &lt;3/);
@@ -152,4 +155,17 @@ test("void cards are left out of the buyer's receipt", () => {
   const customer = buildCustomerEmail(giftOrder(), { cards: [card(0), card(1, { status: "void" })] });
   assert.match(customer.text, /WMS-ABCDE-23456/);
   assert.doesNotMatch(customer.text, /WMS-ABCDE-23457/);
+});
+
+test("the booking text leaves gift cards out of a mixed order", async () => {
+  const { orderBookingMessage } = await import("./text-to-book");
+  const message = orderBookingMessage({
+    orderId: "abc",
+    items: [
+      { name: "Botox", quantity: 1, fulfillment: "appointment" },
+      { name: "$100 Gift Card", quantity: 1, fulfillment: "email" },
+    ],
+  });
+  assert.match(message, /paid online for Botox \(order/);
+  assert.doesNotMatch(message, /Gift Card/);
 });

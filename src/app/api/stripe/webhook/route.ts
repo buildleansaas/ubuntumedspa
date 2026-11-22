@@ -34,7 +34,8 @@ export async function POST(request: NextRequest) {
       const session = event.data.object as Stripe.Checkout.Session;
       const order = await syncOrderFromStripeSession(session.id);
 
-      // The owner must hear about every paid order: make Stripe redeliver until the alert goes out.
+      // The owner must hear about every paid order: make Stripe redeliver until the alert goes out. (A gift card order
+      // whose cards can't be issued throws inside the sync after emailing the owner once: lib/gift-card-alerts.ts.)
       if (order?.paymentStatus === "paid" && order.ownerNotificationStatus === "failed") {
         return NextResponse.json({ error: "Owner notification failed; retry." }, { status: 500 });
       }

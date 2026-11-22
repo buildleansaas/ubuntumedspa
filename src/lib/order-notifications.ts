@@ -72,8 +72,8 @@ export const buildOwnerEmail = (order: OrderRecord, receipt: ReceiptOutcome = "s
   const giftLines = cards.length
     ? [
         ``,
-        `Gift cards (redeem by hand: note the code and date when it's used):`,
-        ...cards.map(giftCardLine),
+        `Gift cards (redeem by hand: note the code, date and any balance left when it's used; to re-send a lost card, forward its link to the buyer's email above only):`,
+        ...cards.map((card) => `${giftCardLine(card)}\n  ${giftCardUrl(card)}`),
         ...(order.giftMessage ? [`Message: "${order.giftMessage}"`] : []),
         ...(gift?.recentGiftOrdersByEmail
           ? [
@@ -126,8 +126,8 @@ export const buildOwnerEmail = (order: OrderRecord, receipt: ReceiptOutcome = "s
     }</p>
     ${
       cards.length
-        ? `<p><strong>Gift cards</strong> (redeem by hand: note the code and date when it's used):</p><ul>${cards
-            .map((card) => `<li>${escapeHtml(giftCardLine(card))}</li>`)
+        ? `<p><strong>Gift cards</strong> (redeem by hand: note the code, date and any balance left when it's used; to re-send a lost card, forward its link to the buyer's email only):</p><ul>${cards
+            .map((card) => `<li>${escapeHtml(giftCardLine(card))} · <a href="${giftCardUrl(card)}">card link</a></li>`)
             .join("")}</ul>${order.giftMessage ? `<p>Message: &ldquo;${escapeHtml(order.giftMessage)}&rdquo;</p>` : ""}${
             gift?.recentGiftOrdersByEmail
               ? `<p><strong>Warning:</strong> this email bought gift cards ${gift.recentGiftOrdersByEmail} other time(s) in the last 24 hours. Check before honoring large amounts.</p>`
@@ -182,9 +182,7 @@ export const buildCustomerEmail = (order: OrderRecord, gift?: GiftCardEmailConte
     ``,
     `Questions? Just reply to this email.`,
     ``,
-    `After your visit, a quick Google review helps others find us:`,
-    GOOGLE_REVIEW_URL,
-    ``,
+    ...(order.items.every(isGiftCardItem) ? [] : [`After your visit, a quick Google review helps others find us:`, GOOGLE_REVIEW_URL, ``]),
     `Jenny`,
     `Williamsburg Med Spa`,
   ].join("\n");
@@ -215,7 +213,7 @@ export const buildCustomerEmail = (order: OrderRecord, gift?: GiftCardEmailConte
     }
     ${hasPickupItems(order) ? `<p>${PICKUP_LINE_CUSTOMER}</p>` : ""}
     <p>Questions? Just reply to this email.</p>
-    <p>After your visit, a quick <a href="${GOOGLE_REVIEW_URL}">Google review</a> helps others find us.</p>
+    ${order.items.every(isGiftCardItem) ? "" : `<p>After your visit, a quick <a href="${GOOGLE_REVIEW_URL}">Google review</a> helps others find us.</p>`}
     <p>Jenny<br>Williamsburg Med Spa</p>
   `;
 
@@ -289,7 +287,8 @@ export const sendPaidOrderNotifications = async (orderId: string) => {
   }
   // Gift card orders wait until every card exists (lib/gift-cards ensureGiftCards sets giftCardsIssuedAt).
   if (order.giftCardUnits && !order.giftCardsIssuedAt) return null;
-  const gift: GiftCardEmailContext | undefined = order.giftCardUnits
+  // Loaded inside each send, after the claim, so a card voided a moment ago is never emailed as active.
+  const loadGift = async (): Promise<GiftCardEmailContext | undefined> => order.giftCardUnits
     ? {
         cards: await (await getDb()).collection<GiftCardRecord>("gift_cards").find({ orderId }).sort({ entryKey: 1 }).toArray(),
         recentGiftOrdersByEmail: order.customerEmail
@@ -311,16 +310,16 @@ export const sendPaidOrderNotifications = async (orderId: string) => {
       await orders.updateOne({ orderId }, { $set: { customerReceiptStatus: "skipped", updatedAt: new Date() } });
     }
   } else {
-    const result = await sendOnce(orderId, "customerReceiptClaimedAt", "customerReceiptStatus", (claimed) =>
-      sendMail({ to: claimed.customerEmail as string, ...buildCustomerEmail(claimed, gift) })
+    const result = await sendOnce(orderId, "customerReceiptClaimedAt", "customerReceiptStatus", async (claimed) =>
+      sendMail({ to: claimed.customerEmail as string, ...buildCustomerEmail(claimed, await loadGift()) })
     );
     receipt = result === "already_handled" ? await resolveReceiptOutcome(orderId) : result;
   }
 
-  const owner = await sendOnce(orderId, "ownerNotificationClaimedAt", "ownerNotificationStatus", (claimed) =>
+  const owner = await sendOnce(orderId, "ownerNotificationClaimedAt", "ownerNotificationStatus", async (claimed) =>
     sendMail({
       to: getMailConfig().leadsTo,
-      ...buildOwnerEmail(claimed, receipt, gift),
+      ...buildOwnerEmail(claimed, receipt, await loadGift()),
       replyTo: claimed.customerEmail || undefined,
     })
   );

@@ -103,21 +103,26 @@ export default async function CheckoutSuccessPage(
           {giftCards.length ? (
             <>
               <p className="text-base-content/70 mb-4">
-                Open a card to print it or send it on. We also emailed the links. The card shows its code, so share it
-                only with the person it&apos;s for.
+                Open a card to print it or send it on.{order.customerReceiptStatus === "sent" ? " We also emailed the links." : ""} The
+                card shows its code, so share it only with the person it&apos;s for.
               </p>
               <ul className="space-y-2">
                 {giftCards.map((card) => (
                   <li key={card.entryKey}>
-                    <Link href={`/gift-cards/card/${card.viewToken}`} className="link link-primary font-medium">
+                    {/* A full page load, so analytics records the card page without its private token (layout.tsx). */}
+                    <a href={`/gift-cards/card/${card.viewToken}`} className="link link-primary font-medium">
                       {formatUsdShort(card.faceValueCents)} gift card{card.recipientName ? ` for ${card.recipientName}` : ""}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
             </>
           ) : (
-            <p className="text-base-content/70">Your gift card is being created. Refresh in a moment, or check your email.</p>
+            <p className="text-base-content/70">
+              {order.giftCardsVoidedAt
+                ? "This order's gift cards are no longer active. Questions? Text Jenny."
+                : "Your gift card is being created. Refresh in a moment, or check your email."}
+            </p>
           )}
         </div>
       ) : null}

@@ -1,5 +1,9 @@
 # Gift cards + holiday theme standard (plan, 2026-11-22)
 
+> Historical record of the plan and its adversarial review. Where the original plan below differs from the code
+> (field labels, code format, refund handling, Offer schema and /offers link not built, max 5 per amount because more
+> overcharges the cash total), the "Changes after" sections and `docs/gift-cards.md` are current.
+
 Goal: sell Williamsburg Med Spa gift cards online in six amounts, on one evergreen page whose look changes per holiday
 (Christmas first), using the same card design as the 2026-11-22 Facebook post images.
 
@@ -83,3 +87,13 @@ Recipient email delivery, scheduled send, balance tracking, redeem screen, parti
 9. No pickup wording for email-fulfilled lines; recipient name and message are escaped everywhere.
 10. Terms: never expires, no fees; refund to the buyer if no treatment or product suits the recipient (Austin to
     confirm at merge). Unclaimed-property and sales-tax treatment: Jenny's accountant.
+
+## Changes after PR #192 review (attack + sweep, 2026-11-22)
+- Refund/dispute lookup falls back to the PaymentIntent's `metadata.orderId`; before issuing, the sync checks the
+  charge and issues void cards if it was already refunded or disputed.
+- A paid order whose cards can't be issued emails Jenny once (`giftCardIssueAlertedAt`), then keeps retrying.
+- Over-cap carts show a "Remove gift cards" button instead of a dead end.
+- Card page URLs are sent to GA4 without their token; success-page links do a full page load.
+- Emails load cards inside each send (after the claim); issuing re-checks a void that landed mid-insert.
+- Terms: balance stays on the code (Jenny tracks it), $1 covers $1 at the cash price, "no monthly or inactivity fees".
+  Balance-across-visits, refund wording and in-office cash sales are flagged for Austin on the PR.

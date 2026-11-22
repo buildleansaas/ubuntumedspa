@@ -42,11 +42,11 @@ const FAQS = [
   {
     question: "What can the gift card be used for?",
     answer:
-      "Any treatment or product at Williamsburg Med Spa, including Botox®, Xeomin®, PRP treatments, B-12 injections, ear piercing and skincare. It can be used over more than one visit.",
+      "Any treatment or product at Williamsburg Med Spa, including Botox®, Xeomin®, PRP treatments, B-12 injections, ear piercing and skincare. Each $1 on the card covers $1 at the cash price, and any value left after a visit stays on the code.",
   },
   {
     question: "Does the gift card expire?",
-    answer: "No. It never expires and has no fees.",
+    answer: "No. It never expires and has no monthly or inactivity fees.",
   },
   {
     question: "What if a treatment isn't right for the person?",
@@ -150,7 +150,10 @@ export default function GiftCardsPage() {
         <h2 className="font-display text-3xl font-medium tracking-tight text-base-content md:text-4xl">How it works</h2>
         <ol className="mt-8 grid gap-6 md:grid-cols-3">
           {[
-            ["Pick an amount", `${minCash} to ${maxCash}. Add the person's name and a short message at checkout.`],
+            [
+              "Pick an amount",
+              `${minCash} to ${maxCash}. Add the person's name and a short message at checkout. Buying for two people? Place one order for each.`,
+            ],
             ["Get it by email", "The gift card arrives right after you pay, ready to print or forward."],
             ["They book with Jenny", "They text Jenny to book and bring the code. It never expires."],
           ].map(([title, body], index) => (

@@ -4,7 +4,8 @@ import { getGiftCardsForOrder, voidGiftCardsForOrder } from "lib/gift-cards";
 import { type GiftCardRecord } from "lib/gift-card-rules";
 import { getMailConfig, orderEmailsEnabled, sendMail } from "lib/mailer";
 import { getDb } from "lib/mongodb";
-import { getOrderByPaymentIntent, type OrderRecord } from "lib/orders";
+import { getOrderById, getOrderByPaymentIntent, type OrderRecord } from "lib/orders";
+import { getStripe } from "lib/stripe";
 import { formatUsd, formatUsdShort } from "lib/price";
 
 /**
@@ -50,7 +51,13 @@ const notifyOwner = async (
 
 const giftOrderFor = async (paymentIntent: string | undefined) => {
   if (!paymentIntent) return null;
-  const order = await getOrderByPaymentIntent(paymentIntent);
+  // Orders store the PaymentIntent id at their first sync; before that, fall back to the orderId checkout put on it.
+  let order = await getOrderByPaymentIntent(paymentIntent);
+  if (!order) {
+    const intent = await getStripe().paymentIntents.retrieve(paymentIntent);
+    const orderId = intent.metadata?.orderId;
+    order = orderId ? await getOrderById(orderId) : null;
+  }
   return order?.giftCardUnits ? order : null;
 };
 

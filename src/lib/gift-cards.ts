@@ -17,7 +17,8 @@ export * from "lib/gift-card-rules";
 
 /**
  * Gift card issuing (docs/gift-cards-plan.md). Safety promises:
- * - cards are issued only for an order marked paid whose Stripe session total matches the order total;
+ * - cards are issued only for an order marked paid; the caller (orders.ts syncOrderFromStripeSession) first checks the
+ *   Stripe session total matches the order total and voids the order if the charge was already refunded or disputed;
  * - one card per paid unit, keyed `${orderId}:${slug}:${i}`, so concurrent syncs never issue twice;
  * - an order voided by a refund or dispute before issuing gets its cards inserted as void;
  * - `giftCardsIssuedAt` is set only after every card exists; receipts wait for it (order-notifications sendOnce).
@@ -91,6 +92,15 @@ export const ensureGiftCards = async (order: OrderRecord): Promise<GiftCardRecor
         throw error;
       }
     }
+  }
+
+  // A refund or dispute that voided the order while we were inserting: void what we just made.
+  const latest = await (await getDb()).collection<OrderRecord>("orders").findOne({ orderId: order.orderId });
+  if (latest?.giftCardsVoidedAt && !voided) {
+    await collection.updateMany(
+      { orderId: order.orderId, status: "active" },
+      { $set: { status: "void", voidReason: latest.giftCardsVoidReason ?? "voided", voidedAt: new Date() } }
+    );
   }
 
   const cards = await collection.find({ orderId: order.orderId }).sort({ entryKey: 1 }).toArray();
