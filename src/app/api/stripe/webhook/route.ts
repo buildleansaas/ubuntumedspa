@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
+import { handleChargeRefunded, handleDispute } from "lib/gift-card-stripe-events";
 import { syncOrderFromStripeSession } from "lib/orders";
 import { getStripe } from "lib/stripe";
 
@@ -37,6 +38,14 @@ export async function POST(request: NextRequest) {
       if (order?.paymentStatus === "paid" && order.ownerNotificationStatus === "failed") {
         return NextResponse.json({ error: "Owner notification failed; retry." }, { status: 500 });
       }
+    }
+
+    // Gift card orders: a refund or dispute voids codes and tells the owner. Non-gift-card charges are ignored.
+    if (event.type === "charge.refunded") {
+      await handleChargeRefunded(event.data.object as Stripe.Charge);
+    }
+    if (event.type === "charge.dispute.created" || event.type === "charge.dispute.closed") {
+      await handleDispute(event.data.object as Stripe.Dispute, event.type);
     }
 
     return NextResponse.json({ received: true });

@@ -9,7 +9,8 @@ import {
 
 export type CatalogKind = "product" | "procedure";
 export type PricingMode = "fixed" | "quantity" | "increment_credit";
-export type FulfillmentMode = "pickup" | "appointment";
+/** "email": a gift card, delivered as an emailed link and code after payment (lib/gift-cards.ts). */
+export type FulfillmentMode = "pickup" | "appointment" | "email";
 
 export type CatalogItemConfig = {
   slug: string;
@@ -385,6 +386,39 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
     stripePriceLookupKey: "wms_product_definage_clinical_power_trio_pro_370_v1",
   },
 ];
+
+/**
+ * Gift cards (Austin, 2026-11-22): sold online at $25 to $1,000; larger amounts are sold by text after Jenny talks to
+ * the buyer. The face value is the cash amount; checkout charges the card price, like every other online purchase.
+ */
+export const GIFT_CARD_FACE_VALUES_CENTS = [2500, 5000, 10000, 25000, 50000, 100000] as const;
+/** Most gift card face value one online order may hold (fraud limit, enforced in resolveCart). */
+export const GIFT_CARD_MAX_ORDER_CASH_CENTS = 100000;
+/** Amounts shown on /gift-cards as "text Jenny". */
+export const GIFT_CARD_TEXT_ONLY_CENTS = [250000, 500000, 1000000] as const;
+export const giftCardSlug = (faceValueCents: number) => `gift-card-${faceValueCents / 100}`;
+export const isGiftCardSlug = (slug: string) => /^gift-card-\d+$/.test(slug);
+
+const GIFT_CARD_SOURCES: CatalogItemSource[] = GIFT_CARD_FACE_VALUES_CENTS.map((faceValueCents) => ({
+  slug: giftCardSlug(faceValueCents),
+  kind: "product",
+  name: `${formatUsdShort(faceValueCents)} Gift Card`,
+  shortDescription: `Worth ${formatUsdShort(faceValueCents)} toward any treatment or product. Emailed after payment.`,
+  pricingMode: "fixed",
+  cashAmountCents: faceValueCents,
+  currency: "usd",
+  quantityLabel: "gift card",
+  minQuantity: 1,
+  // Each card is charged at its own card price; past 5 x $25 that overcharges the cash total (card-cash-pricing.test).
+  maxQuantity: 5,
+  requiresScheduling: false,
+  fulfillment: "email",
+  stripeProductKey: `wms_gift_card_${faceValueCents / 100}`,
+  stripePriceLookupKey: `wms_gift_card_${faceValueCents / 100}_v1`,
+  purchaseLabel: "Buy gift card",
+}));
+
+COMMERCE_CATALOG_SOURCE.push(...GIFT_CARD_SOURCES);
 
 export const COMMERCE_CATALOG: CatalogItemConfig[] = COMMERCE_CATALOG_SOURCE.map(toCatalogItem);
 

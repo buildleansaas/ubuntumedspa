@@ -60,6 +60,11 @@ const ensureIndexes = async () => {
     db.collection("appointments").createIndex({ bookingUid: 1 }, { unique: true, sparse: true }),
     db.collection("credit_ledger").createIndex({ entryKey: 1 }, { unique: true }),
     db.collection("catalog_items").createIndex({ slug: 1 }, { unique: true }),
+    db.collection("orders").createIndex({ stripePaymentIntentId: 1 }, { sparse: true }),
+    db.collection("gift_cards").createIndex({ entryKey: 1 }, { unique: true }),
+    db.collection("gift_cards").createIndex({ code: 1 }, { unique: true }),
+    db.collection("gift_cards").createIndex({ viewToken: 1 }, { unique: true }),
+    db.collection("gift_cards").createIndex({ orderId: 1 }),
   ]);
 };
 

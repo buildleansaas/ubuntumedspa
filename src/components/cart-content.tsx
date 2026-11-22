@@ -24,7 +24,7 @@ type ResolvedCartItem = {
   maxQuantity: number;
   quantityLabel: string;
   requiresScheduling: boolean;
-  fulfillment: "pickup" | "appointment";
+  fulfillment: "pickup" | "appointment" | "email";
   pricingMode: "fixed" | "quantity" | "increment_credit";
   imagePath?: string;
 };
@@ -510,8 +510,12 @@ export default function CartContent({ mode = "page", onNavigate }: Props) {
               {resolvedItems.map((item, index) => {
                 const isProcedure = item.kind === "procedure";
                 const itemMeta = [
-                  isProcedure ? "Procedure" : "Product",
-                  item.fulfillment === "appointment" ? "Scheduling after payment" : "Pickup only",
+                  item.fulfillment === "email" ? "Gift card" : isProcedure ? "Procedure" : "Product",
+                  item.fulfillment === "appointment"
+                    ? "Scheduling after payment"
+                    : item.fulfillment === "email"
+                      ? "Emailed after payment"
+                      : "Pickup only",
                   item.pricingMode === "increment_credit" ? "Prepaid blocks" : null,
                 ]
                   .filter(Boolean)

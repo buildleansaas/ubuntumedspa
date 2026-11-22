@@ -3,6 +3,7 @@ import { randomUUID } from "crypto";
 import { addAccountCredit, type AccountRecord, upsertAccountByEmail } from "lib/accounts";
 import { creditAmountCentsForItem } from "lib/cart-pricing";
 import { type ResolvedCart, resolveCart } from "lib/catalog";
+import { assertSessionMatchesOrder, cleanGiftText, ensureGiftCards, giftCardUnitsForItems } from "lib/gift-cards";
 import { ensureMongoIndexes, getDb } from "lib/mongodb";
 import { sendPaidOrderNotifications } from "lib/order-notifications";
 import { getStripe } from "lib/stripe";
@@ -34,6 +35,18 @@ export type OrderRecord = {
   customerReceiptStatus?: OrderNotificationStatus;
   ownerNotificationClaimedAt?: Date;
   ownerNotificationStatus?: OrderNotificationStatus;
+  /** Gift card units on the order; receipts wait for giftCardsIssuedAt when this is above 0. */
+  giftCardUnits?: number;
+  giftCardsIssuedAt?: Date;
+  /** Set by a refund or dispute; cards issued after this are inserted as void. */
+  giftCardsVoidedAt?: Date;
+  giftCardsVoidReason?: string;
+  giftRecipientName?: string;
+  giftMessage?: string;
+  stripePaymentIntentId?: string;
+  /** Stripe refund / dispute ids the owner has already been emailed about. */
+  refundNotifiedFor?: string[];
+  disputeNotifiedFor?: string[];
   createdAt: Date;
   updatedAt: Date;
 };
@@ -76,6 +89,7 @@ export const createPendingOrder = async (
     subtotalCents: resolvedCart.subtotalCents,
     cashSubtotalCents: resolvedCart.cashSubtotalCents,
     requiresScheduling: resolvedCart.requiresScheduling,
+    giftCardUnits: giftCardUnitsForItems(resolvedCart.items),
     paymentStatus: "pending",
     schedulingStatus: resolvedCart.requiresScheduling ? "pending" : "not_required",
     createdAt: now,
@@ -104,6 +118,12 @@ export const getOrderByPublicToken = async (publicToken: string) => {
   await ensureMongoIndexes();
   const db = await getDb();
   return db.collection<OrderRecord>("orders").findOne({ publicToken });
+};
+
+export const getOrderByPaymentIntent = async (stripePaymentIntentId: string) => {
+  await ensureMongoIndexes();
+  const db = await getDb();
+  return db.collection<OrderRecord>("orders").findOne({ stripePaymentIntentId });
 };
 
 export const getOrderById = async (orderId: string) => {
@@ -159,6 +179,11 @@ export const syncOrderFromStripeSession = async (sessionId: string, { notify = t
   const name = session.customer_details?.name || undefined;
   const phone = session.customer_details?.phone || undefined;
   const stripeCustomerId = typeof session.customer === "string" ? session.customer : undefined;
+  const stripePaymentIntentId =
+    typeof session.payment_intent === "string" ? session.payment_intent : session.payment_intent?.id || undefined;
+  const customField = (key: string) => session.custom_fields?.find((field) => field.key === key)?.text?.value;
+  const giftRecipientName = cleanGiftText(customField("gift_recipient"), 60);
+  const giftMessage = cleanGiftText(customField("gift_message"), 200);
   let accountId = order.accountId;
 
   let account: AccountRecord | null = null;
@@ -185,6 +210,9 @@ export const syncOrderFromStripeSession = async (sessionId: string, { notify = t
         accountId,
         stripeSessionId: session.id,
         stripeCustomerId,
+        ...(stripePaymentIntentId ? { stripePaymentIntentId } : {}),
+        ...(giftRecipientName ? { giftRecipientName } : {}),
+        ...(giftMessage ? { giftMessage } : {}),
         customerEmail: email,
         customerName: name,
         customerPhone: phone,
@@ -198,6 +226,13 @@ export const syncOrderFromStripeSession = async (sessionId: string, { notify = t
   const freshOrder = await getOrderById(orderId);
   if (freshOrder && account && paymentStatus === "paid") {
     await ensureCreditEntries(freshOrder, account);
+  }
+
+  // Gift cards must exist before any receipt (which carries the codes). Errors propagate: no emails go out and the
+  // webhook returns an error so Stripe redelivers.
+  if (freshOrder && paymentStatus === "paid" && freshOrder.giftCardUnits) {
+    assertSessionMatchesOrder(session, freshOrder);
+    await ensureGiftCards(freshOrder);
   }
 
   if (freshOrder && notify && paymentStatus === "paid") {

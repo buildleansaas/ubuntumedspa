@@ -8,6 +8,7 @@ import { creditAmountCentsForItem } from "lib/cart-pricing";
 import { formatUsd, formatUsdShort } from "lib/price";
 import { sendPaidOrderNotifications } from "lib/order-notifications";
 import { getOrderByPublicToken, syncOrderFromStripeSession } from "lib/orders";
+import { getGiftCardsForOrder, isGiftCardItem } from "lib/gift-cards";
 import { orderBookingMessage } from "lib/text-to-book";
 
 export const dynamic = "force-dynamic";
@@ -27,7 +28,9 @@ export default async function CheckoutSuccessPage(
   // Don't wait on the Stripe webhook: ask Stripe directly so the buyer can book right away.
   // Only the session stored on the order is used, never one from the URL.
   let order = storedOrder;
-  if (storedOrder.paymentStatus !== "paid" && storedOrder.stripeSessionId) {
+  // A paid gift card order whose cards aren't issued yet goes through the full sync (amount check, issue, then emails).
+  const giftCardsPending = Boolean(storedOrder.giftCardUnits && !storedOrder.giftCardsIssuedAt);
+  if ((storedOrder.paymentStatus !== "paid" || giftCardsPending) && storedOrder.stripeSessionId) {
     try {
       order = (await syncOrderFromStripeSession(storedOrder.stripeSessionId)) || storedOrder;
     } catch (error) {
@@ -43,6 +46,12 @@ export default async function CheckoutSuccessPage(
   }
 
   const canSchedule = order.paymentStatus === "paid" && order.requiresScheduling;
+  const giftCards =
+    order.paymentStatus === "paid" && order.giftCardUnits && order.giftCardsIssuedAt
+      ? (await getGiftCardsForOrder(order.orderId)).filter((card) => card.status === "active")
+      : [];
+  const showPickup = order.items.some((item) => item.fulfillment === "pickup") ||
+    (!order.requiresScheduling && !order.items.every(isGiftCardItem));
 
   return (
     <div className="max-w-5xl mx-auto py-12">
@@ -88,7 +97,32 @@ export default async function CheckoutSuccessPage(
         />
       )}
 
-      {(!order.requiresScheduling || order.items.some((item) => item.fulfillment === "pickup")) && (
+      {order.paymentStatus === "paid" && order.giftCardUnits ? (
+        <div className="mb-8 rounded-xl border border-base-300 bg-base-200 p-6" data-gift-cards>
+          <h2 className="text-2xl font-semibold mb-3">Your gift card{order.giftCardUnits > 1 ? "s" : ""}</h2>
+          {giftCards.length ? (
+            <>
+              <p className="text-base-content/70 mb-4">
+                Open a card to print it or send it on. We also emailed the links. The card shows its code, so share it
+                only with the person it&apos;s for.
+              </p>
+              <ul className="space-y-2">
+                {giftCards.map((card) => (
+                  <li key={card.entryKey}>
+                    <Link href={`/gift-cards/card/${card.viewToken}`} className="link link-primary font-medium">
+                      {formatUsdShort(card.faceValueCents)} gift card{card.recipientName ? ` for ${card.recipientName}` : ""}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p className="text-base-content/70">Your gift card is being created. Refresh in a moment, or check your email.</p>
+          )}
+        </div>
+      ) : null}
+
+      {showPickup && (
         <div className="rounded-xl border border-base-300 bg-base-200 p-6">
           <h2 className="text-2xl font-semibold mb-3">Pickup Details</h2>
           <p className="text-base-content/70">

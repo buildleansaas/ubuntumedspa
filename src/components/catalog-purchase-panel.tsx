@@ -16,7 +16,7 @@ type Props = {
   quantityLabel: string;
   minQuantity: number;
   maxQuantity: number;
-  fulfillment: "pickup" | "appointment";
+  fulfillment: "pickup" | "appointment" | "email";
   purchaseLabel?: string;
   customerNote?: string;
   /** The surrounding section already states the price and how credit works (Xeomin concern pages): show them once. */

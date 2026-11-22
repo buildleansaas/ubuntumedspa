@@ -6,6 +6,7 @@ Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 Disallow: /gbp
 Disallow: /review
+Disallow: /gift-cards/card/
 
 Sitemap: https://www.williamsburgmedspa.com/sitemap.xml
 `;
