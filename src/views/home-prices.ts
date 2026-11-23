@@ -60,7 +60,7 @@ export const CHOOSER_TILES: ChooserTile[] = [
   },
   {
     concern: concern("Intimate dryness or discomfort"),
-    treatment: "OH-Shot",
+    treatment: "Feminine Intimacy Protocol",
     href: "/procedures/oh-shot",
     price: `${cash("oh-shot")} cash`,
   },
@@ -88,7 +88,7 @@ export const HOME_PRICE_ROWS: HomePriceRow[] = [
     card: HYPERHIDROSIS_CARD,
     note: "per treatment",
   },
-  { name: "OH-Shot", href: "/procedures/oh-shot", cash: cash("oh-shot"), card: card("oh-shot"), note: "per treatment" },
+  { name: "Feminine Intimacy Protocol", href: "/procedures/oh-shot", cash: cash("oh-shot"), card: card("oh-shot"), note: "per treatment" },
 ];
 
 export const HOME_PRICE_INTRO = `Cash price first. ${CARD_PRICE_SENTENCE}`;

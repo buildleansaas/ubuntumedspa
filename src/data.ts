@@ -95,59 +95,59 @@ type EmptyAilmentList = Array<{
 
 export const procedures = [
   {
-    name: "OH-Shot",
+    name: "Feminine Intimacy Protocol",
     slug: "oh-shot",
     seo: {
-      title: "OH-Shot in Williamsburg, VA | PRP Intimate Wellness",
+      title: "Feminine Intimacy Protocol in Williamsburg, VA | PRP Intimate Wellness",
       description:
-        "OH-Shot in Williamsburg, VA with a CMA-trained provider for PRP intimate wellness, bladder leakage support, dryness, sensitivity, and comfort concerns.",
+        "Feminine Intimacy Protocol in Williamsburg, VA with a CMA-trained provider for PRP intimate wellness, bladder leakage support, dryness, sensitivity, and comfort concerns.",
     },
     description:
-      "The OH-Shot is a branded platelet-rich plasma (PRP) procedure developed through the Cellular Medicine Association framework and used for select intimate wellness concerns. At Williamsburg Med Spa, patients usually ask about the OH-Shot for dryness, decreased sensitivity, discomfort with intimacy, orgasm concerns, or mild stress urinary leakage. Jenny Brady reviews candidacy privately so treatment fits the symptom pattern, medical history, and whether pelvic floor care, hormone review, urology, or another first step should come first.",
-    headline: "CMA-trained OH-Shot care for intimate wellness, sensitivity, comfort, and bladder leakage support.",
+      "The Feminine Intimacy Protocol is a branded platelet-rich plasma (PRP) procedure developed through the Cellular Medicine Association framework and used for select intimate wellness concerns. At Williamsburg Med Spa, patients usually ask about the Feminine Intimacy Protocol for dryness, decreased sensitivity, discomfort with intimacy, orgasm concerns, or mild stress urinary leakage. Jenny Brady reviews candidacy privately so treatment fits the symptom pattern, medical history, and whether pelvic floor care, hormone review, urology, or another first step should come first.",
+    headline: "CMA-trained Feminine Intimacy Protocol care for intimate wellness, sensitivity, comfort, and bladder leakage support.",
     subline:
-      "The OH-Shot uses PRP prepared from your own blood in a discreet in-office procedure for patients looking for a non-hormonal, regenerative conversation around vulvovaginal tissue health and sexual wellness.",
+      "The Feminine Intimacy Protocol uses PRP prepared from your own blood in a discreet in-office procedure for patients looking for a non-hormonal, regenerative conversation around vulvovaginal tissue health and sexual wellness.",
     image: "/procedure/oh-shot/womens-intimate-wellness-lifestyle.webp",
     price: cashCardLabel(120000),
     // programmatic SEO copy
     blogHeadline:
-      "Researching the OH-Shot near Williamsburg? Review candidacy, cost factors, urinary leakage support, dryness, sensitivity, and how PRP-based intimate wellness may fit into a private consultation.",
+      "Researching the Feminine Intimacy Protocol near Williamsburg? Review candidacy, cost factors, urinary leakage support, dryness, sensitivity, and how PRP-based intimate wellness may fit into a private consultation.",
     benefitsHeadline:
-      "The OH-Shot is a brand-specific PRP protocol discussed with patients who want non-surgical support for tissue quality, comfort, lubrication, sensitivity, and select bladder leakage concerns.",
+      "The Feminine Intimacy Protocol is a brand-specific PRP protocol discussed with patients who want non-surgical support for tissue quality, comfort, lubrication, sensitivity, and select bladder leakage concerns.",
     benefits: [
       {
         emoji: "💪",
         benefit: "CMA Protocol Framework",
         description:
-          "Jenny is trained through the Cellular Medicine Association framework behind the branded OH-Shot procedure.",
+          "Jenny is trained through the Cellular Medicine Association framework behind the branded Feminine Intimacy Protocol procedure.",
       },
       {
         emoji: "🌊",
         benefit: "Dryness and Comfort Support",
         description:
-          "Some patients ask about the OH-Shot when dryness, irritation, painful intimacy, or reduced tissue resilience are part of the picture.",
+          "Some patients ask about the Feminine Intimacy Protocol when dryness, irritation, painful intimacy, or reduced tissue resilience are part of the picture.",
       },
       {
         emoji: "🌡",
         benefit: "Sensitivity and Sexual Wellness",
         description:
-          "The OH-Shot may be discussed when decreased sensation, arousal changes, or orgasm concerns overlap with tissue health goals.",
+          "The Feminine Intimacy Protocol may be discussed when decreased sensation, arousal changes, or orgasm concerns overlap with tissue health goals.",
       },
       {
         emoji: "❤️",
         benefit: "Bladder Leakage Conversation",
         description:
-          "For mild stress leakage, Jenny can help determine whether OH-Shot care belongs in the plan or whether pelvic floor or urology care should come first.",
+          "For mild stress leakage, Jenny can help determine whether Feminine Intimacy Protocol care belongs in the plan or whether pelvic floor or urology care should come first.",
       },
     ],
     ailmentsHeadline:
-      "Patients often research the OH-Shot when bladder leakage, vaginal dryness, painful intimacy, reduced sensitivity, low libido, or menopausal tissue changes begin affecting daily life. The right plan depends on diagnosis, symptom pattern, prior treatment response, and whether PRP-based care is a reasonable next step.",
+      "Patients often research the Feminine Intimacy Protocol when bladder leakage, vaginal dryness, painful intimacy, reduced sensitivity, low libido, or menopausal tissue changes begin affecting daily life. The right plan depends on diagnosis, symptom pattern, prior treatment response, and whether PRP-based care is a reasonable next step.",
     ailments: [
       {
         title: "Vaginal Dryness",
         description:
-          "For patients whose dryness persists despite moisturizers, lubricants, hormone review, or other first-line care, the OH-Shot may be discussed as part of a broader comfort plan.",
-        blog_post_title: "OH-Shot for Vaginal Dryness: What to Know",
+          "For patients whose dryness persists despite moisturizers, lubricants, hormone review, or other first-line care, the Feminine Intimacy Protocol may be discussed as part of a broader comfort plan.",
+        blog_post_title: "Feminine Intimacy Protocol for Vaginal Dryness: What to Know",
         blog_post_slug: "oh-shot-for-vaginal-dryness-what-to-know",
         slug: "vaginal-dryness",
         tag: "common",
@@ -155,8 +155,8 @@ export const procedures = [
       {
         title: "Sexual Dysfunction",
         description:
-          "The OH-Shot may be considered when reduced arousal, decreased sensation, orgasm concerns, or intimacy-related discomfort appear tied to tissue health and response.",
-        blog_post_title: "Understanding the OH-Shot for Sexual Dysfunction",
+          "The Feminine Intimacy Protocol may be considered when reduced arousal, decreased sensation, orgasm concerns, or intimacy-related discomfort appear tied to tissue health and response.",
+        blog_post_title: "Understanding the Feminine Intimacy Protocol for Sexual Dysfunction",
         blog_post_slug: "understanding-oh-shot-for-sexual-dysfunction",
         slug: "sexual-dysfunction",
         tag: "common",
@@ -164,8 +164,8 @@ export const procedures = [
       {
         title: "Low Libido",
         description:
-          "Low libido often has hormonal, relational, medication, and stress-related drivers, but the OH-Shot may be discussed when sensitivity, arousal, or discomfort overlap.",
-        blog_post_title: "OH-Shot and Low Libido: Treatment Overview",
+          "Low libido often has hormonal, relational, medication, and stress-related drivers, but the Feminine Intimacy Protocol may be discussed when sensitivity, arousal, or discomfort overlap.",
+        blog_post_title: "Feminine Intimacy Protocol and Low Libido: Treatment Overview",
         blog_post_slug: "oh-shot-and-low-libido-treatment-overview",
         slug: "low-libido",
         tag: "common",
@@ -173,8 +173,8 @@ export const procedures = [
       {
         title: "Dyspareunia",
         description:
-          "When painful intercourse is linked to dryness, tissue fragility, or sensitivity, the OH-Shot may be reviewed after evaluation and first-line options.",
-        blog_post_title: "OH-Shot for Dyspareunia: What to Discuss",
+          "When painful intercourse is linked to dryness, tissue fragility, or sensitivity, the Feminine Intimacy Protocol may be reviewed after evaluation and first-line options.",
+        blog_post_title: "Feminine Intimacy Protocol for Dyspareunia: What to Discuss",
         blog_post_slug: "oh-shot-for-dyspareunia-what-to-discuss",
         slug: "dyspareunia",
         tag: "common",
@@ -182,8 +182,8 @@ export const procedures = [
       {
         title: "Urinary Incontinence",
         description:
-          "Some patients ask about the OH-Shot when mild stress leakage, coughing leaks, or exercise-related bladder leakage overlap with tissue thinning or menopausal changes.",
-        blog_post_title: "OH-Shot for Urinary Incontinence: Treatment Overview",
+          "Some patients ask about the Feminine Intimacy Protocol when mild stress leakage, coughing leaks, or exercise-related bladder leakage overlap with tissue thinning or menopausal changes.",
+        blog_post_title: "Feminine Intimacy Protocol for Urinary Incontinence: Treatment Overview",
         blog_post_slug: "oh-shot-for-urinary-incontinence-treatment-overview",
         slug: "urinary-incontinence",
         tag: "common",
@@ -191,8 +191,8 @@ export const procedures = [
       {
         title: "Lichen Sclerosus",
         description:
-          "For confirmed lichen sclerosus under medical management, the OH-Shot may be discussed for tissue comfort and resilience, not as a replacement for standard care.",
-        blog_post_title: "OH-Shot and Lichen Sclerosus: Adjunct Care Overview",
+          "For confirmed lichen sclerosus under medical management, the Feminine Intimacy Protocol may be discussed for tissue comfort and resilience, not as a replacement for standard care.",
+        blog_post_title: "Feminine Intimacy Protocol and Lichen Sclerosus: Adjunct Care Overview",
         blog_post_slug: "oh-shot-and-lichen-sclerosus-adjunct-care-overview",
         slug: "lichen-sclerosus",
         tag: "uncommon",
@@ -200,8 +200,8 @@ export const procedures = [
       {
         title: "Anorgasmia",
         description:
-          "The OH-Shot may be reviewed for patients reporting reduced sensation or difficulty reaching orgasm when local tissue response is part of the concern.",
-        blog_post_title: "OH-Shot for Anorgasmia: Treatment Overview",
+          "The Feminine Intimacy Protocol may be reviewed for patients reporting reduced sensation or difficulty reaching orgasm when local tissue response is part of the concern.",
+        blog_post_title: "Feminine Intimacy Protocol for Anorgasmia: Treatment Overview",
         blog_post_slug: "oh-shot-for-anorgasmia-treatment-overview",
         slug: "anorgasmia",
         tag: "common",
@@ -209,8 +209,8 @@ export const procedures = [
       {
         title: "Genital Arousal Disorder",
         description:
-          "Complex arousal concerns often need more than one kind of care, but the OH-Shot may be part of a broader discussion of sensation and tissue health.",
-        blog_post_title: "OH-Shot for Genital Arousal Disorder: What to Discuss",
+          "Complex arousal concerns often need more than one kind of care, but the Feminine Intimacy Protocol may be part of a broader discussion of sensation and tissue health.",
+        blog_post_title: "Feminine Intimacy Protocol for Genital Arousal Disorder: What to Discuss",
         blog_post_slug: "oh-shot-for-genital-arousal-disorder-what-to-discuss",
         slug: "genital-arousal-disorder",
         tag: "experimental",
@@ -218,8 +218,8 @@ export const procedures = [
       {
         title: "Chronic Pelvic Pain",
         description:
-          "Chronic pelvic pain has many causes, but the OH-Shot may enter the conversation when tissue irritation, dryness, or localized tenderness are contributing factors.",
-        blog_post_title: "OH-Shot and Chronic Pelvic Pain: Care Overview",
+          "Chronic pelvic pain has many causes, but the Feminine Intimacy Protocol may enter the conversation when tissue irritation, dryness, or localized tenderness are contributing factors.",
+        blog_post_title: "Feminine Intimacy Protocol and Chronic Pelvic Pain: Care Overview",
         blog_post_slug: "oh-shot-and-chronic-pelvic-pain-care-overview",
         slug: "chronic-pelvic-pain",
         tag: "uncommon",
@@ -227,8 +227,8 @@ export const procedures = [
       {
         title: "Vaginismus",
         description:
-          "Vaginismus usually involves pelvic floor dysfunction and nervous-system guarding, but the OH-Shot may be discussed when tissue discomfort complicates the picture.",
-        blog_post_title: "OH-Shot and Vaginismus: Treatment Discussion",
+          "Vaginismus usually involves pelvic floor dysfunction and nervous-system guarding, but the Feminine Intimacy Protocol may be discussed when tissue discomfort complicates the picture.",
+        blog_post_title: "Feminine Intimacy Protocol and Vaginismus: Treatment Discussion",
         blog_post_slug: "oh-shot-and-vaginismus-treatment-discussion",
         slug: "vaginismus",
         tag: "uncommon",
@@ -236,8 +236,8 @@ export const procedures = [
       {
         title: "Clitoral Atrophy",
         description:
-          "The OH-Shot may be reviewed when decreased sensitivity appears connected to tissue atrophy, reduced response, or local tissue changes.",
-        blog_post_title: "OH-Shot for Clitoral Atrophy: What to Know",
+          "The Feminine Intimacy Protocol may be reviewed when decreased sensitivity appears connected to tissue atrophy, reduced response, or local tissue changes.",
+        blog_post_title: "Feminine Intimacy Protocol for Clitoral Atrophy: What to Know",
         blog_post_slug: "oh-shot-for-clitoral-atrophy-what-to-know",
         slug: "clitoral-atrophy",
         tag: "uncommon",
@@ -245,8 +245,8 @@ export const procedures = [
       {
         title: "Vulvar Atrophy",
         description:
-          "For vulvar tissue thinning or irritation, the OH-Shot may be discussed as PRP-based support after standard therapies have been reviewed.",
-        blog_post_title: "OH-Shot for Vulvar Atrophy: Treatment Overview",
+          "For vulvar tissue thinning or irritation, the Feminine Intimacy Protocol may be discussed as PRP-based support after standard therapies have been reviewed.",
+        blog_post_title: "Feminine Intimacy Protocol for Vulvar Atrophy: Treatment Overview",
         blog_post_slug: "oh-shot-for-vulvar-atrophy-treatment-overview",
         slug: "vulvar-atrophy",
         tag: "uncommon",
@@ -254,8 +254,8 @@ export const procedures = [
       {
         title: "Interstitial Cystitis",
         description:
-          "Interstitial cystitis often needs bladder-focused care, but the OH-Shot may be considered in select cases when vulvovaginal tissue symptoms overlap.",
-        blog_post_title: "OH-Shot and Interstitial Cystitis: Treatment Overview",
+          "Interstitial cystitis often needs bladder-focused care, but the Feminine Intimacy Protocol may be considered in select cases when vulvovaginal tissue symptoms overlap.",
+        blog_post_title: "Feminine Intimacy Protocol and Interstitial Cystitis: Treatment Overview",
         blog_post_slug: "oh-shot-and-interstitial-cystitis-treatment-overview",
         slug: "interstitial-cystitis",
         tag: "experimental",
@@ -263,8 +263,8 @@ export const procedures = [
       {
         title: "Pelvic Floor Dysfunction",
         description:
-          "Pelvic floor dysfunction usually requires targeted therapy, but the OH-Shot may be considered when tissue discomfort or dryness complicates progress.",
-        blog_post_title: "OH-Shot and Pelvic Floor Dysfunction: Care Overview",
+          "Pelvic floor dysfunction usually requires targeted therapy, but the Feminine Intimacy Protocol may be considered when tissue discomfort or dryness complicates progress.",
+        blog_post_title: "Feminine Intimacy Protocol and Pelvic Floor Dysfunction: Care Overview",
         blog_post_slug: "oh-shot-and-pelvic-floor-dysfunction-care-overview",
         slug: "pelvic-floor-dysfunction",
         tag: "uncommon",
@@ -272,8 +272,8 @@ export const procedures = [
       {
         title: "Vulvodynia",
         description:
-          "For persistent vulvar pain, the OH-Shot may be explored for select patients after diagnosis and first-line treatment review.",
-        blog_post_title: "OH-Shot for Vulvodynia: Adjunct Care Overview",
+          "For persistent vulvar pain, the Feminine Intimacy Protocol may be explored for select patients after diagnosis and first-line treatment review.",
+        blog_post_title: "Feminine Intimacy Protocol for Vulvodynia: Adjunct Care Overview",
         blog_post_slug: "oh-shot-for-vulvodynia-adjunct-care-overview",
         slug: "vulvodynia",
         tag: "uncommon",
@@ -281,8 +281,8 @@ export const procedures = [
       {
         title: "Post-Menopausal Symptoms",
         description:
-          "Patients navigating menopause sometimes ask whether the OH-Shot can support tissue comfort, lubrication, and sexual response alongside standard menopause care.",
-        blog_post_title: "OH-Shot for Post-Menopausal Symptoms: What to Know",
+          "Patients navigating menopause sometimes ask whether the Feminine Intimacy Protocol can support tissue comfort, lubrication, and sexual response alongside standard menopause care.",
+        blog_post_title: "Feminine Intimacy Protocol for Post-Menopausal Symptoms: What to Know",
         blog_post_slug: "oh-shot-for-post-menopausal-symptoms-what-to-know",
         slug: "post-menopausal-symptoms",
         tag: "common",
@@ -290,8 +290,8 @@ export const procedures = [
       {
         title: "Scar Tissue",
         description:
-          "For scarring related to childbirth or procedures, the OH-Shot may be reviewed when flexibility, comfort, or sensitivity are the primary concerns.",
-        blog_post_title: "OH-Shot for Scar Tissue: Treatment Overview",
+          "For scarring related to childbirth or procedures, the Feminine Intimacy Protocol may be reviewed when flexibility, comfort, or sensitivity are the primary concerns.",
+        blog_post_title: "Feminine Intimacy Protocol for Scar Tissue: Treatment Overview",
         blog_post_slug: "oh-shot-for-scar-tissue-treatment-overview",
         slug: "scar-tissue",
         tag: "uncommon",
@@ -299,8 +299,8 @@ export const procedures = [
       {
         title: "Skin Texture & Tone",
         description:
-          "Some patients ask whether the OH-Shot can support localized tissue texture and tone, although outcomes vary and expectations should stay realistic.",
-        blog_post_title: "OH-Shot for Skin Texture and Tone: What to Know",
+          "Some patients ask whether the Feminine Intimacy Protocol can support localized tissue texture and tone, although outcomes vary and expectations should stay realistic.",
+        blog_post_title: "Feminine Intimacy Protocol for Skin Texture and Tone: What to Know",
         blog_post_slug: "oh-shot-for-skin-texture-and-tone-what-to-know",
         slug: "skin-texture-tone",
         tag: "experimental",
@@ -308,8 +308,8 @@ export const procedures = [
       {
         title: "Vaginal Lubrication",
         description:
-          "When decreased lubrication persists despite moisturizers, hormone review, or lifestyle adjustments, the OH-Shot may be part of the procedural discussion.",
-        blog_post_title: "OH-Shot for Vaginal Lubrication Support",
+          "When decreased lubrication persists despite moisturizers, hormone review, or lifestyle adjustments, the Feminine Intimacy Protocol may be part of the procedural discussion.",
+        blog_post_title: "Feminine Intimacy Protocol for Vaginal Lubrication Support",
         blog_post_slug: "oh-shot-for-vaginal-lubrication-support",
         slug: "vaginal-lubrication",
         tag: "common",
@@ -317,38 +317,38 @@ export const procedures = [
       {
         title: "Sexual Sensation",
         description:
-          "The OH-Shot is sometimes discussed for reduced sensation when blood flow, tissue health, or local sensitivity are part of the concern.",
-        blog_post_title: "OH-Shot for Sexual Sensation: Treatment Overview",
+          "The Feminine Intimacy Protocol is sometimes discussed for reduced sensation when blood flow, tissue health, or local sensitivity are part of the concern.",
+        blog_post_title: "Feminine Intimacy Protocol for Sexual Sensation: Treatment Overview",
         blog_post_slug: "oh-shot-for-sexual-sensation-treatment-overview",
         slug: "sexual-sensation",
         tag: "common",
       },
     ],
     faqHeadline:
-      "Most OH-Shot questions focus on candidacy, cost, comfort, expected timing, and whether PRP-based intimate wellness fits the symptoms that brought you in.",
+      "Most Feminine Intimacy Protocol questions focus on candidacy, cost, comfort, expected timing, and whether PRP-based intimate wellness fits the symptoms that brought you in.",
     faqs: [
       {
-        question: "What is the OH-Shot?",
+        question: "What is the Feminine Intimacy Protocol?",
         answer:
-          "The OH-Shot is a branded platelet-rich plasma (PRP) procedure used in a treatment plan focused on vulvovaginal tissue health, comfort, sensitivity, sexual wellness, and select bladder leakage concerns.",
+          "The Feminine Intimacy Protocol is a branded platelet-rich plasma (PRP) procedure used in a treatment plan focused on vulvovaginal tissue health, comfort, sensitivity, sexual wellness, and select bladder leakage concerns.",
       },
       {
-        question: "Who may be a candidate for the OH-Shot?",
+        question: "Who may be a candidate for the Feminine Intimacy Protocol?",
         answer:
           "Candidates are usually patients who want a private review of symptoms such as dryness, decreased sensation, painful intimacy, orgasm concerns, or mild stress urinary leakage and want to know whether PRP-based care fits their history and goals.",
       },
       {
-        question: "Can the OH-Shot help with urinary incontinence?",
+        question: "Can the Feminine Intimacy Protocol help with urinary incontinence?",
         answer:
-          "Some patients ask about the OH-Shot for mild stress leakage, such as leaking with coughing, exercise, or lifting. Consultation should clarify whether symptoms are stress, urge, or mixed incontinence and whether pelvic floor therapy, urology, or another treatment should come first.",
+          "Some patients ask about the Feminine Intimacy Protocol for mild stress leakage, such as leaking with coughing, exercise, or lifting. Consultation should clarify whether symptoms are stress, urge, or mixed incontinence and whether pelvic floor therapy, urology, or another treatment should come first.",
       },
       {
-        question: "How much does the OH-Shot cost?",
+        question: "How much does the Feminine Intimacy Protocol cost?",
         answer:
-          `The OH-Shot is listed at ${cashCardProse(120000)} at Williamsburg Med Spa. Consultation confirms whether treatment is appropriate before a plan is made.`,
+          `The Feminine Intimacy Protocol is listed at ${cashCardProse(120000)} at Williamsburg Med Spa. Consultation confirms whether treatment is appropriate before a plan is made.`,
       },
       {
-        question: "Is the OH-Shot painful?",
+        question: "Is the Feminine Intimacy Protocol painful?",
         answer:
           "Most visits include topical numbing, and patients often describe treatment as manageable. Comfort varies by person and by the areas treated.",
       },
@@ -365,25 +365,25 @@ export const procedures = [
     ],
   },
   {
-    name: "Pe-Shot",
+    name: "Male Intimacy Protocol",
     slug: "pe-shot",
     seo: {
-      title: "Pe-Shot in Williamsburg, VA",
+      title: "Male Intimacy Protocol in Williamsburg, VA",
       description:
-        "Pe-Shot treatment in Williamsburg, VA using platelet-rich plasma (PRP) to support erections, sensitivity, blood flow, and penile tissue health at Williamsburg Med Spa.",
+        "Male Intimacy Protocol treatment in Williamsburg, VA using platelet-rich plasma (PRP) to support erections, sensitivity, blood flow, and penile tissue health at Williamsburg Med Spa.",
     },
     description:
-      "The Pe-Shot is a platelet-rich plasma (PRP) procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness. Patients usually ask about it for erection quality, sensitivity, blood flow concerns, or post-procedure recovery goals. It should be evaluated as an adjunct option after a medical review, not as a guaranteed fix for every cause of erectile or sexual dysfunction.",
+      "The Male Intimacy Protocol is a platelet-rich plasma (PRP) procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness. Patients usually ask about it for erection quality, sensitivity, blood flow concerns, or post-procedure recovery goals. It should be evaluated as an adjunct option after a medical review, not as a guaranteed fix for every cause of erectile or sexual dysfunction.",
     headline: "Regenerative support for erections, sensitivity, and penile tissue health.",
     subline:
-      "The Pe-Shot uses platelet-rich plasma prepared from your own blood and is considered for select patients who want a non-surgical option as part of a broader sexual health plan.",
+      "The Male Intimacy Protocol uses platelet-rich plasma prepared from your own blood and is considered for select patients who want a non-surgical option as part of a broader sexual health plan.",
     image: "/procedure/pe-shot-consultation-confidence.webp",
     price: cashCardLabel(190000),
     // programmatic SEO copy
     blogHeadline:
-      "Review our Pe-Shot articles to learn how PRP-based care fits into conversations about erection quality, penile tissue health, recovery expectations, and treatment planning.",
+      "Review our Male Intimacy Protocol articles to learn how PRP-based care fits into conversations about erection quality, penile tissue health, recovery expectations, and treatment planning.",
     benefitsHeadline:
-      "The Pe-Shot is typically discussed as a regenerative adjunct for patients seeking support with blood flow, sensation, erection quality, and penile tissue recovery.",
+      "The Male Intimacy Protocol is typically discussed as a regenerative adjunct for patients seeking support with blood flow, sensation, erection quality, and penile tissue recovery.",
     benefits: [
       {
         emoji: "⚡",
@@ -395,13 +395,13 @@ export const procedures = [
         emoji: "💖",
         benefit: "Sensitivity Support",
         description:
-          "Some patients discuss the Pe-Shot when reduced sensation or tissue responsiveness is part of the overall clinical picture.",
+          "Some patients discuss the Male Intimacy Protocol when reduced sensation or tissue responsiveness is part of the overall clinical picture.",
       },
       {
         emoji: "🔄",
         benefit: "Non-Surgical Option",
         description:
-          "Because it uses your own platelet-rich plasma, the Pe-Shot is often reviewed by patients who want to discuss a procedural option before surgery.",
+          "Because it uses your own platelet-rich plasma, the Male Intimacy Protocol is often reviewed by patients who want to discuss a procedural option before surgery.",
       },
       {
         emoji: "🔥",
@@ -411,13 +411,13 @@ export const procedures = [
       },
     ],
     ailmentsHeadline:
-      "The Pe-Shot may be considered for select male sexual health concerns when blood flow, tissue quality, sensitivity, or recovery goals are part of the evaluation. Whether it makes sense depends on diagnosis, prior treatment response, and whether better-established options should come first.",
+      "The Male Intimacy Protocol may be considered for select male sexual health concerns when blood flow, tissue quality, sensitivity, or recovery goals are part of the evaluation. Whether it makes sense depends on diagnosis, prior treatment response, and whether better-established options should come first.",
     ailments: [
       {
         title: "Erectile Dysfunction",
         description:
-          "When erection quality is affected by blood flow or tissue response concerns, the Pe-Shot may be discussed as an adjunct treatment after medical evaluation.",
-        blog_post_title: "Pe-Shot for Erectile Dysfunction: What to Know",
+          "When erection quality is affected by blood flow or tissue response concerns, the Male Intimacy Protocol may be discussed as an adjunct treatment after medical evaluation.",
+        blog_post_title: "Male Intimacy Protocol for Erectile Dysfunction: What to Know",
         blog_post_slug: "pe-shot-for-erectile-dysfunction-what-to-know",
         slug: "erectile-dysfunction",
         tag: "common",
@@ -425,8 +425,8 @@ export const procedures = [
       {
         title: "Peyronie's Disease",
         description:
-          "For patients with Peyronie's disease, the Pe-Shot may come up as a supportive therapy discussion, but deformity and pain often require broader medical management.",
-        blog_post_title: "Pe-Shot and Peyronie's Disease: Treatment Overview",
+          "For patients with Peyronie's disease, the Male Intimacy Protocol may come up as a supportive therapy discussion, but deformity and pain often require broader medical management.",
+        blog_post_title: "Male Intimacy Protocol and Peyronie's Disease: Treatment Overview",
         blog_post_slug: "pe-shot-and-peyronies-disease-treatment-overview",
         slug: "peyronies-disease",
         tag: "uncommon",
@@ -434,8 +434,8 @@ export const procedures = [
       {
         title: "Reduced Sexual Performance",
         description:
-          "Patients sometimes ask about the Pe-Shot when reduced performance appears tied to erection quality, sensitivity, or confidence after other causes are reviewed.",
-        blog_post_title: "Pe-Shot for Reduced Sexual Performance",
+          "Patients sometimes ask about the Male Intimacy Protocol when reduced performance appears tied to erection quality, sensitivity, or confidence after other causes are reviewed.",
+        blog_post_title: "Male Intimacy Protocol for Reduced Sexual Performance",
         blog_post_slug: "pe-shot-for-reduced-sexual-performance",
         slug: "reduced-sexual-performance",
         tag: "common",
@@ -443,8 +443,8 @@ export const procedures = [
       {
         title: "Reduced Sensation",
         description:
-          "The Pe-Shot may be reviewed when decreased sensation or localized tissue response is part of the patient’s complaint.",
-        blog_post_title: "Pe-Shot for Reduced Sensation: What to Discuss",
+          "The Male Intimacy Protocol may be reviewed when decreased sensation or localized tissue response is part of the patient’s complaint.",
+        blog_post_title: "Male Intimacy Protocol for Reduced Sensation: What to Discuss",
         blog_post_slug: "pe-shot-for-reduced-sensation-what-to-discuss",
         slug: "reduced-sensation",
         tag: "uncommon",
@@ -452,8 +452,8 @@ export const procedures = [
       {
         title: "Post-Prostatectomy Issues",
         description:
-          "After prostate treatment, the Pe-Shot may be one topic in a larger recovery discussion that can also include medication, devices, and rehabilitation strategies.",
-        blog_post_title: "Pe-Shot for Post-Prostatectomy Recovery Questions",
+          "After prostate treatment, the Male Intimacy Protocol may be one topic in a larger recovery discussion that can also include medication, devices, and rehabilitation strategies.",
+        blog_post_title: "Male Intimacy Protocol for Post-Prostatectomy Recovery Questions",
         blog_post_slug: "pe-shot-for-post-prostatectomy-recovery-questions",
         slug: "post-prostatectomy-issues",
         tag: "experimental",
@@ -461,8 +461,8 @@ export const procedures = [
       {
         title: "Premature Ejaculation",
         description:
-          "Premature ejaculation often has neurologic and behavioral drivers, but the Pe-Shot may still be discussed in complex sexual health treatment planning.",
-        blog_post_title: "Pe-Shot and Premature Ejaculation: Treatment Overview",
+          "Premature ejaculation often has neurologic and behavioral drivers, but the Male Intimacy Protocol may still be discussed in complex sexual health treatment planning.",
+        blog_post_title: "Male Intimacy Protocol and Premature Ejaculation: Treatment Overview",
         blog_post_slug: "pe-shot-and-premature-ejaculation-treatment-overview",
         slug: "premature-ejaculation",
         tag: "common",
@@ -470,8 +470,8 @@ export const procedures = [
       {
         title: "Chronic Penile Pain",
         description:
-          "Persistent penile pain needs a careful diagnosis, but the Pe-Shot may be reviewed when tissue healing support is relevant to the broader plan.",
-        blog_post_title: "Pe-Shot for Chronic Penile Pain: What to Discuss",
+          "Persistent penile pain needs a careful diagnosis, but the Male Intimacy Protocol may be reviewed when tissue healing support is relevant to the broader plan.",
+        blog_post_title: "Male Intimacy Protocol for Chronic Penile Pain: What to Discuss",
         blog_post_slug: "pe-shot-for-chronic-penile-pain-what-to-discuss",
         slug: "chronic-penile-pain",
         tag: "uncommon",
@@ -479,8 +479,8 @@ export const procedures = [
       {
         title: "Enhanced Sexual Capabilities",
         description:
-          "Some patients pursue the Pe-Shot to discuss sensitivity, stamina, or erectile response even when the goal is optimization rather than diagnosis-driven treatment.",
-        blog_post_title: "Pe-Shot for Sexual Performance Optimization",
+          "Some patients pursue the Male Intimacy Protocol to discuss sensitivity, stamina, or erectile response even when the goal is optimization rather than diagnosis-driven treatment.",
+        blog_post_title: "Male Intimacy Protocol for Sexual Performance Optimization",
         blog_post_slug: "pe-shot-for-sexual-performance-optimization",
         slug: "enhanced-sexual-capabilities",
         tag: "common",
@@ -488,8 +488,8 @@ export const procedures = [
       {
         title: "Improved Penile Aesthetics",
         description:
-          "Aesthetic goals should be discussed carefully, and the Pe-Shot may be one procedural option reviewed for patients with realistic expectations.",
-        blog_post_title: "Pe-Shot and Penile Aesthetic Goals",
+          "Aesthetic goals should be discussed carefully, and the Male Intimacy Protocol may be one procedural option reviewed for patients with realistic expectations.",
+        blog_post_title: "Male Intimacy Protocol and Penile Aesthetic Goals",
         blog_post_slug: "pe-shot-and-penile-aesthetic-goals",
         slug: "improved-penile-aesthetics",
         tag: "uncommon",
@@ -497,8 +497,8 @@ export const procedures = [
       {
         title: "Penile Tissue Rejuvenation",
         description:
-          "The Pe-Shot is often framed as a regenerative option for patients concerned about tissue quality, recovery, or age-related changes.",
-        blog_post_title: "Pe-Shot for Penile Tissue Rejuvenation",
+          "The Male Intimacy Protocol is often framed as a regenerative option for patients concerned about tissue quality, recovery, or age-related changes.",
+        blog_post_title: "Male Intimacy Protocol for Penile Tissue Rejuvenation",
         blog_post_slug: "pe-shot-for-penile-tissue-rejuvenation",
         slug: "penile-tissue-rejuvenation",
         tag: "uncommon",
@@ -506,8 +506,8 @@ export const procedures = [
       {
         title: "Improved Orgasmic Function",
         description:
-          "When reduced sensation or climax quality is part of the complaint, the Pe-Shot may be discussed as one possible adjunct treatment.",
-        blog_post_title: "Pe-Shot for Orgasmic Function Support",
+          "When reduced sensation or climax quality is part of the complaint, the Male Intimacy Protocol may be discussed as one possible adjunct treatment.",
+        blog_post_title: "Male Intimacy Protocol for Orgasmic Function Support",
         blog_post_slug: "pe-shot-for-orgasmic-function-support",
         slug: "improved-orgasmic-function",
         tag: "common",
@@ -515,8 +515,8 @@ export const procedures = [
       {
         title: "Testosterone Imbalances",
         description:
-          "The Pe-Shot does not replace endocrine evaluation, but some patients with hormonal symptoms ask how it might fit into a broader sexual health workup.",
-        blog_post_title: "Pe-Shot and Testosterone Imbalance Questions",
+          "The Male Intimacy Protocol does not replace endocrine evaluation, but some patients with hormonal symptoms ask how it might fit into a broader sexual health workup.",
+        blog_post_title: "Male Intimacy Protocol and Testosterone Imbalance Questions",
         blog_post_slug: "pe-shot-and-testosterone-imbalance-questions",
         slug: "testosterone-imbalances",
         tag: "experimental",
@@ -524,8 +524,8 @@ export const procedures = [
       {
         title: "Vasculogenic Sexual Dysfunction",
         description:
-          "The Pe-Shot is commonly discussed when vascular factors may contribute to erectile difficulty, though diagnosis and cardiovascular risk review remain important.",
-        blog_post_title: "Pe-Shot for Vasculogenic Sexual Dysfunction",
+          "The Male Intimacy Protocol is commonly discussed when vascular factors may contribute to erectile difficulty, though diagnosis and cardiovascular risk review remain important.",
+        blog_post_title: "Male Intimacy Protocol for Vasculogenic Sexual Dysfunction",
         blog_post_slug: "pe-shot-for-vasculogenic-sexual-dysfunction",
         slug: "vasculogenic-sexual-dysfunction",
         tag: "experimental",
@@ -533,28 +533,28 @@ export const procedures = [
       {
         title: "Improved Blood Flow",
         description:
-          "Patients sometimes pursue the Pe-Shot to discuss whether PRP-based care can support localized circulation and erectile response.",
-        blog_post_title: "Pe-Shot for Blood Flow Support",
+          "Patients sometimes pursue the Male Intimacy Protocol to discuss whether PRP-based care can support localized circulation and erectile response.",
+        blog_post_title: "Male Intimacy Protocol for Blood Flow Support",
         blog_post_slug: "pe-shot-for-blood-flow-support",
         slug: "improved-blood-flow",
         tag: "common",
       },
     ],
     faqHeadline:
-      "Most Pe-Shot questions focus on candidacy, comfort, expected timing, and how the procedure fits with medication, devices, or other medical therapies.",
+      "Most Male Intimacy Protocol questions focus on candidacy, comfort, expected timing, and how the procedure fits with medication, devices, or other medical therapies.",
     faqs: [
       {
-        question: "What is the Pe-Shot?",
+        question: "What is the Male Intimacy Protocol?",
         answer:
-          "The Pe-Shot is a platelet-rich plasma procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness.",
+          "The Male Intimacy Protocol is a platelet-rich plasma procedure that uses your own processed blood components in a treatment plan focused on penile tissue health and sexual wellness.",
       },
       {
-        question: "Who may be a candidate for the Pe-Shot?",
+        question: "Who may be a candidate for the Male Intimacy Protocol?",
         answer:
           "Candidates are usually patients who have already reviewed standard treatment options and want to discuss whether a regenerative, non-surgical procedure fits their diagnosis, symptoms, and goals.",
       },
       {
-        question: "Is the Pe-Shot painful?",
+        question: "Is the Male Intimacy Protocol painful?",
         answer:
           "Most visits use topical numbing or local anesthesia. Patients often describe treatment as manageable, but comfort varies by person and by treatment plan.",
       },

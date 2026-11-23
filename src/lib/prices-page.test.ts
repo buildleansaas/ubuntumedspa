@@ -69,7 +69,7 @@ test("the groups are the ones the page promises", () => {
   );
 });
 
-test("the cosmetic gels sit with skincare products, never with OH-Shot or Pe-Shot", () => {
+test("the cosmetic gels sit with skincare products, never with Feminine Intimacy Protocol or Male Intimacy Protocol", () => {
   const groups = getPriceGroups();
   const groupOf = (slug: string) => groups.find((group) => group.rows.some((row) => row.slug === slug))?.id;
   assert.equal(groupOf("co2-v-lift-for-women"), "skincare-products");

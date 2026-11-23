@@ -6,18 +6,18 @@ const LEGACY_INTIMACY_PROCEDURE_SLUG_ALIASES = {
 } as const;
 
 const LEGACY_INTIMACY_PROCEDURE_NAME_ALIASES = {
-  "Feminine Intimacy PRP Protocols": "OH-Shot",
-  "Male Intimacy PRP Protocols": "Pe-Shot",
-  "O Shot": "OH-Shot",
-  "O-Shot": "OH-Shot",
-  "O-Shot®": "OH-Shot",
-  "Oshot": "OH-Shot",
-  "OSHOT": "OH-Shot",
-  "P Shot": "Pe-Shot",
-  "P-Shot": "Pe-Shot",
-  "P-Shot®": "Pe-Shot",
-  "Priapus Shot": "Pe-Shot",
-  "Pshot": "Pe-Shot",
+  "Feminine Intimacy PRP Protocols": "Feminine Intimacy Protocol",
+  "Male Intimacy PRP Protocols": "Male Intimacy Protocol",
+  "O Shot": "Feminine Intimacy Protocol",
+  "O-Shot": "Feminine Intimacy Protocol",
+  "O-Shot®": "Feminine Intimacy Protocol",
+  "Oshot": "Feminine Intimacy Protocol",
+  "OSHOT": "Feminine Intimacy Protocol",
+  "P Shot": "Male Intimacy Protocol",
+  "P-Shot": "Male Intimacy Protocol",
+  "P-Shot®": "Male Intimacy Protocol",
+  "Priapus Shot": "Male Intimacy Protocol",
+  "Pshot": "Male Intimacy Protocol",
 } as const;
 
 export const normalizeIntimacyProcedureSlug = (slug: string) =>

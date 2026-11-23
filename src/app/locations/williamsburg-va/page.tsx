@@ -60,7 +60,7 @@ export default function WilliamsburgLocationPage() {
             <Link href="/procedures/xeomin" className="link link-primary">
               Xeomin
             </Link>{" "}
-            and Botox® wrinkle relaxers, PRP treatments, hyperhidrosis care, OH-Shot services, and{" "}
+            and Botox® wrinkle relaxers, PRP treatments, hyperhidrosis care, Feminine Intimacy Protocol services, and{" "}
             <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
               nurse-led Blomdahl medical ear piercing
             </Link>{" "}
@@ -106,7 +106,7 @@ export default function WilliamsburgLocationPage() {
           intro={
             <>
               Start with the specific treatment question, not a generic spa menu. Jenny Brady sees patients for
-              consultation-led Botox and Xeomin, PRP treatments, hyperhidrosis care, OH-Shot consultations, and nurse-led Blomdahl
+              consultation-led Botox and Xeomin, PRP treatments, hyperhidrosis care, Feminine Intimacy Protocol consultations, and nurse-led Blomdahl
               medical ear piercing at the Williamsburg clinic.
             </>
           }
@@ -150,7 +150,7 @@ export default function WilliamsburgLocationPage() {
             <Link href="/procedures/prp-hair-restoration">PRP Hair Restoration</Link>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <Link href="/procedures/oh-shot">OH-Shot</Link>
+            <Link href="/procedures/oh-shot">Feminine Intimacy Protocol</Link>
           </Button>
           <Button asChild size="lg" variant="outline">
             <Link href="/procedures/blomdahl-ear-piercing">Medical Ear Piercing</Link>

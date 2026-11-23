@@ -20,13 +20,13 @@ export default function OhShotCallout() {
           <p className="eyebrow">Featured Women&apos;s Sexual Wellness Treatment</p>
 
           <h2 id="oh-shot-callout-heading" className={`mt-3 ${H2}`}>
-            OH-Shot for comfort, sensation, and intimate confidence.
+            Feminine Intimacy Protocol for comfort, sensation, and intimate confidence.
           </h2>
 
           <p className={`mt-4 ${INTRO}`}>
             A discreet in-office PRP treatment for women who want greater comfort, improved sensitivity, and more
             confidence with intimacy. If dryness, reduced sensation, mild stress urinary leakage, or
-            intimacy-related discomfort have become part of the conversation, the OH-Shot may be a supportive option
+            intimacy-related discomfort have become part of the conversation, the Feminine Intimacy Protocol may be a supportive option
             to discuss.
           </p>
 
@@ -41,7 +41,7 @@ export default function OhShotCallout() {
               Book Now
             </InstantCheckoutButton>
             <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
-              <Link href="/procedures/oh-shot">Explore OH-Shot Care</Link>
+              <Link href="/procedures/oh-shot">Explore Feminine Intimacy Protocol Care</Link>
             </Button>
           </div>
         </div>

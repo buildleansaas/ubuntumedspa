@@ -18,7 +18,7 @@ const CREDENTIALS = [
   "Registered Nurse",
   "Certified Pediatric Nurse Practitioner",
   "Pediatric Mental Health Specialist",
-  "CMA-certified OH-Shot provider",
+  "CMA-certified Feminine Intimacy Protocol provider",
   "Certified Blomdahl provider",
 ] as const;
 
@@ -58,13 +58,13 @@ export default function JennyBradyPage() {
               practitioner practice, and pediatric mental health.
             </p>
             <p>
-              Jenny is a Cellular Medicine Association-certified OH-Shot provider and a certified Blomdahl provider. At
+              Jenny is a Cellular Medicine Association-certified Feminine Intimacy Protocol provider and a certified Blomdahl provider. At
               the Williamsburg clinic she plans Botox and Xeomin wrinkle-relaxer treatment, PRP treatments, hyperhidrosis care, and
               Blomdahl medical ear piercing.{" "}
               <Link href="/procedures/oh-shot" className="link link-primary">
-                OH-Shot
+                Feminine Intimacy Protocol
               </Link>{" "}
-              visits stay on the OH-Shot page. Ear piercing visits, including babies generally 6 months or older with
+              visits stay on the Feminine Intimacy Protocol page. Ear piercing visits, including babies generally 6 months or older with
               pediatrician guidance, stay on the{" "}
               <Link href="/procedures/blomdahl-ear-piercing" className="link link-primary">
                 Blomdahl ear piercing page

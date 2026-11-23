@@ -16,14 +16,14 @@ const CREDENTIALS = [
   "RN",
   "CPNP",
   "PMHS",
-  "CMA-certified OH-Shot provider",
+  "CMA-certified Feminine Intimacy Protocol provider",
   "Certified Blomdahl provider",
 ] as const;
 
 const FEATURED_LINKS = [
   ["Botox", "/procedures/botox"],
   ["Xeomin", "/procedures/xeomin"],
-  ["OH-Shot", "/procedures/oh-shot"],
+  ["Feminine Intimacy Protocol", "/procedures/oh-shot"],
   ["Blomdahl Ear Piercing", "/procedures/blomdahl-ear-piercing"],
   ["Williamsburg Location", "/locations/williamsburg-va"],
 ] as const;
@@ -65,7 +65,7 @@ export default function Jumbotron({ xeominCash, xeominCard }: { xeominCash: stri
           </p>
           <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-base-content/75 md:text-lg">
             A local med spa with Jenny Brady, MSN, RN, CPNP, PMHS, a Cellular Medicine Association-certified
-            OH-Shot provider and certified Blomdahl medical ear piercing provider.
+            Feminine Intimacy Protocol provider and certified Blomdahl medical ear piercing provider.
           </p>
           <ul className="mt-4 flex max-w-[62ch] flex-wrap gap-2" aria-label="Jenny Brady credentials and certifications">
             {CREDENTIALS.map((credential) => (

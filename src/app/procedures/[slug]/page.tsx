@@ -82,11 +82,11 @@ const featuredGuideCopy: Record<string, { button: string; heading: string; descr
     linkLabel: "Read the Xeomin vs Botox article",
   },
   "oh-shot": {
-    button: "OH-Shot Bladder Leakage Guide",
-    heading: "Wondering whether the OH-Shot can help with bladder leakage?",
+    button: "Feminine Intimacy Protocol Bladder Leakage Guide",
+    heading: "Wondering whether the Feminine Intimacy Protocol can help with bladder leakage?",
     description:
-      "Review how stress leakage, urge leakage, pelvic floor care, and OH-Shot candidacy fit into a private consultation.",
-    linkLabel: "Read the OH-Shot urinary incontinence guide",
+      "Review how stress leakage, urge leakage, pelvic floor care, and Feminine Intimacy Protocol candidacy fit into a private consultation.",
+    linkLabel: "Read the Feminine Intimacy Protocol urinary incontinence guide",
   },
   "prp-hair-restoration": {
     button: "PRP vs Hair Transplant",
@@ -219,7 +219,7 @@ export default async function ProcedurePage(props: { params: Promise<{ slug: str
       : procedure.slug === "hyperhidrosis-treatment"
       ? "Consultation starts with the area bothering you most, whether that is underarms, palms, feet, or another localized sweating pattern, and whether Xeomin is a good fit."
       : procedure.slug === "oh-shot"
-        ? "Consultation covers symptoms, candidacy, treatment areas, expected timing, and whether OH-Shot care fits your intimate wellness or bladder leakage concerns."
+        ? "Consultation covers symptoms, candidacy, treatment areas, expected timing, and whether Feminine Intimacy Protocol care fits your intimate wellness or bladder leakage concerns."
       : procedure.slug === "blomdahl-ear-piercing"
         ? "Ear piercing visits cover age or sensitivity questions, Blomdahl starter earring options, placement, aftercare, and whether the appointment is for a child, teen, adult, or re-piercing."
       : procedure.slug === "microneedling-with-prp"

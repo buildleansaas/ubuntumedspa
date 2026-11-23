@@ -15,8 +15,8 @@ const LEGACY_INTEREST_ALIASES: Record<string, string> = {
 
 /** The consult form's treatment checkboxes. The API keeps only these (after mapping legacy names). */
 export const CONSULT_INTEREST_OPTIONS = [
-  "OH-Shot",
-  "Pe-Shot",
+  "Feminine Intimacy Protocol",
+  "Male Intimacy Protocol",
   "PRP Breast Lift",
   "Hair Restoration",
   "PRP Facial",
@@ -44,10 +44,10 @@ export const PROCEDURE_INTERESTS: Record<string, string[]> = {
   "hair-restoration": ["Hair Restoration"],
   "prp-hair-restoration": ["Hair Restoration"],
   "microneedling-with-prp": ["Microneedling with PRP"],
-  "o-shot": ["OH-Shot"],
-  "oh-shot": ["OH-Shot"],
-  "p-shot": ["Pe-Shot"],
-  "pe-shot": ["Pe-Shot"],
+  "o-shot": ["Feminine Intimacy Protocol"],
+  "oh-shot": ["Feminine Intimacy Protocol"],
+  "p-shot": ["Male Intimacy Protocol"],
+  "pe-shot": ["Male Intimacy Protocol"],
   "b12-injections": ["Vitamin B-12 Injections"],
   b12: ["Vitamin B-12 Injections"],
 };
