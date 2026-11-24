@@ -46,7 +46,7 @@ test("the pre-written text to Jenny names only treatments the visitor picked, ne
   const selections = resolveConsultSelections({ concerns: ["Erection or sensitivity concerns"] });
   assert.ok(!("error" in selections));
   const message = consultBookingMessage({ name: "Bob", interests: [...selections.interests] });
-  assert.doesNotMatch(message, /Pe-Shot/);
+  assert.doesNotMatch(message, /Male Intimacy Protocol/);
 });
 
 test("treatments alone still work, legacy names still map, and junk or nothing is refused", () => {

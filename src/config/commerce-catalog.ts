@@ -110,7 +110,7 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
   {
     slug: "oh-shot",
     kind: "procedure",
-    name: "OH-Shot",
+    name: "Feminine Intimacy Protocol",
     shortDescription: "Full upfront payment for one treatment visit.",
     pricingMode: "fixed",
     cashAmountCents: 120000,
@@ -127,7 +127,7 @@ const COMMERCE_CATALOG_SOURCE: CatalogItemSource[] = [
   {
     slug: "pe-shot",
     kind: "procedure",
-    name: "Pe-Shot",
+    name: "Male Intimacy Protocol",
     shortDescription: "Full upfront payment for one treatment visit.",
     pricingMode: "fixed",
     cashAmountCents: 190000,

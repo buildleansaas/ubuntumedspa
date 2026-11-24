@@ -235,10 +235,10 @@ export function TrainedBy({ trainers = ["runels", "piccirillo"], className = "py
   );
 }
 
-/** Single-trainer rows for the OH-Shot and joint pages. */
+/** Single-trainer rows for the Feminine Intimacy Protocol and joint pages. */
 export function RunelsTraining() {
   return (
-    <Section tight label="Jenny's OH-Shot training">
+    <Section tight label="Jenny's Feminine Intimacy Protocol training">
       <TrainedBy trainers={["runels"]} className="" />
     </Section>
   );

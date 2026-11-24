@@ -78,7 +78,7 @@ export default async function Page() {
                 intro={
                   <>
                     Williamsburg Med Spa is a Nurse Practitioner led medical spa in Williamsburg, VA. Jenny Brady brings
-                    MSN, RN, CPNP, PMHS, Cellular Medicine Association-certified OH-Shot provider training, and
+                    MSN, RN, CPNP, PMHS, Cellular Medicine Association-certified Feminine Intimacy Protocol provider training, and
                     certified Blomdahl provider training for medical ear piercing, so care starts with medical screening,
                     calm education, and treatment planning shaped around realistic goals.
                   </>

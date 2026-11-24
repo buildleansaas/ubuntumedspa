@@ -65,7 +65,7 @@ export default function TermsPage() {
 
         <h2 className="pt-4 text-3xl tracking-tight text-base-content">Service names</h2>
         <p>
-          OH-Shot and Pe-Shot are the names used for those PRP services at this clinic. Other pages describe
+          Feminine Intimacy Protocol and Male Intimacy Protocol are the names used for those PRP services at this clinic. Other pages describe
           Botox, Xeomin, PRP treatments, hyperhidrosis care, and Blomdahl ear piercing. A page describes only
           the service it is about. Botox® is a registered trademark of Allergan, Inc., an AbbVie company. Williamsburg Med
           Spa offers Botox and Xeomin and is not affiliated with Allergan.

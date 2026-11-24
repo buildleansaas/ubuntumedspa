@@ -4,7 +4,7 @@ export const jennyCredentialNames = [
   "Registered Nurse",
   "Certified Pediatric Nurse Practitioner",
   "Pediatric Mental Health Specialist",
-  "Cellular Medicine Association-certified OH-Shot provider",
+  "Cellular Medicine Association-certified Feminine Intimacy Protocol provider",
   "Certified Blomdahl provider",
 ] as const;
 

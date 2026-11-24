@@ -318,10 +318,10 @@ test('consult offers "Botox" and "Xeomin" separately; the 2026-11 "Xeomin (Botox
   assert.equal(interests.includes("Xeomin (Botox alternative)"), false);
   assert.deepEqual(getProcedureInterests("botox"), ["Botox"]);
   assert.deepEqual(getProcedureInterests("xeomin"), ["Xeomin"]);
-  assert.deepEqual(normalizeConsultInterests(["Xeomin (Botox alternative)", "Xeomin", "PRP Facial", "O-Shot"]), [
+  assert.deepEqual(normalizeConsultInterests(["Xeomin (Botox alternative)", "Xeomin", "PRP Facial", "Feminine Intimacy Protocol"]), [
     "Xeomin",
     "PRP Facial",
-    "OH-Shot",
+    "Feminine Intimacy Protocol",
   ]);
   assert.deepEqual(allowedConsultInterests(["Botox", "Xeomin (Botox alternative)"]), ["Botox", "Xeomin"]);
 });

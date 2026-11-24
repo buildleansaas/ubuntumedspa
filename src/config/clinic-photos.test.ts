@@ -80,7 +80,7 @@ test("Dr. Runels caption states only the confirmed facts (Fairhope, CMA training
     "Jenny with Dr. Charles Runels in Fairhope, Alabama, during her Cellular Medicine Association training."
   );
   assert.doesNotMatch(RUNELS_CAPTION, /endorse|recommend|partner|founder/i);
-  // His name is spelled Runels (cellularmedicineassociation.org; the site's OH-Shot article).
+  // His name is spelled Runels (cellularmedicineassociation.org; the site's Feminine Intimacy Protocol article).
   const all = read("src/config/clinic-photos.ts") + read("src/components/clinic-photos.tsx");
   assert.doesNotMatch(all, /Runnels/);
 });
